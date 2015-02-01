@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1610</x>
-      <y>160</y>
+      <y>130</y>
       <w>230</w>
       <h>120</h>
     </coordinates>
@@ -23,7 +23,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1110</x>
-      <y>410</y>
+      <y>380</y>
       <w>220</w>
       <h>90</h>
     </coordinates>
@@ -40,7 +40,7 @@
     <id>Relation</id>
     <coordinates>
       <x>1210</x>
-      <y>310</y>
+      <y>280</y>
       <w>30</w>
       <h>120</h>
     </coordinates>
@@ -51,7 +51,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1110</x>
-      <y>150</y>
+      <y>120</y>
       <w>220</w>
       <h>170</h>
     </coordinates>
@@ -72,7 +72,7 @@ isPassable( ) : boolean</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1390</x>
-      <y>650</y>
+      <y>620</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -90,7 +90,7 @@ Responsibilities
     <id>UMLClass</id>
     <coordinates>
       <x>840</x>
-      <y>650</y>
+      <y>620</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -108,7 +108,7 @@ Responsibilties
     <id>UMLClass</id>
     <coordinates>
       <x>1110</x>
-      <y>650</y>
+      <y>620</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -126,7 +126,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1210</x>
-      <y>490</y>
+      <y>460</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -137,7 +137,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>930</x>
-      <y>540</y>
+      <y>510</y>
       <w>590</w>
       <h>30</h>
     </coordinates>
@@ -148,7 +148,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1490</x>
-      <y>540</y>
+      <y>510</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -159,7 +159,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1210</x>
-      <y>540</y>
+      <y>510</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -170,7 +170,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>930</x>
-      <y>540</y>
+      <y>510</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -181,7 +181,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1320</x>
-      <y>220</y>
+      <y>190</y>
       <w>310</w>
       <h>30</h>
     </coordinates>
@@ -191,24 +191,26 @@ Responsiblities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2020</x>
-      <y>410</y>
-      <w>220</w>
-      <h>130</h>
+      <x>1970</x>
+      <y>380</y>
+      <w>300</w>
+      <h>90</h>
     </coordinates>
-    <panel_attributes>/HealingAreaEffect/
+    <panel_attributes>HealingAreaEffect
 --
+- percentHealth : double
 --
-</panel_attributes>
++ HealingAreaEffect( percentHealth :  double
++ apply ( entity : Entity ) : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>2160</x>
-      <y>160</y>
+      <y>130</y>
       <w>220</w>
-      <h>130</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 AreaEffect
@@ -221,42 +223,45 @@ AreaEffect
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1760</x>
-      <y>410</y>
-      <w>220</w>
-      <h>130</h>
+      <x>1650</x>
+      <y>380</y>
+      <w>310</w>
+      <h>90</h>
     </coordinates>
-    <panel_attributes>/DamageAreaEffect/
+    <panel_attributes>DamageAreaEffect
+--
+- percentDamage : double
+--
++ DamageAreaEffect( percentDamage : double)
++ apply ( entity : Entity ) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2510</x>
+      <y>380</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>DeathAreaEffect
 --
 --
-</panel_attributes>
++ apply ( entity : Entity ) : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>2280</x>
-      <y>410</y>
+      <y>380</y>
       <w>220</w>
-      <h>130</h>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>/DeathAreaEffect/
+    <panel_attributes>ExperienceAreaEffect
 --
 --
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>2540</x>
-      <y>410</y>
-      <w>220</w>
-      <h>130</h>
-    </coordinates>
-    <panel_attributes>/ExperienceAreaEffect/
---
---
++ apply ( entity : Entity ) : void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -264,29 +269,29 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>2250</x>
-      <y>280</y>
+      <y>200</y>
       <w>30</w>
-      <h>90</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1850</x>
-      <y>340</y>
-      <w>830</w>
+      <x>1790</x>
+      <y>310</y>
+      <w>880</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;860.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2120</x>
-      <y>340</y>
+      <x>2110</x>
+      <y>310</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -296,8 +301,8 @@ AreaEffect
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1850</x>
-      <y>340</y>
+      <x>1790</x>
+      <y>310</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -308,7 +313,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>2380</x>
-      <y>340</y>
+      <y>310</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -318,8 +323,8 @@ AreaEffect
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2650</x>
-      <y>340</y>
+      <x>2640</x>
+      <y>310</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -330,7 +335,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>1210</x>
-      <y>30</y>
+      <y>0</y>
       <w>1080</w>
       <h>140</h>
     </coordinates>
@@ -341,7 +346,7 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>640</x>
-      <y>70</y>
+      <y>40</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -355,7 +360,7 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>640</x>
-      <y>290</y>
+      <y>260</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -369,7 +374,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>900</x>
-      <y>210</y>
+      <y>180</y>
       <w>230</w>
       <h>30</h>
     </coordinates>
@@ -380,7 +385,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>850</x>
-      <y>120</y>
+      <y>90</y>
       <w>80</w>
       <h>30</h>
     </coordinates>
@@ -391,7 +396,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>900</x>
-      <y>120</y>
+      <y>90</y>
       <w>30</w>
       <h>250</h>
     </coordinates>
@@ -402,7 +407,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>850</x>
-      <y>340</y>
+      <y>310</y>
       <w>80</w>
       <h>30</h>
     </coordinates>
@@ -413,7 +418,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>2260</x>
-      <y>30</y>
+      <y>0</y>
       <w>30</w>
       <h>150</h>
     </coordinates>
@@ -424,7 +429,7 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>270</x>
-      <y>410</y>
+      <y>380</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -438,7 +443,7 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>550</x>
-      <y>650</y>
+      <y>620</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -452,7 +457,7 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>650</y>
+      <y>620</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -467,7 +472,7 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>270</x>
-      <y>650</y>
+      <y>620</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -480,7 +485,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>370</x>
-      <y>530</y>
+      <y>500</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -491,7 +496,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>580</y>
+      <y>550</y>
       <w>590</w>
       <h>30</h>
     </coordinates>
@@ -502,7 +507,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>650</x>
-      <y>580</y>
+      <y>550</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -513,7 +518,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>370</x>
-      <y>580</y>
+      <y>550</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -524,7 +529,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>580</y>
+      <y>550</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -535,7 +540,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>990</x>
-      <y>270</y>
+      <y>240</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -546,7 +551,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>470</y>
+      <y>440</y>
       <w>540</w>
       <h>30</h>
     </coordinates>
@@ -557,11 +562,36 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>990</x>
-      <y>270</y>
+      <y>240</y>
       <w>30</w>
       <h>230</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1760</x>
+      <y>520</y>
+      <w>390</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>public void apply( entity ) {
+    entity.setHealth( entity.getHealth( ) * (1 + percentHealth) ) ;
+}
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1990</x>
+      <y>450</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;70.0;30.0;10.0</additional_attributes>
   </element>
 </diagram>
