@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.1">
+<diagram program="umlet" version="13.0">
   <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>660</x>
-      <y>260</y>
+      <x>870</x>
+      <y>810</y>
       <w>220</w>
-      <h>130</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Inventory
 --
@@ -21,13 +21,15 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>260</y>
-      <w>220</w>
+      <x>440</x>
+      <y>810</y>
+      <w>170</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>Avatar
 --
+-inventory:Inventory
+-equipment:Equipment
 --
 </panel_attributes>
     <additional_attributes/>
@@ -35,19 +37,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>320</y>
-      <w>280</w>
+      <x>600</x>
+      <y>870</y>
+      <w>290</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;260.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>60</y>
+      <x>830</x>
+      <y>610</y>
       <w>300</w>
       <h>130</h>
     </coordinates>
@@ -62,6 +64,403 @@
 + unequipWeapon( ) : boolean
 
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>340</y>
+      <w>220</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Slot
+--
+--
++hasItem():boolean
++equipItem(Item) : boolean
++unequipItem():Item
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>340</y>
+      <w>220</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Inventory
+--
+-gridItems: List&lt;List&lt;Slot&gt;&gt;
+--
++equipItem(Point,Item) : boolean
++unequipItem(Point) : Item
++dropItem(Point) : boolean
++swap(Point,Point) : boolean
++swap(Point,Slot) : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>170</y>
+      <w>460</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>440.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>340</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Equipment
+--
+- armor : ArmorSlot
+- weapon : WeaponSlot
+--
++ equipArmor( Armor , from : Slot) : boolean
++ equipWeapon( Weapon , from : Slot) : boolean
++ unequipArmor( ) : boolean
++ unequipWeapon( ) : boolean
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>660</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>WeaponSlot
+--
+-item : Weapon
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>660</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>ArmorSlot
+--
+-item : Armor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>570</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>InventorySlot
+--
+-item : Item
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>460</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>50</x>
+      <y>500</y>
+      <w>420</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>500</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>50</x>
+      <y>500</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>360</x>
+      <y>240</y>
+      <w>170</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Note..
+Java Point is a class that contains 
+the x and y cordinates on the InventoryGrid
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>550</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>/BufferSlot/
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>630</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>590</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>630</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>630</y>
+      <w>250</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>910</x>
+      <y>500</y>
+      <w>280</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Note..
+So we need a way to manage the stat collection in the Equipment Class
+bg=Yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>150</y>
+      <w>220</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>/SlotContainer/
+--
+--
+#equip(to,from,Item) : boolean
+#unequip(Slot) : Item
+#drop(Slot) : boolean
+#swap(Slot,Slot) : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>270</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>300</y>
+      <w>290</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>300</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>300</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1010</x>
+      <y>90</y>
+      <w>320</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>equipItem(to:Slot ,from : Slot{
+if (Slot.hasItem())
+return this.swap(to,from)
+else 
+return slot.equip(from.unequip())
+}
+
+
+return Slot.equip(Item)}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1010</x>
+      <y>200</y>
+      <w>320</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>unequip(Slot,Item){
+if(Slot.hasItem)return Slot.unequip()
+else
+return None
+}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>170</y>
+      <w>30</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1010</x>
+      <y>0</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>swap(Slot1,Slot2){
+Item temp = Slot1.unequip()
+Slot1.equip(Slot2.unequip())
+return Slot2.equip(temp)
+}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1230</x>
+      <y>350</y>
+      <w>380</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Example 
+
+equipArmor(armorItem,from){
+return this.equip(armorSlot,armotItem,from)
+}
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>600</x>
+      <y>470</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Example
+
+equipItem(Point,Item){
+this.equip(gridItem[Point.x][Point.y],Item)
+}
+bg=red</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
