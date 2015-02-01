@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
-      <y>500</y>
-      <w>220</w>
-      <h>130</h>
+      <x>351</x>
+      <y>243</y>
+      <w>198</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>OneShotItem
 --
@@ -18,38 +18,38 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>250</y>
-      <w>220</w>
-      <h>130</h>
+      <x>468</x>
+      <y>18</y>
+      <w>207</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>/Item/
 --
 --
++ action( avatar : Avatar ) : boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>500</y>
-      <w>220</w>
-      <h>130</h>
+      <x>117</x>
+      <y>243</y>
+      <w>198</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>TakeableItem
 --
---
-</panel_attributes>
+--</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>690</x>
-      <y>500</y>
-      <w>220</w>
-      <h>130</h>
+      <x>585</x>
+      <y>243</y>
+      <w>198</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>InteractiveItem
 --
@@ -60,10 +60,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>950</x>
-      <y>500</y>
-      <w>220</w>
-      <h>130</h>
+      <x>819</x>
+      <y>243</y>
+      <w>198</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>ObstacleItem
 --
@@ -74,10 +74,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>370</y>
-      <w>30</w>
-      <h>90</h>
+      <x>558</x>
+      <y>126</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -85,10 +85,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>430</y>
-      <w>830</w>
-      <h>30</h>
+      <x>198</x>
+      <y>180</y>
+      <w>747</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
@@ -96,10 +96,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>430</y>
-      <w>30</w>
-      <h>90</h>
+      <x>441</x>
+      <y>180</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -107,10 +107,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>430</y>
-      <w>30</w>
-      <h>90</h>
+      <x>198</x>
+      <y>180</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -118,10 +118,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>430</y>
-      <w>30</w>
-      <h>90</h>
+      <x>675</x>
+      <y>180</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -129,12 +129,84 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1060</x>
-      <y>430</y>
-      <w>30</w>
-      <h>90</h>
+      <x>918</x>
+      <y>180</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>243</x>
+      <y>441</y>
+      <w>198</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>UsableItem
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9</x>
+      <y>441</y>
+      <w>198</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>EquippableItem
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>198</x>
+      <y>351</y>
+      <w>27</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>99</x>
+      <y>396</y>
+      <w>261</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>99</x>
+      <y>396</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>333</x>
+      <y>396</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
