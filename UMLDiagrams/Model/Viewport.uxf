@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
+      <x>252</x>
       <y>144</y>
       <w>198</w>
       <h>117</h>
@@ -18,7 +18,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>189</x>
+      <x>0</x>
       <y>333</y>
       <w>198</w>
       <h>117</h>
@@ -34,7 +34,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>693</x>
+      <x>504</x>
       <y>333</y>
       <w>198</w>
       <h>117</h>
@@ -48,7 +48,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
+      <x>342</x>
       <y>252</y>
       <w>27</w>
       <h>72</h>
@@ -59,7 +59,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>279</x>
+      <x>90</x>
       <y>297</y>
       <w>531</w>
       <h>27</h>
@@ -70,7 +70,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>783</x>
+      <x>594</x>
       <y>297</y>
       <w>27</w>
       <h>54</h>
@@ -81,7 +81,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>279</x>
+      <x>90</x>
       <y>297</y>
       <w>27</w>
       <h>54</h>
@@ -92,7 +92,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>261</x>
       <y>792</y>
       <w>198</w>
       <h>72</h>
@@ -107,7 +107,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
+      <x>378</x>
       <y>909</y>
       <w>198</w>
       <h>72</h>
@@ -122,7 +122,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>324</x>
+      <x>135</x>
       <y>909</y>
       <w>198</w>
       <h>72</h>
@@ -137,7 +137,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1566</x>
+      <x>1377</x>
       <y>405</y>
       <w>270</w>
       <h>108</h>
@@ -156,7 +156,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1521</x>
+      <x>1332</x>
       <y>171</y>
       <w>279</w>
       <h>180</h>
@@ -164,12 +164,12 @@
     <panel_attributes>LoadGamesTableView
 --
 -table : JTable
-- savedGameRow : SavedGameTableRow
+- savedGames : List&lt;SavedGameTableRow&gt;
 - cancel : JButton
 - deleteCommand : DeleteCommand
 --
-+add(SavedFile)
-+add(List&lt;SavedFile&gt;)
++add(SavedGameTableRow)
++add(List&lt;SavedGameTableRow&gt;)
 &lt;&lt;Action Listeners Adders&gt;&gt;
 +addDeleteGameAL(ActionListener)
 ...
@@ -179,7 +179,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1251</x>
+      <x>1062</x>
       <y>396</y>
       <w>279</w>
       <h>180</h>
@@ -204,7 +204,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1368</x>
+      <x>1179</x>
       <y>567</y>
       <w>27</w>
       <h>108</h>
@@ -215,7 +215,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1611</x>
+      <x>1422</x>
       <y>126</y>
       <w>27</w>
       <h>63</h>
@@ -226,7 +226,7 @@
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1512</x>
+      <x>1323</x>
       <y>18</y>
       <w>225</w>
       <h>72</h>
@@ -238,7 +238,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1314</x>
+      <x>1125</x>
       <y>657</y>
       <w>63</w>
       <h>36</h>
@@ -252,7 +252,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1521</x>
+      <x>1332</x>
       <y>450</y>
       <w>63</w>
       <h>27</h>
@@ -263,7 +263,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1521</x>
+      <x>1332</x>
       <y>99</y>
       <w>198</w>
       <h>36</h>
@@ -276,17 +276,20 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1206</x>
+      <x>1017</x>
       <y>180</y>
       <w>261</w>
-      <h>153</h>
+      <h>171</h>
     </coordinates>
     <panel_attributes>LoadSaveGameController
 --
 - savedGames : SaveGameTableView
 - pathToSavedFiles : String
+- savedGames : List&lt;SavedFile&gt;
 --
 +getFiles() : List&lt;SavedFile&gt;
++addSavedGame() : SavedGameTableRow
+
 --
 --delete a saved game
 --load a saved game
@@ -300,7 +303,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1458</x>
+      <x>1269</x>
       <y>198</y>
       <w>81</w>
       <h>27</h>
@@ -311,7 +314,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1395</x>
+      <x>1206</x>
       <y>657</y>
       <w>63</w>
       <h>36</h>
@@ -325,7 +328,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1431</x>
+      <x>1242</x>
       <y>567</y>
       <w>27</w>
       <h>108</h>
@@ -336,7 +339,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1314</x>
+      <x>1125</x>
       <y>0</y>
       <w>54</w>
       <h>36</h>
@@ -352,7 +355,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1215</x>
+      <x>1026</x>
       <y>72</y>
       <w>261</w>
       <h>63</h>
@@ -369,7 +372,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1332</x>
+      <x>1143</x>
       <y>27</y>
       <w>27</w>
       <h>63</h>
@@ -380,7 +383,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1467</x>
+      <x>1278</x>
       <y>126</y>
       <w>72</w>
       <h>72</h>
@@ -391,7 +394,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1854</x>
+      <x>1665</x>
       <y>171</y>
       <w>243</w>
       <h>180</h>
@@ -415,7 +418,7 @@ addLoadButtonAL(ActionListener)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1791</x>
+      <x>1602</x>
       <y>180</y>
       <w>81</w>
       <h>27</h>
@@ -426,7 +429,7 @@ addLoadButtonAL(ActionListener)
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1755</x>
+      <x>1566</x>
       <y>108</y>
       <w>126</w>
       <h>54</h>
@@ -438,7 +441,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1935</x>
+      <x>1746</x>
       <y>99</y>
       <w>63</w>
       <h>36</h>
@@ -451,7 +454,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1962</x>
+      <x>1773</x>
       <y>126</y>
       <w>27</w>
       <h>63</h>
@@ -462,7 +465,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
+      <x>828</x>
       <y>171</y>
       <w>144</w>
       <h>63</h>
@@ -477,7 +480,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
+      <x>828</x>
       <y>243</y>
       <w>144</w>
       <h>54</h>
@@ -492,7 +495,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
+      <x>828</x>
       <y>306</y>
       <w>162</w>
       <h>72</h>
@@ -509,7 +512,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1152</x>
+      <x>963</x>
       <y>189</y>
       <w>72</w>
       <h>27</h>
@@ -520,7 +523,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1152</x>
+      <x>963</x>
       <y>252</y>
       <w>72</w>
       <h>27</h>
@@ -531,7 +534,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1170</x>
+      <x>981</x>
       <y>306</y>
       <w>54</w>
       <h>27</h>
@@ -542,7 +545,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
+      <x>675</x>
       <y>207</y>
       <w>99</w>
       <h>45</h>
@@ -558,7 +561,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>954</x>
+      <x>765</x>
       <y>216</y>
       <w>54</w>
       <h>27</h>
@@ -569,7 +572,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>981</x>
+      <x>792</x>
       <y>189</y>
       <w>27</w>
       <h>162</h>
@@ -580,7 +583,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>981</x>
+      <x>792</x>
       <y>189</y>
       <w>54</w>
       <h>27</h>
@@ -591,7 +594,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>981</x>
+      <x>792</x>
       <y>252</y>
       <w>54</w>
       <h>27</h>
@@ -602,7 +605,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>981</x>
+      <x>792</x>
       <y>324</y>
       <w>54</w>
       <h>27</h>
@@ -613,7 +616,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
+      <x>585</x>
       <y>657</y>
       <w>225</w>
       <h>108</h>
@@ -630,7 +633,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>261</x>
       <y>684</y>
       <w>198</w>
       <h>72</h>
@@ -645,7 +648,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
+      <x>27</x>
       <y>693</y>
       <w>198</w>
       <h>72</h>
@@ -655,6 +658,29 @@ bg=blue</panel_attributes>
 
 --
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>342</y>
+      <w>648</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>700.0;10.0;700.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>819</x>
+      <y>99</y>
+      <w>153</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Do we want to make our actionListeners contain their view, or be nested class in the view
+bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
