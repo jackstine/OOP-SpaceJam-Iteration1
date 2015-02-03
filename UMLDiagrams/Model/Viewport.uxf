@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.0">
-  <zoom_level>9</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>252</x>
-      <y>270</y>
-      <w>198</w>
-      <h>117</h>
+      <x>196</x>
+      <y>245</y>
+      <w>154</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>/Viewport/
 --
@@ -19,9 +19,9 @@
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>459</y>
-      <w>198</w>
-      <h>117</h>
+      <y>392</y>
+      <w>154</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>AreaViewport
 --
@@ -34,10 +34,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>459</y>
-      <w>198</w>
-      <h>117</h>
+      <x>392</x>
+      <y>392</y>
+      <w>154</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>StatusViewport
 --
@@ -48,10 +48,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>378</y>
-      <w>27</w>
-      <h>72</h>
+      <x>266</x>
+      <y>329</y>
+      <w>21</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -59,10 +59,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>90</x>
-      <y>423</y>
-      <w>531</w>
-      <h>27</h>
+      <x>70</x>
+      <y>364</y>
+      <w>413</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;570.0;10.0</additional_attributes>
@@ -70,10 +70,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
-      <y>423</y>
-      <w>27</w>
-      <h>54</h>
+      <x>462</x>
+      <y>364</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -81,10 +81,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>90</x>
-      <y>423</y>
-      <w>27</w>
-      <h>54</h>
+      <x>70</x>
+      <y>364</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -92,10 +92,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>873</x>
-      <y>828</y>
-      <w>198</w>
-      <h>72</h>
+      <x>679</x>
+      <y>679</y>
+      <w>154</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>TileView
 --
@@ -107,10 +107,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
-      <y>981</y>
-      <w>81</w>
-      <h>72</h>
+      <x>791</x>
+      <y>798</y>
+      <w>63</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>EntityViews
 --
@@ -122,10 +122,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
-      <y>981</y>
-      <w>81</w>
-      <h>72</h>
+      <x>700</x>
+      <y>798</y>
+      <w>63</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>ItemView
 --
@@ -137,10 +137,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1377</x>
-      <y>531</y>
-      <w>270</w>
-      <h>108</h>
+      <x>1071</x>
+      <y>448</y>
+      <w>210</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>MainMenuController
 --
@@ -156,14 +156,14 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1332</x>
-      <y>297</y>
-      <w>279</w>
-      <h>180</h>
+      <x>1036</x>
+      <y>266</y>
+      <w>217</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>LoadGamesTableView
 --
--table : JPanel
+-table : List&lt;JPanel&gt;
 - savedGames : List&lt;SavedGameTableRow&gt;
 - cancel : JButton
 - deleteCommand : DeleteCommand
@@ -179,14 +179,14 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1062</x>
-      <y>522</y>
-      <w>279</w>
-      <h>180</h>
+      <x>826</x>
+      <y>441</y>
+      <w>217</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>MainMenuView
 --
-- MainMenuButtons : Panel
+- mainMenuButtons : Panel
 - header : TextField
 - loadGameButton : JButton
 - startGameButton : JButton
@@ -204,10 +204,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1179</x>
-      <y>693</y>
-      <w>27</w>
-      <h>108</h>
+      <x>917</x>
+      <y>574</y>
+      <w>21</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
@@ -215,10 +215,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1422</x>
-      <y>252</y>
-      <w>27</w>
-      <h>63</h>
+      <x>1106</x>
+      <y>231</y>
+      <w>21</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -226,10 +226,10 @@
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1323</x>
-      <y>144</y>
-      <w>225</w>
-      <h>72</h>
+      <x>1029</x>
+      <y>147</y>
+      <w>175</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Not sure if SaveGamesTableView needs to be a JInternalFrame or JFrame
 bg=blue</panel_attributes>
@@ -238,10 +238,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1125</x>
-      <y>783</y>
-      <w>63</w>
-      <h>36</h>
+      <x>875</x>
+      <y>644</y>
+      <w>49</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>JButton
 --
@@ -252,10 +252,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1332</x>
-      <y>576</y>
-      <w>63</w>
-      <h>27</h>
+      <x>1036</x>
+      <y>483</y>
+      <w>49</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
@@ -263,10 +263,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1332</x>
-      <y>225</y>
-      <w>198</w>
-      <h>36</h>
+      <x>1036</x>
+      <y>210</y>
+      <w>154</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>JInternalFrame
 --
@@ -276,10 +276,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
-      <y>288</y>
-      <w>270</w>
-      <h>198</h>
+      <x>791</x>
+      <y>259</y>
+      <w>210</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>LoadSaveGameController
 --
@@ -303,10 +303,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1278</x>
-      <y>324</y>
-      <w>72</w>
-      <h>27</h>
+      <x>994</x>
+      <y>287</y>
+      <w>56</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
@@ -314,10 +314,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1206</x>
-      <y>783</y>
-      <w>63</w>
-      <h>36</h>
+      <x>938</x>
+      <y>644</y>
+      <w>49</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>Panel
 --
@@ -328,10 +328,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1242</x>
-      <y>693</y>
-      <w>27</w>
-      <h>108</h>
+      <x>966</x>
+      <y>574</y>
+      <w>21</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
@@ -339,10 +339,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1125</x>
-      <y>126</y>
-      <w>54</w>
-      <h>36</h>
+      <x>875</x>
+      <y>133</y>
+      <w>42</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>File
 --
@@ -355,10 +355,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1026</x>
-      <y>198</y>
-      <w>261</w>
-      <h>63</h>
+      <x>798</x>
+      <y>189</y>
+      <w>203</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>SavedFile
 --
@@ -372,10 +372,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1143</x>
-      <y>153</y>
-      <w>27</w>
-      <h>63</h>
+      <x>889</x>
+      <y>154</y>
+      <w>21</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -383,10 +383,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1278</x>
-      <y>252</y>
-      <w>72</w>
-      <h>72</h>
+      <x>994</x>
+      <y>231</y>
+      <w>56</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>60.0;60.0;30.0;60.0;30.0;10.0;10.0;10.0</additional_attributes>
@@ -394,10 +394,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1665</x>
-      <y>297</y>
-      <w>243</w>
-      <h>180</h>
+      <x>1295</x>
+      <y>266</y>
+      <w>189</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>SavedGameTableRow
 --
@@ -418,10 +418,10 @@ addLoadButtonAL(ActionListener)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1602</x>
-      <y>306</y>
-      <w>81</w>
-      <h>27</h>
+      <x>1246</x>
+      <y>273</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
@@ -429,10 +429,10 @@ addLoadButtonAL(ActionListener)
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1566</x>
-      <y>234</y>
-      <w>126</w>
-      <h>54</h>
+      <x>1218</x>
+      <y>217</y>
+      <w>98</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Not sure how deleting works
 bg=blue</panel_attributes>
@@ -441,10 +441,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1746</x>
-      <y>225</y>
-      <w>63</w>
-      <h>36</h>
+      <x>1358</x>
+      <y>210</y>
+      <w>49</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>Panel
 --
@@ -454,10 +454,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1773</x>
-      <y>252</y>
-      <w>27</w>
-      <h>63</h>
+      <x>1379</x>
+      <y>231</y>
+      <w>21</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -465,10 +465,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1746</x>
-      <y>0</y>
-      <w>144</w>
-      <h>63</h>
+      <x>1358</x>
+      <y>35</y>
+      <w>112</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>Delete Command
 --
@@ -480,10 +480,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1746</x>
-      <y>72</y>
-      <w>144</w>
-      <h>54</h>
+      <x>1358</x>
+      <y>91</y>
+      <w>112</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>LoadCommand
 --
@@ -495,10 +495,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1746</x>
-      <y>135</y>
-      <w>162</w>
-      <h>72</h>
+      <x>1358</x>
+      <y>140</y>
+      <w>126</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>CancelCommand
 --
@@ -512,10 +512,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1593</x>
-      <y>36</y>
-      <w>99</w>
-      <h>45</h>
+      <x>1239</x>
+      <y>63</y>
+      <w>77</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>ActionListener
 --
@@ -528,10 +528,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1683</x>
-      <y>45</y>
-      <w>54</w>
-      <h>27</h>
+      <x>1309</x>
+      <y>70</y>
+      <w>42</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -539,10 +539,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1710</x>
-      <y>18</y>
-      <w>27</w>
-      <h>162</h>
+      <x>1330</x>
+      <y>49</y>
+      <w>21</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
@@ -550,10 +550,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1710</x>
-      <y>18</y>
-      <w>54</w>
-      <h>27</h>
+      <x>1330</x>
+      <y>49</y>
+      <w>42</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -561,10 +561,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1710</x>
-      <y>81</y>
-      <w>54</w>
-      <h>27</h>
+      <x>1330</x>
+      <y>98</y>
+      <w>42</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -572,10 +572,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1710</x>
-      <y>153</y>
-      <w>54</w>
-      <h>27</h>
+      <x>1330</x>
+      <y>154</y>
+      <w>42</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -583,10 +583,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>234</x>
-      <y>828</y>
-      <w>225</w>
-      <h>108</h>
+      <x>182</x>
+      <y>679</y>
+      <w>175</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>MapViewController
 --
@@ -602,10 +602,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
-      <y>819</y>
-      <w>198</w>
-      <h>90</h>
+      <x>434</x>
+      <y>672</y>
+      <w>154</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>MapView
 --
@@ -618,10 +618,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>936</x>
-      <y>1080</y>
-      <w>81</w>
-      <h>72</h>
+      <x>728</x>
+      <y>875</y>
+      <w>63</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>
 --
@@ -633,10 +633,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1152</x>
-      <y>468</y>
-      <w>648</w>
-      <h>45</h>
+      <x>896</x>
+      <y>399</y>
+      <w>504</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>700.0;10.0;700.0;30.0;10.0;30.0;10.0;20.0</additional_attributes>
@@ -644,10 +644,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1548</x>
-      <y>72</y>
-      <w>90</w>
-      <h>243</h>
+      <x>1204</x>
+      <y>91</y>
+      <w>70</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;250.0;10.0;100.0;80.0;100.0;80.0;10.0</additional_attributes>
@@ -655,10 +655,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
-      <y>513</y>
-      <w>189</w>
-      <h>54</h>
+      <x>637</x>
+      <y>434</y>
+      <w>147</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>QuitGameButton
 --
@@ -671,10 +671,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>999</x>
-      <y>540</y>
-      <w>81</w>
-      <h>27</h>
+      <x>777</x>
+      <y>455</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
@@ -682,10 +682,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
-      <y>585</y>
-      <w>189</w>
-      <h>54</h>
+      <x>637</x>
+      <y>490</y>
+      <w>147</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>StartGameButton
 --
@@ -698,10 +698,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>999</x>
-      <y>603</y>
-      <w>81</w>
-      <h>27</h>
+      <x>777</x>
+      <y>504</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
@@ -709,10 +709,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
-      <y>648</y>
-      <w>153</w>
-      <h>63</h>
+      <x>637</x>
+      <y>539</y>
+      <w>119</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>LoadGameButton
 --
@@ -726,10 +726,10 @@ TableView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
-      <y>666</y>
-      <w>117</w>
-      <h>27</h>
+      <x>749</x>
+      <y>553</y>
+      <w>91</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
@@ -737,10 +737,10 @@ TableView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>747</x>
-      <y>828</y>
-      <w>144</w>
-      <h>27</h>
+      <x>581</x>
+      <y>679</y>
+      <w>112</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
@@ -748,10 +748,10 @@ TableView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1008</x>
-      <y>891</y>
-      <w>36</w>
-      <h>108</h>
+      <x>784</x>
+      <y>728</y>
+      <w>28</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=0,1</panel_attributes>
@@ -760,10 +760,10 @@ m2=0,1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>954</x>
-      <y>891</y>
-      <w>36</w>
-      <h>108</h>
+      <x>742</x>
+      <y>728</y>
+      <w>28</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=0,1</panel_attributes>
@@ -772,10 +772,10 @@ m2=0,1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>261</x>
-      <y>684</y>
-      <w>162</w>
-      <h>90</h>
+      <x>252</x>
+      <y>546</y>
+      <w>126</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>/MapViewController/
 --
@@ -790,12 +790,33 @@ m2=0,1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>864</y>
-      <w>126</w>
-      <h>27</h>
+      <x>350</x>
+      <y>707</y>
+      <w>98</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>245</x>
+      <y>0</y>
+      <w>196</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>CharacterCreation
+--
+-occupations : Panel
+-terminatorB : JButton
+-alchemistB : JButton
+-hunterB  : JButton
+--
+
+--
+--Gives the player the chosen occupation
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

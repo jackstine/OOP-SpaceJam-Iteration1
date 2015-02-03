@@ -94,7 +94,7 @@ Slot
     </coordinates>
     <panel_attributes>Inventory
 --
--gridItems: List&lt;List&lt;Slot&gt;&gt;
+-gridItems: List&lt;List&lt;Slot&gt; &gt;
 --
 +equipItem(Point,Item) : boolean
 +unequipItem(Point) : Item
