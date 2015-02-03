@@ -427,8 +427,9 @@ AreaEffect
     </coordinates>
     <panel_attributes>/Decal/
 --
+- image: Image
 --
-</panel_attributes>
++ getImage() : Image</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
