@@ -48,8 +48,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>830</x>
-      <y>610</y>
+      <x>620</x>
+      <y>950</y>
       <w>300</w>
       <h>130</h>
     </coordinates>
@@ -449,11 +449,12 @@ bg=red</panel_attributes>
       <x>980</x>
       <y>510</y>
       <w>220</w>
-      <h>70</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>We need a way to handle sending Items to the Equipment
-This could be handled in the Controler
-bg=red
+This could be handled in the Controler. We want to prevent
+Items added to the Armor and Weapon Slots
+bg=orange
 fg=red</panel_attributes>
     <additional_attributes/>
   </element>
