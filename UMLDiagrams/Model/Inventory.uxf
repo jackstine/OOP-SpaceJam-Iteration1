@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.0">
+<diagram program="umlet" version="13.1">
   <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -441,21 +441,6 @@ equipItem(Point,Item){
 this.equip(gridItem[Point.x][Point.y],Item)
 }
 bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>980</x>
-      <y>510</y>
-      <w>220</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>We need a way to handle sending Items to the Equipment
-This could be handled in the Controler. We want to prevent
-Items added to the Armor and Weapon Slots
-bg=orange
-fg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

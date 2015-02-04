@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.0">
+<diagram program="umlet" version="13.1">
   <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -12,8 +12,7 @@
     <panel_attributes>/OneShotItem/
 --
 --
-+action( avatar : Avatar ) : boolean
-+getImage() : Image</panel_attributes>
++action( avatar : Avatar ) : boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -27,9 +26,7 @@
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Item
 --
-+action( avatar : Avatar ) : boolean
-+getImage() : Image
-</panel_attributes>
++action( avatar : Avatar ) : boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -43,8 +40,7 @@ Item
     <panel_attributes>/TakeableItem/
 --
 --
-+action( avatar : Avatar ) : boolean
-+getImage() : Image</panel_attributes>
++action( avatar : Avatar ) : boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -58,8 +54,7 @@ Item
     <panel_attributes>/InteractiveItem/
 --
 --
-+action( avatar : Avatar ) : boolean
-+getImage() : Image</panel_attributes>
++action( avatar : Avatar ) : boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -73,26 +68,7 @@ Item
     <panel_attributes>/ObstacleItem/
 --
 --
-+action( avatar : Avatar ) :boolean {False}
-+getImage() : Image</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>693</x>
-      <y>414</y>
-      <w>198</w>
-      <h>117</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-Consumable
---
--giveHealth():int
--takeDamage():int
--giveExperience():int
-
-</panel_attributes>
++action( avatar : Avatar ) :boolean {False}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -109,18 +85,7 @@ Consumable
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>423</y>
-      <w>279</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;290.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>360</x>
+      <x>459</x>
       <y>423</y>
       <w>27</w>
       <h>108</h>
@@ -358,37 +323,12 @@ Equipment
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
-      <y>423</y>
-      <w>27</w>
-      <h>153</h>
+      <x>351</x>
+      <y>504</y>
+      <w>135</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>513</x>
-      <y>558</y>
-      <w>189</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>531</x>
-      <y>585</y>
-      <w>126</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>Note..
-Potions
-food
-bg=blue</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
   </element>
 </diagram>
