@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.1">
+<diagram program="umlet" version="13.0">
   <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>810</y>
-      <w>220</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>Inventory
---
--items: Collection&lt;Item&gt;
--equippedItems: List&lt;Item&gt;
---
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>440</x>
-      <y>810</y>
+      <x>920</x>
+      <y>590</y>
       <w>170</w>
       <h>130</h>
     </coordinates>
@@ -31,38 +14,6 @@
 -inventory:Inventory
 -equipment:Equipment
 --
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>600</x>
-      <y>870</y>
-      <w>290</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>620</x>
-      <y>950</y>
-      <w>300</w>
-      <h>130</h>
-    </coordinates>
-    <panel_attributes>Equipment
---
-- armor : Armor
-- weapon : Weapon 
---
-+ equipArmor( armor : Armor) : Armor
-+ equipWeapon( weapon : Weapon) : Weapon
-+ unequipArmor( ) : boolean
-+ unequipWeapon( ) : boolean
-
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -416,8 +367,8 @@ bg=green</panel_attributes>
     <coordinates>
       <x>1240</x>
       <y>460</y>
-      <w>380</w>
-      <h>140</h>
+      <w>300</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Example 
 
@@ -488,5 +439,27 @@ bg=red</panel_attributes>
 The Observer Stats have to be added to eah of these slots
 bg=blue</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>500</y>
+      <w>90</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;160.0;70.0;160.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>480</y>
+      <w>140</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>120.0;160.0;10.0;160.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
