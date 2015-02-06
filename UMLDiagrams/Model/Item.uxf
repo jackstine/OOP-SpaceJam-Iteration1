@@ -4,15 +4,19 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>918</x>
+      <x>855</x>
       <y>270</y>
-      <w>207</w>
-      <h>72</h>
+      <w>270</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>/OneShotItem/
 --
 --
-+action( avatar : Avatar ) : boolean</panel_attributes>
++action( avatar : Avatar ) : boolean
+--
+Responsibilities
+-- Action should remove the item from the map 
+in addition to adding an effect to the avatar.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -35,12 +39,16 @@ Item
       <x>378</x>
       <y>270</y>
       <w>198</w>
-      <h>117</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>/TakeableItem/
 --
 --
-+action( avatar : Avatar ) : boolean</panel_attributes>
++action( avatar : Avatar ) : boolean
+--
+Responsibilities
+-- Action should add the item to 
+the avatar's inventory upon touch.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -49,12 +57,16 @@ Item
       <x>1143</x>
       <y>270</y>
       <w>225</w>
-      <h>81</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>/InteractiveItem/
 --
 --
-+action( avatar : Avatar ) : boolean</panel_attributes>
++action( avatar : Avatar ) : boolean
+--
+Responsibilities
+-- Action should trigger some kind of 
+event (like opening a door).</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -62,25 +74,29 @@ Item
     <coordinates>
       <x>1377</x>
       <y>270</y>
-      <w>252</w>
-      <h>63</h>
+      <w>261</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>/ObstacleItem/
 --
 --
-+action( avatar : Avatar ) :boolean {False}</panel_attributes>
++action( avatar : Avatar ) :boolean {False}
+--
+Responsibilities
+-- Action should make the terrain impassable
+(this could be the door).</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>459</x>
-      <y>378</y>
+      <y>360</y>
       <w>27</w>
-      <h>72</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

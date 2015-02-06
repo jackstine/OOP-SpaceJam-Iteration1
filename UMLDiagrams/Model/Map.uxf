@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.0">
+<diagram program="umlet" version="13.1">
   <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>1449</x>
-      <y>279</y>
+      <y>225</y>
       <w>270</w>
       <h>126</h>
     </coordinates>
@@ -25,7 +25,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>999</x>
-      <y>504</y>
+      <y>450</y>
       <w>198</w>
       <h>81</h>
     </coordinates>
@@ -42,7 +42,7 @@
     <id>Relation</id>
     <coordinates>
       <x>1089</x>
-      <y>414</y>
+      <y>360</y>
       <w>27</w>
       <h>108</h>
     </coordinates>
@@ -53,7 +53,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>999</x>
-      <y>270</y>
+      <y>216</y>
       <w>198</w>
       <h>153</h>
     </coordinates>
@@ -75,7 +75,7 @@ isPassable( ) : boolean
     <id>UMLClass</id>
     <coordinates>
       <x>1251</x>
-      <y>720</y>
+      <y>666</y>
       <w>198</w>
       <h>117</h>
     </coordinates>
@@ -93,7 +93,7 @@ Responsibilities
     <id>UMLClass</id>
     <coordinates>
       <x>756</x>
-      <y>720</y>
+      <y>666</y>
       <w>198</w>
       <h>117</h>
     </coordinates>
@@ -111,7 +111,7 @@ Responsibilties
     <id>UMLClass</id>
     <coordinates>
       <x>999</x>
-      <y>720</y>
+      <y>666</y>
       <w>198</w>
       <h>117</h>
     </coordinates>
@@ -129,7 +129,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1089</x>
-      <y>576</y>
+      <y>522</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -140,7 +140,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>837</x>
-      <y>621</y>
+      <y>567</y>
       <w>531</w>
       <h>27</h>
     </coordinates>
@@ -151,7 +151,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1341</x>
-      <y>621</y>
+      <y>567</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -162,7 +162,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1089</x>
-      <y>621</y>
+      <y>567</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -173,7 +173,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>837</x>
-      <y>621</y>
+      <y>567</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -184,7 +184,7 @@ Responsiblities
     <id>Relation</id>
     <coordinates>
       <x>1188</x>
-      <y>333</y>
+      <y>279</y>
       <w>279</w>
       <h>27</h>
     </coordinates>
@@ -195,7 +195,7 @@ Responsiblities
     <id>UMLClass</id>
     <coordinates>
       <x>1773</x>
-      <y>504</y>
+      <y>450</y>
       <w>270</w>
       <h>81</h>
     </coordinates>
@@ -211,7 +211,7 @@ Responsiblities
     <id>UMLClass</id>
     <coordinates>
       <x>1944</x>
-      <y>279</y>
+      <y>225</y>
       <w>198</w>
       <h>72</h>
     </coordinates>
@@ -227,7 +227,7 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>1485</x>
-      <y>504</y>
+      <y>450</y>
       <w>279</w>
       <h>81</h>
     </coordinates>
@@ -242,29 +242,39 @@ AreaEffect
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2259</x>
-      <y>504</y>
-      <w>198</w>
-      <h>54</h>
+      <x>2277</x>
+      <y>450</y>
+      <w>207</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>DeathAreaEffect
 --
 --
-+ apply ( entity : Entity ) : void</panel_attributes>
++ apply ( entity : Entity ) : void
+--
+Responsibilties:
+-- Decrements the primary attribute
+"lives left" by 1 (or more).</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>2052</x>
-      <y>504</y>
-      <w>198</w>
-      <h>54</h>
+      <y>450</y>
+      <w>207</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>ExperienceAreaEffect
 --
 --
 + apply ( entity : Entity ) : void
+--
+Responsibilties:
+-- Grants a constant amount of exp.
+	(Presumably enough to level up).
+
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -272,7 +282,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>1611</x>
-      <y>441</y>
+      <y>387</y>
       <w>792</w>
       <h>27</h>
     </coordinates>
@@ -283,7 +293,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>1899</x>
-      <y>441</y>
+      <y>387</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -294,7 +304,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>1611</x>
-      <y>441</y>
+      <y>387</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -305,7 +315,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>2142</x>
-      <y>441</y>
+      <y>387</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -316,7 +326,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>2376</x>
-      <y>441</y>
+      <y>387</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -327,7 +337,7 @@ AreaEffect
     <id>Relation</id>
     <coordinates>
       <x>1089</x>
-      <y>162</y>
+      <y>108</y>
       <w>972</w>
       <h>126</h>
     </coordinates>
@@ -338,35 +348,43 @@ AreaEffect
     <id>UMLClass</id>
     <coordinates>
       <x>576</x>
-      <y>198</y>
+      <y>144</y>
       <w>198</w>
-      <h>117</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>/Entity/
 --
+- stats: Map &lt;String, Stat&gt;
+- map: GameMap
+- location: Location
+- equipment: Equipment
+- occupation: Occupation
 --
+- attack(): void
+- useAbility() : void
++getLocation():location
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
-      <y>396</y>
-      <w>198</w>
-      <h>117</h>
+      <x>567</x>
+      <y>342</y>
+      <w>207</w>
+      <h>63</h>
     </coordinates>
-    <panel_attributes>/Item/
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Item
 --
---
-</panel_attributes>
++action( avatar : Avatar ) : boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>810</x>
-      <y>324</y>
+      <y>270</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -378,7 +396,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>765</x>
-      <y>243</y>
+      <y>189</y>
       <w>72</w>
       <h>36</h>
     </coordinates>
@@ -390,7 +408,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>810</x>
-      <y>243</y>
+      <y>189</y>
       <w>27</w>
       <h>225</h>
     </coordinates>
@@ -401,7 +419,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>765</x>
-      <y>441</y>
+      <y>387</y>
       <w>72</w>
       <h>36</h>
     </coordinates>
@@ -413,7 +431,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2034</x>
-      <y>162</y>
+      <y>108</y>
       <w>27</w>
       <h>135</h>
     </coordinates>
@@ -424,7 +442,7 @@ m1=0..1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>243</x>
-      <y>504</y>
+      <y>450</y>
       <w>198</w>
       <h>117</h>
     </coordinates>
@@ -439,7 +457,7 @@ m1=0..1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>495</x>
-      <y>720</y>
+      <y>666</y>
       <w>198</w>
       <h>117</h>
     </coordinates>
@@ -453,7 +471,7 @@ m1=0..1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>720</y>
+      <y>666</y>
       <w>198</w>
       <h>117</h>
     </coordinates>
@@ -468,7 +486,7 @@ m1=0..1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>243</x>
-      <y>720</y>
+      <y>666</y>
       <w>198</w>
       <h>117</h>
     </coordinates>
@@ -481,7 +499,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>333</x>
-      <y>612</y>
+      <y>558</y>
       <w>27</w>
       <h>72</h>
     </coordinates>
@@ -492,7 +510,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>81</x>
-      <y>657</y>
+      <y>603</y>
       <w>531</w>
       <h>27</h>
     </coordinates>
@@ -503,7 +521,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>585</x>
-      <y>657</y>
+      <y>603</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -514,7 +532,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>333</x>
-      <y>657</y>
+      <y>603</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -525,7 +543,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>81</x>
-      <y>657</y>
+      <y>603</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -536,7 +554,7 @@ m1=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>891</x>
-      <y>378</y>
+      <y>324</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -548,7 +566,7 @@ m1=*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>432</x>
-      <y>558</y>
+      <y>504</y>
       <w>486</w>
       <h>36</h>
     </coordinates>
@@ -560,7 +578,7 @@ m2=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>891</x>
-      <y>378</y>
+      <y>324</y>
       <w>27</w>
       <h>207</h>
     </coordinates>
@@ -571,7 +589,7 @@ m2=0..1</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1602</x>
-      <y>630</y>
+      <y>576</y>
       <w>351</w>
       <h>63</h>
     </coordinates>
@@ -585,7 +603,7 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1809</x>
-      <y>567</y>
+      <y>513</y>
       <w>27</w>
       <h>81</h>
     </coordinates>
@@ -596,7 +614,7 @@ bg=orange</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>936</x>
-      <y>189</y>
+      <y>135</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -609,7 +627,7 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1026</x>
-      <y>216</y>
+      <y>162</y>
       <w>27</w>
       <h>72</h>
     </coordinates>
@@ -620,7 +638,7 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1197</x>
-      <y>351</y>
+      <y>297</y>
       <w>180</w>
       <h>81</h>
     </coordinates>
@@ -634,7 +652,7 @@ bg=blue</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>720</x>
-      <y>54</y>
+      <y>0</y>
       <w>198</w>
       <h>54</h>
     </coordinates>
@@ -647,7 +665,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>936</x>
-      <y>126</y>
+      <y>72</y>
       <w>189</w>
       <h>36</h>
     </coordinates>
@@ -661,7 +679,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1026</x>
-      <y>153</y>
+      <y>99</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -669,14 +687,26 @@ bg=blue</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>2016</x>
-      <y>324</y>
-      <w>44</w>
-      <h>143</h>
+      <y>270</y>
+      <w>36</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>27;27;27;126</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>846</x>
+      <y>189</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Tiles can have can have one item or one entity, not both.
+bg=blue</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
