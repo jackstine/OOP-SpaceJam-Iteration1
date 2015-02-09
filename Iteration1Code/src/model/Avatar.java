@@ -1,7 +1,7 @@
 package model;
 
 public class Avatar extends Entity{
-	private Inventory inventory;
+	private InventoryContainer inventory;
 	
 	public Avatar() {
 		
