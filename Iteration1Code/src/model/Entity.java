@@ -3,11 +3,11 @@ import java.util.Map;
 
 
 public abstract class Entity {
-	//private Map<String,Stat> stats; 	// UNCOMMENT ONCE MADE
-	//private GameMap map;				// UNCOMMENT ONCE MADE
-	//private Location location; 		// UNCOMMENT ONCE MADE
-	//private Equipment equipment;		// BLAH
-	//private Occupation occupation;	// BLAH
+	private Map<String,Stat> stats; 	
+	private GameMap map;
+	private Location location;
+	private Equipment equipment;
+	private Occupation occupation;
 	
 	private void attack() {
 		//occupation.attack();
