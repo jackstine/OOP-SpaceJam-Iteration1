@@ -15,11 +15,4 @@ public class Life extends DerivedStat {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public boolean update(PrimaryStat primaryStat, int value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
