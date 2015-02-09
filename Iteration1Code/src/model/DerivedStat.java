@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.Observable;
 import java.util.Observer;
 
 public abstract class DerivedStat implements Stat, Observer {
@@ -14,7 +15,12 @@ public abstract class DerivedStat implements Stat, Observer {
 	
 	public abstract void calculateValue();
 	
-	public void update(PrimaryStat primaryStat, int value) {
+	public void addPrimaryStat(PrimaryStat primaryStat) {
+		primaryStats.add(primaryStat);
+	}
+	
+	@Override
+	public void update(Observable primaryStat, Object value) {
 		calculateValue();
 	}
 }
