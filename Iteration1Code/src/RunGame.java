@@ -1,5 +1,8 @@
 import java.awt.event.WindowEvent;
 
+import controller.ViewController;
+
+
 
 public class RunGame {
 	private ViewController start;
