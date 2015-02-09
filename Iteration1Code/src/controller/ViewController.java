@@ -13,16 +13,16 @@ public class ViewController {
 	private View current;
 	private JFrame frame;
 	
-	private MainMenuView mainMenu;
-	private CharacterCreation newGame;
+	private MainMenuController mainMenu;
+	private CharacterCreationController newGame;
 	
 	private Map<String, View> views = new HashMap<String, View>();
 	
 	public ViewController(){
 		
 		frame = new JFrame();
-		mainMenu = new MainMenuView();
-		newGame = new CharacterCreation();		
+		mainMenu = new MainMenuController();
+		newGame = new CharacterCreationController();		
 		
 		views.put("Main", mainMenu.getView());
 		views.put("New", newGame.getView());
@@ -36,13 +36,13 @@ public class ViewController {
 		frame.setVisible(true);
 		frame.repaint();
 	}
-	
-	public void run(){
-		if(current.isDone()){
+	//Used to poll the active variable of the current view and changes views when active is set false.
+	public void display(){
+		if(!current.isActive()){
 			changePanel();
 		}
 	}
-	
+	//Changes switches views to the "next" view (specified by action listeners).
 	public void changePanel(){
 		previous = current;
 		current = views.get(current.getNext());
