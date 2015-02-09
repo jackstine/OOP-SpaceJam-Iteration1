@@ -1,5 +1,5 @@
 package model;
 
-public class TakeableItem {
-
+public abstract class TakeableItem implements Item {
+	public abstract boolean action(Avatar avatar);
 }

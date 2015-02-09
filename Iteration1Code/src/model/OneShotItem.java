@@ -1,5 +1,5 @@
 package model;
 
-public class OneShotItem {
-
+public abstract class OneShotItem implements Item {
+	public abstract boolean action(Avatar avatar);
 }

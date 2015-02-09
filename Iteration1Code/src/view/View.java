@@ -3,17 +3,19 @@ import javax.swing.JPanel;
 
 
 public class View {
-	private boolean done;
+	private boolean active;
 	private String next;
 	private JPanel panel;
 	
 	public View(){
-		done = false;
+		active = true;
+		next = "";
+		panel = new JPanel();
 	}
 	public View(String next, JPanel panel){
 		this.setNext(next);
 		this.setPanel(panel);
-		this.setDone(false);
+		this.setActive(true);
 	}
 	public String getNext() {
 		return next;
@@ -27,15 +29,15 @@ public class View {
 	public void setPanel(JPanel panel) {
 		this.panel = panel;
 	}
-	public boolean isDone() {
-		return done;
+	public boolean isActive() {
+		return active;
 	}
-	public void setDone(boolean done) {
-		this.done = done;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 	public void reset(){
-		done = false;
+		active = true;
 		next = "";
 	}
 	

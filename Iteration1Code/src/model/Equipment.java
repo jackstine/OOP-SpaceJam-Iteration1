@@ -1,5 +1,5 @@
 package model;
 
-public class Equipment {
-
+public interface Equipment {
+	public int getBonus();
 }

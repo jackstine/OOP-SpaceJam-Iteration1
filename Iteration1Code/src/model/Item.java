@@ -1,5 +1,5 @@
 package model;
 
-public class Item {
-
+public interface Item {
+	public boolean action(Avatar avatar);
 }
