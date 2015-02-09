@@ -3,7 +3,7 @@ package model;
 import java.util.Observable;
 
 public class DefensiveRating extends DerivedStat {
-
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
@@ -15,11 +15,4 @@ public class DefensiveRating extends DerivedStat {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public boolean update(PrimaryStat primaryStat, int value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

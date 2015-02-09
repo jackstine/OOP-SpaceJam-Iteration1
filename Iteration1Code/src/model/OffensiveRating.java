@@ -4,6 +4,8 @@ import java.util.Observable;
 
 public class OffensiveRating extends DerivedStat {
 
+	private int weaponBonus;
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
@@ -15,11 +17,4 @@ public class OffensiveRating extends DerivedStat {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public boolean update(PrimaryStat primaryStat, int value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
