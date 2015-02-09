@@ -1,6 +1,6 @@
 package Test;
 
-import controller.ViewController;
+import controller.*;
 import model.Avatar;
 
 public class ExampleTest {
