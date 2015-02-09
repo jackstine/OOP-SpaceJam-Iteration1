@@ -13,5 +13,8 @@ public abstract class DerivedStat implements Stat, Observer {
 	}
 	
 	public abstract void calculateValue();
-	public abstract boolean update(PrimaryStat primaryStat, int value);
+	
+	public void update(PrimaryStat primaryStat, int value) {
+		calculateValue();
+	}
 }

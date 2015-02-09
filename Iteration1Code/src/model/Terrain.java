@@ -1,5 +1,8 @@
 package model;
 
-public class Terrain{
+public abstract class Terrain {
+	private boolean passable;
+	
+	public abstract boolean isPassable();
 	
 }
