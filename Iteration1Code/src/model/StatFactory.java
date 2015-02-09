@@ -19,9 +19,11 @@ public abstract class StatFactory {
 	
 	protected Map<String, Stat> createMap() {
 		map = new HashMap<String, Stat>();
+		return map;
 	}
 	
 	protected void createStats() {
+		//INIT PRIMARY STATS
 		map.put("Lives", new Lives(getLivesLeft()));
 		map.put("Strength", new Strength(getStrength()));
 		map.put("Agility", new Agility(getAgility()));
@@ -29,6 +31,14 @@ public abstract class StatFactory {
 		map.put("Hardiness", new Hardiness(getHardiness()));
 		map.put("Experience", new Experience(getExperience()));
 		map.put("Movement", new Movement(getMovement()));
+		
+		//INIT DERIVED STATS
+		map.put("Level", new Level());
+		map.put("Life", new Life());
+		map.put("Mana", new Mana());
+		map.put("OffensiveRating", new OffensiveRating());
+		map.put("DefensiveRating", new DefensiveRating());
+		map.put("ArmorRating", new ArmorRating());
 	}
 	
 	protected int getLivesLeft() {

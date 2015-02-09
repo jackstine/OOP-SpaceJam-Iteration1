@@ -19,5 +19,6 @@ public abstract class Entity {
 	
 	public Location getLocation() {
 		//query map for location
+		return new Location();
 	}
 }
