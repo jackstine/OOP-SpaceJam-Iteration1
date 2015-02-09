@@ -3,7 +3,7 @@ import java.util.Map;
 
 
 public abstract class Entity {
-	//private Map<String,Stat> stats; 	// UNCOMMENT ONCE MADE
+	private Map<String,Stat> stats; 	// UNCOMMENT ONCE MADE
 	//private GameMap map;				// UNCOMMENT ONCE MADE
 	//private Location location; 		// UNCOMMENT ONCE MADE
 	//private Equipment equipment;		// BLAH
