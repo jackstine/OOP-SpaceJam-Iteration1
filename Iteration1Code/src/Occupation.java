@@ -1,4 +1,4 @@
 
-public class Occupation {
+public abstract class Occupation {
 
 }
