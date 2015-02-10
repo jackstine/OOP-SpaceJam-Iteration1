@@ -4,7 +4,7 @@ import java.util.Observable;
 
 public abstract class PrimaryStat extends Observable implements Stat {
 
-	private int value;
+	protected int value;
 	
 	public PrimaryStat(int value) {
 		this.value = value;
@@ -14,7 +14,23 @@ public abstract class PrimaryStat extends Observable implements Stat {
 		return this.value;
 	}
 	
-	public abstract boolean updateValue(int value);
+	public void update(int value) {
+		boolean updateResult = updateValue(value);
+		if (updateResult) {
+			System.out.println("UPDATING PRIMARY STAT!!!");
+			this.setChanged();
+			this.notifyObservers(value);
+		}		
+	}
+	
+	protected abstract boolean updateValue(int value);
+	
+	public void addAllObservers(DerivedStat...derivedStats) {
+		for (DerivedStat ds : derivedStats) {
+			this.addObserver(ds);
+			ds.addStat(this);
+		}
+	}
 	
 	public String toString() {
 		StringBuilder s = new StringBuilder();

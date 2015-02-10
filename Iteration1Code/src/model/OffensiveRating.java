@@ -27,7 +27,7 @@ public class OffensiveRating extends DerivedStat {
 		if (observable == slotSubject){
 			this.updateWeaponBonus(slotSubject.getBonus());
 		}
-		else if (this.primaryStats.contains(observable)){
+		else if (this.stats.contains(observable)){
 			//TODO add in the dervied updates
 		}
 		this.calculateValue();

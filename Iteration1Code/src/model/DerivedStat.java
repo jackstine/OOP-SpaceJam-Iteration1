@@ -1,13 +1,17 @@
 package model;
 
-import java.util.List;
+import java.util.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public abstract class DerivedStat implements Stat, Observer {
+public abstract class DerivedStat extends Observable implements Stat, Observer {
 
-	protected List<PrimaryStat> primaryStats;
+	protected List<Stat> stats;
 	protected int value;
+	
+	public DerivedStat() {
+		this.stats = new ArrayList<Stat>();
+	}
 	
 	public int getValue() {
 		return this.value;
@@ -15,12 +19,16 @@ public abstract class DerivedStat implements Stat, Observer {
 	
 	public abstract void calculateValue();
 	
-	public void addPrimaryStat(PrimaryStat primaryStat) {
-		primaryStats.add(primaryStat);
+	// ONLY LEVEL WILL OVERRIDE THIS!!!!!!
+	public void addAllObservers(DerivedStat...derivedStats) {}
+	
+	public void addStat(Stat stat) {
+		this.stats.add(stat);
 	}
 	
 	@Override
-	public void update(Observable primaryStat, Object value) {
+	public void update(Observable stat, Object value) {
+		System.out.println("DERIVED STATS BEING UPDATED!!!");
 		calculateValue();
 	}
 	

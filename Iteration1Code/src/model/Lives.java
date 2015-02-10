@@ -7,10 +7,10 @@ public class Lives extends PrimaryStat {
 	}
 	
 	@Override
-	public boolean updateValue(int value) {
-		if (value < 0) return false;
-		// check to see if value is possible
-		return false;
+	protected boolean updateValue(int value) {
+		if (value < 0 || value > 10) return false;
+		this.value = value;
+		return true;
 	}
 
 }
