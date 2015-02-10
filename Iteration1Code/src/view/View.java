@@ -12,8 +12,8 @@ public class View {
 		next = "";
 		panel = new JPanel();
 	}
-	public View(String next, JPanel panel){
-		this.setNext(next);
+	public View(JPanel panel){
+		this.setNext("");
 		this.setPanel(panel);
 		this.setActive(true);
 	}
