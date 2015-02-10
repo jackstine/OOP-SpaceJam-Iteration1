@@ -4,7 +4,7 @@ public class Avatar extends Entity{
 	private Inventory inventory;
 	
 	public Avatar() {
-		
+		//occupation.initializeStats();
 	}
 	
 	/*

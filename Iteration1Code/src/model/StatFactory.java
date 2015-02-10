@@ -3,7 +3,7 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class StatFactory {
+public class StatFactory {
 	
 	private Map<String,Stat> map;
 	
