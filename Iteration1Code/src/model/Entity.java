@@ -19,6 +19,7 @@ public abstract class Entity {
 	
 	public Location getLocation() {
 		//query map for location
+<<<<<<< HEAD
 		return location;
 	}
 	
@@ -32,5 +33,8 @@ public abstract class Entity {
 			System.out.println("You don't even exist");
 		}
 		return result;
+=======
+		return location; // this is just to shut up Eclipse
+>>>>>>> 3fc24dbe374948c8a2aac1facae43b046d2a5a21
 	}
 }

@@ -1,18 +1,17 @@
 package model;
 
-import java.util.Observable;
-
 public class DefensiveRating extends DerivedStat {
+
+	public DefensiveRating() {
+		super();
+	}
 	
 	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void calculateValue() {
-		// TODO Auto-generated method stub
-		
+		// this value is based on agility and level
+		int agility = this.stats.get(0).getValue();
+		int level = this.stats.get(1).getValue();
+		// DEFENSIVE RATING FORMULA
+		this.value = agility * level;		
 	}
 }

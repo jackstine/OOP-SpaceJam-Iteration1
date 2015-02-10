@@ -15,18 +15,26 @@ public class StatTest {
 		PrimaryStat movement = new Movement(1);
 		PrimaryStat strength = new Strength(10);
 		
+		DerivedStat armorRating = new ArmorRating();
+		DerivedStat defensiveRating = new DefensiveRating();
 		DerivedStat level = new Level();
 		DerivedStat life = new Life();
 		DerivedStat mana = new Mana();
+		DerivedStat offensiveRating = new OffensiveRating();
 		
+		agility.addAllObservers(defensiveRating);
 		experience.addAllObservers(level);
-		hardiness.addAllObservers(life);
+		hardiness.addAllObservers(life, armorRating);
 		intellect.addAllObservers(mana);
-		level.addAllObservers(life, mana);
+		strength.addAllObservers(offensiveRating);
+		level.addAllObservers(life, mana, defensiveRating, offensiveRating);
 		
 		level.calculateValue();
+		armorRating.calculateValue();
+		defensiveRating.calculateValue();
 		life.calculateValue();
 		mana.calculateValue();
+		offensiveRating.calculateValue();
 		
 		while (true) {
 			System.out.println("Primary Stats");
@@ -38,9 +46,12 @@ public class StatTest {
 			System.out.println("\tMovement - " + movement.getValue());
 			System.out.println("\tStrength - " + strength.getValue());
 			System.out.println("Derived Stats");
+			System.out.println("\tArmor Rating - " + armorRating.getValue());
+			System.out.println("\tDefensiveRating - " + defensiveRating.getValue());
 			System.out.println("\tLevel - " + level.getValue());
 			System.out.println("\tLife - " + life.getValue());
 			System.out.println("\tMana - " + mana.getValue());
+			System.out.println("\tOffensive Rating - " + offensiveRating.getValue());
 			
 			System.out.println();
 			
