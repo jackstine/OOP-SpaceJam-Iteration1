@@ -51,6 +51,7 @@ public class MainMenuController {
 		buttons.add(b2);
 		buttons.add(b3);
 		
+		
 		mainMenu.getPanel().add(title, BorderLayout.NORTH);
 		mainMenu.getPanel().add(buttons,BorderLayout.CENTER);
 		

@@ -77,7 +77,7 @@ public class CharacterCreationController {
 	public class AlchemistSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext(""); //Game View
+			charCreation.setNext("Test"); //Game View
 			charCreation.setActive(false);
 			//Call "Alchemist Start Game" Constructors here
 		}
@@ -86,7 +86,7 @@ public class CharacterCreationController {
 	public class TerminatorSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext(""); //Game View
+			charCreation.setNext("t"); //Game View
 			charCreation.setActive(false);
 			//Call "Terminator Start Game" Constructors here
 		}
@@ -95,7 +95,7 @@ public class CharacterCreationController {
 	public class HunterSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext(""); //Game View
+			charCreation.setNext("h"); //Game View
 			charCreation.setActive(false);
 			//Call "Hunter Start Game" Constructors here
 		}
