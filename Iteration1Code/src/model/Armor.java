@@ -33,5 +33,6 @@ public class Armor extends TakeableItem implements Equipable {
 		invSlot.equip(armorSlot.unequip());
 		//Type casting here to make it a Armor
 		armorSlot.equip((Armor)invSlot.unequip());
+		//armorSlot.equip(invSlot.unequip()); This will not work
 	}
 }
