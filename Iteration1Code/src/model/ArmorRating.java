@@ -14,6 +14,16 @@ public class ArmorRating extends DerivedStat implements Observer{
 		this.armorBonus = 0;	//Starts as 0
 	}
 	
+	ArmorRating(){
+		this.value = 0;
+		this.slotSubject = null;
+		this.armorBonus = 0;
+	}
+	
+	public void setSlotSubject(ArmorSlot slot){
+		this.slotSubject = slot;
+	}	
+	
 	@Override
 	public void update(Observable observable, Object arg) {
 		if (observable == slotSubject){

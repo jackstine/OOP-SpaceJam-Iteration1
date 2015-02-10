@@ -12,6 +12,16 @@ public class OffensiveRating extends DerivedStat {
 		this.weaponBonus = 0;
 	}
 	
+	OffensiveRating(){
+		this.value = 0;
+		this.slotSubject = null;
+		this.weaponBonus = 0;
+	}
+	
+	public void setSlotSubject(WeaponSlot slot){
+		this.slotSubject = slot;
+	}	
+	
 	@Override
 	public void update(Observable observable, Object arg) {
 		if (observable == slotSubject){
@@ -20,6 +30,7 @@ public class OffensiveRating extends DerivedStat {
 		else if (this.primaryStats.contains(observable)){
 			//TODO add in the dervied updates
 		}
+		this.calculateValue();
 	}
 
 	public void updateWeaponBonus(int value){
