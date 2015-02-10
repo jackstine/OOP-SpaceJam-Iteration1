@@ -12,6 +12,6 @@ public class RedCrossDecal extends Decal{
 	@Override
 	protected String getFilePath() {
 		//FIX NEXT LINE!! NOT RESOLVING CORRECT PATH
-		return "/res/img/goldstar_decal.png";
+		return "/res/img/redcross_decal.png";
 	}
 }

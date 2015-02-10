@@ -19,6 +19,18 @@ public abstract class Entity {
 	
 	public Location getLocation() {
 		//query map for location
-		return new Location();
+		return location;
+	}
+	
+	public int getLife() {
+		int result = 0;
+		try {
+			Stat s = stats.get("Life");
+			result = s.getValue();
+		}
+		catch(NullPointerException e) {
+			System.out.println("You don't even exist");
+		}
+		return result;
 	}
 }
