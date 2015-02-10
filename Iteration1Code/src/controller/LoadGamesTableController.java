@@ -18,7 +18,7 @@ public class LoadGamesTableController {
 	private View loadTable;
 	private JButton backGameButton;
 	private JLabel title;
-	private JPanel table;
+	//private JPanel table;
 	private JPanel main;
 	private JPanel back;
 
@@ -26,7 +26,6 @@ public class LoadGamesTableController {
 		loadTable = new View();
 		backGameButton = new JButton("<html><span style='font-size:20px;'>Back</span></html>");
 		title = new JLabel("<html><span style='font-size:40px;'><u>Load Game</u></span></html>", JLabel.CENTER);
-		table = new JPanel();
 		main = new JPanel();
 		back = new JPanel();
 		
