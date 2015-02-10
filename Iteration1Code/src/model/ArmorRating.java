@@ -27,16 +27,16 @@ public class ArmorRating extends DerivedStat implements Observer{
 	@Override
 	public void update(Observable observable, Object arg) {
 		if (observable == slotSubject){
-			this.updatearmorBonus(slotSubject.getBonus());
+			this.updateArmorBonus(slotSubject.getBonus());
 		}
-		else if (this.primaryStats.contains(observable)){
+		else if (this.stats.contains(observable)){
 			//TODO add in the dervied updates
 		}
 		this.calculateValue();
 	}
 	
 	//used to update The Slot Value, ported form Subjects
-	public void updatearmorBonus(int value){
+	public void updateArmorBonus(int value){
 		//TODO do we want a negative value???
 		this.armorBonus = value;
 	}
