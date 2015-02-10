@@ -85,7 +85,7 @@ public class CharacterCreationController {
 	public class TerminatorSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext("t"); //Game View
+			charCreation.setNext("Game"); //Game View
 			charCreation.setRedraw(true);
 		}
 	}
