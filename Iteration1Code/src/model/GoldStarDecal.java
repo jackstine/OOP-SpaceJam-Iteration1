@@ -1,15 +1,21 @@
 package model;
 
-import java.awt.image.BufferedImage
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class GoldStarDecal{
+import javax.imageio.ImageIO;
+
+public class GoldStarDecal extends Decal{
 	BufferedImage image;
 
 	public GoldStarDecal(){
-		//initialize image or get image path
+		super();
 	}
-
-	public BufferedImage getImage(){
-		return image;
+	
+	@Override
+	protected String getFilePath() {
+		// TODO Auto-generated method stub
+		return "/res/img/goldstar_decal.png";
 	}
 }

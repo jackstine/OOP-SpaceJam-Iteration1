@@ -1,6 +1,6 @@
 package model;
 
-public class AlchemistStatFactory {
+public class AlchemistStatFactory extends StatFactory{
 	public AlchemistStatFactory() {
 		
 	}

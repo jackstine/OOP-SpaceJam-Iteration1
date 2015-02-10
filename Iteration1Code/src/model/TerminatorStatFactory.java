@@ -1,6 +1,6 @@
 package model;
 
-public class TerminatorStatFactory {
+public class TerminatorStatFactory extends StatFactory{
 	public TerminatorStatFactory() {
 		
 	}
