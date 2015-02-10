@@ -7,15 +7,10 @@ public class Equipment extends SlotContainer{
     //Since this class extends the SlotContainer, it can 
     //al
     
-    Equipment(){
-        this.armorSlot = new ArmorSlot();
-        this.weaponSlot = new WeaponSlot();
+    Equipment(ArmorRating defense,OffensiveRating offense){
+        this.armorSlot = new ArmorSlot(defense);
+        this.weaponSlot = new WeaponSlot(offense);
     }
-    //TODO uncommit this code when we have the stats
-//    Equipment(Map<String,Stat> stats){
-//        this.armorSlot = new ArmorSlot(stats.get("ArmorStat"));
-//        this.weaponSLot = new WeaponSlot(stats.get("AttackStat"));
-//    }
 
 	public <K extends Armor> boolean equipArmor(K armor){
         return this.equip(this.armorSlot,armor);

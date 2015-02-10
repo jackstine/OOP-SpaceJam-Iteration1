@@ -6,8 +6,8 @@ import java.util.Observer;
 
 public abstract class DerivedStat implements Stat, Observer {
 
-	private List<PrimaryStat> primaryStats;
-	private int value;
+	protected List<PrimaryStat> primaryStats;
+	protected int value;
 	
 	public int getValue() {
 		return this.value;
@@ -22,5 +22,9 @@ public abstract class DerivedStat implements Stat, Observer {
 	@Override
 	public void update(Observable primaryStat, Object value) {
 		calculateValue();
+	}
+	
+	public String toString(){
+		return ""+this.value;
 	}
 }

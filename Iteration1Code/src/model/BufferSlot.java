@@ -4,18 +4,12 @@ import java.util.Observable;
 
 public abstract class BufferSlot<T extends Item> extends Observable implements Slotable<T>{
 	//TOD this should not implement, or at least the implementation should be in another abstract/class
-	
-	
-	
     protected T item;
+    
     BufferSlot(){}  //should never be called except for testing purposes
-
-    //TODO need to notify the observers of this class
-// TODO add this constructor when added the stats
-//    BufferSlot(Primary stat){
-//        this.addObserver(stat);
-//    }
-
+    
+    public abstract int getBonus();
+    
     public boolean has(){
         if (this.item == null){
             return false;
