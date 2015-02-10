@@ -8,7 +8,8 @@ public class Experience extends PrimaryStat {
 
 	@Override
 	public boolean updateValue(int value) {
-		if (value < 0 || value > 10000) return false;
+		// CONSTRAINTS ON EXPERIENCE
+		if (value < 0) return false;
 		this.value = value;
 		return true;
 	}

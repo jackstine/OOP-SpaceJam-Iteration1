@@ -8,7 +8,8 @@ public class Lives extends PrimaryStat {
 	
 	@Override
 	protected boolean updateValue(int value) {
-		if (value < 0 || value > 10) return false;
+		// CONSTRAINTS ON LIVES
+		if (value < 0 || value > 9) return false;
 		this.value = value;
 		return true;
 	}

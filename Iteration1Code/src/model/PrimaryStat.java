@@ -17,7 +17,6 @@ public abstract class PrimaryStat extends Observable implements Stat {
 	public void update(int value) {
 		boolean updateResult = updateValue(value);
 		if (updateResult) {
-			System.out.println("UPDATING PRIMARY STAT!!!");
 			this.setChanged();
 			this.notifyObservers(value);
 		}		

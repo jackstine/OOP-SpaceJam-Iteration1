@@ -8,9 +8,10 @@ public class Intellect extends PrimaryStat {
 
 	@Override
 	public boolean updateValue(int value) {
+		// CONSTRAINTS ON INTELLECT
 		if (value < 0) return false;
-		// check to see if value is possible
-		return false;
+		this.value = value;
+		return true;
 	}
 
 }

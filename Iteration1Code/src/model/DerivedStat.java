@@ -28,7 +28,6 @@ public abstract class DerivedStat extends Observable implements Stat, Observer {
 	
 	@Override
 	public void update(Observable stat, Object value) {
-		System.out.println("DERIVED STATS BEING UPDATED!!!");
 		calculateValue();
 	}
 	
