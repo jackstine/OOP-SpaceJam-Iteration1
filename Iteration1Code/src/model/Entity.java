@@ -23,17 +23,15 @@ public abstract class Entity {
 		return location;
 	}
 	
-	public int getLife() {
+	public int getStatValue(String key) {
 		int result = 0;
 		try {
-			Stat s = stats.get("Life");
+			Stat s = stats.get(key);
 			result = s.getValue();
 		}
 		catch(NullPointerException e) {
 			System.out.println("You don't even exist");
 		}
 		return result;
-		
-
 	}
 }
