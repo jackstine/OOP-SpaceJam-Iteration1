@@ -1,6 +1,6 @@
 package model;
 
-public class InventoryContainer {
+public class InventoryContainer extends SlotContainer{
     protected final int COL = 6;
     protected final int ROW = 5;
     protected InventorySlot[][] items;    
