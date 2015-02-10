@@ -10,6 +10,7 @@ public class ArmorRating extends DerivedStat implements Observer{
 	ArmorRating(int bonus,ArmorSlot subject){
 		this.value = bonus;
 		this.slotSubject = subject;
+		subject.addObserver(this);				//Not only are we adding the Observer, we are adding the subject
 		this.armorBonus = 0;	//Starts as 0
 	}
 	
@@ -21,6 +22,7 @@ public class ArmorRating extends DerivedStat implements Observer{
 		else if (this.primaryStats.contains(observable)){
 			//TODO add in the dervied updates
 		}
+		this.calculateValue();
 	}
 	
 	//used to update The Slot Value, ported form Subjects

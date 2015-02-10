@@ -5,10 +5,6 @@ public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor> {
     	this.addObserver(stat);
     }
     ArmorSlot(){}
-    
-    public int getBonus(){
-    	return this.item.getBonus();
-    }
 
     public static void main(String[] args){
         ArmorSlot slot = new ArmorSlot();
@@ -17,6 +13,8 @@ public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor> {
         Armor armor = new Armor(15);
         //slot.equip(item);
         slot.equip(armor);
-        System.out.println(stat);
+        System.out.println(stat);	//Should print out 15
+        slot.unequip();
+        System.out.println(stat);	//Should print out 0
     }
 }

@@ -15,7 +15,7 @@ public class Armor extends TakeableItem implements Equipable {
 	}
 	
 	public boolean action(Avatar avatar) {
-		
+		//TODO implement
 		return true;
 	}
 	

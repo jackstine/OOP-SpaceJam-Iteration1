@@ -5,10 +5,22 @@ import java.util.Observable;
 public abstract class BufferSlot<T extends Item> extends Observable implements Slotable<T>{
 	//TOD this should not implement, or at least the implementation should be in another abstract/class
     protected T item;
+    protected int bonus;
     
     BufferSlot(){}  //should never be called except for testing purposes
     
-    public abstract int getBonus();
+    //BONUS BUFFER METHODS
+    public int getBonus(){
+    	return this.bonus;
+    }
+    
+    @SuppressWarnings("unchecked")
+	public <K extends Equipable> void setBonus(){
+    	this.bonus = ((K)this.item).getBonus();
+    }
+    public void resetBonus(){
+    	this.bonus = 0;
+    }
     
     public boolean has(){
         if (this.item == null){
@@ -23,7 +35,9 @@ public abstract class BufferSlot<T extends Item> extends Observable implements S
         if (this.has()){
             T pointer = this.item;
             this.item = null;
+            this.resetBonus();
             this.setChanged();  		// notify Observers
+            this.notifyObservers();
             return pointer;
         }
         else{
@@ -41,7 +55,9 @@ public abstract class BufferSlot<T extends Item> extends Observable implements S
         }
         else{
             this.item = item;
+            this.setBonus();
             this.setChanged();  		//notify the Observers of change
+            this.notifyObservers();
             return true;
         }
     }
