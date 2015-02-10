@@ -65,7 +65,7 @@ public class TestGameController extends SaveLoadController {
 		
 		public void actionPerformed(ActionEvent e) {
 			testGame.setNext("Main");
-			testGame.setActive(false);
+			testGame.setRedraw(true);
 		}
 	}
 	
@@ -76,7 +76,7 @@ public class TestGameController extends SaveLoadController {
 			label.setText(apple.s);
 			saved.setText(apple.s);
 			testGame.setNext("Load");
-			testGame.setActive(false);
+			testGame.setRedraw(true);
 		}
 	}
 	
@@ -90,7 +90,7 @@ public class TestGameController extends SaveLoadController {
 			label.setText(apple.s);
 			saved.setText(apple.s);
 			testGame.setNext("Load");
-			testGame.setActive(false);
+			testGame.setRedraw(true);
 			//testGame.setNext("Quit");
 		}
 	}
