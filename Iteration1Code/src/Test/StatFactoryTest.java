@@ -12,7 +12,7 @@ import model.StatFactory;
 
 public class StatFactoryTest {
 	public static void main(String[] args) {
-		StatFactory sf = new AlchemistStatFactory();
+		StatFactory sf = new HunterStatFactory();
 		Map map = sf.initializeStats();
 		
 		List<Stat> list = new ArrayList<Stat>(map.values());

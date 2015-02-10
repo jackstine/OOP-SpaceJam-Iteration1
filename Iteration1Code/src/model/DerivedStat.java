@@ -32,6 +32,6 @@ public abstract class DerivedStat extends Observable implements Stat, Observer {
 	}
 	
 	public String toString(){
-		return this.getClass().toString() + this.value;
+		return this.getClass().toString() + " " +this.value;
 	}
 }

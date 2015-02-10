@@ -15,7 +15,7 @@ public class GoldStarDecal extends Decal{
 	
 	@Override
 	protected String getFilePath() {
-		// TODO Auto-generated method stub
+		//FIX NEXT LINE!! NOT RESOLVING CORRECT PATH
 		return "/res/img/goldstar_decal.png";
 	}
 }
