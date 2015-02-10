@@ -1,5 +1,10 @@
 package model;
 
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.ImageIO;
+
 public class Tile{
 	private Terrain terrain;
 	private Location location;
@@ -31,6 +36,13 @@ public class Tile{
 
 	public Terrain getTerrain(){
 		return terrain;
+	}
+
+	public void draw(Graphics g){
+		BufferedImage image= terrain.getImage();
+		int x= (int)location.getX();
+		int y= (int)location.getY();
+		g.drawImage(image,50*x,50*y,null);
 	}
 
 }
