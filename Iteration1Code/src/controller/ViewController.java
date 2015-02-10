@@ -56,7 +56,7 @@ public class ViewController {
 	}
 	//Used to poll the active variable of the current view and changes views when active is set false.
 	public void display(){
-		if(!current.isActive()){
+		if(current.getRedraw()){
 			changePanel();
 		}
 		if(testGame.pressedSave){
