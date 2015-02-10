@@ -8,7 +8,8 @@ public class Hardiness extends PrimaryStat {
 
 	@Override
 	protected boolean updateValue(int value) {
-		if (value < 0 || value > 100) return false;
+		// CONSTRAINTS ON HARDINESS
+		if (value < 0) return false;
 		this.value = value;
 		return true;
 	}

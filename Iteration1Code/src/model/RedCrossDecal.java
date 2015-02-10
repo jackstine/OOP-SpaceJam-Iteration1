@@ -1,15 +1,17 @@
 package model;
 
-import java.awt.image.BufferedImage
+import java.awt.image.BufferedImage;
 
-public class RedCrossDecal{
+public class RedCrossDecal extends Decal{
 	BufferedImage image;
 
 	public RedCrossDecal(){
-		//initialize image or get image path
+		super();
 	}
 
-	public BufferedImage getImage(){
-		return image;
+	@Override
+	protected String getFilePath() {
+		//FIX NEXT LINE!! NOT RESOLVING CORRECT PATH
+		return "/res/img/redcross_decal.png";
 	}
 }

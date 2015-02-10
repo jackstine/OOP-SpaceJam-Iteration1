@@ -1,24 +1,22 @@
 package model;
+
 import java.util.*;
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 public class GameMap{
 	private Tile[][] map;
+	MapBuilder m;
 	//private HashMap<Entity,Location> entityToLocationMap;
 	//private HashMap<Item,Location> itemToLocationMap;
 
 
 	public GameMap(){
-		map = new Tile[3][3];  //just a test
-								//i think itll be easier to hardcode the map here
-								//than to create a new mapBuilder class
-		for(int i=0;i<3;i++){
-			for(int j=0;j<3;j++){
-				map[j][i]=new Tile(new DesertTerrain(),i,j);
-				if(i==2 && j==2){
-					map[j][i].setTerrain(new RadioactiveWasteTerrain());
-				}
-			}
-		}
+		m= new MapBuilder();
+		map = m.tileSet();
+		//entityToLocationMap=new HashMap<Entity,Location>();
 	}
 
 	public Tile getTile(Location location){
@@ -27,12 +25,12 @@ public class GameMap{
 		return map[x][y];
 	}
 
-	public Tile getEntityTile(Entity entity){
-		Location location= entity.getLocation();
-		int x=(int)location.getX();
-		int y=(int)location.getY();
-		return map[x][y];
-	}
+	//public Tile getEntityTile(Entity entity){
+	//	Location location= entity.getLocation();
+		//int x=(int)location.getX();
+		//int y=(int)location.getY();
+		//return map[x][y];
+	//}
 	/*
 	public Tile getItemTile(Item item){
 		//returns a tile;
@@ -43,5 +41,18 @@ public class GameMap{
 
 	public Tile[][] tileSet(){    //returns two d array of the map tileset
 		return map;
+	}
+
+	public void updateEntityLocation(){
+		
+	}
+
+	public void draw(Graphics g){
+		for(int i=0;i<35;i++){
+			for(int j=0;j<35;j++){
+				//player.draw(g);
+				map[i][j].draw(g);
+			}
+		}
 	}
 }

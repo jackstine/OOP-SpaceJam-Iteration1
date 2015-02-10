@@ -7,8 +7,6 @@ public class Level extends DerivedStat {
 	}
 	
 	public void update(int value) {
-		calculateValue();
-		System.out.println("UPDATING LEVEL!!!");
 		this.setChanged();
 		this.notifyObservers(this.value);		
 	}
@@ -24,6 +22,7 @@ public class Level extends DerivedStat {
 	public void calculateValue() {
 		// this value is based on experience
 		int experience = this.stats.get(0).getValue();
-		this.value = (int) (Math.floor(25 + Math.sqrt(625 + 100 * experience)) / 50);	
+		this.value = Math.min(20, (int) (Math.floor(25 + Math.sqrt(625 + 100 * experience)) / 50));	
+		update(this.value);
 	}
 }

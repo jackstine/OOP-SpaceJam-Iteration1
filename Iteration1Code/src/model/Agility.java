@@ -8,9 +8,10 @@ public class Agility extends PrimaryStat {
 
 	@Override
 	public boolean updateValue(int value) {
+		// CONSTRAINTS ON AGILITY
 		if (value < 0) return false;
-		// check to see if value is possible
-		return false;
+		this.value = value;
+		return true;
 	}
 
 }
