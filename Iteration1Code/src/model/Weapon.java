@@ -1,6 +1,6 @@
 package model;
 
-public class Weapon extends TakeableItem implements Equipment {
+public class Weapon extends TakeableItem implements Equipable {
 	private int attack;
 	
 	

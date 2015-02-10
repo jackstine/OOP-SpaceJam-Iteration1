@@ -1,63 +1,39 @@
 package model;
 
-import java.util.List;
+public class InventoryContainer {
+    protected final int COL = 6;
+    protected final int ROW = 5;
+    protected InventorySlot[][] items;    
 
-public class InventoryContainer extends SlotContainer{
-	private List<List<Slot>> gridItems;
-	
-	
-	public boolean equipItem(Point point, Item item) {  // What is a Point?
-		//equipItem(point, item){
-		//this.equip(gridItem[point.x][point.y],Item)
-		return true;
-	}
-	
-	public Item unequipItem(Point point) {
-		
-		return null;
-	}
-	
-	public boolean dropItem(Point point) {
-		
-		return true;
-	}
-	
-	public boolean swap(Point point1, Point point2) {
-		
-		return true;
-	}
-	
-	public boolean swap(Point point, Slot slot) {
-		
-		return true;
-	}
+    InventoryContainer(){
+        setItems();
+    }
 
-	public List<Item> getItems() {
-		
-		return null;
-	}
+    private void setItems(){
+        this.items = new InventorySlot[ROW][COL];
+        for (int i = 0; i < ROW; i++){
+            for (int j = 0; j < COL; j++){
+                this.items[i][j] = new InventorySlot();
+            }
+        }
+    }
 
-	@Override
-	protected boolean equip(Slot to, Slot from, Item item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	protected Item unequip(Slot slot) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected boolean drop(Slot slot) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	protected boolean swap(Slot slot1, Slot slot2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    //Use this method to access slots with a point
+    protected Slotable<Item> getSlot(Point point){
+        return this.items[point.getX()][point.getY()];
+    }
+    
+    public Item[][] getItems(){
+        Item[][] items = new Item[ROW][COL];
+        for (int i = 0; i < ROW; i++){
+            for (int j = 0; j < COL; j++){
+                items[i][j] = this.get(new Point(i,j));
+            }
+        }
+        return items;
+    }
+    
+    public final Item get(Point point){                 //Template Method
+        return this.getSlot(point).get();
+    }
 }

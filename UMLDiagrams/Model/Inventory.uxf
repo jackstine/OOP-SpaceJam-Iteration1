@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.1">
-  <zoom_level>12</zoom_level>
+<diagram program="umlet" version="13.0">
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1032</x>
-      <y>864</y>
-      <w>204</w>
-      <h>156</h>
+      <x>784</x>
+      <y>576</y>
+      <w>136</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>Avatar
 --
@@ -20,28 +20,29 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
-      <y>564</y>
-      <w>264</w>
-      <h>156</h>
+      <x>240</x>
+      <y>376</y>
+      <w>176</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
-Slot
+Slotable
 --
 --
 +hasItem():boolean
 +equipItem(Item) : boolean
 +unequipItem():Item
++get(): Item
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>684</x>
-      <y>564</y>
-      <w>264</w>
-      <h>180</h>
+      <x>552</x>
+      <y>376</y>
+      <w>176</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>InventoryContainer
 --
@@ -58,10 +59,10 @@ Slot
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>324</x>
-      <y>360</y>
-      <w>552</w>
-      <h>36</h>
+      <x>312</x>
+      <y>240</y>
+      <w>368</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>440.0;10.0;10.0;10.0</additional_attributes>
@@ -69,10 +70,10 @@ Slot
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>564</y>
-      <w>384</w>
-      <h>204</h>
+      <x>768</x>
+      <y>376</y>
+      <w>256</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>EquipmentContainer
 --
@@ -91,10 +92,10 @@ Slot
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>204</x>
-      <y>996</y>
-      <w>264</w>
-      <h>72</h>
+      <x>232</x>
+      <y>664</y>
+      <w>176</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>WeaponSlot
 --
@@ -105,10 +106,10 @@ Slot
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>492</x>
-      <y>996</y>
-      <w>264</w>
-      <h>72</h>
+      <x>424</x>
+      <y>664</y>
+      <w>176</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>ArmorSlot
 --
@@ -120,10 +121,10 @@ Slot
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>24</x>
-      <y>828</y>
-      <w>264</w>
-      <h>72</h>
+      <x>112</x>
+      <y>552</y>
+      <w>176</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>InventorySlot
 --
@@ -134,10 +135,10 @@ Slot
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>84</x>
-      <y>756</y>
-      <w>408</w>
-      <h>36</h>
+      <x>152</x>
+      <y>504</y>
+      <w>272</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;320.0;10.0</additional_attributes>
@@ -145,10 +146,10 @@ Slot
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>456</x>
-      <y>756</y>
-      <w>36</w>
-      <h>84</h>
+      <x>400</x>
+      <y>504</y>
+      <w>24</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -156,10 +157,10 @@ Slot
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>84</x>
-      <y>756</y>
-      <w>36</w>
-      <h>96</h>
+      <x>152</x>
+      <y>504</y>
+      <w>24</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -167,10 +168,10 @@ Slot
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>360</x>
-      <y>444</y>
-      <w>204</w>
-      <h>108</h>
+      <x>336</x>
+      <y>296</y>
+      <w>136</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Note..
 Java Point is a class that contains 
@@ -181,10 +182,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>348</x>
-      <y>816</y>
-      <w>264</w>
-      <h>72</h>
+      <x>328</x>
+      <y>544</y>
+      <w>176</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>/BufferSlot/
 --
@@ -195,10 +196,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>336</x>
-      <y>960</y>
-      <w>36</w>
-      <h>60</h>
+      <x>320</x>
+      <y>640</y>
+      <w>24</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
@@ -206,10 +207,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
-      <y>876</y>
-      <w>36</w>
-      <h>120</h>
+      <x>408</x>
+      <y>584</y>
+      <w>24</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -217,10 +218,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>960</y>
-      <w>36</w>
-      <h>60</h>
+      <x>496</x>
+      <y>640</y>
+      <w>24</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
@@ -228,10 +229,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>336</x>
-      <y>960</y>
-      <w>300</w>
-      <h>36</h>
+      <x>320</x>
+      <y>640</y>
+      <w>200</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
@@ -239,10 +240,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>852</x>
-      <y>336</y>
-      <w>264</w>
-      <h>156</h>
+      <x>664</x>
+      <y>224</y>
+      <w>176</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>/SlotContainer/
 --
@@ -258,10 +259,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>480</y>
-      <w>36</w>
-      <h>72</h>
+      <x>736</x>
+      <y>320</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -269,10 +270,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>516</y>
-      <w>348</w>
-      <h>36</h>
+      <x>648</x>
+      <y>344</y>
+      <w>232</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
@@ -280,10 +281,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>516</y>
-      <w>36</w>
-      <h>72</h>
+      <x>648</x>
+      <y>344</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -291,10 +292,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1140</x>
-      <y>516</y>
-      <w>36</w>
-      <h>72</h>
+      <x>856</x>
+      <y>344</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -302,10 +303,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1140</x>
-      <y>264</y>
-      <w>384</w>
-      <h>132</h>
+      <x>856</x>
+      <y>176</y>
+      <w>256</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>equipItem(to:Slot ,from : Slot{
 if (Slot.hasItem())
@@ -322,10 +323,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1140</x>
-      <y>396</y>
-      <w>384</w>
-      <h>108</h>
+      <x>856</x>
+      <y>264</y>
+      <w>256</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>unequip(Slot,Item){
 if(Slot.hasItem)return Slot.unequip()
@@ -338,10 +339,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>324</x>
-      <y>360</y>
-      <w>36</w>
-      <h>228</h>
+      <x>312</x>
+      <y>240</y>
+      <w>24</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
@@ -349,10 +350,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1140</x>
-      <y>156</y>
-      <w>324</w>
-      <h>108</h>
+      <x>856</x>
+      <y>104</y>
+      <w>216</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>swap(Slot1,Slot2){
 Item temp = Slot1.unequip()
@@ -365,10 +366,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1236</x>
-      <y>768</y>
-      <w>360</w>
-      <h>120</h>
+      <x>920</x>
+      <y>512</y>
+      <w>240</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Example 
 
@@ -381,10 +382,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>660</x>
-      <y>744</y>
-      <w>348</w>
-      <h>120</h>
+      <x>536</x>
+      <y>496</y>
+      <w>232</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Example
 
@@ -397,10 +398,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>492</x>
-      <y>732</y>
-      <w>120</w>
-      <h>36</h>
+      <x>424</x>
+      <y>488</y>
+      <w>80</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>Observable</panel_attributes>
     <additional_attributes/>
@@ -408,10 +409,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>756</y>
-      <w>36</w>
-      <h>84</h>
+      <x>456</x>
+      <y>504</y>
+      <w>24</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -419,10 +420,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>336</x>
-      <y>708</y>
-      <w>36</w>
-      <h>84</h>
+      <x>320</x>
+      <y>472</y>
+      <w>24</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -430,10 +431,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>480</x>
-      <y>648</y>
-      <w>168</w>
-      <h>84</h>
+      <x>416</x>
+      <y>432</y>
+      <w>112</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Note..
 The Observer Stats have to be added to eah of these slots
@@ -443,10 +444,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1224</x>
-      <y>756</y>
-      <w>108</w>
-      <h>216</h>
+      <x>912</x>
+      <y>504</y>
+      <w>72</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;160.0;70.0;160.0;70.0;10.0</additional_attributes>
@@ -454,10 +455,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>732</y>
-      <w>168</w>
-      <h>216</h>
+      <x>688</x>
+      <y>488</y>
+      <w>112</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>120.0;160.0;10.0;160.0;10.0;10.0</additional_attributes>
@@ -465,10 +466,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>96</x>
       <y>0</y>
-      <w>264</w>
-      <h>36</h>
+      <w>176</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>INVENTORY</panel_attributes>
     <additional_attributes/>

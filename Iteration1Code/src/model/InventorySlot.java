@@ -1,26 +1,45 @@
 package model;
 
-public class InventorySlot implements Slot{
-	
-	private Item item;
-	
+public class InventorySlot implements Slotable<Item>{
+    private Item item;
 
-	@Override
-	public boolean hasItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
+	//CONSTRUCTORS
+	InventorySlot(){}
+
+	InventorySlot(Item item){
+        this.item = item;
 	}
 
-	@Override
-	public boolean equipItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
+	//METHODS
+	public boolean has(){
+        //NOTE null pointer, dont know if we want to have null pointers floating around
+        if (this.item == null){
+            return false;
+        }
+        else{
+            return true;
+        }
 	}
 
-	@Override
-	public Item unequipItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public <K extends Item> boolean equip(K item){
+        if (this.has()) {
+            return false;
+        }
+        else{
+            this.item = item;
+            return true;
+        }
+    }
+
+    public Item unequip(){
+        Item pointer = this.item;
+        this.item = null;
+        return pointer;
+    }
+    public Item get(){
+        return this.item;
+    }
+
 
 }
+

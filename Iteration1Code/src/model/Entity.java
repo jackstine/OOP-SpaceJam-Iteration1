@@ -6,7 +6,7 @@ public abstract class Entity {
 	private Map<String,Stat> stats; 	
 	private GameMap map;
 	private Location location;
-	private Equipment equipment;
+	private Equipable equipment;
 	private Occupation occupation;
 	
 	private void attack() {

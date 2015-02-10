@@ -1,26 +1,12 @@
 package model;
 
-public class ArmorSlot extends BufferSlot{
+public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor> {
+    ArmorSlot(){}
 
-	private Armor item;
-	
-	
-	@Override
-	public boolean hasItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean equipItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Item unequipItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+    public static void main(String[] args){
+        ArmorSlot slot = new ArmorSlot();
+        Armor armor = new Armor();
+        //slot.equip(item);
+        slot.equip(armor);
+    }
 }
