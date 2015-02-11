@@ -2,7 +2,10 @@ package Test;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
+import model.GameMap;
 
 
 public class MapTest extends JPanel  {
@@ -31,7 +34,7 @@ public class MapTest extends JPanel  {
 
 	public void paintComponent(Graphics g){
 			
-			//g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);
 			g.fillRect(0,0,getWidth(),getHeight());
 			map.draw(g);
 			g.dispose();
