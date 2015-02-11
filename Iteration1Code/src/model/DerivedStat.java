@@ -1,30 +1,42 @@
 package model;
 
-import java.util.List;
+import java.util.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public abstract class DerivedStat implements Stat, Observer {
+public abstract class DerivedStat extends Observable implements Stat, Observer {
 
-	protected List<PrimaryStat> primaryStats;
+	protected List<Stat> stats;
 	protected int value;
+	
+	public DerivedStat() {
+		this.stats = new ArrayList<Stat>();
+	}
 	
 	public int getValue() {
 		return this.value;
 	}
 	
+	// every stat will override this method so it knows how
+	// it is calculated with regards to the stats that it
+	// is observing
 	public abstract void calculateValue();
 	
-	public void addPrimaryStat(PrimaryStat primaryStat) {
-		primaryStats.add(primaryStat);
+	// ONLY LEVEL WILL OVERRIDE THIS!!!!!!
+	public void addAllObservers(DerivedStat...derivedStats) {}
+	
+	// add a stat to the list of stats being observed
+	public void addStat(Stat stat) {
+		this.stats.add(stat);
 	}
 	
 	@Override
-	public void update(Observable primaryStat, Object value) {
+	// when notified of a change, recalculate the value
+	public void update(Observable stat, Object value) {
 		calculateValue();
 	}
 	
 	public String toString(){
-		return ""+this.value;
+		return this.getClass().toString() + " " +this.value;
 	}
 }

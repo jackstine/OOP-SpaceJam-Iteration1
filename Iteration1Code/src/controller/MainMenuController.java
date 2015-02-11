@@ -68,7 +68,7 @@ public class MainMenuController {
 		
 		public void actionPerformed(ActionEvent e) {
 			mainMenu.setNext("New");
-			mainMenu.setActive(false);
+			mainMenu.setRedraw(true);
 		}
 	}
 	
@@ -76,7 +76,7 @@ public class MainMenuController {
 		
 		public void actionPerformed(ActionEvent e) {
 			mainMenu.setNext("Load");
-			mainMenu.setActive(false);
+			mainMenu.setRedraw(true);
 		}
 	}
 	

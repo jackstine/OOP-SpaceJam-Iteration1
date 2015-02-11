@@ -70,7 +70,7 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("Main");
-			charCreation.setActive(false);
+			charCreation.setRedraw(true);
 		}
 	}
 	
@@ -78,17 +78,15 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("Test"); //Game View
-			charCreation.setActive(false);
-			//Call "Alchemist Start Game" Constructors here
+			charCreation.setRedraw(true);
 		}
 	}
 	
 	public class TerminatorSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext("t"); //Game View
-			charCreation.setActive(false);
-			//Call "Terminator Start Game" Constructors here
+			charCreation.setNext("Game"); //Game View
+			charCreation.setRedraw(true);
 		}
 	}
 	
@@ -96,8 +94,7 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("h"); //Game View
-			charCreation.setActive(false);
-			//Call "Hunter Start Game" Constructors here
+			charCreation.setRedraw(true);
 		}
 	}
 }

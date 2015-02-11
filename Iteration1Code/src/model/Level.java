@@ -1,18 +1,28 @@
 package model;
 
-import java.util.Observable;
-
 public class Level extends DerivedStat {
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+	public Level() {
+		super();
 	}
-
+	
+	public void update(int value) {
+		this.setChanged();
+		this.notifyObservers(this.value);		
+	}
+	
+	public void addAllObservers(DerivedStat...derivedStats) {
+		for (DerivedStat ds : derivedStats) {
+			this.addObserver(ds);
+			ds.addStat(this);
+		}
+	}
+	
 	@Override
 	public void calculateValue() {
-		// TODO Auto-generated method stub
-		
+		// this value is based on experience
+		int experience = this.stats.get(0).getValue();
+		this.value = Math.min(20, (int) (Math.floor(25 + Math.sqrt(625 + 100 * experience)) / 50));	
+		update(this.value);
 	}
 }

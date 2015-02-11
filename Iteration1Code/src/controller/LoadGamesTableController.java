@@ -56,7 +56,7 @@ public class LoadGamesTableController {
 		
 		public void actionPerformed(ActionEvent e) {
 			loadTable.setNext("Main");
-			loadTable.setActive(false);
+			loadTable.setRedraw(true);
 		}
 	}
 }

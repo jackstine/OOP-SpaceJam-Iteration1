@@ -1,18 +1,17 @@
 package model;
 
-import java.util.Observable;
-
 public class Mana extends DerivedStat {
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+	
+	public Mana() {
+		super();
 	}
-
+	
 	@Override
 	public void calculateValue() {
-		// TODO Auto-generated method stub
-		
+		// this value is based on intellect and level
+		int intellect = this.stats.get(0).getValue();
+		int level = this.stats.get(1).getValue();
+		// MANA FORMULA
+		this.value = intellect * level;
 	}
 }

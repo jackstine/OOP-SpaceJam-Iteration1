@@ -20,6 +20,7 @@ public class ViewController {
 	//private LoadGamesTableController noLoad;
 	private TestGameController loadGame;
 	private TestGameController testGame;
+	private GameController inGame;
 	
 	private Map<String, View> views = new HashMap<String, View>();
 	
@@ -43,10 +44,14 @@ public class ViewController {
 		
 		testGame = new TestGameController();		
 		views.put("Test", testGame.getView());
+		
+		inGame = new GameController();
+		views.put("Game", inGame.getView());
 			
 		previous = null;
 		current = views.get("Main");
 		
+		frame.setFocusable(true);
 		frame.setLayout(new FlowLayout());
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
@@ -56,7 +61,7 @@ public class ViewController {
 	}
 	//Used to poll the active variable of the current view and changes views when active is set false.
 	public void display(){
-		if(!current.isActive()){
+		if(current.getRedraw()){
 			changePanel();
 		}
 		if(testGame.pressedSave){

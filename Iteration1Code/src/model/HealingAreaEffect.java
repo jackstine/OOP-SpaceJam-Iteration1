@@ -8,7 +8,7 @@ public class HealingAreaEffect implements AreaEffect{
 	}
 	
 	public void apply(Entity entity) {
-		entity.setHealth(entity.getHealth() * (1+percentHealth));
+		entity.setHealth(entity.getStatValue("Life") * (1+percentHealth));
 		
 	}
 

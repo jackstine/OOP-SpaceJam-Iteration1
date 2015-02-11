@@ -6,15 +6,13 @@ public class OffensiveRating extends DerivedStat {
 	private WeaponSlot slotSubject;
 	private int weaponBonus;
 	
-	OffensiveRating(int bonus,WeaponSlot subject){
-		this.value = bonus;
-		this.slotSubject = subject;
-		this.weaponBonus = 0;
+	public OffensiveRating(){
+		super();
 	}
 	
-	OffensiveRating(){
-		this.value = 0;
-		this.slotSubject = null;
+	public OffensiveRating(int initialValue, WeaponSlot subject){
+		this.value = initialValue;
+		this.slotSubject = subject;
 		this.weaponBonus = 0;
 	}
 	
@@ -27,9 +25,6 @@ public class OffensiveRating extends DerivedStat {
 		if (observable == slotSubject){
 			this.updateWeaponBonus(slotSubject.getBonus());
 		}
-		else if (this.primaryStats.contains(observable)){
-			//TODO add in the dervied updates
-		}
 		this.calculateValue();
 	}
 
@@ -40,6 +35,8 @@ public class OffensiveRating extends DerivedStat {
 	
 	@Override
 	public void calculateValue() {
-		this.value = this.weaponBonus;
+		int strength = this.stats.get(0).getValue();
+		int level = this.stats.get(1).getValue();
+		this.value = this.weaponBonus + (strength * level);
 	}
 }
