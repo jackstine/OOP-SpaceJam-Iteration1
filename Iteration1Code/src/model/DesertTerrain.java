@@ -12,7 +12,7 @@ public class DesertTerrain extends Terrain{
 	public DesertTerrain(){
 		passable=true;
 		try{
-		image= ImageIO.read(new File("desert.png"));
+		image= ImageIO.read(new File("src/model/desert.png"));
 		} catch(IOException e){
 
 		}

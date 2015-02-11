@@ -12,7 +12,7 @@ public class RadioactiveWasteTerrain extends Terrain{
 	public RadioactiveWasteTerrain(){
 		passable=false;
 		try{
-		image= ImageIO.read(new File("waste.png"));
+		image= ImageIO.read(new File("src/model/waste.png"));
 		} catch(IOException e){
 
 		}
