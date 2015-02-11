@@ -11,20 +11,34 @@ import model.Point;
 
 public class ImageProcessing {
 
-	// resizes the image to the width and Height of the image
-	public static BufferedImage scaleImage(int WIDTH, int HEIGHT, String filename) {
-	    BufferedImage bi = null;
+	public static BufferedImage scaleImage(int width, int height, String filename) {
+	    BufferedImage returnImage = null;
 	    try {
 	        ImageIcon ii = new ImageIcon(filename);//path to image
-	        bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	        Graphics2D g2d = (Graphics2D) bi.createGraphics();
+	        returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	        Graphics2D g2d = (Graphics2D) returnImage.createGraphics();
 	        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));
-	        g2d.drawImage(ii.getImage(), 0, 0, WIDTH, HEIGHT, null);
+	        g2d.drawImage(ii.getImage(), 0, 0, width, height, null);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return null;
 	    }
-	    return bi;
+	    return returnImage;
+	}
+	
+	//resizes the image to the width and Height of the image
+	public static BufferedImage scaleImage(int width, int height, BufferedImage imageToProcess) {
+	    BufferedImage returnImage = null;
+	    try {
+	        returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	        Graphics2D g2d = (Graphics2D) returnImage.createGraphics();
+	        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));
+	        g2d.drawImage(imageToProcess, 0, 0, width, height, null);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	    return returnImage;
 	}
 	
 	//TODO  the overlay Image only centers for now,  allow it to make dimensions where ever, such as

@@ -4,7 +4,10 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import utilities.ImageProcessing;
@@ -48,11 +51,17 @@ public class SlotView extends Component{
 	}
 	
 	public void setSlotImage() {
-		this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,INVENTORY_IMAGE);
+		try {
+			this.slotImage = ImageIO.read(new File(INVENTORY_IMAGE));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,this.slotImage);
 	}
 	
 	public void setItemImage(){
-			this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_HEIGHT, ITEMIMAGE_WIDTH, WEAPON_IMAGE);
+			this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_HEIGHT, ITEMIMAGE_WIDTH, this.itemImage);
 	}
 	
 	public void paint(Graphics g){
@@ -76,7 +85,7 @@ public class SlotView extends Component{
 			}
 		}
 		else{
-			this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,INVENTORY_IMAGE);
+			this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,this.slotImage);
 		}
 	}
 	
