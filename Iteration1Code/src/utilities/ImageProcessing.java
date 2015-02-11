@@ -27,6 +27,8 @@ public class ImageProcessing {
 	    return bi;
 	}
 	
+	//TODO  the overlay Image only centers for now,  allow it to make dimensions where ever, such as
+	//  bottom cornor, top cornor,....
 	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage) throws IOException{
 		// If the centered Image is any Dimension larger than the background image, it will throw a exception
 		if (backgroundImage.getHeight()< centeredImage.getHeight() ||

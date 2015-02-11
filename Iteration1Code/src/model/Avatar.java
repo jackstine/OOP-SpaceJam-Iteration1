@@ -3,7 +3,7 @@ package model;
 import controller.MapViewController;
 
 public class Avatar extends Entity{
-	private InventoryContainer inventory;
+	private Inventory inventory;
 	private Location location;
 	private final int INITIAL_X = 0;
 	private final int INITIAL_Y =0;

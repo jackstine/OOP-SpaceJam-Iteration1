@@ -24,44 +24,40 @@ public class MapViewController extends JFrame{
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			// TODO Auto-generated method stub
 			System.out.println(e.getKeyCode());
-			if(e.getKeyCode()==KeyEvent.VK_1){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1){
 				avatar.move(-1,-1);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_2){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD2){
 				avatar.move(-1, 0);
-				
 			}
-			if(e.getKeyCode()==KeyEvent.VK_3){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD3){
 				avatar.move(+1, -1);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_6){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD6){
 				avatar.move(+1, 0);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_9){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD9){
 				avatar.move(+1,+1);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_8){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD8){
 				avatar.move(0, +1);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_7){
-				avatar.move(-1, -1);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD7){
+				avatar.move(1, 1);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_4){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD4){
 				avatar.move(-1, 0);
 			}
 		}
 
 		@Override
 		public void keyReleased(KeyEvent arg0) {
-			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
 		public void keyTyped(KeyEvent arg0) {
-			// TODO Auto-generated method stub
 			
 		}
 		
