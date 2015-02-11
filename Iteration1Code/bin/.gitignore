@@ -1,6 +1,7 @@
-/model/
-/view/
-/utilities/
-/Test/
-/res/
-/controller/
+/res
+/Test
+/controller
+/model
+/utilities
+/view
+/RunGame.class

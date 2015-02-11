@@ -22,6 +22,10 @@ public class StatTest {
 		DerivedStat mana = new Mana();
 		DerivedStat offensiveRating = new OffensiveRating();
 		
+		Equipment equipment = new Equipment(armorRating, offensiveRating);
+		Armor armor = new Armor(15);
+		Weapon weapon = new Weapon(10);
+		
 		agility.addAllObservers(defensiveRating);
 		experience.addAllObservers(level);
 		hardiness.addAllObservers(life, armorRating);
@@ -35,6 +39,19 @@ public class StatTest {
 		life.calculateValue();
 		mana.calculateValue();
 		offensiveRating.calculateValue();
+		
+		equipment.equipArmor(armor);
+		equipment.equipWeapon(weapon);
+		
+		System.out.println("Offensive Rating - " + offensiveRating.getValue());
+		System.out.println("Armor Rating - " + armorRating.getValue());
+		
+		equipment.unequipArmor();
+		equipment.unequipWeapon();
+		
+		System.out.println("Offensive Rating - " + offensiveRating.getValue());
+		System.out.println("Armor Rating - " + armorRating.getValue());
+		
 		
 		while (true) {
 			System.out.println("Primary Stats");
