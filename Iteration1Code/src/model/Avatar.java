@@ -13,8 +13,8 @@ public class Avatar extends Entity{
 		//occupation.initializeStats();
 	}
 	public void move(int x,int y){
-	location.add(x,y);
-	System.out.println(location);
+		location.add(x,y);
+		System.out.println(location);
 	}
 	
 	/*

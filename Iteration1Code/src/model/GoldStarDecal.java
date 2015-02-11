@@ -7,7 +7,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class GoldStarDecal extends Decal{
-	BufferedImage image;
 
 	public GoldStarDecal(){
 		super();
@@ -16,6 +15,6 @@ public class GoldStarDecal extends Decal{
 	@Override
 	protected String getFilePath() {
 		//FIX NEXT LINE!! NOT RESOLVING CORRECT PATH
-		return "/res/img/goldstar_decal.png";
+		return "src/res/img/goldstar_decal.png";
 	}
 }

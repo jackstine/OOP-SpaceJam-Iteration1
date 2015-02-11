@@ -26,8 +26,7 @@ public abstract class Entity {
 	public int getStatValue(String key) {
 		int result = 0;
 		try {
-			Stat s = stats.get(key);
-			result = s.getValue();
+			result = stats.get(key).getValue();
 		}
 		catch(NullPointerException e) {
 			System.out.println("You don't even exist");
