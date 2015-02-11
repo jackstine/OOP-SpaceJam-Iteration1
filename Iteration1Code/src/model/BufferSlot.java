@@ -14,6 +14,8 @@ public abstract class BufferSlot<T extends Item> extends Observable implements S
     	return this.bonus;
     }
     
+    //TODO we need to have a handler that makes sure that only
+    //Items of a K type can be passed hear
     @SuppressWarnings("unchecked")
 	public <K extends Equipable> void setBonus(){
     	this.bonus = ((K)this.item).getBonus();

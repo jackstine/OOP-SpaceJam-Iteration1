@@ -1,13 +1,16 @@
 package Test;
 import model.Armor;
 import model.ArmorRating;
+import model.DerivedStat;
 import model.Equipment;
+import model.Hardiness;
 import model.OffensiveRating;
 import model.Weapon;
 
 public class TestEquipment {
     public static void main(String[] args){
     	OffensiveRating off = new OffensiveRating();
+    	Hardiness hard = new Hardiness(5);
     	ArmorRating def = new ArmorRating();
     	System.out.println(def+"    "+off);		// 0    0
     	Equipment equipment = new Equipment(def,off);

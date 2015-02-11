@@ -1,6 +1,7 @@
 package utilities;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class ImageProcessing {
 	}
 	
 	//resizes the image to the width and Height of the image
-	public static BufferedImage scaleImage(int width, int height, BufferedImage imageToProcess) {
+	public static BufferedImage scaleImage(int width, int height, Image imageToProcess) {
 	    BufferedImage returnImage = null;
 	    try {
 	        returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -43,11 +44,16 @@ public class ImageProcessing {
 	
 	//TODO  the overlay Image only centers for now,  allow it to make dimensions where ever, such as
 	//  bottom cornor, top cornor,....
-	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage) throws IOException{
+	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage){
 		// If the centered Image is any Dimension larger than the background image, it will throw a exception
 		if (backgroundImage.getHeight()< centeredImage.getHeight() ||
 				backgroundImage.getWidth() < centeredImage.getWidth()){
-			throw new IOException("the centered Image is to Large,  it needs to be smaller than the backGround");
+			try {
+				throw new IOException("the centered Image is to Large,  it needs to be smaller than the backGround");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		Point center = getCenterPoint(backgroundImage,centeredImage);
 		Graphics2D g = backgroundImage.createGraphics();

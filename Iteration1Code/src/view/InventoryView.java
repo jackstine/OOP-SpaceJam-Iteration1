@@ -8,8 +8,9 @@ import model.Inventory;
 import model.Point;
 
 public class InventoryView extends JPanel{
-	public static final int INVENTORY_HEIGHT = Inventory.COL * SlotView.SLOTIMAGE_HEIGHT;
-	public static final int INVENTORY_WIDTH = Inventory.ROW * SlotView.SLOTIMAGE_WIDTH;
+	// AHHAHAHAHAHAHA   CONNASCENCE    =)
+	public static final int INVENTORY_HEIGHT = Inventory.ROW * SlotView.SLOTIMAGE_HEIGHT;
+	public static final int INVENTORY_WIDTH = Inventory.COL * SlotView.SLOTIMAGE_WIDTH;
 	
 	private SlotView[][] slots = new SlotView[Inventory.ROW][Inventory.COL];
 	private Inventory inventory;
@@ -24,16 +25,17 @@ public class InventoryView extends JPanel{
 	private void setInventoryView(){ 
 		for (int i = 0; i<Inventory.ROW ; i++){
 			for (int j = 0; j<Inventory.COL;j++){
+				// We need to add the SlotView to the Inventory SLot as a Observer
+				// as well as make the slotView point to the slot
 				Point pointOfSlot = new Point(i,j);
 				this.slots[i][j] = new SlotView( this.inventory.getSlot(pointOfSlot) , pointOfSlot );
-				this.slots[i][j].resetImage();					//TODO make this function automatic
-																//TODO make InventorySLot be a Observable
+				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
 			}
 		}
 	}
 	
 	public Dimension getPreferredSize(){
-		return new Dimension(INVENTORY_HEIGHT, INVENTORY_WIDTH);
+		return new Dimension(INVENTORY_WIDTH,INVENTORY_HEIGHT);
 	}
 	
 	public void paint(Graphics g){

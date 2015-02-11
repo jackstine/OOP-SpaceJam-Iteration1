@@ -19,20 +19,33 @@ public class InventoryViewTest {
 	        }
         });
 		Inventory inventory = new Inventory();
+		InventoryView inventoryView = new InventoryView(inventory);
+		f.add(inventoryView);
+		inventoryView.repaint();;
+        f.pack();
+        f.repaint();
+        f.setVisible(true);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		for (int i = 0; i<Inventory.ROW ; i++){
 			for (int j = 0; j<Inventory.COL;j++){
-				if (j%2==0){	// just make every other a weapon
+				if (j%2==0){						// just make every other a weapon
 					Point point = new Point(i,j);
-					inventory.equip( point , new Weapon(5));
+					inventory.equip( point , new Weapon(i+j));
+					System.out.println("Equipping a Weapon of "+(int)(i+j));
+					f.repaint();
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
-		}
-		
-		InventoryView inventoryView = new InventoryView(inventory);
-		
-		f.add(inventoryView);	
-		f.repaint();
-        f.pack();
-        f.setVisible(true);
+		}	
 	}
 }
