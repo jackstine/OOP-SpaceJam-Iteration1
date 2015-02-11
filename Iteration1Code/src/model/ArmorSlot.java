@@ -5,6 +5,17 @@ public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor> {
     	this.addObserver(stat);
     }
     ArmorSlot(){}
+    
+    
+    
+	public String toString(){
+		if (this.has()){
+			return "Armor Slot with Armor of "+this.bonus;
+		}
+		else{
+			return "This is a empty Armor Slot";
+		}
+	}
 
     public static void main(String[] args){
         ArmorSlot slot = new ArmorSlot();

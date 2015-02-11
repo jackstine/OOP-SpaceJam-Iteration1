@@ -20,6 +20,10 @@ public class Weapon extends TakeableItem implements Equipable {
 		return this.attack;
 	}
 	
+	public String toString(){
+		return "Weapon with Attack of "+this.attack;
+	}
+	
 	public static void main(String[] args){
 		WeaponSlot weaponSlot = new WeaponSlot();
 		InventorySlot invSlot = new InventorySlot();

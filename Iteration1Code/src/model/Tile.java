@@ -40,8 +40,8 @@ public class Tile{
 
 	public void draw(Graphics g){
 		BufferedImage image= terrain.getImage();
-		int x= (int)location.getX();
-		int y= (int)location.getY();
+		int x= location.getX();
+		int y= location.getY();
 		g.drawImage(image,50*x,50*y,null);
 	}
 

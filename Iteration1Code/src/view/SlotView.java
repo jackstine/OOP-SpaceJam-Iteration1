@@ -29,10 +29,20 @@ public class SlotView extends Component{
 	private final int ITEMIMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
 	private final int ITEMIMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
 	
+	//TODO need to change the Slot so that it is taken care of properly in the system
+	//TODO not sure if Slot should be referenced inside the SlotView, or just the point reference to it
+	//TODO need to use Observable to reset the image every time the slot is equipped and unequipped
+	
 	public SlotView(Slotable<Item> slot){
 		this.slot = slot;
 		this.setSlotImage();
 		this.point= new Point(0,0);
+	}
+	
+	public SlotView(Slotable<Item> slot,Point pointOfSlot){
+		this.slot = slot;
+		this.setSlotImage();
+		this.point= pointOfSlot;
 	}
 	
 	public void setSlotImage() {
@@ -43,11 +53,21 @@ public class SlotView extends Component{
 			this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_HEIGHT, ITEMIMAGE_WIDTH, weaponImage);
 	}
 	
-	public void paint(Graphics g){
-		g.drawImage(this.slotImage, 0, 0, null);
+	public void draw(Graphics g){
+		
 	}
 	
-	private void resetImage(){
+	public void paint(Graphics g){
+		// the point is refractored with the Width and Height, 
+		//  they fill in their respective Grid
+		//  each point is a fill for a Grid
+		int heightLocation = this.point.getX()*SLOTIMAGE_HEIGHT;
+		int widthLocation =  this.point.getY()*SLOTIMAGE_WIDTH;
+		g.drawImage(this.slotImage, heightLocation , widthLocation , null);
+	}
+	
+	//TODO change to a automatically called and private
+	public void resetImage(){
 		if (this.slot.has()){
 			this.setItemImage();
 			try {
@@ -58,7 +78,7 @@ public class SlotView extends Component{
 			}
 		}
 		else{
-			this.slotImage = ImageProcessing.scaleImage(200,200,inventoryImage);
+			this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,inventoryImage);
 		}
 	}
 	
@@ -74,15 +94,15 @@ public class SlotView extends Component{
 
         JFrame f = new JFrame("Load Image Sample");
         f.addWindowListener(new WindowAdapter(){
-                public void windowClosing(WindowEvent e) {
-                    System.exit(0);
-                }
-            });
+	        public void windowClosing(WindowEvent e) {
+	            System.exit(0);
+	        }
+        });
         InventorySlot slot = new InventorySlot();
         Weapon weapon = new Weapon(10);
         slot.equip(weapon);
         SlotView slotView = new SlotView(slot);
-        slotView.resetImage();
+        slotView.resetImage();					//TODO make this automatic
         f.add(slotView);
         f.pack();
         f.setVisible(true);

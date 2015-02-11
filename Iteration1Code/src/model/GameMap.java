@@ -20,8 +20,8 @@ public class GameMap{
 	}
 
 	public Tile getTile(Location location){
-		int x=(int)location.getX();
-		int y=(int)location.getY();
+		int x=location.getX();
+		int y=location.getY();
 		return map[x][y];
 	}
 

@@ -24,7 +24,7 @@ public class Armor extends TakeableItem implements Equipable {
 	}
 	
 	public String toString(){
-		return ""+this.armor;
+		return "Armor with armor of "+this.armor;
 	}
 	
 	public static void main(String[] args){
