@@ -9,7 +9,7 @@ public class DamageAreaEffect implements AreaEffect{
 	}
 	
 	public void apply(Entity entity) {
-		entity.setLife(entity.getStatValue("Life") * (1-percentDamage));
+		entity.setStatValue("Life", (int) (entity.getStatValue("Life") * (1-percentDamage)));
 	}
 	
 	

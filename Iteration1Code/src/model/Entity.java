@@ -33,4 +33,12 @@ public abstract class Entity {
 		}
 		return result;
 	}
+	
+	public void setStatValue(String key, int value) {
+		try {
+			stats.get(key).setValue(value);
+		} catch (Exception e) {
+			
+		}
+	}
 }
