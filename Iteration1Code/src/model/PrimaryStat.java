@@ -15,7 +15,7 @@ public abstract class PrimaryStat extends Observable implements Stat {
 	}
 	
 	public void setValue(int value) {
-		this.value = value;
+		this.update(value);
 	}
 	
 	// this method is called when we want to update the value

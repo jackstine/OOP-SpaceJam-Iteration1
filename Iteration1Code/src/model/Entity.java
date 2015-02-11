@@ -24,21 +24,12 @@ public abstract class Entity {
 	}
 	
 	public int getStatValue(String key) {
-		int result = 0;
-		try {
-			result = stats.get(key).getValue();
-		}
-		catch(NullPointerException e) {
-			System.out.println("You don't even exist");
-		}
-		return result;
+		if (stats.containsKey(key)) return stats.get(key).getValue();
+		// the value doesn't exist, so we return -1
+		return -1;
 	}
 	
 	public void setStatValue(String key, int value) {
-		try {
-			stats.get(key).setValue(value);
-		} catch (Exception e) {
-			
-		}
+		if (stats.containsKey(key)) stats.get(key).setValue(value);
 	}
 }

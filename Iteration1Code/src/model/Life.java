@@ -5,10 +5,11 @@ public class Life extends DerivedStat {
 	
 	public Life() {
 		super();
+		this.hp = 0;
 	}
 	
 	public void setValue(int value) {
-		hp = value;	
+		this.hp = value;	
 	}
 	
 	@Override
@@ -17,8 +18,9 @@ public class Life extends DerivedStat {
 		int hardiness = this.stats.get(0).getValue();
 		int level = this.stats.get(1).getValue();
 		// LIFE FORMULA
-		this.value = hardiness * level;		
-		hp = this.value;
+		this.value = hardiness * level;	
+		// set the HP to max HP 
+		this.hp = this.value;
 	}
 	
 	
