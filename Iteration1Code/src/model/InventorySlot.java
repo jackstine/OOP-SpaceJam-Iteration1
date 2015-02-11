@@ -4,7 +4,7 @@ public class InventorySlot implements Slotable<Item>{
     private Item item;
 
 	//CONSTRUCTORS
-	InventorySlot(){}
+	public InventorySlot(){}
 
 	InventorySlot(Item item){
         this.item = item;
