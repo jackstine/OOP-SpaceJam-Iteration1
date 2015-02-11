@@ -16,18 +16,19 @@ import model.Weapon;
 
 
 public class SlotView extends Component{
+	public static final int SLOTIMAGE_HEIGHT = 50;
+	public static final int SLOTIMAGE_WIDTH = 50;
+	public static final int ITEMIMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
+	public static final int ITEMIMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
 
-	private static final long serialVersionUID = 1555L;
+	private static final long serialVersionUID = 15475L;
+	
 	private Point point;
 	private BufferedImage slotImage;
 	private Slotable<Item> slot;
 	private BufferedImage itemImage;
 	private String weaponImage = "weapon.png";
 	private String inventoryImage = "brown-InventorySlot.png";
-	private final int SLOTIMAGE_HEIGHT = 50;
-	private final int SLOTIMAGE_WIDTH = 50;
-	private final int ITEMIMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
-	private final int ITEMIMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
 	
 	//TODO need to change the Slot so that it is taken care of properly in the system
 	//TODO not sure if Slot should be referenced inside the SlotView, or just the point reference to it
@@ -61,9 +62,9 @@ public class SlotView extends Component{
 		// the point is refractored with the Width and Height, 
 		//  they fill in their respective Grid
 		//  each point is a fill for a Grid
-		int heightLocation = this.point.getX()*SLOTIMAGE_HEIGHT;
-		int widthLocation =  this.point.getY()*SLOTIMAGE_WIDTH;
-		g.drawImage(this.slotImage, heightLocation , widthLocation , null);
+		int heightLocation = this.point.getY()*SLOTIMAGE_HEIGHT;
+		int widthLocation =  this.point.getX()*SLOTIMAGE_WIDTH;
+		g.drawImage(this.slotImage, widthLocation , heightLocation , null);
 	}
 	
 	//TODO change to a automatically called and private

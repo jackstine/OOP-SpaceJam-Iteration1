@@ -33,7 +33,7 @@ public class Inventory extends SlotContainer{
         return items;
     }
     
-    public final Item get(Point point){                 //Template Method
+    public final Item get(Point point){
         return this.getSlot(point).get();
     }
     

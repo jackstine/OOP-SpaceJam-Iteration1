@@ -28,7 +28,7 @@ public class ImageProcessing {
 	}
 	
 	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage) throws IOException{
-		// If the centered Image is any Diminsion larger than the background image, it will throw a exception
+		// If the centered Image is any Dimension larger than the background image, it will throw a exception
 		if (backgroundImage.getHeight()< centeredImage.getHeight() ||
 				backgroundImage.getWidth() < centeredImage.getWidth()){
 			throw new IOException("the centered Image is to Large,  it needs to be smaller than the backGround");
