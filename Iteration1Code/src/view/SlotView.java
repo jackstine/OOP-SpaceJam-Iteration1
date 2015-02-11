@@ -20,6 +20,9 @@ public class SlotView extends Component{
 	public static final int SLOTIMAGE_WIDTH = 50;
 	public static final int ITEMIMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
 	public static final int ITEMIMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
+	
+	private final String WEAPON_IMAGE = "src/res/img/weapon.png";
+	private final String INVENTORY_IMAGE = "src/res/img/brown-InventorySlot.png";
 
 	private static final long serialVersionUID = 15475L;
 	
@@ -27,8 +30,6 @@ public class SlotView extends Component{
 	private BufferedImage slotImage;
 	private Slotable<Item> slot;
 	private BufferedImage itemImage;
-	private String weaponImage = "weapon.png";
-	private String inventoryImage = "brown-InventorySlot.png";
 	
 	//TODO need to change the Slot so that it is taken care of properly in the system
 	//TODO not sure if Slot should be referenced inside the SlotView, or just the point reference to it
@@ -47,23 +48,19 @@ public class SlotView extends Component{
 	}
 	
 	public void setSlotImage() {
-		this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,inventoryImage);
+		this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,INVENTORY_IMAGE);
 	}
 	
 	public void setItemImage(){
-			this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_HEIGHT, ITEMIMAGE_WIDTH, weaponImage);
-	}
-	
-	public void draw(Graphics g){
-		
+			this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_HEIGHT, ITEMIMAGE_WIDTH, WEAPON_IMAGE);
 	}
 	
 	public void paint(Graphics g){
 		// the point is refractored with the Width and Height, 
 		//  they fill in their respective Grid
 		//  each point is a fill for a Grid
-		int heightLocation = this.point.getY()*SLOTIMAGE_HEIGHT;
-		int widthLocation =  this.point.getX()*SLOTIMAGE_WIDTH;
+		int heightLocation = this.point.getX()*SLOTIMAGE_HEIGHT;
+		int widthLocation =  this.point.getY()*SLOTIMAGE_WIDTH;
 		g.drawImage(this.slotImage, widthLocation , heightLocation , null);
 	}
 	
@@ -79,7 +76,7 @@ public class SlotView extends Component{
 			}
 		}
 		else{
-			this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,inventoryImage);
+			this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,INVENTORY_IMAGE);
 		}
 	}
 	
