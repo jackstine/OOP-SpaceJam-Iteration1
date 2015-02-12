@@ -2,6 +2,9 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JPanel;
 
 import model.Inventory;
@@ -20,6 +23,7 @@ public class InventoryView extends JPanel{
 	public InventoryView(Inventory inventory){
 		this.inventory = inventory;
 		this.setInventoryView();
+		this.addMouseListener(new InventoryListener());
 	}
 	
 	private void setInventoryView(){ 
@@ -44,6 +48,35 @@ public class InventoryView extends JPanel{
 				this.slots[i][j].paint(g);
 			}
 		}
+	}
+	
+	public class InventoryListener implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			
+		}
+		
 	}
 
 }
