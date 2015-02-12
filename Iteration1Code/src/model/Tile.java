@@ -15,12 +15,14 @@ public class Tile{
 	private Entity entity;
 	//private AreaEffect areaEffect;
 	//private Decal decal;
-	private int delta;  //will be deltaX and deltaY in the future
+	private int deltaX; 
+	private int deltaY;
 
 	public Tile(Terrain terrain, int x,int y){ //will take more parameters(maybe)
 		this.terrain=terrain;
 		location= new Location(x,y);
-		delta=0;
+		deltaX=0;
+		deltaY=0;
 	}
 	/*
 	public Tile getTile(){  //not sure if this is needed. Leaving it here for later
@@ -46,12 +48,20 @@ public class Tile{
 		return terrain;
 	}
 	
-	public int getDelta(){           //used to move map under //not done
-		return delta;
+	public int getDeltaX(){           //used to move map under //not done
+		return deltaX;
 	}
 	
-	public void setDelta(int delta){
-		this.delta+=delta;
+	public int getDeltaY(){
+		return deltaY;
+	}
+	
+	public void setDeltaX(int deltaX){
+		this.deltaX+=deltaX;
+	}
+	
+	public void setDeltaY(int deltaY){
+		this.deltaY+=deltaY;
 	}
 
 	public void setItem(Item item){
@@ -73,7 +83,7 @@ public class Tile{
 			itemImage = this.item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
 			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageToDisplay, itemImage);
 		}
-		g.drawImage(imageToDisplay,SCALE*x+delta,SCALE*y+delta,null);
+		g.drawImage(imageToDisplay,SCALE*x+deltaX,SCALE*y+deltaY,null);
 	}
 
 }

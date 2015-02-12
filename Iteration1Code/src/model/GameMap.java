@@ -15,6 +15,8 @@ public class GameMap{
 	private Item[][] items;
 	private int width;
 	private int height;
+	private int deltaX;
+	private int deltaY;
 
 
 	public GameMap(){
@@ -22,7 +24,8 @@ public class GameMap{
 		map = m.generateMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
-		test=0;
+		deltaX=0;
+		deltaY=0;
 	}
 	
 	// I put a item in it, it will generate the Item GameMap
@@ -83,15 +86,21 @@ public class GameMap{
 		return entityToLocationMap.get(e);
 	}
 	
-	public void setD(int d){  //adding this to move map under not done
-		test=d;
+	public void setDeltaX(int x){  //adding this to move map under not done
+		deltaX+=x;
+	}
+	
+	public void setDeltaY(int y){  //adding this to move map under not done
+		deltaY+=y;
 	}
 
 	public void draw(Graphics g){
 		for(int i=0;i<map.length;i++){
 			for(int j=0;j<map[i].length;j++){
-				int delta=map[i][j].getDelta();
-				map[i][j].setDelta(delta+test);  //not done
+				int delta1=map[i][j].getDeltaX();
+				int delta2=map[i][j].getDeltaY();
+				map[i][j].setDeltaX(delta1+deltaX);  //not done
+				map[i][j].setDeltaY(delta2+deltaY);  //not done
 				map[i][j].draw(g);
 				
 			}
