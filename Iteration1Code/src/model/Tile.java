@@ -6,13 +6,15 @@ import java.awt.image.BufferedImage;
 import utilities.ImageProcessing;
 
 public class Tile{
+	private final int SCALE=100;
+	private final int OVERLAY_IMAGE_OFFSET = 35;
+	
 	private Terrain terrain;
 	private Location location;
 	private Item item;
 	private Entity entity;
 	//private AreaEffect areaEffect;
 	//private Decal decal;
-	private final int SCALE=100;
 	private int delta;  //will be deltaX and deltaY in the future
 
 	public Tile(Terrain terrain, int x,int y){ //will take more parameters(maybe)
@@ -67,8 +69,9 @@ public class Tile{
 		int y= location.getY();
 		//if has Item overlay
 		if (item != null){
-			itemImage = this.item.getImage();
-			imageToDisplay = ImageProcessing.overlayImages(imageToDisplay, itemImage);
+			System.out.println(this.item);
+			itemImage = this.item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
+			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageToDisplay, itemImage);
 		}
 		g.drawImage(imageToDisplay,SCALE*x+delta,SCALE*y+delta,null);
 	}

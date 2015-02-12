@@ -5,5 +5,5 @@ import java.awt.image.BufferedImage;
 public interface Item {
 	public boolean action(Avatar avatar);
 
-	public BufferedImage getImage();
+	public BufferedImage getImage(int scale);
 }

@@ -36,7 +36,6 @@ public class MapTest extends JPanel  {
 			}
 
 	public MapTest(){
-		
 		setSize(new Dimension(800,600));
 		setPreferredSize(new Dimension(700, 700));
 		setBackground(Color.BLACK);
@@ -45,19 +44,17 @@ public class MapTest extends JPanel  {
 		map.updateEntityLocation(avatar, new Location(3,3));
 		mv = new MapViewController(map,avatar,frame);
 		image=avatar.getImage();
-		
 	}
 
 	public void paintComponent(Graphics g){
-			int x= map.getLocation(avatar).getX();
-			int y=map.getLocation(avatar).getY();
-			g.setColor(Color.BLACK);
-			g.fillRect(0,0,getWidth(),getHeight());
-			map.draw(g);
-			g.drawImage(image,100*x,100*y,null);
-			g.dispose();
-			repaint();
-			
-			}
+		int x= map.getLocation(avatar).getX();
+		int y=map.getLocation(avatar).getY();
+		g.setColor(Color.BLACK);
+		g.fillRect(0,0,getWidth(),getHeight());
+		map.draw(g);
+		g.drawImage(image,100*x,100*y,null);
+		g.dispose();
+		repaint();
+	}
 			
 	}

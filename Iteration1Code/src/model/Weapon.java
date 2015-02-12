@@ -2,14 +2,15 @@ package model;
 
 public class Weapon extends TakeableItem implements Equipable {
 	private int attack;
-	protected String ITEM_IMAGE = "src/res/img/weapon.png";
 	
 	public Weapon(int attack) {
 		this.attack = attack;
+		this.ITEM_IMAGE = "src/res/img/weapon.png";
 	}
 	
 	public Weapon(int attack, String image) {
 		this.attack = attack;
+		this.ITEM_IMAGE = image;
 	}
 	
 	public boolean action(Avatar avatar) {

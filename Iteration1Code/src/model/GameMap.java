@@ -7,10 +7,12 @@ import java.io.*;
 import javax.imageio.ImageIO;
 
 public class GameMap{
+	//TODO should add a Width and Height attribute to the map to get its size
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
 	private int test;
-	//private HashMap<Item,Location> itemToLocationMap;
+	//I am changing the HashMap to a Array because the Items are not unique Yet
+	private Item[][] items;
 
 
 	public GameMap(){
@@ -26,7 +28,8 @@ public class GameMap{
 		// just set it to a random number size
 		MapBuilder m= new MapBuilder(10,10);
 		map = m.generateMapWithItems();
-		entityToLocationMap=new HashMap<Entity,Location>();
+		entityToLocationMap = new HashMap<Entity,Location>();
+		items = m.getItems();
 		test=0;
 	}
 
