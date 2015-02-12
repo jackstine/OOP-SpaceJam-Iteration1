@@ -19,7 +19,7 @@ public class Inventory extends SlotContainer{
     }
 
     //Use this method to access slots with a point
-    public Slotable<Item> getSlot(Point point){
+    public InventorySlot getSlot(Point point){
         return this.items[point.getX()][point.getY()];
     }
     

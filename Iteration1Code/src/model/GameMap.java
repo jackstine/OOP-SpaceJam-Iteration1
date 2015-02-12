@@ -9,14 +9,14 @@ import javax.imageio.ImageIO;
 public class GameMap{
 	private Tile[][] map;
 	MapBuilder m;
-	//private HashMap<Entity,Location> entityToLocationMap;
+	private HashMap<Entity,Location> entityToLocationMap;
 	//private HashMap<Item,Location> itemToLocationMap;
 
 
 	public GameMap(){
 		m= new MapBuilder();
 		map = m.tileSet();
-		//entityToLocationMap=new HashMap<Entity,Location>();
+		entityToLocationMap=new HashMap<Entity,Location>();
 	}
 
 	public Tile getTile(Location location){
@@ -43,14 +43,14 @@ public class GameMap{
 		return map;
 	}
 
-	public void updateEntityLocation(){
-		
+	public void updateEntityLocation(Entity e, Location loc){
+		entityToLocationMap.put(e,loc);	
 	}
 
 	public void draw(Graphics g){
+		
 		for(int i=0;i<35;i++){
 			for(int j=0;j<35;j++){
-				//player.draw(g);
 				map[i][j].draw(g);
 			}
 		}

@@ -4,10 +4,9 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import utilities.ImageProcessing;
@@ -18,7 +17,7 @@ import model.Slotable;
 import model.Weapon;
 
 
-public class SlotView extends Component{
+public class SlotView extends Component implements Observer{
 	public static final int SLOTIMAGE_HEIGHT = 50;
 	public static final int SLOTIMAGE_WIDTH = 50;
 	public static final int ITEMIMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
@@ -40,61 +39,60 @@ public class SlotView extends Component{
 	
 	public SlotView(Slotable<Item> slot){
 		this.slot = slot;
-		this.setSlotImage();
+		this.setImages();
 		this.point= new Point(0,0);
 	}
 	
 	public SlotView(Slotable<Item> slot,Point pointOfSlot){
 		this.slot = slot;
-		this.setSlotImage();
+		this.setImages();
 		this.point= pointOfSlot;
 	}
 	
+	public void setImages(){
+		this.setSlotImage();
+		this.setItemImage();
+	}
 	public void setSlotImage() {
-		try {
-			this.slotImage = ImageIO.read(new File(INVENTORY_IMAGE));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,this.slotImage);
+		this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_WIDTH,SLOTIMAGE_HEIGHT,INVENTORY_IMAGE);
 	}
 	
 	public void setItemImage(){
-			this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_HEIGHT, ITEMIMAGE_WIDTH, this.itemImage);
+		this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_WIDTH,ITEMIMAGE_HEIGHT, WEAPON_IMAGE);
 	}
 	
 	public void paint(Graphics g){
 		// the point is refractored with the Width and Height, 
 		//  they fill in their respective Grid
 		//  each point is a fill for a Grid
-		int heightLocation = this.point.getX()*SLOTIMAGE_HEIGHT;
-		int widthLocation =  this.point.getY()*SLOTIMAGE_WIDTH;
+		int heightLocation = this.point.getX() * SLOTIMAGE_HEIGHT;
+		int widthLocation =  this.point.getY() * SLOTIMAGE_WIDTH;
 		g.drawImage(this.slotImage, widthLocation , heightLocation , null);
 	}
 	
 	//TODO change to a automatically called and private
 	public void resetImage(){
 		if (this.slot.has()){
-			this.setItemImage();
-			try {
-				this.slotImage = ImageProcessing.overlayImages(this.slotImage,this.itemImage);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			this.setImages();
+			this.slotImage = ImageProcessing.overlayImages(this.slotImage,this.itemImage);
 		}
 		else{
-			this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH,this.slotImage);
+			this.slotImage = ImageProcessing.scaleImage(SLOTIMAGE_WIDTH,SLOTIMAGE_HEIGHT,INVENTORY_IMAGE);
 		}
 	}
 	
 	public Dimension getPreferredSize(){
         if (this.slotImage == null) {
-            return new Dimension(SLOTIMAGE_HEIGHT,SLOTIMAGE_WIDTH);
+            return new Dimension(SLOTIMAGE_WIDTH,SLOTIMAGE_HEIGHT);
        } else {
           return new Dimension(this.slotImage.getWidth(null), slotImage.getHeight(null));
        }
+	}
+	
+	@Override	//just resets the image according to the inventorySlot
+	public void update(Observable arg0, Object arg1) {
+		System.out.println(this.point+"   is being updated");
+		this.resetImage();
 	}
 	
     public static void main(String[] args) {
@@ -114,5 +112,4 @@ public class SlotView extends Component{
         f.pack();
         f.setVisible(true);
     }
-
 }

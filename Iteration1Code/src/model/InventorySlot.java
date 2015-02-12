@@ -1,10 +1,18 @@
 package model;
 
-public class InventorySlot implements Slotable<Item>{
+import java.util.Observable;
+
+import view.SlotView;
+
+public class InventorySlot extends Observable implements Slotable<Item>{
     private Item item;
 
 	//CONSTRUCTORS
 	public InventorySlot(){}
+	
+	public InventorySlot(SlotView view){
+		this.addObserver(view);
+	}
 
 	InventorySlot(Item item){
         this.item = item;
@@ -27,6 +35,8 @@ public class InventorySlot implements Slotable<Item>{
         }
         else{
             this.item = item;
+            this.setChanged();
+            this.notifyObservers();		//notify the Observers, the Views
             return true;
         }
     }
@@ -34,6 +44,8 @@ public class InventorySlot implements Slotable<Item>{
     public Item unequip(){
         Item pointer = this.item;
         this.item = null;
+        this.setChanged();
+        this.notifyObservers();			//notify the Observers,  the Views
         return pointer;
     }
     public Item get(){
