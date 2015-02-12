@@ -7,17 +7,20 @@ import java.io.*;
 import javax.imageio.ImageIO;
 
 public class GameMap{
-	//TODO should add a Width and Height attribute to the map to get its size
+	//TODO create a Generate Map function that the constructor calls
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
 	private int test;
 	//I am changing the HashMap to a Array because the Items are not unique Yet
 	private Item[][] items;
+	private int width;
+	private int height;
 
 
 	public GameMap(){
 		MapBuilder m= new MapBuilder();
 		map = m.generateMap();
+		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
 		test=0;
 	}
@@ -28,11 +31,18 @@ public class GameMap{
 		// just set it to a random number size
 		MapBuilder m= new MapBuilder(10,10);
 		map = m.generateMapWithItems();
+		this.setWidthHeight();
 		entityToLocationMap = new HashMap<Entity,Location>();
 		items = m.getItems();
 		test=0;
 	}
 
+	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
+	private void setWidthHeight(){
+		this.height = map.length*Tile.SCALE;
+		this.width = map[0].length*Tile.SCALE;
+	}
+	
 	public Tile getTile(Location location){
 		int x=location.getX();
 		int y=location.getY();
@@ -52,6 +62,14 @@ public class GameMap{
 		//needs to be added
 	}
 	*/
+	
+	public int getWidth(){
+		return this.width;
+	}
+	
+	public int getHeight(){
+		return this.height;
+	}
 
 	public Tile[][] tileSet(){    //returns two d array of the map tileset
 		return map;

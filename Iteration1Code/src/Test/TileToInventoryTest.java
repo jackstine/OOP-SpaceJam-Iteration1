@@ -5,16 +5,12 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import controller.MapViewController;
-import model.Avatar;
 import model.GameMap;
 import model.Inventory;
-import model.Location;
 import model.Point;
 import model.Weapon;
 import view.InventoryView;
@@ -22,6 +18,7 @@ import view.InventoryView;
 public class TileToInventoryTest extends JPanel {
 	GameMap map;
 	static JFrame frame;
+	InventoryView inventoryView;
 	
 	public TileToInventoryTest(){
 		setSize(new Dimension(800,600));
@@ -29,12 +26,15 @@ public class TileToInventoryTest extends JPanel {
 		setBackground(Color.BLACK);
 		Weapon item = new Weapon(4);
 		map= new GameMap(item);				// putting the item into the game map generates a map with the items
+		Inventory inventory = new Inventory();
+		//its zero because we want to put the inventory in the top right of the map
+		Point pointOfInventory = new Point(map.getWidth(),0);
+		System.out.println(map.getWidth() +"    " + map.getHeight());
+		this.inventoryView = new InventoryView(inventory,pointOfInventory);
 	}
 	
-	public static void setUpFrame(JFrame f, InventoryView inventoryView,TileToInventoryTest map){
-		f.add(inventoryView);
+	public static void setUpFrame(JFrame f,TileToInventoryTest map){
 		f.add(map);
-		inventoryView.repaint();
         f.pack();
         f.repaint();
         f.setVisible(true);
@@ -48,17 +48,15 @@ public class TileToInventoryTest extends JPanel {
 	            System.exit(0);
 	        }
         });
-		Inventory inventory = new Inventory();
-		InventoryView inventoryView = new InventoryView(inventory);
-		TileToInventoryTest gameMap = new TileToInventoryTest();
-		
-		setUpFrame(f,inventoryView,gameMap);
+		TileToInventoryTest gameMapWithItemsInventory = new TileToInventoryTest();
+		setUpFrame(f,gameMapWithItemsInventory);
 	}	
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.BLACK);
-		g.fillRect(0,0,getWidth(),getHeight());
+		g.fillRect(0,0,this.getWidth(),this.getHeight());
 		map.draw(g);
+		inventoryView.paint(g);
 		g.dispose();
 		repaint();
 	}

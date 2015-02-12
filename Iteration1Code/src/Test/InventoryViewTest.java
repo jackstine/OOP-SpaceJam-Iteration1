@@ -21,7 +21,7 @@ public class InventoryViewTest {
 	        }
         });
 		Inventory inventory = new Inventory();
-		InventoryView inventoryView = new InventoryView(inventory);
+		InventoryView inventoryView = new InventoryView(inventory, new Point(0,0));
 		f.add(inventoryView);
 		inventoryView.repaint();
         f.pack();
@@ -38,7 +38,6 @@ public class InventoryViewTest {
 				if (j%2==0){						// just make every other a weapon
 					Point point = new Point(i,j);
 					inventory.equip( point , new Weapon(i+j));
-					System.out.println("Equipping a Weapon of "+(int)(i+j));
 					f.repaint();
 					try {
 						Thread.sleep(TIME);

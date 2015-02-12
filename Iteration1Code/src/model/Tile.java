@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import utilities.ImageProcessing;
 
 public class Tile{
-	private final int SCALE=100;
+	public static final int SCALE=100;
 	private final int OVERLAY_IMAGE_OFFSET = 35;
 	
 	private Terrain terrain;

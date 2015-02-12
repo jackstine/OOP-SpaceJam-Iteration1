@@ -28,14 +28,16 @@ public class SlotView extends Component implements Observer{
 
 	private static final long serialVersionUID = 15475L;
 	
+	private Point pointOnView;					// this is the point that it generates on the view
+												//for SlotView it is the same as the InventoryView PointOnView
+												// it is used to reference the Point at which to draw the Inventory
+												// likewise the slots for the inventory
 	private Point point;
 	private BufferedImage slotImage;
 	private Slotable<Item> slot;
 	private BufferedImage itemImage;
 	
-	//TODO need to change the Slot so that it is taken care of properly in the system
 	//TODO not sure if Slot should be referenced inside the SlotView, or just the point reference to it
-	//TODO need to use Observable to reset the image every time the slot is equipped and unequipped
 	
 	public SlotView(Slotable<Item> slot){
 		this.slot = slot;
@@ -43,10 +45,19 @@ public class SlotView extends Component implements Observer{
 		this.point= new Point(0,0);
 	}
 	
-	public SlotView(Slotable<Item> slot,Point pointOfSlot){
+	public SlotView(Slotable<Item> slot,Point pointOfSlot,Point pointOnView){
+		this.pointOnView = pointOnView;
 		this.slot = slot;
 		this.setImages();
 		this.point= pointOfSlot;
+	}
+	
+	public void setPointOnView(Point point){
+		this.pointOnView = point;
+	}
+	
+	public Point getPointOnView(){
+		return this.pointOnView;
 	}
 	
 	public void setImages(){
@@ -65,12 +76,12 @@ public class SlotView extends Component implements Observer{
 		// the point is refractored with the Width and Height, 
 		//  they fill in their respective Grid
 		//  each point is a fill for a Grid
-		int heightLocation = this.point.getX() * SLOTIMAGE_HEIGHT;
-		int widthLocation =  this.point.getY() * SLOTIMAGE_WIDTH;
+		int heightLocation = this.point.getX() * SLOTIMAGE_HEIGHT + pointOnView.getY();
+		int widthLocation =  this.point.getY() * SLOTIMAGE_WIDTH + pointOnView.getX();
 		g.drawImage(this.slotImage, widthLocation , heightLocation , null);
 	}
 	
-	//TODO change to a automatically called and private
+	//TODO make private method
 	public void resetImage(){
 		if (this.slot.has()){
 			this.setImages();
@@ -91,7 +102,6 @@ public class SlotView extends Component implements Observer{
 	
 	@Override	//just resets the image according to the inventorySlot
 	public void update(Observable arg0, Object arg1) {
-		System.out.println(this.point+"   is being updated");
 		this.resetImage();
 	}
 	
