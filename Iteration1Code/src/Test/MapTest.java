@@ -5,22 +5,26 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import controller.MapViewController;
 import model.GameMap;
-
+import model.Avatar;
 
 public class MapTest extends JPanel  {
 	GameMap map;
+	MapViewController mv;
+	Avatar avatar;
+	static JFrame frame;
+	
 	public static void main(String[] args){
-			
-			MapTest game= new MapTest();
-			JFrame frame= new JFrame();
-			frame.setTitle("Map");
-			frame.add(game);
-			frame.pack();
-			frame.setResizable(false);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setLocationRelativeTo(null);
-			frame.setVisible(true);
+		frame= new JFrame();
+		MapTest mt= new MapTest();
+		frame.setTitle("MapTest");
+		frame.add(mt);
+		frame.pack();
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 			
 			}
 
@@ -30,6 +34,8 @@ public class MapTest extends JPanel  {
 		setPreferredSize(new Dimension(800,600));
 		setBackground(Color.BLACK);
 		map= new GameMap();
+		avatar= new Avatar();
+		mv = new MapViewController(avatar,frame);
 	}
 
 	public void paintComponent(Graphics g){
@@ -37,6 +43,7 @@ public class MapTest extends JPanel  {
 			g.setColor(Color.BLACK);
 			g.fillRect(0,0,getWidth(),getHeight());
 			map.draw(g);
+			avatar.loadImage(g);
 			g.dispose();
 			repaint();
 			

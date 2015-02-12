@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import utilities.ImageProcessing;
 import controller.MapViewController;
 
 public class Avatar extends Entity{
@@ -27,15 +28,10 @@ public class Avatar extends Entity{
 	}
 	public void loadImage(Graphics g)
 	{	
-		try {
-			image=ImageIO.read(new File("src/res/img/sprite.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		image= ImageProcessing.scaleImage(100, 100,"src/res/img/sprite.jpg");
 		int x= location.getX();
 		int y= location.getY();
-		g.drawImage(image,50*x,50*y,null);
+		g.drawImage(image,100*x,100*y,null);
 		
 	}
 	
