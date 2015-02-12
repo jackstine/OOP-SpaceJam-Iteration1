@@ -17,8 +17,9 @@ public class MapViewController{
 	private GameMap map ;
 	public Avatar avatar;
 	//public BufferedImage image;
-//TODO	link with the MapView
+	//TODO	link with the MapView
 	
+	//Map View Controller should NOT have a JFrame
 	public MapViewController(GameMap map, Avatar avatar,JFrame frame){ //added GameMap here
 		frame.addKeyListener(new CharacterKeyboardController());
 		this.avatar = avatar;
