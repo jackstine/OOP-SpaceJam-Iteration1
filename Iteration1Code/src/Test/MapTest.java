@@ -2,18 +2,25 @@ package Test;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
+import java.awt.image.*;
+import java.io.*;
+
+import javax.imageio.ImageIO;
 
 import controller.MapViewController;
 import model.GameMap;
 import model.Avatar;
+import model.Location;
+
 
 public class MapTest extends JPanel  {
 	GameMap map;
 	MapViewController mv;
 	Avatar avatar;
+	Location location; //just to debug;
 	static JFrame frame;
+	BufferedImage image;
 	
 	public static void main(String[] args){
 		frame= new JFrame();
@@ -35,15 +42,20 @@ public class MapTest extends JPanel  {
 		setBackground(Color.BLACK);
 		map= new GameMap();
 		avatar= new Avatar();
-		mv = new MapViewController(avatar,frame);
+		location= new Location(0,0);
+		map.updateEntityLocation(avatar, location);
+		mv = new MapViewController(map,avatar,frame);
+		image=avatar.getImage();
+		
 	}
 
 	public void paintComponent(Graphics g){
-			
+			int x= map.getLocation(avatar).getX();
+			int y=map.getLocation(avatar).getY();
 			g.setColor(Color.BLACK);
 			g.fillRect(0,0,getWidth(),getHeight());
 			map.draw(g);
-			avatar.loadImage(g);
+			g.drawImage(image,100*x,100*y,null);
 			g.dispose();
 			repaint();
 			

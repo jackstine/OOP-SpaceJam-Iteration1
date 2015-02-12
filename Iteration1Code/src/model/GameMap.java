@@ -25,12 +25,12 @@ public class GameMap{
 		return map[x][y];
 	}
 
-	//public Tile getEntityTile(Entity entity){
-	//	Location location= entity.getLocation();
-		//int x=(int)location.getX();
-		//int y=(int)location.getY();
-		//return map[x][y];
-	//}
+	public Tile getEntityTile(Entity entity){
+		Location location= entity.getLocation();
+		int x=(int)location.getX();
+		int y=(int)location.getY();
+		return map[x][y];
+	}
 	/*
 	public Tile getItemTile(Item item){
 		//returns a tile;
@@ -46,6 +46,13 @@ public class GameMap{
 	public void updateEntityLocation(Entity e, Location loc){
 		entityToLocationMap.put(e,loc);	
 	}
+	
+	public Location getLocation(Entity e){
+		return entityToLocationMap.get(e);
+	}
+	
+	
+	
 
 	public void draw(Graphics g){
 		

@@ -17,6 +17,11 @@ public class Point{
         return this.y;
     }
     
+    public void setLocation(int x,int y){
+    	this.x=x;
+    	this.y=y;
+    }
+    
     public String toString(){
     	return "X:"+this.x+" Y:"+this.y;
     }

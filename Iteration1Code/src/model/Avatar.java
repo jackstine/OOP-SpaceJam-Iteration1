@@ -13,7 +13,7 @@ import controller.MapViewController;
 
 public class Avatar extends Entity{
 	private Inventory inventory;
-	private Location location;
+	private Location location;   // I dont think this is needed?
 	private final int INITIAL_X = 0;
 	private final int INITIAL_Y =0;
 	private BufferedImage image;
@@ -22,9 +22,9 @@ public class Avatar extends Entity{
 		this.location = new Location(INITIAL_X,INITIAL_Y);
 		//occupation.initializeStats();
 	}
-	public void move(int x,int y){
+	public void move(int x,int y){ //this is not needed either
 		location.add(x,y);
-		System.out.println(location);
+		//System.out.println(location);
 	}
 	public void loadImage(Graphics g)
 	{	
@@ -33,6 +33,11 @@ public class Avatar extends Entity{
 		int y= location.getY();
 		g.drawImage(image,100*x,100*y,null);
 		
+	}
+	
+	public BufferedImage getImage(){
+		image= ImageProcessing.scaleImage(100, 100,"src/res/img/sprite.jpg");
+		return image;
 	}
 	
 	

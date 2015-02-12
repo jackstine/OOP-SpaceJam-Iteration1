@@ -10,7 +10,7 @@ public class Tile{
 	private Terrain terrain;
 	private Location location;
 	//private Item item;
-	//private Entity entity;
+	private Entity entity;
 	//private AreaEffect areaEffect;
 	//private Decal decal;
 	private final int SCALE=100;
@@ -25,6 +25,10 @@ public class Tile{
 		return this;
 	}
 	*/ 
+	
+	public Location getLocation(){  // can be deleted later. Used for debugging.
+		return location;
+	}
 
 	public boolean isPassable(){
 		return terrain.isPassable();

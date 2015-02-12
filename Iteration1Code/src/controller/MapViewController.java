@@ -2,6 +2,7 @@ package controller;
 
 import model.Avatar;
 import model.GameMap;
+import model.Location;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -18,9 +19,10 @@ public class MapViewController{
 	//public BufferedImage image;
 //TODO	link with the MapView
 	
-	public MapViewController(Avatar avatar,JFrame frame){
+	public MapViewController(GameMap map, Avatar avatar,JFrame frame){ //added GameMap here
 		frame.addKeyListener(new CharacterKeyboardController());
 		this.avatar = avatar;
+		this.map=map;
 		//image=avatar.loadImage();
 		
 		
@@ -33,31 +35,56 @@ public class MapViewController{
 		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println(e.getKeyCode());
+			//System.out.println(e.getKeyCode()); used for debugging
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1){
-				avatar.move(-1,1);
+				int x= map.getLocation(avatar).getX()-1;
+				int y=map.getLocation(avatar).getY()+1;
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
+				
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD2){
-				avatar.move(0,1);
+				int x= map.getLocation(avatar).getX();
+				int y=map.getLocation(avatar).getY()+1;
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
 				
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD3){
-				avatar.move(1, 1);
+				int x= map.getLocation(avatar).getX()+1;
+				int y=map.getLocation(avatar).getY()+1;
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD6){
-				avatar.move(+1, 0);
+				int x= map.getLocation(avatar).getX()+1;
+				int y=map.getLocation(avatar).getY();
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD9){
-				avatar.move(1,-1);
+				int x= map.getLocation(avatar).getX()+1;
+				int y=map.getLocation(avatar).getY()-1;
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD8){
-				avatar.move(0, -1);
+				int x= map.getLocation(avatar).getX();
+				int y=map.getLocation(avatar).getY()-1;
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD7){
-				avatar.move(-1, -1);
+				int x= map.getLocation(avatar).getX()-1;
+				int y=map.getLocation(avatar).getY()-1;
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD4){
-				avatar.move(-1, 0);
+				int x= map.getLocation(avatar).getX()-1;
+				int y=map.getLocation(avatar).getY();
+				map.updateEntityLocation(avatar, new Location(x,y));
+				System.out.println(map.getLocation(avatar).toString());
 			}
 		}
 
