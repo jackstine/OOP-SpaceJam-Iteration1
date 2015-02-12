@@ -3,6 +3,7 @@ package model;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
+
 import javax.imageio.ImageIO;
 
 public class Tile{
@@ -12,6 +13,7 @@ public class Tile{
 	//private Entity entity;
 	//private AreaEffect areaEffect;
 	//private Decal decal;
+	private final int SCALE=100;
 
 	public Tile(Terrain terrain, int x,int y){ //will take more parameters
 		this.terrain=terrain;
@@ -42,7 +44,7 @@ public class Tile{
 		BufferedImage image= terrain.getImage();
 		int x= location.getX();
 		int y= location.getY();
-		g.drawImage(image,50*x,50*y,null);
+		g.drawImage(image,SCALE*x,SCALE*y,null);
 	}
 
 }
