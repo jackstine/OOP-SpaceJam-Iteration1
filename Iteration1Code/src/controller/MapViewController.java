@@ -50,44 +50,44 @@ public class MapViewController{
 			Location avatarLocation = this.getAvatarLocation();
 			//System.out.println(e.getKeyCode()); used for debugging
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 || e.getKeyCode()==KeyEvent.VK_1){
-				avatarLocation.add(SOUTHWEST);
+				//avatarLocation.add(SOUTHWEST);
 				map.setDeltaX((-1)*Tile.SCALE);
 				map.setDeltaY(Tile.SCALE);
 				
 				
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 || e.getKeyCode()==KeyEvent.VK_2){
-				avatarLocation.add(SOUTH);
+				//avatarLocation.add(SOUTH);
 				map.setDeltaX(0);
 				map.setDeltaY(Tile.SCALE);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 || e.getKeyCode()==KeyEvent.VK_3){
-				avatarLocation.add(SOUTHEAST);
+				//avatarLocation.add(SOUTHEAST);
 				map.setDeltaX(Tile.SCALE);
 				map.setDeltaY(Tile.SCALE);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 || e.getKeyCode()==KeyEvent.VK_6){
-				avatarLocation.add(EAST);
+				//avatarLocation.add(EAST);
 				map.setDeltaX(Tile.SCALE);
 				map.setDeltaY(0);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
-				avatarLocation.add(NORTHEAST);
-				map.setDeltaX(Tile.SCALE);
+				//avatarLocation.add(NORTHEAST);
+				map.setDeltaX((-1)*Tile.SCALE);
 				map.setDeltaY((-1)*Tile.SCALE);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
-				avatarLocation.add(NORTH);
+				//avatarLocation.add(NORTH);
 				map.setDeltaX(0);
 				map.setDeltaY((-1)*Tile.SCALE);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
-				avatarLocation.add(NORTHWEST);
+				//avatarLocation.add(NORTHWEST);
 				map.setDeltaX((-1)*Tile.SCALE);
 				map.setDeltaY((-1)*Tile.SCALE);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
-				avatarLocation.add(WEST);
+				//avatarLocation.add(WEST);
 				map.setDeltaX((-1)*Tile.SCALE);
 				map.setDeltaY(0);
 			}

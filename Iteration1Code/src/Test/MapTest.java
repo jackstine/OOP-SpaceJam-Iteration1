@@ -21,8 +21,6 @@ public class MapTest extends JPanel  {
 	Avatar avatar;
 	static JFrame frame;
 	BufferedImage image;
-	private final int MIDDLE=300;
-	
 	
 	public static void main(String[] args){
 		frame= new JFrame();
@@ -54,7 +52,7 @@ public class MapTest extends JPanel  {
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,getWidth(),getHeight());
 		map.draw(g);
-		g.drawImage(image,MIDDLE,MIDDLE,null); //middle of the screen
+		g.drawImage(image,100*x,100*y,null);
 		g.dispose();
 		repaint();
 	}
