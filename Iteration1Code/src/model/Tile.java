@@ -1,10 +1,7 @@
 package model;
 
-import java.awt.*;
-import java.awt.image.*;
-import java.io.*;
-
-import javax.imageio.ImageIO;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import utilities.ImageProcessing;
 
