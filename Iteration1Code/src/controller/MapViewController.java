@@ -3,7 +3,7 @@ package controller;
 import model.Avatar;
 import model.GameMap;
 import model.Location;
-
+import model.Tile;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -55,6 +55,7 @@ public class MapViewController{
 				int y=map.getLocation(avatar).getY()+1;
 				map.updateEntityLocation(avatar, new Location(x,y));
 				System.out.println(map.getLocation(avatar).toString());
+				//map.setD(100); //not complete testing moving map under
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD6){
 				int x= map.getLocation(avatar).getX()+1;
@@ -89,9 +90,9 @@ public class MapViewController{
 		}
 
 		@Override
-		public void keyReleased(KeyEvent arg0) {
+		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
-			
+			//map.setD(0);  //not done
 		}
 
 		@Override

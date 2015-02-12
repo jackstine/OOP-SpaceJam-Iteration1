@@ -10,6 +10,7 @@ public class GameMap{
 	private Tile[][] map;
 	MapBuilder m;
 	private HashMap<Entity,Location> entityToLocationMap;
+	private int test;
 	//private HashMap<Item,Location> itemToLocationMap;
 
 
@@ -17,6 +18,7 @@ public class GameMap{
 		m= new MapBuilder();
 		map = m.tileSet();
 		entityToLocationMap=new HashMap<Entity,Location>();
+		test=0;
 	}
 
 	public Tile getTile(Location location){
@@ -51,14 +53,21 @@ public class GameMap{
 		return entityToLocationMap.get(e);
 	}
 	
+	public void setD(int d){  //adding this to move map under not done
+		test=d;
+	}
+	
+	
 	
 	
 
 	public void draw(Graphics g){
-		
 		for(int i=0;i<35;i++){
 			for(int j=0;j<35;j++){
+				int delta=map[i][j].getDelta();
+				map[i][j].setDelta(delta+test);  //not done
 				map[i][j].draw(g);
+				
 			}
 		}
 	}

@@ -13,7 +13,7 @@ import controller.MapViewController;
 
 public class Avatar extends Entity{
 	private Inventory inventory;
-	private Location location;   // I dont think this is needed?
+	private Location location;   // I dont think this is needed? -Juan
 	private final int INITIAL_X = 0;
 	private final int INITIAL_Y =0;
 	private BufferedImage image;
@@ -22,7 +22,7 @@ public class Avatar extends Entity{
 		this.location = new Location(INITIAL_X,INITIAL_Y);
 		//occupation.initializeStats();
 	}
-	public void move(int x,int y){ //this is not needed either
+	public void move(int x,int y){ //this is not needed either -Juan
 		location.add(x,y);
 		//System.out.println(location);
 	}

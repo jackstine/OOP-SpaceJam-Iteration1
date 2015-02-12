@@ -14,11 +14,11 @@ import model.Avatar;
 import model.Location;
 
 
+
 public class MapTest extends JPanel  {
 	GameMap map;
 	MapViewController mv;
 	Avatar avatar;
-	Location location; //just to debug;
 	static JFrame frame;
 	BufferedImage image;
 	
@@ -38,12 +38,11 @@ public class MapTest extends JPanel  {
 	public MapTest(){
 		
 		setSize(new Dimension(800,600));
-		setPreferredSize(new Dimension(800,600));
+		setPreferredSize(new Dimension(700, 700));
 		setBackground(Color.BLACK);
 		map= new GameMap();
 		avatar= new Avatar();
-		location= new Location(0,0);
-		map.updateEntityLocation(avatar, location);
+		map.updateEntityLocation(avatar, new Location(3,3));
 		mv = new MapViewController(map,avatar,frame);
 		image=avatar.getImage();
 		
