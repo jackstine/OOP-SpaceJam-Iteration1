@@ -26,8 +26,6 @@ public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor> {
         Armor armor = new Armor(15);
         //slot.equip(item);
         slot.equip(armor);
-        System.out.println(stat);	//Should print out 15
         slot.unequip();
-        System.out.println(stat);	//Should print out 0
     }
 }

@@ -13,7 +13,6 @@ public abstract class TakeableItem implements Item {
 	
 	//TODO make sure that images of ITEMs are in a MAP
 	public BufferedImage getImage(int scale){
-		System.out.println(ITEM_IMAGE + "Printing the image");
 		return ImageProcessing.scaleImage(scale, scale, ITEM_IMAGE);
 	}
 }

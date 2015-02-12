@@ -3,6 +3,8 @@ package Test;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -11,7 +13,10 @@ import javax.swing.JPanel;
 
 import model.GameMap;
 import model.Inventory;
+import model.Item;
+import model.Location;
 import model.Point;
+import model.Tile;
 import model.Weapon;
 import view.InventoryView;
 
@@ -21,8 +26,8 @@ public class TileToInventoryTest extends JPanel {
 	InventoryView inventoryView;
 	
 	public TileToInventoryTest(){
-		setSize(new Dimension(800,600));
-		setPreferredSize(new Dimension(700, 700));
+		setSize(new Dimension(1400,800));
+		setPreferredSize(new Dimension(1400, 800));
 		setBackground(Color.BLACK);
 		Weapon item = new Weapon(4);
 		map= new GameMap(item);				// putting the item into the game map generates a map with the items
@@ -31,6 +36,7 @@ public class TileToInventoryTest extends JPanel {
 		Point pointOfInventory = new Point(map.getWidth(),0);
 		System.out.println(map.getWidth() +"    " + map.getHeight());
 		this.inventoryView = new InventoryView(inventory,pointOfInventory);
+		this.addMouseListener(new InventoryListener());
 	}
 	
 	public static void setUpFrame(JFrame f,TileToInventoryTest map){
@@ -41,7 +47,6 @@ public class TileToInventoryTest extends JPanel {
 	}
 	
 	public static void main(String[] args){
-		
         JFrame f = new JFrame("Item on Tile to Inventory Test");
         f.addWindowListener(new WindowAdapter(){
 	        public void windowClosing(WindowEvent e) {
@@ -50,7 +55,7 @@ public class TileToInventoryTest extends JPanel {
         });
 		TileToInventoryTest gameMapWithItemsInventory = new TileToInventoryTest();
 		setUpFrame(f,gameMapWithItemsInventory);
-	}	
+	}
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.BLACK);
@@ -59,5 +64,42 @@ public class TileToInventoryTest extends JPanel {
 		inventoryView.paint(g);
 		g.dispose();
 		repaint();
+	}
+	
+	public class InventoryListener implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			int tileY = e.getY()/Tile.SCALE;
+			int tileX = e.getX()/Tile.SCALE;
+			Location tileLocation = new Location(tileX,tileY);
+			
+			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
+			Item droppedItem = map.getTile(tileLocation).getItem();
+			if (inventoryView.getInventory().findAndEquip(droppedItem)){
+				map.getTile(tileLocation).dropItem();
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			
+		}
+		
 	}
 }

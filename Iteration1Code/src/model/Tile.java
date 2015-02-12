@@ -68,6 +68,12 @@ public class Tile{
 		this.item = item;
 	}
 	
+	public Item dropItem(){
+		Item temp = this.item;
+		this.item = null;
+		return temp;
+	}
+	
 	public Item getItem(){
 		return this.item;
 	}
@@ -79,7 +85,6 @@ public class Tile{
 		int y= location.getY();
 		//if has Item overlay
 		if (item != null){
-			System.out.println(this.item);
 			itemImage = this.item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
 			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageToDisplay, itemImage);
 		}

@@ -14,8 +14,6 @@ public class WeaponSlot extends BufferSlot<Weapon>{
         Weapon weapon = new Weapon(15);
         //slot.equip(item);
         slot.equip(weapon);
-        System.out.println(stat);	//Should print out 15
         slot.unequip();
-        System.out.println(stat);	//Should print out 0
     }
 }

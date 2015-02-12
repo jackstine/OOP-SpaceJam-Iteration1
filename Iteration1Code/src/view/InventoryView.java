@@ -25,7 +25,6 @@ public class InventoryView extends JPanel{
 		this.inventory = inventory;
 		this.pointOnView = pointOnView;
 		this.setInventoryView();
-		this.addMouseListener(new InventoryListener());
 	}
 	
 	private void setInventoryView(){ 
@@ -38,6 +37,11 @@ public class InventoryView extends JPanel{
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
 			}
 		}
+	}
+	
+	
+	public Inventory getInventory(){
+		return this.inventory;
 	}
 	
 	public Dimension getPreferredSize(){
@@ -59,34 +63,4 @@ public class InventoryView extends JPanel{
 	public Point getPointOnView(Point point){
 		return this.pointOnView;
 	}
-	
-	public class InventoryListener implements MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
-		
-	}
-
 }

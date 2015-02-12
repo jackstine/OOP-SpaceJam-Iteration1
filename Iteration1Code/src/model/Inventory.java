@@ -33,6 +33,21 @@ public class Inventory extends SlotContainer{
         return items;
     }
     
+    public boolean findAndEquip(Item item){
+        for (int i = 0; i < ROW; i++){
+            for (int j = 0; j < COL; j++){
+                if (items[i][j].has()){
+                	continue;
+                }
+                else{
+                	items[i][j].equip(item);
+                	return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     public final Item get(Point point){
         return this.getSlot(point).get();
     }
