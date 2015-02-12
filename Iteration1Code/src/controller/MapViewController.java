@@ -48,48 +48,75 @@ public class MapViewController{
 		@Override
 		public void keyPressed(KeyEvent e) {
 			Location avatarLocation = this.getAvatarLocation();
+			Location temp= new Location(avatarLocation.getX(),avatarLocation.getY());
 			//System.out.println(e.getKeyCode()); used for debugging
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 || e.getKeyCode()==KeyEvent.VK_1){
+				if(map.getTile(temp.addLocation(-1,1)).isPassable()){
 				avatarLocation.add(SOUTHWEST);
 				map.setDeltaX((-1)*Tile.SCALE);
 				map.setDeltaY(Tile.SCALE);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 				
 				
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 || e.getKeyCode()==KeyEvent.VK_2){
+				
+				if(map.getTile(temp.addLocation(0,1)).isPassable()){
 				avatarLocation.add(SOUTH);
 				map.setDeltaX(0);
 				map.setDeltaY(Tile.SCALE);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 || e.getKeyCode()==KeyEvent.VK_3){
+				if(map.getTile(temp.addLocation(1,1)).isPassable()){
 				avatarLocation.add(SOUTHEAST);
 				map.setDeltaX(Tile.SCALE);
 				map.setDeltaY(Tile.SCALE);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 || e.getKeyCode()==KeyEvent.VK_6){
+				if(map.getTile(temp.addLocation(1,0)).isPassable()){
 				avatarLocation.add(EAST);
 				map.setDeltaX(Tile.SCALE);
 				map.setDeltaY(0);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
+				if(map.getTile(temp.addLocation(1,-1)).isPassable()){
 				avatarLocation.add(NORTHEAST);
-				map.setDeltaX((-1)*Tile.SCALE);
+				map.setDeltaX(Tile.SCALE); //changed this
 				map.setDeltaY((-1)*Tile.SCALE);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
+				if(map.getTile(temp.addLocation(0,-1)).isPassable()==true){
 				avatarLocation.add(NORTH);
 				map.setDeltaX(0);
 				map.setDeltaY((-1)*Tile.SCALE);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
+				if(map.getTile(temp.addLocation(-1,-1)).isPassable()){
 				avatarLocation.add(NORTHWEST);
 				map.setDeltaX((-1)*Tile.SCALE);
 				map.setDeltaY((-1)*Tile.SCALE);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
+				
+				if(map.getTile(temp.addLocation(-1,0)).isPassable()){
 				avatarLocation.add(WEST);
 				map.setDeltaX((-1)*Tile.SCALE);
 				map.setDeltaY(0);
+				}
+				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
 			map.updateEntityLocation(avatar, avatarLocation);
 			System.out.println(map.getLocation(avatar).toString());

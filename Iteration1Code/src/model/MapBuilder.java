@@ -23,9 +23,9 @@ public class MapBuilder{
 		this.map= new Tile[this.height][this.width]; //just a test of the map
 		for(int i=0;i<this.width;i++){
 			for(int j=0;j<this.height;j++){
-				this.map[j][i]=new Tile(new DesertTerrain(),i,j);
+				this.map[i][j]=new Tile(new DesertTerrain(),i,j);
 				if((i==1 && j!= 7) || (j>-1 && j<3)){
-					this.map[j][i].setTerrain(new RadioactiveWasteTerrain());
+					this.map[i][j].setTerrain(new RadioactiveWasteTerrain());
 				}
 			}
 		}
