@@ -28,7 +28,7 @@ public class Avatar extends Entity{
 	public void loadImage(Graphics g)
 	{	
 		try {
-			image=ImageIO.read(new File("src/res/img/hunter_sprites.png"));
+			image=ImageIO.read(new File("src/res/img/sprite.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
