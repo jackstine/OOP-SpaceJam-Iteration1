@@ -4,13 +4,25 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import model.Point;
 
 public class ImageProcessing {
+	
+	public static BufferedImage getImage(String filename){
+		try {
+			return ImageIO.read(new File(filename));
+		} catch (IOException e) {
+			System.out.println("THE IMAGE DOES NOT EXIST OR SOMETHING ELSE");
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public static BufferedImage scaleImage(int width, int height, String filename) {
 	    BufferedImage returnImage = null;

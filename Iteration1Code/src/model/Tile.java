@@ -6,10 +6,12 @@ import java.io.*;
 
 import javax.imageio.ImageIO;
 
+import utilities.ImageProcessing;
+
 public class Tile{
 	private Terrain terrain;
 	private Location location;
-	//private Item item;
+	private Item item;
 	private Entity entity;
 	//private AreaEffect areaEffect;
 	//private Decal decal;
@@ -54,10 +56,16 @@ public class Tile{
 	}
 
 	public void draw(Graphics g){
-		BufferedImage image= terrain.getImage();
+		BufferedImage imageToDisplay = terrain.getImage();
+		BufferedImage itemImage;
 		int x= location.getX();
 		int y= location.getY();
-		g.drawImage(image,SCALE*x+delta,SCALE*y+delta,null);
+		//if has Item overlay
+		if (item != null){
+			itemImage = this.item.getImage();
+			imageToDisplay = ImageProcessing.overlayImages(imageToDisplay, itemImage);
+		}
+		g.drawImage(imageToDisplay,SCALE*x+delta,SCALE*y+delta,null);
 	}
 
 }

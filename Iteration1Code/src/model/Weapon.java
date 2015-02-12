@@ -2,6 +2,7 @@ package model;
 
 public class Weapon extends TakeableItem implements Equipable {
 	private int attack;
+	protected String ITEM_IMAGE = "src/res/img/weapon.png";
 	
 	public Weapon(int attack) {
 		this.attack = attack;
@@ -19,7 +20,6 @@ public class Weapon extends TakeableItem implements Equipable {
 	public int getBonus() {
 		return this.attack;
 	}
-	
 	public String toString(){
 		return "Weapon with Attack of "+this.attack;
 	}

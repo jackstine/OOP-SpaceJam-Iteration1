@@ -2,6 +2,8 @@ package model;
 
 public class Armor extends TakeableItem implements Equipable {
 	protected int armor;
+	//TODO make sure that Items are linked to there respective Map
+	protected String ITEM_IMAGE = "src/res/img/armor.png";
 	
 	public Armor(){}
 	
@@ -11,11 +13,12 @@ public class Armor extends TakeableItem implements Equipable {
 	
 	//TODO thought we were going to put images in a MAP??
 	public Armor(int armor, String image) {
-		
+		this.armor = armor;
+		this.ITEM_IMAGE = image;
 	}
 	
 	public boolean action(Avatar avatar) {
-		//TODO implement
+		//TODO
 		return true;
 	}
 	
