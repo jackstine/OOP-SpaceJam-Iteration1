@@ -35,6 +35,7 @@ public class InventoryView extends JPanel{
 				Point pointOfSlot = new Point(i,j);
 				this.slots[i][j] = new SlotView( this.inventory.getSlot(pointOfSlot) , pointOfSlot, this.pointOnView );
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
+				
 			}
 		}
 	}

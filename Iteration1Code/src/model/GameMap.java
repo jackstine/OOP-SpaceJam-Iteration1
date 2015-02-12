@@ -49,7 +49,7 @@ public class GameMap{
 	public Tile getTile(Location location){
 		int x=location.getX();
 		int y=location.getY();
-		return map[x][y];
+		return map[y][x];
 	}
 
 	public Tile getEntityTile(Entity entity){

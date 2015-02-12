@@ -71,6 +71,7 @@ public class Tile{
 	public Item dropItem(){
 		Item temp = this.item;
 		this.item = null;
+		this.updateImage();
 		return temp;
 	}
 	
@@ -78,16 +79,26 @@ public class Tile{
 		return this.item;
 	}
 	
-	public void draw(Graphics g){
+	private BufferedImage updateImage(){
 		BufferedImage imageToDisplay = terrain.getImage();
 		BufferedImage itemImage;
-		int x= location.getX();
-		int y= location.getY();
-		//if has Item overlay
 		if (item != null){
 			itemImage = this.item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
 			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageToDisplay, itemImage);
 		}
+		return imageToDisplay;
+	}
+	
+	public String toString(){
+		return "PRInting the image at ("+this.location.getX()+","+this.location.getY()+")";
+	}
+	
+	public void draw(Graphics g){
+		int x= location.getX();
+		int y= location.getY();
+		//if has Item overlay
+		BufferedImage imageToDisplay = this.updateImage();
+		//System.out.println(this+imageToDisplay.toString());
 		g.drawImage(imageToDisplay,SCALE*x+deltaX,SCALE*y+deltaY,null);
 	}
 

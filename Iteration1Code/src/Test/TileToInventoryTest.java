@@ -24,8 +24,11 @@ public class TileToInventoryTest extends JPanel {
 	GameMap map;
 	static JFrame frame;
 	InventoryView inventoryView;
+	TileToInventoryTest tile;
 	
-	public TileToInventoryTest(){
+	public TileToInventoryTest(JFrame frame){
+		this.tile = this;
+		this.frame = frame;
 		setSize(new Dimension(1400,800));
 		setPreferredSize(new Dimension(1400, 800));
 		setBackground(Color.BLACK);
@@ -53,7 +56,7 @@ public class TileToInventoryTest extends JPanel {
 	            System.exit(0);
 	        }
         });
-		TileToInventoryTest gameMapWithItemsInventory = new TileToInventoryTest();
+		TileToInventoryTest gameMapWithItemsInventory = new TileToInventoryTest(f);
 		setUpFrame(f,gameMapWithItemsInventory);
 	}
 	
@@ -76,9 +79,14 @@ public class TileToInventoryTest extends JPanel {
 			
 			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
 			Item droppedItem = map.getTile(tileLocation).getItem();
+			System.out.println(droppedItem+"  "+tileLocation);
 			if (inventoryView.getInventory().findAndEquip(droppedItem)){
 				map.getTile(tileLocation).dropItem();
+				tile.repaint();
+				frame.repaint();
 			}
+			tile.repaint();
+			frame.repaint();
 		}
 
 		@Override

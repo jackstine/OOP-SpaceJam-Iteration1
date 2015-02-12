@@ -20,8 +20,9 @@ import model.Weapon;
 public class SlotView extends Component implements Observer{
 	public static final int SLOTIMAGE_HEIGHT = 50;
 	public static final int SLOTIMAGE_WIDTH = 50;
-	public static final int ITEMIMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
-	public static final int ITEMIMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
+	public static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
+	public static final int ITEM_IMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
+	public static final int ITEM_IMAGE_SCALE = (ITEM_IMAGE_HEIGHT + ITEM_IMAGE_WIDTH) /2;
 	
 	private final String WEAPON_IMAGE = "src/res/img/weapon.png";
 	private final String INVENTORY_IMAGE = "src/res/img/brown-InventorySlot.png";
@@ -69,7 +70,9 @@ public class SlotView extends Component implements Observer{
 	}
 	
 	public void setItemImage(){
-		this.itemImage = ImageProcessing.scaleImage(ITEMIMAGE_WIDTH,ITEMIMAGE_HEIGHT, WEAPON_IMAGE);
+		if (slot.has()){
+			this.itemImage = this.slot.get().getImage(ITEM_IMAGE_SCALE);
+		}
 	}
 	
 	public void paint(Graphics g){
