@@ -1,10 +1,13 @@
 package model;
 
+import java.util.HashMap;
+
 
 public class MapBuilder{
 	protected Tile[][] map;
 	protected int width;
 	protected int height;
+	protected Item[][] items;
 
 	public MapBuilder(int width, int height){
 		this.width = width;
@@ -31,17 +34,26 @@ public class MapBuilder{
 	
 	public Tile[][] generateMapWithItems(){
 		this.map= new Tile[this.height][this.width]; //just a test of the map
+		this.items = new Item[this.height][this.width];
 		for(int i=0;i<this.width;i++){
 			for(int j=0;j<this.height;j++){
 				this.map[j][i] = new Tile(new DesertTerrain(),i,j);
 				if (j%2==0){
-					this.map[j][i].setItem(new Weapon(i+j));
+					Weapon weapon = new Weapon(i+j);
+					this.map[j][i].setItem(weapon);
+					this.items[j][i] = weapon;
 				}
 				else{
-					this.map[j][i].setItem(new Armor(i+j));
+					Armor armor = new Armor(i+j);
+					this.map[j][i].setItem(armor);
+					this.items[j][i] = armor;
 				}
 			}
 		}
 		return this.map;
+	}
+	
+	public Item[][] getItems(){
+		return this.items;
 	}
 }

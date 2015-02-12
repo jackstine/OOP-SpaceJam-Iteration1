@@ -2,13 +2,13 @@ package model;
 
 public class Armor extends TakeableItem implements Equipable {
 	protected int armor;
-	//TODO make sure that Items are linked to there respective Map
-	protected String ITEM_IMAGE = "src/res/img/armor.png";
+
 	
 	public Armor(){}
 	
 	public Armor(int armor) {
 		this.armor = armor;
+		ITEM_IMAGE = "src/res/img/armor.png";
 	}
 	
 	//TODO thought we were going to put images in a MAP??
