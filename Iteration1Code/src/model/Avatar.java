@@ -22,8 +22,8 @@ public class Avatar extends Entity{
 		this.location = new Location(INITIAL_X,INITIAL_Y);
 		//occupation.initializeStats();
 	}
-	public void move(int x,int y){
-		location.add(x,y);
+	public void move(Point point){
+		location.add(point);
 		System.out.println(location);
 	}
 	public void loadImage(Graphics g)

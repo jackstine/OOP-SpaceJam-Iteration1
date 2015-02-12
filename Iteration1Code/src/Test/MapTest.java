@@ -17,14 +17,19 @@ public class MapTest extends JPanel  {
 	
 	public static void main(String[] args){
 		frame= new JFrame();
-		MapTest mt= new MapTest();
+		MapTest mapTest = new MapTest();
 		frame.setTitle("MapTest");
-		frame.add(mt);
+		frame.add(mapTest);
 		frame.pack();
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		
+		while(true){
+			frame.repaint();
+			mapTest.repaint();
+		}
 			
 			}
 

@@ -2,6 +2,7 @@ package controller;
 
 import model.Avatar;
 import model.GameMap;
+import model.Point;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -28,36 +29,42 @@ public class MapViewController{
 	
 	
 	public class CharacterKeyboardController implements KeyListener{
-
+		private final Point NORTH = new Point(0,1);
+		private final Point SOUTH = new Point(0,-1);
+		private final Point WEST = new Point(-1,0);
+		private final Point EAST = new Point(1,0);
+		private final Point NORTHEAST = new Point(1,1);
+		private final Point SOUTHEAST = new Point(1,-1);
+		private final Point NORTHWEST = new Point(-1,1);
+		private final Point SOUTHWEST = new Point(-1,-1);
 	
 		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			System.out.println(e.getKeyCode());
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1){
-				avatar.move(-1,1);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 && e.getKeyCode()==KeyEvent.VK_1){
+				avatar.move(SOUTHWEST);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD2){
-				avatar.move(0,1);
-				
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 && e.getKeyCode()==KeyEvent.VK_2){
+				avatar.move(SOUTH);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD3){
-				avatar.move(1, 1);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 && e.getKeyCode()==KeyEvent.VK_3){
+				avatar.move(SOUTHEAST);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD6){
-				avatar.move(+1, 0);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 && e.getKeyCode()==KeyEvent.VK_6){
+				avatar.move(EAST);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD9){
-				avatar.move(1,-1);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 && e.getKeyCode()==KeyEvent.VK_9){
+				avatar.move(NORTHEAST);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD8){
-				avatar.move(0, -1);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 && e.getKeyCode()==KeyEvent.VK_8){
+				avatar.move(NORTH);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD7){
-				avatar.move(-1, -1);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 && e.getKeyCode()==KeyEvent.VK_7){
+				avatar.move(NORTHWEST);
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD4){
-				avatar.move(-1, 0);
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 && e.getKeyCode()==KeyEvent.VK_4){
+				avatar.move(WEST);
 			}
 		}
 

@@ -6,9 +6,13 @@ public class Location extends Point{
 		super(x,y);
 	}
 	public void add(int x,int y){
-		this.x=this.x+x;
-		this.y=this.y+y;
-		
+		this.x += x;
+		this.y += y;
+	}
+	
+	public void add(Point point){
+		this.x += point.getX();
+		this.y += point.getY();
 	}
 	
 	public String toString()
