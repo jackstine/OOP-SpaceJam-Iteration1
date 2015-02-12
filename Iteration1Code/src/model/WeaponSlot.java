@@ -1,10 +1,11 @@
 package model;
 
 public class WeaponSlot extends BufferSlot<Weapon>{
-	WeaponSlot(OffensiveRating stat){
-		addObserver(stat);
+	public WeaponSlot(DerivedStat offensiveRating){
+		addObserver(offensiveRating);
 	}
-	WeaponSlot(){}
+	
+	public WeaponSlot(){}
 
     public static void main(String[] args){
         WeaponSlot slot = new WeaponSlot();

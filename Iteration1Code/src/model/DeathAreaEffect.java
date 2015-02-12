@@ -1,7 +1,8 @@
 package model;
 
 public class DeathAreaEffect implements AreaEffect{
+	
 	public void apply(Entity entity){
-		entity.setLives(entity.getStatValue("Lives") - 1);
+		EffectApplication.apply(entity, this);
 	}
 }

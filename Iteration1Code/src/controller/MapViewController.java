@@ -50,7 +50,7 @@ public class MapViewController{
 		public void keyPressed(KeyEvent e) {
 			Location avatarLocation = this.getAvatarLocation();
 			//System.out.println(e.getKeyCode()); used for debugging
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 && e.getKeyCode()==KeyEvent.VK_1){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 || e.getKeyCode()==KeyEvent.VK_1){
 				int x= map.getLocation(avatar).getX()-1;
 				int y=map.getLocation(avatar).getY()+1;
 				avatarLocation.add(SOUTHWEST);
@@ -58,7 +58,7 @@ public class MapViewController{
 				System.out.println(map.getLocation(avatar).toString());
 				
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 && e.getKeyCode()==KeyEvent.VK_2){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 || e.getKeyCode()==KeyEvent.VK_2){
 				int x= map.getLocation(avatar).getX();
 				int y=map.getLocation(avatar).getY()+1;
 				avatarLocation.add(SOUTH);
@@ -66,7 +66,7 @@ public class MapViewController{
 				System.out.println(map.getLocation(avatar).toString());
 				
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 && e.getKeyCode()==KeyEvent.VK_3){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 || e.getKeyCode()==KeyEvent.VK_3){
 				int x= map.getLocation(avatar).getX()+1;
 				int y=map.getLocation(avatar).getY()+1;
 				avatarLocation.add(SOUTHEAST);
@@ -74,35 +74,35 @@ public class MapViewController{
 				System.out.println(map.getLocation(avatar).toString());
 				//map.setD(100); //not complete testing moving map under
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 && e.getKeyCode()==KeyEvent.VK_6){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 || e.getKeyCode()==KeyEvent.VK_6){
 				int x= map.getLocation(avatar).getX()+1;
 				int y=map.getLocation(avatar).getY();
 				avatarLocation.add(EAST);
 				map.updateEntityLocation(avatar, new Location(x,y));
 				System.out.println(map.getLocation(avatar).toString());
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 && e.getKeyCode()==KeyEvent.VK_9){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
 				int x= map.getLocation(avatar).getX()+1;
 				int y=map.getLocation(avatar).getY()-1;
 				avatarLocation.add(NORTHEAST);
 				map.updateEntityLocation(avatar, new Location(x,y));
 				System.out.println(map.getLocation(avatar).toString());
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 && e.getKeyCode()==KeyEvent.VK_8){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
 				int x= map.getLocation(avatar).getX();
 				int y=map.getLocation(avatar).getY()-1;
 				avatarLocation.add(NORTH);
 				map.updateEntityLocation(avatar, new Location(x,y));
 				System.out.println(map.getLocation(avatar).toString());
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 && e.getKeyCode()==KeyEvent.VK_7){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
 				int x= map.getLocation(avatar).getX()-1;
 				int y=map.getLocation(avatar).getY()-1;
 				avatarLocation.add(NORTHWEST);
 				map.updateEntityLocation(avatar, new Location(x,y));
 				System.out.println(map.getLocation(avatar).toString());
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 && e.getKeyCode()==KeyEvent.VK_4){
+			if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
 				int x= map.getLocation(avatar).getX()-1;
 				int y=map.getLocation(avatar).getY();
 				avatarLocation.add(WEST);

@@ -2,24 +2,24 @@ package model;
 
 public class EffectApplication {
 	
-	public static void apply(Entity e, DeathAreaEffect af) {
+	public static void apply(Entity entity, DeathAreaEffect areaEffect) {
 		// DeathAoE affects Entity here
-		e.setStatValue("Lives", e.getStatValue("Lives") - 1);
+		entity.setStatValue("Lives", entity.getStatValue("Lives") - 1);
 	}
 	
-	public static void apply(Entity e, DamageAreaEffect af) {
+	public static void apply(Entity entity, DamageAreaEffect areaEffect) {
 		// DamageAoE affects Entity here
-		e.setStatValue("Life", (int)(e.getStatValue("Life") * (1 - af.getPercentDamage())));
+		entity.setStatValue("Life", (int)(entity.getStatValue("Life") * (1 - areaEffect.getPercentDamage())));
 	}
 	
-	public static void apply(Entity e, ExperienceAreaEffect af) {
+	public static void apply(Entity entity, ExperienceAreaEffect areaEffect) {
 		// ExperienceAoE affects Entity here
-		e.setStatValue("Experience", af.getExperience());
+		entity.setStatValue("Experience", areaEffect.getExperience());
 	}
 	
-	public static void apply(Entity e, HealingAreaEffect af) {
+	public static void apply(Entity entity, HealingAreaEffect areaEffect) {
 		// HealingAoE affects Entity here
-		e.setStatValue("Life", (int)(e.getStatValue("Life") * (1 + af.getPercentHealth())));
+		entity.setStatValue("Life", (int)(entity.getStatValue("Life") * (1 + areaEffect.getPercentHealth())));
 	}
 
 }

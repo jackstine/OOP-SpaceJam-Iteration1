@@ -1,10 +1,12 @@
 package model;
 
 public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor> {
-    ArmorSlot(ArmorRating stat){
-    	this.addObserver(stat);
+    
+	public ArmorSlot(DerivedStat armorRating){
+    	this.addObserver(armorRating);
     }
-    ArmorSlot(){}
+    
+	public ArmorSlot(){}
     
     
     
