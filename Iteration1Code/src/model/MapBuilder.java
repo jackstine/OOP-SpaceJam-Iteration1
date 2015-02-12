@@ -2,24 +2,46 @@ package model;
 
 
 public class MapBuilder{
-	Tile[][] map;
+	protected Tile[][] map;
+	protected int width;
+	protected int height;
 
+	public MapBuilder(int width, int height){
+		this.width = width;
+		this.height = height;
+	}
+	
 	public MapBuilder(){
-		map= new Tile[35][35]; //just a test of the map
-		
-		for(int i=0;i<35;i++){
-			for(int j=0;j<35;j++){
-				map[j][i]=new Tile(new DesertTerrain(),i,j);
+		this.width = 35;
+		this.height = 35;
+	}
+	
+	public Tile[][] generateMap(){
+		this.map= new Tile[this.height][this.width]; //just a test of the map
+		for(int i=0;i<this.width;i++){
+			for(int j=0;j<this.height;j++){
+				this.map[j][i]=new Tile(new DesertTerrain(),i,j);
 				if((i==1 && j!= 7) || (j>-1 && j<3)){
-					map[j][i].setTerrain(new RadioactiveWasteTerrain());
+					this.map[j][i].setTerrain(new RadioactiveWasteTerrain());
 				}
 			}
 		}
+		return this.map;
 	}
-
-	public Tile[][] tileSet(){
-		return map;
+	
+	public Tile[][] generateMapWithItems(){
+		this.map= new Tile[this.height][this.width]; //just a test of the map
+		for(int i=0;i<this.width;i++){
+			for(int j=0;j<this.height;j++){
+				this.map[j][i] = new Tile(new DesertTerrain(),i,j);
+				if (j%2==0){
+					this.map[j][i].setItem(new Weapon(i+j));
+				}
+				else{
+					this.map[j][i].setItem(new Armor(i+j));
+				}
+			}
+		}
+		return this.map;
 	}
-
-
 }

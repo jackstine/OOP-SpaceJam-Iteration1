@@ -52,6 +52,14 @@ public class Tile{
 		this.delta+=delta;
 	}
 
+	public void setItem(Item item){
+		this.item = item;
+	}
+	
+	public Item getItem(){
+		return this.item;
+	}
+	
 	public void draw(Graphics g){
 		BufferedImage imageToDisplay = terrain.getImage();
 		BufferedImage itemImage;

@@ -8,15 +8,24 @@ import javax.imageio.ImageIO;
 
 public class GameMap{
 	private Tile[][] map;
-	MapBuilder m;
 	private HashMap<Entity,Location> entityToLocationMap;
 	private int test;
 	//private HashMap<Item,Location> itemToLocationMap;
 
 
 	public GameMap(){
-		m= new MapBuilder();
-		map = m.tileSet();
+		MapBuilder m= new MapBuilder();
+		map = m.generateMap();
+		entityToLocationMap=new HashMap<Entity,Location>();
+		test=0;
+	}
+	
+	// I put a item in it, it will generate the Item GameMap
+	//TODO this is just for practicing
+	public GameMap(Item item){
+		// just set it to a random number size
+		MapBuilder m= new MapBuilder(10,10);
+		map = m.generateMapWithItems();
 		entityToLocationMap=new HashMap<Entity,Location>();
 		test=0;
 	}
@@ -56,14 +65,10 @@ public class GameMap{
 	public void setD(int d){  //adding this to move map under not done
 		test=d;
 	}
-	
-	
-	
-	
 
 	public void draw(Graphics g){
-		for(int i=0;i<35;i++){
-			for(int j=0;j<35;j++){
+		for(int i=0;i<map.length;i++){
+			for(int j=0;j<map[i].length;j++){
 				int delta=map[i][j].getDelta();
 				map[i][j].setDelta(delta+test);  //not done
 				map[i][j].draw(g);
