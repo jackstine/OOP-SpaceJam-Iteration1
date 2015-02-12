@@ -49,7 +49,7 @@ public class ViewController {
 		views.put("Game", inGame.getView());
 			
 		previous = null;
-		current = views.get("Main");
+		current = views.get("Test");
 		
 		frame.setFocusable(true);
 		frame.setLayout(new FlowLayout());
