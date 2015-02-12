@@ -23,10 +23,10 @@ public class MapBuilder{
 		this.map= new Tile[this.height][this.width]; //just a test of the map
 		for(int i=0;i<this.width;i++){
 			for(int j=0;j<this.height;j++){
-				this.map[i][j]=new Tile(new DesertTerrain(),i,j);
+				this.map[i][j]=new Tile(new DesertTerrain(),j,i);
 				if((i==1 && j!= 7) || (j>-1 && j<3)){
-					this.map[i][j].setTerrain(new RadioactiveWasteTerrain());
-				}
+						this.map[i][j].setTerrain(new RadioactiveWasteTerrain());
+					}
 			}
 		}
 		return this.map;
