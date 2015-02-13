@@ -8,7 +8,4 @@ public abstract class Terrain {
 
 	public abstract boolean isPassable();
 
-	public BufferedImage getImage(){
-		return TerrainImageProxy.getTerrainImage(this);
-	}
 }

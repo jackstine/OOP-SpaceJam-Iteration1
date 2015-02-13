@@ -18,4 +18,8 @@ public class DesertTerrain extends Terrain{
 	public boolean isPassable() {
 		return passable;
 	}
+	
+	public BufferedImage getImage(){
+		return TerrainImageProxy.getTerrainImage(this);
+	}
 }
