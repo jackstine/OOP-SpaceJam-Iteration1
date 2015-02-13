@@ -1,6 +1,8 @@
 package controller;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -14,9 +16,12 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 import model.Game;
+import model.Point;
 import view.GameView;
+import view.InventoryView;
 import view.SystemMenuView;
 import view.View;
 
@@ -37,20 +42,23 @@ public class GameController {
 	//Views
 	private View gameView = new View();
 	private GameView board = new GameView(game.getMap(),game.getAvatar());
+	private InventoryView inventory = new InventoryView(game.getAvatar().getInventory(), new Point(Toolkit.getDefaultToolkit().getScreenSize().width/2,0));
 	
 	public GameController(){
 		
 		//Add to the canvas
-		gameView.getCanvas().add(systemButton);
-		gameView.getCanvas().add(input);
-		gameView.getCanvas().add(savedText);
+//		gameView.getCanvas().add(systemButton);
+//		gameView.getCanvas().add(input);
+//		gameView.getCanvas().add(savedText);
 		gameView.getCanvas().add(board);
+		gameView.getCanvas().add(inventory);
+		inventory.repaint();
 		
 		//Alignment --NEEDS ADJUSTMENT
-		systemButton.setBounds(0, 0, 100, 25);
-		input.setBounds(101, 0, 200, 25);
-		savedText.setBounds(100, 100, 200, 25);
-		board.setBounds(500, 0, 700, 700);
+		systemButton.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 5, 0, 100, 25);
+		input.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 106, 0, 200, 25);
+		savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
+		board.setBounds(5, 0, 700, 700);
 		
 		systemButton.setFocusable(false);
 		systemButton.addActionListener(new SystemsMenuButton());
