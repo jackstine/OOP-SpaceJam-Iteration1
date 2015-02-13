@@ -24,7 +24,7 @@ public class AreaEffectTest {
 		AreaEffect deathAreaEffect = new DeathAreaEffect();
 		AreaEffect damageAreaEffect = new DamageAreaEffect(0.5);
 		AreaEffect healingAreaEffect = new HealingAreaEffect(0.5);
-		AreaEffect experienceAreaEffect = new ExperienceAreaEffect(500);
+		AreaEffect experienceAreaEffect = new ExperienceAreaEffect();
 		
 		deathAreaEffect.apply(terminator);
 		System.out.println("APPLIED DEATH AREA EFFECT!");
@@ -38,6 +38,11 @@ public class AreaEffectTest {
 		
 		healingAreaEffect.apply(terminator);
 		System.out.println("APPLIED HEALING AREA EFFECT!");
+		System.out.println("Terminator Stats:");
+		printStats(terminator);
+		
+		experienceAreaEffect.apply(terminator);
+		System.out.println("APPLIED EXPERIENCE AREA EFFECT!");
 		System.out.println("Terminator Stats:");
 		printStats(terminator);
 		
