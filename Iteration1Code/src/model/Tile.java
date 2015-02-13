@@ -9,6 +9,9 @@ public class Tile{
 	public static final int SCALE=100;
 	private final int OVERLAY_IMAGE_OFFSET = 35;
 	
+	private boolean dontDraw;
+	
+	
 	private Terrain terrain;
 	private Location location;
 	private Item item;
@@ -80,11 +83,14 @@ public class Tile{
 	}
 	
 	private BufferedImage updateImage(){
-		BufferedImage imageToDisplay = terrain.getImage();
-		BufferedImage itemImage;
+		BufferedImage imageOfTerrain = terrain.getImage();
+		BufferedImage itemImage,imageToDisplay;
 		if (item != null){
 			itemImage = this.item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
-			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageToDisplay, itemImage);
+			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain, itemImage);
+		}
+		else{
+			imageToDisplay = imageOfTerrain;
 		}
 		return imageToDisplay;
 	}
