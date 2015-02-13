@@ -1,6 +1,11 @@
+package view;
+
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
+import model.Avatar;
 
 /*
 
@@ -32,6 +37,10 @@ public class StatusView extends JPanel {
 		
 		add(statusInfo);
 		add(buttonPanel);
+	}
+
+	public StatusView() {
+		// TODO Auto-generated constructor stub
 	}
 
 	//TODO

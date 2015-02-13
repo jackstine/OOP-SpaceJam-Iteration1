@@ -17,7 +17,7 @@ public class Tile{
 	private Item item;
 	private Entity entity;
 	//private AreaEffect areaEffect;
-	//private Decal decal;
+	private Decal decal;
 	private int deltaX; 
 	private int deltaY;
 

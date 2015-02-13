@@ -2,7 +2,12 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
+import model.Equipment;
+import model.Inventory;
+import model.Stat;
 
 import java.util.*;
 
@@ -23,7 +28,7 @@ public class CharacterMenuView extends JPanel {
 		levelUpButton = new JButton("Level Up!");
 	}
 	
-	public void displayStats(HashMap<String, Stat) {
+	public void displayStats(HashMap<String, Stat> h) {
 	}
 	
 	public void displayInventory(Inventory i) {
