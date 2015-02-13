@@ -11,6 +11,8 @@ public class View {
 		setRedraw(false);
 		next = "";
 		panel = new JPanel();
+		panel.setFocusable(true);
+		panel.setVisible(true);
 	}
 	public View(JPanel panel){
 		this.setNext("");

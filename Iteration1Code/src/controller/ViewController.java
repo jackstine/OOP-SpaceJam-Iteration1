@@ -22,6 +22,8 @@ public class ViewController {
 	private TestGameController testGame;
 	private GameController inGame;
 	
+	private MapViewController mv;
+	
 	private Map<String, View> views = new HashMap<String, View>();
 	
 	public ViewController(){
@@ -42,11 +44,13 @@ public class ViewController {
 			views.put("Load", newGame.getView());
 		}
 		
-		testGame = new TestGameController();		
+		testGame = new TestGameController(frame);		
 		views.put("Test", testGame.getView());
 		
 		inGame = new GameController();
 		views.put("Game", inGame.getView());
+		
+		mv = new MapViewController(testGame.game.getMap(),testGame.game.getAvatar(),frame); //modify this later.
 			
 		previous = null;
 		current = views.get("Test");
@@ -77,7 +81,7 @@ public class ViewController {
 		}
 		else{
 			if(current.getNext() == "New"){
-				testGame = new TestGameController();
+				testGame = new TestGameController(frame);
 				views.put("Test", testGame.getView());
 			}
 			current = views.get(current.getNext());
