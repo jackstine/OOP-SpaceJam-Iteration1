@@ -25,5 +25,16 @@ public final class TerrainImageProxy {
 	public final static BufferedImage getTerrainImage(RadioactiveWasteTerrain waste){
 		return TerrainImageProxy.radioActiveImage;
 	}
+	
+	public final static BufferedImage getNewTerrainImage(DesertTerrain des){
+		return ImageProcessing.scaleImage(TILE_SCALE, DESSERT_IMAGE_PATH);
+	}
+	public final static BufferedImage getNewTerrainImage(RadioactiveWasteTerrain waste){
+		return ImageProcessing.scaleImage(TILE_SCALE, RADIO_ACTIVE_IMAGE_PATH);
+	}
+	public final static BufferedImage getNewTerrainImage(MountainTerrain mou){
+		return ImageProcessing.scaleImage(TILE_SCALE, MOUNTAIN_IMAGE_PATH);
+	}
+	
 
 }

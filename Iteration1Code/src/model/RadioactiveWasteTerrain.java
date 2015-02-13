@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
 
 public class RadioactiveWasteTerrain extends Terrain{
 	private boolean passable;
@@ -15,5 +15,8 @@ public class RadioactiveWasteTerrain extends Terrain{
 	
 	public BufferedImage getImage(){
 		return TerrainImageProxy.getTerrainImage(this);
+	}
+	public BufferedImage getNewImage(){
+		return TerrainImageProxy.getNewTerrainImage(this);
 	}
 }

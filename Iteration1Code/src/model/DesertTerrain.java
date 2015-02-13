@@ -1,12 +1,6 @@
 package model;
 
-import java.awt.image.*;
-import java.awt.*;
-import java.io.*;
-
-import javax.imageio.ImageIO;
-
-import utilities.ImageProcessing;
+import java.awt.image.BufferedImage;
 
 public class DesertTerrain extends Terrain{
 	private boolean passable;
@@ -21,5 +15,8 @@ public class DesertTerrain extends Terrain{
 	
 	public BufferedImage getImage(){
 		return TerrainImageProxy.getTerrainImage(this);
+	}
+	public BufferedImage getNewImage(){
+		return TerrainImageProxy.getNewTerrainImage(this);
 	}
 }
