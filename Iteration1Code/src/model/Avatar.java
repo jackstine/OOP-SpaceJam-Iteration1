@@ -17,13 +17,11 @@ public class Avatar extends Entity{
 	private final int INITIAL_X = 0;
 	private final int INITIAL_Y =0;
 	private BufferedImage image;
-	
-	/*
+
 	public Avatar() {
 		this.location = new Location(INITIAL_X,INITIAL_Y);
 		//occupation.initializeStats();
 	}
-	*/
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);

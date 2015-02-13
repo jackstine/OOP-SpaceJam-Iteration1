@@ -9,6 +9,10 @@ public abstract class Entity {
 	private Location location;
 	private Equipable equipment;
 	
+	public Entity() {
+		
+	}
+	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
 		this.stats = occupation.createStats();
@@ -34,9 +38,5 @@ public abstract class Entity {
 	
 	public void setStatValue(String key, int value) {
 		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
-	}
-	
-	public int getHP() {
-		return this.stats.get("Life").getValue();
 	}
 }

@@ -17,7 +17,9 @@ public abstract class DerivedStat extends Observable implements Stat, Observer {
 		return this.value;
 	}
 	
-	public void setValue(int value) {}
+	public void setValue(int value) {
+		System.out.println("You cannot set the value of a derived stat.");
+	}
 	
 	// every stat will override this method so it knows how
 	// it is calculated with regards to the stats that it
