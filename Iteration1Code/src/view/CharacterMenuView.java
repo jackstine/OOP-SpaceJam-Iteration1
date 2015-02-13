@@ -5,8 +5,10 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import model.Avatar;
 import model.Equipment;
 import model.Inventory;
+import model.Point;
 import model.Stat;
 
 import java.util.*;
@@ -22,17 +24,22 @@ Consists of three buttons for saving, quitting, and 'saving and quitting' the ga
 public class CharacterMenuView extends JPanel {
 
 	private JButton levelUpButton;
-	private Inventory inventory;
+	private Avatar avatar;
+	private InventoryView inventory;
 	//private Grid[][] inventory
 
-	public CharacterMenuView() {
+	public CharacterMenuView(Avatar avatar) {
+		this.avatar = avatar;
+		inventory = new InventoryView(avatar.getInventory(),new Point(0,0));
 		levelUpButton = new JButton("Level Up!");
+		add(inventory);
+		add(levelUpButton);
+		add(levelUpButton);
+		setFocusable(true);
+		setVisible(true);
 	}
 	
 	public void displayStats(HashMap<String, Stat> h) {
-	}
-	
-	public void displayInventory(Inventory i) {
 	}
 	
 	public void displayAvatarPortrait() {

@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 
 import model.Game;
 import model.Point;
+import view.CharacterMenuView;
 import view.GameView;
 import view.InventoryView;
 import view.SystemMenuView;
@@ -42,7 +43,7 @@ public class GameController {
 	//Views
 	private View gameView = new View();
 	private GameView board = new GameView(game.getMap(),game.getAvatar());
-	private InventoryView inventory = new InventoryView(game.getAvatar().getInventory(), new Point(Toolkit.getDefaultToolkit().getScreenSize().width/2,0));
+	private CharacterMenuView status = new CharacterMenuView(game.getAvatar());
 	
 	public GameController(){
 		
@@ -51,14 +52,15 @@ public class GameController {
 //		gameView.getCanvas().add(input);
 //		gameView.getCanvas().add(savedText);
 		gameView.getCanvas().add(board);
-		gameView.getCanvas().add(inventory);
-		inventory.repaint();
+		status.setBorder(new LineBorder(Color.black, 5));
+		gameView.getCanvas().add(status);
 		
 		//Alignment --NEEDS ADJUSTMENT
-		systemButton.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 5, 0, 100, 25);
-		input.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 106, 0, 200, 25);
-		savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
+		//systemButton.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 5, 0, 100, 25);
+		//input.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 106, 0, 200, 25);
+		//savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
 		board.setBounds(5, 0, 700, 700);
+		status.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 50,0, 700, 700);
 		
 		systemButton.setFocusable(false);
 		systemButton.addActionListener(new SystemsMenuButton());

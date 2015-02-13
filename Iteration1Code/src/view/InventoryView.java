@@ -1,8 +1,10 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Inventory;
@@ -26,6 +28,9 @@ public class InventoryView extends JPanel{
 		this.inventory = inventory;
 		this.pointOnView = pointOnView;
 		this.setInventoryView();
+		setFocusable(true);
+		setBackground(Color.BLACK);
+		setVisible(true);
 	}
 	
 	private void setInventoryView(){ 
@@ -56,6 +61,14 @@ public class InventoryView extends JPanel{
 				this.slots[i][j].paint(g);
 			}
 		}
+	}
+	
+	public void paintComponent(Graphics g){
+		g.setColor(Color.BLACK);
+		g.fillRect(0,0,getWidth(),getHeight());
+		paint(g);
+		g.dispose();
+		repaint();
 	}
 	
 	public void setPointOnView(Point point){
