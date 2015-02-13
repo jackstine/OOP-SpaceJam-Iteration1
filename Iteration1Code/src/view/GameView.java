@@ -9,17 +9,21 @@ import javax.swing.JPanel;
 
 import model.Avatar;
 import model.GameMap;
+import model.Item;
 import model.Location;
 
 public class GameView extends JPanel {
 	GameMap map;
 	Avatar avatar;
+	EntityView entityView;
 	BufferedImage image;
+	private final int MIDDLE=300;
 
 	public GameView(){
 		map = new GameMap();
 		avatar = new Avatar();
-		image=avatar.getImage();
+		entityView=new EntityView(avatar);
+		//image=avatar.getImage();
 		setFocusable(true);
 		setPreferredSize(new Dimension(700, 700));
 		setBackground(Color.BLACK);
@@ -31,7 +35,8 @@ public class GameView extends JPanel {
 	public GameView(GameMap map, Avatar avatar){
 		this.map = map;
 		this.avatar = avatar;
-		image=avatar.getImage();
+		entityView=new EntityView(avatar);
+		//image=avatar.getImage();
 		setFocusable(true);
 		setPreferredSize(new Dimension(700, 700));
 		setBackground(Color.BLACK);
@@ -41,12 +46,13 @@ public class GameView extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g){
-		int x= map.getLocation(avatar).getX();
-		int y=map.getLocation(avatar).getY();
+		//int x= map.getLocation(avatar).getX();  //not needed I believe
+		//int y=map.getLocation(avatar).getY();
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,getWidth(),getHeight());
 		map.draw(g);
-		g.drawImage(image,100*x,100*y,null);
+		entityView.draw(g);
+		//g.drawImage(image,MIDDLE,MIDDLE,null);
 		g.dispose();
 		repaint();
 	}

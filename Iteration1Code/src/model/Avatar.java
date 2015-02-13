@@ -41,6 +41,8 @@ public class Avatar extends Entity{
 	}
 	
 	
+	
+	
 	/*
 	//private void attack() {
 	//	
