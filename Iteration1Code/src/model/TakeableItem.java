@@ -7,7 +7,7 @@ import utilities.ImageProcessing;
 public abstract class TakeableItem implements Item {
 	protected String ITEM_IMAGE;
 	
-	public abstract boolean action(Avatar avatar);
+	public abstract void action(Entity entity);
 	
 	public abstract int getBonus();
 	
