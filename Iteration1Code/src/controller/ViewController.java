@@ -11,55 +11,58 @@ import javax.swing.JFrame;
 import view.View;
 
 public class ViewController {
+	
+	//lesser controllers
+	private MainMenuController mainMenu;
+	private CharacterCreationController charGen;
+	private GameController inGame;
+	
+	//key listener
+	private MapViewController mv;
+	
+	//MISC
 	private View previous;
 	private View current;
 	private JFrame frame;
-	
-	private MainMenuController mainMenu;
-	private CharacterCreationController newGame;
-	//private LoadGamesTableController noLoad;
-	private TestGameController loadGame;
-	private TestGameController testGame;
-	private GameController inGame;
-	
-	private MapViewController mv;
-	
 	private Map<String, View> views = new HashMap<String, View>();
 	
 	public ViewController(){
-		
+		//instantiate the main frame
 		frame = new JFrame();
 		
+		//instantiate the main menu controller + view
 		mainMenu = new MainMenuController();
 		views.put("Main", mainMenu.getView());
 		
-		newGame = new CharacterCreationController();	
-		views.put("New", newGame.getView());
+		//instantiate the character creator controller + view
+		charGen = new CharacterCreationController();	
+		views.put("Character", charGen.getView());
 		
+		
+		//instantiate the game controller + view 
 		if(new File("apple.ser").isFile()){
-			loadGame = new TestGameController("apple.ser");
-			views.put("Load", loadGame.getView());
+			inGame = new GameController("apple.ser");
+			views.put("Game", inGame.getView());
 		}
 		else{
-			views.put("Load", newGame.getView());
+			inGame = new GameController();
+			views.put("Game", charGen.getView());
 		}
 		
-		testGame = new TestGameController(frame);		
-		views.put("Test", testGame.getView());
+		//Create New Game Path
+		views.put("New", inGame.getView());
 		
-		inGame = new GameController();
-		views.put("Game", inGame.getView());
-		
-		mv = new MapViewController(testGame.game.getMap(),testGame.game.getAvatar(),frame); //modify this later.
+		mv = new MapViewController(inGame,frame); //modify this later.
 			
 		previous = null;
-		current = views.get("Test");
+		current = views.get("Main");
 		
+		//set up the main frame
 		frame.setFocusable(true);
 		frame.setLayout(new FlowLayout());
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		frame.add(current.getPanel());
+		frame.add(current.getCanvas());
 		frame.setVisible(true);
 		frame.repaint();
 	}
@@ -68,7 +71,7 @@ public class ViewController {
 		if(current.getRedraw()){
 			changePanel();
 		}
-		if(testGame.pressedSave){
+		if(inGame.pressedSave()){
 			hasSaved();
 		}
 	}
@@ -81,22 +84,34 @@ public class ViewController {
 		}
 		else{
 			if(current.getNext() == "New"){
-				testGame = new TestGameController(frame);
-				views.put("Test", testGame.getView());
+				inGame = new GameController();
+				views.put("Game", inGame.getView());
+				mv = new MapViewController(inGame,frame);
+				current = views.get("Game");
 			}
-			current = views.get(current.getNext());
+			else{
+				current = views.get(current.getNext());
+			}
 			current.reset();
-			frame.remove(previous.getPanel());
-			frame.add(current.getPanel());
+			frame.remove(previous.getCanvas());
+			frame.add(current.getCanvas());
 			frame.revalidate();
 			frame.repaint();
-		}	
+		}
+		if(current == views.get("Game")){
+			mv.setActive(true);
+		}
+		else{
+			mv.setActive(false);
+		}
 	}
 	
 	public void hasSaved(){
-		loadGame = new TestGameController("apple.ser");
-		views.put("Load", loadGame.getView());
-		testGame.pressedSave = false;
+		inGame = new GameController("apple.ser");
+		views.put("Game", inGame.getView());
+		mv = new MapViewController(inGame,frame);
+		frame.revalidate();
+		frame.repaint();
 	}
 
 	public JFrame getFrame() {

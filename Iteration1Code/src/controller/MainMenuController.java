@@ -38,9 +38,9 @@ public class MainMenuController {
 		
 		buttons.setLayout(new GridLayout(4,1));
 		
-		mainMenu.getPanel().setPreferredSize(new Dimension(600, 600));
-		mainMenu.getPanel().setBorder(new LineBorder(Color.black, 5));
-		mainMenu.getPanel().setLayout(new BorderLayout());
+		mainMenu.getCanvas().setPreferredSize(new Dimension(600, 600));
+		mainMenu.getCanvas().setBorder(new LineBorder(Color.black, 5));
+		mainMenu.getCanvas().setLayout(new BorderLayout());
 		
 		b1.add(startGameButton);
 		b2.add(loadGameButton);
@@ -52,8 +52,8 @@ public class MainMenuController {
 		buttons.add(b3);
 		
 		
-		mainMenu.getPanel().add(title, BorderLayout.NORTH);
-		mainMenu.getPanel().add(buttons,BorderLayout.CENTER);
+		mainMenu.getCanvas().add(title, BorderLayout.NORTH);
+		mainMenu.getCanvas().add(buttons,BorderLayout.CENTER);
 		
 		startGameButton.addActionListener(new StartButtonListener());
 		quitGameButton.addActionListener(new QuitButtonListener());
@@ -67,7 +67,7 @@ public class MainMenuController {
 	public class StartButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			mainMenu.setNext("New");
+			mainMenu.setNext("Character");
 			mainMenu.setRedraw(true);
 		}
 	}
@@ -75,7 +75,7 @@ public class MainMenuController {
 	public class LoadButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			mainMenu.setNext("Load");
+			mainMenu.setNext("Game");
 			mainMenu.setRedraw(true);
 		}
 	}

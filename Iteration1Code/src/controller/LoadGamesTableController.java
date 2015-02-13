@@ -29,9 +29,9 @@ public class LoadGamesTableController {
 		main = new JPanel();
 		back = new JPanel();
 		
-		loadTable.getPanel().setPreferredSize(new Dimension(600, 600));
-		loadTable.getPanel().setBorder(new LineBorder(Color.black, 5));
-		loadTable.getPanel().setLayout(new BorderLayout());
+		loadTable.getCanvas().setPreferredSize(new Dimension(600, 600));
+		loadTable.getCanvas().setBorder(new LineBorder(Color.black, 5));
+		loadTable.getCanvas().setLayout(new BorderLayout());
 		
 		back.add(backGameButton);
 		
@@ -42,8 +42,8 @@ public class LoadGamesTableController {
 		main.add(new JPanel());
 		main.add(back);
 		
-		loadTable.getPanel().add(title, BorderLayout.NORTH);
-		loadTable.getPanel().add(main, BorderLayout.CENTER);
+		loadTable.getCanvas().add(title, BorderLayout.NORTH);
+		loadTable.getCanvas().add(main, BorderLayout.CENTER);
 		
 		backGameButton.addActionListener(new BackButtonListener());
 	}

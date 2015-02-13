@@ -36,9 +36,9 @@ public class CharacterCreationController {
 		main = new JPanel();
 		back = new JPanel();
 		
-		charCreation.getPanel().setPreferredSize(new Dimension(600, 600));
-		charCreation.getPanel().setBorder(new LineBorder(Color.black, 5));
-		charCreation.getPanel().setLayout(new BorderLayout());
+		charCreation.getCanvas().setPreferredSize(new Dimension(600, 600));
+		charCreation.getCanvas().setBorder(new LineBorder(Color.black, 5));
+		charCreation.getCanvas().setLayout(new BorderLayout());
 		
 		buttons.add(startHunterButton);
 		buttons.add(startTerminatorButton);
@@ -53,8 +53,8 @@ public class CharacterCreationController {
 		main.add(new JPanel());
 		main.add(back);
 		
-		charCreation.getPanel().add(title, BorderLayout.NORTH);
-		charCreation.getPanel().add(main, BorderLayout.CENTER);
+		charCreation.getCanvas().add(title, BorderLayout.NORTH);
+		charCreation.getCanvas().add(main, BorderLayout.CENTER);
 		
 		backGameButton.addActionListener(new BackButtonListener());
 		startAlchemistButton.addActionListener(new AlchemistSelectListener());
@@ -77,7 +77,7 @@ public class CharacterCreationController {
 	public class AlchemistSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext("Test"); //Game View
+			charCreation.setNext(""); //Game View
 			charCreation.setRedraw(true);
 		}
 	}
@@ -85,7 +85,7 @@ public class CharacterCreationController {
 	public class TerminatorSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext("Game"); //Game View
+			charCreation.setNext("New"); //Game View
 			charCreation.setRedraw(true);
 		}
 	}

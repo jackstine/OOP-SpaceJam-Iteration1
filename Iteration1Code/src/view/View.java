@@ -1,23 +1,21 @@
 package view;
-import javax.swing.JPanel;
+import java.awt.Toolkit;
+
+import javax.swing.JLayeredPane;
 
 
 public class View {
 	private boolean redraw;
 	private String next;
-	private JPanel panel;
+	private JLayeredPane panel;
 	
 	public View(){
 		setRedraw(false);
 		next = "";
-		panel = new JPanel();
+		panel = new JLayeredPane();
+		panel.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		panel.setFocusable(true);
 		panel.setVisible(true);
-	}
-	public View(JPanel panel){
-		this.setNext("");
-		this.setPanel(panel);
-		this.setRedraw(false);
 	}
 	public String getNext() {
 		return next;
@@ -25,10 +23,10 @@ public class View {
 	public void setNext(String next) {
 		this.next = next;
 	}
-	public JPanel getPanel() {
+	public JLayeredPane getCanvas() {
 		return panel;
 	}
-	public void setPanel(JPanel panel) {
+	public void setCanvas(JLayeredPane panel) {
 		this.panel = panel;
 	}
 	

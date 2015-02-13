@@ -2,7 +2,10 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
+import controller.Apple;
 
 /*
 
@@ -12,21 +15,27 @@ Consists of three buttons for saving, quitting, and 'saving and quitting' the ga
 
 */
 
-public class SystemMenuView extends JPanel {
-	
-	private JButton saveGameButton;
-	private JButton quitGameButton;
-	private JButton saveAndQuitGameButton;
-	
-	public SystemMenuView() {
-		setLayout(new FlowLayout());
+public class SystemMenuView extends JInternalFrame {
+	private JButton save = new JButton("Save");
+	private JButton back = new JButton("Main Menu");
+	private JButton ret = new JButton("Return");
+	private JPanel systemsMenu = new JPanel();
+	public SystemMenuView(ActionListener backAction, ActionListener saveAction, ActionListener retAction) {
+		back.setFocusable(false);
+		save.setFocusable(false);
+		ret.setFocusable(false);
 		
-		saveGameButton = new JButton("Save");
-		quitGameButton = new JButton("Quit");
-		saveAndQuitGameButton = new JButton("Save & Quit");
+		getContentPane().add(new JLabel("System Menu"), BorderLayout.CENTER);
+		setBounds(50, 50, 500, 500);
+		setTitle("System Menu");
+		systemsMenu.add(save);
+		systemsMenu.add(back);
+		systemsMenu.add(ret);
+		add(systemsMenu);
+		setVisible(true);
 		
-		add(saveGameButton);
-		add(quitGameButton);
-		add(saveAndQuitGameButton);
+		back.addActionListener(backAction);
+		save.addActionListener(saveAction);
+		ret.addActionListener(retAction);
 	}
 }

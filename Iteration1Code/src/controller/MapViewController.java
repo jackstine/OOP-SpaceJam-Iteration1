@@ -1,10 +1,12 @@
 package controller;
 
 import model.Avatar;
+import model.Game;
 import model.GameMap;
 import model.Location;
 import model.Tile;
 import model.Point;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -16,18 +18,23 @@ import javax.swing.JFrame;
 public class MapViewController{
 	private static final long serialVersionUID = 1L;
 	private GameMap map ;
-	public Avatar avatar;
+	private Avatar avatar;
+	private boolean active;
+	private GameController game;
 	//public BufferedImage image;
-	//TODO	link with the MapView
 	
-	//Map View Controller should NOT have a JFrame
-	public MapViewController(GameMap map, Avatar avatar,JFrame frame){ //added GameMap here
+	public MapViewController(GameController game,JFrame frame){ //added GameMap here
 		frame.addKeyListener(new CharacterKeyboardController());
-		this.avatar = avatar;
-		this.map=map;
+		this.avatar = game.getGame().getAvatar();
+		this.map= game.getGame().getMap();
+		this.game = game;
 		//image=avatar.loadImage();
 		
 		
+	}
+	
+	public void setActive(boolean active){
+		this.active =  active;
 	}
 	
 	
@@ -50,6 +57,9 @@ public class MapViewController{
 			Location avatarLocation = this.getAvatarLocation();
 			Location temp= new Location(avatarLocation.getX(),avatarLocation.getY());
 			//System.out.println(e.getKeyCode()); used for debugging
+			if(!active){
+				return;
+			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 || e.getKeyCode()==KeyEvent.VK_1){
 				
 				if(map.getTile(temp.addLocation(-1,1)).isPassable()){
@@ -123,6 +133,9 @@ public class MapViewController{
 				map.setDeltaY(0);
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
+			}
+			else if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+				game.spawnSystems();
 			}
 			map.updateEntityLocation(avatar, avatarLocation);
 			System.out.println(map.getLocation(avatar).toString());
