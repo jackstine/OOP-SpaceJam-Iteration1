@@ -103,7 +103,6 @@ public class GameMap{
 				map[i][j].setDeltaY(delta2+deltaY);  //not done
 				map[i][j].draw(g);
 				
-				
 			}
 		}
 	}
