@@ -2,14 +2,12 @@ package model;
 
 public class Life extends DerivedStat {
 
-	private int hp;
+	private PrimaryStat hp;
 	
-	public Life() {
+	public Life(PrimaryStat hp) {
 		super();
-	}
-	
-	public void setValue(int value) {
-		this.hp = value;
+		this.hp = hp;
+		((HP) hp).setLife(this);
 	}
 	
 	@Override
@@ -19,6 +17,6 @@ public class Life extends DerivedStat {
 		int level = this.stats.get(1).getValue();
 		// LIFE FORMULA
 		this.value = hardiness * level;	
-		this.hp = this.value;
+		this.hp.setValue(this.value);
 	}
 }

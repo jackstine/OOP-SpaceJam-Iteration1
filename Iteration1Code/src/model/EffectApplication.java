@@ -9,7 +9,7 @@ public class EffectApplication {
 	
 	public static void apply(Entity entity, DamageAreaEffect areaEffect) {
 		// DamageAoE affects Entity here
-		entity.setStatValue("Life", (int)(entity.getStatValue("Life") * (1 - areaEffect.getPercentDamage())));
+		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 - areaEffect.getPercentDamage())));
 	}
 	
 	public static void apply(Entity entity, ExperienceAreaEffect areaEffect) {
@@ -19,7 +19,7 @@ public class EffectApplication {
 	
 	public static void apply(Entity entity, HealingAreaEffect areaEffect) {
 		// HealingAoE affects Entity here
-		entity.setStatValue("Life", (int)(entity.getStatValue("Life") * (1 + areaEffect.getPercentHealth())));
+		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 + areaEffect.getPercentHealth())));
 	}
 
 }

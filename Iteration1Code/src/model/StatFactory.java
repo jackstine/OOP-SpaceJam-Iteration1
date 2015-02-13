@@ -28,6 +28,7 @@ public class StatFactory {
 		PrimaryStat agility = new Agility(getAgility());
 		PrimaryStat experience = new Experience(getExperience());
 		PrimaryStat hardiness = new Hardiness(getHardiness());
+		PrimaryStat hp = new HP(0);
 		PrimaryStat intellect = new Intellect(getIntellect());
 		PrimaryStat lives = new Lives(getLivesLeft());
 		PrimaryStat movement = new Movement(getMovement());
@@ -36,7 +37,7 @@ public class StatFactory {
 		
 		//INIT DERIVED STATS
 		DerivedStat level = new Level();
-		DerivedStat life = new Life();
+		DerivedStat life = new Life(hp);
 		DerivedStat mana = new Mana();
 		
 		//Adding references to observers to derive value from.
@@ -56,6 +57,7 @@ public class StatFactory {
 		map.put("Agility", agility);
 		map.put("Experience", experience);
 		map.put("Hardiness", hardiness);
+		map.put("HP", hp);
 		map.put("Intellect", intellect);
 		map.put("Lives", lives);
 		map.put("Movement", movement);

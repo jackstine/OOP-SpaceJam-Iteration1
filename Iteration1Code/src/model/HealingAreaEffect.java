@@ -4,7 +4,7 @@ public class HealingAreaEffect implements AreaEffect{
 	
 	private double percentHealth;
 	
-	HealingAreaEffect(double percentHealth){
+	public HealingAreaEffect(double percentHealth){
 		this.percentHealth = percentHealth;
 	}
 	
