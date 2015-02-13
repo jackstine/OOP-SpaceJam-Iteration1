@@ -1,6 +1,8 @@
 package model;
 
-public class Weapon extends TakeableItem implements Equipable {
+import java.io.Serializable;
+
+public class Weapon extends TakeableItem implements Equipable, Serializable {
 	private int attack;
 	
 	public Weapon(int attack) {

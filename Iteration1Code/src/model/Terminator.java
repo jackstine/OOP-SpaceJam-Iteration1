@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Terminator extends Occupation{
+public class Terminator extends Occupation implements Serializable{
 
 	public void attack() {
 		// TODO Auto-generated method stub

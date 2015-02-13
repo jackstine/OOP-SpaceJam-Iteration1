@@ -1,6 +1,8 @@
 package model;
 
-public class Inventory extends SlotContainer{
+import java.io.Serializable;
+
+public class Inventory extends SlotContainer implements Serializable{
     public static final int COL = 6;
     public static final int ROW = 5;
     protected InventorySlot[][] items;    

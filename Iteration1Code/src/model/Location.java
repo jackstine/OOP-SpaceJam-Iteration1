@@ -1,6 +1,8 @@
 package model;
 
-public class Location extends Point{
+import java.io.Serializable;
+
+public class Location extends Point implements Serializable{
 
 	public Location(int x,int y){
 		super(x,y);

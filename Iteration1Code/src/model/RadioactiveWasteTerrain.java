@@ -2,7 +2,7 @@ package model;
 
 import java.awt.image.BufferedImage;
 
-public class RadioactiveWasteTerrain extends Terrain{
+public class RadioactiveWasteTerrain extends Terrain implements Serializable{
 	private boolean passable;
 
 	public RadioactiveWasteTerrain(){

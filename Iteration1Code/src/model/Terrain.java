@@ -1,8 +1,11 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
-public abstract class Terrain {
+public abstract class Terrain implements Serializable{
+	
+	private boolean passable;
 
 	public abstract boolean isPassable();
 	

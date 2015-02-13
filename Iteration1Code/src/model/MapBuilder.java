@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
-public class MapBuilder{
+public class MapBuilder implements Serializable{
 	protected Tile[][] map;
 	protected int width;
 	protected int height;

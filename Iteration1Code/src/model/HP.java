@@ -1,6 +1,8 @@
 package model;
 
-public class HP extends PrimaryStat {
+import java.io.Serializable;
+
+public class HP extends PrimaryStat implements Serializable {
 
 	private Life life;
 	

@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Hunter extends Occupation{
+public class Hunter extends Occupation implements Serializable{
 
 	public void attack() {
 		// TODO Auto-generated method stub

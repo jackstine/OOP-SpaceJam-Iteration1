@@ -1,6 +1,8 @@
 package model;
 
-public class WeaponSlot extends BufferSlot<Weapon>{
+import java.io.Serializable;
+
+public class WeaponSlot extends BufferSlot<Weapon> implements Serializable{
 	public WeaponSlot(DerivedStat offensiveRating){
 		addObserver(offensiveRating);
 	}

@@ -1,6 +1,8 @@
 package model;
 
-public class Lives extends PrimaryStat {
+import java.io.Serializable;
+
+public class Lives extends PrimaryStat implements Serializable{
 
 	public Lives(int value) {
 		super(value);

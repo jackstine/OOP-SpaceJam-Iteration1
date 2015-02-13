@@ -1,6 +1,8 @@
 package model;
 
-public class Life extends DerivedStat {
+import java.io.Serializable;
+
+public class Life extends DerivedStat implements Serializable{
 
 	private PrimaryStat hp;
 	

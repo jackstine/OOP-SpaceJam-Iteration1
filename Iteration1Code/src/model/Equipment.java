@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
+
 import view.EquipmentView;
 
-public class Equipment extends SlotContainer{
+public class Equipment extends SlotContainer implements Serializable{
     private Slotable<Armor> armorSlot;
     private Slotable<Weapon> weaponSlot;
     private EquipmentView equipmentView;

@@ -4,9 +4,10 @@ import java.util.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
+
 import javax.imageio.ImageIO;
 
-public class GameMap{
+public class GameMap implements Serializable{
 	//TODO create a Generate Map function that the constructor calls
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;

@@ -1,6 +1,8 @@
 package model;
 
-public class Level extends DerivedStat {
+import java.io.Serializable;
+
+public class Level extends DerivedStat implements Serializable {
 
 	public Level() {
 		super();

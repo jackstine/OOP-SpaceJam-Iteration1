@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
-public class OffensiveRating extends DerivedStat {
+public class OffensiveRating extends DerivedStat implements Serializable{
 	private WeaponSlot slotSubject;
 	private int weaponBonus;
 	

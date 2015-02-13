@@ -1,6 +1,8 @@
 package model;
 
-public class TerminatorStatFactory extends StatFactory{
+import java.io.Serializable;
+
+public class TerminatorStatFactory extends StatFactory implements Serializable{
 	public TerminatorStatFactory() {
 		
 	}
