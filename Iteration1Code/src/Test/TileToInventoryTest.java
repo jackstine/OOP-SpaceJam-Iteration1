@@ -88,26 +88,10 @@ public class TileToInventoryTest extends JPanel {
 			tile.repaint();
 			frame.repaint();
 		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
 		
 	}
 }

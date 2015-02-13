@@ -88,6 +88,7 @@ public class Tile implements Serializable{
 		BufferedImage itemImage,imageToDisplay;
 		if (item != null){
 			itemImage = this.item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
+			imageOfTerrain = terrain.getNewImage();
 			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain, itemImage);
 		}
 		else{

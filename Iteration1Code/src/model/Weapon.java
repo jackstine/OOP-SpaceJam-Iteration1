@@ -37,4 +37,9 @@ public class Weapon extends TakeableItem implements Equipable, Serializable {
 		weaponSlot.equip((Weapon)invSlot.unequip());
 		//weaponSlot.equip(invSlot.unequip());		This will not work
 	}
+
+	@Override
+	public void action(Entity entity) {
+		
+	}
 }

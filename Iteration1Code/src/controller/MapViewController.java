@@ -3,15 +3,23 @@ package controller;
 import model.Avatar;
 import model.Game;
 import model.GameMap;
+import model.Item;
 import model.Location;
 import model.Tile;
 import model.Point;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 
 //public class MapViewController extends JFrame{
@@ -42,6 +50,48 @@ public class MapViewController{
 	}
 	
 	
+	public class MapMouseListener implements MouseListener{
+
+
+		// all these classes need to be defined in the MapView
+		public void mouseClicked(MouseEvent e) {
+			int tileY = e.getY()/Tile.SCALE;
+			int tileX = e.getX()/Tile.SCALE;
+			Location tileLocation = new Location(tileX,tileY);
+			
+			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
+			Item droppedItem = map.getTile(tileLocation).getItem();
+			System.out.println(droppedItem+"  "+tileLocation);
+			
+			//Inventory View and Game Map are needed
+			// Logic is in comments below
+			
+//			if (inventoryView.getInventory().findAndEquip(droppedItem)){
+//				map.getTile(tileLocation).dropItem();
+//				tile.repaint();
+//				frame.repaint();
+//			}
+//			tile.repaint();
+//			this.repaint();
+		}
+		
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {	}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public class CharacterKeyboardController implements KeyListener{
 		private final Point NORTH = new Point(0,-1);
 		private final Point SOUTH = new Point(0,1);
@@ -51,6 +101,24 @@ public class MapViewController{
 		private final Point NORTHEAST = new Point(1,-1);
 		private final Point SOUTHEAST = new Point(1,1);
 		private final Point EAST = new Point(1,0);
+		
+		HashSet<Integer> pressedKeys = new HashSet<Integer>();
+		
+		public CharacterKeyboardController(){
+	           new Timer(1000, new ActionListener(){
+	                @Override
+	                public void actionPerformed(ActionEvent arg0) {
+	                    String keysString = "";
+	                    if(!pressedKeys.isEmpty()){
+	                        Iterator<Integer> i = pressedKeys.iterator();
+	                        while(i.hasNext()){
+	                            keysString += i.next() + ",";
+	                        }
+	                    } 
+	                    System.out.println(keysString);
+	                }
+	            }).start();	
+		}
 		
 		public Location getAvatarLocation(){
 			return map.getLocation(avatar);
@@ -143,19 +211,19 @@ public class MapViewController{
 			}
 			map.updateEntityLocation(avatar, avatarLocation);
 			System.out.println(map.getLocation(avatar).toString());
+			
+            int keyCode = e.getKeyCode();
+            pressedKeys.add(keyCode);
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			//map.setD(0);  //not done
+            int keyCode = e.getKeyCode();
+            pressedKeys.remove(keyCode);
 		}
 
 		@Override
-		public void keyTyped(KeyEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void keyTyped(KeyEvent arg0) {}
 		
 	}
 	/*public static void main(String[]args){

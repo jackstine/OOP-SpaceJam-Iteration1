@@ -1,8 +1,10 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 public class RadioactiveWasteTerrain extends Terrain implements Serializable{
+	private static final long serialVersionUID = 7458223L;
 	private boolean passable;
 
 	public RadioactiveWasteTerrain(){
