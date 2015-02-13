@@ -1,5 +1,6 @@
 package utilities;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
@@ -28,11 +29,11 @@ public class ImageProcessing {
 	public static BufferedImage scaleImage(int width, int height, String filename) {
 	    BufferedImage returnImage = null;
 	    try {
-	        ImageIcon ii = new ImageIcon(filename);//path to image
-	        returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	        ImageIcon image = new ImageIcon(filename);//path to image
+	        returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 	        Graphics2D g2d = (Graphics2D) returnImage.createGraphics();
 	        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));
-	        g2d.drawImage(ii.getImage(), 0, 0, width, height, null);
+	        g2d.drawImage(image.getImage(), 0, 0, width, height, null);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return null;
@@ -44,7 +45,7 @@ public class ImageProcessing {
 	public static BufferedImage scaleImage(int width, int height, Image imageToProcess) {
 	    BufferedImage returnImage = null;
 	    try {
-	        returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	        returnImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 	        Graphics2D g2d = (Graphics2D) returnImage.createGraphics();
 	        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));
 	        g2d.drawImage(imageToProcess, 0, 0, width, height, null);
@@ -64,7 +65,6 @@ public class ImageProcessing {
 			try {
 				throw new IOException("the centered Image is to Large,  it needs to be smaller than the backGround");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -72,9 +72,19 @@ public class ImageProcessing {
 		Graphics2D g = backgroundImage.createGraphics();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		g.drawImage(backgroundImage, 0, 0, null);
+		// make the centeredImage transparent
+		ImageProcessing.getTransparentImage(backgroundImage.getWidth(),backgroundImage.getWidth(),centeredImage);
 		g.drawImage(centeredImage, center.getX(), center.getY(), null);
 		g.dispose();
 		return backgroundImage;
+	}
+	
+	public static BufferedImage getTransparentImage(int width, int height, BufferedImage imageToProcess){
+		BufferedImage tempImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+		Graphics2D tempG = tempImage.createGraphics();
+		tempG.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
+		tempG.drawImage(imageToProcess, 0, 0, null);
+		return tempImage;
 	}
 	
 	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage, Point point){
@@ -84,13 +94,13 @@ public class ImageProcessing {
 			try {
 				throw new IOException("the centered Image is to Large,  it needs to be smaller than the backGround");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		Graphics2D g = backgroundImage.createGraphics();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		g.drawImage(backgroundImage, 0, 0, null);
+		ImageProcessing.getTransparentImage(backgroundImage.getWidth(),backgroundImage.getWidth(),centeredImage);
 		g.drawImage(centeredImage, point.getX(), point.getY(), null);
 		g.dispose();
 		return backgroundImage;
