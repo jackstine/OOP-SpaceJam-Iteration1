@@ -10,21 +10,18 @@ import utilities.ImageProcessing;
 
 public class RadioactiveWasteTerrain extends Terrain{
 	private boolean passable;
-	private BufferedImage image;
 	private final int SCALE=100;
 	private final String PATH="src/res/img/waste.png";
 
 	public RadioactiveWasteTerrain(){
-		passable=false;
-		image= ImageProcessing.scaleImage(SCALE, SCALE, PATH);
-	}
+		passable=false;	}
 
 	public boolean isPassable(){
 		return passable;
 	}
 
 	public BufferedImage getImage(){
-		return image;
+		return ImageProcessing.scaleImage(SCALE, SCALE, PATH);
 	}
 
 }

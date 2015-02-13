@@ -11,13 +11,11 @@ import utilities.ImageProcessing;
 
 public class MountainTerrain extends Terrain{
 	private boolean passable;
-	private BufferedImage image;
 	private final int SCALE=100;
 	private final String PATH="src/res/img/mountain.png";
 
 	public MountainTerrain(){
 		passable=false;
-		image= ImageProcessing.scaleImage(SCALE, SCALE, PATH);
 	}
 
 	public boolean isPassable() {
@@ -25,7 +23,7 @@ public class MountainTerrain extends Terrain{
 	}
 
 	public BufferedImage getImage(){
-		return image;
+		return ImageProcessing.scaleImage(SCALE, SCALE, PATH);
 	}
 
 
