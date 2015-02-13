@@ -12,7 +12,7 @@ import utilities.ImageProcessing;
 import controller.MapViewController;
 
 public class Avatar extends Entity{
-	private Inventory inventory;
+	private Inventory inventory = new Inventory();
 	private Location location;   // I dont think this is needed? -Juan
 	private final int INITIAL_X = 0;
 	private final int INITIAL_Y =0;
@@ -46,6 +46,10 @@ public class Avatar extends Entity{
 	public BufferedImage getImage(){
 		image= ImageProcessing.scaleImage(100, 100,"src/res/img/sprite.jpg");
 		return image;
+	}
+	
+	public Inventory getInventory(){
+		return inventory;
 	}
 	
 	

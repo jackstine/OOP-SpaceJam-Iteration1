@@ -22,6 +22,7 @@ Consists of three buttons for saving, quitting, and 'saving and quitting' the ga
 public class CharacterMenuView extends JPanel {
 
 	private JButton levelUpButton;
+	private Inventory inventory;
 	//private Grid[][] inventory
 
 	public CharacterMenuView() {
