@@ -3,6 +3,11 @@ package model;
 public class Armor extends TakeableItem implements Equipable {
 	protected int armor;
 
+	@Override
+	public void action(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	public Armor(){}
 	

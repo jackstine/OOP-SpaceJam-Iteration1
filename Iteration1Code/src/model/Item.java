@@ -3,7 +3,7 @@ package model;
 import java.awt.image.BufferedImage;
 
 public interface Item {
-	public boolean action(Avatar avatar);
+	public void action(Entity entity);
 
 	public BufferedImage getImage(int scale);
 	

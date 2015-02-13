@@ -4,15 +4,18 @@ import model.*;
 
 public class AreaEffectTest {
 	
-	public static String[] keys = {"Agility", "ArmorRating", "DefensiveRating", "Experience", "Hardiness", "HP", "Intellect", "Level", "Life", "Lives", "Mana", "Movement", "OffensiveRating", "Strength"};
+	public static String[] keys = {"Agility", "ArmorRating", "DefensiveRating", 
+								   "Experience", "Hardiness", "HP", "Intellect", 
+								   "Level", "Life", "Lives", "Mana", "Movement", 
+								   "OffensiveRating", "Strength"};
 	
 	public static void main(String[] args) {
 		Entity alchemist = new Avatar(new Alchemist());
 		Entity hunter = new Avatar(new Hunter());
 		Entity terminator = new Avatar(new Terminator());
 		
-		System.out.println("Alchemist Stats:");
-		printStats(alchemist);
+		System.out.println("Terminator Stats:");
+		printStats(terminator);
 		//System.out.println("Hunter Stats:");
 		//printStats(hunter);
 		//System.out.println("Terminator Stats:");
@@ -23,25 +26,25 @@ public class AreaEffectTest {
 		AreaEffect healingAreaEffect = new HealingAreaEffect(0.5);
 		AreaEffect experienceAreaEffect = new ExperienceAreaEffect(500);
 		
-		deathAreaEffect.apply(alchemist);
+		deathAreaEffect.apply(terminator);
 		System.out.println("APPLIED DEATH AREA EFFECT!");
-		System.out.println("Alchemist Stats:");
-		printStats(alchemist);
+		System.out.println("Terminator Stats:");
+		printStats(terminator);
 		
-		damageAreaEffect.apply(alchemist);
+		damageAreaEffect.apply(terminator);
 		System.out.println("APPLIED DAMAGE AREA EFFECT!");
-		System.out.println("Alchemist Stats:");
-		printStats(alchemist);
+		System.out.println("Terminator Stats:");
+		printStats(terminator);
 		
-		healingAreaEffect.apply(alchemist);
+		healingAreaEffect.apply(terminator);
 		System.out.println("APPLIED HEALING AREA EFFECT!");
-		System.out.println("Alchemist Stats:");
-		printStats(alchemist);
+		System.out.println("Terminator Stats:");
+		printStats(terminator);
 		
-		experienceAreaEffect.apply(alchemist);
+		experienceAreaEffect.apply(terminator);
 		System.out.println("APPLIED EXPERIENCE AREA EFFECT!");
-		System.out.println("Alchemist Stats:");
-		printStats(alchemist);
+		System.out.println("Terminator Stats:");
+		printStats(terminator);
 	}
 	
 	public static void printStats(Entity entity) {
