@@ -27,8 +27,6 @@ public class ImageProcessing {
 		}
 	}
 	
-	
-	
 	public static BufferedImage scaleImage(Point dimension,String filename){
 		return ImageProcessing.scaleImage(dimension.getWidth(),dimension.getHeight(), filename);
 	}
