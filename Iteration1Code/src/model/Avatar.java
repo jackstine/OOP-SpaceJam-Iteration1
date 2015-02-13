@@ -5,13 +5,14 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
 import utilities.ImageProcessing;
 import controller.MapViewController;
 
-public class Avatar extends Entity{
+public class Avatar extends Entity implements Serializable{
 	private Inventory inventory = new Inventory();
 	private Location location;   // I dont think this is needed? -Juan
 	private final int INITIAL_X = 0;

@@ -1,6 +1,8 @@
 package model;
 
-public abstract class SlotContainer{
+import java.io.Serializable;
+
+public abstract class SlotContainer implements Serializable{
 	//We want to be able to take any type of Slotable<K> item and
 	//As well take a Point,  which is used in the InventoryContainer
 	

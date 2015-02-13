@@ -1,6 +1,8 @@
 package model;
 
-public class Armor extends TakeableItem implements Equipable {
+import java.io.Serializable;
+
+public class Armor extends TakeableItem implements Equipable, Serializable {
 	protected int armor;
 
 	

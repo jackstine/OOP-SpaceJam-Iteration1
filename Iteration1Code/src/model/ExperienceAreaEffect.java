@@ -1,6 +1,8 @@
 package model;
 
-public class ExperienceAreaEffect implements AreaEffect{
+import java.io.Serializable;
+
+public class ExperienceAreaEffect implements AreaEffect, Serializable {
 
 	private int experience;
 	

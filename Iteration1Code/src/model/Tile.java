@@ -2,10 +2,11 @@ package model;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import utilities.ImageProcessing;
 
-public class Tile{
+public class Tile implements Serializable{
 	public static final int SCALE=100;
 	private final int OVERLAY_IMAGE_OFFSET = 35;
 	

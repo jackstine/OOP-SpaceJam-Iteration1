@@ -1,8 +1,9 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
-public class SkullAndCrossbonesDecal extends Decal {
+public class SkullAndCrossbonesDecal extends Decal implements Serializable{
 
 	public SkullAndCrossbonesDecal(){
 		super();

@@ -1,8 +1,9 @@
 package model;
 
 import java.awt.image.*;
+import java.io.Serializable;
 
-public class MountainTerrain extends Terrain{
+public class MountainTerrain extends Terrain implements Serializable{
 	private boolean passable;
 
 	public MountainTerrain(){

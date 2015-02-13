@@ -1,10 +1,11 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import utilities.ImageProcessing;
 
-public final class TerrainImageProxy {
+public final class TerrainImageProxy implements Serializable {
 	public static String DESSERT_IMAGE_PATH = "src/res/img/desert.png";
 	public static String RADIO_ACTIVE_IMAGE_PATH = "src/res/img/waste.png";
 	public static String MOUNTAIN_IMAGE_PATH = "src/res/img/mountain.png";

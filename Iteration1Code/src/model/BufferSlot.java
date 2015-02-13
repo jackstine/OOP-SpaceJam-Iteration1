@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
-public abstract class BufferSlot<T extends Item> extends Observable implements Slotable<T>{
+public abstract class BufferSlot<T extends Item> extends Observable implements Slotable<T>, Serializable {
 	//TOD this should not implement, or at least the implementation should be in another abstract/class
     protected T item;
     protected int bonus;

@@ -1,8 +1,9 @@
 package model;
+import java.io.Serializable;
 import java.util.Map;
 
 
-public abstract class Entity {
+public abstract class Entity implements Serializable{
 	protected Map<String,Stat> stats; 
 	protected Occupation occupation;
 	// private GameMap map;

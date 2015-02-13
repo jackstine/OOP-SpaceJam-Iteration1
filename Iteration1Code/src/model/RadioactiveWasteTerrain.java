@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 import utilities.ImageProcessing;
 
-public class RadioactiveWasteTerrain extends Terrain{
+public class RadioactiveWasteTerrain extends Terrain implements Serializable{
 	private boolean passable;
 
 	public RadioactiveWasteTerrain(){

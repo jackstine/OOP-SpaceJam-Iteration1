@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
-public abstract class PrimaryStat extends Observable implements Stat {
+public abstract class PrimaryStat extends Observable implements Stat, Serializable {
 
 	protected int value;
 	

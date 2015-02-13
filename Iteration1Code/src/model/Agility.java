@@ -1,6 +1,8 @@
 package model;
 
-public class Agility extends PrimaryStat {
+import java.io.Serializable;
+
+public class Agility extends PrimaryStat implements Serializable {
 
 	public Agility(int value) {
 		super(value);
