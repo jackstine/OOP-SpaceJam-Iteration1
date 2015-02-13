@@ -28,6 +28,14 @@ public class Equipment extends SlotContainer{
 		return this.unequip(this.weaponSlot);
 	}
 
+	public Slotable<Armor> getArmorSlot(){
+		return this.armorSlot;
+	}
+	
+	public Slotable<Weapon> getWeaponSlot(){
+		return this.weaponSlot;
+	}
+	
     protected <K extends Item> Slotable<K> getSlot(Point point){
        throw new IllegalArgumentException("Cant Associate a BufferSlot in Equipment with a Point");
     }

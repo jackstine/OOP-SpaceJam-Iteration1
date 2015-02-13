@@ -17,7 +17,7 @@ import model.Slotable;
 import model.Weapon;
 
 
-public class SlotView extends Component implements Observer{
+public class SlotView<T extends Item> extends Component implements Observer{
 	public static final int SLOTIMAGE_HEIGHT = 50;
 	public static final int SLOTIMAGE_WIDTH = 50;
 	public static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
@@ -35,18 +35,18 @@ public class SlotView extends Component implements Observer{
 												// likewise the slots for the inventory
 	private Point point;
 	private BufferedImage slotImage;
-	private Slotable<Item> slot;
+	private Slotable<T> slot;
 	private BufferedImage itemImage;
 	
 	//TODO not sure if Slot should be referenced inside the SlotView, or just the point reference to it
 	
-	public SlotView(Slotable<Item> slot){
+	public SlotView(Slotable<T> slot){
 		this.slot = slot;
 		this.setImages();
 		this.point= new Point(0,0);
 	}
 	
-	public SlotView(Slotable<Item> slot,Point pointOfSlot,Point pointOnView){
+	public SlotView(Slotable<T> slot,Point pointOfSlot,Point pointOnView){
 		this.pointOnView = pointOnView;
 		this.slot = slot;
 		this.setImages();

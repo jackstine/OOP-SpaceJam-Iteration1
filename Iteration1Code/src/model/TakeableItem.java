@@ -15,4 +15,8 @@ public abstract class TakeableItem implements Item {
 	public BufferedImage getImage(int scale){
 		return ImageProcessing.scaleImage(scale, scale, ITEM_IMAGE);
 	}
+	
+	public String getImagePath(){
+		return ITEM_IMAGE;
+	}
 }

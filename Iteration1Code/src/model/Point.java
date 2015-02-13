@@ -17,6 +17,14 @@ public class Point{
         return this.y;
     }
     
+    public int getHeight(){
+    	return this.y;
+    }
+    
+    public int getWidth(){
+    	return this.x;
+    }
+    
     public void setLocation(int x,int y){
     	this.x=x;
     	this.y=y;

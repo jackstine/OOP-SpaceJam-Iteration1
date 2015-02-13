@@ -2,12 +2,11 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 import model.Inventory;
+import model.Item;
 import model.Point;
 
 public class InventoryView extends JPanel{
@@ -16,7 +15,9 @@ public class InventoryView extends JPanel{
 	public static final int INVENTORY_WIDTH = Inventory.COL * SlotView.SLOTIMAGE_WIDTH;
 	private Point pointOnView;
 	
-	private SlotView[][] slots = new SlotView[Inventory.ROW][Inventory.COL];
+	//TODO unchecked provision stuffies
+	@SuppressWarnings("unchecked")
+	private SlotView<Item>[][] slots = new SlotView[Inventory.ROW][Inventory.COL];
 	private Inventory inventory;
 	
 	private static final long serialVersionUID = 17481L;
@@ -33,7 +34,7 @@ public class InventoryView extends JPanel{
 				// We need to add the SlotView to the Inventory SLot as a Observer
 				// as well as make the slotView point to the slot
 				Point pointOfSlot = new Point(i,j);
-				this.slots[i][j] = new SlotView( this.inventory.getSlot(pointOfSlot) , pointOfSlot, this.pointOnView );
+				this.slots[i][j] = new SlotView<Item>( this.inventory.getSlot(pointOfSlot) , pointOfSlot, this.pointOnView );
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
 				
 			}

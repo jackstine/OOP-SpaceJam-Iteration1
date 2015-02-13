@@ -1,6 +1,7 @@
 package utilities;
 
 import java.awt.AlphaComposite;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
@@ -24,6 +25,10 @@ public class ImageProcessing {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static BufferedImage scaleImage(Point dimension,String filename){
+		return ImageProcessing.scaleImage(dimension.getWidth(),dimension.getHeight(), filename);
 	}
 
 	public static BufferedImage scaleImage(int width, int height, String filename) {
@@ -85,6 +90,12 @@ public class ImageProcessing {
 		tempG.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
 		tempG.drawImage(imageToProcess, 0, 0, null);
 		return tempImage;
+	}
+	
+	public static BufferedImage overlayImages(String background,Point sizeOfBackground, String centered, Point sizeOfCentered){
+		BufferedImage backgroundImage = ImageProcessing.scaleImage(sizeOfBackground.getWidth(),sizeOfBackground.getHeight(),background);
+		BufferedImage centeredImage = ImageProcessing.scaleImage(sizeOfCentered.getWidth(),sizeOfCentered.getHeight(),centered);
+		return ImageProcessing.overlayImages(backgroundImage, centeredImage);
 	}
 	
 	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage, Point point){
