@@ -1,6 +1,8 @@
 package model;
 
-public class ItemBuilder {
+import java.io.Serializable;
+
+public class ItemBuilder implements Serializable{
 	public Armor buildArmor(int defense, String image) {
 		Armor armor = new Armor(defense, image);
 		return armor;

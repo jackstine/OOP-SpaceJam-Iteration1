@@ -1,8 +1,11 @@
 package model;
 
-import java.awt.image.*;
 
-public class MountainTerrain extends Terrain{
+import java.awt.image.BufferedImage;
+
+import java.io.Serializable;
+
+public class MountainTerrain extends Terrain implements Serializable{
 	private boolean passable;
 
 	public MountainTerrain(){
@@ -15,5 +18,8 @@ public class MountainTerrain extends Terrain{
 	
 	public BufferedImage getImage(){
 		return TerrainImageProxy.getTerrainImage(this);
+	}
+	public BufferedImage getNewImage(){
+		return TerrainImageProxy.getNewTerrainImage(this);
 	}
 }

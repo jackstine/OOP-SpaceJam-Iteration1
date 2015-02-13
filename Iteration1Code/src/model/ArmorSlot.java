@@ -1,6 +1,8 @@
 package model;
 
-public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor> {
+import java.io.Serializable;
+
+public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor>, Serializable {
     
 	public ArmorSlot(DerivedStat armorRating){
     	this.addObserver(armorRating);

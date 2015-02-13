@@ -1,8 +1,15 @@
 package model;
 
-public class Armor extends TakeableItem implements Equipable {
+import java.io.Serializable;
+
+public class Armor extends TakeableItem implements Equipable, Serializable {
 	protected int armor;
 
+	@Override
+	public void action(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	public Armor(){}
 	

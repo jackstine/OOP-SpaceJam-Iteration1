@@ -3,10 +3,11 @@ package model;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
-public abstract class Decal{
+public abstract class Decal implements Serializable{
 	BufferedImage image;
 
 	public Decal() {

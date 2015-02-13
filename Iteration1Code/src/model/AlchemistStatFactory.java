@@ -1,6 +1,8 @@
 package model;
 
-public class AlchemistStatFactory extends StatFactory{
+import java.io.Serializable;
+
+public class AlchemistStatFactory extends StatFactory implements Serializable{
 	public AlchemistStatFactory() {
 		
 	}

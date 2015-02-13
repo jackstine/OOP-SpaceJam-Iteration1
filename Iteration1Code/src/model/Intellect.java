@@ -1,6 +1,8 @@
 package model;
 
-public class Intellect extends PrimaryStat {
+import java.io.Serializable;
+
+public class Intellect extends PrimaryStat implements Serializable{
 
 	public Intellect(int value) {
 		super(value);

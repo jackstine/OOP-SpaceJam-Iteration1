@@ -1,6 +1,8 @@
 package model;
 
-public class Hardiness extends PrimaryStat {
+import java.io.Serializable;
+
+public class Hardiness extends PrimaryStat implements Serializable{
 
 	public Hardiness(int value) {
 		super(value);

@@ -1,6 +1,8 @@
 package model;
 
-public class Weapon extends TakeableItem implements Equipable {
+import java.io.Serializable;
+
+public class Weapon extends TakeableItem implements Equipable, Serializable {
 	private int attack;
 	
 	public Weapon(int attack) {
@@ -34,5 +36,10 @@ public class Weapon extends TakeableItem implements Equipable {
 		//Type casting here to make it a Armor
 		weaponSlot.equip((Weapon)invSlot.unequip());
 		//weaponSlot.equip(invSlot.unequip());		This will not work
+	}
+
+	@Override
+	public void action(Entity entity) {
+		
 	}
 }

@@ -3,13 +3,17 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Inventory;
 import model.Item;
+import model.Location;
 import model.Point;
+import model.Tile;
 
 public class InventoryView extends JPanel{
 	// AHHAHAHAHAHAHA   CONNASCENCE    =)
@@ -41,9 +45,9 @@ public class InventoryView extends JPanel{
 				Point pointOfSlot = new Point(i,j);
 				this.slots[i][j] = new SlotView<Item>( this.inventory.getSlot(pointOfSlot) , pointOfSlot, this.pointOnView );
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
-				
 			}
 		}
+		this.addMouseListener(new InventoryMouseListener());
 	}
 	
 	
@@ -78,4 +82,37 @@ public class InventoryView extends JPanel{
 	public Point getPointOnView(Point point){
 		return this.pointOnView;
 	}
+	
+	
+	
+	public class InventoryMouseListener implements MouseListener{
+
+
+		// all these classes need to be defined in the MapView
+		public void mouseClicked(MouseEvent e) {
+			
+			System.out.println(e);
+//			int tileY = e.getY()/Tile.SCALE;
+//			int tileX = e.getX()/Tile.SCALE;
+//			Location tileLocation = new Location(tileX,tileY);
+//			
+//			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
+//			Item droppedItem = map.getTile(tileLocation).getItem();
+//			System.out.println(droppedItem+"  "+tileLocation);
+//			if (inventoryView.getInventory().findAndEquip(droppedItem)){
+//				map.getTile(tileLocation).dropItem();
+//				tile.repaint();
+//				frame.repaint();
+//			}
+//			tile.repaint();
+//			this.repaint();
+		}
+		
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {	}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+	}
+	
+	
 }

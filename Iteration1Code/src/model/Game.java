@@ -1,6 +1,8 @@
 package model;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
 	GameMap map = new GameMap();
 	Avatar avatar = new Avatar();
 	

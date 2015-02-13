@@ -1,10 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 import view.SlotView;
 
-public class InventorySlot extends Observable implements Slotable<Item>{
+public class InventorySlot extends Observable implements Slotable<Item>, Serializable {
     private Item item;
 
 	//CONSTRUCTORS

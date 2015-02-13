@@ -1,8 +1,9 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
-public class RedCrossDecal extends Decal{
+public class RedCrossDecal extends Decal implements Serializable{
 
 	public RedCrossDecal(){
 		super();

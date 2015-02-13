@@ -1,6 +1,8 @@
 package model;
 
-public class EffectApplication {
+import java.io.Serializable;
+
+public class EffectApplication implements Serializable {
 	
 	public static void apply(Entity entity, DeathAreaEffect areaEffect) {
 		// DeathAoE affects Entity here
@@ -20,6 +22,16 @@ public class EffectApplication {
 	public static void apply(Entity entity, HealingAreaEffect areaEffect) {
 		// HealingAoE affects Entity here
 		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 + areaEffect.getPercentHealth())));
+	}
+	
+	public static void apply(Entity entity, HealingOneShotItem item) {
+		// Healing one-shot item affects Entity here
+		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 + item.getPercentHealth())));
+	}
+	
+	public static void apply(Entity entity, DamagingOneShotItem item) {
+		// Damaging one-shot item affects Entity here
+		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 - item.getPercentDamage())));
 	}
 
 }

@@ -1,14 +1,10 @@
 package model;
 
-import java.awt.image.*;
-import java.awt.*;
-import java.io.*;
+import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
-import javax.imageio.ImageIO;
-
-import utilities.ImageProcessing;
-
-public class RadioactiveWasteTerrain extends Terrain{
+public class RadioactiveWasteTerrain extends Terrain implements Serializable{
+	private static final long serialVersionUID = 7458223L;
 	private boolean passable;
 
 	public RadioactiveWasteTerrain(){
@@ -21,5 +17,8 @@ public class RadioactiveWasteTerrain extends Terrain{
 	
 	public BufferedImage getImage(){
 		return TerrainImageProxy.getTerrainImage(this);
+	}
+	public BufferedImage getNewImage(){
+		return TerrainImageProxy.getNewTerrainImage(this);
 	}
 }
