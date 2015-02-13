@@ -1,12 +1,6 @@
 package model;
 
 import java.awt.image.*;
-import java.awt.*;
-import java.io.*;
-
-import javax.imageio.ImageIO;
-
-import utilities.ImageProcessing;
 
 public class RadioactiveWasteTerrain extends Terrain implements Serializable{
 	private boolean passable;

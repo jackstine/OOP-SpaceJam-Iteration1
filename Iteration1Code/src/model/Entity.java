@@ -10,22 +10,15 @@ public abstract class Entity implements Serializable{
 	private Location location;
 	private Equipable equipment;
 	
-	public Entity() {
-		
-	}
+	// -------------------------------------------
+	// Need to decide on what constructor we're using for Entity
+	public Entity() {}
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
 		this.stats = occupation.createStats();
 	}
-	
-	private void attack() {
-		//occupation.attack();
-	}
-	
-	private void useAbility() {
-		//occupation.useAbility();
-	}
+	// -------------------------------------------
 	
 	public Location getLocation() {
 		//query map for location
@@ -40,4 +33,15 @@ public abstract class Entity implements Serializable{
 	public void setStatValue(String key, int value) {
 		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
 	}
+	
+	// -------------------------------------------
+	// not 1st iteration stuff
+	private void attack() {
+		//occupation.attack();
+	}
+	
+	private void useAbility() {
+		//occupation.useAbility();
+	}
+	// -------------------------------------------
 }

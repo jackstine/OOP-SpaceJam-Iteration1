@@ -31,6 +31,10 @@ public class MapViewController{
 		//image=avatar.loadImage();
 		
 		
+		//TODO fir good reasons
+		this.active = false;
+		
+		
 	}
 	
 	public void setActive(boolean active){

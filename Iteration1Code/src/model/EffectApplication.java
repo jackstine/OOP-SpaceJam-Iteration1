@@ -23,5 +23,15 @@ public class EffectApplication implements Serializable {
 		// HealingAoE affects Entity here
 		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 + areaEffect.getPercentHealth())));
 	}
+	
+	public static void apply(Entity entity, HealingOneShotItem item) {
+		// Healing one-shot item affects Entity here
+		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 + item.getPercentHealth())));
+	}
+	
+	public static void apply(Entity entity, DamagingOneShotItem item) {
+		// Damaging one-shot item affects Entity here
+		entity.setStatValue("HP", (int)(entity.getStatValue("HP") * (1 - item.getPercentDamage())));
+	}
 
 }
