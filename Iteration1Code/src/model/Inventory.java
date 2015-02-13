@@ -62,4 +62,6 @@ public class Inventory extends SlotContainer{
         }
         return builder.toString();
     }
+    
+    protected void primitive(){};
 }

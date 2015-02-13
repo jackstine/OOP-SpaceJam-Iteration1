@@ -12,7 +12,7 @@ import utilities.ImageProcessing;
 import model.Equipment;
 import model.Point;
 
-public class EquipmentView extends JPanel implements Observer{
+public class EquipmentView extends JPanel{
 	private final Point POINT_OF_WEAPON = new Point(100,200);
 	private final Point POINT_OF_ARMOR = new Point(200,0);
 	private final Point SIZE_OF_SLOT = new Point(100,100);
@@ -27,13 +27,18 @@ public class EquipmentView extends JPanel implements Observer{
 	private BufferedImage equipmentWeaponImage;
 	private BufferedImage equipmentArmorImage;
 	
+	
+	// NOTE IT IS NOT SPECIFIC TO THE SLOT,  BUT ONLY TO EQUIPMENT
+	//  			equipment.getArmorSlot().unequip();   will NOT work
+	//   equipment.unequipArmor();  		WILL WORK
 	public EquipmentView(Equipment equipment){
 		this.equipment = equipment;
+		equipment.addObserver(this);
 		this.setEquipmentImages();
 	}
 	
 	private BufferedImage getEquipmentSlotImage(String equipment, String itemImage){
-		return this.equipmentWeaponImage = ImageProcessing.overlayImages(equipment, SIZE_OF_SLOT,itemImage,EQUIPMENT_SLOT_OFFSET);
+		return ImageProcessing.overlayImages(equipment, SIZE_OF_SLOT,itemImage,EQUIPMENT_SLOT_OFFSET);
 	}
 	
 	public void setEquipmentImages(){
@@ -51,7 +56,7 @@ public class EquipmentView extends JPanel implements Observer{
 		}
 	}
 	
-	public void update(Observable arg0, Object arg1) {
+	public void update() {
 		this.setEquipmentImages();
 	}
 

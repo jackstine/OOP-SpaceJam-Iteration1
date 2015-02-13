@@ -61,6 +61,12 @@ public class ImageProcessing {
 	    return returnImage;
 	}
 	
+	public static BufferedImage overlayImages(String background,Point sizeOfBackground, String centered, Point sizeOfCentered){
+		BufferedImage backgroundImage = ImageProcessing.scaleImage(sizeOfBackground.getWidth(),sizeOfBackground.getHeight(),background);
+		BufferedImage centeredImage = ImageProcessing.scaleImage(sizeOfCentered.getWidth(),sizeOfCentered.getHeight(),centered);
+		return ImageProcessing.overlayImages(backgroundImage, centeredImage);
+	}
+	
 	//TODO  the overlay Image only centers for now,  allow it to make dimensions where ever, such as
 	//  bottom cornor, top cornor,....
 	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage){
@@ -84,20 +90,6 @@ public class ImageProcessing {
 		return backgroundImage;
 	}
 	
-	public static BufferedImage getTransparentImage(int width, int height, BufferedImage imageToProcess){
-		BufferedImage tempImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-		Graphics2D tempG = tempImage.createGraphics();
-		tempG.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
-		tempG.drawImage(imageToProcess, 0, 0, null);
-		return tempImage;
-	}
-	
-	public static BufferedImage overlayImages(String background,Point sizeOfBackground, String centered, Point sizeOfCentered){
-		BufferedImage backgroundImage = ImageProcessing.scaleImage(sizeOfBackground.getWidth(),sizeOfBackground.getHeight(),background);
-		BufferedImage centeredImage = ImageProcessing.scaleImage(sizeOfCentered.getWidth(),sizeOfCentered.getHeight(),centered);
-		return ImageProcessing.overlayImages(backgroundImage, centeredImage);
-	}
-	
 	public static BufferedImage overlayImages(BufferedImage backgroundImage,BufferedImage centeredImage, Point point){
 		// If the centered Image is any Dimension larger than the background image, it will throw a exception
 		if (backgroundImage.getHeight()< centeredImage.getHeight() ||
@@ -115,6 +107,14 @@ public class ImageProcessing {
 		g.drawImage(centeredImage, point.getX(), point.getY(), null);
 		g.dispose();
 		return backgroundImage;
+	}
+	
+	public static BufferedImage getTransparentImage(int width, int height, BufferedImage imageToProcess){
+		BufferedImage tempImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+		Graphics2D tempG = tempImage.createGraphics();
+		tempG.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
+		tempG.drawImage(imageToProcess, 0, 0, null);
+		return tempImage;
 	}
 	
 	public static BufferedImage overlayImagesTopLeftCorner(BufferedImage backgroundImage,BufferedImage centeredImage){

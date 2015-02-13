@@ -1,11 +1,19 @@
 package model;
 
+import view.EquipmentView;
+
 public class Equipment extends SlotContainer{
     private Slotable<Armor> armorSlot;
     private Slotable<Weapon> weaponSlot;
+    private EquipmentView equipmentView;
 
     //Since this class extends the SlotContainer, it can 
-    //al
+    
+    //TODO delete this constructor  JUST FOR TESTING PURPOSES
+    public Equipment(){
+    	this.armorSlot = new ArmorSlot();
+    	this.weaponSlot = new WeaponSlot();
+    }
     
     public Equipment(DerivedStat armorRating, DerivedStat offensiveRating){
         this.armorSlot = new ArmorSlot(armorRating);
@@ -15,8 +23,10 @@ public class Equipment extends SlotContainer{
     }
 
 	public <K extends Armor> boolean equipArmor(K armor){
-        return this.equip(this.armorSlot,armor);
+        boolean returnValue = this.equip(this.armorSlot,armor);
+        return returnValue;
     }
+	
 	public Armor unequipArmor(){
 		return this.unequip(this.armorSlot);
 	}
@@ -36,7 +46,25 @@ public class Equipment extends SlotContainer{
 		return this.weaponSlot;
 	}
 	
+	protected void primitive(){
+		if (this.equipmentView == null){
+			return;
+		}
+		else{
+			System.out.println("hello hitting");
+			this.notifyView();
+		}
+	}
+	
+	private void notifyView(){
+		this.equipmentView.update();
+	}
+	
     protected <K extends Item> Slotable<K> getSlot(Point point){
        throw new IllegalArgumentException("Cant Associate a BufferSlot in Equipment with a Point");
+    }
+    
+    public void addObserver(EquipmentView equipmentView){
+    	this.equipmentView = equipmentView;
     }
 }

@@ -50,15 +50,20 @@ public abstract class SlotContainer{
         //the item is unequiped and dropped forever
         if (slot.has()){
             slot.unequip();	//gets dropped here
+            primitive();
             return true;
         }
         return false;
     }
     protected final <K extends Item> K unequipItem(Slotable<K> slot){
-        return slot.unequip();
+        K returnValue = slot.unequip();
+        primitive();
+        return returnValue;
     }
     protected final <K extends Item> boolean equipItem(Slotable<K> slot,K item){ 
-       return slot.equip(item);
+       boolean returnValue = slot.equip(item);
+       primitive();
+       return returnValue;
     }
     protected final <K extends Item> boolean equipItem(Slotable<K> to,Slotable<K> from){
     	//TODO the commented outline has to work
@@ -67,7 +72,9 @@ public abstract class SlotContainer{
 //            return this.swapItem(to,from);
 //        }
 //        else{
-            return to.equip(from.unequip());
+            boolean returnValue = to.equip(from.unequip());
+            primitive();
+            return returnValue;
 //        }
     }
     
@@ -76,11 +83,15 @@ public abstract class SlotContainer{
     protected final <K extends Item> boolean swapItem(Slotable<K> to,Slotable<K> from){
         K temp = (K)from.unequip();
         from.equip(to.unequip());
-        return to.equip(temp);
+        boolean returnValue = to.equip(temp);
+        primitive();
+        return returnValue;
     }
 
     //PRIMITIVE METHODS
     protected abstract <K extends Item> Slotable<K> getSlot(Point slot);
+    
+    protected abstract void primitive();
     
     static public void main(String[] args){
     	InventorySlot invSlot = new InventorySlot();
