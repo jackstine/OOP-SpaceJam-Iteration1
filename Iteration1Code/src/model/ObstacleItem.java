@@ -1,16 +1,11 @@
 package model;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 import utilities.ImageProcessing;
 
-public abstract class ObstacleItem implements Item, Serializable {
+public abstract class ObstacleItem implements Item {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1477694977470333609L;
 	protected String ITEM_IMAGE;
 	
 	public abstract boolean action(Avatar avatar);

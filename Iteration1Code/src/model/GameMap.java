@@ -7,19 +7,15 @@ import java.io.*;
 
 import javax.imageio.ImageIO;
 
-
-
 import utilities.Scaling;
 import view.InventoryView;
 
-public class GameMap implements Serializable{
+public class GameMap {
 	//TODO create a Generate Map function that the constructor calls
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
-	private int test;
 	//I am changing the HashMap to a Array because the Items are not unique Yet
-	private Item[][] items;
 	private int width;
 	private int height;
 	private int deltaX;
@@ -37,7 +33,7 @@ public class GameMap implements Serializable{
 	
 	// I put a item in it, it will generate the Item GameMap
 	//TODO this is just for practicing
-	public GameMap(Item item){
+	/*public GameMap(Item item){
 		// just set it to a random number size
 		MapBuilder m= new MapBuilder(10,10);
 		map = m.generateMapWithItems();
@@ -46,6 +42,7 @@ public class GameMap implements Serializable{
 		items = m.getItems();
 		test=0;
 	}
+	*/
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
 	private void setWidthHeight(){
@@ -60,7 +57,7 @@ public class GameMap implements Serializable{
 	}
 
 	public Tile getEntityTile(Entity entity){
-		Location location= entity.getLocation();
+		Location location= this.entityToLocationMap.get(entity);
 		int x=(int)location.getX();
 		int y=(int)location.getY();
 		return map[x][y];

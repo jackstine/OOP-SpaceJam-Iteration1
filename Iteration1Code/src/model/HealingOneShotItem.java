@@ -31,4 +31,8 @@ public class HealingOneShotItem extends OneShotItem {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String toString() {
+		return "HealingOneShotItem:" + this.percentHealth;
+	}
 }

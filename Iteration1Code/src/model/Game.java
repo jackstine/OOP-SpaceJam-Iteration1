@@ -1,6 +1,8 @@
 package model;
 
-import java.io.Serializable;
+import java.io.*;
+
+import controller.SaveLoadController;
 
 public class Game implements Serializable {
 	GameMap map = new GameMap();
@@ -11,9 +13,10 @@ public class Game implements Serializable {
 		avatar = new Avatar(new Terminator());
 	}
 	
-	public Game(Occupation occupation) {
+	public Game(Occupation occupation, String name) {
 		map = new GameMap();
 		avatar = new Avatar(occupation);
+		avatar.setName(name);
 	}
 	
 	public GameMap getMap() {
@@ -27,5 +30,15 @@ public class Game implements Serializable {
 	}
 	public void setAvatar(Avatar avatar) {
 		this.avatar = avatar;
+	}
+	
+	public void save() throws IOException {
+		SaveLoadController.save(this);
+	}
+	
+	public void load() throws IOException {
+		Game game = SaveLoadController.load();
+		this.setAvatar(game.getAvatar());
+		this.setMap(game.getMap());
 	}
 }

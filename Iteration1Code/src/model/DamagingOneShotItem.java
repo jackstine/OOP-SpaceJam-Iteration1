@@ -31,4 +31,8 @@ public class DamagingOneShotItem extends OneShotItem {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String toString() {
+		return "DamagingOneShotItem:" + this.percentDamage;
+	}
 }
