@@ -7,7 +7,7 @@ public abstract class Entity {
 	protected Occupation occupation;
 	protected String name;
 	private Equipable equipment;
-	private int direction;
+	protected int direction;
 	
 	// private GameMap map;
 	// private Equipable equipment;

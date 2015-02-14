@@ -2,13 +2,13 @@ package model;
 
 import java.awt.image.BufferedImage;
 
-import utilities.ImageProcessing;
-import utilities.Scaling;
+import utilities.*;
 
 public class Avatar extends Entity {
 	private Inventory inventory = new Inventory();
 	private BufferedImage image;
-	private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
+	private BufferedImage[] spriteSheet;
+	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",
 											"Movement", "Strength"};
@@ -20,6 +20,9 @@ public class Avatar extends Entity {
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
+		String occString = occupation.getName().toUpperCase();
+		SpriteSheetUtility util = new SpriteSheetUtility(occString);
+		spriteSheet = (util.getSpriteArray());
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
@@ -43,7 +46,8 @@ public class Avatar extends Entity {
 	*/
 	
 	public BufferedImage getImage(){
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
+		BufferedImage imageToDisplay = spriteSheet[direction];
+		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
 		return image;
 	}
 	
