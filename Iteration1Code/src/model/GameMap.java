@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import utilities.Scaling;
 import view.InventoryView;
 
-public class GameMap implements Serializable{
+public class GameMap {
 	//TODO create a Generate Map function that the constructor calls
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;

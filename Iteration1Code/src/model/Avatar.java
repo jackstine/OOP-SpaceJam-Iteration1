@@ -1,23 +1,12 @@
 package model;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
-import controller.MapViewController;
 
-public class Avatar extends Entity implements Serializable{
+public class Avatar extends Entity {
 	private Inventory inventory = new Inventory();
-	private final int INITIAL_X_LIE = 0;
-	private final int INITIAL_Y_LIE =0;
 	private BufferedImage image;
 	private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",

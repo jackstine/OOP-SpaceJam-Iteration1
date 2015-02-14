@@ -17,8 +17,7 @@ public class SaveLoadController {
 		// write everything about the map
 		GameMap map = game.getMap();
 		out.close();
-		System.out.println("We just saved a game!");
-		System.out.println("----------------------");
+		System.out.println("GAME SAVED");
 	}
 	
 	public static Game load() throws IOException {
@@ -27,20 +26,34 @@ public class SaveLoadController {
 		Avatar avatar = null;
 		GameMap map = null;
 		
+		// load the Avatar information		
 		String[] avatarName = in.next().split(":");
 		String name = avatarName[1];
 		
 		String[] avatarOccupation = in.next().split(":");
 		String occupation = avatarOccupation[1];
 		
+		// fix this later
 		if (occupation.equals("Terminator")) avatar = new Avatar(new Terminator());
 		if (occupation.equals("Alchemist")) avatar = new Avatar(new Alchemist());
 		if (occupation.equals("Hunter")) avatar = new Avatar(new Hunter());
 		
 		avatar.setName(name);
 		
+		for (int i = 0; i < 9; i++) {
+			String[] primaryStat = in.next().split(":");
+			String key = primaryStat[0];
+			int value = Integer.parseInt(primaryStat[1]);
+			avatar.setStatValue(key, value);
+		}		
+
 		game.setAvatar(avatar);
+		
+		// load the GameMap information
+		
+		
 		game.setMap(map);
+		System.out.println("GAME LOADED");
 		return game;
 	}
 }
