@@ -82,7 +82,7 @@ public final class Scaling {
 	public static final int TILE_WIDTH = 100;
 	public static final int TILE_HEIGHT = 100;
 	public static final Point TILE_SCALE = new Point(TILE_WIDTH,TILE_HEIGHT);
-	public static final int TILE_OVERLAY_IMAGE_OFFSET = 35 * (TILE_WIDTH/100);
+	public static final int TILE_OVERLAY_IMAGE_OFFSET = (int) (35 * (TILE_WIDTH/100.0));
 	
 	/*************ENTITYVIEW************/
 	public static final int ENTITY_MIDDLE = TILE_WIDTH*3;		//starts 3 spaces on the map
@@ -105,16 +105,18 @@ public final class Scaling {
 	// below the Leggings
 	public static final int EQUIPMENT_BOOTS_X = EQUIPMENT_LEGGINGS_X;
 	public static final int EQUIPMENT_BOOTS_Y = EQUIPMENT_LEGGINGS_Y + Scaling.EQUIPMENT_SLOT_HEIGHT;
-	//Left of boots
-	public static final int EQUIPMENT_GLOVES_X = Scaling.EQUIPMENT_BOOTS_X - Scaling.EQUIPMENT_SLOT_HEIGHT;
-	public static final int EQUIPMENT_GLOVES_Y = EQUIPMENT_BOOTS_Y;
+	//Left of LEGGINGS
+	public static final int EQUIPMENT_GLOVES_X = Scaling.EQUIPMENT_LEGGINGS_X - Scaling.EQUIPMENT_SLOT_HEIGHT;
+	public static final int EQUIPMENT_GLOVES_Y = EQUIPMENT_LEGGINGS_Y;
 	//SLOT information
 	public static final int EQUIPMENT_SLOT_WIDTH = 75;
 	public static final int EQUIPMENT_SLOT_HEIGHT = 75;
-	public static final int EQUIPMENT_SLOT_OFFSET_WIDTH = 80 * (EQUIPMENT_SLOT_WIDTH/100);
-	public static final int EQUIPMENT_SLOT_OFFSET_HEIGHT = 80 * (EQUIPMENT_SLOT_HEIGHT/100);
-	public static final int EQUIPMENT_VIEW_WIDTH = 200;
-	public static final int EQUIPMENT_VIEW_HEIGHT = 200;
+	public static final int EQUIPMENT_SLOT_OFFSET_WIDTH = (int) (80 * (Scaling.EQUIPMENT_SLOT_WIDTH/100.0));
+	public static final int EQUIPMENT_SLOT_OFFSET_HEIGHT = (int) (80 * (Scaling.EQUIPMENT_SLOT_HEIGHT/100.0));
+	public static final int EQUIPMENT_VIEW_WIDTH = Scaling.EQUIPMENT_SLOT_WIDTH * 3;	//CURRENTLY THERE ARE 3 SLOTS IN THE WIDTH
+	public static final int EQUIPMENT_VIEW_HEIGHT = Scaling.EQUIPMENT_SLOT_HEIGHT * 4;	// CURRENTLY THERE ARE 4 SLOTS IN THE HEIGHT
+	
+	
 	
 	/*****************GAMEVIEW*********************/
 	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board

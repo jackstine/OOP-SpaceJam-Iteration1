@@ -24,11 +24,21 @@ public class Avatar extends Entity {
                 String occString = occupation.getName().toUpperCase();
                 SpriteSheetUtility util = new SpriteSheetUtility(occString);
                 spriteSheet = (util.getSpriteArray());
+                //This needs to be deleted
+                setEquipmentBegin();	
                 //this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
         }
        
         public String getStat(String s){
                 return Integer.toString(stats.get(s).getValue());
+        }
+        
+        
+        //sets the beginging set of equipment in the equipment
+        private void setEquipmentBegin(){
+        	int beginValue = 1;
+        	this.equipment.equipArmor(new Armor(beginValue));
+        	this.equipment.equipWeapon(new Weapon(beginValue));
         }
        
         /*
@@ -85,6 +95,4 @@ public class Avatar extends Entity {
         //}
         //may not need to override
          */
-       
-       
 }

@@ -111,7 +111,9 @@ public class GameController {
                 board = new GameView(game.getMap(),game.getAvatar());
                 character = new CharacterMenuView(game.getAvatar());
                 statusView = new StatusView(game.getAvatar());
-               
+                
+                // add the mouse listener to the board
+                board.addMouseListener(new BoardMouseListener());
                 //Add to the canvas
                 buttons.add(systemButton);
                 buttons.add(statButton);
@@ -277,30 +279,30 @@ public class GameController {
                 // all these classes need to be defined in the MapView
                
                
-                // Point of Reference needs to be added to the tileY and tileX
-                // the point of reference is the point that reflects the change in the display of the map
-                public Location getTileLocation(MouseEvent e){
-                        int tileY = e.getY()/Scaling.TILE_HEIGHT;
-                        int tileX = e.getX()/Scaling.TILE_WIDTH;
-                        Point gameLocation = board.getMap().getDelta();
-                        int xOff = gameLocation.getX()/Scaling.TILE_WIDTH;
-                        int yOff = gameLocation.getY()/Scaling.TILE_HEIGHT;
-                        return new Location(tileX+xOff,tileY+yOff);
-                }
+	        // Point of Reference needs to be added to the tileY and tileX
+	        // the point of reference is the point that reflects the change in the display of the map
+	        public Location getTileLocation(MouseEvent e){
+	            int tileY = e.getY()/Scaling.TILE_HEIGHT;
+	            int tileX = e.getX()/Scaling.TILE_WIDTH;
+	            Point gameLocation = board.getMap().getDelta();
+	            int xOff = gameLocation.getX()/Scaling.TILE_WIDTH;
+	            int yOff = gameLocation.getY()/Scaling.TILE_HEIGHT;
+	            return new Location(tileX+xOff,tileY+yOff);
+	        }
                
-                public void mouseClicked(MouseEvent e) {
-                        Location tileLocation = this.getTileLocation(e);
-                        //TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
-                        Item droppedItem = board.getMap().getTile(tileLocation).getItem();
-                        System.out.println(droppedItem+"  "+tileLocation);
-                        if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
-                                board.getMap().getTile(tileLocation).dropItem();
-                        }
+            public void mouseClicked(MouseEvent e) {
+                Location tileLocation = this.getTileLocation(e);
+                //TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
+                Item droppedItem = board.getMap().getTile(tileLocation).getItem();
+                System.out.println(droppedItem+"  "+tileLocation);
+                if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
+                        board.getMap().getTile(tileLocation).dropItem();
                 }
-                public void mouseEntered(MouseEvent e) {}
-                public void mouseExited(MouseEvent e) { }
-                public void mousePressed(MouseEvent e) {}
-                public void mouseReleased(MouseEvent e) {}
+            }
+            public void mouseEntered(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) { }
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
         }
        
 }

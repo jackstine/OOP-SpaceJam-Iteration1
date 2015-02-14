@@ -59,6 +59,8 @@ public class EquipmentView extends JComponent{
 	}
 	
 	private BufferedImage getEquipmentSlotImage(String equipment, String itemImage){
+		System.out.println(equipment + "    "+ itemImage+ "   "+SIZE_OF_SLOT + "    " +  EQUIPMENT_SLOT_OFFSET);
+		System.out.println(Scaling.EQUIPMENT_SLOT_OFFSET_WIDTH+ "   "+ Scaling.EQUIPMENT_SLOT_OFFSET_HEIGHT);
 		return ImageProcessing.overlayImages(equipment, SIZE_OF_SLOT,itemImage,EQUIPMENT_SLOT_OFFSET);
 	}
 	
@@ -89,9 +91,7 @@ public class EquipmentView extends JComponent{
 	}
 
 	public void paint(Graphics g){
-		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, 300, 500);
-		
+		g.setColor(Color.WHITE);
 		g.drawImage(this.weaponImage, POINT_OF_WEAPON.getX(), POINT_OF_ARMOR.getY(), null);
 		g.drawImage(this.armorImage, POINT_OF_ARMOR.getX(), POINT_OF_ARMOR.getY(),null);
 		g.drawImage(this.bootsImage, POINT_OF_BOOTS.getX(), POINT_OF_BOOTS.getY(), null);
