@@ -20,15 +20,7 @@ public class GiantRock extends ObstacleItem {
 	@Override
 	public boolean action(Avatar avatar) {
 		//Avatar does nothing since it can't pass
-		return false;
-	}
-
-	public void action(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	
+		return true;
+	}	
 
 }

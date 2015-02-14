@@ -8,13 +8,13 @@ public class Armor extends TakeableItem implements Equipable, Serializable {
 	private static String ARMOR_IMAGE = "src/res/img/armor.png";
 
 	@Override
-	public void action(Entity entity) {
+	public boolean action(Avatar avatar) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 	
 	public Armor(){}
-	
+	 
 	public Armor(int armor) {
 		this.armor = armor;
 		ITEM_IMAGE = ARMOR_IMAGE;
@@ -24,11 +24,6 @@ public class Armor extends TakeableItem implements Equipable, Serializable {
 	public Armor(int armor, String image) {
 		this.armor = armor;
 		this.ITEM_IMAGE = image;
-	}
-	
-	public boolean action(Avatar avatar) {
-		//TODO
-		return true;
 	}
 	
 	public int getBonus() {

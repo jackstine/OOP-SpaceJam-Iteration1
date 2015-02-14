@@ -11,6 +11,7 @@ public class StatTest {
 		PrimaryStat experience = new Experience(0);
 		PrimaryStat hardiness = new Hardiness(10);
 		PrimaryStat hp = new HP(0);
+		PrimaryStat mp = new MP(0);
 		PrimaryStat intellect = new Intellect(10);
 		PrimaryStat lives = new Lives(5);
 		PrimaryStat movement = new Movement(1);
@@ -20,7 +21,7 @@ public class StatTest {
 		DerivedStat defensiveRating = new DefensiveRating();
 		DerivedStat level = new Level();
 		DerivedStat life = new Life(hp);
-		DerivedStat mana = new Mana();
+		DerivedStat mana = new Mana(mp);
 		DerivedStat offensiveRating = new OffensiveRating();
 		
 		agility.addAllObservers(defensiveRating);
@@ -46,6 +47,7 @@ public class StatTest {
 			System.out.println("\tIntellect - " + intellect.getValue());
 			System.out.println("\tLives - " + lives.getValue());
 			System.out.println("\tMovement - " + movement.getValue());
+			System.out.println("\tMP - " + mp.getValue());
 			System.out.println("\tStrength - " + strength.getValue());
 			System.out.println("Derived Stats");
 			System.out.println("\tArmor Rating - " + armorRating.getValue());
