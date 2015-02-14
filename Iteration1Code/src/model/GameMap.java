@@ -105,6 +105,10 @@ public class GameMap implements Serializable{
 		this.setDeltaX(point.getX());
 		this.setDeltaY(point.getY());
 	}
+	
+	public Point getDelta(){
+		return new Point(this.deltaX,this.deltaY);
+	}
 
 	public void draw(Graphics g){
 		for(int i=0;i<map.length;i++){

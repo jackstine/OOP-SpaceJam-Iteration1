@@ -58,9 +58,9 @@ public final class Scaling {
 	public static int GAME_CONTROLLER_BOARD_HEIGHT = BOARD_HEIGHT;
 	
 	/**************JINTERNALFRAMES***********/
-	public static int INTERNAL_X = 100;
+	public static int INTERNAL_X = 400;
 	public static int INTERNAL_Y = 50;
-	public static int INTERNAL_WIDTH = 300;
+	public static int INTERNAL_WIDTH = 500;
 	public static int INTERNAL_HEIGHT = 300;
 	
 	

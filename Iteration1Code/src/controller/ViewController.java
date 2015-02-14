@@ -41,7 +41,7 @@ public class ViewController {
 		
 		//instantiate the game controller + view 
 		if(new File("apple.ser").isFile()){
-			inGame = new GameController("apple.ser");
+			inGame = new GameController();
 			views.put("Game", inGame.getView());
 		}
 		else{
@@ -80,8 +80,9 @@ public class ViewController {
 			current.setNext("Quit");
 		}
 		else{
-			if(current.getNext() == "New"){
-				inGame = new GameController();
+			if(current.getNext().equals("New")){
+				
+				inGame = new GameController(charGen.getOccupationSelected());
 				views.put("Game", inGame.getView());
 				mv = new MapViewController(inGame,frame);
 				current = views.get("Game");
@@ -104,7 +105,7 @@ public class ViewController {
 	}
 	
 	public void hasSaved(){
-		inGame = new GameController("apple.ser");
+		inGame = new GameController();
 		views.put("Game", inGame.getView());
 		mv = new MapViewController(inGame,frame);
 		frame.revalidate();
