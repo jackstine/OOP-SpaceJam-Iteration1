@@ -73,8 +73,16 @@ public class TileToInventoryTest extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			int tileY = e.getY()/Tile.SCALE;
-			int tileX = e.getX()/Tile.SCALE;
+			
+			//TODO
+			//Fix this...what is Tile.SCALE?
+			//int tileY = e.getY()/Tile.SCALE;
+			//int tileX = e.getX()/Tile.SCALE;
+			
+			//delete these placeholders
+			int tileY = 0;
+			int tileX = 0;
+			
 			Location tileLocation = new Location(tileX,tileY);
 			
 			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing

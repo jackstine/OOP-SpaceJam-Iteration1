@@ -9,6 +9,8 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import java.util.*;
+
 import model.*;
 
 /*
@@ -25,9 +27,24 @@ public class StatusView extends JPanel {
 	
 	private PortraitView portraitView;
 	
-	private JPanel buttonPanel;
-	private JButton systemMenu;
-	private JButton characterMenu;
+	private JLabel avatarName;
+	private JLabel avatarLevel;
+	private JLabel avatarOccupation;
+	
+	private JLabel avatarLife;
+	private JLabel avatarMana;
+	
+	private JPanel levelClassPanel;
+	//private JPanel buttonPanel;
+	private JPanel vitalsPanel;
+	//private JButton systemMenu;
+	//private JButton characterMenu;
+	
+	private JPanel abilitiesPanel;
+	private JLabel abilitiesLabel;
+	private ArrayList<JButton> abilityButtons;
+	
+	private JPanel portraitStatsPanel;
 	
 	private BufferedImage avatarPortrait;
 	
@@ -46,24 +63,71 @@ public class StatusView extends JPanel {
         
 		setLayout(new BorderLayout());
 		statusInfo = new JPanel();
-		System.out.println("added1");
-		buttonPanel = new JPanel();
+		
+		/*buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridLayout(2,1));
 		systemMenu = new JButton("System");
-		characterMenu = new JButton("Character");
+		characterMenu = new JButton("Character");*/
+		
+		vitalsPanel = new JPanel();
+		avatarName = new JLabel(avatar.getName());
+		
+		avatarOccupation = new JLabel(avatar.getOccupation().getName());
+		avatarLevel = new JLabel("Lv. xxx");//+avatar.getStat("Level"));
+		
+		//TODO
+		//figure out where player max hp and current hp is stored
+		//same for mana, let's get this up and running
+		avatarLife = new JLabel("HP: xxx/xxx");//+avatar.getStat("Life")); 
+		avatarMana = new JLabel("Mana: xxx/xxx");//+avatar.getStat("Mana"));
+		
+		levelClassPanel = new JPanel();
+		
+		levelClassPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		
+		levelClassPanel.add(avatarLevel);
+		levelClassPanel.add(avatarOccupation);
+		
+		vitalsPanel.setLayout(new BoxLayout(vitalsPanel, BoxLayout.Y_AXIS));
+		vitalsPanel.add(avatarName);
+		vitalsPanel.add(levelClassPanel);
+		vitalsPanel.add(avatarLife);
+		vitalsPanel.add(avatarMana);
 		
 		portraitView = new PortraitView(avatarPortrait);
 		portraitView.setPreferredSize(new Dimension(210, 168));
 		portraitView.repaint();
 		
-		statusInfo.setLayout(new BorderLayout());
-		statusInfo.add(portraitView, BorderLayout.WEST);
+		portraitStatsPanel = new JPanel();
+		portraitStatsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		portraitStatsPanel.add(portraitView);
+		portraitStatsPanel.add(vitalsPanel);
 		
-		buttonPanel.add(systemMenu);//, BorderLayout.NORTH);
-		buttonPanel.add(characterMenu);//, BorderLayout.SOUTH);
+		abilitiesPanel = new JPanel();
+		abilitiesLabel = new JLabel("Ability Select");
+		
+		abilitiesPanel.setLayout(new BoxLayout(abilitiesPanel, BoxLayout.Y_AXIS));
+		abilitiesPanel.add(abilitiesLabel);
+		
+		abilityButtons = new ArrayList<JButton>();
+		
+		//TODO
+		/*When abilities are implemented, we want to iterate through the avatar's abilities
+		 * here, generate a corresponding JButton and add it to the ArrayList as well as the
+		 * abilitiesPanel. If this is not the best solution due to controller issues, we can
+		 * discuss other options. */
+		//For now, default buttons
+		for(int i = 1; i < 5; i++) {
+			abilityButtons.add(new JButton("Ability "+i));
+			abilitiesPanel.add(abilityButtons.get(abilityButtons.size()-1));
+		}
+		
+		statusInfo.setLayout(new GridLayout(1,2));
+		
+		statusInfo.add(portraitStatsPanel);
+		statusInfo.add(abilitiesPanel);
 		
 		add(statusInfo, BorderLayout.CENTER);
-		add(buttonPanel, BorderLayout.EAST);
 	}
 
 	public StatusView() {

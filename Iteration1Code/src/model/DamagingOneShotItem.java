@@ -29,6 +29,12 @@ public class DamagingOneShotItem extends OneShotItem {
 	public String getImagePath() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean action(Avatar avatar) {
+		// TODO Auto-generated method stub
+		return false;
 	}	
 
 }
