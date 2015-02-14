@@ -6,15 +6,13 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
 import model.Inventory;
 import model.Item;
-import model.Location;
 import model.Point;
-import model.Tile;
 import model.Weapon;
 
 public class InventoryView extends JPanel{
@@ -64,18 +62,14 @@ public class InventoryView extends JPanel{
 		return new Dimension(INVENTORY_WIDTH,INVENTORY_HEIGHT);
 	}
 	
-	public void paint(Graphics g){
-		for (int i = 0; i<Inventory.ROW ; i++){
-			for (int j = 0; j<Inventory.COL;j++){
-				this.slots[i][j].paint(g);
-			}
-		}
-	}
-	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.BLACK);
-		g.fillRect(0,0,getWidth(),getHeight());
-		paint(g);
+		g.fillRect(this.pointOnView.getX(),this.pointOnView.getY(),getWidth(),getHeight());
+		for (int i = 0; i<Inventory.ROW ; i++){
+			for (int j = 0; j<Inventory.COL;j++){
+				this.slots[i][j].paintComponent(g);
+			}
+		}
 		g.dispose();
 		repaint();
 	}
