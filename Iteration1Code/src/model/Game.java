@@ -6,6 +6,16 @@ public class Game implements Serializable {
 	GameMap map = new GameMap();
 	Avatar avatar = new Avatar(new Alchemist());
 	
+	public Game() {
+		GameMap map = new GameMap();
+		Avatar avatar = new Avatar(new Terminator());
+	}
+	
+	public Game(Occupation occupation) {
+		GameMap map = new GameMap();
+		Avatar avatar = new Avatar(occupation);
+	}
+	
 	public GameMap getMap() {
 		return map;
 	}

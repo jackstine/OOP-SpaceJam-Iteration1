@@ -88,7 +88,7 @@ public class StatusView extends JPanel {
 		levelClassPanel.add(avatarLevel);
 		levelClassPanel.add(avatarOccupation);
 		
-		vitalsPanel.setLayout(new BoxLayout(vitalsPanel, BoxLayout.Y_AXIS));
+		vitalsPanel.setLayout(new GridLayout(4,1));
 		vitalsPanel.add(avatarName);
 		vitalsPanel.add(levelClassPanel);
 		vitalsPanel.add(avatarLife);
@@ -99,7 +99,7 @@ public class StatusView extends JPanel {
 		portraitView.repaint();
 		
 		portraitStatsPanel = new JPanel();
-		portraitStatsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		portraitStatsPanel.setLayout(new GridLayout(1,2));
 		portraitStatsPanel.add(portraitView);
 		portraitStatsPanel.add(vitalsPanel);
 		
