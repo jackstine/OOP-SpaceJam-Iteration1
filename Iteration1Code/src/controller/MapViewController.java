@@ -1,6 +1,7 @@
 package controller;
 
 import model.Avatar;
+import model.EffectHandler;
 import model.Game;
 import model.GameMap;
 import model.Item;
@@ -32,6 +33,7 @@ public class MapViewController{
 	private Avatar avatar;
 	private boolean active;
 	private GameController game;
+	EffectHandler effectHandler;
 	//public BufferedImage image;
 	
 	public MapViewController(GameController game,JFrame frame){ //added GameMap here
@@ -39,6 +41,7 @@ public class MapViewController{
 		this.avatar = game.getGame().getAvatar();
 		this.map= game.getGame().getMap();
 		this.game = game;
+		effectHandler= new EffectHandler(avatar);
 		//image=avatar.loadImage();
 		//TODO fir good reasons
 		this.active = false;
@@ -85,6 +88,8 @@ public class MapViewController{
 			if(map.getTile(temp.addLocation(point)).isPassable()){
 				avatarLocation.add(point);
 				map.setDelta(point);
+				effectHandler.apply(map.getTile(avatarLocation));
+				
 			}
 			System.out.println(map.getTile(avatarLocation).getTerrain());	
 		}

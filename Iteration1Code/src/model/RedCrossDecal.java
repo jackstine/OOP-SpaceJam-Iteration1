@@ -4,10 +4,12 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 public class RedCrossDecal extends Decal implements Serializable{
-	private BufferedImage image;
+	//private BufferedImage image;
+	HealingAreaEffect effect;
 
 	public RedCrossDecal(){
 		super();
+		effect= new HealingAreaEffect(50);
 		//image= 
 	}
 	/*
@@ -23,5 +25,9 @@ public class RedCrossDecal extends Decal implements Serializable{
 	}
 	public BufferedImage getNewImage(){
 		return DecalImageProxy.getNewDecalImage(this);
+	}
+	
+	public AreaEffect getAreaEffect(){
+		return effect;
 	}
 }
