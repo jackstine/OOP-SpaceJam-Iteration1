@@ -83,17 +83,6 @@ public class MapViewController{
 		public void mouseReleased(MouseEvent e) {}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public class CharacterKeyboardController implements KeyListener{
 		private final Point NORTH = new Point(0,-1);
 		private final Point SOUTH = new Point(0,1);
@@ -126,87 +115,49 @@ public class MapViewController{
 			return map.getLocation(avatar);
 		}
 		
+		public void move(Point point){
+			if(map.getTile(temp.addLocation(point)).isPassable()){
+				avatarLocation.add(point);
+				map.setDelta(point);
+			}
+			System.out.println(map.getTile(avatarLocation).getTerrain());	
+		}
+		
+		private Location avatarLocation;
+		private Location temp;
+		
+		
 		@Override
 		public void keyPressed(KeyEvent e) {
-			Location avatarLocation = this.getAvatarLocation();
-			Location temp= new Location(avatarLocation.getX(),avatarLocation.getY());
+			avatarLocation = this.getAvatarLocation();
+			temp= new Location(avatarLocation.getX(),avatarLocation.getY());
 			//System.out.println(e.getKeyCode()); used for debugging
 			if(!active){
 				return;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 || e.getKeyCode()==KeyEvent.VK_1){
-				
-				if(map.getTile(temp.addLocation(-1,1)).isPassable()){
-				avatarLocation.add(SOUTHWEST);
-				map.setDeltaX((-1)*Scaling.TILE_SCALE.getX());
-				map.setDeltaY(Scaling.TILE_SCALE.getX());
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
-				
-				
+				this.move(SOUTHWEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 || e.getKeyCode()==KeyEvent.VK_2){
-				
-				if(map.getTile(temp.addLocation(0,1)).isPassable()){
-				avatarLocation.add(SOUTH);
-				map.setDeltaX(0);
-				map.setDeltaY(Scaling.TILE_SCALE.getX());
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
+				this.move(SOUTH);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 || e.getKeyCode()==KeyEvent.VK_3){
-				
-				if(map.getTile(temp.addLocation(1,1)).isPassable()){
-				avatarLocation.add(SOUTHEAST);
-				map.setDeltaX(Scaling.TILE_SCALE.getX());
-				map.setDeltaY(Scaling.TILE_SCALE.getX());
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
+				this.move(SOUTHEAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 || e.getKeyCode()==KeyEvent.VK_6){
-				
-				if(map.getTile(temp.addLocation(1,0)).isPassable()){
-				avatarLocation.add(EAST);
-				map.setDeltaX(Scaling.TILE_SCALE.getX());
-				map.setDeltaY(0);
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
+				this.move(EAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
-				
-				if(map.getTile(temp.addLocation(1,-1)).isPassable()){
-				avatarLocation.add(NORTHEAST);
-				map.setDeltaX(Scaling.TILE_SCALE.getX()); //changed this
-				map.setDeltaY((-1)*Scaling.TILE_SCALE.getX());
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
+				this.move(NORTHWEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
-				
-				if(map.getTile(temp.addLocation(0,-1)).isPassable()==true){
-				avatarLocation.add(NORTH);
-				map.setDeltaX(0);
-				map.setDeltaY((-1)*Scaling.TILE_SCALE.getX());
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
+				this.move(NORTH);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
-				
-				if(map.getTile(temp.addLocation(-1,-1)).isPassable()){
-				avatarLocation.add(NORTHWEST);
-				map.setDeltaX((-1)*Scaling.TILE_SCALE.getX());
-				map.setDeltaY((-1)*Scaling.TILE_SCALE.getX());
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
+				this.move(NORTHEAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
-			
-				if(map.getTile(temp.addLocation(-1,0)).isPassable()){
-				avatarLocation.add(WEST);
-				map.setDeltaX((-1)*Scaling.TILE_SCALE.getX());
-				map.setDeltaY(0);
-				}
-				System.out.println(map.getTile(avatarLocation).getTerrain());
+				this.move(WEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
 				game.spawnSystems();

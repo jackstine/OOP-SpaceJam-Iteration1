@@ -26,6 +26,12 @@ public class Location extends Point implements Serializable{
 		return this;
 	}
 	
+	public Location addLocation(Point point) {
+		this.x += point.getX();
+		this.y += point.getY();
+		return this;
+	}
+	
 	
 
 }

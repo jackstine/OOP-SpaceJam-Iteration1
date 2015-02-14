@@ -38,8 +38,8 @@ public class MapView extends JPanel {
 
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
-			int tileY = e.getY()/Tile.SCALE;
-			int tileX = e.getX()/Tile.SCALE;
+			int tileY = e.getY()/Scaling.TILE_SCALE.getX();
+			int tileX = e.getX()/Scaling.TILE_SCALE.getX();
 			Location tileLocation = new Location(tileX,tileY);
 			
 			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing

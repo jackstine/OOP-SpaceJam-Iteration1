@@ -6,13 +6,14 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import utilities.ImageProcessing;
+import utilities.Scaling;
 import model.Location;
 import model.Tile;
 
 
 public class TileView extends JPanel{
-	public static final int SCALE=100;
-	private final int OVERLAY_IMAGE_OFFSET = 35;
+	public static final int SCALE = Scaling.TILE_SCALE.getX();
+	private final int OVERLAY_IMAGE_OFFSET = Scaling.TILE_OVERLAY_IMAGE_OFFSET;
 	
 	private Tile tile;
 	private ItemView item;

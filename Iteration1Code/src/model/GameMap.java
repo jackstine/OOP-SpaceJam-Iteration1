@@ -14,6 +14,7 @@ import view.InventoryView;
 
 public class GameMap implements Serializable{
 	//TODO create a Generate Map function that the constructor calls
+	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
 	private int test;
@@ -48,8 +49,8 @@ public class GameMap implements Serializable{
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
 	private void setWidthHeight(){
-		this.height = map.length * Scaling.TILE_SCALE.getX();
-		this.width = map[0].length * Scaling.TILE_SCALE.getX();
+		this.height = map.length * TILE_SCALE;
+		this.width = map[0].length * TILE_SCALE;
 	}
 	
 	public Tile getTile(Location location){
@@ -93,11 +94,16 @@ public class GameMap implements Serializable{
 	}
 	
 	public void setDeltaX(int x){  //adding this to move map under not done
-		deltaX+=x;
+		deltaX+=x * this.TILE_SCALE;
 	}
 	
 	public void setDeltaY(int y){  //adding this to move map under not done
-		deltaY+=y;
+		deltaY+=y * this.TILE_SCALE;
+	}
+	
+	public void setDelta(Point point){
+		this.setDeltaX(point.getX());
+		this.setDeltaY(point.getY());
 	}
 
 	public void draw(Graphics g){

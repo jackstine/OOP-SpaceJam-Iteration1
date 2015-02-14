@@ -32,8 +32,8 @@ public final class Scaling {
 	public static final int STATUS_Y = 0;
 	public static final int STATUS_WIDTH = 700;
 	public static final int STATUS_HEIGHT = 700;
-	public static final int BOARD_WIDTH = 700;
-	public static final int BOARD_HEIGHT = 700;
+	public static final int BOARD_WIDTH = Scaling.GAME_VIEW_WIDTH;
+	public static final int BOARD_HEIGHT = Scaling.GAME_VIEW_HEIGHT;
 	public static final int BOARD_X = 5;
 	public static final int BOARD_Y = 0;
 	public static final int SYSTEM_BUTTON_X = 0;
@@ -67,10 +67,10 @@ public final class Scaling {
 	
 	
 	/*************TILE***************/
-	public static final int TILE_WIDTH = 50;
-	public static final int TILE_HEIGHT = 50;
+	public static final int TILE_WIDTH = 100;
+	public static final int TILE_HEIGHT = 100;
 	public static final Point TILE_SCALE = new Point(TILE_WIDTH,TILE_HEIGHT);
-	public static final int TILE_OVERLAY_IMAGE_OFFSET = 35;
+	public static final int TILE_OVERLAY_IMAGE_OFFSET = 35 * (TILE_WIDTH/100);
 	
 	/*************ENTITYVIEW************/
 	public static final int ENTITY_MIDDLE = TILE_WIDTH*3;		//starts 3 spaces on the map
@@ -88,8 +88,10 @@ public final class Scaling {
 	public static final int EQUIPMENT_VIEW_HEIGHT = 200;
 	
 	/*****************GAMEVIEW*********************/
-	public static final int GAME_VIEW_WIDTH = 700;
-	public static final int GAME_VIEW_HEIGHT = 700;
+	public static final int NUM_TILES_WIDTH = 7;
+	public static final int NUM_TILES_HEIGHT = 7;
+	public static final int GAME_VIEW_WIDTH = NUM_TILES_WIDTH * TILE_WIDTH;
+	public static final int GAME_VIEW_HEIGHT = NUM_TILES_HEIGHT * TILE_HEIGHT;
 	
 	/**********************INVENTORY************************/
 	public static final int INVENTORY_HEIGHT =  Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
