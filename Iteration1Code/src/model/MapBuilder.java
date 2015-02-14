@@ -54,6 +54,22 @@ public class MapBuilder implements Serializable{
 		return this.map;
 	}
 	
+	public Tile[][] generateStructuredMap(){
+		this.map = new Tile[this.height][this.width]; // Sets the map size
+		for(int i = 0; i < this.width; i++){
+			for(int j = 0; j < this.height; j++){
+				if(i == 0 || j == 0 || i == this.width-1 || j == this.height-1)	// Mountains around the perimeter
+					this.map[i][j] = new Tile(new MountainTerrain(),i,j);
+				else if ((i == this.width/2 || (i == ((this.width/2) + 1))) &&  (j == this.height/2 || j == ((this.height/2)+1)))	//Waste in the middle
+					this.map[i][j] = new Tile(new RadioactiveWasteTerrain(),i,j);
+				else
+					this.map[i][j] = new Tile(new DesertTerrain(),i,j);		//Desert everywhere else
+			}
+		}
+		
+		return this.map;
+	}
+	
 	public Item[][] getItems(){
 		return this.items;
 	}
