@@ -25,7 +25,7 @@ public class GameMap implements Serializable{
 
 	public GameMap(){
 		MapBuilder m= new MapBuilder();
-		map = m.generateMap();
+		map = m.generateStructuredMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
 		deltaX=0;
