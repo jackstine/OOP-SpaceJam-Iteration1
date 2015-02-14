@@ -3,17 +3,15 @@ package view;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.Observable;
-import java.util.Observer;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Equipment;
 import model.Point;
 
-public class EquipmentView extends JPanel{
+public class EquipmentView extends JComponent{
 	private final Point POINT_OF_WEAPON = new Point(Scaling.EQUIPMENT_WEAPON_X,Scaling.EQUIPMENT_WEAPON_Y);
 	private final Point POINT_OF_ARMOR = new Point(Scaling.EQUIPMENT_ARMOR_X,Scaling.EQUIPMENT_ARMOR_Y);
 	private final Point SIZE_OF_SLOT = new Point(Scaling.EQUIPMENT_SLOT_WIDTH, Scaling.EQUIPMENT_SLOT_HEIGHT);
@@ -61,7 +59,7 @@ public class EquipmentView extends JPanel{
 		this.setEquipmentImages();
 	}
 
-	public void paint(Graphics g){
+	public void paintComponent(Graphics g){
 		g.drawImage(this.equipmentWeaponImage, POINT_OF_WEAPON.getX(), POINT_OF_WEAPON.getY(), null);
 		g.drawImage(this.equipmentArmorImage, POINT_OF_ARMOR.getX(), POINT_OF_ARMOR.getY(),null);
 	}

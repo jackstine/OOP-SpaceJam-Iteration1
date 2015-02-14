@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import model.Game;
+import model.Occupation;
 import model.Point;
 import utilities.Scaling;
 import view.CharacterMenuView;
@@ -92,11 +93,13 @@ public class GameController {
 		
 	}
 	
-	public GameController(String s){
+	public GameController(Occupation occupationSelected){
 		
 		//Load Game
 		apple = load();
 		savedText = new JLabel(apple.s);
+		
+		game = new Game(occupationSelected);
 		
 		//Add to the canvas
 		gameView.getCanvas().add(systemButton);

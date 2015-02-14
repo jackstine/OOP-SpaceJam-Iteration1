@@ -9,7 +9,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+
+import model.*;
 
 import utilities.Scaling;
 import view.View;
@@ -21,10 +24,15 @@ public class CharacterCreationController {
 	private JButton startAlchemistButton;
 	private JButton startHunterButton;
 	private JButton startTerminatorButton;
+	private JLabel enterNameLabel;
+	private JTextField enterNameField;
 	private JLabel title;
 	private JPanel buttons;
 	private JPanel main;
 	private JPanel back;
+	private JPanel nameEntry;
+	
+	private Occupation occupationSelected;
 
 	public CharacterCreationController(){
 		charCreation = new View();
@@ -41,6 +49,13 @@ public class CharacterCreationController {
 		charCreation.getCanvas().setBorder(new LineBorder(Color.black, 5));
 		charCreation.getCanvas().setLayout(new BorderLayout());
 		
+		nameEntry = new JPanel();
+		enterNameLabel = new JLabel("Enter Name");
+		enterNameField = new JTextField("Arnold");
+		
+		nameEntry.add(enterNameLabel);
+		nameEntry.add(enterNameField);
+		
 		buttons.add(startHunterButton);
 		buttons.add(startTerminatorButton);
 		buttons.add(startAlchemistButton);
@@ -49,7 +64,7 @@ public class CharacterCreationController {
 		
 		main.setLayout(new GridLayout(4,1));
 		
-		main.add(new JPanel());
+		main.add(nameEntry);
 		main.add(buttons);
 		main.add(new JPanel());
 		main.add(back);
@@ -67,19 +82,25 @@ public class CharacterCreationController {
 		return charCreation;
 	}
 	
+	public Occupation getOccupationSelected() {
+		return occupationSelected;
+	}
+	
 	public class BackButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("Main");
 			charCreation.setRedraw(true);
+			
 		}
 	}
 	
 	public class AlchemistSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext(""); //Game View
+			charCreation.setNext("New"); //Game View
 			charCreation.setRedraw(true);
+			occupationSelected = new Alchemist();
 		}
 	}
 	
@@ -88,14 +109,16 @@ public class CharacterCreationController {
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
 			charCreation.setRedraw(true);
+			occupationSelected = new Terminator();
 		}
 	}
 	
 	public class HunterSelectListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			charCreation.setNext("h"); //Game View
+			charCreation.setNext("New"); //Game View
 			charCreation.setRedraw(true);
+			occupationSelected = new Hunter();
 		}
 	}
 }

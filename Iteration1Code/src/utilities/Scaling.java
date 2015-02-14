@@ -32,8 +32,8 @@ public final class Scaling {
 	public static int CHAR_Y = 0;
 	public static int CHAR_WIDTH = 625;
 	public static int CHAR_HEIGHT = 500;
-	public static int BOARD_WIDTH = 700;
-	public static int BOARD_HEIGHT = 700;
+	public static int BOARD_WIDTH = Scaling.NUM_TILES_WIDTH * Scaling.TILE_WIDTH;
+	public static int BOARD_HEIGHT = Scaling.NUM_TILES_HEIGHT * Scaling.TILE_HEIGHT;
 	public static int BOARD_X = 5;
 	public static int BOARD_Y = 0;
 	public static int SYSTEM_BUTTON_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35;
@@ -54,8 +54,8 @@ public final class Scaling {
 	public static int GAME_CONTROLLER_SAVED_TEXT_HEIGHT = 25;
 	public static int GAME_CONTROLLER_BOARD_X = 500;
 	public static int GAME_CONTROLLER_BOARD_Y = 0;
-	public static int GAME_CONTROLLER_BOARD_WIDTH = 700;
-	public static int GAME_CONTROLLER_BOARD_HEIGHT = 700;
+	public static int GAME_CONTROLLER_BOARD_WIDTH = BOARD_WIDTH;		//ASSUMING THAT THIS IS CORRECT
+	public static int GAME_CONTROLLER_BOARD_HEIGHT = BOARD_HEIGHT;
 	
 	/**************JINTERNALFRAMES***********/
 	public static int INTERNAL_X = 400;
@@ -78,6 +78,7 @@ public final class Scaling {
 	
 	
 	/*************TILE***************/
+	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board
 	public static final int TILE_WIDTH = 100;
 	public static final int TILE_HEIGHT = 100;
 	public static final Point TILE_SCALE = new Point(TILE_WIDTH,TILE_HEIGHT);
@@ -99,6 +100,7 @@ public final class Scaling {
 	public static final int EQUIPMENT_VIEW_HEIGHT = 200;
 	
 	/*****************GAMEVIEW*********************/
+	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board
 	public static final int NUM_TILES_WIDTH = 7;
 	public static final int NUM_TILES_HEIGHT = 7;
 	public static final int GAME_VIEW_WIDTH = NUM_TILES_WIDTH * TILE_WIDTH;
