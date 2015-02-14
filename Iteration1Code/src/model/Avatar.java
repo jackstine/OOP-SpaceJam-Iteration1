@@ -56,6 +56,7 @@ public class Avatar extends Entity {
 		result += "Avatar:" + this.name;
 		result += "\n" + this.occupation;
 		for (String key : primaryStats) result += "\n" + this.stats.get(key);
+		result += "\nDirection:" + this.direction;
 		return result;
 	}
 	

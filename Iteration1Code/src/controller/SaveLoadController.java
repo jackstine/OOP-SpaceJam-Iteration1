@@ -38,15 +38,19 @@ public class SaveLoadController {
 		if (occupation.equals("Alchemist")) avatar = new Avatar(new Alchemist());
 		if (occupation.equals("Hunter")) avatar = new Avatar(new Hunter());
 		
-		avatar.setName(name);
-		
 		for (int i = 0; i < 9; i++) {
 			String[] primaryStat = in.next().split(":");
 			String key = primaryStat[0];
 			int value = Integer.parseInt(primaryStat[1]);
 			avatar.setStatValue(key, value);
 		}		
+		
+		String[] avatarDirection = in.next().split(":");
+		int direction = Integer.parseInt(avatarDirection[1]);
 
+		avatar.setName(name);
+		avatar.setDirection(direction);
+		
 		game.setAvatar(avatar);
 		
 		// load the GameMap information

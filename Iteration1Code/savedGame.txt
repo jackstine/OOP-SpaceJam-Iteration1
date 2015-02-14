@@ -1,11 +1,12 @@
 Avatar:Arnold
 Occupation:Terminator
-Agility:27
-Experience:500
+Agility:10
+Experience:0
 Hardiness:20
-HP:100
+HP:20
 Intellect:10
 Lives:3
-MP:50
+MP:10
 Movement:10
 Strength:20
+Direction:0

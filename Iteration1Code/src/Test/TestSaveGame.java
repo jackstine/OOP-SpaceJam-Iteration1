@@ -14,6 +14,6 @@ public class TestSaveGame {
 		game.save();
 		game.load();
 		
-		System.out.println(game.getAvatar());
+		System.out.println(game.getAvatar());	
 	}
 }

@@ -7,8 +7,6 @@ import java.io.*;
 
 import javax.imageio.ImageIO;
 
-
-
 import utilities.Scaling;
 import view.InventoryView;
 
@@ -17,9 +15,7 @@ public class GameMap {
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
-	private int test;
 	//I am changing the HashMap to a Array because the Items are not unique Yet
-	private Item[][] items;
 	private int width;
 	private int height;
 	private int deltaX;
@@ -37,7 +33,7 @@ public class GameMap {
 	
 	// I put a item in it, it will generate the Item GameMap
 	//TODO this is just for practicing
-	public GameMap(Item item){
+	/*public GameMap(Item item){
 		// just set it to a random number size
 		MapBuilder m= new MapBuilder(10,10);
 		map = m.generateMapWithItems();
@@ -46,6 +42,7 @@ public class GameMap {
 		items = m.getItems();
 		test=0;
 	}
+	*/
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
 	private void setWidthHeight(){
