@@ -33,13 +33,14 @@ public class StatFactory implements Serializable{
 		PrimaryStat intellect = new Intellect(getIntellect());
 		PrimaryStat lives = new Lives(getLivesLeft());
 		PrimaryStat movement = new Movement(getMovement());
+		PrimaryStat mp = new MP(0);
 		PrimaryStat strength = new Strength(getStrength());
 		
 		
 		//INIT DERIVED STATS
 		DerivedStat level = new Level();
 		DerivedStat life = new Life(hp);
-		DerivedStat mana = new Mana();
+		DerivedStat mana = new Mana(mp);
 		
 		//Adding references to observers to derive value from.
 		experience.addAllObservers(level);
@@ -62,6 +63,7 @@ public class StatFactory implements Serializable{
 		map.put("Intellect", intellect);
 		map.put("Lives", lives);
 		map.put("Movement", movement);
+		map.put("MP", mp);
 		map.put("Strength", strength);
 	
 		
