@@ -1,17 +1,15 @@
 package model;
+
 import java.io.Serializable;
 import java.util.Map;
-
 
 public abstract class Entity implements Serializable{
 	protected Map<String,Stat> stats; 
 	protected Occupation occupation;
-	// private GameMap map;
-	private Location location;
-	private Equipable equipment;
+	protected String name;
 	
-	//adding a name for display purposes
-	private String name;
+	// private GameMap map;
+	// private Equipable equipment;
 	
 	// -------------------------------------------
 	// Need to decide on what constructor we're using for Entity
@@ -22,11 +20,6 @@ public abstract class Entity implements Serializable{
 		this.stats = occupation.createStats();
 	}
 	// -------------------------------------------
-	
-	public Location getLocation() {
-		//query map for location
-		return location;
-	}
 	
 	public int getStatValue(String key) {
 		if (this.stats.containsKey(key)) return this.stats.get(key).getValue();

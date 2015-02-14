@@ -25,5 +25,4 @@ public class Alchemist extends Occupation implements Serializable{
 		StatFactory statFactory = new AlchemistStatFactory();
 		return statFactory.initializeStats();
 	}
-
 }

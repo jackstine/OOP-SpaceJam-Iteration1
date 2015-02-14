@@ -19,4 +19,8 @@ public abstract class Occupation implements Serializable{
 	public String getName() {
 		return name;
 	}
+	
+	public String toString() {
+		return "Occupation:" + this.name;
+	}
 }

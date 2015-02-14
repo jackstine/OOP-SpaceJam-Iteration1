@@ -13,7 +13,7 @@ public class Location extends Point implements Serializable{
 	}
 	
 	public String toString(){
-		return this.x+"  "+this.y;
+		return "Location:" + this.x + "," + this.y;
 	}
 	public void add(Point point) {  
 		this.x += point.getX();

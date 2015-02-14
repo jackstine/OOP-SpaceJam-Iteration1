@@ -45,10 +45,6 @@ public abstract class PrimaryStat extends Observable implements Stat, Serializab
 	}
 	
 	public String toString() {
-		StringBuilder s = new StringBuilder();
-		s.append(this.getClass().getName() + " ");
-		s.append(this.getValue());
-		
-		return s.toString();
+		return this.getClass().getSimpleName() + ":" + this.value;
 	}
 }

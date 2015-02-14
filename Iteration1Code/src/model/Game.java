@@ -1,6 +1,8 @@
 package model;
 
-import java.io.Serializable;
+import java.io.*;
+
+import controller.SaveLoadController;
 
 public class Game implements Serializable {
 	GameMap map = new GameMap();
@@ -17,5 +19,15 @@ public class Game implements Serializable {
 	}
 	public void setAvatar(Avatar avatar) {
 		this.avatar = avatar;
+	}
+	
+	public void save() throws IOException {
+		SaveLoadController.save(this);
+	}
+	
+	public void load() throws IOException {
+		Game game = SaveLoadController.load();
+		this.setAvatar(game.getAvatar());
+		this.setMap(game.getMap());
 	}
 }

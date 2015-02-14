@@ -1,48 +1,46 @@
 package controller;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
-public abstract class SaveLoadController {
-	protected boolean pressedSave;
+import java.util.*;
+import java.io.*;
+import model.*;
+
+public class SaveLoadController {
 	
-	public void save(TestGameController s){
-		try
-	      {
-	         FileOutputStream fileOut =
-	         new FileOutputStream("apple.ser");
-	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-	         out.writeObject(s.apple);
-	         out.close();
-	         fileOut.close();
-	         System.out.println("Serialized data is saved in apple.ser");
-	      }catch(IOException i)
-	      {
-	          i.printStackTrace();
-	      }
+	public static void save(Game game) throws IOException {
+		// create the PrintWriter that will write to the file
+		PrintWriter out = new PrintWriter(new File("savedGame.txt"));
+		
+		// write everything about the avatar
+		Avatar avatar = game.getAvatar();
+		out.println(avatar);
+		
+		// write everything about the map
+		GameMap map = game.getMap();
+		out.close();
+		System.out.println("We just saved a game!");
+		System.out.println("----------------------");
 	}
 	
-	public void load(TestGameController s){
-		  Apple a = null;
-		  try
-		  {
-		     FileInputStream fileIn = new FileInputStream("apple.ser");
-		     ObjectInputStream in = new ObjectInputStream(fileIn);
-		     a = (Apple) in.readObject();
-		     in.close();
-		     fileIn.close();
-		  }catch(IOException i)
-		  {
-		     i.printStackTrace();
-		     return;
-		  }catch(ClassNotFoundException c)
-		  {
-		     System.out.println("Apple class not found");
-		     c.printStackTrace();
-		     return;
-		  }
-		  s.apple = a;
+	public static Game load() throws IOException {
+		Scanner in = new Scanner(new File("savedGame.txt"));
+		Game game = new Game();
+		Avatar avatar = null;
+		GameMap map = null;
+		
+		String[] avatarName = in.next().split(":");
+		String name = avatarName[1];
+		
+		String[] avatarOccupation = in.next().split(":");
+		String occupation = avatarOccupation[1];
+		
+		if (occupation.equals("Terminator")) avatar = new Avatar(new Terminator());
+		if (occupation.equals("Alchemist")) avatar = new Avatar(new Alchemist());
+		if (occupation.equals("Hunter")) avatar = new Avatar(new Hunter());
+		
+		avatar.setName(name);
+		
+		game.setAvatar(avatar);
+		game.setMap(map);
+		return game;
 	}
 }

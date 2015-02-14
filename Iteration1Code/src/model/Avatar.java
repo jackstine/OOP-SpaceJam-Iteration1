@@ -14,19 +14,22 @@ import controller.MapViewController;
 
 public class Avatar extends Entity implements Serializable{
 	private Inventory inventory = new Inventory();
-	private Location location;   // I dont think this is needed? -Juan
 	private final int INITIAL_X_LIE = 0;
 	private final int INITIAL_Y_LIE =0;
 	private BufferedImage image;
 	private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
+	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
+											"HP", "Intellect", "Lives", "MP",
+											"Movement", "Strength"};
 
 	public Avatar() {
-		this.location = new Location(INITIAL_X_LIE,INITIAL_Y_LIE);		// this is a lie
+		this.location = new Location(INITIAL_X_LIE,INITIAL_Y_LIE);	// this is a lie
 		//occupation.initializeStats();
 	}
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
+		this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
 	
@@ -40,7 +43,6 @@ public class Avatar extends Entity implements Serializable{
 		int x= location.getX();
 		int y= location.getY();
 		g.drawImage(image,Scaling.AVATAR_WIDTH*x,Scaling.AVATAR_HEIGHT*y,null);
-		
 	}
 	
 	public BufferedImage getImage(){
@@ -50,6 +52,15 @@ public class Avatar extends Entity implements Serializable{
 	
 	public Inventory getInventory(){
 		return inventory;
+	}
+	
+	public String toString() {
+		String result = "";
+		result += "Avatar:" + this.name;
+		result += "\n" + this.occupation;
+		result += "\n" + this.location;
+		for (String key : primaryStats) result += "\n" + this.stats.get(key);
+		return result;
 	}
 	
 	
