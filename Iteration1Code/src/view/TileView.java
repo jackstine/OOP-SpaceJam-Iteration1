@@ -16,8 +16,6 @@ public class TileView extends JPanel{
 	
 	private Tile tile;
 	private ItemView item;
-	private EntityView entity;
-	private Location location;
 	
 	public TileView(Tile tile) {
 		this.tile = tile;
@@ -26,23 +24,21 @@ public class TileView extends JPanel{
 	private BufferedImage updateImage(){
 		BufferedImage imageOfTerrain = tile.getTerrain().getImage();
 		BufferedImage itemImage,imageToDisplay;
-		if (item != null){
-			itemImage = item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
-			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain, itemImage);
-		}
-		else{
+		//if (item != null){
+		//	itemImage = item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
+		//	imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain, itemImage);
+		//}
+		//else{
 			imageToDisplay = imageOfTerrain;
-		}
+		//}
 		return imageToDisplay;
 	}
 	
 	public void draw(Graphics g){
-		int x= location.getX();
-		int y= location.getY();
 		//if has Item overlay
 		BufferedImage imageToDisplay = this.updateImage();
 		//System.out.println(this+imageToDisplay.toString());
-		g.drawImage(imageToDisplay,SCALE*x+deltaX,SCALE*y+deltaY,null);
+		g.drawImage(imageToDisplay,SCALE*x+map.deltaX,SCALE*y+deltaY,null);
 	}
 
 }

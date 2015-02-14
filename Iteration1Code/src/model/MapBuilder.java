@@ -22,14 +22,22 @@ public class MapBuilder implements Serializable{
 	
 	public Tile[][] generateMap(){
 		this.map= new Tile[this.height][this.width]; //just a test of the map
-		for(int i=0;i<this.width;i++){
-			for(int j=0;j<this.height;j++){
-				this.map[i][j]=new Tile(new DesertTerrain(),j,i);
+		for(int i=0;i<this.height;i++){
+			for(int j=0;j<this.width;j++){
+				this.map[i][j]=new Tile(new DesertTerrain(),i,j);
 				if((i==1 && j!= 7) || (j>-1 && j<3)){
 						this.map[i][j].setTerrain(new RadioactiveWasteTerrain());
 					}
 			}
 		}
+		
+		for(int i = 0; i < this.map.length; i++) {
+			for(int j = 0; j < this.map[i].length; j++) {
+				System.out.print(map[i][j].getTerrain().getTerrainID()+" ");
+			}
+			System.out.println();
+		}
+		
 		return this.map;
 	}
 	

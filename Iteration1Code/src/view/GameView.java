@@ -17,6 +17,7 @@ public class GameView extends JPanel {
 	Avatar avatar;
 	EntityView entityView;
 	BufferedImage image;
+	MapView mapView;
 	private final int MIDDLE=300;
 
 	public GameView(){
@@ -36,6 +37,7 @@ public class GameView extends JPanel {
 		this.map = map;
 		this.avatar = avatar;
 		entityView=new EntityView(avatar);
+		MapView mapView= new MapView(avatar);
 		//image=avatar.getImage();
 		setFocusable(true);
 		setPreferredSize(new Dimension(700, 700));
