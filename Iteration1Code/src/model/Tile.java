@@ -39,7 +39,7 @@ public class Tile implements Serializable{
 	}
 
 	public boolean isPassable(){
-		return terrain.isPassable();
+		return terrain.isPassable() && !(item instanceof ObstacleItem);  
 	}
 	//will probably need to add a setTerrain for the purpose
 	//of making the map 
@@ -98,7 +98,7 @@ public class Tile implements Serializable{
 	}
 	
 	public String toString(){
-		return "PRInting the image at ("+this.location.getX()+","+this.location.getY()+")";
+		return "Printing the image at ("+this.location.getX()+","+this.location.getY()+")";
 	}
 	
 	public void draw(Graphics g){
