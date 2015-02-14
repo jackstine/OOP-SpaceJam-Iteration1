@@ -82,7 +82,7 @@ public class ViewController {
 		else{
 			if(current.getNext().equals("New")){
 				
-				inGame = new GameController(charGen.getOccupationSelected());
+				inGame = new GameController(charGen.getGameToCreate());
 				views.put("Game", inGame.getView());
 				mv = new MapViewController(inGame,frame);
 				current = views.get("Game");

@@ -99,14 +99,13 @@ public class GameController {
 		
 	}
 	
-	public GameController(Occupation occupationSelected){
+	public GameController(Game gameToCreate){
 		
 		//Load Game
 		apple = load();
 		savedText = new JLabel(apple.s);
 		
-		System.out.println(occupationSelected);
-		game = new Game(occupationSelected);
+		game = gameToCreate;
 		board = new GameView(game.getMap(),game.getAvatar());
 		character = new CharacterMenuView(game.getAvatar());
 		statusView = new StatusView(game.getAvatar());
