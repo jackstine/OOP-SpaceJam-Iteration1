@@ -2,10 +2,14 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import model.Avatar;
+import model.*;
 
 /*
 
@@ -18,25 +22,48 @@ public class StatusView extends JPanel {
 	
 	private Avatar avatar;
 	private JPanel statusInfo;
+	
+	private PortraitView portraitView;
+	
 	private JPanel buttonPanel;
 	private JButton systemMenu;
 	private JButton characterMenu;
 	
+	private BufferedImage avatarPortrait;
+	
 	public StatusView(Avatar a) {
+		
 		avatar = a;
 		
-		statusInfo = new JPanel();
+		System.out.println(avatar.getOccupation().getPortraitLocation());
 		
+        try {
+        	
+	        avatarPortrait = ImageIO.read(new File(avatar.getOccupation().getPortraitLocation()));
+        } catch (Exception e) {
+        	System.out.println("Avatar portrait image not found!");
+        }
+        
+		setLayout(new BorderLayout());
+		statusInfo = new JPanel();
+		System.out.println("added1");
 		buttonPanel = new JPanel();
-		buttonPanel.setLayout(new BorderLayout());
+		buttonPanel.setLayout(new GridLayout(2,1));
 		systemMenu = new JButton("System");
 		characterMenu = new JButton("Character");
 		
-		buttonPanel.add(systemMenu, BorderLayout.NORTH);
-		buttonPanel.add(characterMenu, BorderLayout.SOUTH);
+		portraitView = new PortraitView(avatarPortrait);
+		portraitView.setPreferredSize(new Dimension(210, 168));
+		portraitView.repaint();
 		
-		add(statusInfo);
-		add(buttonPanel);
+		statusInfo.setLayout(new BorderLayout());
+		statusInfo.add(portraitView, BorderLayout.WEST);
+		
+		buttonPanel.add(systemMenu);//, BorderLayout.NORTH);
+		buttonPanel.add(characterMenu);//, BorderLayout.SOUTH);
+		
+		add(statusInfo, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.EAST);
 	}
 
 	public StatusView() {

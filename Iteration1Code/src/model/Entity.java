@@ -34,6 +34,10 @@ public abstract class Entity implements Serializable{
 		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
 	}
 	
+	public Occupation getOccupation() {
+		return occupation;
+	}
+	
 	// -------------------------------------------
 	// not 1st iteration stuff
 	private void attack() {
