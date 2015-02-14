@@ -6,8 +6,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import controller.MapViewController;
@@ -23,20 +25,25 @@ public class Avatar extends Entity implements Serializable{
 											"Movement", "Strength"};
 
 	public Avatar() {
-		this.location = new Location(INITIAL_X_LIE,INITIAL_Y_LIE);	// this is a lie
+		//this.location = new Location(INITIAL_X_LIE,INITIAL_Y_LIE);	// this is a lie
 		//occupation.initializeStats();
 	}
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
-		this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
+		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
+	public String getStat(String s){
+		return Integer.toString(stats.get(s).getValue());
+	}
 	
+	/*
 	public void move(int x,int y){ //this is not needed either -Juan
 		location.add(x,y);
 		//System.out.println(location);
 	}
+	
 	public void loadImage(Graphics g)
 	{	
 		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
@@ -44,6 +51,7 @@ public class Avatar extends Entity implements Serializable{
 		int y= location.getY();
 		g.drawImage(image,Scaling.AVATAR_WIDTH*x,Scaling.AVATAR_HEIGHT*y,null);
 	}
+	*/
 	
 	public BufferedImage getImage(){
 		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
@@ -58,7 +66,6 @@ public class Avatar extends Entity implements Serializable{
 		String result = "";
 		result += "Avatar:" + this.name;
 		result += "\n" + this.occupation;
-		result += "\n" + this.location;
 		for (String key : primaryStats) result += "\n" + this.stats.get(key);
 		return result;
 	}

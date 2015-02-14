@@ -28,7 +28,7 @@ public class GameMap implements Serializable{
 
 	public GameMap(){
 		MapBuilder m= new MapBuilder();
-		map = m.generateMap();
+		map = m.generateStructuredMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
 		deltaX=0;
@@ -104,6 +104,10 @@ public class GameMap implements Serializable{
 	public void setDelta(Point point){
 		this.setDeltaX(point.getX());
 		this.setDeltaY(point.getY());
+	}
+	
+	public Point getDelta(){
+		return new Point(this.deltaX,this.deltaY);
 	}
 
 	public void draw(Graphics g){

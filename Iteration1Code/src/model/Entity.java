@@ -7,6 +7,8 @@ public abstract class Entity implements Serializable{
 	protected Map<String,Stat> stats; 
 	protected Occupation occupation;
 	protected String name;
+	private Equipable equipment;
+	private int direction;
 	
 	// private GameMap map;
 	// private Equipable equipment;
@@ -21,6 +23,13 @@ public abstract class Entity implements Serializable{
 	}
 	// -------------------------------------------
 	
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+	
+	public int getDirection() {
+		return direction;
+	}
 	public int getStatValue(String key) {
 		if (this.stats.containsKey(key)) return this.stats.get(key).getValue();
 		return -1;

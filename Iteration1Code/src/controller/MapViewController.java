@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import utilities.Scaling;
+import utilities.Directions;
 
 
 //public class MapViewController extends JFrame{
@@ -39,48 +40,12 @@ public class MapViewController{
 		this.map= game.getGame().getMap();
 		this.game = game;
 		//image=avatar.loadImage();
-		
-		
 		//TODO fir good reasons
 		this.active = false;
-		
-		
 	}
 	
 	public void setActive(boolean active){
 		this.active =  active;
-	}
-	
-	
-	public class MapMouseListener implements MouseListener{
-
-
-		// all these classes need to be defined in the MapView
-		public void mouseClicked(MouseEvent e) {
-			int tileY = e.getY()/Scaling.TILE_SCALE.getX();
-			int tileX = e.getX()/Scaling.TILE_SCALE.getX();
-			Location tileLocation = new Location(tileX,tileY);
-			
-			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
-			Item droppedItem = map.getTile(tileLocation).getItem();
-			System.out.println(droppedItem+"  "+tileLocation);
-			
-			//Inventory View and Game Map are needed
-			// Logic is in comments below
-			
-//			if (inventoryView.getInventory().findAndEquip(droppedItem)){
-//				map.getTile(tileLocation).dropItem();
-//				tile.repaint();
-//				frame.repaint();
-//			}
-//			tile.repaint();
-//			this.repaint();
-		}
-		
-		public void mouseEntered(MouseEvent e) {}
-		public void mouseExited(MouseEvent e) {	}
-		public void mousePressed(MouseEvent e) {}
-		public void mouseReleased(MouseEvent e) {}
 	}
 	
 	public class CharacterKeyboardController implements KeyListener{
@@ -115,7 +80,8 @@ public class MapViewController{
 			return map.getLocation(avatar);
 		}
 		
-		public void move(Point point){
+		public void move(Point point, int direction){
+			avatar.setDirection(direction);
 			if(map.getTile(temp.addLocation(point)).isPassable()){
 				avatarLocation.add(point);
 				map.setDelta(point);
@@ -131,41 +97,43 @@ public class MapViewController{
 		public void keyPressed(KeyEvent e) {
 			avatarLocation = this.getAvatarLocation();
 			temp= new Location(avatarLocation.getX(),avatarLocation.getY());
+			
+			int key = e.getKeyCode();
 			//System.out.println(e.getKeyCode()); used for debugging
 			if(!active){
 				return;
 			}
-			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 || e.getKeyCode()==KeyEvent.VK_1){
-				this.move(SOUTHWEST);
+			if(key==KeyEvent.VK_NUMPAD1 || key==KeyEvent.VK_1){
+				this.move(SOUTHWEST, Directions.SOUTHWEST);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 || e.getKeyCode()==KeyEvent.VK_2){
-				this.move(SOUTH);
+			else if(key==KeyEvent.VK_NUMPAD2 || key==KeyEvent.VK_2 || key==KeyEvent.VK_S){
+				this.move(SOUTH, Directions.SOUTH);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 || e.getKeyCode()==KeyEvent.VK_3){
-				this.move(SOUTHEAST);
+			else if(key==KeyEvent.VK_NUMPAD3 || key==KeyEvent.VK_3){
+				this.move(SOUTHEAST, Directions.SOUTHEAST);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 || e.getKeyCode()==KeyEvent.VK_6){
-				this.move(EAST);
+			else if(key==KeyEvent.VK_NUMPAD6 || key==KeyEvent.VK_6 || key==KeyEvent.VK_D){
+				this.move(EAST, Directions.EAST);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
-				this.move(NORTHWEST);
+			else if(key==KeyEvent.VK_NUMPAD9 || key==KeyEvent.VK_9){
+				this.move(NORTHEAST, Directions.NORTHEAST);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
-				this.move(NORTH);
+			else if(key==KeyEvent.VK_NUMPAD8 || key==KeyEvent.VK_8 || key==KeyEvent.VK_W){
+				this.move(NORTH, Directions.NORTH);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
-				this.move(NORTHEAST);
+			else if(key==KeyEvent.VK_NUMPAD7 || key==KeyEvent.VK_7){
+				this.move(NORTHWEST, Directions.NORTHWEST);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
-				this.move(WEST);
+			else if(key==KeyEvent.VK_NUMPAD4 || key==KeyEvent.VK_4 || key==KeyEvent.VK_A){
+				this.move(WEST, Directions.WEST);
 			}
-			else if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+			else if(key==KeyEvent.VK_ESCAPE){
 				game.spawnSystems();
 			}
 			map.updateEntityLocation(avatar, avatarLocation);
 			System.out.println(map.getLocation(avatar).toString());
 			
-            int keyCode = e.getKeyCode();
+            int keyCode = key;
             pressedKeys.add(keyCode);
 		}
 

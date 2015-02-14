@@ -8,11 +8,12 @@ import java.io.Serializable;
 import javax.imageio.ImageIO;
 
 public abstract class Decal implements Serializable{
-	BufferedImage image;
+	
 
 	public Decal() {
-		createImage();
+		//createImage();
 	}
+	/*
 	
 	public BufferedImage getImage() {
 		return image;
@@ -28,4 +29,7 @@ public abstract class Decal implements Serializable{
 		}
 		
 	}
+	*/
+	public abstract BufferedImage getImage(int scale);
+	public abstract BufferedImage getNewImage();
 }

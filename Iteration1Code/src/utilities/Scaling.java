@@ -28,30 +28,41 @@ public final class Scaling {
 	
 	
 	/**************GAMECONTROLLER***********/
-	public static final int STATUS_X = Scaling.SCREEN_WIDTH/2 + 50;
-	public static final int STATUS_Y = 0;
-	public static final int STATUS_WIDTH = 700;
-	public static final int STATUS_HEIGHT = 700;
-	public static final int BOARD_WIDTH = Scaling.GAME_VIEW_WIDTH;
-	public static final int BOARD_HEIGHT = Scaling.GAME_VIEW_HEIGHT;
-	public static final int BOARD_X = 5;
-	public static final int BOARD_Y = 0;
-	public static final int SYSTEM_BUTTON_X = 0;
-	public static final int SYSTEM_BUTTON_Y = 0;
-	public static final int SYSTEM_BUTTON_WIDTH = 100;
-	public static final int SYSTEM_BUTTON_HEIGHT = 25;
-	public static final int GAME_CONTROLLER_INPUT_X = 101;
-	public static final int GAME_CONTROLLER_INPUT_Y = 0;
-	public static final int GAME_CONTROLLER_INPUT_HEIGHT = 25;
-	public static final int GAME_CONTROLLER_INPUT_WIDTH = 200;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_X = 100;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_Y = 100;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_WIDTH = 200;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_HEIGHT = 25;
-	public static final int GAME_CONTROLLER_BOARD_X = 500;
-	public static final int GAME_CONTROLLER_BOARD_Y = 0;
-	public static final int GAME_CONTROLLER_BOARD_WIDTH = 700;
-	public static final int GAME_CONTROLLER_BOARD_HEIGHT = 700;
+	public static int CHAR_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35;
+	public static int CHAR_Y = 0;
+	public static int CHAR_WIDTH = 625;
+	public static int CHAR_HEIGHT = 500;
+	public static int BOARD_WIDTH = Scaling.NUM_TILES_WIDTH * Scaling.TILE_WIDTH;
+	public static int BOARD_HEIGHT = Scaling.NUM_TILES_HEIGHT * Scaling.TILE_HEIGHT;
+	public static int BOARD_X = 5;
+	public static int BOARD_Y = 0;
+	public static int SYSTEM_BUTTON_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35;
+	public static int SYSTEM_BUTTON_Y = CHAR_HEIGHT;
+	public static int SYSTEM_BUTTON_WIDTH = CHAR_WIDTH;
+	public static int SYSTEM_BUTTON_HEIGHT = 50;
+	public static int STATUS_WIDTH = CHAR_WIDTH;
+	public static int STATUS_HEIGHT = 230;
+	public static int STATUS_X = BOARD_WIDTH;
+	public static int STATUS_Y = SYSTEM_BUTTON_Y + SYSTEM_BUTTON_HEIGHT;
+	public static int GAME_CONTROLLER_INPUT_X = 101;
+	public static int GAME_CONTROLLER_INPUT_Y = 0;
+	public static int GAME_CONTROLLER_INPUT_HEIGHT = 25;
+	public static int GAME_CONTROLLER_INPUT_WIDTH = 200;
+	public static int GAME_CONTROLLER_SAVED_TEXT_X = 100;
+	public static int GAME_CONTROLLER_SAVED_TEXT_Y = 100;
+	public static int GAME_CONTROLLER_SAVED_TEXT_WIDTH = 200;
+	public static int GAME_CONTROLLER_SAVED_TEXT_HEIGHT = 25;
+	public static int GAME_CONTROLLER_BOARD_X = 500;
+	public static int GAME_CONTROLLER_BOARD_Y = 0;
+	public static int GAME_CONTROLLER_BOARD_WIDTH = BOARD_WIDTH;		//ASSUMING THAT THIS IS CORRECT
+	public static int GAME_CONTROLLER_BOARD_HEIGHT = BOARD_HEIGHT;
+	
+	/**************JINTERNALFRAMES***********/
+	public static int INTERNAL_X = 400;
+	public static int INTERNAL_Y = 50;
+	public static int INTERNAL_WIDTH = 500;
+	public static int INTERNAL_HEIGHT = 300;
+	
 	
 	/**************LOADGAMECONTROLLER***********/
 	public static final int LOAD_TABLE_WIDTH = 600;
@@ -67,6 +78,7 @@ public final class Scaling {
 	
 	
 	/*************TILE***************/
+	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board
 	public static final int TILE_WIDTH = 100;
 	public static final int TILE_HEIGHT = 100;
 	public static final Point TILE_SCALE = new Point(TILE_WIDTH,TILE_HEIGHT);
@@ -88,6 +100,7 @@ public final class Scaling {
 	public static final int EQUIPMENT_VIEW_HEIGHT = 200;
 	
 	/*****************GAMEVIEW*********************/
+	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board
 	public static final int NUM_TILES_WIDTH = 7;
 	public static final int NUM_TILES_HEIGHT = 7;
 	public static final int GAME_VIEW_WIDTH = NUM_TILES_WIDTH * TILE_WIDTH;

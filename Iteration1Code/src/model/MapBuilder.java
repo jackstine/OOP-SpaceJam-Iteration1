@@ -22,9 +22,9 @@ public class MapBuilder implements Serializable{
 	
 	public Tile[][] generateMap(){
 		this.map= new Tile[this.height][this.width]; //just a test of the map
-		for(int i=0;i<this.width;i++){
-			for(int j=0;j<this.height;j++){
-				this.map[i][j]=new Tile(new DesertTerrain(),j,i);
+		for(int i=0;i<this.height;i++){
+			for(int j=0;j<this.width;j++){
+				this.map[i][j]=new Tile(new DesertTerrain(),i,j);
 				if((i==1 && j!= 7) || (j>-1 && j<3)){
 						this.map[i][j].setTerrain(new RadioactiveWasteTerrain());
 					}
@@ -35,11 +35,11 @@ public class MapBuilder implements Serializable{
 			for (int j=3; j<=8; j++){
 				if (j%2==0){
 					Weapon weapon = new Weapon(i+j);
-					this.map[j][i].setItem(weapon);
+					this.map[i][j].setItem(weapon);
 				}
 				else{
 					Armor armor = new Armor(i+j);
-					this.map[j][i].setItem(armor);
+					this.map[i][j].setItem(armor);
 				}
 			}
 		}
@@ -81,6 +81,7 @@ public class MapBuilder implements Serializable{
 				}
 			}
 		}
+		this.map[5][5].setDecal(new GoldStarDecal());
 		Armor armor = new Armor(3+20);
 		this.map[3][20].setItem(armor);
 		this.items[3][20] = armor;

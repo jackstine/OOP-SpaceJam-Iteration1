@@ -6,15 +6,13 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
 import model.Inventory;
 import model.Item;
-import model.Location;
 import model.Point;
-import model.Tile;
 import model.Weapon;
 
 public class InventoryView extends JPanel{
@@ -65,17 +63,13 @@ public class InventoryView extends JPanel{
 	}
 	
 	public void paint(Graphics g){
+		g.setColor(Color.BLACK);
+		g.fillRect(this.pointOnView.getX(),this.pointOnView.getY(),getWidth(),getHeight());
 		for (int i = 0; i<Inventory.ROW ; i++){
 			for (int j = 0; j<Inventory.COL;j++){
-				this.slots[i][j].paint(g);
+				this.slots[i][j].paintComponent(g);
 			}
 		}
-	}
-	
-	public void paintComponent(Graphics g){
-		g.setColor(Color.BLACK);
-		g.fillRect(0,0,getWidth(),getHeight());
-		paint(g);
 		g.dispose();
 		repaint();
 	}
@@ -91,29 +85,21 @@ public class InventoryView extends JPanel{
 	
 	
 	public class InventoryMouseListener implements MouseListener{
-
+		private final int RIGHT_CLICK = MouseEvent.BUTTON3;
+		private final int LEFT_CLICK = MouseEvent.BUTTON1;
 
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
-			int y = e.getY()/Scaling.SLOT_VIEW_SCALE;
-			int x = e.getX()/Scaling.SLOT_VIEW_SCALE;
-			Point slotPoint = new Point(x,y);
-			inventory.getSlot(slotPoint).unequip();
-			System.out.println(slotPoint);
-//			int tileY = e.getY()/Tile.SCALE;
-//			int tileX = e.getX()/Tile.SCALE;
-//			Location tileLocation = new Location(tileX,tileY);
-//			
-//			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
-//			Item droppedItem = map.getTile(tileLocation).getItem();
-//			System.out.println(droppedItem+"  "+tileLocation);
-//			if (inventoryView.getInventory().findAndEquip(droppedItem)){
-//				map.getTile(tileLocation).dropItem();
-//				tile.repaint();
-//				frame.repaint();
-//			}
-//			tile.repaint();
-//			this.repaint();
+			int x = e.getY()/Scaling.SLOT_VIEW_SCALE;
+			int y = e.getX()/Scaling.SLOT_VIEW_SCALE;
+			if (e.getButton() == RIGHT_CLICK){
+				Point slotPoint = new Point(x,y);
+				inventory.getSlot(slotPoint).unequip();
+				System.out.println(slotPoint);
+			}
+			if (e.getButton()== LEFT_CLICK){
+				System.out.println("Equip ("+x+","+y+")");
+			}
 		}
 		
 		public void mouseEntered(MouseEvent e) {}
