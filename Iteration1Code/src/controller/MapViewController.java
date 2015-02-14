@@ -148,13 +148,13 @@ public class MapViewController{
 				this.move(EAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
-				this.move(NORTHWEST);
+				this.move(NORTHEAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
 				this.move(NORTH);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
-				this.move(NORTHEAST);
+				this.move(NORTHWEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
 				this.move(WEST);
