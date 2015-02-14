@@ -140,6 +140,8 @@ public class GameController {
 		statButton.setFocusable(false);
 		statButton.addActionListener(new StatButtonAction());
 		
+		board.addMouseListener(new BoardMouseListener());
+		
 	}
 	
 	/********************MISC OPERATIONS**********************/
