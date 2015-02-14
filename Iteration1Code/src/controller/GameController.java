@@ -23,6 +23,7 @@ import model.Point;
 import view.CharacterMenuView;
 import view.GameView;
 import view.InventoryView;
+import view.StatisticsView;
 import view.SystemMenuView;
 import view.View;
 
@@ -37,8 +38,12 @@ public class GameController {
 	//Components
 	private JTextField input = new JTextField(20);
 	private JLabel savedText = new JLabel(apple.s);
-	private JButton systemButton = new JButton("menu");
+	private JPanel buttons = new JPanel();
+	private JButton systemButton = new JButton("Systems");
+	private JButton statButton = new JButton("Statistics");
+	private JButton levelUp = new JButton("Level Up!");
 	private JInternalFrame systemMenu;
+	private JInternalFrame statsView;
 	
 	//Views
 	private View gameView = new View();
@@ -48,11 +53,15 @@ public class GameController {
 	public GameController(){
 		
 		//Add to the canvas
-//		gameView.getCanvas().add(systemButton);
+		buttons.add(systemButton);
+		buttons.add(statButton);
+		buttons.add(levelUp);
+		buttons.setBorder(new LineBorder(Color.black, 3));
+		gameView.getCanvas().add(buttons);
 //		gameView.getCanvas().add(input);
 //		gameView.getCanvas().add(savedText);
 		gameView.getCanvas().add(board);
-		status.setBorder(new LineBorder(Color.black, 5));
+		status.setBorder(new LineBorder(Color.black, 3));
 		gameView.getCanvas().add(status);
 		
 		//Alignment --NEEDS ADJUSTMENT
@@ -60,10 +69,14 @@ public class GameController {
 		//input.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 106, 0, 200, 25);
 		//savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
 		board.setBounds(5, 0, 700, 700);
-		status.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 50,0, 700, 700);
+		status.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35,0, 625, 500);
+		buttons.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35,status.getHeight(), status.getWidth(), 50);
 		
 		systemButton.setFocusable(false);
-		systemButton.addActionListener(new SystemsMenuButton());
+		systemButton.addActionListener(new SystemsMenuButton()); 
+		
+		statButton.setFocusable(false);
+		statButton.addActionListener(new StatButtonAction());
 		
 	}
 	
@@ -107,6 +120,17 @@ public class GameController {
 			systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton());
 			gameView.getCanvas().add(systemMenu);
 			systemMenu.moveToFront();
+			gameView.setNext("Game");
+			gameView.setRedraw(true);
+			spawned = true;
+		}
+	}
+	
+	public void spawnStats(){
+		if(!spawned){			
+			statsView = new StatisticsView(new RetGameStatsButton());
+			gameView.getCanvas().add(statsView);
+			statsView.moveToFront();
 			gameView.setNext("Game");
 			gameView.setRedraw(true);
 			spawned = true;
@@ -181,12 +205,30 @@ public class GameController {
 			gameView.setNext("Game");
 			gameView.setRedraw(true);
 		}
-	}	
+	}
+	
+	
+	public class RetGameStatsButton implements ActionListener {
+		
+		public void actionPerformed(ActionEvent e) {
+			gameView.getCanvas().remove(statsView);
+			gameView.getCanvas().getTopLevelAncestor().requestFocus();
+			spawned = false;
+			gameView.setNext("Game");
+			gameView.setRedraw(true);
+		}
+	}
 
 	
 	public class SystemsMenuButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			spawnSystems();
+		}
+	}
+	
+	public class StatButtonAction implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			spawnStats();
 		}
 	}
 
