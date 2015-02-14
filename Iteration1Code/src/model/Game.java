@@ -13,9 +13,10 @@ public class Game implements Serializable {
 		avatar = new Avatar(new Terminator());
 	}
 	
-	public Game(Occupation occupation) {
+	public Game(Occupation occupation, String name) {
 		map = new GameMap();
 		avatar = new Avatar(occupation);
+		avatar.setName(name);
 	}
 	
 	public GameMap getMap() {

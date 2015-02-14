@@ -91,6 +91,8 @@ public class GameController {
 		buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
 		statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
 		
+		levelUp.setFocusable(false);
+		
 		systemButton.setFocusable(false);
 		systemButton.addActionListener(new SystemsMenuButton()); 
 		
@@ -99,14 +101,13 @@ public class GameController {
 		
 	}
 	
-	public GameController(Occupation occupationSelected){
+	public GameController(Game gameToCreate){
 		
 		//Load Game
 		apple = load();
 		savedText = new JLabel(apple.s);
 		
-		System.out.println(occupationSelected);
-		game = new Game(occupationSelected);
+		game = gameToCreate;
 		board = new GameView(game.getMap(),game.getAvatar());
 		character = new CharacterMenuView(game.getAvatar());
 		statusView = new StatusView(game.getAvatar());
@@ -139,8 +140,6 @@ public class GameController {
 		
 		statButton.setFocusable(false);
 		statButton.addActionListener(new StatButtonAction());
-		
-		board.addMouseListener(new BoardMouseListener());
 		
 	}
 	

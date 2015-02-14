@@ -33,6 +33,8 @@ public class CharacterCreationController {
 	private JPanel back;
 	private JPanel nameEntry;
 	
+	private Game gameToCreate;
+	
 	private Occupation occupationSelected;
 
 	public CharacterCreationController(){
@@ -89,8 +91,8 @@ public class CharacterCreationController {
 		return charCreation;
 	}
 	
-	public Occupation getOccupationSelected() {
-		return occupationSelected;
+	public Game getGameToCreate() {
+		return gameToCreate;
 	}
 	
 	public class BackButtonListener implements ActionListener {
@@ -106,7 +108,7 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
-			occupationSelected = new Alchemist();
+			gameToCreate = new Game(new Alchemist(), enterNameField.getText());
 			charCreation.setRedraw(true);
 			
 		}
@@ -116,7 +118,7 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
-			occupationSelected = new Terminator();
+			gameToCreate = new Game(new Terminator(), enterNameField.getText());
 			charCreation.setRedraw(true);
 			
 		}
@@ -126,7 +128,7 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
-			occupationSelected = new Hunter();
+			gameToCreate = new Game(new Hunter(), enterNameField.getText());
 			charCreation.setRedraw(true);
 			
 		}
