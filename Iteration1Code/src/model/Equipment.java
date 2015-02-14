@@ -69,4 +69,8 @@ public class Equipment extends SlotContainer implements Serializable{
     public void addObserver(EquipmentView equipmentView){
     	this.equipmentView = equipmentView;
     }
+    
+    public String toString() {
+    	 return this.armorSlot + "\n" + this.weaponSlot;
+    }
 }

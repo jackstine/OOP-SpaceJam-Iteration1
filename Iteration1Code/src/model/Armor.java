@@ -31,7 +31,7 @@ public class Armor extends TakeableItem implements Equipable, Serializable {
 	}
 	
 	public String toString(){
-		return "Armor with armor of "+this.armor;
+		return "Armor:" + this.armor;
 	}
 	
 	public static void main(String[] args){

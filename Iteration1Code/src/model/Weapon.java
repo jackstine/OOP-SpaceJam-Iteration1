@@ -24,7 +24,7 @@ public class Weapon extends TakeableItem implements Equipable, Serializable {
 		return this.attack;
 	}
 	public String toString(){
-		return "Weapon with Attack of "+this.attack;
+		return "Weapon:" + this.attack;
 	}
 	
 	public static void main(String[] args){

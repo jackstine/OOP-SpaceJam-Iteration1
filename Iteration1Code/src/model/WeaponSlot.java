@@ -8,6 +8,11 @@ public class WeaponSlot extends BufferSlot<Weapon> implements Serializable{
 	}
 	
 	public WeaponSlot(){}
+	
+	public String toString(){
+		if (this.has()) return "Weapon:" + this.bonus;
+		else return "Weapon:-1";
+	}
 
     public static void main(String[] args){
         WeaponSlot slot = new WeaponSlot();
