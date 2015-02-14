@@ -9,14 +9,15 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import utilities.ImageProcessing;
+import utilities.Scaling;
 import model.Equipment;
 import model.Point;
 
 public class EquipmentView extends JPanel{
-	private final Point POINT_OF_WEAPON = new Point(100,200);
-	private final Point POINT_OF_ARMOR = new Point(200,0);
-	private final Point SIZE_OF_SLOT = new Point(100,100);
-	private final Point EQUIPMENT_SLOT_OFFSET = new Point(80,80);
+	private final Point POINT_OF_WEAPON = new Point(Scaling.EQUIPMENT_WEAPON_X,Scaling.EQUIPMENT_WEAPON_Y);
+	private final Point POINT_OF_ARMOR = new Point(Scaling.EQUIPMENT_ARMOR_X,Scaling.EQUIPMENT_ARMOR_Y);
+	private final Point SIZE_OF_SLOT = new Point(Scaling.EQUIPMENT_SLOT_WIDTH, Scaling.EQUIPMENT_SLOT_HEIGHT);
+	private final Point EQUIPMENT_SLOT_OFFSET = new Point(Scaling.EQUIPMENT_SLOT_OFFSET_WIDTH,Scaling.EQUIPMENT_SLOT_OFFSET_HEIGHT);
 	
 	private final String EQUIPMENT_WEAPON_IMAGE_PATH = "src/res/img/Equipment_Weapon_Slot.png";
 	private final String EQUIPMENT_ARMOR_IMAGE_PATH = "src/res/img/Equipment_Armor_Slot.png";
@@ -66,6 +67,6 @@ public class EquipmentView extends JPanel{
 	}
 	
 	public Dimension getPreferredSize(){
-		return new Dimension(200,200);
+		return new Dimension(Scaling.EQUIPMENT_VIEW_WIDTH,Scaling.EQUIPMENT_VIEW_HEIGHT);
 	}
 }

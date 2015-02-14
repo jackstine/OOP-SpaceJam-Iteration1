@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import utilities.Scaling;
 import view.View;
 
 
@@ -36,7 +37,7 @@ public class CharacterCreationController {
 		main = new JPanel();
 		back = new JPanel();
 		
-		charCreation.getCanvas().setPreferredSize(new Dimension(600, 600));
+		charCreation.getCanvas().setPreferredSize(new Dimension(Scaling.CHARACTER_CREATION_WIDTH,Scaling.CHARACTER_CREATION_HEIGHT));
 		charCreation.getCanvas().setBorder(new LineBorder(Color.black, 5));
 		charCreation.getCanvas().setLayout(new BorderLayout());
 		

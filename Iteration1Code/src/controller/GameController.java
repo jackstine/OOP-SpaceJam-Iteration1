@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 
 import model.Game;
 import model.Point;
+import utilities.Scaling;
 import view.CharacterMenuView;
 import view.GameView;
 import view.InventoryView;
@@ -59,8 +60,8 @@ public class GameController {
 		//systemButton.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 5, 0, 100, 25);
 		//input.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 106, 0, 200, 25);
 		//savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
-		board.setBounds(5, 0, 700, 700);
-		status.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 50,0, 700, 700);
+		board.setBounds(Scaling.BOARD_X, Scaling.BOARD_Y, Scaling.BOARD_WIDTH, Scaling.BOARD_HEIGHT);
+		status.setBounds(Scaling.STATUS_X , Scaling.STATUS_Y, Scaling.STATUS_X, Scaling.STATUS_Y);
 		
 		systemButton.setFocusable(false);
 		systemButton.addActionListener(new SystemsMenuButton());
@@ -80,10 +81,11 @@ public class GameController {
 		gameView.getCanvas().add(board);
 		
 		//Alignment --NEEDS ADJUSTMENTS
-		systemButton.setBounds(0, 0, 100, 25);
-		input.setBounds(101, 0, 200, 25);
-		savedText.setBounds(100, 100, 200, 25);
-		board.setBounds(500, 0, 700, 700);
+		systemButton.setBounds(Scaling.SYSTEM_BUTTON_X, Scaling.SYSTEM_BUTTON_Y,Scaling.SYSTEM_BUTTON_WIDTH,Scaling.SYSTEM_BUTTON_HEIGHT);
+		input.setBounds(Scaling.GAME_CONTROLLER_INPUT_X, Scaling.GAME_CONTROLLER_INPUT_Y, Scaling.GAME_CONTROLLER_INPUT_WIDTH, Scaling.GAME_CONTROLLER_INPUT_HEIGHT);
+		savedText.setBounds(Scaling.GAME_CONTROLLER_SAVED_TEXT_X,Scaling.GAME_CONTROLLER_SAVED_TEXT_Y
+				,Scaling.GAME_CONTROLLER_SAVED_TEXT_WIDTH, Scaling.GAME_CONTROLLER_SAVED_TEXT_HEIGHT);
+		board.setBounds(Scaling.GAME_CONTROLLER_BOARD_X, Scaling.GAME_CONTROLLER_BOARD_Y, Scaling.GAME_CONTROLLER_BOARD_WIDTH,Scaling.GAME_CONTROLLER_BOARD_HEIGHT);
 		
 		systemButton.addActionListener(new SystemsMenuButton());
 		

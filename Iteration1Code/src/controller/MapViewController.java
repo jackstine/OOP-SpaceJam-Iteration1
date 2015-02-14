@@ -21,6 +21,8 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import utilities.Scaling;
+
 
 //public class MapViewController extends JFrame{
 public class MapViewController{
@@ -55,8 +57,8 @@ public class MapViewController{
 
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
-			int tileY = e.getY()/Tile.SCALE;
-			int tileX = e.getX()/Tile.SCALE;
+			int tileY = e.getY()/Scaling.TILE_SCALE.getX();
+			int tileX = e.getX()/Scaling.TILE_SCALE.getX();
 			Location tileLocation = new Location(tileX,tileY);
 			
 			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
@@ -136,8 +138,8 @@ public class MapViewController{
 				
 				if(map.getTile(temp.addLocation(-1,1)).isPassable()){
 				avatarLocation.add(SOUTHWEST);
-				map.setDeltaX((-1)*Tile.SCALE);
-				map.setDeltaY(Tile.SCALE);
+				map.setDeltaX((-1)*Scaling.TILE_SCALE.getX());
+				map.setDeltaY(Scaling.TILE_SCALE.getX());
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
 				
@@ -148,7 +150,7 @@ public class MapViewController{
 				if(map.getTile(temp.addLocation(0,1)).isPassable()){
 				avatarLocation.add(SOUTH);
 				map.setDeltaX(0);
-				map.setDeltaY(Tile.SCALE);
+				map.setDeltaY(Scaling.TILE_SCALE.getX());
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
@@ -156,8 +158,8 @@ public class MapViewController{
 				
 				if(map.getTile(temp.addLocation(1,1)).isPassable()){
 				avatarLocation.add(SOUTHEAST);
-				map.setDeltaX(Tile.SCALE);
-				map.setDeltaY(Tile.SCALE);
+				map.setDeltaX(Scaling.TILE_SCALE.getX());
+				map.setDeltaY(Scaling.TILE_SCALE.getX());
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
@@ -165,7 +167,7 @@ public class MapViewController{
 				
 				if(map.getTile(temp.addLocation(1,0)).isPassable()){
 				avatarLocation.add(EAST);
-				map.setDeltaX(Tile.SCALE);
+				map.setDeltaX(Scaling.TILE_SCALE.getX());
 				map.setDeltaY(0);
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
@@ -174,8 +176,8 @@ public class MapViewController{
 				
 				if(map.getTile(temp.addLocation(1,-1)).isPassable()){
 				avatarLocation.add(NORTHEAST);
-				map.setDeltaX(Tile.SCALE); //changed this
-				map.setDeltaY((-1)*Tile.SCALE);
+				map.setDeltaX(Scaling.TILE_SCALE.getX()); //changed this
+				map.setDeltaY((-1)*Scaling.TILE_SCALE.getX());
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
@@ -184,7 +186,7 @@ public class MapViewController{
 				if(map.getTile(temp.addLocation(0,-1)).isPassable()==true){
 				avatarLocation.add(NORTH);
 				map.setDeltaX(0);
-				map.setDeltaY((-1)*Tile.SCALE);
+				map.setDeltaY((-1)*Scaling.TILE_SCALE.getX());
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
@@ -192,8 +194,8 @@ public class MapViewController{
 				
 				if(map.getTile(temp.addLocation(-1,-1)).isPassable()){
 				avatarLocation.add(NORTHWEST);
-				map.setDeltaX((-1)*Tile.SCALE);
-				map.setDeltaY((-1)*Tile.SCALE);
+				map.setDeltaX((-1)*Scaling.TILE_SCALE.getX());
+				map.setDeltaY((-1)*Scaling.TILE_SCALE.getX());
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());
 			}
@@ -201,7 +203,7 @@ public class MapViewController{
 			
 				if(map.getTile(temp.addLocation(-1,0)).isPassable()){
 				avatarLocation.add(WEST);
-				map.setDeltaX((-1)*Tile.SCALE);
+				map.setDeltaX((-1)*Scaling.TILE_SCALE.getX());
 				map.setDeltaY(0);
 				}
 				System.out.println(map.getTile(avatarLocation).getTerrain());

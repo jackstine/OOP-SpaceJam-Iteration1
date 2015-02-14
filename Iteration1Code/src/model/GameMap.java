@@ -8,6 +8,8 @@ import java.io.*;
 import javax.imageio.ImageIO;
 
 
+
+import utilities.Scaling;
 import view.InventoryView;
 
 public class GameMap implements Serializable{
@@ -25,7 +27,7 @@ public class GameMap implements Serializable{
 
 	public GameMap(){
 		MapBuilder m= new MapBuilder();
-		map = m.generateStructuredMap();
+		map = m.generateMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
 		deltaX=0;
@@ -46,8 +48,8 @@ public class GameMap implements Serializable{
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
 	private void setWidthHeight(){
-		this.height = map.length*Tile.SCALE;
-		this.width = map[0].length*Tile.SCALE;
+		this.height = map.length * Scaling.TILE_SCALE.getX();
+		this.width = map[0].length * Scaling.TILE_SCALE.getX();
 	}
 	
 	public Tile getTile(Location location){

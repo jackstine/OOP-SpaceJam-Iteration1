@@ -5,11 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 import utilities.ImageProcessing;
+import utilities.Scaling;
 
 public class Tile implements Serializable{
-	public static final int SCALE=100;
-	private final int OVERLAY_IMAGE_OFFSET = 35;
-	
 	private boolean dontDraw;
 	
 	
@@ -87,7 +85,8 @@ public class Tile implements Serializable{
 		BufferedImage imageOfTerrain = terrain.getImage();
 		BufferedImage itemImage,imageToDisplay;
 		if (item != null){
-			itemImage = this.item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
+			// Assuming that the Tile WIDTH is equal to the HEIGHT
+			itemImage = this.item.getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
 			imageOfTerrain = terrain.getNewImage();
 			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain, itemImage);
 		}
@@ -107,7 +106,7 @@ public class Tile implements Serializable{
 		//if has Item overlay
 		BufferedImage imageToDisplay = this.updateImage();
 		//System.out.println(this+imageToDisplay.toString());
-		g.drawImage(imageToDisplay,SCALE*x+deltaX,SCALE*y+deltaY,null);
+		g.drawImage(imageToDisplay,Scaling.TILE_WIDTH*x+deltaX,Scaling.TILE_HEIGHT*y+deltaY,null);
 	}
 
 }

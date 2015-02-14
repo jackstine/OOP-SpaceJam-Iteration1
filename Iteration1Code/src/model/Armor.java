@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 
+import utilities.ImagePaths;
+
 public class Armor extends TakeableItem implements Equipable, Serializable {
 	protected int armor;
 
@@ -15,7 +17,7 @@ public class Armor extends TakeableItem implements Equipable, Serializable {
 	
 	public Armor(int armor) {
 		this.armor = armor;
-		ITEM_IMAGE = "src/res/img/armor.png";
+		ITEM_IMAGE = ImagePaths.ARMOR_IMAGE;
 	}
 	
 	//TODO thought we were going to put images in a MAP??
