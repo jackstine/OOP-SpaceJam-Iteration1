@@ -13,10 +13,9 @@ public class TestStatusView extends JFrame{
 	private StatusView statusView;
 	
 	public TestStatusView() {
-		Avatar testAvatar = new Avatar(new Alchemist());
+		Avatar testAvatar = new Avatar(new Terminator());
 		testAvatar.setName("Arnold");
 		statusView = new StatusView(testAvatar);
-		System.out.println("whee");
 		add(statusView);
 	}
 	
