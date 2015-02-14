@@ -13,12 +13,8 @@ public class ArmorSlot extends BufferSlot<Armor> implements Slotable<Armor>, Ser
     
     
 	public String toString(){
-		if (this.has()){
-			return "Armor Slot with Armor of "+this.bonus;
-		}
-		else{
-			return "This is a empty Armor Slot";
-		}
+		if (this.has()) return "Armor:" + this.bonus;
+		else return "Armor:-1";
 	}
 
     public static void main(String[] args){

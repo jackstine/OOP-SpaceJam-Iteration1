@@ -60,20 +60,26 @@ public class Avatar extends Entity {
 		this.inventory = inventory;
 	}
 	
+	public Equipment getEquipment() {
+		return this.equipment;
+	}
+	
+	public void setEquipment(Equipment equipment) {
+		this.equipment = equipment;
+	}	
+	
+	// used for writing to the save file
+	// name, occupation, stats, direction, inventory, equipment
 	public String toString() {
 		String result = "";
 		result += "Avatar:" + this.name;
 		result += "\n" + this.occupation;
 		for (String key : primaryStats) result += "\n" + this.stats.get(key);
 		result += "\nDirection:" + this.direction;
+		result += "\n" + this.inventory;
+		result += "\n" + this.equipment;
 		return result;
 	}
-	
-	public Equipment getEquipment() {
-		return this.equipment;
-	}
-	
-	
 	
 	/*
 	//private void attack() {

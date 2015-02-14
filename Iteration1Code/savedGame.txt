@@ -13,3 +13,5 @@ Direction:0
 Inventory:2
 Armor:50
 Weapon:30
+Armor:-1
+Weapon:-1

@@ -19,5 +19,7 @@ public class TestSaveGame {
 		
 		Avatar newAvatar = game.getAvatar();
 		Inventory avatarInventory = newAvatar.getInventory();		
+		System.out.println(newAvatar + "\n---------------");
+		System.out.println(avatarInventory + "\n---------------");
 	}
 }
