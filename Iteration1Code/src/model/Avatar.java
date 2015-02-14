@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.imageio.ImageIO;
-
-import utilities.ImagePaths;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import controller.MapViewController;
@@ -17,13 +15,13 @@ import controller.MapViewController;
 public class Avatar extends Entity implements Serializable{
 	private Inventory inventory = new Inventory();
 	private Location location;   // I dont think this is needed? -Juan
-	private final int INITIAL_X = 0;
-	private final int INITIAL_Y =0;
+	private final int INITIAL_X_LIE = 0;
+	private final int INITIAL_Y_LIE =0;
 	private BufferedImage image;
 	private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 
 	public Avatar() {
-		this.location = new Location(INITIAL_X,INITIAL_Y);
+		this.location = new Location(INITIAL_X_LIE,INITIAL_Y_LIE);		// this is a lie
 		//occupation.initializeStats();
 	}
 	
@@ -41,7 +39,7 @@ public class Avatar extends Entity implements Serializable{
 		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
 		int x= location.getX();
 		int y= location.getY();
-		g.drawImage(image,100*x,100*y,null);
+		g.drawImage(image,Scaling.AVATAR_WIDTH*x,Scaling.AVATAR_HEIGHT*y,null);
 		
 	}
 	

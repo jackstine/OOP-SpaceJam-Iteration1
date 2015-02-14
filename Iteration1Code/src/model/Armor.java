@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 
-import utilities.ImagePaths;
 
 public class Armor extends TakeableItem implements Equipable, Serializable {
 	protected int armor;
