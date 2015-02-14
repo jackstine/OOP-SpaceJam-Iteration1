@@ -6,6 +6,7 @@ import java.util.Map;
 public abstract class Occupation implements Serializable{
 	
 	protected String portraitLocation;
+	protected String name;
 	
 	public abstract void attack();
 	public abstract void useAbiltiy();
@@ -13,5 +14,9 @@ public abstract class Occupation implements Serializable{
 	
 	public String getPortraitLocation() {
 			return portraitLocation;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

@@ -4,8 +4,12 @@ import java.io.Serializable;
 
 public class Mana extends DerivedStat implements Serializable {
 	
-	public Mana() {
+	private PrimaryStat mp;
+	
+	public Mana(PrimaryStat mp) {
 		super();
+		this.mp = mp;
+		((MP) mp).setMana(this);
 	}
 	
 	@Override
@@ -15,5 +19,6 @@ public class Mana extends DerivedStat implements Serializable {
 		int level = this.stats.get(1).getValue();
 		// MANA FORMULA
 		this.value = intellect * level;
+		this.mp.setValue(this.value);
 	}
 }

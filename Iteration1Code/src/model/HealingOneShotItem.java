@@ -15,8 +15,9 @@ public class HealingOneShotItem extends OneShotItem {
 	}
 	
 	@Override
-	public void action(Entity entity) {
-		EffectApplication.apply(entity, this);
+	public boolean action(Avatar avatar) {
+		EffectApplication.apply(avatar, this);
+		return true;
 	}
 	
 	@Override

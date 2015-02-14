@@ -7,12 +7,12 @@ public class AreaEffectTest {
 	public static String[] keys = {"Agility", "ArmorRating", "DefensiveRating", 
 								   "Experience", "Hardiness", "HP", "Intellect", 
 								   "Level", "Life", "Lives", "Mana", "Movement", 
-								   "OffensiveRating", "Strength"};
+								   "MP", "OffensiveRating", "Strength"};
 	
 	public static void main(String[] args) {
-		Entity alchemist = new Avatar(new Alchemist());
-		Entity hunter = new Avatar(new Hunter());
-		Entity terminator = new Avatar(new Terminator());
+		Avatar alchemist = new Avatar(new Alchemist());
+		Avatar hunter = new Avatar(new Hunter());
+		Avatar terminator = new Avatar(new Terminator());
 		
 		System.out.println("Terminator Stats:");
 		printStats(terminator);

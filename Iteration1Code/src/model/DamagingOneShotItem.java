@@ -15,8 +15,9 @@ public class DamagingOneShotItem extends OneShotItem {
 	}
 	
 	@Override
-	public void action(Entity entity) {
-		EffectApplication.apply(entity, this);		
+	public boolean action(Avatar avatar) {
+		EffectApplication.apply(avatar, this);		
+		return true;
 	}
 	
 	@Override
@@ -29,6 +30,5 @@ public class DamagingOneShotItem extends OneShotItem {
 	public String getImagePath() {
 		// TODO Auto-generated method stub
 		return null;
-	}	
-
+	}
 }

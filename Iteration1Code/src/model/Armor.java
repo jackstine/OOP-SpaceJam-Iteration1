@@ -2,33 +2,28 @@ package model;
 
 import java.io.Serializable;
 
-import utilities.ImagePaths;
 
 public class Armor extends TakeableItem implements Equipable, Serializable {
 	protected int armor;
+	private static String ARMOR_IMAGE = "src/res/img/armor.png";
 
 	@Override
-	public void action(Entity entity) {
+	public boolean action(Avatar avatar) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 	
 	public Armor(){}
-	
+	 
 	public Armor(int armor) {
 		this.armor = armor;
-		ITEM_IMAGE = ImagePaths.ARMOR_IMAGE;
+		ITEM_IMAGE = ARMOR_IMAGE;
 	}
 	
 	//TODO thought we were going to put images in a MAP??
 	public Armor(int armor, String image) {
 		this.armor = armor;
 		this.ITEM_IMAGE = image;
-	}
-	
-	public boolean action(Avatar avatar) {
-		//TODO
-		return true;
 	}
 	
 	public int getBonus() {

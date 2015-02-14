@@ -35,7 +35,12 @@ public ControllerTest(){
 		setPreferredSize(new Dimension(800,600));
 		setBackground(Color.BLACK);
 		avatar= new Avatar();
-		mv = new MapViewController(avatar,frame);
+		
+		//TODO
+		//Need to change parameters that mv is constructed with
+		//MapViewController takes parameters of type GameController and JFrame
+		//mv = new MapViewController(avatar,frame);
+		
 		//mv.setVisible(true);
 	}
 

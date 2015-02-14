@@ -7,6 +7,7 @@ public class Alchemist extends Occupation implements Serializable{
 	
 	public Alchemist() {
 		portraitLocation = "src/res/img/alchemist_portrait.jpg";
+		name = "Alchemist";
 	}
 	
 	public void attack() {

@@ -7,12 +7,12 @@ public class OneShotItemTest {
 	public static String[] keys = {"Agility", "ArmorRating", "DefensiveRating", 
 		   						   "Experience", "Hardiness", "HP", "Intellect", 
 		   						   "Level", "Life", "Lives", "Mana", "Movement", 
-		   						   "OffensiveRating", "Strength"};
+		   						   "MP", "OffensiveRating", "Strength"};
 	
 	public static void main(String[] args) {
 		OneShotItem healingOneShotItem = new HealingOneShotItem(0.5);
 		OneShotItem damagingOneShotItem = new DamagingOneShotItem(0.5);
-		Entity alchemist = new Avatar(new Alchemist());
+		Avatar alchemist = new Avatar(new Alchemist());
 		printStats(alchemist);
 		
 		System.out.println("APPLIED DAMAGING ONE-SHOT ITEM!");

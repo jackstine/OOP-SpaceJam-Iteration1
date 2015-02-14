@@ -43,7 +43,12 @@ public class MapTest extends JPanel  {
 		map= new GameMap();
 		avatar= new Avatar();
 		map.updateEntityLocation(avatar, new Location(3,3));
-		mv = new MapViewController(map,avatar,frame);
+		
+		//TODO
+		//Need to change parameters that mv is constructed with
+		//MapViewController takes parameters of type GameController and JFrame
+		//mv = new MapViewController(map,avatar,frame);
+		
 		image=avatar.getImage();
 	}
 
