@@ -20,18 +20,22 @@ public final class Scaling {
 	
 	
 	/**************GAMECONTROLLER***********/
-	public static int STATUS_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 50;
-	public static int STATUS_Y = 0;
-	public static int STATUS_WIDTH = 700;
-	public static int STATUS_HEIGHT = 700;
+	public static int CHAR_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35;
+	public static int CHAR_Y = 0;
+	public static int CHAR_WIDTH = 625;
+	public static int CHAR_HEIGHT = 500;
 	public static int BOARD_WIDTH = 700;
 	public static int BOARD_HEIGHT = 700;
 	public static int BOARD_X = 5;
 	public static int BOARD_Y = 0;
-	public static int SYSTEM_BUTTON_X = 0;
-	public static int SYSTEM_BUTTON_Y = 0;
-	public static int SYSTEM_BUTTON_WIDTH = 100;
-	public static int SYSTEM_BUTTON_HEIGHT = 25;
+	public static int SYSTEM_BUTTON_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35;
+	public static int SYSTEM_BUTTON_Y = CHAR_HEIGHT;
+	public static int SYSTEM_BUTTON_WIDTH = CHAR_WIDTH;
+	public static int SYSTEM_BUTTON_HEIGHT = 50;
+	public static int STATUS_WIDTH = CHAR_WIDTH;
+	public static int STATUS_HEIGHT = 230;
+	public static int STATUS_X = BOARD_WIDTH;
+	public static int STATUS_Y = SYSTEM_BUTTON_Y + SYSTEM_BUTTON_HEIGHT;
 	public static int GAME_CONTROLLER_INPUT_X = 101;
 	public static int GAME_CONTROLLER_INPUT_Y = 0;
 	public static int GAME_CONTROLLER_INPUT_HEIGHT = 25;
