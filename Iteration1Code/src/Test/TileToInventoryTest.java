@@ -18,6 +18,7 @@ import model.Location;
 import model.Point;
 import model.Tile;
 import model.Weapon;
+import utilities.Scaling;
 import view.InventoryView;
 
 public class TileToInventoryTest extends JPanel {
@@ -73,8 +74,8 @@ public class TileToInventoryTest extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			int tileY = e.getY()/Tile.SCALE;
-			int tileX = e.getX()/Tile.SCALE;
+			int tileY = e.getY()/Scaling.TILE_HEIGHT;
+			int tileX = e.getX()/Scaling.TILE_WIDTH;
 			Location tileLocation = new Location(tileX,tileY);
 			
 			//TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing

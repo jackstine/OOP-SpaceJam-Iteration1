@@ -6,6 +6,7 @@ import utilities.ImagePaths;
 
 public class Armor extends TakeableItem implements Equipable, Serializable {
 	protected int armor;
+	private static String ARMOR_IMAGE = "src/res/img/armor.png";
 
 	@Override
 	public void action(Entity entity) {
@@ -17,7 +18,7 @@ public class Armor extends TakeableItem implements Equipable, Serializable {
 	
 	public Armor(int armor) {
 		this.armor = armor;
-		ITEM_IMAGE = ImagePaths.ARMOR_IMAGE;
+		ITEM_IMAGE = ARMOR_IMAGE;
 	}
 	
 	//TODO thought we were going to put images in a MAP??

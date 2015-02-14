@@ -20,6 +20,7 @@ public class Avatar extends Entity implements Serializable{
 	private final int INITIAL_X = 0;
 	private final int INITIAL_Y =0;
 	private BufferedImage image;
+	private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 
 	public Avatar() {
 		this.location = new Location(INITIAL_X,INITIAL_Y);
@@ -37,7 +38,7 @@ public class Avatar extends Entity implements Serializable{
 	}
 	public void loadImage(Graphics g)
 	{	
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,ImagePaths.AVATAR_IMAGE);
+		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
 		int x= location.getX();
 		int y= location.getY();
 		g.drawImage(image,100*x,100*y,null);
@@ -45,7 +46,7 @@ public class Avatar extends Entity implements Serializable{
 	}
 	
 	public BufferedImage getImage(){
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,ImagePaths.AVATAR_IMAGE);
+		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
 		return image;
 	}
 	

@@ -14,13 +14,21 @@ public final class Scaling {
 	 * 
 	 * */
 	
+	//TODO factor all these things to 1 size that fits the map all the time
+	//At the time that this was done the magic numbers were the respective ratios
+	/*************************************************************/
+	public static int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
+	public static int SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+	
+	
+	
 	/**************CHARACTERCREATIONCONTROLLER***********/
 	public static int CHARACTER_CREATION_WIDTH = 600;
 	public static int CHARACTER_CREATION_HEIGHT = 600;
 	
 	
 	/**************GAMECONTROLLER***********/
-	public static int STATUS_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 50;
+	public static int STATUS_X = Scaling.SCREEN_WIDTH/2 + 50;
 	public static int STATUS_Y = 0;
 	public static int STATUS_WIDTH = 700;
 	public static int STATUS_HEIGHT = 700;
@@ -53,16 +61,9 @@ public final class Scaling {
 	public static int MAIN_MENU_WIDTH = 600;
 	public static int MAIN_MENNU_HEIGHT = 600;
 	
-	/**************MAPVIEWCONTROLLER***********/
-//	public static int
-//	public static int
-//	public static int
-//	public static int
-//	public static int
-	
 	/**************AVATAR***********/
-	public static int AVATAR_WIDTH = 100;
-	public static int AVATAR_HEIGHT = 100;
+	public static int AVATAR_WIDTH = Scaling.TILE_WIDTH;		//the avatar has to be the same size as a Tile
+	public static int AVATAR_HEIGHT = Scaling.TILE_HEIGHT;
 	
 	
 	/*************TILE***************/
@@ -90,24 +91,13 @@ public final class Scaling {
 	public static int GAME_VIEW_WIDTH = 700;
 	public static int GAME_VIEW_HEIGHT = 700;
 	
-	/**********************************************/
+	/**********************INVENTORY************************/
 	public static int INVENTORY_HEIGHT =  Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
 	public static int INVENTORY_WIDTH = Inventory.COL * Scaling.SLOT_VIEW_WIDTH;
-//	public static int 
 	
 	
 	/*******************SLOTVIEW************************/
 	public static int SLOT_VIEW_HEIGHT = 50;
 	public static int SLOT_VIEW_WIDTH = 50;
 	public static int SLOT_VIEW_SCALE = 50;			//should equal Slot_View_Scale
-//	public static int 
-//	public static int
-//	public static int 
-//	public static int
-//	public static int 
-//	public static int
-//	public static int 
-//	public static int
-//	public static int 
-//	public static int
 }
