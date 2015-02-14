@@ -49,9 +49,6 @@ public class ViewController {
 			views.put("Game", charGen.getView());
 		}
 		
-		//Create New Game Path
-		views.put("New", inGame.getView());
-		
 		mv = new MapViewController(inGame,frame); //modify this later.
 		current = views.get("Main");
 		//set up the main frame
@@ -75,13 +72,12 @@ public class ViewController {
 	//Changes switches views to the "next" view (specified by action listeners).
 	public void changePanel(){
 		previous = current;
-		if(views.get(current.getNext()) == null){
+		if(views.get(current.getNext()) == null && !current.getNext().equals("New")){
 			System.out.println("Illegal Path: " + current.getNext());
 			current.setNext("Quit");
 		}
 		else{
 			if(current.getNext().equals("New")){
-				
 				inGame = new GameController(charGen.getOccupationSelected());
 				views.put("Game", inGame.getView());
 				mv = new MapViewController(inGame,frame);
