@@ -91,6 +91,8 @@ public class GameController {
 		buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
 		statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
 		
+		levelUp.setFocusable(false);
+		
 		systemButton.setFocusable(false);
 		systemButton.addActionListener(new SystemsMenuButton()); 
 		

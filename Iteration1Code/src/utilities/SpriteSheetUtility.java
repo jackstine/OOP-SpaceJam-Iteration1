@@ -34,10 +34,10 @@ public class SpriteSheetUtility {
 		initializeSpriteArray();
 	}
 	public SpriteSheetUtility(String s) {
-		if (s.equals(ALCHEMIST)) {
+		if (s.equalsIgnoreCase(ALCHEMIST)) {
 			imagePath = "src/res/img/alchemist_spritesheet.png";
 		}
-		else if (s.equals(HUNTER)) {
+		else if (s.equalsIgnoreCase(HUNTER)) {
 			imagePath = "src/res/img/hunter_spritesheet.png";
 		}
 		else {
@@ -56,6 +56,10 @@ public class SpriteSheetUtility {
 	
 	public BufferedImage[] getSpriteArray() {
 		return spriteArray;
+	}
+	
+	public String getPath() {
+		return imagePath;
 	}
 	
 	private void initializeSpriteArray() {
