@@ -9,7 +9,9 @@ import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
+import utilities.ImagePaths;
 import utilities.ImageProcessing;
+import utilities.Scaling;
 import controller.MapViewController;
 
 public class Avatar extends Entity implements Serializable{
@@ -35,7 +37,7 @@ public class Avatar extends Entity implements Serializable{
 	}
 	public void loadImage(Graphics g)
 	{	
-		image= ImageProcessing.scaleImage(100, 100,"src/res/img/sprite.jpg");
+		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,ImagePaths.AVATAR_IMAGE);
 		int x= location.getX();
 		int y= location.getY();
 		g.drawImage(image,100*x,100*y,null);
@@ -43,7 +45,7 @@ public class Avatar extends Entity implements Serializable{
 	}
 	
 	public BufferedImage getImage(){
-		image= ImageProcessing.scaleImage(100, 100,"src/res/img/sprite.jpg");
+		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,ImagePaths.AVATAR_IMAGE);
 		return image;
 	}
 	

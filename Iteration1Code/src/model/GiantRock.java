@@ -2,6 +2,8 @@ package model;
 
 import java.awt.image.BufferedImage;
 
+import utilities.ImagePaths;
+
 public class GiantRock extends ObstacleItem {
 
 	/**
@@ -10,7 +12,7 @@ public class GiantRock extends ObstacleItem {
 	private static final long serialVersionUID = -2978480808211942348L;
 
 	public GiantRock(){
-		this.ITEM_IMAGE = "src/res/img/giant_rock.png";
+		this.ITEM_IMAGE = ImagePaths.GIANT_ROCK_IMAGE;
 	}
 
 	@Override

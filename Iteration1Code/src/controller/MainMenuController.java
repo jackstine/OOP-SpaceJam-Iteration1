@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import utilities.Scaling;
 import view.View;
 
 
@@ -38,7 +39,7 @@ public class MainMenuController {
 		
 		buttons.setLayout(new GridLayout(4,1));
 		
-		mainMenu.getCanvas().setPreferredSize(new Dimension(600, 600));
+		mainMenu.getCanvas().setPreferredSize(new Dimension(Scaling.MAIN_MENU_WIDTH, Scaling.MAIN_MENNU_HEIGHT));
 		mainMenu.getCanvas().setBorder(new LineBorder(Color.black, 5));
 		mainMenu.getCanvas().setLayout(new BorderLayout());
 		

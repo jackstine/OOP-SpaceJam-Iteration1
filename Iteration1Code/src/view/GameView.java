@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import utilities.Scaling;
 import model.Avatar;
 import model.GameMap;
 import model.Item;
@@ -17,7 +18,7 @@ public class GameView extends JPanel {
 	Avatar avatar;
 	EntityView entityView;
 	BufferedImage image;
-	private final int MIDDLE=300;
+	MapView mapView;
 
 	public GameView(){
 		map = new GameMap();
@@ -25,9 +26,9 @@ public class GameView extends JPanel {
 		entityView=new EntityView(avatar);
 		//image=avatar.getImage();
 		setFocusable(true);
-		setPreferredSize(new Dimension(700, 700));
+		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
 		setBackground(Color.BLACK);
-		map.updateEntityLocation(avatar, new Location(3,3));
+		map.updateEntityLocation(avatar, new Location(3,3));			//TODO NO MAGIC NUMBERS PLEASE
 		image=avatar.getImage();
 		setVisible(true);
 	}
@@ -36,9 +37,10 @@ public class GameView extends JPanel {
 		this.map = map;
 		this.avatar = avatar;
 		entityView=new EntityView(avatar);
+		MapView mapView= new MapView(avatar);
 		//image=avatar.getImage();
 		setFocusable(true);
-		setPreferredSize(new Dimension(700, 700));
+		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
 		setBackground(Color.BLACK);
 		this.map.updateEntityLocation(avatar, new Location(3,3));
 		image=avatar.getImage();

@@ -1,11 +1,11 @@
 package view;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import javax.swing.*;
 
+
+import utilities.Scaling;
 import model.Avatar;
 import model.Entity;
 
@@ -20,7 +20,7 @@ public class EntityView {
 	private BufferedImage image;
 
 	private Avatar avatar;
-	private final int MIDDLE=300;
+	private final int MIDDLE=Scaling.ENTITY_MIDDLE;
 	
 	public EntityView(Avatar avatar) {
 		this.avatar = avatar;
@@ -29,7 +29,7 @@ public class EntityView {
 	}
 	
 	public void draw(Graphics g){
-		g.drawImage(image,MIDDLE,MIDDLE,null);
+		g.drawImage(image, Scaling.ENTITY_MIDDLE ,Scaling.ENTITY_MIDDLE , null);
 		g.dispose();
 		//repaint();
 	}

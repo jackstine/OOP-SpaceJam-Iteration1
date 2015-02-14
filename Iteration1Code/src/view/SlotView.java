@@ -10,6 +10,7 @@ import java.util.Observer;
 import javax.swing.*;
 
 import utilities.ImageProcessing;
+import utilities.Scaling;
 import model.InventorySlot;
 import model.Item;
 import model.Point;
@@ -18,13 +19,12 @@ import model.Weapon;
 
 
 public class SlotView<T extends Item> extends Component implements Observer{
-	public static final int SLOTIMAGE_HEIGHT = 50;
-	public static final int SLOTIMAGE_WIDTH = 50;
-	public static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
-	public static final int ITEM_IMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
-	public static final int ITEM_IMAGE_SCALE = (ITEM_IMAGE_HEIGHT + ITEM_IMAGE_WIDTH) /2;
-	
-	private final String WEAPON_IMAGE = "src/res/img/weapon.png";
+	private static final int SLOTIMAGE_HEIGHT = Scaling.SLOT_VIEW_HEIGHT;
+	private static final int SLOTIMAGE_WIDTH = Scaling.SLOT_VIEW_WIDTH;
+	private static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
+	private static final int ITEM_IMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
+	private static final int ITEM_IMAGE_SCALE = (ITEM_IMAGE_HEIGHT + ITEM_IMAGE_WIDTH) /2;
+
 	private final String INVENTORY_IMAGE = "src/res/img/brown-InventorySlot.png";
 
 	private static final long serialVersionUID = 15475L;

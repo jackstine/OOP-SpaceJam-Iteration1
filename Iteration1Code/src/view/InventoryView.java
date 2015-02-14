@@ -9,16 +9,18 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import utilities.Scaling;
 import model.Inventory;
 import model.Item;
 import model.Location;
 import model.Point;
 import model.Tile;
+import model.Weapon;
 
 public class InventoryView extends JPanel{
 	// AHHAHAHAHAHAHA   CONNASCENCE    =)
-	public static final int INVENTORY_HEIGHT = Inventory.ROW * SlotView.SLOTIMAGE_HEIGHT;
-	public static final int INVENTORY_WIDTH = Inventory.COL * SlotView.SLOTIMAGE_WIDTH;
+	private static final int INVENTORY_HEIGHT = Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
+	private static final int INVENTORY_WIDTH = Inventory.COL * Scaling.SLOT_VIEW_WIDTH;
 	private Point pointOnView;
 	
 	//TODO unchecked provision stuffies
@@ -45,6 +47,9 @@ public class InventoryView extends JPanel{
 				Point pointOfSlot = new Point(i,j);
 				this.slots[i][j] = new SlotView<Item>( this.inventory.getSlot(pointOfSlot) , pointOfSlot, this.pointOnView );
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
+				
+				//Delete for Testing Only
+				this.inventory.getSlot(pointOfSlot).equip(new Weapon(10));
 			}
 		}
 		this.addMouseListener(new InventoryMouseListener());
@@ -90,8 +95,11 @@ public class InventoryView extends JPanel{
 
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
-			
-			System.out.println(e);
+			int y = e.getY()/Scaling.SLOT_VIEW_SCALE;
+			int x = e.getX()/Scaling.SLOT_VIEW_SCALE;
+			Point slotPoint = new Point(x,y);
+			inventory.getSlot(slotPoint).unequip();
+			System.out.println(slotPoint);
 //			int tileY = e.getY()/Tile.SCALE;
 //			int tileX = e.getX()/Tile.SCALE;
 //			Location tileLocation = new Location(tileX,tileY);

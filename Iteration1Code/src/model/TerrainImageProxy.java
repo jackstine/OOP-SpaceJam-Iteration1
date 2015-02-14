@@ -4,16 +4,16 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 import utilities.ImageProcessing;
+import utilities.Scaling;
 
 public final class TerrainImageProxy implements Serializable {
 	public static String DESSERT_IMAGE_PATH = "src/res/img/desert.png";
 	public static String RADIO_ACTIVE_IMAGE_PATH = "src/res/img/waste.png";
 	public static String MOUNTAIN_IMAGE_PATH = "src/res/img/mountain.png";
-	public static Point TILE_SCALE = new Point(100,100);
 	
-	public static BufferedImage dessertImage = ImageProcessing.scaleImage(TILE_SCALE, DESSERT_IMAGE_PATH);
-	public static BufferedImage radioActiveImage = ImageProcessing.scaleImage(TILE_SCALE, RADIO_ACTIVE_IMAGE_PATH);
-	public static BufferedImage mountainImage = ImageProcessing.scaleImage(TILE_SCALE, MOUNTAIN_IMAGE_PATH);
+	public static BufferedImage dessertImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE, DESSERT_IMAGE_PATH);
+	public static BufferedImage radioActiveImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE, RADIO_ACTIVE_IMAGE_PATH);
+	public static BufferedImage mountainImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE, MOUNTAIN_IMAGE_PATH);
 	
 	public final static BufferedImage getTerrainImage(DesertTerrain des){
 		return TerrainImageProxy.dessertImage;
@@ -28,13 +28,13 @@ public final class TerrainImageProxy implements Serializable {
 	}
 	
 	public final static BufferedImage getNewTerrainImage(DesertTerrain des){
-		return ImageProcessing.scaleImage(TILE_SCALE, DESSERT_IMAGE_PATH);
+		return ImageProcessing.scaleImage(Scaling.TILE_SCALE, DESSERT_IMAGE_PATH);
 	}
 	public final static BufferedImage getNewTerrainImage(RadioactiveWasteTerrain waste){
-		return ImageProcessing.scaleImage(TILE_SCALE, RADIO_ACTIVE_IMAGE_PATH);
+		return ImageProcessing.scaleImage(Scaling.TILE_SCALE, RADIO_ACTIVE_IMAGE_PATH);
 	}
 	public final static BufferedImage getNewTerrainImage(MountainTerrain mou){
-		return ImageProcessing.scaleImage(TILE_SCALE, MOUNTAIN_IMAGE_PATH);
+		return ImageProcessing.scaleImage(Scaling.TILE_SCALE, MOUNTAIN_IMAGE_PATH);
 	}
 	
 
