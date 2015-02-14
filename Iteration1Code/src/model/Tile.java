@@ -25,7 +25,16 @@ public class Tile implements Serializable{
 		location= new Location(x,y);
 		deltaX=0;
 		deltaY=0;
+	}  //might not need t
+	public Tile(Terrain terrain, Decal decal, int x, int y){
+		this.terrain=terrain;
+		location= new Location(x,y);
+		deltaX=0;
+		deltaY=0;
+		decal= new RedCrossDecal();
+			
 	}
+	
 	/*
 	public Tile getTile(){  //not sure if this is needed. Leaving it here for later
 		return this;
@@ -81,14 +90,30 @@ public class Tile implements Serializable{
 		return this.item;
 	}
 	
+	public Decal getDecal(){
+		return decal;
+	}
+	
+	public void setDecal(Decal decal){
+			this.decal=decal;
+	}
+	
 	private BufferedImage updateImage(){
+		
 		BufferedImage imageOfTerrain = terrain.getImage();
-		BufferedImage itemImage,imageToDisplay;
+		BufferedImage itemImage,imageToDisplay, decalImage; //added decalImage
+		
 		if (item != null){
 			// Assuming that the Tile WIDTH is equal to the HEIGHT
 			itemImage = this.item.getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
 			imageOfTerrain = terrain.getNewImage();
-			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain, itemImage);
+			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,itemImage);
+		}
+		
+		if(decal!=null){
+			decalImage = this.decal.getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
+			imageOfTerrain = terrain.getNewImage();
+			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,decalImage);
 		}
 		else{
 			imageToDisplay = imageOfTerrain;
@@ -103,10 +128,12 @@ public class Tile implements Serializable{
 	public void draw(Graphics g){
 		int x= location.getX();
 		int y= location.getY();
+		
 		//if has Item overlay
 		BufferedImage imageToDisplay = this.updateImage();
 		//System.out.println(this+imageToDisplay.toString());
 		g.drawImage(imageToDisplay,Scaling.TILE_WIDTH*x+deltaX,Scaling.TILE_HEIGHT*y+deltaY,null);
+		
 	}
 
 }
