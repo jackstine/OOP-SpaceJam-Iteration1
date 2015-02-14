@@ -5,6 +5,11 @@ import java.util.Map;
 
 public class Hunter extends Occupation implements Serializable{
 
+	public Hunter() {
+		portraitLocation = "src/res/img/hunter_portrait.jpg";
+		name = "Hunter";
+	}
+	
 	public void attack() {
 		// TODO Auto-generated method stub
 		

@@ -10,6 +10,9 @@ public abstract class Entity implements Serializable{
 	private Location location;
 	private Equipable equipment;
 	
+	//adding a name for display purposes
+	private String name;
+	
 	// -------------------------------------------
 	// Need to decide on what constructor we're using for Entity
 	public Entity() {}
@@ -32,6 +35,18 @@ public abstract class Entity implements Serializable{
 	
 	public void setStatValue(String key, int value) {
 		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public Occupation getOccupation() {
+		return occupation;
 	}
 	
 	// -------------------------------------------

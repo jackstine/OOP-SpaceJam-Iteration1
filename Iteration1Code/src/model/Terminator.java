@@ -5,6 +5,11 @@ import java.util.Map;
 
 public class Terminator extends Occupation implements Serializable{
 
+	public Terminator() {
+		portraitLocation = "src/res/img/terminator_portrait.jpg";
+		name = "Terminator";
+	}
+	
 	public void attack() {
 		// TODO Auto-generated method stub
 		

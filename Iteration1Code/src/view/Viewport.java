@@ -2,7 +2,10 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
+import model.*;
 
 /*
 
@@ -16,7 +19,12 @@ public class Viewport extends JPanel {
 
 	public Viewport() {
 		
-		MapView mapView = new MapView();
+		//Remove this statement once we work on this class
+		Avatar temp = new Avatar(new Terminator());
+		
+		//Also remove parameter attached to MapView
+		MapView mapView = new MapView(temp);
+		
 		StatusView statusView = new StatusView();
 		
 		this.setLayout(new BorderLayout());

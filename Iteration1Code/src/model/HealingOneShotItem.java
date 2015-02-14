@@ -30,4 +30,10 @@ public class HealingOneShotItem extends OneShotItem {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean action(Avatar avatar) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

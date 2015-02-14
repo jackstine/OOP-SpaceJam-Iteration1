@@ -38,7 +38,9 @@ public class TileView extends JPanel{
 		//if has Item overlay
 		BufferedImage imageToDisplay = this.updateImage();
 		//System.out.println(this+imageToDisplay.toString());
-		g.drawImage(imageToDisplay,SCALE*x+map.deltaX,SCALE*y+deltaY,null);
+		
+		//Map must be imported in order for this to work
+		//g.drawImage(imageToDisplay,SCALE*x+map.deltaX,SCALE*y+deltaY,null);
 	}
 
 }

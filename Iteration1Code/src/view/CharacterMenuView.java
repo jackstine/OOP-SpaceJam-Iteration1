@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import controller.GameController.SystemsMenuButton;
 import model.Avatar;
 import model.Equipment;
 import model.Inventory;
@@ -22,8 +23,8 @@ Consists of three buttons for saving, quitting, and 'saving and quitting' the ga
 */
 
 public class CharacterMenuView extends JPanel {
-
-	private JButton levelUpButton;
+	private JLabel title;
+	private JButton stats;
 	private Avatar avatar;
 	private InventoryView inventory;
 	//private Grid[][] inventory
@@ -31,15 +32,13 @@ public class CharacterMenuView extends JPanel {
 	public CharacterMenuView(Avatar avatar) {
 		this.avatar = avatar;
 		inventory = new InventoryView(avatar.getInventory(),new Point(0,0));
-		levelUpButton = new JButton("Level Up!");
+		stats = new JButton("Stats");
+		title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
+		add(title);
 		add(inventory);
-		add(levelUpButton);
-		add(levelUpButton);
+		
 		setFocusable(true);
 		setVisible(true);
-	}
-	
-	public void displayStats(HashMap<String, Stat> h) {
 	}
 	
 	public void displayAvatarPortrait() {

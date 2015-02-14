@@ -25,8 +25,9 @@ public class ItemView {
 		item = i;
 	}
 	
+	//TODO
 	public BufferedImage getImage() {
-		return item.getImage();
+		return null;
 	}
 
 }
