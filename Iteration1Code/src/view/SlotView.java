@@ -18,7 +18,7 @@ import model.Slotable;
 import model.Weapon;
 
 
-public class SlotView<T extends Item> extends Component implements Observer{
+public class SlotView<T extends Item> extends JPanel implements Observer{
 	private static final int SLOTIMAGE_HEIGHT = Scaling.SLOT_VIEW_HEIGHT;
 	private static final int SLOTIMAGE_WIDTH = Scaling.SLOT_VIEW_WIDTH;
 	private static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
@@ -75,7 +75,7 @@ public class SlotView<T extends Item> extends Component implements Observer{
 		}
 	}
 	
-	public void paint(Graphics g){
+	public void paintComponent(Graphics g){
 		// the point is refractored with the Width and Height, 
 		//  they fill in their respective Grid
 		//  each point is a fill for a Grid
@@ -107,22 +107,4 @@ public class SlotView<T extends Item> extends Component implements Observer{
 	public void update(Observable arg0, Object arg1) {
 		this.resetImage();
 	}
-	
-    public static void main(String[] args) {
-
-        JFrame f = new JFrame("Load Image Sample");
-        f.addWindowListener(new WindowAdapter(){
-	        public void windowClosing(WindowEvent e) {
-	            System.exit(0);
-	        }
-        });
-        InventorySlot slot = new InventorySlot();
-        Weapon weapon = new Weapon(10);
-        slot.equip(weapon);
-        SlotView slotView = new SlotView(slot);
-        slotView.resetImage();					//TODO make this automatic
-        f.add(slotView);
-        f.pack();
-        f.setVisible(true);
-    }
 }
