@@ -25,8 +25,8 @@ public class ItemView {
 		item = i;
 	}
 	
-	/*public BufferedImage getImage() {
+	public BufferedImage getImage() {
 		return item.getImage();
-	}*/
+	}
 
 }

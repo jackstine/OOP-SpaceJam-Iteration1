@@ -30,6 +30,19 @@ public class MapBuilder implements Serializable{
 					}
 			}
 		}
+		///Placing some items on the map  to pick up </5>
+		for (int i = 5;i <= 8;i++){
+			for (int j=3; j<=8; j++){
+				if (j%2==0){
+					Weapon weapon = new Weapon(i+j);
+					this.map[j][i].setItem(weapon);
+				}
+				else{
+					Armor armor = new Armor(i+j);
+					this.map[j][i].setItem(armor);
+				}
+			}
+		}
 		return this.map;
 	}
 	
@@ -83,7 +96,7 @@ public class MapBuilder implements Serializable{
 		
 		return this.map;
 	}
-	
+
 	public Item[][] getItems(){
 		return this.items;
 	}

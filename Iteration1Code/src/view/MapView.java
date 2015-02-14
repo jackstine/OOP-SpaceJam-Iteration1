@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import model.Avatar;
+import model.GameMap;
 import model.Item;
 import model.Location;
 import model.Tile;
@@ -16,17 +18,21 @@ Displays the specific subsection of the map as is relevant to the player
 
 */
 
-public class MapView extends JPanel {
 
+public class MapView extends JPanel {
+	GameMap map;
+	Avatar avatar;
 	//subset of map to display
-	private TileView[][] grid;
+	//private TileView[][] grid;
 	
-	public MapView() {
-		this.addMouseListener(new MapMouseListener());
+	public MapView(Avatar avatar) {
+		map= new GameMap();
+		this.avatar=avatar;
+		//this.addMouseListener(new MapMouseListener());
 	}
 	
-	protected void paintComponent(Graphics g) {}
-	
+	//protected void paintComponent(Graphics g) {}
+	/*
 	public class MapMouseListener implements MouseListener{
 
 
@@ -53,4 +59,21 @@ public class MapView extends JPanel {
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 	}
+	*/
+	
+	public void draw(Graphics g){
+		Location location= map.getLocation(avatar);
+		int lowX=location.getX()-3;
+		int highX=location.getX()+3;
+		int lowY=location.getY()-3;
+		int highY=location.getY()+3;
+		for(int i=lowX;i<=highX;i++){
+			for(int j=lowY;j<=highY;j++){
+				map.getTile(new Location(i,j)).draw(g);
+			}
+		}
+	}
+	
+	
+	
 }

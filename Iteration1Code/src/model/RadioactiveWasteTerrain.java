@@ -8,7 +8,8 @@ public class RadioactiveWasteTerrain extends Terrain implements Serializable{
 	private boolean passable;
 
 	public RadioactiveWasteTerrain(){
-		passable=false;	
+		passable=false;
+		terrain_id='w';
 	}
 
 	public boolean isPassable(){
