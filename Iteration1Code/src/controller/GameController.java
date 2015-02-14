@@ -99,25 +99,40 @@ public class GameController {
 		apple = load();
 		savedText = new JLabel(apple.s);
 		
+		System.out.println(occupationSelected);
 		game = new Game(occupationSelected);
+		board = new GameView(game.getMap(),game.getAvatar());
+		character = new CharacterMenuView(game.getAvatar());
+		statusView = new StatusView(game.getAvatar());
 		
 		//Add to the canvas
-		gameView.getCanvas().add(systemButton);
-		gameView.getCanvas().add(input);
-		gameView.getCanvas().add(savedText);
+		buttons.add(systemButton);
+		buttons.add(statButton);
+		buttons.add(levelUp);
+		buttons.setBorder(new LineBorder(Color.black, 3));
+		gameView.getCanvas().add(buttons);
+//				gameView.getCanvas().add(input);
+//				gameView.getCanvas().add(savedText);
 		gameView.getCanvas().add(board);
+		character.setBorder(new LineBorder(Color.black, 3));
+		gameView.getCanvas().add(character);
+		gameView.getCanvas().add(statusView);
 		
-		//Alignment --NEEDS ADJUSTMENTS
-		systemButton.setBounds(Scaling.SYSTEM_BUTTON_X, Scaling.SYSTEM_BUTTON_Y,
-				Scaling.SYSTEM_BUTTON_WIDTH,Scaling.SYSTEM_BUTTON_HEIGHT);
-		input.setBounds(Scaling.GAME_CONTROLLER_INPUT_X, Scaling.GAME_CONTROLLER_INPUT_Y, 
-				Scaling.GAME_CONTROLLER_INPUT_WIDTH, Scaling.GAME_CONTROLLER_INPUT_HEIGHT);
-		savedText.setBounds(Scaling.GAME_CONTROLLER_SAVED_TEXT_X,Scaling.GAME_CONTROLLER_SAVED_TEXT_Y
-				,Scaling.GAME_CONTROLLER_SAVED_TEXT_WIDTH, Scaling.GAME_CONTROLLER_SAVED_TEXT_HEIGHT);
-		board.setBounds(Scaling.GAME_CONTROLLER_BOARD_X, Scaling.GAME_CONTROLLER_BOARD_Y, 
-				Scaling.GAME_CONTROLLER_BOARD_WIDTH,Scaling.GAME_CONTROLLER_BOARD_HEIGHT);
+		//Alignment --NEEDS ADJUSTMENT
+		//systemButton.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 5, 0, 100, 25);
+		//input.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 106, 0, 200, 25);
+		//savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
+
+		board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
+		character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
+		buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
+		statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
 		
-		systemButton.addActionListener(new SystemsMenuButton());
+		systemButton.setFocusable(false);
+		systemButton.addActionListener(new SystemsMenuButton()); 
+		
+		statButton.setFocusable(false);
+		statButton.addActionListener(new StatButtonAction());
 		
 	}
 	

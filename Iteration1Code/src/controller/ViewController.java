@@ -80,7 +80,8 @@ public class ViewController {
 			current.setNext("Quit");
 		}
 		else{
-			if(current.getNext() == "New"){
+			if(current.getNext().equals("New")){
+				
 				inGame = new GameController(charGen.getOccupationSelected());
 				views.put("Game", inGame.getView());
 				mv = new MapViewController(inGame,frame);
@@ -104,7 +105,7 @@ public class ViewController {
 	}
 	
 	public void hasSaved(){
-		inGame = new GameController("apple.ser");
+		inGame = new GameController();
 		views.put("Game", inGame.getView());
 		mv = new MapViewController(inGame,frame);
 		frame.revalidate();

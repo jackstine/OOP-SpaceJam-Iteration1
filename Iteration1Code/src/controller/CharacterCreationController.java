@@ -99,8 +99,9 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
-			charCreation.setRedraw(true);
 			occupationSelected = new Alchemist();
+			charCreation.setRedraw(true);
+			
 		}
 	}
 	
@@ -108,8 +109,9 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
-			charCreation.setRedraw(true);
 			occupationSelected = new Terminator();
+			charCreation.setRedraw(true);
+			
 		}
 	}
 	
@@ -117,8 +119,9 @@ public class CharacterCreationController {
 		
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
-			charCreation.setRedraw(true);
 			occupationSelected = new Hunter();
+			charCreation.setRedraw(true);
+			
 		}
 	}
 }
