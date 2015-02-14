@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import utilities.Scaling;
+import utilities.Directions;
 
 
 //public class MapViewController extends JFrame{
@@ -115,7 +116,8 @@ public class MapViewController{
 			return map.getLocation(avatar);
 		}
 		
-		public void move(Point point){
+		public void move(Point point, int direction){
+			avatar.setDirection(direction);
 			if(map.getTile(temp.addLocation(point)).isPassable()){
 				avatarLocation.add(point);
 				map.setDelta(point);
@@ -136,28 +138,28 @@ public class MapViewController{
 				return;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_NUMPAD1 || e.getKeyCode()==KeyEvent.VK_1){
-				this.move(SOUTHWEST);
+				this.move(SOUTHWEST, Directions.SOUTHWEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD2 || e.getKeyCode()==KeyEvent.VK_2){
-				this.move(SOUTH);
+				this.move(SOUTH, Directions.SOUTH);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD3 || e.getKeyCode()==KeyEvent.VK_3){
-				this.move(SOUTHEAST);
+				this.move(SOUTHEAST, Directions.SOUTHEAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD6 || e.getKeyCode()==KeyEvent.VK_6){
-				this.move(EAST);
+				this.move(EAST, Directions.EAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
-				this.move(NORTHWEST);
+				this.move(NORTHWEST, Directions.NORTHWEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
-				this.move(NORTH);
+				this.move(NORTH, Directions.NORTH);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
-				this.move(NORTHEAST);
+				this.move(NORTHEAST, Directions.NORTHEAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
-				this.move(WEST);
+				this.move(WEST, Directions.WEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
 				game.spawnSystems();

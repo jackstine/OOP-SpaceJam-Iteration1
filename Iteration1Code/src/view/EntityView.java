@@ -29,6 +29,7 @@ public class EntityView {
 	}
 	
 	public void draw(Graphics g){
+		image = avatar.getImage();
 		g.drawImage(image, Scaling.ENTITY_MIDDLE ,Scaling.ENTITY_MIDDLE , null);
 		g.dispose();
 		//repaint();

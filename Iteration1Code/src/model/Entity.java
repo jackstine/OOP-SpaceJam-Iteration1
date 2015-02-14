@@ -9,6 +9,7 @@ public abstract class Entity implements Serializable{
 	// private GameMap map;
 	private Location location;
 	private Equipable equipment;
+	private int direction;
 	
 	//adding a name for display purposes
 	private String name;
@@ -26,6 +27,14 @@ public abstract class Entity implements Serializable{
 	public Location getLocation() {
 		//query map for location
 		return location;
+	}
+	
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+	
+	public int getDirection() {
+		return direction;
 	}
 	
 	public int getStatValue(String key) {

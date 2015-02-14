@@ -118,7 +118,9 @@ public class StatusView extends JPanel {
 		 * discuss other options. */
 		//For now, default buttons
 		for(int i = 1; i < 5; i++) {
-			abilityButtons.add(new JButton("Ability "+i));
+			JButton temp = new JButton("Ability "+i);
+			temp.setFocusable(false);
+			abilityButtons.add(temp);
 			abilitiesPanel.add(abilityButtons.get(abilityButtons.size()-1));
 		}
 		
