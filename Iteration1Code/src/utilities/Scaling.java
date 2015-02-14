@@ -57,6 +57,13 @@ public final class Scaling {
 	public static int GAME_CONTROLLER_BOARD_WIDTH = 700;
 	public static int GAME_CONTROLLER_BOARD_HEIGHT = 700;
 	
+	/**************JINTERNALFRAMES***********/
+	public static int INTERNAL_X = 100;
+	public static int INTERNAL_Y = 50;
+	public static int INTERNAL_WIDTH = 300;
+	public static int INTERNAL_HEIGHT = 300;
+	
+	
 	/**************LOADGAMECONTROLLER***********/
 	public static final int LOAD_TABLE_WIDTH = 600;
 	public static final int LOAD_TABLE_HEIGHT = 600;

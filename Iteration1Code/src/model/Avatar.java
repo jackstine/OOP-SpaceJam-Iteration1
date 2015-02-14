@@ -6,8 +6,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import controller.MapViewController;
@@ -27,6 +29,10 @@ public class Avatar extends Entity implements Serializable{
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
+	}
+	
+	public String getStat(String s){
+		return Integer.toString(stats.get(s).getValue());
 	}
 	
 	

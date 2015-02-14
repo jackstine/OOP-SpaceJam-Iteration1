@@ -144,7 +144,7 @@ public class GameController {
 	
 	public void spawnStats(){
 		if(!spawned){			
-			statsView = new StatisticsView(new RetGameStatsButton());
+			statsView = new StatisticsView(game.getAvatar(), new RetGameStatsButton());
 			gameView.getCanvas().add(statsView);
 			statsView.moveToFront();
 			gameView.setNext("Game");
