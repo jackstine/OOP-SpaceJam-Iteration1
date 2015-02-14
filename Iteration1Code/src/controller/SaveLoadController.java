@@ -13,6 +13,7 @@ public class SaveLoadController {
 		// write everything about the avatar
 		Avatar avatar = game.getAvatar();
 		out.println(avatar);
+		out.println(avatar.getInventory());
 		
 		// write everything about the map
 		GameMap map = game.getMap();
@@ -51,6 +52,19 @@ public class SaveLoadController {
 		avatar.setName(name);
 		avatar.setDirection(direction);
 		
+		Inventory inventory = new Inventory();
+		String[] avatarInventory = in.next().split(":");
+		int inventorySize = Integer.parseInt(avatarInventory[1]);
+		
+		for (int j = 0; j < inventorySize; j++) {
+			String[] inventoryItem = in.next().split(":");
+			String itemType = inventoryItem[0];
+			int itemValue = Integer.parseInt(inventoryItem[1]);
+			if (itemType.equals("Armor")) inventory.findAndEquip(new Armor(itemValue));
+			if (itemType.equals("Weapon")) inventory.findAndEquip(new Weapon(itemValue));
+		}
+		
+		avatar.setInventory(inventory);
 		game.setAvatar(avatar);
 		
 		// load the GameMap information

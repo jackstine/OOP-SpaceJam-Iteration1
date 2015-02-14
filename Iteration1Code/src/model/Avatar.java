@@ -55,6 +55,10 @@ public class Avatar extends Entity {
 		return inventory;
 	}
 	
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	
 	public String toString() {
 		String result = "";
 		result += "Avatar:" + this.name;
