@@ -78,7 +78,7 @@ public class StatusView extends JPanel {
 		//TODO
 		//figure out where player max hp and current hp is stored
 		//same for mana, let's get this up and running
-		avatarLife = new JLabel("HP: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")); 
+		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")); 
 		avatarMana = new JLabel("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
 		
 		levelClassPanel = new JPanel();
