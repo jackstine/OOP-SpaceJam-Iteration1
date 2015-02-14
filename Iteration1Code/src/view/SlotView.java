@@ -29,10 +29,6 @@ public class SlotView<T extends Item> extends JPanel implements Observer{
 
 	private static final long serialVersionUID = 15475L;
 	
-	private Point pointOnView;					// this is the point that it generates on the view
-												//for SlotView it is the same as the InventoryView PointOnView
-												// it is used to reference the Point at which to draw the Inventory
-												// likewise the slots for the inventory
 	private Point point;
 	private BufferedImage slotImage;
 	private Slotable<T> slot;
@@ -46,19 +42,10 @@ public class SlotView<T extends Item> extends JPanel implements Observer{
 		this.point= new Point(0,0);
 	}
 	
-	public SlotView(Slotable<T> slot,Point pointOfSlot,Point pointOnView){
-		this.pointOnView = pointOnView;
+	public SlotView(Slotable<T> slot,Point pointOfSlot){
 		this.slot = slot;
 		this.setImages();
 		this.point= pointOfSlot;
-	}
-	
-	public void setPointOnView(Point point){
-		this.pointOnView = point;
-	}
-	
-	public Point getPointOnView(){
-		return this.pointOnView;
 	}
 	
 	public void setImages(){
@@ -79,8 +66,8 @@ public class SlotView<T extends Item> extends JPanel implements Observer{
 		// the point is refractored with the Width and Height, 
 		//  they fill in their respective Grid
 		//  each point is a fill for a Grid
-		int heightLocation = this.point.getX() * SLOTIMAGE_HEIGHT + pointOnView.getY();
-		int widthLocation =  this.point.getY() * SLOTIMAGE_WIDTH + pointOnView.getX();
+		int heightLocation = this.point.getX() * SLOTIMAGE_HEIGHT;
+		int widthLocation =  this.point.getY() * SLOTIMAGE_WIDTH;
 		g.drawImage(this.slotImage, widthLocation , heightLocation , null);
 	}
 	

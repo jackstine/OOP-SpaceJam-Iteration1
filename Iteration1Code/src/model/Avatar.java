@@ -16,6 +16,7 @@ import controller.MapViewController;
 
 public class Avatar extends Entity implements Serializable{
 	private Inventory inventory = new Inventory();
+	private Equipment equipment = new Equipment();
 	private Location location;   // I dont think this is needed? -Juan
 	private final int INITIAL_X_LIE = 0;
 	private final int INITIAL_Y_LIE =0;
@@ -56,6 +57,10 @@ public class Avatar extends Entity implements Serializable{
 	
 	public Inventory getInventory(){
 		return inventory;
+	}
+
+	public Equipment getEquipment() {
+		return this.equipment;
 	}
 	
 	

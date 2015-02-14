@@ -100,7 +100,7 @@ public class GameController {
 	}
 	
 	public GameController(Occupation occupationSelected){
-		
+		board.addMouseListener(new BoardMouseListener());
 		//Load Game
 		apple = load();
 		savedText = new JLabel(apple.s);
