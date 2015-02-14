@@ -150,13 +150,13 @@ public class MapViewController{
 				this.move(EAST, Directions.EAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD9 || e.getKeyCode()==KeyEvent.VK_9){
-				this.move(NORTHWEST, Directions.NORTHWEST);
+				this.move(NORTHEAST, Directions.NORTHEAST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD8 || e.getKeyCode()==KeyEvent.VK_8){
 				this.move(NORTH, Directions.NORTH);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD7 || e.getKeyCode()==KeyEvent.VK_7){
-				this.move(NORTHEAST, Directions.NORTHEAST);
+				this.move(NORTHWEST, Directions.NORTHWEST);
 			}
 			else if(e.getKeyCode()==KeyEvent.VK_NUMPAD4 || e.getKeyCode()==KeyEvent.VK_4){
 				this.move(WEST, Directions.WEST);
