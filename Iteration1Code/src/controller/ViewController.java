@@ -53,10 +53,7 @@ public class ViewController {
 		views.put("New", inGame.getView());
 		
 		mv = new MapViewController(inGame,frame); //modify this later.
-			
-		previous = null;
 		current = views.get("Main");
-		
 		//set up the main frame
 		frame.setFocusable(true);
 		frame.setLayout(new FlowLayout());

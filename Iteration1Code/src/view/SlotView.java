@@ -18,8 +18,9 @@ import model.Weapon;
 
 
 public class SlotView<T extends Item> extends Component implements Observer{
-	public static final int SLOTIMAGE_HEIGHT = 50;
-	public static final int SLOTIMAGE_WIDTH = 50;
+	public static final int SCALE = 50;
+	public static final int SLOTIMAGE_HEIGHT = SCALE;
+	public static final int SLOTIMAGE_WIDTH = SCALE;
 	public static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
 	public static final int ITEM_IMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
 	public static final int ITEM_IMAGE_SCALE = (ITEM_IMAGE_HEIGHT + ITEM_IMAGE_WIDTH) /2;

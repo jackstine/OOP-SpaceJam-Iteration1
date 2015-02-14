@@ -14,6 +14,7 @@ import model.Item;
 import model.Location;
 import model.Point;
 import model.Tile;
+import model.Weapon;
 
 public class InventoryView extends JPanel{
 	// AHHAHAHAHAHAHA   CONNASCENCE    =)
@@ -45,6 +46,9 @@ public class InventoryView extends JPanel{
 				Point pointOfSlot = new Point(i,j);
 				this.slots[i][j] = new SlotView<Item>( this.inventory.getSlot(pointOfSlot) , pointOfSlot, this.pointOnView );
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
+				
+				//Delete for Testing Only
+				this.inventory.getSlot(pointOfSlot).equip(new Weapon(10));
 			}
 		}
 		this.addMouseListener(new InventoryMouseListener());
@@ -90,8 +94,11 @@ public class InventoryView extends JPanel{
 
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
-			
-			System.out.println(e);
+			int y = e.getY()/SlotView.SCALE;
+			int x = e.getX()/SlotView.SCALE;
+			Point slotPoint = new Point(x,y);
+			inventory.getSlot(slotPoint).unequip();
+			System.out.println(slotPoint);
 //			int tileY = e.getY()/Tile.SCALE;
 //			int tileX = e.getX()/Tile.SCALE;
 //			Location tileLocation = new Location(tileX,tileY);

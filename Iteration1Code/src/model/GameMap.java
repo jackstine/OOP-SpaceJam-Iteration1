@@ -53,7 +53,7 @@ public class GameMap implements Serializable{
 	public Tile getTile(Location location){
 		int x=location.getX();
 		int y=location.getY();
-		return map[y][x];
+		return map[x][y];
 	}
 
 	public Tile getEntityTile(Entity entity){
