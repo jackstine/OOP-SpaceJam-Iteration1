@@ -35,6 +35,7 @@ public class MapViewController{
 	private GameController game;
 	EffectHandler effectHandler;
 	//public BufferedImage image;
+	private boolean keyReleased;
 	
 	public MapViewController(GameController game,JFrame frame){ //added GameMap here
 		frame.addKeyListener(new CharacterKeyboardController());
@@ -46,6 +47,7 @@ public class MapViewController{
 		//image=avatar.loadImage();
 		//TODO fir good reasons
 		this.active = false;
+		this.keyReleased = true;
 	}
 	
 	public void setActive(boolean active){
@@ -101,6 +103,8 @@ public class MapViewController{
 		
 		@Override
 		public void keyPressed(KeyEvent e) {
+			if(keyReleased == false) return;
+			keyReleased = false;
 			avatarLocation = this.getAvatarLocation();
 			temp= new Location(avatarLocation.getX(),avatarLocation.getY());
 			
@@ -148,6 +152,7 @@ public class MapViewController{
 
 		@Override
 		public void keyReleased(KeyEvent e) {
+			keyReleased = true;
             int keyCode = e.getKeyCode();
             pressedKeys.remove(keyCode);
 		}
