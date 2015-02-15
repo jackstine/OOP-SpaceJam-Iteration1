@@ -147,7 +147,7 @@ public class SaveLoadController {
 			int x = Integer.parseInt(location[0]);
 			int y = Integer.parseInt(location[1]);
 			// will fix this later to include all entities
-			map.updateEntityLocation(avatar, new Location(x, y));			
+			map.updateEntityLocation(avatar, new Location(x, y));
 		}
 		
 		game.setMap(map);

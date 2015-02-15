@@ -53,6 +53,20 @@ public class GameView extends JPanel {
 		setVisible(true);
 	}
 	
+	public GameView(GameMap map, Avatar avatar, Location location){
+		this.map = map;
+		this.avatar = avatar;
+		entityView=new EntityView(avatar);
+		MapView mapView= new MapView(avatar);
+		//image=avatar.getImage();
+		setFocusable(true);
+		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
+		setBackground(Color.BLACK);
+		this.map.updateEntityLocation(avatar, location);
+		image=avatar.getImage();
+		setVisible(true);
+	}
+	
 	public void paintComponent(Graphics g){
 		map.draw(g);
 		entityView.draw(g);

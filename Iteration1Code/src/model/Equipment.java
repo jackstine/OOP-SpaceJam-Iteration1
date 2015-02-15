@@ -40,7 +40,6 @@ public class Equipment implements Observer{
     }
     
     private void setSlot(Point point, BufferSlot slot){
-    	//System.out.println(slot);
     	this.slots[point.getY()][point.getX()] = slot;
     }
     

@@ -84,6 +84,7 @@ public class GameMap {
 	}
 
 	public void updateEntityLocation(Entity e, Location loc){
+		System.out.println(e.getName() + " - (" + loc.getX() + ", " + loc.getY() + ")");
 		entityToLocationMap.put(e,loc);	
 	}
 	
