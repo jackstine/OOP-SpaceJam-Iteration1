@@ -23,6 +23,7 @@ public class SaveLoadController {
 	}
 	
 	public static Game load() throws IOException {
+		System.out.println("LOADING GAME");
 		Scanner in = new Scanner(new File("savedGame.txt"));
 		Game game = new Game();
 		
@@ -75,6 +76,10 @@ public class SaveLoadController {
 		String[] equipmentWeapon = in.next().split(":");
 		int weaponValue = Integer.parseInt(equipmentWeapon[2]);
 		if (weaponValue != -1) equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(weaponValue));
+		
+		String[] avatarLevels = in.next().split(":");
+		int levels = Integer.parseInt(avatarLevels[1]);
+		avatar.setLevels(levels);
 		
 		avatar.setInventory(inventory);
 		avatar.setEquipment(equipment);
