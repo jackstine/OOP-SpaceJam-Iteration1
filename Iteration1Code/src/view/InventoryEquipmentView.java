@@ -2,7 +2,6 @@ package view;
 
 
 
-import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -35,9 +34,9 @@ public class InventoryEquipmentView extends JPanel {
 	public InventoryEquipmentView(Avatar avatar) {
 		
 		//DELETE ME PLEASE
-		setLayout(new BorderLayout());
-		
 		this.addMouseListener(new InventoryEquipmentMouseListener());
+		
+		
 		this.avatar = avatar;
 		this.inventory = new InventoryView(avatar.getInventory());
 		inventory.addMouseListener(new InventoryMouseListener());
@@ -45,9 +44,12 @@ public class InventoryEquipmentView extends JPanel {
 		equipment.addMouseListener(new EquipmentMouseListener());
 		this.stats = new JButton("Stats");
 		this.title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
-		add(this.title, BorderLayout.NORTH);
-		add(this.inventory,BorderLayout.WEST);
+		add(this.title);
+		add(this.inventory);
 		add(this.equipment);
+		
+		setFocusable(true);
+		setVisible(true);
 	}
 	
 	public void displayAvatarPortrait() {
@@ -62,10 +64,9 @@ public class InventoryEquipmentView extends JPanel {
 		
 		
 		private TakeableItem unequipEquipmentSlot(MouseEvent e){
-			int x = (e.getX() - Scaling.EQUIPMENT_OFFSET) / Scaling.EQUIPMENT_SLOT_WIDTH;
-			int y = (e.getY()) / Scaling.EQUIPMENT_SLOT_HEIGHT;
+			int x = e.getX() / Scaling.EQUIPMENT_SLOT_WIDTH;
+			int y = e.getY() / Scaling.EQUIPMENT_SLOT_HEIGHT;
 			Point point = new Point(x,y);
-			System.out.println(point);
 			TakeableItem item =equipment.getEquipment().getItemFromSlot(point);
 			if (inventory.getInventory().findAndEquip(item)){
 				equipment.getEquipment().unequipSlot(point);
@@ -123,10 +124,8 @@ public class InventoryEquipmentView extends JPanel {
 		private void equipItem(MouseEvent e){
 			Point pointOfSlot = this.getInventorySlot(e);
 			TakeableItem item = inventory.getInventory().getSlot(pointOfSlot).unequip();
-			if (item != null){
-				item.action(avatar);
-				equipment.repaint();
-			}
+			item.action(avatar);
+			equipment.repaint();
 		}
 		
 		// all these classes need to be defined in the MapView

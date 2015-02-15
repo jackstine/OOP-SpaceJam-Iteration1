@@ -111,16 +111,14 @@ public class EquipmentView extends JComponent{
 	}
 
 	public void paint(Graphics g){
-		int OFFSET = Scaling.EQUIPMENT_OFFSET;
 		g.setColor(Color.WHITE);
-		System.out.println(POINT_OF_WEAPON+ "    " + Scaling.EQUIPMENT_OFFSET);
-		g.drawImage(this.weaponImage, POINT_OF_WEAPON.getX() + OFFSET, POINT_OF_ARMOR.getY(), null);
-		g.drawImage(this.armorImage, POINT_OF_ARMOR.getX() + OFFSET, POINT_OF_ARMOR.getY(),null);
-		g.drawImage(this.bootsImage, POINT_OF_BOOTS.getX() + OFFSET, POINT_OF_BOOTS.getY(), null);
-		g.drawImage(this.glovesImage, POINT_OF_GLOVES.getX() + OFFSET, POINT_OF_GLOVES.getY(), null);
-		g.drawImage(this.shieldImage, POINT_OF_SHIELD.getX() + OFFSET, POINT_OF_SHIELD.getY(), null);
-		g.drawImage(this.helmetImage, POINT_OF_HELMET.getX() + OFFSET, POINT_OF_HELMET.getY(), null);
-		g.drawImage(this.leggingsImage, POINT_OF_LEGGINGS.getX() +OFFSET , POINT_OF_LEGGINGS.getY(), null);
+		g.drawImage(this.weaponImage, POINT_OF_WEAPON.getX(), POINT_OF_ARMOR.getY(), null);
+		g.drawImage(this.armorImage, POINT_OF_ARMOR.getX(), POINT_OF_ARMOR.getY(),null);
+		g.drawImage(this.bootsImage, POINT_OF_BOOTS.getX(), POINT_OF_BOOTS.getY(), null);
+		g.drawImage(this.glovesImage, POINT_OF_GLOVES.getX(), POINT_OF_GLOVES.getY(), null);
+		g.drawImage(this.shieldImage, POINT_OF_SHIELD.getX(), POINT_OF_SHIELD.getY(), null);
+		g.drawImage(this.helmetImage, POINT_OF_HELMET.getX(), POINT_OF_HELMET.getY(), null);
+		g.drawImage(this.leggingsImage, POINT_OF_LEGGINGS.getX(), POINT_OF_LEGGINGS.getY(), null);
 	}
 	
 	public Dimension getPreferredSize(){

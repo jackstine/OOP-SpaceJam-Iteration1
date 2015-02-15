@@ -27,42 +27,40 @@ public final class Scaling {
 	
 	
 	/**************GAMECONTROLLER***********/
-	public static final int BOARD_WIDTH = Scaling.NUM_TILES_WIDTH * Scaling.TILE_WIDTH;
-	public static final int BOARD_HEIGHT = Scaling.NUM_TILES_HEIGHT * Scaling.TILE_HEIGHT;
-	public static final int OFFSET_FROM_BOARD = 25;
-	public static final int CHAR_X = Scaling.BOARD_WIDTH + OFFSET_FROM_BOARD;
-	public static final int CHAR_Y = 0;
-	public static final int CHAR_WIDTH = 800;
-	public static final int CHAR_HEIGHT = 400;
-	public static final int BOARD_X = 5;
-	public static final int BOARD_Y = 0;
-	public static final int SYSTEM_BUTTON_X = CHAR_X;
-	public static final int SYSTEM_BUTTON_Y = CHAR_HEIGHT;
-	public static final int SYSTEM_BUTTON_WIDTH = CHAR_WIDTH;
-	public static final int SYSTEM_BUTTON_HEIGHT = 50;
-	public static final int STATUS_WIDTH = CHAR_WIDTH;
-	// right below the systemButtons and to the bottom of the board
-	public static final int STATUS_HEIGHT = BOARD_HEIGHT - SYSTEM_BUTTON_HEIGHT - CHAR_HEIGHT;
-	public static final int STATUS_X = BOARD_WIDTH + OFFSET_FROM_BOARD;
-	public static final int STATUS_Y = SYSTEM_BUTTON_Y + SYSTEM_BUTTON_HEIGHT;
-	public static final int GAME_CONTROLLER_INPUT_X = 101;
-	public static final int GAME_CONTROLLER_INPUT_Y = 0;
-	public static final int GAME_CONTROLLER_INPUT_HEIGHT = 25;
-	public static final int GAME_CONTROLLER_INPUT_WIDTH = 200;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_X = 100;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_Y = 100;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_WIDTH = 200;
-	public static final int GAME_CONTROLLER_SAVED_TEXT_HEIGHT = 25;
-	public static final int GAME_CONTROLLER_BOARD_X = 500;
-	public static final int GAME_CONTROLLER_BOARD_Y = 0;
-	public static final int GAME_CONTROLLER_BOARD_WIDTH = BOARD_WIDTH;		//ASSUMING THAT THIS IS CORRECT
-	public static final int GAME_CONTROLLER_BOARD_HEIGHT = BOARD_HEIGHT;
+	public static int CHAR_X = SCREEN_WIDTH/2 + 35;
+	public static int CHAR_Y = 0;
+	public static int CHAR_WIDTH = 625;
+	public static int CHAR_HEIGHT = 400;
+	public static int BOARD_WIDTH = Scaling.NUM_TILES_WIDTH * Scaling.TILE_WIDTH;
+	public static int BOARD_HEIGHT = Scaling.NUM_TILES_HEIGHT * Scaling.TILE_HEIGHT;
+	public static int BOARD_X = 5;
+	public static int BOARD_Y = 0;
+	public static int SYSTEM_BUTTON_X = SCREEN_WIDTH/2 + 35;
+	public static int SYSTEM_BUTTON_Y = CHAR_HEIGHT;
+	public static int SYSTEM_BUTTON_WIDTH = CHAR_WIDTH;
+	public static int SYSTEM_BUTTON_HEIGHT = 50;
+	public static int STATUS_WIDTH = CHAR_WIDTH;
+	public static int STATUS_HEIGHT = 230;
+	public static int STATUS_X = BOARD_WIDTH + 18;
+	public static int STATUS_Y = SYSTEM_BUTTON_Y + SYSTEM_BUTTON_HEIGHT;
+	public static int GAME_CONTROLLER_INPUT_X = 101;
+	public static int GAME_CONTROLLER_INPUT_Y = 0;
+	public static int GAME_CONTROLLER_INPUT_HEIGHT = 25;
+	public static int GAME_CONTROLLER_INPUT_WIDTH = 200;
+	public static int GAME_CONTROLLER_SAVED_TEXT_X = 100;
+	public static int GAME_CONTROLLER_SAVED_TEXT_Y = 100;
+	public static int GAME_CONTROLLER_SAVED_TEXT_WIDTH = 200;
+	public static int GAME_CONTROLLER_SAVED_TEXT_HEIGHT = 25;
+	public static int GAME_CONTROLLER_BOARD_X = 500;
+	public static int GAME_CONTROLLER_BOARD_Y = 0;
+	public static int GAME_CONTROLLER_BOARD_WIDTH = BOARD_WIDTH;		//ASSUMING THAT THIS IS CORRECT
+	public static int GAME_CONTROLLER_BOARD_HEIGHT = BOARD_HEIGHT;
 	
 	/**************JINTERNALFRAMES***********/
-	public static final int INTERNAL_X = 400;
-	public static final int INTERNAL_Y = 50;
-	public static final int INTERNAL_WIDTH = 500;
-	public static final int INTERNAL_HEIGHT = 300;
+	public static int INTERNAL_X = 400;
+	public static int INTERNAL_Y = 50;
+	public static int INTERNAL_WIDTH = 500;
+	public static int INTERNAL_HEIGHT = 300;
 	
 	
 	/**************LOADGAMECONTROLLER***********/
@@ -118,7 +116,8 @@ public final class Scaling {
 	public static final int EQUIPMENT_SLOTS_HEIGHT_NUM = 4;
 	public static final int EQUIPMENT_VIEW_WIDTH = Scaling.EQUIPMENT_SLOT_WIDTH * EQUIPMENT_SLOTS_WIDTH_NUM;
 	public static final int EQUIPMENT_VIEW_HEIGHT = Scaling.EQUIPMENT_SLOT_HEIGHT * EQUIPMENT_SLOTS_HEIGHT_NUM;
-	public static final int EQUIPMENT_OFFSET = CHAR_WIDTH -  EQUIPMENT_VIEW_WIDTH - Scaling.INVENTORY_WIDTH;
+	
+	
 	
 	/*****************GAMEVIEW*********************/
 	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board
@@ -133,7 +132,7 @@ public final class Scaling {
 	
 	
 	/*******************SLOTVIEW************************/
-	public static final int SLOT_VIEW_HEIGHT = 69;
-	public static final int SLOT_VIEW_WIDTH = 69;
-	public static final int SLOT_VIEW_SCALE = 69;			//should equal Slot_View_Scale
+	public static final int SLOT_VIEW_HEIGHT = 50;
+	public static final int SLOT_VIEW_WIDTH = 50;
+	public static final int SLOT_VIEW_SCALE = 50;			//should equal Slot_View_Scale
 }

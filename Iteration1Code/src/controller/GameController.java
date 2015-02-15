@@ -1,10 +1,13 @@
 package controller;
  
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,22 +15,31 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
  
 
+
+
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.border.LineBorder;
  
 
+
+
 import model.Game;
+import model.Item;
 import model.Location;
+import model.Occupation;
 import model.TakeableItem;
  
 import model.Point;
 import utilities.Scaling;
 import view.InventoryEquipmentView;
 import view.GameView;
+import view.InventoryView;
+import view.LevelUpView;
 import view.StatisticsView;
 import view.StatusView;
 import view.SystemMenuView;
@@ -43,22 +55,27 @@ public class GameController {
         //MISC
         private boolean saved = false;
         private boolean spawned = false;
+        private Apple apple = new Apple(); //--TO BE REMOVED
         private Game game = new Game();
+        private int yourLvl = game.getAvatar().getStatValue("Level");
        
         //Components
+        private JTextField input = new JTextField(20);
+        private JLabel savedText = new JLabel(apple.s);
         private JPanel buttons = new JPanel();
         private JButton systemButton = new JButton("Systems");
         private JButton statButton = new JButton("Statistics");
         private JButton levelUp = new JButton("Level Up!");
         private JInternalFrame systemMenu;
         private JInternalFrame statsView;
+        private LevelUpView leveledView;
        
         //Views
         private View gameView = new View();
         private GameView board = new GameView(game.getMap(),game.getAvatar());
         private InventoryEquipmentView character = new InventoryEquipmentView(game.getAvatar());
         private StatusView statusView = new StatusView(game.getAvatar());
-       
+               
         public GameController(){
                 board.addMouseListener(new BoardMouseListener());
                
@@ -72,7 +89,6 @@ public class GameController {
 //              gameView.getCanvas().add(savedText);
                 gameView.getCanvas().add(board);
                 character.setBorder(new LineBorder(Color.black, 3));
-                //TODO  this does nothing
                 gameView.getCanvas().add(character);
                 gameView.getCanvas().add(statusView);
                
@@ -97,10 +113,6 @@ public class GameController {
         }
        
         public GameController(Game gameToCreate){
-               
-                //Load Game
-                apple = load();
-                savedText = new JLabel(apple.s);
                
                 game = gameToCreate;
                 board = new GameView(game.getMap(),game.getAvatar());
@@ -129,7 +141,6 @@ public class GameController {
                 //savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
  
                 board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
-                System.out.println("Thisis the character Dimensions   "+characterDimensions[0]+" "+ characterDimensions[1]+","+ characterDimensions[2]+","+ characterDimensions[3]);
                 character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
                 buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
                 statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
@@ -138,7 +149,7 @@ public class GameController {
                 statButton.setToolTipText("(C)");
                 
                 levelUp.setFocusable(false);
-                character.setFocusable(false);
+                levelUp.addActionListener(new LevelUPButton());
 
                 systemButton.setFocusable(false);
                 systemButton.addActionListener(new SystemsMenuButton());
@@ -146,10 +157,60 @@ public class GameController {
                
                 statButton.setFocusable(false);
                 statButton.addActionListener(new StatButtonAction());
+                
+                Timer timer = new Timer(20, new DeathLevelCheck());
+        		timer.start();
                
         }
+        
+        public GameController(String indicator) {
+        	try {
+				game.load();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        	
+        	 board = new GameView(game.getMap(),game.getAvatar());
+             character = new InventoryEquipmentView(game.getAvatar());
+             statusView = new StatusView(game.getAvatar());
+             
+             // add the mouse listener to the board
+             board.addMouseListener(new BoardMouseListener());
+             //Add to the canvas
+             buttons.add(systemButton);
+             buttons.add(statButton);
+             buttons.add(levelUp);
+             buttons.setBorder(new LineBorder(Color.black, 3));
+             gameView.getCanvas().add(buttons);
+             gameView.getCanvas().add(board);
+             character.setBorder(new LineBorder(Color.black, 3));
+             gameView.getCanvas().add(character);
+             statusView.setBorder(new LineBorder(Color.black, 3));
+             gameView.getCanvas().add(statusView);
+            
+             board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
+             character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
+             buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
+             statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
+            
+             systemButton.setToolTipText("(ESC)");
+             statButton.setToolTipText("(C)");
+             
+             levelUp.setFocusable(false);
+             levelUp.addActionListener(new LevelUPButton());
 
-		/********************MISC OPERATIONS**********************/
+             systemButton.setFocusable(false);
+             systemButton.addActionListener(new SystemsMenuButton());
+             
+            
+             statButton.setFocusable(false);
+             statButton.addActionListener(new StatButtonAction());
+             
+             Timer timer = new Timer(20, new DeathLevelCheck());
+     		 timer.start();
+        }
+       
+        /********************MISC OPERATIONS**********************/
         public View getView(){
                 return gameView;
         }
@@ -183,46 +244,21 @@ public class GameController {
                         spawned = true;
                 }
         }
+        
+        public void spawnLevelUp(){
+            if(!spawned && game.getAvatar().getLevels() != 0){                  
+            	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Inellect"));
+                    gameView.getCanvas().add(leveledView);
+                    leveledView.moveToFront();
+                    gameView.setNext("Game");
+                    gameView.setRedraw(true);
+                    spawned = true;
+            }
+    }
        
-        public void save(){
-                try
-              {
-                 FileOutputStream fileOut =
-                 new FileOutputStream("apple.ser");
-                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                 out.writeObject(apple);
-                 out.close();
-                 fileOut.close();
-                 System.out.println("Serialized data is saved in apple.ser");
-              }catch(IOException i)
-              {
-                  i.printStackTrace();
-              }
-        }
-       
-        public Apple load(){
-                  Apple a = null;
-                  try
-                  {
-                     FileInputStream fileIn = new FileInputStream("apple.ser");
-                     ObjectInputStream in = new ObjectInputStream(fileIn);
-                     a = (Apple) in.readObject();
-                     in.close();
-                     fileIn.close();
-                  }catch(IOException i)
-                  {
-                     i.printStackTrace();
-                     return null;
-                  }catch(ClassNotFoundException c)
-                  {
-                     System.out.println("Apple class not found");
-                     c.printStackTrace();
-                     return null;
-                  }
-                  return a;
-        }
        
         /********************Action Listeners**********************/
+    
         public class BackButtonListener implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
@@ -230,16 +266,23 @@ public class GameController {
                         gameView.setRedraw(true);
                 }
         }
+        
+        public class LevelUPButton implements ActionListener {
+            
+            public void actionPerformed(ActionEvent e) {
+            		spawnLevelUp();
+            }
+    }
        
         public class SaveGameButton implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
-                        apple.s = input.getText();
-                        input.setText(apple.s);
-                        savedText.setText(apple.s);
-                        System.out.println("Saved: " + apple.s);
-                        save();
-                        saved = true;
+                        try {
+							game.save();
+							saved = true;
+						} catch (IOException e1) {
+							saved = false;
+						}
                 }
         }
        
@@ -278,6 +321,23 @@ public class GameController {
                         spawnStats();
                 }
         }
+        
+        public class LevelStat implements ActionListener {
+        	String stat = "";
+        	public LevelStat(String s){
+        		stat = s; 
+        	}
+            public void actionPerformed(ActionEvent e) {
+            	game.getAvatar().setStatValue(stat, game.getAvatar().getStatValue(stat)+5*game.getAvatar().getLevels());
+            	game.getAvatar().setLevels(0);
+            	gameView.getCanvas().remove(leveledView);
+                gameView.getCanvas().getTopLevelAncestor().requestFocus();
+                spawned = false;
+                gameView.setNext("Game");
+                gameView.setRedraw(true);
+            }
+    }
+    
  
     public class BoardMouseListener implements MouseListener{
         // all these classes need to be defined in the MapView
@@ -301,6 +361,7 @@ public class GameController {
             // corrupts governments,  please dont type cast,  Hackers love type casting. 
             // Testing Purposes for Iteration 1 only,   Implementation
             TakeableItem droppedItem = (TakeableItem) board.getMap().getTile(tileLocation).getItem();
+            System.out.println(droppedItem+"  "+tileLocation);
             if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
                     board.getMap().getTile(tileLocation).dropItem();
             }
@@ -310,5 +371,22 @@ public class GameController {
         public void mousePressed(MouseEvent e) {}
         public void mouseReleased(MouseEvent e) {}
     }
+    
+    public class DeathLevelCheck implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if(game.getAvatar().getStatValue("Lives") == 0){
+				 gameView.setNext("Main");
+                 gameView.setRedraw(true);
+			}
+			else if(game.getAvatar().getStatValue("HP") == 0){
+				game.getAvatar().setStatValue("Lives", game.getAvatar().getStatValue("Lives")-1);
+				game.getAvatar().setStatValue("HP", game.getAvatar().getStatValue("Life"));
+			}
+			else if(yourLvl != game.getAvatar().getStatValue("Level")){
+				game.getAvatar().setLevels(game.getAvatar().getLevels()+1);
+				yourLvl = game.getAvatar().getStatValue("Level");
+			}
+		}
+	}
        
 }
