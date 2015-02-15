@@ -1,15 +1,15 @@
-Avatar:Testing
+Avatar:Arnold
 Occupation:Terminator
 Agility:10
-Experience:50
+Experience:0
 Hardiness:20
-HP:40
+HP:20
 Intellect:10
 Lives:3
-MP:20
+MP:10
 Movement:10
 Strength:20
-Direction:4
+Direction:6
 Inventory:0
 Item:Armor:1
 Item:Weapon:1
@@ -324,7 +324,8 @@ null
 null
 Tile:4,5
 Terrain:D
-null
+Decal:X
+DamageAreaEffect:0.5
 null
 Tile:4,6
 Terrain:D
@@ -336,7 +337,7 @@ null
 null
 Tile:4,8
 Terrain:D
-null
+Decal:+
 null
 Tile:4,9
 Terrain:D
@@ -396,7 +397,7 @@ null
 null
 Tile:5,5
 Terrain:D
-null
+Decal:*
 null
 Tile:5,6
 Terrain:D
@@ -1312,4 +1313,4 @@ Terrain:M
 null
 null
 1
-Testing:3,11
+Arnold:8,3

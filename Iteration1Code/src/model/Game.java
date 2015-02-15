@@ -17,6 +17,7 @@ public class Game implements Serializable {
 		map = new GameMap();
 		avatar = new Avatar(occupation);
 		avatar.setName(name);
+		map.setAvatar(avatar);
 	}
 	
 	public GameMap getMap() {

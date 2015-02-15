@@ -55,13 +55,10 @@ public class GameController {
         //MISC
         private boolean saved = false;
         private boolean spawned = false;
-        private Apple apple = new Apple(); //--TO BE REMOVED
         private Game game = new Game();
         private int yourLvl = game.getAvatar().getStatValue("Level");
        
         //Components
-        private JTextField input = new JTextField(20);
-        private JLabel savedText = new JLabel(apple.s);
         private JPanel buttons = new JPanel();
         private JButton systemButton = new JButton("Systems");
         private JButton statButton = new JButton("Statistics");
