@@ -9,6 +9,7 @@ public class Avatar extends Entity {
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
 	private Equipment equipment = new Equipment();
+	private int levels = 0;
 	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",

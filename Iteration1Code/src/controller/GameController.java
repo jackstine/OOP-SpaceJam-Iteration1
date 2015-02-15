@@ -103,10 +103,6 @@ public class GameController {
        
         public GameController(Game gameToCreate){
                
-                //Load Game
-                apple = load();
-                savedText = new JLabel(apple.s);
-               
                 game = gameToCreate;
                 board = new GameView(game.getMap(),game.getAvatar());
                 character = new InventoryEquipmentView(game.getAvatar());
@@ -187,43 +183,6 @@ public class GameController {
                 }
         }
        
-        public void save(){
-                try
-              {
-                 FileOutputStream fileOut =
-                 new FileOutputStream("apple.ser");
-                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                 out.writeObject(apple);
-                 out.close();
-                 fileOut.close();
-                 System.out.println("Serialized data is saved in apple.ser");
-              }catch(IOException i)
-              {
-                  i.printStackTrace();
-              }
-        }
-       
-        public Apple load(){
-                  Apple a = null;
-                  try
-                  {
-                     FileInputStream fileIn = new FileInputStream("apple.ser");
-                     ObjectInputStream in = new ObjectInputStream(fileIn);
-                     a = (Apple) in.readObject();
-                     in.close();
-                     fileIn.close();
-                  }catch(IOException i)
-                  {
-                     i.printStackTrace();
-                     return null;
-                  }catch(ClassNotFoundException c)
-                  {
-                     System.out.println("Apple class not found");
-                     c.printStackTrace();
-                     return null;
-                  }
-                  return a;
-        }
        
         /********************Action Listeners**********************/
         public class BackButtonListener implements ActionListener {
@@ -237,12 +196,12 @@ public class GameController {
         public class SaveGameButton implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
-                        apple.s = input.getText();
-                        input.setText(apple.s);
-                        savedText.setText(apple.s);
-                        System.out.println("Saved: " + apple.s);
-                        save();
-                        saved = true;
+                        try {
+							game.save();
+							saved = true;
+						} catch (IOException e1) {
+							saved = false;
+						}
                 }
         }
        
