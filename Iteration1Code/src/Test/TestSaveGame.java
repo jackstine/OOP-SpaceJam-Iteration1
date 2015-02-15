@@ -8,16 +8,16 @@ public class TestSaveGame {
 		Game game = new Game();
 		//System.out.println("Avatar = " + game.getAvatar().getName());
 		//System.out.println(game.getAvatar().getInventory());
-		//Avatar avatar = new Avatar(new Terminator());
-		//avatar.setName("Arnold");
-		//avatar.getInventory().findAndEquip(new Armor(50));
-		//avatar.getInventory().findAndEquip(new Weapon(30));
+		Avatar avatar = new Avatar(new Terminator());
+		avatar.setName("Arnold");
+		avatar.getInventory().findAndEquip(new Armor(50));
+		avatar.getInventory().findAndEquip(new Weapon(30));
 		
-		//GameMap map = new GameMap();
+		GameMap map = new GameMap();
 		
-		//game.setAvatar(avatar);
-		//game.setMap(map);
-		//game.save();
+		game.setAvatar(avatar);
+		game.setMap(map);
+		game.save();
 		game.load();
 		
 		Avatar newAvatar = game.getAvatar();

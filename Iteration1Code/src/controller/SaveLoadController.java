@@ -139,6 +139,17 @@ public class SaveLoadController {
 			}
 		}
 		
+		int entities = Integer.parseInt(in.next());
+		for (int k = 0; k < entities; k++) {
+			String[] entityLocation = in.next().split(":");
+			String entityName = entityLocation[0];
+			String[] location = entityLocation[1].split(",");
+			int x = Integer.parseInt(location[0]);
+			int y = Integer.parseInt(location[1]);
+			// will fix this later to include all entities
+			map.updateEntityLocation(avatar, new Location(x, y));			
+		}
+		
 		game.setMap(map);
 		System.out.println("GAME LOADED\n---------------");
 		return game;

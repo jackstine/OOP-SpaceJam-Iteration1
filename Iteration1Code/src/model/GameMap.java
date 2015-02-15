@@ -157,8 +157,11 @@ public class GameMap {
 				result += "\n" + this.map[i][j];
 			}
 		}
-		
-		
+		result += "\n" + this.entityToLocationMap.keySet().size();
+		for (Entity entity : this.entityToLocationMap.keySet()) {
+			Location location = entityToLocationMap.get(entity);
+			result += "\n" + entity.getName() + ":" + location.getX() + "," + location.getY();
+		}
 		return result;
 	}
 }
