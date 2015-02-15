@@ -16,8 +16,8 @@ public class MapBuilder implements Serializable{
 	}
 	
 	public MapBuilder(){
-		this.width = 35;
-		this.height = 35;
+		this.width = 18;  //changed these from 35*35 to 18*18
+		this.height = 18;
 	}
 	
 	public Tile[][] generateMap(){
@@ -66,8 +66,42 @@ public class MapBuilder implements Serializable{
 		}
 		return this.map;
 	}
-	
+	//NEW MAP
 	public Tile[][] generateStructuredMap(){
+		this.map = new Tile[this.height][this.width]; // Sets the map size
+		this.items = new Item[this.height][this.width];
+		for(int i = 0; i < this.width; i++){
+			for(int j = 0; j < this.height; j++){
+				if(i < 3 || j < 3 || i > this.width-4 || j > this.height-4)	// Mountains around the perimeter
+					this.map[i][j] = new Tile(new MountainTerrain(),i,j);
+				else if ((i == this.width/2 || (i == ((this.width/2) + 1))) &&  (j == this.height/2 || j == ((this.height/2)+1)))	//Waste in the middle
+					this.map[i][j] = new Tile(new RadioactiveWasteTerrain(),i,j);
+				else{
+					this.map[i][j] = new Tile(new DesertTerrain(),i,j);		//Desert everywhere else
+				}
+			}
+		}
+		this.map[5][5].setDecal(new GoldStarDecal());
+		this.map[4][8].setDecal(new RedCrossDecal());
+		this.map[4][5].setDecal(new SkullAndCrossbonesDecal(new DamageAreaEffect(.50)));
+		this.map[7][8].setDecal(new SkullAndCrossbonesDecal(new DeathAreaEffect()));
+		Armor armor = new Armor(3+10);
+		this.map[3][10].setItem(armor);
+		this.items[3][10] = armor;
+		
+		Weapon weapon = new Weapon(20+49);
+		this.map[8][8].setItem(weapon);
+		this.items[8][8] = weapon;
+		
+		GiantRock gr = new GiantRock();
+		this.map[3][8].setItem(gr);
+		this.items[3][8] = gr;
+		
+		
+		return this.map;
+	}
+	//renamed OLD map(this one) to V2
+	public Tile[][] generateStructuredMapV2(){
 		this.map = new Tile[this.height][this.width]; // Sets the map size
 		this.items = new Item[this.height][this.width];
 		for(int i = 0; i < this.width; i++){

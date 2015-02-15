@@ -15,11 +15,13 @@ public class GameMap {
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
+	private final int RANGE=3;
 	//I am changing the HashMap to a Array because the Items are not unique Yet
 	private int width;
 	private int height;
 	private int deltaX;
 	private int deltaY;
+	Avatar avatar;
 
 
 	public GameMap(){
@@ -106,18 +108,39 @@ public class GameMap {
 	public Point getDelta(){
 		return new Point(this.deltaX,this.deltaY);
 	}
+	public void setAvatar(Avatar avatar){
+		this.avatar=avatar;
+	}
 
 	public void draw(Graphics g){
+		/*
 		for(int i=0;i<map.length;i++){
 			for(int j=0;j<map[i].length;j++){
 				int delta1=map[i][j].getDeltaX();
 				int delta2=map[i][j].getDeltaY();
-				map[i][j].setDeltaX(delta1+deltaX);  //not done
-				map[i][j].setDeltaY(delta2+deltaY);  //not done
+				map[i][j].setDeltaX(delta1+deltaX);  
+				map[i][j].setDeltaY(delta2+deltaY);  
 				map[i][j].draw(g);
 				
 				
 			}
 		}
+		*/
+		///*
+		Location location= getLocation(avatar);
+		int lowX=location.getX()-RANGE;
+		int highX=location.getX()+RANGE;
+		int lowY=location.getY()-RANGE;
+		int highY=location.getY()+RANGE;
+		for(int i=lowX;i<=highX;i++){
+			for(int j=lowY;j<=highY;j++){
+				int delta1=map[i][j].getDeltaX();
+				int delta2=map[i][j].getDeltaY();
+				map[i][j].setDeltaX(delta1+deltaX);  
+				map[i][j].setDeltaY(delta2+deltaY);  
+				map[i][j].draw(g);
+			}
+		}
+		//*/
 	}
 }

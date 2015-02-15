@@ -42,6 +42,7 @@ public class MapViewController{
 		this.map= game.getGame().getMap();
 		this.game = game;
 		effectHandler= new EffectHandler(avatar);
+		map.setAvatar(avatar);
 		//image=avatar.loadImage();
 		//TODO fir good reasons
 		this.active = false;
