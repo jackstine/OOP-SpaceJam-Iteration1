@@ -19,5 +19,4 @@ public class RunGame {
 	public RunGame(){
 		start = new ViewController();
 	}
-
 }

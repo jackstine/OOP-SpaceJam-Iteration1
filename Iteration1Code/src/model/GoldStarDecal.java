@@ -6,11 +6,14 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.imageio.ImageIO;
+import model.ExperienceAreaEffect;
 
 public class GoldStarDecal extends Decal implements Serializable{
+	ExperienceAreaEffect effect;
 
 	public GoldStarDecal(){
 		super();
+		effect= new ExperienceAreaEffect();
 	}
 	/*
 	@Override
@@ -26,5 +29,9 @@ public class GoldStarDecal extends Decal implements Serializable{
 	}
 	public BufferedImage getNewImage(){
 		return DecalImageProxy.getNewDecalImage(this);
+	}
+	
+	public AreaEffect getAreaEffect(){
+		return effect;
 	}
 }

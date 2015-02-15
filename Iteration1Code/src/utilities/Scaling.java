@@ -2,7 +2,6 @@ package utilities;
 
 import java.awt.Toolkit;
 
-import view.SlotView;
 import model.Inventory;
 import model.Point;
 
@@ -28,7 +27,7 @@ public final class Scaling {
 	
 	
 	/**************GAMECONTROLLER***********/
-	public static int CHAR_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35;
+	public static int CHAR_X = SCREEN_WIDTH/2 + 35;
 	public static int CHAR_Y = 0;
 	public static int CHAR_WIDTH = 625;
 	public static int CHAR_HEIGHT = 500;
@@ -36,7 +35,7 @@ public final class Scaling {
 	public static int BOARD_HEIGHT = Scaling.NUM_TILES_HEIGHT * Scaling.TILE_HEIGHT;
 	public static int BOARD_X = 5;
 	public static int BOARD_Y = 0;
-	public static int SYSTEM_BUTTON_X = Toolkit.getDefaultToolkit().getScreenSize().width/2 + 35;
+	public static int SYSTEM_BUTTON_X = SCREEN_WIDTH/2 + 35;
 	public static int SYSTEM_BUTTON_Y = CHAR_HEIGHT;
 	public static int SYSTEM_BUTTON_WIDTH = CHAR_WIDTH;
 	public static int SYSTEM_BUTTON_HEIGHT = 50;
@@ -82,22 +81,43 @@ public final class Scaling {
 	public static final int TILE_WIDTH = 100;
 	public static final int TILE_HEIGHT = 100;
 	public static final Point TILE_SCALE = new Point(TILE_WIDTH,TILE_HEIGHT);
-	public static final int TILE_OVERLAY_IMAGE_OFFSET = 35 * (TILE_WIDTH/100);
+	public static final int TILE_OVERLAY_IMAGE_OFFSET = (int) (35 * (TILE_WIDTH/100.0));
 	
 	/*************ENTITYVIEW************/
 	public static final int ENTITY_MIDDLE = TILE_WIDTH*3;		//starts 3 spaces on the map
 	
 	/*************EQUIPMENTVIEW**************/
-	public static final int EQUIPMENT_WEAPON_X = 100;
-	public static final int EQUIPMENT_WEAPON_Y = 200;
-	public static final int EQUIPMENT_ARMOR_X = 200;
-	public static final int EQUIPMENT_ARMOR_Y = 0;
-	public static final int EQUIPMENT_SLOT_WIDTH = 100;
-	public static final int EQUIPMENT_SLOT_HEIGHT = 100;
-	public static final int EQUIPMENT_SLOT_OFFSET_WIDTH = 80;
-	public static final int EQUIPMENT_SLOT_OFFSET_HEIGHT = 80;
-	public static final int EQUIPMENT_VIEW_WIDTH = 200;
-	public static final int EQUIPMENT_VIEW_HEIGHT = 200;
+	public static final int EQUIPMENT_WEAPON_X = 0;
+	public static final int EQUIPMENT_WEAPON_Y = 100;
+	//  Armor is directly below the Helmet
+	public static final int EQUIPMENT_ARMOR_X = Scaling.EQUIPMENT_HELMET_X;
+	public static final int EQUIPMENT_ARMOR_Y = Scaling.EQUIPMENT_HELMET_Y + Scaling.EQUIPMENT_SLOT_HEIGHT;
+	// Helmet is the top view of the Equipment View
+	public static final int EQUIPMENT_HELMET_X = Scaling.EQUIPMENT_SLOT_WIDTH;
+	public static final int EQUIPMENT_HELMET_Y = 0;
+	// left of the Armor
+	public static final int EQUIPMENT_SHIELD_X = EQUIPMENT_ARMOR_X + Scaling.EQUIPMENT_SLOT_WIDTH;
+	public static final int EQUIPMENT_SHIELD_Y = EQUIPMENT_ARMOR_Y;
+	// below the Armor
+	public static final int EQUIPMENT_LEGGINGS_X = EQUIPMENT_ARMOR_X;
+	public static final int EQUIPMENT_LEGGINGS_Y = EQUIPMENT_ARMOR_Y + Scaling.EQUIPMENT_SLOT_HEIGHT;
+	// below the Leggings
+	public static final int EQUIPMENT_BOOTS_X = EQUIPMENT_LEGGINGS_X;
+	public static final int EQUIPMENT_BOOTS_Y = EQUIPMENT_LEGGINGS_Y + Scaling.EQUIPMENT_SLOT_HEIGHT;
+	//Left of LEGGINGS
+	public static final int EQUIPMENT_GLOVES_X = Scaling.EQUIPMENT_LEGGINGS_X - Scaling.EQUIPMENT_SLOT_HEIGHT;
+	public static final int EQUIPMENT_GLOVES_Y = EQUIPMENT_LEGGINGS_Y;
+	//SLOT information
+	public static final int EQUIPMENT_SLOT_WIDTH = 75;
+	public static final int EQUIPMENT_SLOT_HEIGHT = 75;
+	public static final int EQUIPMENT_SLOT_OFFSET_WIDTH = (int) (80 * (Scaling.EQUIPMENT_SLOT_WIDTH/100.0));
+	public static final int EQUIPMENT_SLOT_OFFSET_HEIGHT = (int) (80 * (Scaling.EQUIPMENT_SLOT_HEIGHT/100.0));
+	public static final int EQUIPMENT_SLOTS_WIDTH_NUM = 3;
+	public static final int EQUIPMENT_SLOTS_HEIGHT_NUM = 4;
+	public static final int EQUIPMENT_VIEW_WIDTH = Scaling.EQUIPMENT_SLOT_WIDTH * EQUIPMENT_SLOTS_WIDTH_NUM;
+	public static final int EQUIPMENT_VIEW_HEIGHT = Scaling.EQUIPMENT_SLOT_HEIGHT * EQUIPMENT_SLOTS_HEIGHT_NUM;
+	
+	
 	
 	/*****************GAMEVIEW*********************/
 	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board

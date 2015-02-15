@@ -1,8 +1,6 @@
 package model;
 
-import java.io.Serializable;
-
-public class Weapon extends TakeableItem implements Equipable, Serializable {
+public class Weapon extends Equipable {
 	private int attack;
 	
 	public Weapon(int attack) {
@@ -24,7 +22,7 @@ public class Weapon extends TakeableItem implements Equipable, Serializable {
 		return this.attack;
 	}
 	public String toString(){
-		return "Weapon with Attack of "+this.attack;
+		return "Weapon:" + this.attack;
 	}
 	
 	public static void main(String[] args){
@@ -36,5 +34,15 @@ public class Weapon extends TakeableItem implements Equipable, Serializable {
 		//Type casting here to make it a Armor
 		weaponSlot.equip((Weapon)invSlot.unequip());
 		//weaponSlot.equip(invSlot.unequip());		This will not work
+	}
+
+	@Override
+	public boolean equip(ArmorSlot slot) {
+		return false;
+	}
+
+	@Override
+	public boolean equip(WeaponSlot slot) {
+		return slot.equip(this);
 	}
 }

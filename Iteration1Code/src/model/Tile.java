@@ -15,7 +15,7 @@ public class Tile implements Serializable{
 	private Location location;
 	private Item item;
 	private Entity entity;
-	//private AreaEffect areaEffect;
+	private AreaEffect areaEffect;
 	private Decal decal;
 	private int deltaX; 
 	private int deltaY;
@@ -25,7 +25,9 @@ public class Tile implements Serializable{
 		location= new Location(x,y);
 		deltaX=0;
 		deltaY=0;
-	}  //might not need t
+	}  
+	
+	//might not need it
 	public Tile(Terrain terrain, Decal decal, int x, int y){
 		this.terrain=terrain;
 		location= new Location(x,y);
@@ -96,6 +98,10 @@ public class Tile implements Serializable{
 	
 	public void setDecal(Decal decal){
 			this.decal=decal;
+	}
+	
+	public AreaEffect getAreaEffect(){
+		return areaEffect;
 	}
 	
 	private BufferedImage updateImage(){

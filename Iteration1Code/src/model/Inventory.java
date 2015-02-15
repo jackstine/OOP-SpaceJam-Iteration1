@@ -1,8 +1,6 @@
 package model;
 
-import java.io.Serializable;
-
-public class Inventory extends SlotContainer implements Serializable{
+public class Inventory extends SlotContainer{
     public static final int COL = 6;
     public static final int ROW = 5;
     protected InventorySlot[][] items;    
@@ -40,8 +38,7 @@ public class Inventory extends SlotContainer implements Serializable{
             for (int j = 0; j < COL; j++){
                 if (items[i][j].has()){
                 	continue;
-                }
-                else{
+                } else {
                 	items[i][j].equip(item);
                 	return true;
                 }
@@ -54,16 +51,28 @@ public class Inventory extends SlotContainer implements Serializable{
         return this.getSlot(point).get();
     }
     
+    private int itemCount() {
+    	int count = 0;
+    	for (int i = 0; i < ROW; i++) {
+    		for (int j = 0; j < COL; j++) {
+    			if (!this.items[i][j].has()) return count;
+    			count++;
+    		}
+    	}
+    	return count;
+    }
+    
     public String toString(){
     	StringBuilder builder = new StringBuilder();
+    	builder.append("Inventory:" + this.itemCount());
         for (int i = 0; i < ROW; i++){
             for (int j = 0; j < COL; j++){
-                builder.append(this.get(new Point(i,j)).toString());
+            	if (this.get(new Point(i, j)) == null) return builder.toString();
+                builder.append("\n" + this.get(new Point(i,j)).toString());
             }
-            builder.append("\n");
         }
         return builder.toString();
     }
     
-    protected void primitive(){};
+    protected void primitive(){}
 }

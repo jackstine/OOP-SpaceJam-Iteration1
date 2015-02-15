@@ -16,8 +16,10 @@ public class SaveLoadController {
 		
 		// write everything about the map
 		GameMap map = game.getMap();
+		
+		
 		out.close();
-		System.out.println("GAME SAVED");
+		System.out.println("GAME SAVED\n---------------");
 	}
 	
 	public static Game load() throws IOException {
@@ -38,22 +40,52 @@ public class SaveLoadController {
 		if (occupation.equals("Alchemist")) avatar = new Avatar(new Alchemist());
 		if (occupation.equals("Hunter")) avatar = new Avatar(new Hunter());
 		
-		avatar.setName(name);
-		
 		for (int i = 0; i < 9; i++) {
 			String[] primaryStat = in.next().split(":");
 			String key = primaryStat[0];
 			int value = Integer.parseInt(primaryStat[1]);
 			avatar.setStatValue(key, value);
 		}		
+		
+		String[] avatarDirection = in.next().split(":");
+		int direction = Integer.parseInt(avatarDirection[1]);
 
+		avatar.setName(name);
+		avatar.setDirection(direction);
+		
+		Inventory inventory = new Inventory();
+		String[] avatarInventory = in.next().split(":");
+		int inventorySize = Integer.parseInt(avatarInventory[1]);
+		
+		// query through all items in the inventory
+		for (int j = 0; j < inventorySize; j++) {
+			String[] inventoryItem = in.next().split(":");
+			String itemType = inventoryItem[0];
+			int itemValue = Integer.parseInt(inventoryItem[1]);
+			// fix this later too
+			if (itemType.equals("Armor")) inventory.findAndEquip(new Armor(itemValue));
+			if (itemType.equals("Weapon")) inventory.findAndEquip(new Weapon(itemValue));
+		}
+		
+		Equipment equipment = new Equipment();
+		
+		String[] equipmentArmor = in.next().split(":");
+		int armorValue = Integer.parseInt(equipmentArmor[1]);
+		if (armorValue != -1) equipment.equipSlot(Equipment.ARMOR_SLOT,new Armor(armorValue));
+		
+		String[] equipmentWeapon = in.next().split(":");
+		int weaponValue = Integer.parseInt(equipmentWeapon[1]);
+		if (weaponValue != -1) equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(weaponValue));
+		
+		avatar.setInventory(inventory);
+		avatar.setEquipment(equipment);
 		game.setAvatar(avatar);
 		
 		// load the GameMap information
 		
 		
 		game.setMap(map);
-		System.out.println("GAME LOADED");
+		System.out.println("GAME LOADED\n---------------");
 		return game;
 	}
 }

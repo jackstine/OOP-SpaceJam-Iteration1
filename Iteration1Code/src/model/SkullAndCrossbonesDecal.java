@@ -4,9 +4,16 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 public class SkullAndCrossbonesDecal extends Decal implements Serializable{
+	AreaEffect effect;
 
-	public SkullAndCrossbonesDecal(){
+	public SkullAndCrossbonesDecal(DeathAreaEffect effect){
 		super();
+		this.effect=effect;
+	}
+	
+	public SkullAndCrossbonesDecal(DamageAreaEffect effect){
+		super();
+		this.effect=effect;
 	}
 	/*
 	@Override
@@ -21,6 +28,9 @@ public class SkullAndCrossbonesDecal extends Decal implements Serializable{
 	}
 	public BufferedImage getNewImage(){
 		return DecalImageProxy.getNewDecalImage(this);
+	}
+	public AreaEffect getAreaEffect(){
+		return effect;
 	}
 	
 }

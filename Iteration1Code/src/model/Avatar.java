@@ -2,13 +2,14 @@ package model;
 
 import java.awt.image.BufferedImage;
 
-import utilities.ImageProcessing;
-import utilities.Scaling;
+import utilities.*;
 
 public class Avatar extends Entity {
 	private Inventory inventory = new Inventory();
 	private BufferedImage image;
-	private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
+	private BufferedImage[] spriteSheet;
+	private Equipment equipment = new Equipment();
+	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",
 											"Movement", "Strength"};
@@ -20,6 +21,10 @@ public class Avatar extends Entity {
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
+		String occString = occupation.getName().toUpperCase();
+		SpriteSheetUtility util = new SpriteSheetUtility(occString);
+		spriteSheet = (util.getSpriteArray());
+		this.setEquipmentBegin();
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
@@ -42,8 +47,16 @@ public class Avatar extends Entity {
 	}
 	*/
 	
+	
+    private void setEquipmentBegin(){
+    	int beginValue = 1;
+    	this.equipment.equipSlot(Equipment.ARMOR_SLOT, new Armor(beginValue));
+    	this.equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(beginValue));
+    }
+	
 	public BufferedImage getImage(){
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
+		BufferedImage imageToDisplay = spriteSheet[direction];
+		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
 		return image;
 	}
 	
@@ -51,16 +64,30 @@ public class Avatar extends Entity {
 		return inventory;
 	}
 	
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	
+	public Equipment getEquipment() {
+		return this.equipment;
+	}
+	
+	public void setEquipment(Equipment equipment) {
+		this.equipment = equipment;
+	}	
+	
+	// used for writing to the save file
+	// name, occupation, stats, direction, inventory, equipment
 	public String toString() {
 		String result = "";
 		result += "Avatar:" + this.name;
 		result += "\n" + this.occupation;
 		for (String key : primaryStats) result += "\n" + this.stats.get(key);
+		result += "\nDirection:" + this.direction;
+		result += "\n" + this.inventory;
+		result += "\n" + this.equipment;
 		return result;
 	}
-	
-	
-	
 	
 	/*
 	//private void attack() {

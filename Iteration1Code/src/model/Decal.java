@@ -32,4 +32,5 @@ public abstract class Decal implements Serializable{
 	*/
 	public abstract BufferedImage getImage(int scale);
 	public abstract BufferedImage getNewImage();
+	public abstract AreaEffect getAreaEffect();
 }
