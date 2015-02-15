@@ -173,7 +173,7 @@ public class GameController {
         	 board = new GameView(game.getMap(),game.getAvatar());
              character = new InventoryEquipmentView(game.getAvatar());
              statusView = new StatusView(game.getAvatar());
-             
+             yourLvl = game.getAvatar().getStatValue("Level");
              // add the mouse listener to the board
              board.addMouseListener(new BoardMouseListener());
              //Add to the canvas
@@ -218,6 +218,10 @@ public class GameController {
         public boolean pressedSave(){
                 return saved;
         }
+        
+        public void doneSaving(){
+            saved  = false;
+        }
        
         public Game getGame(){ 
                 return game;
@@ -246,7 +250,7 @@ public class GameController {
         }
         
         public void spawnLevelUp(){
-            if(!spawned && game.getAvatar().getLevels() != 0){                  
+            if(!spawned && game.getAvatar().getLevels() > 0){                  
             	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Inellect"));
                     gameView.getCanvas().add(leveledView);
                     leveledView.moveToFront();
@@ -328,8 +332,8 @@ public class GameController {
         		stat = s; 
         	}
             public void actionPerformed(ActionEvent e) {
-            	game.getAvatar().setStatValue(stat, game.getAvatar().getStatValue(stat)+5*game.getAvatar().getLevels());
-            	game.getAvatar().setLevels(0);
+            	game.getAvatar().setStatValue(stat, game.getAvatar().getStatValue(stat)+1);
+            	game.getAvatar().setLevels(game.getAvatar().getLevels()-1);
             	gameView.getCanvas().remove(leveledView);
                 gameView.getCanvas().getTopLevelAncestor().requestFocus();
                 spawned = false;

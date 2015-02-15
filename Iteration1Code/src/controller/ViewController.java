@@ -100,9 +100,10 @@ public class ViewController {
         }
        
         public void hasSaved(){
-                inGame = new GameController();
+                inGame = new GameController("");
                 views.put("Game", inGame.getView());
                 mv = new MapViewController(inGame,frame);
+                //inGame.doneSaving();
                 frame.revalidate();
                 frame.repaint();
         }
