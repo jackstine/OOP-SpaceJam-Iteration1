@@ -9,11 +9,13 @@ public class Weapon extends Equipable {
 	public Weapon(int attack) {
 		this.attack = attack;
 		this.ITEM_IMAGE = "src/res/img/weapon.png";
+		this.ITEM_NAME = "Weapon";
 	}
 	
 	public Weapon(int attack, String image) {
 		this.attack = attack;
 		this.ITEM_IMAGE = image;
+		this.ITEM_NAME = "Weapon";
 	}
 	
 	public int getBonus() {

@@ -7,6 +7,7 @@ import utilities.ImageProcessing;
 public abstract class ObstacleItem implements Item {
 
 	protected String ITEM_IMAGE;
+	protected String ITEM_NAME;
 	
 	public abstract boolean action(Avatar avatar);
 	

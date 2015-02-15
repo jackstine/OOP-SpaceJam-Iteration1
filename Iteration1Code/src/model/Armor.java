@@ -12,12 +12,14 @@ public class Armor extends Equipable {
 	public Armor(int armor) {
 		this.armor = armor;
 		ITEM_IMAGE = ARMOR_IMAGE;
+		this.ITEM_NAME = "Armor";
 	}
 	
 	//TODO thought we were going to put images in a MAP??
 	public Armor(int armor, String image) {
 		this.armor = armor;
 		this.ITEM_IMAGE = image;
+		this.ITEM_NAME = "Armor";
 	}
 	
 	public int getBonus() {

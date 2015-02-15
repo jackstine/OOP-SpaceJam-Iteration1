@@ -366,7 +366,8 @@ public class GameController {
             // Testing Purposes for Iteration 1 only,   Implementation
             TakeableItem droppedItem = (TakeableItem) board.getMap().getTile(tileLocation).getItem();
             System.out.println(droppedItem+"  "+tileLocation);
-            if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
+            if((board.getMap().getTile(tileLocation).getItem() == droppedItem) && (game.getMap().getEntityTile(game.getAvatar()) == game.getMap().getTile(tileLocation))){
+            if (board.getAvatar().getInventory().findAndEquip(droppedItem))
                     board.getMap().getTile(tileLocation).dropItem();
             }
         }

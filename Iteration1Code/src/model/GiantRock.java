@@ -8,6 +8,7 @@ public class GiantRock extends ObstacleItem {
 
 	public GiantRock(){
 		this.ITEM_IMAGE = GIANT_ROCK_IMAGE;
+		this.ITEM_NAME = "Giant Rock";
 	}
 
 	@Override

@@ -15,6 +15,7 @@ public class GameMap {
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
+	private HashMap<Tile, Item> tileToItemMap;
 	private final int RANGE=3;
 	private int width;
 	private int height;
@@ -28,6 +29,7 @@ public class GameMap {
 		map = m.generateStructuredMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
+		tileToItemMap = new HashMap<Tile,Item>();
 		deltaX=0;
 		deltaY=0;
 	}
@@ -63,13 +65,14 @@ public class GameMap {
 		int y=(int)location.getY();
 		return map[x][y];
 	}
-	/*
-	public Tile getItemTile(Item item){
+	
+/*	public Tile getItemTile(Item item){
 		//returns a tile;
 		//item currently doesnot have a getLocation
 		//needs to be added
-	}
-	*/
+		return map[x][y];
+	} */
+	
 	
 	public int getWidth(){
 		return this.width;
@@ -86,6 +89,10 @@ public class GameMap {
 	public void updateEntityLocation(Entity e, Location loc){
 		System.out.println(e.getName() + " - (" + loc.getX() + ", " + loc.getY() + ")");
 		entityToLocationMap.put(e,loc);	
+	}
+	
+	public void updateItemLocation(Tile t, Item i){
+		tileToItemMap.put(t, i);
 	}
 	
 	public Location getLocation(Entity e){
