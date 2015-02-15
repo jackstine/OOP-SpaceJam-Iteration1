@@ -77,7 +77,7 @@ public class StatusView extends JPanel {
 		avatarLevel = new JLabel("Lv. "+avatar.getStatValue("Level"));
 		
 	
-		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")); 
+		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life") + " Lives: " +avatar.getStatValue("Lives")); 
 		avatarMana = new JLabel("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
 		
 		levelClassPanel = new JPanel();
@@ -151,7 +151,7 @@ public class StatusView extends JPanel {
 	
 	 public class updateStatus implements ActionListener {
  		public void actionPerformed(ActionEvent e) {
- 			avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life"));
+ 			avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")+"    *Lives: " +avatar.getStatValue("Lives")+"*");
  			avatarMana.setText("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
  			avatarLevel.setText("Lv. "+avatar.getStatValue("Level"));
  		}

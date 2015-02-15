@@ -125,6 +125,7 @@ public class GameController {
                 gameView.getCanvas().add(board);
                 character.setBorder(new LineBorder(Color.black, 3));
                 gameView.getCanvas().add(character);
+                statusView.setBorder(new LineBorder(Color.black, 3));
                 gameView.getCanvas().add(statusView);
                
                 //Alignment --NEEDS ADJUSTMENT
@@ -137,10 +138,14 @@ public class GameController {
                 buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
                 statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
                
-                levelUp.setFocusable(false);
+                systemButton.setToolTipText("(ESC)");
+                statButton.setToolTipText("(C)");
                 
+                levelUp.setFocusable(false);
+
                 systemButton.setFocusable(false);
                 systemButton.addActionListener(new SystemsMenuButton());
+                
                
                 statButton.setFocusable(false);
                 statButton.addActionListener(new StatButtonAction());
