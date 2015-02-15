@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
  
+
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
  
+
 import model.Game;
 import model.Location;
 import model.TakeableItem;
@@ -149,8 +151,8 @@ public class GameController {
                 statButton.addActionListener(new StatButtonAction());
                
         }
-       
-        /********************MISC OPERATIONS**********************/
+
+		/********************MISC OPERATIONS**********************/
         public View getView(){
                 return gameView;
         }

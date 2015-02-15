@@ -62,9 +62,10 @@ public class InventoryEquipmentView extends JPanel {
 		
 		
 		private TakeableItem unequipEquipmentSlot(MouseEvent e){
-			int x = e.getX() / Scaling.EQUIPMENT_SLOT_WIDTH;
-			int y = e.getY() / Scaling.EQUIPMENT_SLOT_HEIGHT;
+			int x = (e.getX() - Scaling.EQUIPMENT_OFFSET) / Scaling.EQUIPMENT_SLOT_WIDTH;
+			int y = (e.getY()) / Scaling.EQUIPMENT_SLOT_HEIGHT;
 			Point point = new Point(x,y);
+			System.out.println(point);
 			TakeableItem item =equipment.getEquipment().getItemFromSlot(point);
 			if (inventory.getInventory().findAndEquip(item)){
 				equipment.getEquipment().unequipSlot(point);
