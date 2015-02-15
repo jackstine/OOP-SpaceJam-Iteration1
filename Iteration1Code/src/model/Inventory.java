@@ -23,8 +23,8 @@ public class Inventory extends SlotContainer{
         return this.items[point.getX()][point.getY()];
     }
     
-    public Item[][] getItems(){
-        Item[][] items = new Item[ROW][COL];
+    public TakeableItem[][] getItems(){
+        TakeableItem[][] items = new TakeableItem[ROW][COL];
         for (int i = 0; i < ROW; i++){
             for (int j = 0; j < COL; j++){
                 items[i][j] = this.get(new Point(i,j));
@@ -33,7 +33,7 @@ public class Inventory extends SlotContainer{
         return items;
     }
     
-    public boolean findAndEquip(Item item){
+    public boolean findAndEquip(TakeableItem item){
         for (int i = 0; i < ROW; i++){
             for (int j = 0; j < COL; j++){
                 if (items[i][j].has()){
@@ -47,7 +47,7 @@ public class Inventory extends SlotContainer{
         return false;
     }
     
-    public final Item get(Point point){
+    public final TakeableItem get(Point point){
         return this.getSlot(point).get();
     }
     

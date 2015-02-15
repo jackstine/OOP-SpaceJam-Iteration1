@@ -39,6 +39,7 @@ public class Equipment {
     }
     
     public BufferSlot getSlot(Point point){
+    	System.out.println(point + "   " + "this is the point");
     	return this.slots[point.getY()][point.getX()];
     }
     
@@ -58,13 +59,15 @@ public class Equipment {
 		}
 	}
     
-	public Item unequipSlot(Point point){
-    	Item item = this.getSlot(point).unequip();
+	public TakeableItem unequipSlot(Point point){
+		TakeableItem item = this.getSlot(point).unequip();
     	this.notifyView();
     	return item;
     }
 	
 	public <K extends Equipable> boolean equipSlot(Point point, K item){
+		System.out.println("alsdfhkajdsjfkljadsjfkjadsfjkladskfjjadskjfhakjd");
+		System.out.println("You have WON");
 		boolean value = this.getSlot(point).equipItem(item);
 		this.notifyView();
 		return value;
@@ -78,7 +81,7 @@ public class Equipment {
     	 return this.armorSlot + "\n" + this.weaponSlot;
     }
 
-	public Item getItemFromSlot(Point point) {
+	public TakeableItem getItemFromSlot(Point point) {
 		return this.getSlot(point).get();
 	}
 }

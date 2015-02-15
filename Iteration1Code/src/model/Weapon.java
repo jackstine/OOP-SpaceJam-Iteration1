@@ -1,7 +1,10 @@
 package model;
 
+import view.EquipmentView;
+
 public class Weapon extends Equipable {
 	private int attack;
+	protected Point slot = EquipmentView.WEAPON_POINT;
 	
 	public Weapon(int attack) {
 		this.attack = attack;
@@ -11,11 +14,6 @@ public class Weapon extends Equipable {
 	public Weapon(int attack, String image) {
 		this.attack = attack;
 		this.ITEM_IMAGE = image;
-	}
-	
-	public boolean action(Avatar avatar) {
-		//TODO  fill in
-		return true;
 	}
 	
 	public int getBonus() {
@@ -36,13 +34,17 @@ public class Weapon extends Equipable {
 		//weaponSlot.equip(invSlot.unequip());		This will not work
 	}
 
-	@Override
 	public boolean equip(ArmorSlot slot) {
 		return false;
 	}
 
-	@Override
 	public boolean equip(WeaponSlot slot) {
 		return slot.equip(this);
+	}
+
+	public TakeableItem equipSlot(Equipment equipment) {
+		TakeableItem item = equipment.unequipSlot(this.slot);
+		equipment.equipSlot(this.slot,this);
+		return item;
 	}
 }

@@ -24,6 +24,7 @@ import model.Game;
 import model.Item;
 import model.Location;
 import model.Occupation;
+import model.TakeableItem;
  
 import model.Point;
 import utilities.Scaling;
@@ -294,7 +295,10 @@ public class GameController {
         public void mouseClicked(MouseEvent e) {
             Location tileLocation = this.getTileLocation(e);
             //TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
-            Item droppedItem = board.getMap().getTile(tileLocation).getItem();
+            // TODO  This is a Type Cast type casting is bad,  it leads to broke people on the streets and
+            // corrupts governments,  please dont type cast,  Hackers love type casting. 
+            // Testing Purposes for Iteration 1 only,   Implementation
+            TakeableItem droppedItem = (TakeableItem) board.getMap().getTile(tileLocation).getItem();
             System.out.println(droppedItem+"  "+tileLocation);
             if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
                     board.getMap().getTile(tileLocation).dropItem();

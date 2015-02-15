@@ -32,10 +32,10 @@ public abstract class BufferSlot extends Observable {
         }
     }
     
-    public Item unequip(){
+    public TakeableItem unequip(){
         if (this.has()){
         	Equipable item = this.equippedItem;
-            Item pointer = item;
+            TakeableItem pointer = item;
             this.equippedItem = null;
             this.resetBonus();
             return pointer;
@@ -54,7 +54,7 @@ public abstract class BufferSlot extends Observable {
 		}
     }
     
-    public Item get(){
+    public TakeableItem get(){
         return this.equippedItem;
     }
     
