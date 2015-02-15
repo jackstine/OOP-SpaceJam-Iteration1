@@ -48,7 +48,7 @@ public class Tile implements Serializable{
 	}
 
 	public boolean isPassable(){
-		return terrain.isPassable() && !(item instanceof ObstacleItem);  
+		return terrain.isPassable() && !(item instanceof ObstacleItem); 
 	}
 	//will probably need to add a setTerrain for the purpose
 	//of making the map 
