@@ -23,7 +23,7 @@ public class GiantRock extends ObstacleItem {
 	}	
 	
 	public String toString() {
-		return "GiantRock";
+		return "Item:GiantRock";
 	}
 
 }

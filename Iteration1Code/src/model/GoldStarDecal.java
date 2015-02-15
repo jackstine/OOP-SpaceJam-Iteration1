@@ -8,12 +8,14 @@ import java.io.Serializable;
 import javax.imageio.ImageIO;
 import model.ExperienceAreaEffect;
 
-public class GoldStarDecal extends Decal implements Serializable{
+public class GoldStarDecal extends Decal {
+	
 	ExperienceAreaEffect effect;
 
 	public GoldStarDecal(){
 		super();
 		effect= new ExperienceAreaEffect();
+		this.decalID = '*';
 	}
 	/*
 	@Override

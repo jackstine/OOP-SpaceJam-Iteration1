@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import utilities.*;
 
 public class Avatar extends Entity {
+	private int levels = 0;
 	private Inventory inventory = new Inventory();
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
@@ -87,6 +88,14 @@ public class Avatar extends Entity {
 		result += "\n" + this.inventory;
 		result += "\n" + this.equipment;
 		return result;
+	}
+
+	public int getLevels() {
+		return levels;
+	}
+
+	public void setLevels(int levels) {
+		this.levels = levels;
 	}
 	
 	/*

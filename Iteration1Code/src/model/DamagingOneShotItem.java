@@ -33,6 +33,6 @@ public class DamagingOneShotItem extends OneShotItem {
 	}
 	
 	public String toString() {
-		return "DamagingOneShotItem:" + this.percentDamage;
+		return "Item:DamagingOneShotItem:" + this.percentDamage;
 	}
 }

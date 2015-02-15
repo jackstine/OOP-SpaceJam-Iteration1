@@ -7,15 +7,15 @@ import java.io.Serializable;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 
-public class Tile implements Serializable{
-	private boolean dontDraw;
+public class Tile {
 	
+	private boolean dontDraw;	
 	
 	private Terrain terrain;
 	private Location location;
 	private Item item;
-	private Entity entity;
-	private AreaEffect areaEffect;
+	// private Entity entity;
+	// private AreaEffect areaEffect;
 	private Decal decal;
 	private int deltaX; 
 	private int deltaY;
@@ -100,9 +100,11 @@ public class Tile implements Serializable{
 			this.decal=decal;
 	}
 	
+	/*
 	public AreaEffect getAreaEffect(){
 		return areaEffect;
 	}
+	*/
 	
 	private BufferedImage updateImage(){
 		
@@ -127,8 +129,19 @@ public class Tile implements Serializable{
 		return imageToDisplay;
 	}
 	
+	/*
 	public String toString(){
 		return "Printing the image at ("+this.location.getX()+","+this.location.getY()+")";
+	}
+	*/
+	
+	public String toString() {
+		String result = "";
+		result += "Tile:" + this.location.getX() + "," + this.location.getY();
+		result += "\n" + this.terrain;
+		result += "\n" + this.decal;
+		result += "\n" + this.item;	
+		return result;
 	}
 	
 	public void draw(Graphics g){

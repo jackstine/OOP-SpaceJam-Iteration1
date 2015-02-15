@@ -43,8 +43,8 @@ public class ViewController {
                
                
                 //instantiate the game controller + view
-                if(new File("apple.ser").isFile()){
-                        inGame = new GameController();
+                if(new File("savedGame.txt").isFile()){
+                        inGame = new GameController("random");
                         views.put("Game", inGame.getView());
                 }
                 else{

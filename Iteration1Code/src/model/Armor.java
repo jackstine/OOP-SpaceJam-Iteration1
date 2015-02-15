@@ -25,7 +25,7 @@ public class Armor extends Equipable {
 	}
 	
 	public String toString(){
-		return "Armor:" + this.armor;
+		return "Item:Armor:" + this.armor;
 	}
 
 	public boolean equip(ArmorSlot slot) {

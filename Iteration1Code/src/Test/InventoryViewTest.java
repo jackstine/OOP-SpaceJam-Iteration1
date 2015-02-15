@@ -21,7 +21,7 @@ public class InventoryViewTest {
 	        }
         });
 		Inventory inventory = new Inventory();
-		InventoryView inventoryView = new InventoryView(inventory, new Point(0,0));
+		InventoryView inventoryView = new InventoryView(inventory);
 		f.add(inventoryView);
 		inventoryView.repaint();
         f.pack();
