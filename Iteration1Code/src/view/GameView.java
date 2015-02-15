@@ -3,9 +3,15 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import javax.swing.Timer;
 
 import javax.swing.JPanel;
+
+import controller.ViewController.RunGameTimer;
 
 import utilities.Scaling;
 import model.Avatar;
@@ -51,7 +57,10 @@ public class GameView extends JPanel {
 		map.draw(g);
 		entityView.draw(g);
 		g.dispose();
+//		Timer timer = new Timer(1000, new mapMakerDelay());
+//		timer.start();
 		repaint();
+
 	}
 	
 	public GameMap getMap() {
@@ -68,5 +77,11 @@ public class GameView extends JPanel {
 
 	public void setAvatar(Avatar avatar) {
 		this.avatar = avatar;
+	}
+	
+	public class mapMakerDelay implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			repaint();
+		}
 	}
 }
