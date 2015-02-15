@@ -7,19 +7,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
  
+
+
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.border.LineBorder;
  
+
+
 import model.Game;
 import model.Item;
 import model.Location;
@@ -48,6 +54,7 @@ public class GameController {
         private boolean spawned = false;
         private Apple apple = new Apple(); //--TO BE REMOVED
         private Game game = new Game();
+        private int yourLvl = game.getAvatar().getStatValue("Level");
        
         //Components
         private JTextField input = new JTextField(20);
@@ -145,6 +152,9 @@ public class GameController {
                
                 statButton.setFocusable(false);
                 statButton.addActionListener(new StatButtonAction());
+                
+                Timer timer = new Timer(20, new AreYouDead());
+        		timer.start();
                
         }
        
@@ -185,6 +195,7 @@ public class GameController {
        
        
         /********************Action Listeners**********************/
+    
         public class BackButtonListener implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
@@ -192,6 +203,14 @@ public class GameController {
                         gameView.setRedraw(true);
                 }
         }
+        
+        public class LevelUPButton implements ActionListener {
+            
+            public void actionPerformed(ActionEvent e) {
+                    gameView.setNext("Main");
+                    gameView.setRedraw(true);
+            }
+    }
        
         public class SaveGameButton implements ActionListener {
                
@@ -240,6 +259,19 @@ public class GameController {
                         spawnStats();
                 }
         }
+        
+        public class LevelStat implements ActionListener {
+        	String stat = "";
+        	public LevelStat(String s){
+        		stat = s; 
+        	}
+            public void actionPerformed(ActionEvent e) {
+            	game.getAvatar().setStatValue(stat, game.getAvatar().getStatValue(stat)+5*game.getAvatar().getLevels());
+            	game.getAvatar().setLevels(0);
+            	//close window
+            }
+    }
+    
  
     public class BoardMouseListener implements MouseListener{
         // all these classes need to be defined in the MapView
@@ -273,5 +305,21 @@ public class GameController {
         public void mousePressed(MouseEvent e) {}
         public void mouseReleased(MouseEvent e) {}
     }
+    
+    public class AreYouDead implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if(game.getAvatar().getStatValue("Lives") == 0){
+				 gameView.setNext("Main");
+                 gameView.setRedraw(true);
+			}
+			else if(game.getAvatar().getStatValue("HP") == 0){
+				game.getAvatar().setStatValue("Lives", game.getAvatar().getStatValue("Lives")-1);
+				game.getAvatar().setStatValue("HP", game.getAvatar().getStatValue("Life"));
+			}
+			else if(yourLvl != game.getAvatar().getStatValue("Level")){
+				game.getAvatar().setLevels(game.getAvatar().getLevels()+1);
+			}
+		}
+	}
        
 }
