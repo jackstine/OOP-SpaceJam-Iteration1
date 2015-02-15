@@ -32,6 +32,8 @@ public class CharacterCreationController {
 	private JPanel main;
 	private JPanel back;
 	private JPanel nameEntry;
+	private final int STARTINGX=3;
+	private final int STARTINGY=3;
 	
 	private Game gameToCreate;
 	
@@ -109,6 +111,7 @@ public class CharacterCreationController {
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
 			gameToCreate = new Game(new Alchemist(), enterNameField.getText());
+			gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
 			charCreation.setRedraw(true);
 			
 		}
@@ -119,6 +122,7 @@ public class CharacterCreationController {
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
 			gameToCreate = new Game(new Terminator(), enterNameField.getText());
+			gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
 			charCreation.setRedraw(true);
 			
 		}
@@ -129,6 +133,7 @@ public class CharacterCreationController {
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
 			gameToCreate = new Game(new Hunter(), enterNameField.getText());
+			gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
 			charCreation.setRedraw(true);
 			
 		}
