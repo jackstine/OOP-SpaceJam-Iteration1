@@ -10,20 +10,20 @@ public abstract class BufferSlot extends Observable {
     BufferSlot(){}  //should never be called except for testing purposes
     
     //BONUS BUFFER METHODS
-    public int getBonus(){
+    public final int getBonus(){
     	return this.bonus;
     }
     
     //TODO we need to have a handler that makes sure that only
     //Items of a K type can be passed hear
-	public <K extends Equipable> void setBonus(){
+	public final <K extends Equipable> void setBonus(){
     	this.bonus = this.equippedItem.getBonus();
     }
-    public void resetBonus(){
+    public final void resetBonus(){
     	this.bonus = 0;
     }
     
-    public boolean has(){
+    public final boolean has(){
         if (this.equippedItem == null){
             return false;
         }
@@ -45,7 +45,7 @@ public abstract class BufferSlot extends Observable {
         }
     }
     
-    public <K extends Equipable> boolean equipItem(K item){
+    protected final <K extends Equipable> boolean equipItem(K item){
 		if (this.has()) return false;
 		else {
 			this.equippedItem = item;
@@ -54,14 +54,14 @@ public abstract class BufferSlot extends Observable {
 		}
     }
     
-    public TakeableItem get(){
+    public final TakeableItem get(){
         return this.equippedItem;
     }
     
     public abstract boolean equip(Weapon item);
     public abstract boolean equip(Armor armor);
     
-    public void send(){
+    public final void send(){
         this.setBonus();
         this.setChanged();  		//notify the Observers of change
         this.notifyObservers();

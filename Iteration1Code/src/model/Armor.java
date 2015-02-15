@@ -40,12 +40,10 @@ public class Armor extends Equipable {
 		//armorSlot.equip(invSlot.unequip()); This will not work
 	}
 
-	@Override
 	public boolean equip(ArmorSlot slot) {
 		return slot.equip(this);	
 	}
 
-	@Override
 	public boolean equip(WeaponSlot slot) {
 		return slot.equip(this);
 	}
