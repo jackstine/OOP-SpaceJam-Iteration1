@@ -51,6 +51,10 @@ public class GameMap {
 		this.width = map[0].length * TILE_SCALE;
 	}
 	
+	public Point getMapLength(){
+		return new Point(map.length, map[0].length);
+	}
+	
 	public Tile getTile(Location location){
 		int x=location.getX();
 		int y=location.getY();

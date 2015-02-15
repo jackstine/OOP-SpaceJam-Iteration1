@@ -7,12 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-import javax.swing.Timer;
 
+import javax.swing.JComponent;
+import javax.swing.Timer;
 import javax.swing.JPanel;
 
 import controller.ViewController.RunGameTimer;
-
 import utilities.Scaling;
 import model.Avatar;
 import model.GameMap;
@@ -30,37 +30,26 @@ public class GameView extends JPanel {
 		map = new GameMap();
 		avatar = new Avatar();
 		entityView=new EntityView(avatar);
-		//image=avatar.getImage();
-		setFocusable(true);
-		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
-		setBackground(Color.BLACK);
-		map.updateEntityLocation(avatar, new Location(3,3));			//TODO NO MAGIC NUMBERS PLEASE
+		map.updateEntityLocation(avatar, new Location(3,3));
 		image=avatar.getImage();
-		setVisible(true);
+		setView();
 	}
-	
+
 	public GameView(GameMap map, Avatar avatar){
 		this.map = map;
 		this.avatar = avatar;
 		entityView=new EntityView(avatar);
-		MapView mapView= new MapView(avatar);
-		//image=avatar.getImage();
+		this.mapView= new MapView(this.map,entityView);
+		add(this.mapView);
+		add(entityView);
+		this.setView();
+	}
+	
+	private void setView(){
 		setFocusable(true);
 		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
 		setBackground(Color.BLACK);
-		this.map.updateEntityLocation(avatar, new Location(3,3));
-		image=avatar.getImage();
 		setVisible(true);
-	}
-	
-	public void paintComponent(Graphics g){
-		map.draw(g);
-		entityView.draw(g);
-		g.dispose();
-//		Timer timer = new Timer(1000, new mapMakerDelay());
-//		timer.start();
-		repaint();
-
 	}
 	
 	public GameMap getMap() {

@@ -1,47 +1,54 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
-import model.Location;
 import model.Tile;
 
 
-public class TileView extends JPanel{
+public class TileView extends JComponent{
 	public static final int SCALE = Scaling.TILE_SCALE.getX();
-	private final int OVERLAY_IMAGE_OFFSET = Scaling.TILE_OVERLAY_IMAGE_OFFSET;
-	
 	private Tile tile;
-	private ItemView item;
+	private BufferedImage image;
 	
 	public TileView(Tile tile) {
 		this.tile = tile;
+		this.image = this.updateImage();
+	}
+    private BufferedImage updateImage(){
+        BufferedImage imageOfTerrain = tile.getTerrain().getImage();
+        BufferedImage itemImage,imageToDisplay, decalImage; //added decalImage
+        if (tile.getItem() != null){
+                // Assuming that the Tile WIDTH is equal to the HEIGHT
+                itemImage = tile.getItem().getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
+                imageOfTerrain = tile.getTerrain().getNewImage();
+                imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,itemImage);
+        }
+       
+        if(tile.getDecal()!=null){
+                decalImage = tile.getDecal().getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
+                imageOfTerrain = tile.getTerrain().getNewImage();
+                imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,decalImage);
+        }
+        else{
+                imageToDisplay = imageOfTerrain;
+        }
+        return imageToDisplay;
+    }
+	
+	public void paintComponent(Graphics g){
+        int x= tile.getLocation().getX();
+        int y= tile.getLocation().getY();
+        g.drawImage(this.image ,Scaling.TILE_WIDTH*x+tile.getDeltaX(),Scaling.TILE_HEIGHT*y+tile.getDeltaY(),null);
 	}
 	
-	private BufferedImage updateImage(){
-		BufferedImage imageOfTerrain = tile.getTerrain().getImage();
-		BufferedImage itemImage,imageToDisplay;
-		//if (item != null){
-		//	itemImage = item.getImage(SCALE-OVERLAY_IMAGE_OFFSET);
-		//	imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain, itemImage);
-		//}
-		//else{
-			imageToDisplay = imageOfTerrain;
-		//}
-		return imageToDisplay;
-	}
 	
-	public void draw(Graphics g){
-		//if has Item overlay
-		BufferedImage imageToDisplay = this.updateImage();
-		//System.out.println(this+imageToDisplay.toString());
-		
-		//Map must be imported in order for this to work
-		//g.drawImage(imageToDisplay,SCALE*x+map.deltaX,SCALE*y+deltaY,null);
+	public Dimension getPreferredSize(){
+		return new Dimension(Scaling.TILE_WIDTH,Scaling.TILE_HEIGHT);
 	}
-
 }
