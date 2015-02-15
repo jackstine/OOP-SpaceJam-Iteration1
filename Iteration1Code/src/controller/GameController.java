@@ -162,6 +162,53 @@ public class GameController {
         		timer.start();
                
         }
+        
+        public GameController(String indicator) {
+        	try {
+				game.load();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        	
+        	 board = new GameView(game.getMap(),game.getAvatar());
+             character = new InventoryEquipmentView(game.getAvatar());
+             statusView = new StatusView(game.getAvatar());
+             
+             // add the mouse listener to the board
+             board.addMouseListener(new BoardMouseListener());
+             //Add to the canvas
+             buttons.add(systemButton);
+             buttons.add(statButton);
+             buttons.add(levelUp);
+             buttons.setBorder(new LineBorder(Color.black, 3));
+             gameView.getCanvas().add(buttons);
+             gameView.getCanvas().add(board);
+             character.setBorder(new LineBorder(Color.black, 3));
+             gameView.getCanvas().add(character);
+             statusView.setBorder(new LineBorder(Color.black, 3));
+             gameView.getCanvas().add(statusView);
+            
+             board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
+             character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
+             buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
+             statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
+            
+             systemButton.setToolTipText("(ESC)");
+             statButton.setToolTipText("(C)");
+             
+             levelUp.setFocusable(false);
+             levelUp.addActionListener(new LevelUPButton());
+
+             systemButton.setFocusable(false);
+             systemButton.addActionListener(new SystemsMenuButton());
+             
+            
+             statButton.setFocusable(false);
+             statButton.addActionListener(new StatButtonAction());
+             
+             Timer timer = new Timer(20, new DeathLevelCheck());
+     		 timer.start();
+        }
        
         /********************MISC OPERATIONS**********************/
         public View getView(){
