@@ -9,7 +9,7 @@ public class RedCrossDecal extends Decal implements Serializable{
 
 	public RedCrossDecal(){
 		super();
-		effect= new HealingAreaEffect(50);
+		effect= new HealingAreaEffect(.50);
 		//image= 
 	}
 	/*
