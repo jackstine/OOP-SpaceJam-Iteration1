@@ -7,7 +7,7 @@ public abstract class BufferSlot extends Observable {
     protected int bonus;
     protected Equipable equippedItem;
     
-    BufferSlot(){}  //should never be called except for testing purposes
+    public BufferSlot(){}
     
     //BONUS BUFFER METHODS
     public final int getBonus(){

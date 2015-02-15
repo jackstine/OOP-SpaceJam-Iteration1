@@ -28,7 +28,9 @@ public class Equipment implements Observer{
     //TODO delete this constructor  JUST FOR TESTING PURPOSES
     public Equipment(){
     	this.armorSlot = new ArmorSlot(this);
+    	System.out.println(this.armorSlot);
     	this.weaponSlot = new WeaponSlot(this);
+    	System.out.println(this.weaponSlot);
     	setArrayPoints();
     }
     
@@ -38,6 +40,7 @@ public class Equipment implements Observer{
     }
     
     private void setSlot(Point point, BufferSlot slot){
+    	System.out.println(slot);
     	this.slots[point.getY()][point.getX()] = slot;
     }
     

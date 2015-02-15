@@ -7,6 +7,8 @@ public class ArmorSlot extends BufferSlot{
     	this.addObserver(armorRating);
     }
 	
+	public ArmorSlot(){}
+
 	public ArmorSlot(Equipment equipment) {
 		this.addObserver(equipment);
 	}

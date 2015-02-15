@@ -27,18 +27,6 @@ public class Armor extends Equipable {
 	public String toString(){
 		return "Armor:" + this.armor;
 	}
-	
-	public static void main(String[] args){
-		// testing to make sure that we can move a InventorySlot into a ArmorSlot
-		ArmorSlot armorSlot = new ArmorSlot();
-		InventorySlot invSlot = new InventorySlot();
-		Armor armor = new Armor();
-		armorSlot.equip(armor);
-		invSlot.equip(armorSlot.unequip());
-		//Type casting here to make it a Armor
-		armorSlot.equip((Armor)invSlot.unequip());
-		//armorSlot.equip(invSlot.unequip()); This will not work
-	}
 
 	public boolean equip(ArmorSlot slot) {
 		return slot.equip(this);	
