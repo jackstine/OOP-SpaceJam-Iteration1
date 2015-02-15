@@ -86,6 +86,7 @@ public class MapBuilder implements Serializable{
 		this.map[4][5].setDecal(new SkullAndCrossbonesDecal(new DamageAreaEffect(.50)));
 		this.map[7][8].setDecal(new SkullAndCrossbonesDecal(new DeathAreaEffect()));
 		this.map[7][7].setItem(new HealingOneShotItem(.50)); 
+		this.map[4][10].setItem(new TreasureChest());
 		Armor armor = new Armor(3+10);
 		this.map[3][10].setItem(armor);
 		this.items[3][10] = armor;
