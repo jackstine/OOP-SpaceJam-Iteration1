@@ -153,7 +153,7 @@ public class StatusView extends JPanel {
  		public void actionPerformed(ActionEvent e) {
  			avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")+"    *Lives: " +avatar.getStatValue("Lives")+"*");
  			avatarMana.setText("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
- 			avatarLevel.setText("Lv. "+avatar.getStatValue("Level"));
+ 			avatarLevel.setText("Lv. "+avatar.getStatValue("Level") + "   Level Ups: " + avatar.getLevels());
  		}
  	}
 }

@@ -16,6 +16,7 @@ import java.io.ObjectOutputStream;
  
 
 
+
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -24,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.border.LineBorder;
  
+
 
 
 import model.Game;
@@ -37,6 +39,7 @@ import utilities.Scaling;
 import view.InventoryEquipmentView;
 import view.GameView;
 import view.InventoryView;
+import view.LevelUpView;
 import view.StatisticsView;
 import view.StatusView;
 import view.SystemMenuView;
@@ -65,13 +68,14 @@ public class GameController {
         private JButton levelUp = new JButton("Level Up!");
         private JInternalFrame systemMenu;
         private JInternalFrame statsView;
+        private LevelUpView leveledView;
        
         //Views
         private View gameView = new View();
         private GameView board = new GameView(game.getMap(),game.getAvatar());
         private InventoryEquipmentView character = new InventoryEquipmentView(game.getAvatar());
         private StatusView statusView = new StatusView(game.getAvatar());
-       
+               
         public GameController(){
                 board.addMouseListener(new BoardMouseListener());
                
@@ -145,6 +149,7 @@ public class GameController {
                 statButton.setToolTipText("(C)");
                 
                 levelUp.setFocusable(false);
+                levelUp.addActionListener(new LevelUPButton());
 
                 systemButton.setFocusable(false);
                 systemButton.addActionListener(new SystemsMenuButton());
@@ -153,7 +158,7 @@ public class GameController {
                 statButton.setFocusable(false);
                 statButton.addActionListener(new StatButtonAction());
                 
-                Timer timer = new Timer(20, new AreYouDead());
+                Timer timer = new Timer(20, new DeathLevelCheck());
         		timer.start();
                
         }
@@ -192,6 +197,17 @@ public class GameController {
                         spawned = true;
                 }
         }
+        
+        public void spawnLevelUp(){
+            if(!spawned && game.getAvatar().getLevels() != 0){                  
+            	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Inellect"));
+                    gameView.getCanvas().add(leveledView);
+                    leveledView.moveToFront();
+                    gameView.setNext("Game");
+                    gameView.setRedraw(true);
+                    spawned = true;
+            }
+    }
        
        
         /********************Action Listeners**********************/
@@ -207,8 +223,7 @@ public class GameController {
         public class LevelUPButton implements ActionListener {
             
             public void actionPerformed(ActionEvent e) {
-                    gameView.setNext("Main");
-                    gameView.setRedraw(true);
+            		spawnLevelUp();
             }
     }
        
@@ -268,7 +283,11 @@ public class GameController {
             public void actionPerformed(ActionEvent e) {
             	game.getAvatar().setStatValue(stat, game.getAvatar().getStatValue(stat)+5*game.getAvatar().getLevels());
             	game.getAvatar().setLevels(0);
-            	//close window
+            	gameView.getCanvas().remove(leveledView);
+                gameView.getCanvas().getTopLevelAncestor().requestFocus();
+                spawned = false;
+                gameView.setNext("Game");
+                gameView.setRedraw(true);
             }
     }
     
@@ -306,7 +325,7 @@ public class GameController {
         public void mouseReleased(MouseEvent e) {}
     }
     
-    public class AreYouDead implements ActionListener {
+    public class DeathLevelCheck implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if(game.getAvatar().getStatValue("Lives") == 0){
 				 gameView.setNext("Main");
@@ -318,6 +337,7 @@ public class GameController {
 			}
 			else if(yourLvl != game.getAvatar().getStatValue("Level")){
 				game.getAvatar().setLevels(game.getAvatar().getLevels()+1);
+				yourLvl = game.getAvatar().getStatValue("Level");
 			}
 		}
 	}

@@ -11,27 +11,27 @@ import javax.swing.JPanel;
 import utilities.Scaling;
 
 public class LevelUpView extends JInternalFrame {
-	private JButton save = new JButton("Save");
-	private JButton back = new JButton("Main Menu");
-	private JButton ret = new JButton("Return");
-	private JPanel systemsMenu = new JPanel();
+	private JButton strength = new JButton("Strength");
+	private JButton agility = new JButton("Agility");
+	private JButton intellect = new JButton("Intellect");
+	private JPanel levelUpMenu = new JPanel();
 	private int dimensions[] = {Scaling.INTERNAL_X,Scaling.INTERNAL_Y,Scaling.INTERNAL_WIDTH,Scaling.INTERNAL_HEIGHT};
-	public LevelUpView(ActionListener backAction, ActionListener saveAction, ActionListener retAction) {
-		back.setFocusable(false);
-		save.setFocusable(false);
-		ret.setFocusable(false);
+	public LevelUpView(ActionListener strengthAction, ActionListener agilityAction, ActionListener intellectAction) {
+		strength.setFocusable(false);
+		agility.setFocusable(false);
+		intellect.setFocusable(false);
 		
-		getContentPane().add(new JLabel("System Menu"), BorderLayout.CENTER);
+		getContentPane().add(new JLabel("You Leveled Up."), BorderLayout.CENTER);
 		setBounds(dimensions[0], dimensions[1], dimensions[2], dimensions[3]);
-		setTitle("System Menu");
-		systemsMenu.add(save);
-		systemsMenu.add(back);
-		systemsMenu.add(ret);
-		add(systemsMenu);
+		setTitle("Choose a Stat to Increase:");
+		levelUpMenu.add(strength);
+		levelUpMenu.add(agility);
+		levelUpMenu.add(intellect);
+		add(levelUpMenu);
 		setVisible(true);
 		
-		back.addActionListener(backAction);
-		save.addActionListener(saveAction);
-		ret.addActionListener(retAction);
+		strength.addActionListener(strengthAction);
+		agility.addActionListener(agilityAction);
+		intellect.addActionListener(intellectAction);
 	}
 }
