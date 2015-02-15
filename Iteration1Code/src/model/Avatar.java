@@ -87,6 +87,7 @@ public class Avatar extends Entity {
 		result += "\nDirection:" + this.direction;
 		result += "\n" + this.inventory;
 		result += "\n" + this.equipment;
+		result += "\nLevels:" + this.levels;
 		return result;
 	}
 
