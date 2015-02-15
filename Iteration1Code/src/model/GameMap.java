@@ -16,12 +16,11 @@ public class GameMap {
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
 	private final int RANGE=3;
-	//I am changing the HashMap to a Array because the Items are not unique Yet
 	private int width;
 	private int height;
 	private int deltaX;
 	private int deltaY;
-	Avatar avatar;
+	private Avatar avatar;
 
 
 	public GameMap(){
@@ -142,5 +141,24 @@ public class GameMap {
 			}
 		}
 		//*/
+	}
+	
+	public void setTile(Tile tile) {
+		int x = tile.getLocation().getX();
+		int y = tile.getLocation().getY();
+		this.map[x][y] = tile;
+	}
+	
+	public String toString() {
+		String result = "";
+		result += "Map:" + this.map.length + "," + this.map[0].length;
+		for (int i = 0; i < this.map.length; i++) {
+			for (int j = 0; j < this.map[0].length; j++) {
+				result += "\n" + this.map[i][j];
+			}
+		}
+		
+		
+		return result;
 	}
 }

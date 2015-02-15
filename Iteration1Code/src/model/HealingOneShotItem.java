@@ -33,6 +33,6 @@ public class HealingOneShotItem extends OneShotItem {
 	}
 	
 	public String toString() {
-		return "HealingOneShotItem:" + this.percentHealth;
+		return "Item:HealingOneShotItem:" + this.percentHealth;
 	}
 }

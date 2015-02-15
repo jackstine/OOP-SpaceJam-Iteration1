@@ -9,9 +9,23 @@ import javax.imageio.ImageIO;
 
 public abstract class Decal implements Serializable{
 	
-
+	protected char decalID;
+	protected AreaEffect effect;
+	
 	public Decal() {
 		//createImage();
+	}
+	
+	public char getDecalID() {
+		return this.decalID;
+	}
+	
+	public String toString() {
+		return "Decal:" + this.decalID;
+	}
+	
+	public AreaEffect getAreaEffect() {
+		return this.effect;
 	}
 	/*
 	
@@ -32,5 +46,4 @@ public abstract class Decal implements Serializable{
 	*/
 	public abstract BufferedImage getImage(int scale);
 	public abstract BufferedImage getNewImage();
-	public abstract AreaEffect getAreaEffect();
 }
