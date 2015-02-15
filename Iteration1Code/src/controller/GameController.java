@@ -1,8 +1,6 @@
 package controller;
  
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -21,16 +19,13 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
  
 import model.Game;
-import model.Item;
 import model.Location;
-import model.Occupation;
 import model.TakeableItem;
  
 import model.Point;
 import utilities.Scaling;
 import view.InventoryEquipmentView;
 import view.GameView;
-import view.InventoryView;
 import view.StatisticsView;
 import view.StatusView;
 import view.SystemMenuView;
@@ -78,6 +73,7 @@ public class GameController {
 //              gameView.getCanvas().add(savedText);
                 gameView.getCanvas().add(board);
                 character.setBorder(new LineBorder(Color.black, 3));
+                //TODO  this does nothing
                 gameView.getCanvas().add(character);
                 gameView.getCanvas().add(statusView);
                
@@ -134,6 +130,7 @@ public class GameController {
                 //savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
  
                 board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
+                System.out.println("Thisis the character Dimensions   "+characterDimensions[0]+" "+ characterDimensions[1]+","+ characterDimensions[2]+","+ characterDimensions[3]);
                 character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
                 buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
                 statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
@@ -142,6 +139,7 @@ public class GameController {
                 statButton.setToolTipText("(C)");
                 
                 levelUp.setFocusable(false);
+                character.setFocusable(false);
 
                 systemButton.setFocusable(false);
                 systemButton.addActionListener(new SystemsMenuButton());
@@ -304,7 +302,6 @@ public class GameController {
             // corrupts governments,  please dont type cast,  Hackers love type casting. 
             // Testing Purposes for Iteration 1 only,   Implementation
             TakeableItem droppedItem = (TakeableItem) board.getMap().getTile(tileLocation).getItem();
-            System.out.println(droppedItem+"  "+tileLocation);
             if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
                     board.getMap().getTile(tileLocation).dropItem();
             }
