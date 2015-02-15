@@ -136,6 +136,9 @@ public class MapViewController{
 			else if(key==KeyEvent.VK_ESCAPE){
 				game.spawnSystems();
 			}
+			else if(key==KeyEvent.VK_C){
+				game.spawnStats();
+			}
 			map.updateEntityLocation(avatar, avatarLocation);
 			System.out.println(map.getLocation(avatar).toString());
 			

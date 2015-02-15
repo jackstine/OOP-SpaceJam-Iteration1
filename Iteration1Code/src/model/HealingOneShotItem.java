@@ -22,8 +22,10 @@ public class HealingOneShotItem extends OneShotItem {
 	
 	@Override
 	public BufferedImage getImage(int scale) {
-		// TODO Auto-generated method stub
-		return null;
+		return ItemImageProxy.getItemImage(this);
+	}
+	public BufferedImage getNewImage(int scale) {
+		return ItemImageProxy.getNewItemImage(this);
 	}
 
 	@Override

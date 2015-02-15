@@ -1,9 +1,12 @@
 package model;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import utilities.Scaling;
 import view.EquipmentView;
 
-public class Equipment {
+public class Equipment implements Observer{
     private BufferSlot armorSlot;
     private BufferSlot weaponSlot;
     private EquipmentView equipmentView;
@@ -24,8 +27,10 @@ public class Equipment {
     
     //TODO delete this constructor  JUST FOR TESTING PURPOSES
     public Equipment(){
-    	this.armorSlot = new ArmorSlot();
-    	this.weaponSlot = new WeaponSlot();
+    	this.armorSlot = new ArmorSlot(this);
+    	System.out.println(this.armorSlot);
+    	this.weaponSlot = new WeaponSlot(this);
+    	System.out.println(this.weaponSlot);
     	setArrayPoints();
     }
     
@@ -35,6 +40,7 @@ public class Equipment {
     }
     
     private void setSlot(Point point, BufferSlot slot){
+    	System.out.println(slot);
     	this.slots[point.getY()][point.getX()] = slot;
     }
     
@@ -58,8 +64,8 @@ public class Equipment {
 		}
 	}
     
-	public Item unequipSlot(Point point){
-    	Item item = this.getSlot(point).unequip();
+	public TakeableItem unequipSlot(Point point){
+		TakeableItem item = this.getSlot(point).unequip();
     	this.notifyView();
     	return item;
     }
@@ -78,7 +84,11 @@ public class Equipment {
     	 return this.armorSlot + "\n" + this.weaponSlot;
     }
 
-	public Item getItemFromSlot(Point point) {
+	public TakeableItem getItemFromSlot(Point point) {
 		return this.getSlot(point).get();
+	}
+	
+	public void update(Observable arg0, Object arg1) {
+		this.notifyView();
 	}
 }

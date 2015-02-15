@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import utilities.Scaling;
 import model.Avatar;
 import model.Equipment;
-import model.Item;
 import model.Point;
+import model.TakeableItem;
 
 /*
 
@@ -39,6 +39,7 @@ public class InventoryEquipmentView extends JPanel {
 		
 		this.avatar = avatar;
 		this.inventory = new InventoryView(avatar.getInventory());
+		inventory.addMouseListener(new InventoryMouseListener());
 		this.equipment = new EquipmentView(avatar.getEquipment());
 		equipment.addMouseListener(new EquipmentMouseListener());
 		this.stats = new JButton("Stats");
@@ -62,11 +63,11 @@ public class InventoryEquipmentView extends JPanel {
 		private final int LEFT_CLICK = MouseEvent.BUTTON1;
 		
 		
-		private Item unequipEquipmentSlot(MouseEvent e){
+		private TakeableItem unequipEquipmentSlot(MouseEvent e){
 			int x = e.getX() / Scaling.EQUIPMENT_SLOT_WIDTH;
 			int y = e.getY() / Scaling.EQUIPMENT_SLOT_HEIGHT;
 			Point point = new Point(x,y);
-			Item item =equipment.getEquipment().getItemFromSlot(point);
+			TakeableItem item =equipment.getEquipment().getItemFromSlot(point);
 			if (inventory.getInventory().findAndEquip(item)){
 				equipment.getEquipment().unequipSlot(point);
 			}
@@ -75,7 +76,10 @@ public class InventoryEquipmentView extends JPanel {
 		}
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
-			this.unequipEquipmentSlot(e);
+			int key = e.getButton();
+			if (key == LEFT_CLICK){
+				this.unequipEquipmentSlot(e);
+			}
 		}
 		
 		public void mouseEntered(MouseEvent e) {}
@@ -92,6 +96,47 @@ public class InventoryEquipmentView extends JPanel {
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
 			System.out.println(e);
+		}
+		
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {	}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+	}
+	
+	
+	public class InventoryMouseListener implements MouseListener{
+		private final int RIGHT_CLICK = MouseEvent.BUTTON3;
+		private final int LEFT_CLICK = MouseEvent.BUTTON1;
+
+		private Point getInventorySlot(MouseEvent e){
+			int x = e.getY()/Scaling.SLOT_VIEW_SCALE;
+			int y = e.getX()/Scaling.SLOT_VIEW_SCALE;
+			return new Point(x,y);
+		}
+		
+		private void unequipItem(MouseEvent e){
+			Point slotPoint = getInventorySlot(e);
+			inventory.getInventory().getSlot(slotPoint).unequip();
+			System.out.println(slotPoint);
+		}
+		
+		private void equipItem(MouseEvent e){
+			Point pointOfSlot = this.getInventorySlot(e);
+			TakeableItem item = inventory.getInventory().getSlot(pointOfSlot).unequip();
+			item.action(avatar);
+			equipment.repaint();
+		}
+		
+		// all these classes need to be defined in the MapView
+		public void mouseClicked(MouseEvent e) {
+			System.out.println(e);
+			if (e.getButton() == RIGHT_CLICK){
+				this.unequipItem(e);
+			}
+			if (e.getButton()== LEFT_CLICK){
+				this.equipItem(e);
+			}
 		}
 		
 		public void mouseEntered(MouseEvent e) {}

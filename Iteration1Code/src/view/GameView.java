@@ -48,13 +48,8 @@ public class GameView extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g){
-		//int x= map.getLocation(avatar).getX();  //not needed I believe
-		//int y=map.getLocation(avatar).getY();
-		g.setColor(Color.BLACK);
-		g.fillRect(0,0,getWidth(),getHeight());
 		map.draw(g);
 		entityView.draw(g);
-		//g.drawImage(image,MIDDLE,MIDDLE,null);
 		g.dispose();
 		repaint();
 	}

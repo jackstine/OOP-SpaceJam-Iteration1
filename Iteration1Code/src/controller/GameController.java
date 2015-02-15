@@ -24,6 +24,7 @@ import model.Game;
 import model.Item;
 import model.Location;
 import model.Occupation;
+import model.TakeableItem;
  
 import model.Point;
 import utilities.Scaling;
@@ -35,8 +36,7 @@ import view.StatusView;
 import view.SystemMenuView;
 import view.View;
  
-public class GameController {
-       
+public class GameController {       
         //Dimensions
         int boardDimensions[] = {Scaling.BOARD_X,Scaling.BOARD_Y,Scaling.BOARD_WIDTH,Scaling.BOARD_HEIGHT};
         int characterDimensions[] = {Scaling.CHAR_X , Scaling.CHAR_Y, Scaling.CHAR_WIDTH, Scaling.CHAR_HEIGHT};
@@ -125,6 +125,7 @@ public class GameController {
                 gameView.getCanvas().add(board);
                 character.setBorder(new LineBorder(Color.black, 3));
                 gameView.getCanvas().add(character);
+                statusView.setBorder(new LineBorder(Color.black, 3));
                 gameView.getCanvas().add(statusView);
                
                 //Alignment --NEEDS ADJUSTMENT
@@ -137,8 +138,14 @@ public class GameController {
                 buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
                 statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
                
+                systemButton.setToolTipText("(ESC)");
+                statButton.setToolTipText("(C)");
+                
+                levelUp.setFocusable(false);
+
                 systemButton.setFocusable(false);
                 systemButton.addActionListener(new SystemsMenuButton());
+                
                
                 statButton.setFocusable(false);
                 statButton.addActionListener(new StatButtonAction());
@@ -293,7 +300,10 @@ public class GameController {
         public void mouseClicked(MouseEvent e) {
             Location tileLocation = this.getTileLocation(e);
             //TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
-            Item droppedItem = board.getMap().getTile(tileLocation).getItem();
+            // TODO  This is a Type Cast type casting is bad,  it leads to broke people on the streets and
+            // corrupts governments,  please dont type cast,  Hackers love type casting. 
+            // Testing Purposes for Iteration 1 only,   Implementation
+            TakeableItem droppedItem = (TakeableItem) board.getMap().getTile(tileLocation).getItem();
             System.out.println(droppedItem+"  "+tileLocation);
             if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
                     board.getMap().getTile(tileLocation).dropItem();

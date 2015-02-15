@@ -2,16 +2,19 @@ package controller;
  
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
  
 import javax.swing.JFrame;
- 
+import javax.swing.Timer;
+
 import view.View;
  
-public class ViewController {
-       
+public class ViewController {       
         //lesser controllers
         private MainMenuController mainMenu;
         private CharacterCreationController charGen;
@@ -62,12 +65,8 @@ public class ViewController {
         }
         //Used to poll the active variable of the current view and changes views when active is set false.
         public void display(){
-                if(current.getRedraw()){
-                        changePanel();
-                }
-                if(inGame.pressedSave()){
-                        hasSaved();
-                }
+        	Timer timer = new Timer(20, new RunGameTimer());
+    		timer.start();
         }
         //Changes switches views to the "next" view (specified by action listeners).
         public void changePanel(){
@@ -108,19 +107,17 @@ public class ViewController {
                 frame.repaint();
         }
  
-        public JFrame getFrame() {
-                return frame;
-        }
- 
-        public void setFrame(JFrame frame) {
-                this.frame = frame;
-        }
- 
-        public View getCurrent() {
-                return current;
-        }
- 
-        public void setCurrent(View current) {
-                this.current = current;
-        }
+        public class RunGameTimer implements ActionListener {
+    		public void actionPerformed(ActionEvent e) {
+    			if(current.getNext().equals("Quit")){
+    				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+    			}
+    			if(current.getRedraw()){
+    				changePanel();
+    			}
+    			if(inGame.pressedSave()){
+    				hasSaved();
+    			}
+    		}
+    	}
 }

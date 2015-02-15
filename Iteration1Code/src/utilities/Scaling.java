@@ -30,7 +30,7 @@ public final class Scaling {
 	public static int CHAR_X = SCREEN_WIDTH/2 + 35;
 	public static int CHAR_Y = 0;
 	public static int CHAR_WIDTH = 625;
-	public static int CHAR_HEIGHT = 500;
+	public static int CHAR_HEIGHT = 400;
 	public static int BOARD_WIDTH = Scaling.NUM_TILES_WIDTH * Scaling.TILE_WIDTH;
 	public static int BOARD_HEIGHT = Scaling.NUM_TILES_HEIGHT * Scaling.TILE_HEIGHT;
 	public static int BOARD_X = 5;
@@ -41,7 +41,7 @@ public final class Scaling {
 	public static int SYSTEM_BUTTON_HEIGHT = 50;
 	public static int STATUS_WIDTH = CHAR_WIDTH;
 	public static int STATUS_HEIGHT = 230;
-	public static int STATUS_X = BOARD_WIDTH;
+	public static int STATUS_X = BOARD_WIDTH + 18;
 	public static int STATUS_Y = SYSTEM_BUTTON_Y + SYSTEM_BUTTON_HEIGHT;
 	public static int GAME_CONTROLLER_INPUT_X = 101;
 	public static int GAME_CONTROLLER_INPUT_Y = 0;

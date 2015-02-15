@@ -3,8 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
@@ -41,7 +39,6 @@ public class InventoryView extends JPanel{
 				//Delete for Testing Only
 			}
 		}
-		this.addMouseListener(new InventoryMouseListener());
 	}
 	
 	
@@ -62,31 +59,4 @@ public class InventoryView extends JPanel{
 		g.dispose();
 		repaint();
 	}
-	
-	public class InventoryMouseListener implements MouseListener{
-		private final int RIGHT_CLICK = MouseEvent.BUTTON3;
-		private final int LEFT_CLICK = MouseEvent.BUTTON1;
-
-		// all these classes need to be defined in the MapView
-		public void mouseClicked(MouseEvent e) {
-			System.out.println(e);
-			int x = e.getY()/Scaling.SLOT_VIEW_SCALE;
-			int y = e.getX()/Scaling.SLOT_VIEW_SCALE;
-			if (e.getButton() == RIGHT_CLICK){
-				Point slotPoint = new Point(x,y);
-				inventory.getSlot(slotPoint).unequip();
-				System.out.println(slotPoint);
-			}
-			if (e.getButton()== LEFT_CLICK){
-				System.out.println("Equip ("+x+","+y+")");
-			}
-		}
-		
-		public void mouseEntered(MouseEvent e) {}
-		public void mouseExited(MouseEvent e) {	}
-		public void mousePressed(MouseEvent e) {}
-		public void mouseReleased(MouseEvent e) {}
-	}
-	
-	
 }

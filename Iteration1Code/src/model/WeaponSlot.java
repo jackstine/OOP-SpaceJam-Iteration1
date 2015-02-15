@@ -1,26 +1,21 @@
 package model;
 
 public class WeaponSlot extends BufferSlot{
+	
+	public WeaponSlot(){}
+	
 	public WeaponSlot(DerivedStat offensiveRating){
 		addObserver(offensiveRating);
 	}
 	
-	public WeaponSlot(){}
-	
+	public WeaponSlot(Equipment equipment) {
+		this.addObserver(equipment);
+	}
+
 	public String toString(){
 		if (this.has()) return "Item:Weapon:" + this.bonus;
 		else return "Item:Weapon:-1";
 	}
-
-    public static void main(String[] args){
-        WeaponSlot slot = new WeaponSlot();
-        OffensiveRating stat = new OffensiveRating(0,slot);
-    	slot.addObserver(stat);
-        Weapon weapon = new Weapon(15);
-        //slot.equip(item);
-        slot.equip(weapon);
-        slot.unequip();
-    }
 
 	public boolean equip(Weapon item) {
 		return equipItem(item);

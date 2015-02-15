@@ -8,6 +8,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.Timer;
 
 import java.util.*;
 
@@ -75,10 +76,8 @@ public class StatusView extends JPanel {
 		avatarOccupation = new JLabel(avatar.getOccupation().getName());
 		avatarLevel = new JLabel("Lv. "+avatar.getStatValue("Level"));
 		
-		//TODO
-		//figure out where player max hp and current hp is stored
-		//same for mana, let's get this up and running
-		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")); 
+	
+		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life") + " Lives: " +avatar.getStatValue("Lives")); 
 		avatarMana = new JLabel("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
 		
 		levelClassPanel = new JPanel();
@@ -130,6 +129,9 @@ public class StatusView extends JPanel {
 		statusInfo.add(abilitiesPanel);
 		
 		add(statusInfo, BorderLayout.CENTER);
+		
+		Timer timer = new Timer(20, new updateStatus());
+		timer.start();
 	}
 
 	public StatusView() {
@@ -146,4 +148,12 @@ public class StatusView extends JPanel {
 	//note: where is this image stored?
 	public void displayAvatarPortrait() {
 	}
+	
+	 public class updateStatus implements ActionListener {
+ 		public void actionPerformed(ActionEvent e) {
+ 			avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")+"    *Lives: " +avatar.getStatValue("Lives")+"*");
+ 			avatarMana.setText("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
+ 			avatarLevel.setText("Lv. "+avatar.getStatValue("Level"));
+ 		}
+ 	}
 }

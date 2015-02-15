@@ -2,10 +2,11 @@ package model;
 
 import java.util.Observable;
 
+import model.TakeableItem;
 import view.SlotView;
 
 public class InventorySlot extends Observable {
-    private Item item;
+    private TakeableItem item;
 
 	//CONSTRUCTORS
 	public InventorySlot(){}
@@ -14,7 +15,7 @@ public class InventorySlot extends Observable {
 		this.addObserver(view);
 	}
 
-	InventorySlot(Item item){
+	InventorySlot(TakeableItem item){
         this.item = item;
 	}
 
@@ -29,7 +30,7 @@ public class InventorySlot extends Observable {
         }
 	}
 
-    public boolean equip(Item item){
+    public boolean equip(TakeableItem item){
         if (this.has()) {
             return false;
         }
@@ -41,14 +42,14 @@ public class InventorySlot extends Observable {
         }
     }
 
-    public Item unequip(){
-        Item pointer = this.item;
+    public TakeableItem unequip(){
+        TakeableItem pointer = this.item;
         this.item = null;
         this.setChanged();
         this.notifyObservers();			//notify the Observers,  the Views
         return pointer;
     }
-    public Item get(){
+    public TakeableItem get(){
         return this.item;
     }
 

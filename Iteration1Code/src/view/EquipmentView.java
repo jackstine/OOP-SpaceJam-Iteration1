@@ -3,8 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
@@ -14,10 +12,7 @@ import utilities.Scaling;
 import model.ArmorSlot;
 import model.BufferSlot;
 import model.Equipment;
-import model.InventorySlot;
-import model.Item;
 import model.Point;
-import model.Slotable;
 
 public class EquipmentView extends JComponent{
 	private final Point POINT_OF_WEAPON = new Point(Scaling.EQUIPMENT_WEAPON_X,Scaling.EQUIPMENT_WEAPON_Y);
