@@ -132,6 +132,11 @@ public class SaveLoadController {
 						if (itemType.equals("HealingOneShotItem")) item = new HealingOneShotItem(value);
 						if (itemType.equals("Armor")) item = new Armor((int)value);
 						if (itemType.equals("Weapon")) item = new Weapon((int)value);
+						if (itemType.equals("TreasureChest")) {
+							item = new TreasureChest();
+							int state = Integer.parseInt(tileItem[2]);
+							if (state == 1) ((TreasureChest) item).changeState();
+						}
 					}
 				}
 				tile.setItem(item);				

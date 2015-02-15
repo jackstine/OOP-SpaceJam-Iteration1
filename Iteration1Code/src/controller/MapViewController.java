@@ -6,6 +6,7 @@ import model.Game;
 import model.GameMap;
 import model.Item;
 import model.Location;
+import model.QuestHandler;
 import model.Tile;
 import model.Point;
 
@@ -33,7 +34,8 @@ public class MapViewController{
 	private Avatar avatar;
 	private boolean active;
 	private GameController game;
-	EffectHandler effectHandler;
+	private EffectHandler effectHandler;
+	private QuestHandler questHandler;
 	//public BufferedImage image;
 	private boolean keyReleased;
 	
@@ -43,7 +45,8 @@ public class MapViewController{
 		this.map= game.getGame().getMap();
 		this.game = game;
 		effectHandler= new EffectHandler(avatar);
-		//map.setAvatar(avatar);
+		questHandler = new QuestHandler(avatar);
+		map.setAvatar(avatar);
 		//image=avatar.loadImage();
 		//TODO fir good reasons
 		this.active = false;
@@ -91,6 +94,7 @@ public class MapViewController{
 			if(map.getTile(temp.addLocation(point)).isPassable()){
 				avatarLocation.add(point);
 				map.setDelta(point);
+				questHandler.apply(map.getTile(avatarLocation));
 				effectHandler.apply(map.getTile(avatarLocation));
 				
 			}

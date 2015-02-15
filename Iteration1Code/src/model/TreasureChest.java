@@ -44,4 +44,8 @@ public class TreasureChest extends InteractiveItem {
 	public String getImagePath(){
 		return "";  //not used
 	}
+	
+	public String toString() {
+		return "Item:TreasureChest:" + this.state;
+	}
 }
