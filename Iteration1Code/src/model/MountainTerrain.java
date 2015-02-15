@@ -5,11 +5,13 @@ import java.awt.image.BufferedImage;
 
 import java.io.Serializable;
 
-public class MountainTerrain extends Terrain implements Serializable{
+public class MountainTerrain extends Terrain {
+	
 	private boolean passable;
 
 	public MountainTerrain(){
 		passable=false;
+		terrainID = 'M';
 	}
 
 	public boolean isPassable() {

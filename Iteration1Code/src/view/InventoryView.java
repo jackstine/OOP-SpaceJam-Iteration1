@@ -1,9 +1,10 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
@@ -12,8 +13,8 @@ import model.Point;
 
 public class InventoryView extends JPanel{
 	// AHHAHAHAHAHAHA   CONNASCENCE    =)
-	private static final int INVENTORY_HEIGHT = Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
-	private static final int INVENTORY_WIDTH = Inventory.COL * Scaling.SLOT_VIEW_WIDTH;
+	public static final int INVENTORY_HEIGHT = Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
+	public static final int INVENTORY_WIDTH = Inventory.COL * Scaling.SLOT_VIEW_WIDTH;
 	
 	private SlotView[][] slots = new SlotView[Inventory.ROW][Inventory.COL];
 	private Inventory inventory;
@@ -22,10 +23,8 @@ public class InventoryView extends JPanel{
 	
 	public InventoryView(Inventory inventory){
 		this.inventory = inventory;
+		this.setLayout(new GridLayout(Inventory.ROW,Inventory.COL));
 		this.setInventoryView();
-		setFocusable(true);
-		setBackground(Color.BLACK);
-		setVisible(true);
 	}
 	
 	private void setInventoryView(){ 
@@ -36,7 +35,7 @@ public class InventoryView extends JPanel{
 				Point pointOfSlot = new Point(i,j);
 				this.slots[i][j] = new SlotView( this.inventory.getSlot(pointOfSlot) , pointOfSlot);
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
-				//Delete for Testing Only
+				add(this.slots[i][j]);
 			}
 		}
 	}
@@ -49,14 +48,6 @@ public class InventoryView extends JPanel{
 	public Dimension getPreferredSize(){
 		return new Dimension(INVENTORY_WIDTH,INVENTORY_HEIGHT);
 	}
-	
-	public void paint(Graphics g){
-		for (int i = 0; i<Inventory.ROW ; i++){
-			for (int j = 0; j<Inventory.COL;j++){
-				this.slots[i][j].paintComponent(g);
-			}
-		}
-		g.dispose();
-		repaint();
-	}
+	// because this is a JPanel it adds JComponents and automatically calls there paintComponent() methods
+//	public void paint(Graphics g){}
 }

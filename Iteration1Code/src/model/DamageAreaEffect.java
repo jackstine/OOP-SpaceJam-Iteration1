@@ -19,5 +19,8 @@ public class DamageAreaEffect implements AreaEffect, Serializable{
 		EffectApplication.apply(entity, this);
 	}
 	
+	public String toString() {
+		return "DamageAreaEffect:" + percentDamage;
+	}
 	
 }

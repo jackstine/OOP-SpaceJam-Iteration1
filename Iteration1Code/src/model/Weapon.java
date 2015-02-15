@@ -20,7 +20,7 @@ public class Weapon extends Equipable {
 		return this.attack;
 	}
 	public String toString(){
-		return "Weapon:" + this.attack;
+		return "Item:Weapon:" + this.attack;
 	}
 	
 	public static void main(String[] args){

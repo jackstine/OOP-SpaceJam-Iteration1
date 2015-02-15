@@ -3,13 +3,13 @@ package model;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
-public class RadioactiveWasteTerrain extends Terrain implements Serializable{
-	private static final long serialVersionUID = 7458223L;
+public class RadioactiveWasteTerrain extends Terrain {
+
 	private boolean passable;
 
 	public RadioactiveWasteTerrain(){
 		passable=false;
-		terrain_id='w';
+		terrainID='R';
 	}
 
 	public boolean isPassable(){

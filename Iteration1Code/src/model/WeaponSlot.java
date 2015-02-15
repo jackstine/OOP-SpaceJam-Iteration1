@@ -13,8 +13,8 @@ public class WeaponSlot extends BufferSlot{
 	}
 
 	public String toString(){
-		if (this.has()) return "Weapon:" + this.bonus;
-		else return "Weapon:-1";
+		if (this.has()) return "Item:Weapon:" + this.bonus;
+		else return "Item:Weapon:-1";
 	}
 
 	public boolean equip(Weapon item) {

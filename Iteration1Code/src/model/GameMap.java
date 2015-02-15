@@ -16,12 +16,11 @@ public class GameMap {
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
 	private final int RANGE=3;
-	//I am changing the HashMap to a Array because the Items are not unique Yet
 	private int width;
 	private int height;
 	private int deltaX;
 	private int deltaY;
-	Avatar avatar;
+	private Avatar avatar;
 
 
 	public GameMap(){
@@ -85,6 +84,7 @@ public class GameMap {
 	}
 
 	public void updateEntityLocation(Entity e, Location loc){
+		System.out.println(e.getName() + " - (" + loc.getX() + ", " + loc.getY() + ")");
 		entityToLocationMap.put(e,loc);	
 	}
 	
@@ -142,5 +142,27 @@ public class GameMap {
 			}
 		}
 		//*/
+	}
+	
+	public void setTile(Tile tile) {
+		int x = tile.getLocation().getX();
+		int y = tile.getLocation().getY();
+		this.map[x][y] = tile;
+	}
+	
+	public String toString() {
+		String result = "";
+		result += "Map:" + this.map.length + "," + this.map[0].length;
+		for (int i = 0; i < this.map.length; i++) {
+			for (int j = 0; j < this.map[0].length; j++) {
+				result += "\n" + this.map[i][j];
+			}
+		}
+		result += "\n" + this.entityToLocationMap.keySet().size();
+		for (Entity entity : this.entityToLocationMap.keySet()) {
+			Location location = entityToLocationMap.get(entity);
+			result += "\n" + entity.getName() + ":" + location.getX() + "," + location.getY();
+		}
+		return result;
 	}
 }

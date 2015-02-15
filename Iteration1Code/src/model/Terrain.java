@@ -6,7 +6,7 @@ import java.io.Serializable;
 public abstract class Terrain implements Serializable{
 	
 	private boolean passable;
-	protected char terrain_id;
+	protected char terrainID;
 	
 	public abstract boolean isPassable();
 	
@@ -14,6 +14,10 @@ public abstract class Terrain implements Serializable{
 	public abstract BufferedImage getNewImage();
 	
 	public char getTerrainID() {
-		return terrain_id;
+		return terrainID;
+	}
+	
+	public String toString() {
+		return "Terrain:" + this.terrainID;
 	}
 }

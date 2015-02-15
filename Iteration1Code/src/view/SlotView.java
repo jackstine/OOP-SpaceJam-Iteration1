@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
@@ -15,7 +15,7 @@ import model.InventorySlot;
 import model.Point;
 
 
-public class SlotView extends JPanel implements Observer{
+public class SlotView extends JComponent implements Observer{
 	private static final int SLOTIMAGE_HEIGHT = Scaling.SLOT_VIEW_HEIGHT;
 	private static final int SLOTIMAGE_WIDTH = Scaling.SLOT_VIEW_WIDTH;
 	private static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
@@ -60,12 +60,9 @@ public class SlotView extends JPanel implements Observer{
 	}
 	
 	public void paintComponent(Graphics g){
-		// the point is refractored with the Width and Height, 
-		//  they fill in their respective Grid
-		//  each point is a fill for a Grid
 		int heightLocation = this.point.getX() * SLOTIMAGE_HEIGHT;
 		int widthLocation =  this.point.getY() * SLOTIMAGE_WIDTH;
-		g.drawImage(this.slotImage, widthLocation , heightLocation , null);
+		g.drawImage(this.slotImage, 0 , 0 , null);
 	}
 	
 	//TODO make private method
@@ -90,5 +87,6 @@ public class SlotView extends JPanel implements Observer{
 	@Override	//just resets the image according to the inventorySlot
 	public void update(Observable arg0, Object arg1) {
 		this.resetImage();
+		this.repaint();
 	}
 }
