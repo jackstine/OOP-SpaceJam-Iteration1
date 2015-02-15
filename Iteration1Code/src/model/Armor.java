@@ -1,9 +1,6 @@
 package model;
 
-import java.io.Serializable;
-
-
-public class Armor extends TakeableItem implements Equipable, Serializable {
+public class Armor extends Equipable {
 	protected int armor;
 	private static String ARMOR_IMAGE = "src/res/img/armor.png";
 
@@ -44,5 +41,15 @@ public class Armor extends TakeableItem implements Equipable, Serializable {
 		//Type casting here to make it a Armor
 		armorSlot.equip((Armor)invSlot.unequip());
 		//armorSlot.equip(invSlot.unequip()); This will not work
+	}
+
+	@Override
+	public boolean equip(ArmorSlot slot) {
+		return slot.equip(this);	
+	}
+
+	@Override
+	public boolean equip(WeaponSlot slot) {
+		return slot.equip(this);
 	}
 }

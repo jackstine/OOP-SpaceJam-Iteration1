@@ -1,8 +1,6 @@
 package model;
 
-import java.io.Serializable;
-
-public class WeaponSlot extends BufferSlot<Weapon> implements Serializable{
+public class WeaponSlot extends BufferSlot{
 	public WeaponSlot(DerivedStat offensiveRating){
 		addObserver(offensiveRating);
 	}
@@ -23,4 +21,11 @@ public class WeaponSlot extends BufferSlot<Weapon> implements Serializable{
         slot.equip(weapon);
         slot.unequip();
     }
+
+	public boolean equip(Weapon item) {
+		return equipItem(item);
+	}
+	public boolean equip(Armor armor) {
+		return false;
+	}
 }

@@ -6,23 +6,18 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
 import model.Inventory;
-import model.Item;
 import model.Point;
-import model.Weapon;
 
 public class InventoryView extends JPanel{
 	// AHHAHAHAHAHAHA   CONNASCENCE    =)
 	private static final int INVENTORY_HEIGHT = Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
 	private static final int INVENTORY_WIDTH = Inventory.COL * Scaling.SLOT_VIEW_WIDTH;
 	
-	//TODO unchecked provision stuffies
-	@SuppressWarnings("unchecked")
-	private SlotView<Item>[][] slots = new SlotView[Inventory.ROW][Inventory.COL];
+	private SlotView[][] slots = new SlotView[Inventory.ROW][Inventory.COL];
 	private Inventory inventory;
 	
 	private static final long serialVersionUID = 17481L;
@@ -41,11 +36,9 @@ public class InventoryView extends JPanel{
 				// We need to add the SlotView to the Inventory SLot as a Observer
 				// as well as make the slotView point to the slot
 				Point pointOfSlot = new Point(i,j);
-				this.slots[i][j] = new SlotView<Item>( this.inventory.getSlot(pointOfSlot) , pointOfSlot);
+				this.slots[i][j] = new SlotView( this.inventory.getSlot(pointOfSlot) , pointOfSlot);
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
-				
 				//Delete for Testing Only
-				this.inventory.getSlot(pointOfSlot).equip(new Weapon(10));
 			}
 		}
 		this.addMouseListener(new InventoryMouseListener());

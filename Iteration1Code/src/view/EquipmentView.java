@@ -3,12 +3,16 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
+import model.ArmorSlot;
+import model.BufferSlot;
 import model.Equipment;
 import model.InventorySlot;
 import model.Item;
@@ -34,10 +38,27 @@ public class EquipmentView extends JComponent{
 	private final String EQUIPMENT_SHIELD_IMAGE_PATH = "src/res/img/Equipment_Shield_Slot.png";
 	private final String EQUIPMENT_HELMET_IMAGE_PATH = "src/res/img/Equipment_Helmet_Slot.png";
 	
+	
+	/**************************  POINTS ON THE GRAPH,  SLOTS FOR ARRAYS   ***********************************/
+	public static final Point ARMOR_POINT = new Point((Scaling.EQUIPMENT_ARMOR_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_ARMOR_Y/ Scaling.EQUIPMENT_SLOT_HEIGHT));
+	public static final Point WEAPON_POINT = new Point ((Scaling.EQUIPMENT_WEAPON_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_WEAPON_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	public static final Point HELMET_POINT = new Point ((Scaling.EQUIPMENT_HELMET_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_HELMET_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	public static final Point GLOVES_POINT = new Point ((Scaling.EQUIPMENT_GLOVES_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_GLOVES_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	public static final Point BOOTS_POINT = new Point ((Scaling.EQUIPMENT_BOOTS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_BOOTS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	public static final Point SHIELD_POINT = new Point ((Scaling.EQUIPMENT_SHIELD_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_SHIELD_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	public static final Point LEGGINGS_POINT = new Point ((Scaling.EQUIPMENT_LEGGINGS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_LEGGINGS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	
 	private static final long serialVersionUID = 147952L;
 	
 	// DELETE THIS ONCE WE HAVE ALL THE SLOTS IN EQUIPMENT  boots, Shield,......
-	private Slotable<Item> uselessSlot = new InventorySlot();
+	private ArmorSlot uselessSlot = new ArmorSlot();
 	
 	private Equipment equipment;
 	private BufferedImage weaponImage;
@@ -64,7 +85,7 @@ public class EquipmentView extends JComponent{
 		return ImageProcessing.overlayImages(equipment, SIZE_OF_SLOT,itemImage,EQUIPMENT_SLOT_OFFSET);
 	}
 	
-	private <K extends Item> BufferedImage setImage(Slotable<K> slot, String imagePath){
+	private BufferedImage setImage(BufferSlot slot, String imagePath){
 		BufferedImage image;
 		if (slot.has()){
 			image= this.getEquipmentSlotImage(imagePath,slot.get().getImagePath());
@@ -77,8 +98,8 @@ public class EquipmentView extends JComponent{
 	
 	
 	public void setEquipmentImages(){
-		this.weaponImage = this.setImage(this.equipment.getWeaponSlot(), EQUIPMENT_WEAPON_IMAGE_PATH);
-		this.armorImage = this.setImage(this.equipment.getArmorSlot(), EQUIPMENT_ARMOR_IMAGE_PATH);
+		this.weaponImage = this.setImage(this.equipment.getSlot(Equipment.WEAPON_SLOT), EQUIPMENT_WEAPON_IMAGE_PATH);
+		this.armorImage = this.setImage(this.equipment.getSlot(Equipment.ARMOR_SLOT), EQUIPMENT_ARMOR_IMAGE_PATH);
 		this.bootsImage = this.setImage(this.uselessSlot, EQUIPMENT_BOOTS_IMAGE_PATH);
 		this.glovesImage = this.setImage(this.uselessSlot, EQUIPMENT_GLOVES_IMAGE_PATH);
 		this.shieldImage = this.setImage(this.uselessSlot, EQUIPMENT_SHIELD_IMAGE_PATH);
@@ -88,6 +109,10 @@ public class EquipmentView extends JComponent{
 	
 	public void update() {
 		this.setEquipmentImages();
+	}
+	
+	public Equipment getEquipment(){
+		return this.equipment;
 	}
 
 	public void paint(Graphics g){

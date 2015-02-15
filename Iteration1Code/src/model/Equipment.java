@@ -1,13 +1,24 @@
 package model;
 
-import java.io.Serializable;
-
+import utilities.Scaling;
 import view.EquipmentView;
 
-public class Equipment extends SlotContainer implements Serializable{
-    private Slotable<Armor> armorSlot;
-    private Slotable<Weapon> weaponSlot;
+public class Equipment {
+    private BufferSlot armorSlot;
+    private BufferSlot weaponSlot;
     private EquipmentView equipmentView;
+    public static final Point ARMOR_SLOT = EquipmentView.ARMOR_POINT;
+	public static final Point WEAPON_SLOT = EquipmentView.WEAPON_POINT;
+	
+	//TODO map these
+	public static final Point HELMET_SLOT = EquipmentView.HELMET_POINT;
+	public static final Point GLOVES_SLOT = EquipmentView.GLOVES_POINT;
+	public static final Point BOOTS_SLOT = EquipmentView.BOOTS_POINT;
+	public static final Point SHIELD_SLOT = EquipmentView.SHIELD_POINT;
+	public static final Point LEGGINGS_SLOT = EquipmentView.LEGGINGS_POINT;
+	
+	private final BufferSlot[][] slots = new BufferSlot[Scaling.EQUIPMENT_SLOTS_WIDTH_NUM][Scaling.EQUIPMENT_SLOTS_HEIGHT_NUM];
+    
 
     //Since this class extends the SlotContainer, it can 
     
@@ -15,6 +26,20 @@ public class Equipment extends SlotContainer implements Serializable{
     public Equipment(){
     	this.armorSlot = new ArmorSlot();
     	this.weaponSlot = new WeaponSlot();
+    	setArrayPoints();
+    }
+    
+    private void setArrayPoints(){
+    	this.setSlot(ARMOR_SLOT, this.armorSlot);
+    	this.setSlot(WEAPON_SLOT,this.weaponSlot);
+    }
+    
+    private void setSlot(Point point, BufferSlot slot){
+    	this.slots[point.getY()][point.getX()] = slot;
+    }
+    
+    public BufferSlot getSlot(Point point){
+    	return this.slots[point.getY()][point.getX()];
     }
     
     public Equipment(DerivedStat armorRating, DerivedStat offensiveRating){
@@ -23,48 +48,27 @@ public class Equipment extends SlotContainer implements Serializable{
         this.weaponSlot = new WeaponSlot(offensiveRating);
         ((OffensiveRating)offensiveRating).setSlotSubject((WeaponSlot)this.weaponSlot);
     }
-
-	public <K extends Armor> boolean equipArmor(K armor){
-        boolean returnValue = this.equip(this.armorSlot,armor);
-        return returnValue;
-    }
 	
-	public Armor unequipArmor(){
-		return this.unequip(this.armorSlot);
-	}
-
-    public <K extends Weapon> boolean equipWeapon(K weapon){
-        return this.equip(this.weaponSlot ,weapon);
-    }
-	public Weapon unequipWeapon(){
-		return this.unequip(this.weaponSlot);
-	}
-
-	public Slotable<Armor> getArmorSlot(){
-		return this.armorSlot;
-	}
-	
-	public Slotable<Weapon> getWeaponSlot(){
-		return this.weaponSlot;
-	}
-	
-	protected void primitive(){
+	private void notifyView(){
 		if (this.equipmentView == null){
 			return;
 		}
 		else{
-			System.out.println("hello hitting");
-			this.notifyView();
+			this.equipmentView.update();
 		}
 	}
-	
-	private void notifyView(){
-		this.equipmentView.update();
-	}
-	
-    protected <K extends Item> Slotable<K> getSlot(Point point){
-       throw new IllegalArgumentException("Cant Associate a BufferSlot in Equipment with a Point");
+    
+	public Item unequipSlot(Point point){
+    	Item item = this.getSlot(point).unequip();
+    	this.notifyView();
+    	return item;
     }
+	
+	public <K extends Equipable> boolean equipSlot(Point point, K item){
+		boolean value = this.getSlot(point).equipItem(item);
+		this.notifyView();
+		return value;
+	}
     
     public void addObserver(EquipmentView equipmentView){
     	this.equipmentView = equipmentView;
@@ -73,4 +77,8 @@ public class Equipment extends SlotContainer implements Serializable{
     public String toString() {
     	 return this.armorSlot + "\n" + this.weaponSlot;
     }
+
+	public Item getItemFromSlot(Point point) {
+		return this.getSlot(point).get();
+	}
 }

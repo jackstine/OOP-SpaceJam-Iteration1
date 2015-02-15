@@ -1,11 +1,10 @@
 package model;
 
-import java.io.Serializable;
 import java.util.Observable;
 
 import view.SlotView;
 
-public class InventorySlot extends Observable implements Slotable<Item>, Serializable {
+public class InventorySlot extends Observable {
     private Item item;
 
 	//CONSTRUCTORS
@@ -30,7 +29,7 @@ public class InventorySlot extends Observable implements Slotable<Item>, Seriali
         }
 	}
 
-    public <K extends Item> boolean equip(K item){
+    public boolean equip(Item item){
         if (this.has()) {
             return false;
         }

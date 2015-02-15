@@ -1,11 +1,10 @@
 package model;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 import utilities.ImageProcessing;
 
-public abstract class TakeableItem implements Item, Serializable {
+public abstract class TakeableItem implements Item {
 	protected String ITEM_IMAGE;
 	
 	public abstract boolean action(Avatar avatar);

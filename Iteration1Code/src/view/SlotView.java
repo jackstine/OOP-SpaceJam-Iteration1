@@ -1,24 +1,21 @@
 package view;
 
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.InventorySlot;
-import model.Item;
 import model.Point;
-import model.Slotable;
-import model.Weapon;
 
 
-public class SlotView<T extends Item> extends JPanel implements Observer{
+public class SlotView extends JPanel implements Observer{
 	private static final int SLOTIMAGE_HEIGHT = Scaling.SLOT_VIEW_HEIGHT;
 	private static final int SLOTIMAGE_WIDTH = Scaling.SLOT_VIEW_WIDTH;
 	private static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
@@ -31,18 +28,18 @@ public class SlotView<T extends Item> extends JPanel implements Observer{
 	
 	private Point point;
 	private BufferedImage slotImage;
-	private Slotable<T> slot;
+	private InventorySlot slot;
 	private BufferedImage itemImage;
 	
 	//TODO not sure if Slot should be referenced inside the SlotView, or just the point reference to it
 	
-	public SlotView(Slotable<T> slot){
+	public SlotView(InventorySlot slot){
 		this.slot = slot;
 		this.setImages();
 		this.point= new Point(0,0);
 	}
 	
-	public SlotView(Slotable<T> slot,Point pointOfSlot){
+	public SlotView(InventorySlot slot,Point pointOfSlot){
 		this.slot = slot;
 		this.setImages();
 		this.point= pointOfSlot;

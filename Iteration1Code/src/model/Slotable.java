@@ -1,10 +1,10 @@
 package model;
 
-public interface Slotable<T extends Item>{
+public interface Slotable{
 	
 	public boolean has();
-    public T unequip();
-    public T get();
-    public <K extends T> boolean equip(K item);
+    public Item unequip();
+    public Item get();
+    public  boolean equip(Item item);
 }
  

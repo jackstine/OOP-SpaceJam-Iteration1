@@ -27,7 +27,7 @@ import model.Occupation;
  
 import model.Point;
 import utilities.Scaling;
-import view.CharacterMenuView;
+import view.InventoryEquipmentView;
 import view.GameView;
 import view.InventoryView;
 import view.StatisticsView;
@@ -62,7 +62,7 @@ public class GameController {
         //Views
         private View gameView = new View();
         private GameView board = new GameView(game.getMap(),game.getAvatar());
-        private CharacterMenuView character = new CharacterMenuView(game.getAvatar());
+        private InventoryEquipmentView character = new InventoryEquipmentView(game.getAvatar());
         private StatusView statusView = new StatusView(game.getAvatar());
        
         public GameController(){
@@ -109,7 +109,7 @@ public class GameController {
                
                 game = gameToCreate;
                 board = new GameView(game.getMap(),game.getAvatar());
-                character = new CharacterMenuView(game.getAvatar());
+                character = new InventoryEquipmentView(game.getAvatar());
                 statusView = new StatusView(game.getAvatar());
                 
                 // add the mouse listener to the board
@@ -275,34 +275,34 @@ public class GameController {
                 }
         }
  
-        public class BoardMouseListener implements MouseListener{
-                // all these classes need to be defined in the MapView
-               
-               
-	        // Point of Reference needs to be added to the tileY and tileX
-	        // the point of reference is the point that reflects the change in the display of the map
-	        public Location getTileLocation(MouseEvent e){
-	            int tileY = e.getY()/Scaling.TILE_HEIGHT;
-	            int tileX = e.getX()/Scaling.TILE_WIDTH;
-	            Point gameLocation = board.getMap().getDelta();
-	            int xOff = gameLocation.getX()/Scaling.TILE_WIDTH;
-	            int yOff = gameLocation.getY()/Scaling.TILE_HEIGHT;
-	            return new Location(tileX+xOff,tileY+yOff);
-	        }
-               
-            public void mouseClicked(MouseEvent e) {
-                Location tileLocation = this.getTileLocation(e);
-                //TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
-                Item droppedItem = board.getMap().getTile(tileLocation).getItem();
-                System.out.println(droppedItem+"  "+tileLocation);
-                if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
-                        board.getMap().getTile(tileLocation).dropItem();
-                }
-            }
-            public void mouseEntered(MouseEvent e) {}
-            public void mouseExited(MouseEvent e) { }
-            public void mousePressed(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+    public class BoardMouseListener implements MouseListener{
+        // all these classes need to be defined in the MapView
+           
+           
+        // Point of Reference needs to be added to the tileY and tileX
+        // the point of reference is the point that reflects the change in the display of the map
+        public Location getTileLocation(MouseEvent e){
+            int tileY = e.getY()/Scaling.TILE_HEIGHT;
+            int tileX = e.getX()/Scaling.TILE_WIDTH;
+            Point gameLocation = board.getMap().getDelta();
+            int xOff = gameLocation.getX()/Scaling.TILE_WIDTH;
+            int yOff = gameLocation.getY()/Scaling.TILE_HEIGHT;
+            return new Location(tileX+xOff,tileY+yOff);
         }
+           
+        public void mouseClicked(MouseEvent e) {
+            Location tileLocation = this.getTileLocation(e);
+            //TRANSACTION   USE get ,  if room in Inventory  then drop,  else do nothing
+            Item droppedItem = board.getMap().getTile(tileLocation).getItem();
+            System.out.println(droppedItem+"  "+tileLocation);
+            if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
+                    board.getMap().getTile(tileLocation).dropItem();
+            }
+        }
+        public void mouseEntered(MouseEvent e) {}
+        public void mouseExited(MouseEvent e) { }
+        public void mousePressed(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {}
+    }
        
 }

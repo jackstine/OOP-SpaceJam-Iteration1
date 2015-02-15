@@ -71,11 +71,11 @@ public class SaveLoadController {
 		
 		String[] equipmentArmor = in.next().split(":");
 		int armorValue = Integer.parseInt(equipmentArmor[1]);
-		if (armorValue != -1) equipment.equipArmor(new Armor(armorValue));
+		if (armorValue != -1) equipment.equipSlot(Equipment.ARMOR_SLOT,new Armor(armorValue));
 		
 		String[] equipmentWeapon = in.next().split(":");
 		int weaponValue = Integer.parseInt(equipmentWeapon[1]);
-		if (weaponValue != -1) equipment.equipWeapon(new Weapon(weaponValue));
+		if (weaponValue != -1) equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(weaponValue));
 		
 		avatar.setInventory(inventory);
 		avatar.setEquipment(equipment);

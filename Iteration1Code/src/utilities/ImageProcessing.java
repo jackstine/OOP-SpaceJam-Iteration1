@@ -83,7 +83,8 @@ public class ImageProcessing {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		g.drawImage(backgroundImage, 0, 0, null);
 		// make the centeredImage transparent
-		ImageProcessing.getTransparentImage(backgroundImage.getWidth(),backgroundImage.getWidth(),centeredImage);
+		//Aparently we dont need this method,  just taking more time out of the system
+		//ImageProcessing.getTransparentImage(backgroundImage.getWidth(),backgroundImage.getWidth(),centeredImage);
 		g.drawImage(centeredImage, center.getX(), center.getY(), null);
 		g.dispose();
 		return backgroundImage;
@@ -102,7 +103,7 @@ public class ImageProcessing {
 		Graphics2D g = backgroundImage.createGraphics();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		g.drawImage(backgroundImage, 0, 0, null);
-		ImageProcessing.getTransparentImage(backgroundImage.getWidth(),backgroundImage.getWidth(),centeredImage);
+		//ImageProcessing.getTransparentImage(backgroundImage.getWidth(),backgroundImage.getWidth(),centeredImage);
 		g.drawImage(centeredImage, point.getX(), point.getY(), null);
 		g.dispose();
 		return backgroundImage;

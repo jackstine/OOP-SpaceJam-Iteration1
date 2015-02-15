@@ -50,8 +50,8 @@ public class Avatar extends Entity {
 	
     private void setEquipmentBegin(){
     	int beginValue = 1;
-    	this.equipment.equipArmor(new Armor(beginValue));
-    	this.equipment.equipWeapon(new Weapon(beginValue));
+    	this.equipment.equipSlot(Equipment.ARMOR_SLOT, new Armor(beginValue));
+    	this.equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(beginValue));
     }
 	
 	public BufferedImage getImage(){

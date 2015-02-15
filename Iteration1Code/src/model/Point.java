@@ -27,6 +27,11 @@ public class Point implements Serializable{
     	return this.x;
     }
     
+    public boolean equals(Point other){
+    	if (this.x == other.x && this.y == other.y)return true;
+    	else return false;
+    }
+    
     public void setLocation(int x,int y){
     	this.x=x;
     	this.y=y;
