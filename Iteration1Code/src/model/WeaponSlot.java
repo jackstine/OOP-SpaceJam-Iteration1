@@ -1,6 +1,9 @@
 package model;
 
 public class WeaponSlot extends BufferSlot{
+	
+	public WeaponSlot(){}
+	
 	public WeaponSlot(DerivedStat offensiveRating){
 		addObserver(offensiveRating);
 	}
