@@ -387,7 +387,7 @@ public class GameController {
 				game.getAvatar().setStatValue("HP", game.getAvatar().getStatValue("Life"));
 			}
 			else if(yourLvl != game.getAvatar().getStatValue("Level")){
-				game.getAvatar().setLevels(game.getAvatar().getLevels()+1);
+				game.getAvatar().setLevels(game.getAvatar().getLevels()+game.getAvatar().getStatValue("Level")-yourLvl);
 				yourLvl = game.getAvatar().getStatValue("Level");
 			}
 		}
