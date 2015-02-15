@@ -1,4 +1,4 @@
-Avatar:Juanita
+Avatar:Arnold
 Occupation:Terminator
 Agility:10
 Experience:1050
@@ -9,11 +9,11 @@ Lives:3
 MP:70
 Movement:10
 Strength:20
-Direction:2
+Direction:8
 Inventory:0
 Item:Armor:1
 Item:Weapon:1
-Levels:2
+Levels:6
 Map:18,18
 Tile:0,0
 Terrain:M
@@ -346,7 +346,7 @@ null
 Tile:4,10
 Terrain:D
 null
-Item:TreasureChest:1
+Item:TreasureChest:true
 Tile:4,11
 Terrain:D
 null
@@ -553,8 +553,7 @@ null
 Item:HealingOneShotItem:0.5
 Tile:7,8
 Terrain:D
-Decal:X
-DeathAreaEffect
+null
 null
 Tile:7,9
 Terrain:D
@@ -1313,4 +1312,4 @@ Terrain:M
 null
 null
 1
-Juanita:4,11
+Arnold:5,11

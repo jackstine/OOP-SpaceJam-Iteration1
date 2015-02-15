@@ -131,17 +131,16 @@ public class SaveLoadController {
 				if (tileItem[0].equals("Item")) {
 					String itemType = tileItem[1];
 					if (itemType.equals("GiantRock")) item = new GiantRock();
-					else {
+					else if (itemType.equals("TreasureChest")) {
+						item = new TreasureChest();
+						String actionDone = tileItem[2];
+						if (actionDone.equals("true")) ((TreasureChest) item).setActionDone();
+					} else {
 						double value = Double.parseDouble(tileItem[2]);
 						if (itemType.equals("DamagingOneShotItem")) item = new DamagingOneShotItem(value);
 						if (itemType.equals("HealingOneShotItem")) item = new HealingOneShotItem(value);
 						if (itemType.equals("Armor")) item = new Armor((int)value);
 						if (itemType.equals("Weapon")) item = new Weapon((int)value);
-						if (itemType.equals("TreasureChest")) {
-							item = new TreasureChest();
-							int state = Integer.parseInt(tileItem[2]);
-							if (state == 1) ((TreasureChest) item).changeState();
-						}
 					}
 				}
 				tile.setItem(item);				

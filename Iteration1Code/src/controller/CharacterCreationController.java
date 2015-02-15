@@ -111,7 +111,7 @@ public class CharacterCreationController {
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
 			gameToCreate = new Game(new Alchemist(), enterNameField.getText());
-			gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
+			//gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
 			charCreation.setRedraw(true);
 			
 		}
@@ -122,7 +122,7 @@ public class CharacterCreationController {
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
 			gameToCreate = new Game(new Terminator(), enterNameField.getText());
-			gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
+			//gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
 			charCreation.setRedraw(true);
 			
 		}
@@ -133,7 +133,7 @@ public class CharacterCreationController {
 		public void actionPerformed(ActionEvent e) {
 			charCreation.setNext("New"); //Game View
 			gameToCreate = new Game(new Hunter(), enterNameField.getText());
-			gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
+			//gameToCreate.getMap().updateEntityLocation(gameToCreate.getAvatar(), new Location(STARTINGX,STARTINGY));
 			charCreation.setRedraw(true);
 			
 		}

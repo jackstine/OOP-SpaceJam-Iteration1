@@ -32,6 +32,10 @@ public class TreasureChest extends InteractiveItem {
 		return ItemImageProxy.getNewItemImage(this,state);
 	}
 	
+	public void setActionDone() {
+		this.actionDone = true;
+	}
+	
 	public void changeState(){
 		if(state==0){
 			state=1;
@@ -46,6 +50,6 @@ public class TreasureChest extends InteractiveItem {
 	}
 	
 	public String toString() {
-		return "Item:TreasureChest:" + this.state;
+		return "Item:TreasureChest:" + this.actionDone;
 	}
 }

@@ -34,7 +34,7 @@ public class GameView extends JPanel {
 		setFocusable(true);
 		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
 		setBackground(Color.BLACK);
-		//map.updateEntityLocation(avatar, new Location(3,3));			//NOT NEEDED ANYMORE
+		map.updateEntityLocation(avatar, new Location(3,3));			//NOT NEEDED ANYMORE
 		image=avatar.getImage();
 		setVisible(true);
 	}
@@ -48,7 +48,7 @@ public class GameView extends JPanel {
 		setFocusable(true);
 		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
 		setBackground(Color.BLACK);
-		//this.map.updateEntityLocation(avatar, new Location(3,3)); //NOT NEEDED ANYMORE
+		this.map.updateEntityLocation(avatar, new Location(3,3)); //NOT NEEDED ANYMORE
 		image=avatar.getImage();
 		setVisible(true);
 	}
@@ -62,7 +62,7 @@ public class GameView extends JPanel {
 		setFocusable(true);
 		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
 		setBackground(Color.BLACK);
-		//this.map.updateEntityLocation(avatar, location); NOT NEEDED ANYMORE
+		this.map.updateEntityLocation(avatar, location);// NOT NEEDED ANYMORE
 		image=avatar.getImage();
 		setVisible(true);
 	}
