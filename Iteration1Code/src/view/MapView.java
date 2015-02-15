@@ -61,7 +61,8 @@ public class MapView extends JPanel {
 	}
 	*/
 	
-	public void draw(Graphics g){
+	//This function is never used
+	/*public void draw(Graphics g){
 		Location location= map.getLocation(avatar);
 		int lowX=location.getX()-3;
 		int highX=location.getX()+3;
@@ -72,7 +73,7 @@ public class MapView extends JPanel {
 				map.getTile(new Location(i,j)).draw(g);
 			}
 		}
-	}
+	}*/
 	
 	
 	
