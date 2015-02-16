@@ -265,7 +265,7 @@ public class GameController {
         
         public void spawnLevelUp(){
             if(!spawned && game.getAvatar().getLevels() > 0){                  
-            	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Inellect"));
+            	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Intellect"));
                     gameView.getCanvas().add(leveledView);
                     leveledView.moveToFront();
                     gameView.setNext("Game");
