@@ -29,7 +29,6 @@ public class TileView extends JComponent{
                 imageOfTerrain = tile.getTerrain().getNewImage();
                 imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,itemImage);
         }
-       
         if(tile.getDecal()!=null){
                 decalImage = tile.getDecal().getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
                 imageOfTerrain = tile.getTerrain().getNewImage();
@@ -44,7 +43,8 @@ public class TileView extends JComponent{
 	public void paintComponent(Graphics g){
         int x= tile.getLocation().getX();
         int y= tile.getLocation().getY();
-        g.drawImage(this.image ,Scaling.TILE_WIDTH*x+tile.getDeltaX(),Scaling.TILE_HEIGHT*y+tile.getDeltaY(),null);
+//        System.out.println((Scaling.TILE_WIDTH*x+tile.getDeltaX()) + "   "+ (Scaling.TILE_HEIGHT*y+tile.getDeltaY()));
+        g.drawImage(this.image ,0,0,null);
 	}
 	
 	

@@ -150,7 +150,6 @@ public class Tile {
 		
 		//if has Item overlay
 		BufferedImage imageToDisplay = this.updateImage();
-		//System.out.println(this+imageToDisplay.toString());
 		g.drawImage(imageToDisplay,Scaling.TILE_WIDTH*x+deltaX,Scaling.TILE_HEIGHT*y+deltaY,null);
 		
 	}

@@ -48,6 +48,4 @@ public class InventoryView extends JPanel{
 	public Dimension getPreferredSize(){
 		return new Dimension(INVENTORY_WIDTH,INVENTORY_HEIGHT);
 	}
-	// because this is a JPanel it adds JComponents and automatically calls there paintComponent() methods
-//	public void paint(Graphics g){}
 }

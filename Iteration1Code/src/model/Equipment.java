@@ -28,9 +28,7 @@ public class Equipment implements Observer{
     //TODO delete this constructor  JUST FOR TESTING PURPOSES
     public Equipment(){
     	this.armorSlot = new ArmorSlot(this);
-    	System.out.println(this.armorSlot);
     	this.weaponSlot = new WeaponSlot(this);
-    	System.out.println(this.weaponSlot);
     	setArrayPoints();
     }
     

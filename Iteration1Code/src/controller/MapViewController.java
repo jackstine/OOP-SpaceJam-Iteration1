@@ -77,7 +77,6 @@ public class MapViewController{
 	                            keysString += i.next() + ",";
 	                        }
 	                    } 
-	                    System.out.println(keysString);
 	                }
 	            }).start();	
 		}
@@ -93,8 +92,7 @@ public class MapViewController{
 				map.setDelta(point);
 				effectHandler.apply(map.getTile(avatarLocation));
 				
-			}
-			System.out.println(map.getTile(avatarLocation).getTerrain());	
+			};	
 		}
 		
 		private Location avatarLocation;
@@ -109,7 +107,6 @@ public class MapViewController{
 			temp= new Location(avatarLocation.getX(),avatarLocation.getY());
 			
 			int key = e.getKeyCode();
-			//System.out.println(e.getKeyCode()); used for debugging
 			if(!active){
 				return;
 			}
@@ -144,7 +141,6 @@ public class MapViewController{
 				game.spawnStats();
 			}
 			map.updateEntityLocation(avatar, avatarLocation);
-			System.out.println(map.getLocation(avatar).toString());
 			
             int keyCode = key;
             pressedKeys.add(keyCode);

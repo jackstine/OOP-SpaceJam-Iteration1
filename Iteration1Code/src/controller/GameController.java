@@ -132,7 +132,6 @@ public class GameController {
                 //savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
  
                 board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
-                System.out.println("Thisis the character Dimensions   "+characterDimensions[0]+" "+ characterDimensions[1]+","+ characterDimensions[2]+","+ characterDimensions[3]);
                 character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
                 buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
                 statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
@@ -146,7 +145,7 @@ public class GameController {
                 systemButton.setFocusable(false);
                 systemButton.addActionListener(new SystemsMenuButton());
                 
-               
+                
                 statButton.setFocusable(false);
                 statButton.addActionListener(new StatButtonAction());
                

@@ -43,14 +43,14 @@ public class ViewController {
                
                
                 //instantiate the game controller + view
-                if(new File("savedGame.txt").isFile()){
-                        inGame = new GameController("random");
-                        views.put("Game", inGame.getView());
-                }
-                else{
+//                if(new File("savedGame.txt").isFile()){
+//                        inGame = new GameController("random");
+//                        views.put("Game", inGame.getView());
+//                }
+//                else{
                         inGame = new GameController();
                         views.put("Game", charGen.getView());
-                }
+//                }
                
                 mv = new MapViewController(inGame,frame); //modify this later.
                 current = views.get("Main");
