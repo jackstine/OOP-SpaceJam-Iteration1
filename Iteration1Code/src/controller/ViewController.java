@@ -47,10 +47,10 @@ public class ViewController {
                         inGame = new GameController("random");
                         views.put("Game", inGame.getView());
                 }
-                else{
-                        inGame = new GameController();
-                        views.put("Game", charGen.getView());
-                }
+//                else{
+//                        inGame = new GameController();
+//                        views.put("Game", charGen.getView());
+//                }
                
                 mv = new MapViewController(inGame,frame); //modify this later.
                 current = views.get("Main");

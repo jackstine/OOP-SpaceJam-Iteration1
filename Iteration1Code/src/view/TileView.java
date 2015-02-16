@@ -40,18 +40,17 @@ public class TileView extends JComponent{
         return imageToDisplay;
     }
        
-        public void paintComponent(Graphics g, int xTile, int yTile){
+    public void paintComponent(Graphics g, int xTile, int yTile){
         int x= tile.getLocation().getX() - xTile;
         int y= tile.getLocation().getY() - yTile;
         g.drawImage(this.image, x*Scaling.TILE_WIDTH ,y*Scaling.TILE_HEIGHT , null );
-        }
+    }
        
-       
-        public Dimension getPreferredSize(){
-                return new Dimension(Scaling.TILE_WIDTH,Scaling.TILE_HEIGHT);
-        }
-       
-        public String toString(){
-                return this.tile.toString();
-        }
+    public Dimension getPreferredSize(){
+            return new Dimension(Scaling.TILE_WIDTH,Scaling.TILE_HEIGHT);
+    }
+   
+    public String toString(){
+            return this.tile.toString();
+    }
 }

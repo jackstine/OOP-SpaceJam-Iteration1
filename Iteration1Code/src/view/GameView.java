@@ -27,29 +27,20 @@ public class GameView extends JPanel {
 	MapView mapView;
 	public static final int STARTINGX=3;
 	public static final int STARTINGY=3;
-
-	public GameView(){
-		map = new GameMap();
-		avatar = new Avatar();
-		entityView=new EntityView(avatar);
-		map.updateEntityLocation(avatar, new Location(STARTINGX,STARTINGY));
-		//image=avatar.getImage();
-		setFocusable(true);
-		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
-		setBackground(Color.BLACK);
-		image=avatar.getImage();
-		setVisible(true);
-	}
 	
 	public GameView(GameMap map, Avatar avatar){
 		this.map = map;
 		this.avatar = avatar;
 		entityView=new EntityView(avatar);
-		 this.mapView= new MapView(this.map,entityView,avatar);
+		this.mapView= new MapView(this.map,entityView,avatar);
 		add(this.mapView);
 		setView();
 		this.map.updateEntityLocation(avatar, new Location(3,3)); //NOT NEEDED ANYMORE
 		image=avatar.getImage();
+	}
+	
+	public MapView getMapView(){
+		return this.mapView;
 	}
 	
 	public GameView(GameMap map, Avatar avatar, Location location){
