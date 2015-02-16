@@ -1,8 +1,7 @@
 package model;
 
-import java.io.Serializable;
 
-public class HealingAreaEffect implements AreaEffect, Serializable{
+public class HealingAreaEffect implements AreaEffect{
 	
 	private double percentHealth;
 	

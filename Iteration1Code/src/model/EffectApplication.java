@@ -1,8 +1,8 @@
 package model;
 
-import java.io.Serializable;
 
-public class EffectApplication implements Serializable {
+
+public class EffectApplication{
 	
 	public static void apply(Entity entity, DeathAreaEffect areaEffect) {
 		// DeathAoE affects Entity here

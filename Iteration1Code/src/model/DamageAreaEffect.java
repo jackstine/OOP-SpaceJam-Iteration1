@@ -1,8 +1,8 @@
 package model;
 
-import java.io.Serializable;
 
-public class DamageAreaEffect implements AreaEffect, Serializable{
+
+public class DamageAreaEffect implements AreaEffect{
 	
 	private double percentDamage;
 

@@ -2,7 +2,6 @@ package model;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;

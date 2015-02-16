@@ -1,7 +1,6 @@
 package model;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 public class RedCrossDecal extends Decal {
 	//private BufferedImage image;

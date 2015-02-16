@@ -1,10 +1,10 @@
 package model;
 
-import java.io.Serializable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class StatFactory implements Serializable{
+public class StatFactory {
 	
 	private Map<String,Stat> map;
 	

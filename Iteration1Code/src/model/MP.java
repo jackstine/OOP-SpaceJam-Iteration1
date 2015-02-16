@@ -1,8 +1,7 @@
 package model;
 
-import java.io.Serializable;
 
-public class MP extends PrimaryStat implements Serializable {
+public class MP extends PrimaryStat  {
 	
 	private Mana mana;
 	

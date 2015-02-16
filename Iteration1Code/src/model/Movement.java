@@ -1,8 +1,7 @@
 package model;
 
-import java.io.Serializable;
 
-public class Movement extends PrimaryStat implements Serializable{
+public class Movement extends PrimaryStat{
 
 	public Movement(int value) {
 		super(value);
