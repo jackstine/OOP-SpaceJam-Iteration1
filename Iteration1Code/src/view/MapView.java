@@ -40,30 +40,9 @@ public class MapView extends JComponent{
 		}
 	}
 	
-//	private void setComponents(){
-////		this.removeAll();
-//		int RANGE = 3;
-//		Location location= this.map.getLocation(this.avatar);
-//		int lowX=location.getX()-RANGE;
-//		int highX=location.getX()+RANGE;
-//		int lowY=location.getY()-RANGE;
-//		int highY=location.getY()+RANGE;
-//		System.out.println(lowX +"  "+highX+ "   " + lowY+"  "+highY);
-//		for(int i=lowX;i<=highX;i++){
-//			for(int j=lowY;j<=highY;j++){
-////				add(tiles[i][j]);
-////			if (location.equals(new Location(j,i))){
-////				add(entityView);
-////			}
-//			}
-//		}
-//		
-//	}
-	
 	public void paintComponent(Graphics g){
 		int RANGE = 3;
-//		super.paintComponent(g);
-//		this.setComponents();
+		this.setTileComponents();
 		Location location= this.map.getLocation(this.avatar);
 		int lowX=location.getX()-RANGE;
 		int highX=location.getX()+RANGE;
@@ -72,8 +51,8 @@ public class MapView extends JComponent{
 		System.out.println(lowX +"  "+highX+ "   " + lowY+"  "+highY);
 		for(int i=lowX;i<=highX;i++){
 			for(int j=lowY;j<=highY;j++){
-				this.tiles[i][j].paintComponent(g, lowX, lowY);
-				if (location.equals(new Location(j,i))){
+				this.tiles[j][i].paintComponent(g, lowX, lowY);
+				if (location.equals(new Location(i,j))){
 					this.entityView.paintComponent(g);
 				}
 			}
