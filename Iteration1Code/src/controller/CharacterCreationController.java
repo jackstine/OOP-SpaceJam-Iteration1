@@ -2,11 +2,14 @@ package controller;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +18,8 @@ import javax.swing.border.LineBorder;
 
 import model.*;
 import utilities.Scaling;
+import view.CharacterCreationButton;
+import view.ImagePanel;
 import view.View;
 
 
@@ -28,6 +33,7 @@ public class CharacterCreationController {
 	private JTextField enterNameField;
 	private JLabel title;
 	private JLabel chooseOccupationLabel;
+	private JPanel backgroundPanel;
 	private JPanel buttons;
 	private JPanel main;
 	private JPanel back;
@@ -41,21 +47,42 @@ public class CharacterCreationController {
 
 	public CharacterCreationController(){
 		charCreation = new View();
-		backGameButton = new JButton("<html><span style='font-size:20px;'>Back</span></html>");
-		startAlchemistButton = new JButton("<html><span style='font-size:20px;'>Alchemist</span></html>");
-		startTerminatorButton = new JButton("<html><span style='font-size:20px;'>Terminator</span></html>");
-		startHunterButton = new JButton("<html><span style='font-size:20px;'>Hunter</span></html>");
-		title = new JLabel("<html><span style='font-size:40px;'><u>Character Creation</u></span><br><br><br><br></html>", JLabel.CENTER);
+		charCreation.getCanvas().setPreferredSize(new Dimension(Scaling.CHARACTER_CREATION_WIDTH, Scaling.CHARACTER_CREATION_HEIGHT));
+		//charCreation.getCanvas().setBorder(new LineBorder(Color.black, 5));
+		charCreation.getCanvas().setLayout(new BorderLayout());
+		
+		Font titleFont = new Font("serif", Font.PLAIN, 24);
+		Font buttonFont = new Font("serif", Font.PLAIN, 24);
+		
+		try {
+			titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/Apocalypse_Now.ttf"));
+			buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/After_Disaster.ttf"));
+			System.out.println("IT WORKED!");
+		} catch (Exception e) {
+			System.out.println("boop");
+		}
+		
+		backgroundPanel = new ImagePanel("src/res/img/main_menu_bg.gif");
+		
+		backgroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 5));
+		
+		ImageIcon terminatorButtonLogo = new ImageIcon("src/res/img/terminator2.png");
+		ImageIcon alchemistButtonLogo = new ImageIcon("src/res/img/alchemist2.png");
+		ImageIcon hunterButtonLogo = new ImageIcon("src/res/img/hunter2.png");
+		
+		backGameButton = new JButton();
+		startAlchemistButton = new CharacterCreationButton(alchemistButtonLogo);
+		startTerminatorButton = new CharacterCreationButton(terminatorButtonLogo);
+		startHunterButton = new CharacterCreationButton(hunterButtonLogo);
+		title = new JLabel();
 		buttons = new JPanel();
 		main = new JPanel();
 		back = new JPanel();
 		
 		enterNameLabel = new JLabel("<html><p style='font-size:20px;'>Name your character:</p><br></html>",JLabel.CENTER);
 		
-		charCreation.getCanvas().setPreferredSize(new Dimension(Scaling.CHARACTER_CREATION_WIDTH,Scaling.CHARACTER_CREATION_HEIGHT));
-		charCreation.getCanvas().setBorder(new LineBorder(Color.black, 5));
-		charCreation.getCanvas().setLayout(new BorderLayout());
-		
+		//charCreation.getCanvas().setPreferredSize(new Dimension(Scaling.CHARACTER_CREATION_WIDTH,Scaling.CHARACTER_CREATION_HEIGHT));
+
 		nameEntry = new JPanel();
 		nameEntry.setLayout(new GridLayout(2,1));
 		Font font = new Font("Arial", Font.BOLD,20);
@@ -67,9 +94,9 @@ public class CharacterCreationController {
 		nameEntry.add(enterNameField);
 		
 		chooseOccupationLabel = new JLabel("<html><p style='font-size:20px;'>Choose your occupation:</p></html>", JLabel.CENTER);
-		buttons.add(startHunterButton);
-		buttons.add(startTerminatorButton);
-		buttons.add(startAlchemistButton);
+		//backgroundPanel.add(startTerminatorButton);
+		backgroundPanel.add(startAlchemistButton);
+		//backgroundPanel.add(startHunterButton);
 		
 		back.add(backGameButton);
 		
@@ -80,8 +107,10 @@ public class CharacterCreationController {
 		main.add(buttons);
 		main.add(back);
 		
-		charCreation.getCanvas().add(title, BorderLayout.NORTH);
-		charCreation.getCanvas().add(main, BorderLayout.CENTER);
+		//charCreation.getCanvas().add(title, BorderLayout.NORTH);
+		//charCreation.getCanvas().add(main, BorderLayout.CENTER);
+		
+		charCreation.getCanvas().add(backgroundPanel);
 		
 		backGameButton.addActionListener(new BackButtonListener());
 		startAlchemistButton.addActionListener(new AlchemistSelectListener());

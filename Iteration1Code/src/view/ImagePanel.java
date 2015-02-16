@@ -34,7 +34,7 @@ public class ImagePanel extends JPanel {
   }
 
   public void paintComponent(Graphics g) {
-	System.out.println("PRINTED");
+	//System.out.println("PRINTED");
     g.drawImage(img, 0, 0, this);
   }
 

@@ -22,7 +22,7 @@ public final class Scaling {
 	
 	
 	/**************CHARACTERCREATIONCONTROLLER***********/
-	public static final int CHARACTER_CREATION_WIDTH = 600;
+	public static final int CHARACTER_CREATION_WIDTH = 1200;
 	public static final int CHARACTER_CREATION_HEIGHT = 600;
 	
 	

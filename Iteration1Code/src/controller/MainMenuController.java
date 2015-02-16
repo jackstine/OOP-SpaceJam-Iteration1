@@ -63,7 +63,6 @@ public class MainMenuController {
 			System.out.println("boop");
 		}
 		
-		background = new JLabel(new ImageIcon("src/res/img/main_menu_bg.gif"));
 		startGameButton = new MainMenuButton("New Game", buttonFont);
 		
 		loadGameButton = new MainMenuButton("Load Game", buttonFont);
@@ -88,10 +87,8 @@ public class MainMenuController {
 		ghost.setContentAreaFilled(false);
 		ghost.setBorderPainted(false);
 		
-		buttons.setLayout(new GridLayout(4,1));
-		
 		mainMenu.getCanvas().setPreferredSize(new Dimension(Scaling.MAIN_MENU_WIDTH, Scaling.MAIN_MENU_HEIGHT));
-		mainMenu.getCanvas().setBorder(new LineBorder(Color.black, 5));
+		//mainMenu.getCanvas().setBorder(new LineBorder(Color.black, 5));
 		mainMenu.getCanvas().setLayout(new BorderLayout());
 		
 		//b1.add(startGameButton);
@@ -107,9 +104,6 @@ public class MainMenuController {
 		loadGameButton.setMaximumSize(new Dimension(200,50));
 		quitGameButton.setMaximumSize(new Dimension(200,50));
 		
-		buttons.setOpaque(false);
-		buttons.setBackground(new Color(0,0,0,0));
-		
 		backGroundPanel.add(title);
 		backGroundPanel.add(ghost);
 		//backGroundPanel.add(buttons, BorderLayout.CENTER);
@@ -118,7 +112,6 @@ public class MainMenuController {
 		backGroundPanel.add(quitGameButton);
 		//backGroundPanel.add(b2, BorderLayout.CENTER);
 		//backGroundPanel.add(b3, BorderLayout.CENTER);
-		buttons.setBounds(insets.left + 25, insets.top + 25, Scaling.MAIN_MENU_WIDTH, Scaling.MAIN_MENU_HEIGHT);
 		
 		mainMenu.getCanvas().add(backGroundPanel);
 		//mainMenu.getCanvas().add(title, BorderLayout.NORTH);
