@@ -21,7 +21,6 @@ public class TreasureChest extends InteractiveItem {
 		changeState();
 		return true;
 		}
-		changeState();
 		return false;
 	}
 	
