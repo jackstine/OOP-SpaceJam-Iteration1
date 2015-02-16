@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import model.*;
+import utilities.FontHandler;
 import utilities.Scaling;
 import view.CharacterCreationButton;
 import view.ImagePanel;
@@ -57,13 +58,9 @@ public class CharacterCreationController {
 		Font titleFont = new Font("serif", Font.PLAIN, 24);
 		Font labelFont = new Font("serif", Font.PLAIN, 24);
 		
-		try {
-			titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/Apocalypse_Now.ttf"));
-			labelFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/After_Disaster.ttf"));
-			System.out.println("IT WORKED!");
-		} catch (Exception e) {
-			System.out.println("boop");
-		}
+		FontHandler fh = new FontHandler();
+		titleFont = fh.ApocalypseNowFont();
+		labelFont = fh.AfterDisasterFont();
 		
 		title = new JLabel("CHARACTER CREATION");
 		title.setFont(titleFont.deriveFont(100f));

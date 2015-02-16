@@ -19,6 +19,7 @@ public class MapView extends JComponent{
         private Avatar avatar;
         private EntityView entityView;
         private TileView[][] tiles;
+        public static final int CHARACTER_OFFSET = 3;
        
         public MapView(GameMap map, EntityView entityView, Avatar avatar) {
                 this.map = map;
@@ -40,15 +41,13 @@ public class MapView extends JComponent{
                 }
         }
        
-        public void paintComponent(Graphics g){
-                int RANGE = 3;
+        public void paintComponent(Graphics g){;
                 this.setTileComponents();
                 Location location= this.map.getLocation(this.avatar);
-                int lowX=location.getX()-RANGE;
-                int highX=location.getX()+RANGE;
-                int lowY=location.getY()-RANGE;
-                int highY=location.getY()+RANGE;
-                System.out.println(lowX +"  "+highX+ "   " + lowY+"  "+highY);
+                int lowX=location.getX()-CHARACTER_OFFSET;
+                int highX=location.getX()+CHARACTER_OFFSET;
+                int lowY=location.getY()-CHARACTER_OFFSET;
+                int highY=location.getY()+CHARACTER_OFFSET;
                 for(int i=lowX;i<=highX;i++){
                         for(int j=lowY;j<=highY;j++){
                                 this.tiles[j][i].paintComponent(g, lowX, lowY);

@@ -4,6 +4,11 @@ import java.awt.image.BufferedImage;
 
 public class SkullAndCrossbonesDecal extends Decal {
 
+	public SkullAndCrossbonesDecal() {
+		super();
+		this.decalID = 'X';
+	}
+	
 	// fix this constructor later
 	public SkullAndCrossbonesDecal(AreaEffect effect){
 		super();

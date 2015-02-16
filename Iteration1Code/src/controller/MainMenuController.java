@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import utilities.FontHandler;
 import utilities.Scaling;
 import view.MainMenuButton;
 import view.View;
@@ -55,13 +56,9 @@ public class MainMenuController {
 		Font titleFont = new Font("serif", Font.PLAIN, 24);
 		Font buttonFont = new Font("serif", Font.PLAIN, 24);
 		
-		try {
-			titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/Apocalypse_Now.ttf"));
-			buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/After_Disaster.ttf"));
-			System.out.println("IT WORKED!");
-		} catch (Exception e) {
-			System.out.println("boop");
-		}
+		FontHandler fh = new FontHandler();
+		titleFont = fh.ApocalypseNowFont();
+		buttonFont = fh.AfterDisasterFont();
 		
 		startGameButton = new MainMenuButton("New Game", buttonFont);
 		
