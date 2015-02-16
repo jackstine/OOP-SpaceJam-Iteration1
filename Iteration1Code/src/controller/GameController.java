@@ -2,6 +2,7 @@ package controller;
  
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,9 @@ import model.Occupation;
 import model.TakeableItem;
  
 import model.Point;
+import utilities.FontHandler;
 import utilities.Scaling;
+import view.InventoryButton;
 import view.InventoryEquipmentView;
 import view.GameView;
 import view.InventoryView;
@@ -57,13 +60,15 @@ public class GameController {
         private boolean spawned = false;
         private Game game = new Game();
         private int yourLvl = game.getAvatar().getStatValue("Level");
+        private Font buttonFont = new Font("serif", Font.PLAIN, 24);
+        private FontHandler fh = new FontHandler();
        
         //Components
         private JTextField input = new JTextField(20);
         private JPanel buttons = new JPanel();
-        private JButton systemButton = new JButton("Systems");
-        private JButton statButton = new JButton("Statistics");
-        private JButton levelUp = new JButton("Level Up!");
+        private JButton systemButton;	// = new JButton("Systems");
+        private JButton statButton;		//new JButton("Statistics");
+        private JButton levelUp;		// = new JButton("Level Up!");
         private JInternalFrame systemMenu;
         private JInternalFrame statsView;
         private LevelUpView leveledView;
@@ -78,6 +83,10 @@ public class GameController {
                 board.addMouseListener(new BoardMouseListener());
                
                 //Add to the canvas
+                buttonFont = fh.AfterDisasterFont();
+                systemButton = new InventoryButton("Systems", buttonFont);
+                statButton = new InventoryButton("Statistics", buttonFont);
+                levelUp = new InventoryButton("Level Up!", buttonFont);
                 buttons.add(systemButton);
                 buttons.add(statButton);
                 buttons.add(levelUp);
@@ -120,6 +129,10 @@ public class GameController {
                 // add the mouse listener to the board
                 board.addMouseListener(new BoardMouseListener());
                 //Add to the canvas
+                buttonFont = fh.AfterDisasterFont();
+                systemButton = new InventoryButton("Systems", buttonFont);
+                statButton = new InventoryButton("Statistics", buttonFont);
+                levelUp = new InventoryButton("Level Up!", buttonFont);
                 buttons.add(systemButton);
                 buttons.add(statButton);
                 buttons.add(levelUp);
@@ -175,6 +188,9 @@ public class GameController {
              // add the mouse listener to the board
              board.addMouseListener(new BoardMouseListener());
              //Add to the canvas
+             systemButton = new InventoryButton("Systems", buttonFont);
+             statButton = new InventoryButton("Statistics", buttonFont);
+             levelUp = new InventoryButton("Level Up!", buttonFont);
              buttons.add(systemButton);
              buttons.add(statButton);
              buttons.add(levelUp);
