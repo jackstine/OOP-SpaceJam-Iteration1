@@ -41,7 +41,7 @@ public class GameView extends JPanel {
 		entityView=new EntityView(avatar);
 		this.mapView= new MapView(this.map,entityView,avatar);
 		add(this.mapView);
-		add(entityView);
+//		add(this.entityView);
 		this.setView();
 	}
 	

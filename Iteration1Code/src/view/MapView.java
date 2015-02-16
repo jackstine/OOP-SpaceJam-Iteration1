@@ -1,5 +1,6 @@
 package view;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -14,7 +15,7 @@ public class MapView extends JPanel{
 	private GameMap map;
 	private Avatar avatar;
 	private EntityView entityView;
-	private TileView tiles[][];
+	private TileView[][] tiles;
 	
 	public MapView(GameMap map, EntityView entityView, Avatar avatar) {
 		this.map = map;
@@ -26,31 +27,35 @@ public class MapView extends JPanel{
 	}
 	
 	void setTileComponents(){
+		
+		this.tiles = new TileView[map.getMapLength().getY()][map.getMapLength().getX()];
 		Point length = map.getMapLength();
 		Location avatarLocation= map.getLocation(avatar);
-		System.out.println(avatarLocation);
+		for(int i = 0;i < this.map.getMapLength().getY();i++){
+			for(int j = 0; j < this.map.getMapLength().getX();j++){
+				this.tiles[i][j] = new TileView(map.getTile(new Location(j,i)));
+			}
+		}
+	}
+	
+	public void paint(Graphics g){
+		Point length = map.getMapLength();
+		Location avatarLocation= map.getLocation(avatar);
 		int lowX=avatarLocation.getX()-3;
 		int highX=avatarLocation.getX()+3;
 		int lowY=avatarLocation.getY()-3;
 		int highY = avatarLocation.getY()+3;
-		tiles = new TileView[length.getY()][length.getX()];
 		for(int i=lowX;i<=highX;i++){
 			for(int j=lowY;j<=highY;j++){
 				Location current = new Location(i,j);
+				this.tiles[i][j].paintComponent(g);
 				if (avatarLocation.equals(current)){
-					System.out.println("Hit the Spot");
-					add(this.entityView);
+					this.entityView.paintComponent(g);
 				}
-//				else{
-					System.out.println(new Location(i,j));
-					tiles[i][j] = new TileView(map.getTile(new Location(i,j)));
-					this.add(tiles[i][j]);
-//				}
 			}
 		}
 		add(this.entityView);
-	}
-	
+	}	
 	public Dimension getPreferredSize(){
 		return new Dimension( Scaling.GAME_VIEW_WIDTH , Scaling.GAME_VIEW_HEIGHT);
 	}

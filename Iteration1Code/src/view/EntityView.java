@@ -28,16 +28,16 @@ public class EntityView extends JComponent{
 	
 	public EntityView(Avatar avatar) {
 		this.avatar = avatar;
+		this.setVisible(true);
 	}
 	
 	public void paintComponent(Graphics g){
 		BufferedImage image = avatar.getImage();
-		System.out.println("painting the entity");
-		g.drawImage(image,0 ,0 , null);
+		g.drawImage(image,300,300, null);
 	}
 	
 	public Dimension getPreferredSize(){
-		return new Dimension(Scaling.TILE_WIDTH,Scaling.TILE_HEIGHT);
+		return new Dimension(Scaling.TILE_WIDTH-50,Scaling.TILE_HEIGHT-50);
 	}
 
 }
