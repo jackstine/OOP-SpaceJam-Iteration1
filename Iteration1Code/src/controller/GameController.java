@@ -43,12 +43,10 @@ public class GameController {
         //MISC
         private boolean saved = false;
         private boolean spawned = false;
-        private Apple apple = new Apple(); //--TO BE REMOVED
         private Game game = new Game();
        
         //Components
         private JTextField input = new JTextField(20);
-        private JLabel savedText = new JLabel(apple.s);
         private JPanel buttons = new JPanel();
         private JButton systemButton = new JButton("Systems");
         private JButton statButton = new JButton("Statistics");
@@ -100,11 +98,6 @@ public class GameController {
         }
        
         public GameController(Game gameToCreate){
-               
-                //Load Game
-                apple = load();
-                savedText = new JLabel(apple.s);
-               
                 game = gameToCreate;
                 board = new GameView(game.getMap(),game.getAvatar());
                 character = new InventoryEquipmentView(game.getAvatar());
@@ -192,7 +185,6 @@ public class GameController {
                  FileOutputStream fileOut =
                  new FileOutputStream("apple.ser");
                  ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                 out.writeObject(apple);
                  out.close();
                  fileOut.close();
                  System.out.println("Serialized data is saved in apple.ser");
@@ -236,10 +228,6 @@ public class GameController {
         public class SaveGameButton implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
-                        apple.s = input.getText();
-                        input.setText(apple.s);
-                        savedText.setText(apple.s);
-                        System.out.println("Saved: " + apple.s);
                         save();
                         saved = true;
                 }

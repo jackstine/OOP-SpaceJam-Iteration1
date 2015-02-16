@@ -31,7 +31,6 @@ public class GameView extends JPanel {
 		avatar = new Avatar();
 		entityView=new EntityView(avatar);
 		map.updateEntityLocation(avatar, new Location(3,3));
-		image=avatar.getImage();
 		setView();
 	}
 

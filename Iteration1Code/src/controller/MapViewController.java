@@ -89,7 +89,6 @@ public class MapViewController{
 			avatar.setDirection(direction);
 			if(map.getTile(temp.addLocation(point)).isPassable()){
 				avatarLocation.add(point);
-				map.setDelta(point);
 				effectHandler.apply(map.getTile(avatarLocation));
 			};	
 		}

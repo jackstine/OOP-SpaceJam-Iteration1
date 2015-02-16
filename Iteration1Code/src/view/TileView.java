@@ -41,10 +41,8 @@ public class TileView extends JComponent{
     }
 	
 	public void paintComponent(Graphics g, int xTile, int yTile){
-//		System.out.println(xTile+ "  "+ yTile);
         int x= tile.getLocation().getX() - xTile;
         int y= tile.getLocation().getY() - yTile;
-       // System.out.println(x +"    "+ y );
         g.drawImage(this.image, x*Scaling.TILE_WIDTH ,y*Scaling.TILE_HEIGHT , null );
 	}
 	
