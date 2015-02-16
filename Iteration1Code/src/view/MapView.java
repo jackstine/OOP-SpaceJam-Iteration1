@@ -1,8 +1,11 @@
 package view;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
@@ -11,7 +14,7 @@ import model.GameMap;
 import model.Location;
 import model.Point;
 
-public class MapView extends JPanel{
+public class MapView extends JComponent{
 	private GameMap map;
 	private Avatar avatar;
 	private EntityView entityView;
@@ -23,14 +26,13 @@ public class MapView extends JPanel{
 		this.avatar = avatar;
 		this.map.updateEntityLocation(this.avatar, new Location(3,3));
 		this.setTileComponents();
-		this.setLayout(new GridLayout(7,7));
+//		this.setLayout(new GridLayout(7,7));
+//		this.setComponents();
 	}
 	
 	void setTileComponents(){
 		
 		this.tiles = new TileView[map.getMapLength().getY()][map.getMapLength().getX()];
-		Point length = map.getMapLength();
-		Location avatarLocation= map.getLocation(avatar);
 		for(int i = 0;i < this.map.getMapLength().getY();i++){
 			for(int j = 0; j < this.map.getMapLength().getX();j++){
 				this.tiles[i][j] = new TileView(map.getTile(new Location(j,i)));
@@ -38,39 +40,39 @@ public class MapView extends JPanel{
 		}
 	}
 	
-	public void paint(Graphics g){
-//		Point length = map.getMapLength();
-//		Location avatarLocation= map.getLocation(avatar);
-//		Point mapLocation = map.getDelta();
-//		int lowX=avatarLocation.getX()-3 + (mapLocation.getX()/Scaling.TILE_WIDTH);
-//		int highX=avatarLocation.getX()+3 + (mapLocation.getX()/Scaling.TILE_WIDTH);
-//		int lowY=avatarLocation.getY()-3 + (mapLocation.getY()/Scaling.TILE_WIDTH);
-//		int highY = avatarLocation.getY()+3 + (mapLocation.getY()/Scaling.TILE_WIDTH);
-//		System.out.println(mapLocation);
-//		System.out.println(lowX + "  "+highX+"  "+lowY+"  "+highY);
+//	private void setComponents(){
+////		this.removeAll();
+//		int RANGE = 3;
+//		Location location= this.map.getLocation(this.avatar);
+//		int lowX=location.getX()-RANGE;
+//		int highX=location.getX()+RANGE;
+//		int lowY=location.getY()-RANGE;
+//		int highY=location.getY()+RANGE;
+//		System.out.println(lowX +"  "+highX+ "   " + lowY+"  "+highY);
 //		for(int i=lowX;i<=highX;i++){
 //			for(int j=lowY;j<=highY;j++){
-//				Location current = new Location(i,j);
-//				this.tiles[i][j].paintComponent(g);
-//				if (avatarLocation.equals(current)){
-//					this.entityView.paintComponent(g);
-//				}
+////				add(tiles[i][j]);
+////			if (location.equals(new Location(j,i))){
+////				add(entityView);
+////			}
 //			}
 //		}
+//		
+//	}
+	
+	public void paintComponent(Graphics g){
 		int RANGE = 3;
-		
+//		super.paintComponent(g);
+//		this.setComponents();
 		Location location= this.map.getLocation(this.avatar);
 		int lowX=location.getX()-RANGE;
 		int highX=location.getX()+RANGE;
 		int lowY=location.getY()-RANGE;
 		int highY=location.getY()+RANGE;
+		System.out.println(lowX +"  "+highX+ "   " + lowY+"  "+highY);
 		for(int i=lowX;i<=highX;i++){
 			for(int j=lowY;j<=highY;j++){
-				int delta1= this.map.getTile(new Location(j,i)).getDeltaX();
-				int delta2= this.map.getTile(new Location(j,i)).getDeltaY();
-				this.map.getTile(new Location(j,i)).setDeltaX(delta1+ this.map.getDelta().getX());  
-				this.map.getTile(new Location(j,i)).setDeltaY(delta2+ this.map.getDelta().getY());  
-				this.tiles[j][i].paintComponent(g);
+				this.tiles[i][j].paintComponent(g, lowX, lowY);
 				if (location.equals(new Location(j,i))){
 					this.entityView.paintComponent(g);
 				}
