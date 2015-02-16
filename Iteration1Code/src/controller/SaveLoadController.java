@@ -134,7 +134,7 @@ public class SaveLoadController {
 					else if (itemType.equals("TreasureChest")) {
 						item = new TreasureChest();
 						String actionDone = tileItem[2];
-						if (actionDone.equals("true")) ((TreasureChest) item).setActionDone();
+						//if (actionDone.equals("true")) ((TreasureChest) item).setActionDone();
 					} else {
 						double value = Double.parseDouble(tileItem[2]);
 						if (itemType.equals("DamagingOneShotItem")) item = new DamagingOneShotItem(value);

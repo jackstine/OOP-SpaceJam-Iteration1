@@ -10,5 +10,7 @@ public class Directions {
 	public final static int NORTH = 8;
 	public final static int NORTHWEST = 7;
 	public final static int WEST = 4;
+	public final static int DANCE = 0;
+	public final static int CENTRAL = 5;
 
 }
