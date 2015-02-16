@@ -66,6 +66,9 @@ public class GameMap {
 		return map[x][y];
 	}
 	
+	public Point getMapLength(){
+		return new Point(map.length,map[0].length);
+	}
 /*	public Tile getItemTile(Item item){
 		//returns a tile;
 		//item currently doesnot have a getLocation

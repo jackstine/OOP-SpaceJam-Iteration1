@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 
 
 
+
+import javax.swing.JComponent;
+
 import utilities.Scaling;
 import model.Avatar;
 import model.Entity;
@@ -16,23 +19,21 @@ Contains an instance of an Entity to be rendered as part of a Tile
 
 */
 
-public class EntityView {
-	private BufferedImage image;
-
+public class EntityView extends JComponent {
 	private Avatar avatar;
-	private final int MIDDLE=Scaling.ENTITY_MIDDLE;
+	public static final int MIDDLEX=GameView.STARTINGX*Scaling.TILE_WIDTH;
+	public static final int MIDDLEY=GameView.STARTINGY*Scaling.TILE_HEIGHT;
 	
 	public EntityView(Avatar avatar) {
 		this.avatar = avatar;
-		image= avatar.getImage();
+		this.setVisible(true);
 		
 	}
 	
-	public void draw(Graphics g){
-		image = avatar.getImage();
-		g.drawImage(image, Scaling.ENTITY_MIDDLE ,Scaling.ENTITY_MIDDLE , null);
-		g.dispose();
-		//repaint();
+	public void paintComponent(Graphics g){
+		BufferedImage image = avatar.getImage();
+		g.drawImage(image, MIDDLEX, MIDDLEY , null);
+		repaint();
 	}
 
 }

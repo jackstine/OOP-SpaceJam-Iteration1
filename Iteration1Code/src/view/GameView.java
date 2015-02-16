@@ -25,16 +25,18 @@ public class GameView extends JPanel {
 	EntityView entityView;
 	BufferedImage image;
 	MapView mapView;
+	public static final int STARTINGX=3;
+	public static final int STARTINGY=3;
 
 	public GameView(){
 		map = new GameMap();
 		avatar = new Avatar();
 		entityView=new EntityView(avatar);
+		map.updateEntityLocation(avatar, new Location(STARTINGX,STARTINGY));
 		//image=avatar.getImage();
 		setFocusable(true);
 		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
 		setBackground(Color.BLACK);
-		map.updateEntityLocation(avatar, new Location(3,3));			//NOT NEEDED ANYMORE
 		image=avatar.getImage();
 		setVisible(true);
 	}
@@ -43,39 +45,31 @@ public class GameView extends JPanel {
 		this.map = map;
 		this.avatar = avatar;
 		entityView=new EntityView(avatar);
-		MapView mapView= new MapView(avatar);
-		//image=avatar.getImage();
-		setFocusable(true);
-		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
-		setBackground(Color.BLACK);
+		 this.mapView= new MapView(this.map,entityView,avatar);
+		add(this.mapView);
+		setView();
 		this.map.updateEntityLocation(avatar, new Location(3,3)); //NOT NEEDED ANYMORE
 		image=avatar.getImage();
-		setVisible(true);
 	}
 	
 	public GameView(GameMap map, Avatar avatar, Location location){
 		this.map = map;
 		this.avatar = avatar;
 		entityView=new EntityView(avatar);
-		MapView mapView= new MapView(avatar);
-		//image=avatar.getImage();
-		setFocusable(true);
-		setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
-		setBackground(Color.BLACK);
+		 this.mapView= new MapView(this.map,entityView,avatar);
+		add(this.mapView);
+		setView();
 		this.map.updateEntityLocation(avatar, location);// NOT NEEDED ANYMORE
 		image=avatar.getImage();
-		setVisible(true);
 	}
 	
-	public void paintComponent(Graphics g){
-		map.draw(g);
-		entityView.draw(g);
-		g.dispose();
-//		Timer timer = new Timer(1000, new mapMakerDelay());
-//		timer.start();
-		repaint();
-
+	private void setView(){
+        setFocusable(true);
+        setPreferredSize(new Dimension(Scaling.GAME_VIEW_WIDTH, Scaling.GAME_VIEW_HEIGHT));
+        setBackground(Color.BLACK);
+        setVisible(true);
 	}
+	
 	
 	public GameMap getMap() {
 		return map;

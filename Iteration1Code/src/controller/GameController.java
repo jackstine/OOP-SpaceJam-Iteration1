@@ -365,9 +365,10 @@ public class GameController {
             TakeableItem droppedItem = (TakeableItem) board.getMap().getTile(tileLocation).getItem();
             System.out.println(droppedItem+"  "+tileLocation);
             if((board.getMap().getTile(tileLocation).getItem() == droppedItem) && (game.getMap().getEntityTile(game.getAvatar()) == game.getMap().getTile(tileLocation))){
-            if (board.getAvatar().getInventory().findAndEquip(droppedItem))
+            	if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
                     board.getMap().getTile(tileLocation).dropItem();
-            }
+            	}
+        	}
         }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) { }

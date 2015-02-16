@@ -93,7 +93,6 @@ public class MapViewController{
 			avatar.setDirection(direction);
 			if(map.getTile(temp.addLocation(point)).isPassable()){
 				avatarLocation.add(point);
-				map.setDelta(point);
 				questHandler.apply(map.getTile(avatarLocation));
 				effectHandler.apply(map.getTile(avatarLocation));
 				
@@ -171,13 +170,4 @@ public class MapViewController{
 		public void keyTyped(KeyEvent arg0) {}
 		
 	}
-	/*public static void main(String[]args){
-		Avatar avatar = new Avatar();
-		MapViewController mv = new MapViewController(avatar);
-		mv.setVisible(true);
-		
-		
-	}*/
-	
- 
 }
