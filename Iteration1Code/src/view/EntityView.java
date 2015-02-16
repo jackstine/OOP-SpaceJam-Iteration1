@@ -24,7 +24,7 @@ Contains an instance of an Entity to be rendered as part of a Tile
 public class EntityView extends JComponent{
 
 	private Avatar avatar;
-	private final int MIDDLE=Scaling.ENTITY_MIDDLE;
+	private static final int MIDDLE = Scaling.ENTITY_MIDDLE;
 	
 	public EntityView(Avatar avatar) {
 		this.avatar = avatar;
@@ -33,7 +33,8 @@ public class EntityView extends JComponent{
 	
 	public void paintComponent(Graphics g){
 		BufferedImage image = avatar.getImage();
-		g.drawImage(image,300,300, null);
+		g.drawImage(image,MIDDLE ,MIDDLE, null);
+		repaint();
 	}
 	
 	public Dimension getPreferredSize(){

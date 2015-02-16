@@ -29,7 +29,7 @@ import utilities.Directions;
 //public class MapViewController extends JFrame{
 public class MapViewController{
 	private static final long serialVersionUID = 1L;
-	private GameMap map ;
+	private GameMap map;
 	private Avatar avatar;
 	private boolean active;
 	private GameController game;
@@ -91,7 +91,6 @@ public class MapViewController{
 				avatarLocation.add(point);
 				map.setDelta(point);
 				effectHandler.apply(map.getTile(avatarLocation));
-				
 			};	
 		}
 		

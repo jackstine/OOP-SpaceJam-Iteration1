@@ -44,6 +44,7 @@ public class TileView extends JComponent{
         int x= tile.getLocation().getX();
         int y= tile.getLocation().getY();
         g.drawImage(this.image,Scaling.TILE_WIDTH*x+tile.getDeltaX(),Scaling.TILE_HEIGHT*y+tile.getDeltaY(), null );
+        repaint();
 	}
 	
 	
