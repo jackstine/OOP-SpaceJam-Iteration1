@@ -29,10 +29,10 @@ public class Tile {
 	//might not need it
 	public Tile(Terrain terrain, Decal decal, int x, int y){
 		this.terrain=terrain;
+		this.decal= decal;
 		location= new Location(x,y);
 		deltaX=0;
 		deltaY=0;
-		decal= new RedCrossDecal();
 			
 	}
 	

@@ -48,11 +48,15 @@ public class TreasureChest extends InteractiveItem {
 	}
 	
 	public String toString() {
-		return "Item:TreasureChest:" + this.state;
+		return "Item:TreasureChest:" + this.actionDone;
 	}
 
 	@Override
 	public String getItemName() {
 		return this.ITEM_NAME;
+	}
+	
+	public void setActionDone() {
+		this.actionDone = true;
 	}
 }
