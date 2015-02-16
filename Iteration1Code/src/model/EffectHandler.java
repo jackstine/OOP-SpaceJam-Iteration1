@@ -12,10 +12,12 @@ public class EffectHandler {
 	
 	public void apply(Tile tile){
 		Decal decal=tile.getDecal();
-		Item item =  tile.getItem(); //casting
+		Item item =  tile.getItem(); 
 		if(decal!=null){
 			decal.getAreaEffect().apply(avatar); 
+			if(decal instanceof RedCrossDecal){
 			tile.setDecal(null);
+			}
 		}
 		if(item!=null && item instanceof HealingOneShotItem){
 			item.action(avatar); //add effect after getting clicked /add this
