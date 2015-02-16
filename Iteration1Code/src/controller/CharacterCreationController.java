@@ -62,9 +62,12 @@ public class CharacterCreationController {
 			System.out.println("boop");
 		}
 		
+		title = new JLabel("Character Creation");
+		title.setFont(titleFont.deriveFont(100f));
+		
 		backgroundPanel = new ImagePanel("src/res/img/main_menu_bg.gif");
 		
-		backgroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 5));
+		backgroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 5));
 		
 		ImageIcon terminatorButtonLogo = new ImageIcon("src/res/img/terminator2.png");
 		ImageIcon alchemistButtonLogo = new ImageIcon("src/res/img/alchemist2.png");
@@ -74,7 +77,8 @@ public class CharacterCreationController {
 		startAlchemistButton = new CharacterCreationButton(alchemistButtonLogo);
 		startTerminatorButton = new CharacterCreationButton(terminatorButtonLogo);
 		startHunterButton = new CharacterCreationButton(hunterButtonLogo);
-		title = new JLabel();
+		
+		//title = new JLabel();
 		buttons = new JPanel();
 		main = new JPanel();
 		back = new JPanel();
@@ -94,20 +98,14 @@ public class CharacterCreationController {
 		nameEntry.add(enterNameField);
 		
 		chooseOccupationLabel = new JLabel("<html><p style='font-size:20px;'>Choose your occupation:</p></html>", JLabel.CENTER);
-		//backgroundPanel.add(startTerminatorButton);
+		backgroundPanel.add(title);
+		backgroundPanel.add(startTerminatorButton);
 		backgroundPanel.add(startAlchemistButton);
-		//backgroundPanel.add(startHunterButton);
+		backgroundPanel.add(startHunterButton);
 		
 		back.add(backGameButton);
 		
-		main.setLayout(new GridLayout(4,1));
 		
-		main.add(nameEntry);
-		main.add(chooseOccupationLabel);
-		main.add(buttons);
-		main.add(back);
-		
-		//charCreation.getCanvas().add(title, BorderLayout.NORTH);
 		//charCreation.getCanvas().add(main, BorderLayout.CENTER);
 		
 		charCreation.getCanvas().add(backgroundPanel);
