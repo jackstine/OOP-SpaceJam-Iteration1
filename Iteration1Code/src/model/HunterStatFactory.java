@@ -1,8 +1,8 @@
 package model;
 
-import java.io.Serializable;
 
-public class HunterStatFactory extends StatFactory implements Serializable{
+
+public class HunterStatFactory extends StatFactory {
 	public HunterStatFactory() {
 		
 	}

@@ -1,8 +1,8 @@
 package model;
 
-import java.io.Serializable;
 
-public class DefensiveRating extends DerivedStat implements Serializable {
+
+public class DefensiveRating extends DerivedStat {
 
 	public DefensiveRating() {
 		super();

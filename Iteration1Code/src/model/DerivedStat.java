@@ -1,9 +1,9 @@
 package model;
 
-import java.io.Serializable;
+
 import java.util.*;
 
-public abstract class DerivedStat extends Observable implements Stat, Observer, Serializable {
+public abstract class DerivedStat extends Observable implements Stat, Observer {
 
 	protected List<Stat> stats;
 	protected int value;

@@ -1,9 +1,8 @@
 package model;
 
-import java.io.Serializable;
 import java.util.Map;
 
-public abstract class Occupation implements Serializable{
+public abstract class Occupation{
 	
 	protected String portraitLocation;
 	protected String name;
