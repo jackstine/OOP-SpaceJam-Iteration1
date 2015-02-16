@@ -15,7 +15,7 @@ public class MainMenuButton extends JButton {
 		super(s);
 		//customFeel();
 		setForeground(Color.WHITE);
-		setFont(f.deriveFont(30f));
+		setFont(f.deriveFont(40f));
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 	}

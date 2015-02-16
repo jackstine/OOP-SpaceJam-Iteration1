@@ -79,10 +79,14 @@ public class MainMenuController {
 		b3 = new JPanel();
 		
 		JPanel backGroundPanel = new ImagePanel("src/res/img/main_menu_bg.gif");
-		backGroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 50));
+		backGroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 5));
 		Insets insets = backGroundPanel.getInsets();
 		Dimension size = backGroundPanel.getPreferredSize();
 		
+		JButton ghost = new JButton();
+		ghost.setPreferredSize(new Dimension(10, 225));
+		ghost.setContentAreaFilled(false);
+		ghost.setBorderPainted(false);
 		
 		buttons.setLayout(new GridLayout(4,1));
 		
@@ -107,6 +111,7 @@ public class MainMenuController {
 		buttons.setBackground(new Color(0,0,0,0));
 		
 		backGroundPanel.add(title);
+		backGroundPanel.add(ghost);
 		//backGroundPanel.add(buttons, BorderLayout.CENTER);
 		backGroundPanel.add(startGameButton);
 		backGroundPanel.add(loadGameButton);
