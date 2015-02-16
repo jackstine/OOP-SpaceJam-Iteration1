@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
 
+import utilities.FontHandler;
+
 import java.util.*;
 
 import model.*;
@@ -49,9 +51,13 @@ public class StatusView extends JPanel {
 	
 	private BufferedImage avatarPortrait;
 	
+	private FontHandler fh = new FontHandler();
+	Font labelFont;
+	
 	public StatusView(Avatar a) {
 		
 		avatar = a;
+		labelFont = fh.AfterDisasterFont();
 		
 		System.out.println(avatar.getOccupation().getPortraitLocation());
 		
@@ -72,13 +78,19 @@ public class StatusView extends JPanel {
 		
 		vitalsPanel = new JPanel();
 		avatarName = new JLabel(avatar.getName());
+		avatarName.setFont(labelFont.deriveFont(20f));
 		
 		avatarOccupation = new JLabel(avatar.getOccupation().getName());
-		avatarLevel = new JLabel("Lv. "+avatar.getStatValue("Level"));
+		avatarOccupation.setFont(labelFont.deriveFont(20f));
 		
+		avatarLevel = new JLabel("Lv. "+avatar.getStatValue("Level"));
+		avatarLevel.setFont(labelFont.deriveFont(20f));
 	
-		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life") + " Lives: " +avatar.getStatValue("Lives")); 
+		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life") + " Lives: " +avatar.getStatValue("Lives"));
+		avatarLife.setFont(labelFont.deriveFont(18f));
+		
 		avatarMana = new JLabel("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
+		avatarMana.setFont(labelFont.deriveFont(20f));
 		
 		levelClassPanel = new JPanel();
 		
@@ -104,6 +116,7 @@ public class StatusView extends JPanel {
 		
 		abilitiesPanel = new JPanel();
 		abilitiesLabel = new JLabel("Ability Select");
+		abilitiesLabel.setFont(labelFont.deriveFont(20f));
 		
 		abilitiesPanel.setLayout(new BoxLayout(abilitiesPanel, BoxLayout.Y_AXIS));
 		abilitiesPanel.add(abilitiesLabel);
@@ -118,6 +131,7 @@ public class StatusView extends JPanel {
 		//For now, default buttons
 		for(int i = 1; i < 5; i++) {
 			JButton temp = new JButton("Ability "+i);
+			temp.setFont(labelFont.deriveFont(20f));
 			temp.setFocusable(false);
 			abilityButtons.add(temp);
 			abilitiesPanel.add(abilityButtons.get(abilityButtons.size()-1));
