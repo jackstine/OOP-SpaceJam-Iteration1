@@ -21,6 +21,7 @@ public class TreasureChest extends InteractiveItem {
 		changeState();
 		return true;
 		}
+		changeState();
 		return false;
 	}
 	
@@ -29,10 +30,6 @@ public class TreasureChest extends InteractiveItem {
 	}
 	public BufferedImage getNewImage(int scale) {
 		return ItemImageProxy.getNewItemImage(this,state);
-	}
-	
-	public void setActionDone() {
-		this.actionDone = true;
 	}
 	
 	public void changeState(){
@@ -49,6 +46,6 @@ public class TreasureChest extends InteractiveItem {
 	}
 	
 	public String toString() {
-		return "Item:TreasureChest:" + this.actionDone;
+		return "Item:TreasureChest:" + this.state;
 	}
 }
