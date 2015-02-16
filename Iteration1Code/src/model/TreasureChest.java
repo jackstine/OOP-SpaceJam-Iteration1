@@ -7,10 +7,12 @@ public class TreasureChest extends InteractiveItem {
 	private int reward;
 	private boolean actionDone;
 	
+	
 	public TreasureChest(){
 		state=0;
 		reward=1000;
 		actionDone=false;
+		ITEM_NAME = "Treasure Chest";
 	}
 	
 	public boolean action(Avatar avatar) {
@@ -47,5 +49,10 @@ public class TreasureChest extends InteractiveItem {
 	
 	public String toString() {
 		return "Item:TreasureChest:" + this.state;
+	}
+
+	@Override
+	public String getItemName() {
+		return this.ITEM_NAME;
 	}
 }

@@ -3,7 +3,6 @@ package model;
 
 import java.awt.image.BufferedImage;
 
-import java.io.Serializable;
 
 public class MountainTerrain extends Terrain {
 	

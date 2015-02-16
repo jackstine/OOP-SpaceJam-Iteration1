@@ -1,10 +1,9 @@
 package model;
 
-import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ArmorRating extends DerivedStat implements Observer, Serializable{
+public class ArmorRating extends DerivedStat implements Observer{
 	private ArmorSlot slotSubject;
 	private int armorBonus;
 	

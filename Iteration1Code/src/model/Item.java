@@ -8,5 +8,7 @@ public interface Item {
 	public BufferedImage getImage(int scale);
 	
 	public String getImagePath();
+	
+	public String getItemName();
 }
 

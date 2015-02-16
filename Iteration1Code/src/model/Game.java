@@ -4,7 +4,7 @@ import java.io.*;
 
 import controller.SaveLoadController;
 
-public class Game implements Serializable {
+public class Game {
 	GameMap map = new GameMap();
 	Avatar avatar = new Avatar(new Alchemist());
 	

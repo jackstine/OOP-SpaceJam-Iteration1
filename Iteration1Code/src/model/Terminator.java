@@ -1,9 +1,8 @@
 package model;
 
-import java.io.Serializable;
 import java.util.Map;
 
-public class Terminator extends Occupation implements Serializable{
+public class Terminator extends Occupation{
 
 	public Terminator() {
 		portraitLocation = "src/res/img/terminator_portrait.jpg";

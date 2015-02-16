@@ -1,8 +1,7 @@
 package model;
 
-import java.io.Serializable;
 
-public class Experience extends PrimaryStat implements Serializable {
+public class Experience extends PrimaryStat {
 
 	public Experience(int value) {
 		super(value);

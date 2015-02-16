@@ -1,9 +1,9 @@
 package model;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
-public abstract class Terrain implements Serializable{
+
+public abstract class Terrain {
 	
 	private boolean passable;
 	protected char terrainID;
