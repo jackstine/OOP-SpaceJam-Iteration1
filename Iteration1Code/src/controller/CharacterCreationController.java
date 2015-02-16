@@ -23,6 +23,7 @@ import utilities.Scaling;
 import view.CharacterCreationButton;
 import view.ImagePanel;
 import view.View;
+import view.MainMenuButton;
 
 
 public class CharacterCreationController {
@@ -72,25 +73,26 @@ public class CharacterCreationController {
 		backgroundPanel.setLayout(new GridBagLayout());//(FlowLayout.CENTER, 350, 5));
 		GridBagConstraints c = new GridBagConstraints();
 		
-		ImageIcon terminatorButtonLogo = new ImageIcon("src/res/img/terminator2.png");
-		ImageIcon alchemistButtonLogo = new ImageIcon("src/res/img/alchemist2.png");
-		ImageIcon hunterButtonLogo = new ImageIcon("src/res/img/hunter2.png");
+		ImageIcon terminatorButtonLogo = new ImageIcon("src/res/img/terminator3.png");
+		ImageIcon alchemistButtonLogo = new ImageIcon("src/res/img/alchemist3.png");
+		ImageIcon hunterButtonLogo = new ImageIcon("src/res/img/hunter3.png");
 		
-		backGameButton = new JButton();
+		backGameButton = new MainMenuButton("       <Back>", labelFont);
+		
 		startAlchemistButton = new CharacterCreationButton(alchemistButtonLogo);
 		startTerminatorButton = new CharacterCreationButton(terminatorButtonLogo);
 		startHunterButton = new CharacterCreationButton(hunterButtonLogo);
 		
-		JLabel terminatorLabel = new JLabel("   Terminator   ");
+		JLabel terminatorLabel = new JLabel("  Terminator");
 		terminatorLabel.setForeground(Color.WHITE);
 		Font labelFontRedux = labelFont.deriveFont(40f);
 		terminatorLabel.setFont(labelFontRedux);
 		
-		JLabel alchemistLabel = new JLabel("   Alchemist   ");
+		JLabel alchemistLabel = new JLabel("   Alchemist");
 		alchemistLabel.setForeground(Color.WHITE);
 		alchemistLabel.setFont(labelFontRedux);
 		
-		JLabel hunterLabel = new JLabel("   Hunter   ");
+		JLabel hunterLabel = new JLabel("        Hunter");
 		hunterLabel.setForeground(Color.WHITE);
 		hunterLabel.setFont(labelFontRedux);
 		
@@ -107,17 +109,21 @@ public class CharacterCreationController {
 		enterNameField.setHorizontalAlignment(JTextField.CENTER);
 		enterNameField.setFont(labelFontRedux);
 		
-		chooseOccupationLabel = new JLabel("<html><p style='font-size:20px;'>Choose your occupation:</p></html>", JLabel.CENTER);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
+		c.ipady = 30;
 		c.gridwidth = 3;
 		backgroundPanel.add(title, c);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = 3;
+		c.gridwidth = 2;
 		backgroundPanel.add(enterNameLabel, c);
+		c.gridx = 2;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		backgroundPanel.add(backGameButton, c);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 2;
@@ -142,19 +148,24 @@ public class CharacterCreationController {
 		c.gridx = 0;
 		c.gridy = 4;
 		c.gridwidth = 1;
-		backgroundPanel.add(terminatorLabel, c);
+		//c.ipady = -20;
+		//backgroundPanel.add(terminatorLabel, c);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 4;
 		c.gridwidth = 1;
-		backgroundPanel.add(alchemistLabel, c);
+		//c.ipady = -20;
+		//backgroundPanel.add(alchemistLabel, c);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 4;
 		c.gridwidth = 1;
-		backgroundPanel.add(hunterLabel, c);
+		//c.ipady = -20;
+		//backgroundPanel.add(hunterLabel, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+
 		
-		back.add(backGameButton);
+		//back.add(backGameButton);
 		
 		
 		//charCreation.getCanvas().add(main, BorderLayout.CENTER);
