@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,22 +54,23 @@ public class CharacterCreationController {
 		charCreation.getCanvas().setLayout(new BorderLayout());
 		
 		Font titleFont = new Font("serif", Font.PLAIN, 24);
-		Font buttonFont = new Font("serif", Font.PLAIN, 24);
+		Font labelFont = new Font("serif", Font.PLAIN, 24);
 		
 		try {
 			titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/Apocalypse_Now.ttf"));
-			buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/After_Disaster.ttf"));
+			labelFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/After_Disaster.ttf"));
 			System.out.println("IT WORKED!");
 		} catch (Exception e) {
 			System.out.println("boop");
 		}
 		
-		title = new JLabel("Character Creation");
+		title = new JLabel("CHARACTER CREATION");
 		title.setFont(titleFont.deriveFont(100f));
 		
 		backgroundPanel = new ImagePanel("src/res/img/main_menu_bg.gif");
 		
-		backgroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 5));
+		backgroundPanel.setLayout(new GridBagLayout());//(FlowLayout.CENTER, 350, 5));
+		GridBagConstraints c = new GridBagConstraints();
 		
 		ImageIcon terminatorButtonLogo = new ImageIcon("src/res/img/terminator2.png");
 		ImageIcon alchemistButtonLogo = new ImageIcon("src/res/img/alchemist2.png");
@@ -78,30 +81,78 @@ public class CharacterCreationController {
 		startTerminatorButton = new CharacterCreationButton(terminatorButtonLogo);
 		startHunterButton = new CharacterCreationButton(hunterButtonLogo);
 		
+		JLabel terminatorLabel = new JLabel("   Terminator   ");
+		terminatorLabel.setForeground(Color.WHITE);
+		Font labelFontRedux = labelFont.deriveFont(40f);
+		terminatorLabel.setFont(labelFontRedux);
+		
+		JLabel alchemistLabel = new JLabel("   Alchemist   ");
+		alchemistLabel.setForeground(Color.WHITE);
+		alchemistLabel.setFont(labelFontRedux);
+		
+		JLabel hunterLabel = new JLabel("   Hunter   ");
+		hunterLabel.setForeground(Color.WHITE);
+		hunterLabel.setFont(labelFontRedux);
+		
 		//title = new JLabel();
 		buttons = new JPanel();
 		main = new JPanel();
 		back = new JPanel();
 		
-		enterNameLabel = new JLabel("<html><p style='font-size:20px;'>Name your character:</p><br></html>",JLabel.CENTER);
+		enterNameLabel = new JLabel("Name your character");
+		enterNameLabel.setFont(labelFontRedux);
+		enterNameLabel.setForeground(Color.WHITE);
 		
-		//charCreation.getCanvas().setPreferredSize(new Dimension(Scaling.CHARACTER_CREATION_WIDTH,Scaling.CHARACTER_CREATION_HEIGHT));
-
-		nameEntry = new JPanel();
-		nameEntry.setLayout(new GridLayout(2,1));
-		Font font = new Font("Arial", Font.BOLD,20);
 		enterNameField = new JTextField("Arnold");
 		enterNameField.setHorizontalAlignment(JTextField.CENTER);
-		enterNameField.setFont(font);
-
-		nameEntry.add(enterNameLabel);
-		nameEntry.add(enterNameField);
+		enterNameField.setFont(labelFontRedux);
 		
 		chooseOccupationLabel = new JLabel("<html><p style='font-size:20px;'>Choose your occupation:</p></html>", JLabel.CENTER);
-		backgroundPanel.add(title);
-		backgroundPanel.add(startTerminatorButton);
-		backgroundPanel.add(startAlchemistButton);
-		backgroundPanel.add(startHunterButton);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 3;
+		backgroundPanel.add(title, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 3;
+		backgroundPanel.add(enterNameLabel, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = 3;
+		backgroundPanel.add(enterNameField, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		backgroundPanel.add(startTerminatorButton, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		backgroundPanel.add(startAlchemistButton, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 2;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		backgroundPanel.add(startHunterButton, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		backgroundPanel.add(terminatorLabel, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		backgroundPanel.add(alchemistLabel, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 2;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		backgroundPanel.add(hunterLabel, c);
 		
 		back.add(backGameButton);
 		
