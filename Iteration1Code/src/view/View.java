@@ -1,7 +1,14 @@
 package view;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
+import javax.swing.JLayeredPane;
+
+import utilities.Scaling;
 
 
 public class View {
@@ -39,6 +46,9 @@ public class View {
 	}
 	public void setRedraw(boolean redraw) {
 		this.redraw = redraw;
+	}
+	public void setBackground(String s) {
+		panel.add(new ImagePanel(s));
 	}
 	
 }

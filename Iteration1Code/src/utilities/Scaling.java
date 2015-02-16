@@ -68,8 +68,8 @@ public final class Scaling {
 	public static final int LOAD_TABLE_HEIGHT = 600;
 	
 	/**************MAINMENUCONTROLLER***********/
-	public static final int MAIN_MENU_WIDTH = 600;
-	public static final int MAIN_MENNU_HEIGHT = 600;
+	public static final int MAIN_MENU_WIDTH = 1200;
+	public static final int MAIN_MENU_HEIGHT = 600;
 	
 	/**************AVATAR***********/
 	public static final int AVATAR_WIDTH = Scaling.TILE_WIDTH;		//the avatar has to be the same size as a Tile
