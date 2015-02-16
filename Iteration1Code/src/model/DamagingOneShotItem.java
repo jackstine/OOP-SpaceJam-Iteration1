@@ -6,6 +6,7 @@ public class DamagingOneShotItem extends OneShotItem {
 
 	private double percentDamage;
 	
+	
 	public DamagingOneShotItem(double percentDamage) {
 		this.percentDamage = percentDamage;
 	}
@@ -34,5 +35,11 @@ public class DamagingOneShotItem extends OneShotItem {
 	
 	public String toString() {
 		return "Item:DamagingOneShotItem:" + this.percentDamage;
+	}
+
+	@Override
+	public String getItemName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

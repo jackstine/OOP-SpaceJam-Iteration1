@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JButton;
 
@@ -10,9 +11,13 @@ public class MainMenuButton extends JButton {
 		customFeel();
 	}
 	
-	public MainMenuButton(String s) {
+	public MainMenuButton(String s, Font f) {
 		super(s);
-		customFeel();
+		//customFeel();
+		setForeground(Color.WHITE);
+		setFont(f.deriveFont(40f));
+		setContentAreaFilled(false);
+		setBorderPainted(false);
 	}
 	
 	private void customFeel() {

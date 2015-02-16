@@ -145,9 +145,8 @@ public class MapViewController{
 				this.move(new Point(0,0), Directions.DANCE);
 			}
 			else if(key==KeyEvent.VK_NUMPAD5 || key==KeyEvent.VK_5){
-				this.move(new Point(0,0),Directions.CENTRAL);
+				this.move(new Point(0,0), Directions.CENTRAL);
 			}
-				
 			else if(key==KeyEvent.VK_ESCAPE){
 				game.spawnSystems();
 			}

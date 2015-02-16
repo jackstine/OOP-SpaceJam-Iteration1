@@ -43,4 +43,9 @@ public class Armor extends Equipable {
 		equipment.equipSlot(this.slot,this);
 		return item;
 	}
+
+	@Override
+	public String getItemName() {
+		return this.ITEM_NAME;
+	}
 }

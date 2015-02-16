@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -50,21 +52,41 @@ public class MainMenuController {
 			BufferedImage backgroundImage = ImageIO.read(new File("src/res/img/main_menu_bg.gif"));
 		} catch (Exception e) {System.out.println("Didn't find.");}
 		
+		Font titleFont = new Font("serif", Font.PLAIN, 24);
+		Font buttonFont = new Font("serif", Font.PLAIN, 24);
+		
+		try {
+			titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/Apocalypse_Now.ttf"));
+			buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/res/fonts/After_Disaster.ttf"));
+			System.out.println("IT WORKED!");
+		} catch (Exception e) {
+			System.out.println("boop");
+		}
+		
 		background = new JLabel(new ImageIcon("src/res/img/main_menu_bg.gif"));
-		startGameButton = new MainMenuButton("<html><span style='font-size:20px; font-family:Papyrus;'>New</span></html>");
-		loadGameButton = new MainMenuButton("<html><span style='font-size:20px; font-family:Papyrus'>Load</span></html>");
-		quitGameButton = new MainMenuButton("<html><span style='font-size:20px; font-family:Papyrus'>Quit</span></html>");
-		title = new JLabel("<html><span style='font-size:40px; font-family:Papyrus; color: 00478f'><u>The Dave After Tomorrow</u></span></html>", JLabel.CENTER);
+		startGameButton = new MainMenuButton("New Game", buttonFont);
+		
+		loadGameButton = new MainMenuButton("Load Game", buttonFont);
+		
+		quitGameButton = new MainMenuButton("Quit Game", buttonFont);
+		
+		//title = new JLabel("<html><span style='font-size:40px; font-family:Papyrus; color: 00478f'><u>The Dave After Tomorrow</u></span></html>", JLabel.CENTER);
+		title = new JLabel("THE DAVE AFTER TOMORROW");
+		title.setFont(titleFont.deriveFont(100f));
 		buttons = new JPanel();
 		b1 = new JPanel();
 		b2 = new JPanel();
 		b3 = new JPanel();
 		
 		JPanel backGroundPanel = new ImagePanel("src/res/img/main_menu_bg.gif");
-		backGroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 50));
+		backGroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 5));
 		Insets insets = backGroundPanel.getInsets();
 		Dimension size = backGroundPanel.getPreferredSize();
 		
+		JButton ghost = new JButton();
+		ghost.setPreferredSize(new Dimension(10, 225));
+		ghost.setContentAreaFilled(false);
+		ghost.setBorderPainted(false);
 		
 		buttons.setLayout(new GridLayout(4,1));
 		
@@ -89,6 +111,7 @@ public class MainMenuController {
 		buttons.setBackground(new Color(0,0,0,0));
 		
 		backGroundPanel.add(title);
+		backGroundPanel.add(ghost);
 		//backGroundPanel.add(buttons, BorderLayout.CENTER);
 		backGroundPanel.add(startGameButton);
 		backGroundPanel.add(loadGameButton);

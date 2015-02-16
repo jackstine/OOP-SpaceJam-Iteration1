@@ -37,4 +37,10 @@ public class HealingOneShotItem extends OneShotItem {
 	public String toString() {
 		return "Item:HealingOneShotItem:" + this.percentHealth;
 	}
+
+	@Override
+	public String getItemName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

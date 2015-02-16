@@ -26,5 +26,9 @@ public class GiantRock extends ObstacleItem {
 	public String toString() {
 		return "Item:GiantRock";
 	}
+	
+	public String getItemName(){
+		return this.ITEM_NAME;
+	}
 
 }

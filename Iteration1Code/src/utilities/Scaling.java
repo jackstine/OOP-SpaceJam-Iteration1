@@ -18,6 +18,8 @@ public final class Scaling {
 	/*************************************************************/
 	public static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 	public static final int SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+	public static final int SCREEN_WIDTH_CENTER = SCREEN_WIDTH / 2;
+	public static final int SCREEN_HEIGHT_CENTER = SCREEN_HEIGHT / 2;
 	
 	
 	
