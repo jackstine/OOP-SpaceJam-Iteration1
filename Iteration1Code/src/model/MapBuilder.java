@@ -1,9 +1,5 @@
 package model;
 
-
-import java.util.HashMap;
-
-
 public class MapBuilder{
 	protected Tile[][] map;
 	protected int width;

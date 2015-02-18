@@ -1,18 +1,14 @@
 package view;
-import java.awt.Component;
-import java.awt.Container;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
  
 import javax.swing.JComponent;
-import javax.swing.JPanel;
  
 import utilities.Scaling;
 import model.Avatar;
 import model.GameMap;
 import model.Location;
-import model.Point;
  
 public class MapView extends JComponent{
         private GameMap map;

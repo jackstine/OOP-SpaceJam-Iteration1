@@ -2,21 +2,15 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-import javax.swing.Timer;
 
 import javax.swing.JPanel;
-
-import controller.ViewController.RunGameTimer;
 
 import utilities.Scaling;
 import model.Avatar;
 import model.GameMap;
-import model.Item;
 import model.Location;
 
 public class GameView extends JPanel {
@@ -25,8 +19,8 @@ public class GameView extends JPanel {
 	EntityView entityView;
 	BufferedImage image;
 	MapView mapView;
-	public static final int STARTINGX=3;
-	public static final int STARTINGY=3;
+	public static final int STARTING_X=3;
+	public static final int STARTING_Y=3;
 	
 	public GameView(GameMap map, Avatar avatar){
 		this.map = map;
@@ -35,7 +29,7 @@ public class GameView extends JPanel {
 		this.mapView= new MapView(this.map,entityView,avatar);
 		add(this.mapView);
 		setView();
-		this.map.updateEntityLocation(avatar, new Location(3,3)); //NOT NEEDED ANYMORE
+		this.map.updateEntityLocation(avatar, new Location(STARTING_X, STARTING_Y)); //NOT NEEDED ANYMORE
 		image=avatar.getImage();
 	}
 	

@@ -1,26 +1,18 @@
 package controller;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import utilities.FontHandler;
 import utilities.Scaling;
@@ -33,7 +25,7 @@ public class MainMenuController {
 	private JButton startGameButton;
 	private JButton loadGameButton;
 	private JButton quitGameButton;
-	private JLabel background;
+	// private JLabel background;
 	private JLabel title;
 	private JPanel buttons;
 	private JPanel b1;
@@ -76,8 +68,8 @@ public class MainMenuController {
 		
 		JPanel backGroundPanel = new ImagePanel("src/res/img/main_menu_bg.gif");
 		backGroundPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 700, 5));
-		Insets insets = backGroundPanel.getInsets();
-		Dimension size = backGroundPanel.getPreferredSize();
+		// Insets insets = backGroundPanel.getInsets();
+		// Dimension size = backGroundPanel.getPreferredSize();
 		
 		JButton ghost = new JButton();
 		ghost.setPreferredSize(new Dimension(10, 225));

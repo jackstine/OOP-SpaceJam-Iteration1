@@ -1,46 +1,26 @@
 package controller;
  
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
- 
-
-
-
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.border.LineBorder;
- 
-
-
-
 
 import model.Game;
-import model.Item;
 import model.Location;
-import model.Occupation;
 import model.TakeableItem;
  
 import model.Point;
 import utilities.Scaling;
 import view.InventoryEquipmentView;
 import view.GameView;
-import view.InventoryView;
 import view.LevelUpView;
 import view.MapView;
 import view.StatisticsView;
@@ -62,7 +42,7 @@ public class GameController {
         private int yourLvl = game.getAvatar().getStatValue("Level");
        
         //Components
-        private JTextField input = new JTextField(20);
+        // private JTextField input = new JTextField(20);
         private JPanel buttons = new JPanel();
         private JButton systemButton = new JButton("Systems");
         private JButton statButton = new JButton("Statistics");

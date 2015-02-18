@@ -36,18 +36,14 @@ public class CharacterCreationController {
 	private JLabel enterNameLabel;
 	private JTextField enterNameField;
 	private JLabel title;
-	private JLabel chooseOccupationLabel;
 	private JPanel backgroundPanel;
 	private JPanel buttons;
 	private JPanel main;
 	private JPanel back;
-	private JPanel nameEntry;
-	private final int STARTINGX=3;
-	private final int STARTINGY=3;
+	// private final int STARTINGX=3;
+	// private final int STARTINGY=3;
 	
 	private Game gameToCreate;
-	
-	private Occupation occupationSelected;
 
 	public CharacterCreationController(){
 		charCreation = new View();

@@ -6,9 +6,7 @@ import java.awt.image.BufferedImage;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 
-public class Tile {
-	
-	private boolean dontDraw;	
+public class Tile {	
 	
 	private Terrain terrain;
 	private Location location;

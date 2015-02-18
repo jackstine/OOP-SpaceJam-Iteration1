@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 public abstract class Terrain {
 	
-	private boolean passable;
 	protected char terrainID;
 	
 	public abstract boolean isPassable();

@@ -1,8 +1,5 @@
 package model;
 
-import java.awt.image.BufferedImage;
-
-
 public class GiantRock extends ObstacleItem {
 	private final String GIANT_ROCK_IMAGE = "src/res/img/giant_rock.png";
 

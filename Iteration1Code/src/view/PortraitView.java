@@ -1,12 +1,8 @@
 package view;
 
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class PortraitView extends JPanel{

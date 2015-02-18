@@ -1,7 +1,5 @@
 package view;
 
-
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -32,11 +30,7 @@ public class InventoryEquipmentView extends JPanel {
 	//private Grid[][] inventory
 
 	public InventoryEquipmentView(Avatar avatar) {
-		
-		//DELETE ME PLEASE
-		this.addMouseListener(new InventoryEquipmentMouseListener());
-		
-		
+				
 		this.avatar = avatar;
 		this.inventory = new InventoryView(avatar.getInventory());
 		inventory.addMouseListener(new InventoryMouseListener());
@@ -59,7 +53,7 @@ public class InventoryEquipmentView extends JPanel {
 	}
 	
 	public class EquipmentMouseListener implements MouseListener{
-		private final int RIGHT_CLICK = MouseEvent.BUTTON3;
+		// private final int RIGHT_CLICK = MouseEvent.BUTTON3;
 		private final int LEFT_CLICK = MouseEvent.BUTTON1;
 		
 		
@@ -84,22 +78,6 @@ public class InventoryEquipmentView extends JPanel {
 		
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
-		public void mousePressed(MouseEvent e) {}
-		public void mouseReleased(MouseEvent e) {}
-	}
-	
-	
-	public class InventoryEquipmentMouseListener implements MouseListener{
-		private final int RIGHT_CLICK = MouseEvent.BUTTON3;
-		private final int LEFT_CLICK = MouseEvent.BUTTON1;
-
-		// all these classes need to be defined in the MapView
-		public void mouseClicked(MouseEvent e) {
-			System.out.println(e);
-		}
-		
-		public void mouseEntered(MouseEvent e) {}
-		public void mouseExited(MouseEvent e) {	}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 	}

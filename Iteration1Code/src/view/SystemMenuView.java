@@ -6,7 +6,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import utilities.Scaling;
-import controller.Apple;
 
 /*
 

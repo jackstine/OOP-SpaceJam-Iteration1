@@ -1,12 +1,8 @@
 package view;
 
-import java.awt.*;
-
 import javax.swing.*;
 
 import model.*;
-
-import java.awt.Toolkit;
 
 public class TestStatusView extends JFrame{
 	

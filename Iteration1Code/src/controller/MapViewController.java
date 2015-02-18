@@ -2,34 +2,26 @@ package controller;
 
 import model.Avatar;
 import model.EffectHandler;
-import model.Game;
 import model.GameMap;
-import model.Item;
 import model.Location;
 import model.QuestHandler;
-import model.Tile;
 import model.Point;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import utilities.Scaling;
 import utilities.Directions;
 
 
 //public class MapViewController extends JFrame{
 public class MapViewController{
-	private static final long serialVersionUID = 1L;
 	private GameMap map ;
 	private Avatar avatar;
 	private boolean active;

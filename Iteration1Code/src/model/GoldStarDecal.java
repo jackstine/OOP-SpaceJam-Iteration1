@@ -1,10 +1,7 @@
 package model;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import model.ExperienceAreaEffect;
 
 public class GoldStarDecal extends Decal {
@@ -15,15 +12,7 @@ public class GoldStarDecal extends Decal {
 		super();
 		effect= new ExperienceAreaEffect();
 		this.decalID = '*';
-	}
-	/*
-	@Override
-	protected String getFilePath() {
-		//FIX NEXT LINE!! NOT RESOLVING CORRECT PATH
-		return "src/res/img/goldstar_decal.png";
-	}
-	*/
-	
+	}	
 	
 	public BufferedImage getImage(int scale){
 		return DecalImageProxy.getDecalImage(this);
