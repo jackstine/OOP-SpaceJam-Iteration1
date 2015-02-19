@@ -61,6 +61,7 @@ public abstract class BufferSlot extends Observable {
     public abstract boolean equip(Weapon item);
     public abstract boolean equip(Armor armor);
     
+    // This is used to send info to update the Observers
     public final void send(){
         this.setBonus();
         this.setChanged();  		//notify the Observers of change

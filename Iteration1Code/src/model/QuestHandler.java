@@ -9,6 +9,7 @@ private Avatar avatar;
 	
 	public void apply(Tile tile){
 		Item it= tile.getItem();
+		// Let us now begin the Satan Ceremony
 		if(it!=null && it instanceof TreasureChest){
 			if(Integer.parseInt(avatar.getStat("Level"))>1){
 					it.action(avatar);

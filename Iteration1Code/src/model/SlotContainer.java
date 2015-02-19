@@ -88,16 +88,4 @@ public abstract class SlotContainer{
     protected abstract InventorySlot getSlot(Point slot);
     
     protected abstract void primitive();
-    
-    static public void main(String[] args){
-    	InventorySlot invSlot = new InventorySlot();
-    	ArmorSlot armorSlot = new ArmorSlot();
-    	Armor armor = new Armor();
-    	Armor armor2 = new Armor();
-    	invSlot.equip(armor);
-    	armorSlot.equip(armor2);
-    	TakeableItem temp = invSlot.unequip();
-    	invSlot.equip(armorSlot.unequip());
-    	armorSlot.equip((Armor)temp);
-    }
 }

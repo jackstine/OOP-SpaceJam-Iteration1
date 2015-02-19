@@ -1,8 +1,10 @@
 package view;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
-import model.*;
+import model.Avatar;
+import model.Terminator;
+
 
 public class TestStatusView extends JFrame{
 	

@@ -24,17 +24,6 @@ public class Weapon extends Equipable {
 	public String toString(){
 		return "Item:Weapon:" + this.attack;
 	}
-	
-	public static void main(String[] args){
-		WeaponSlot weaponSlot = new WeaponSlot();
-		InventorySlot invSlot = new InventorySlot();
-		Weapon weapon = new Weapon(5);
-		weaponSlot.equip(weapon);
-		invSlot.equip(weaponSlot.unequip());
-		//Type casting here to make it a Armor
-		weaponSlot.equip((Weapon)invSlot.unequip());
-		//weaponSlot.equip(invSlot.unequip());		This will not work
-	}
 
 	public boolean equip(ArmorSlot slot) {
 		return false;

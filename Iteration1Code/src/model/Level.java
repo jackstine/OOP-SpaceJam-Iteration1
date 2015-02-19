@@ -1,7 +1,5 @@
 package model;
 
-
-
 public class Level extends DerivedStat {
 
 	public Level() {

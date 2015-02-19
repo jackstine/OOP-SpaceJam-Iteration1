@@ -27,7 +27,6 @@ public class InventoryEquipmentView extends JPanel {
 	private Avatar avatar;
 	private InventoryView inventory;
 	private EquipmentView equipment;
-	//private Grid[][] inventory
 
 	public InventoryEquipmentView(Avatar avatar) {
 				
@@ -44,12 +43,6 @@ public class InventoryEquipmentView extends JPanel {
 		
 		setFocusable(true);
 		setVisible(true);
-	}
-	
-	public void displayAvatarPortrait() {
-	}
-	
-	public void displayEquipment(Equipment e) {
 	}
 	
 	public class EquipmentMouseListener implements MouseListener{

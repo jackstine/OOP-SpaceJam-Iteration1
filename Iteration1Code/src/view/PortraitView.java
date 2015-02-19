@@ -1,9 +1,10 @@
 package view;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+
 
 public class PortraitView extends JPanel{
 	

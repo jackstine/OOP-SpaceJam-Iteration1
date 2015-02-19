@@ -14,14 +14,10 @@ public class Tile {
 	// private Entity entity;
 	// private AreaEffect areaEffect;
 	private Decal decal;
-	private int deltaX; 
-	private int deltaY;
 
 	public Tile(Terrain terrain, int x,int y){ //will take more parameters(maybe)
 		this.terrain=terrain;
 		location= new Location(x,y);
-		deltaX=0;
-		deltaY=0;
 	}  
 	
 	//might not need it
@@ -29,8 +25,6 @@ public class Tile {
 		this.terrain=terrain;
 		this.decal= decal;
 		location= new Location(x,y);
-		deltaX=0;
-		deltaY=0;
 			
 	}
 	
@@ -57,22 +51,6 @@ public class Tile {
 	public Terrain getTerrain(){
 		return terrain;
 	}
-	
-	public int getDeltaX(){           //used to move map under //not done
-		return deltaX;
-	}
-	
-	public int getDeltaY(){
-		return deltaY;
-	}
-	
-	public void setDeltaX(int deltaX){
-		this.deltaX+=deltaX;
-	}
-	
-	public void setDeltaY(int deltaY){
-		this.deltaY+=deltaY;
-	}
 
 	public void setItem(Item item){
 		this.item = item;
@@ -81,7 +59,6 @@ public class Tile {
 	public Item dropItem(){
 		Item temp = this.item;
 		this.item = null;
-		this.updateImage();
 		return temp;
 	}
 	
@@ -103,29 +80,6 @@ public class Tile {
 	}
 	*/
 	
-	private BufferedImage updateImage(){
-		
-		BufferedImage imageOfTerrain = terrain.getImage();
-		BufferedImage itemImage,imageToDisplay, decalImage; //added decalImage
-		
-		if (item != null){
-			// Assuming that the Tile WIDTH is equal to the HEIGHT
-			itemImage = this.item.getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
-			imageOfTerrain = terrain.getNewImage();
-			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,itemImage);
-		}
-		
-		if(decal!=null){
-			decalImage = this.decal.getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
-			imageOfTerrain = terrain.getNewImage();
-			imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,decalImage);
-		}
-		else{
-			imageToDisplay = imageOfTerrain;
-		}
-		return imageToDisplay;
-	}
-	
 	/*
 	public String toString(){
 		return "Printing the image at ("+this.location.getX()+","+this.location.getY()+")";
@@ -140,16 +94,4 @@ public class Tile {
 		result += "\n" + this.item;	
 		return result;
 	}
-	
-	public void draw(Graphics g){
-		int x= location.getX();
-		int y= location.getY();
-		
-		//if has Item overlay
-		BufferedImage imageToDisplay = this.updateImage();
-		//System.out.println(this+imageToDisplay.toString());
-		g.drawImage(imageToDisplay,Scaling.TILE_WIDTH*x+deltaX,Scaling.TILE_HEIGHT*y+deltaY,null);
-		
-	}
-
 }

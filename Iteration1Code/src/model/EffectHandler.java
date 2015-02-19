@@ -10,6 +10,7 @@ public class EffectHandler {
 		this.avatar=avatar;
 	}
 	
+	//TODO  encumberance
 	public void apply(Tile tile){
 		Decal decal=tile.getDecal();
 		Item item =  tile.getItem(); 
