@@ -41,7 +41,6 @@ public class Weapon extends Equipable {
 		return item;
 	}
 
-	@Override
 	public String getItemName() {
 		return this.ITEM_NAME;
 	}

@@ -1,11 +1,5 @@
 package model;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
-import utilities.ImageProcessing;
-import utilities.Scaling;
-
 public class Tile {	
 	
 	private Terrain terrain;

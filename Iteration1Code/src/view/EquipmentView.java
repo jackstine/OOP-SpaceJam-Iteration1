@@ -93,13 +93,13 @@ public class EquipmentView extends JComponent{
 	
 	
 	public void setEquipmentImages(){
-		this.weaponImage = this.setImage(this.equipment.getSlot(Equipment.WEAPON_SLOT), EQUIPMENT_WEAPON_IMAGE_PATH);
-		this.armorImage = this.setImage(this.equipment.getSlot(Equipment.ARMOR_SLOT), EQUIPMENT_ARMOR_IMAGE_PATH);
-		this.bootsImage = this.setImage(this.uselessSlot, EQUIPMENT_BOOTS_IMAGE_PATH);
-		this.glovesImage = this.setImage(this.uselessSlot, EQUIPMENT_GLOVES_IMAGE_PATH);
-		this.shieldImage = this.setImage(this.uselessSlot, EQUIPMENT_SHIELD_IMAGE_PATH);
-		this.leggingsImage = this.setImage(this.uselessSlot, EQUIPMENT_LEGGINGS_IMAGE_PATH);
-		this.helmetImage = this.setImage(this.uselessSlot, EQUIPMENT_HELMET_IMAGE_PATH);
+		weaponImage = this.setImage(this.equipment.getSlot(Equipment.WEAPON_SLOT), EQUIPMENT_WEAPON_IMAGE_PATH);
+		armorImage = this.setImage(this.equipment.getSlot(Equipment.ARMOR_SLOT), EQUIPMENT_ARMOR_IMAGE_PATH);
+		bootsImage = this.setImage(this.uselessSlot, EQUIPMENT_BOOTS_IMAGE_PATH);
+		glovesImage = this.setImage(this.uselessSlot, EQUIPMENT_GLOVES_IMAGE_PATH);
+		shieldImage = this.setImage(this.uselessSlot, EQUIPMENT_SHIELD_IMAGE_PATH);
+		leggingsImage = this.setImage(this.uselessSlot, EQUIPMENT_LEGGINGS_IMAGE_PATH);
+		helmetImage = this.setImage(this.uselessSlot, EQUIPMENT_HELMET_IMAGE_PATH);
 	}
 	
 	public void update() {
@@ -112,13 +112,13 @@ public class EquipmentView extends JComponent{
 
 	public void paint(Graphics g){
 		g.setColor(Color.WHITE);
-		g.drawImage(this.weaponImage, POINT_OF_WEAPON.getX(), POINT_OF_ARMOR.getY(), null);
-		g.drawImage(this.armorImage, POINT_OF_ARMOR.getX(), POINT_OF_ARMOR.getY(),null);
-		g.drawImage(this.bootsImage, POINT_OF_BOOTS.getX(), POINT_OF_BOOTS.getY(), null);
-		g.drawImage(this.glovesImage, POINT_OF_GLOVES.getX(), POINT_OF_GLOVES.getY(), null);
-		g.drawImage(this.shieldImage, POINT_OF_SHIELD.getX(), POINT_OF_SHIELD.getY(), null);
-		g.drawImage(this.helmetImage, POINT_OF_HELMET.getX(), POINT_OF_HELMET.getY(), null);
-		g.drawImage(this.leggingsImage, POINT_OF_LEGGINGS.getX(), POINT_OF_LEGGINGS.getY(), null);
+		g.drawImage(weaponImage, POINT_OF_WEAPON.getX(), POINT_OF_ARMOR.getY(), null);
+		g.drawImage(armorImage, POINT_OF_ARMOR.getX(), POINT_OF_ARMOR.getY(),null);
+		g.drawImage(bootsImage, POINT_OF_BOOTS.getX(), POINT_OF_BOOTS.getY(), null);
+		g.drawImage(glovesImage, POINT_OF_GLOVES.getX(), POINT_OF_GLOVES.getY(), null);
+		g.drawImage(shieldImage, POINT_OF_SHIELD.getX(), POINT_OF_SHIELD.getY(), null);
+		g.drawImage(helmetImage, POINT_OF_HELMET.getX(), POINT_OF_HELMET.getY(), null);
+		g.drawImage(leggingsImage, POINT_OF_LEGGINGS.getX(), POINT_OF_LEGGINGS.getY(), null);
 	}
 	
 	public Dimension getPreferredSize(){
