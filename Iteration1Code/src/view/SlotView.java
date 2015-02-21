@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.InventorySlot;
+import model.ItemImageVisitor;
 import model.Point;
 
 
@@ -25,6 +26,8 @@ public class SlotView extends JPanel implements Observer{
 	private final String INVENTORY_IMAGE = "src/res/img/brown-InventorySlot.png";
 
 	private static final long serialVersionUID = 15475L;
+	
+	private ItemImageVisitor itemVisitor = new ItemImageVisitor();
 	
 	private Point point;
 	private BufferedImage slotImage;
@@ -55,7 +58,8 @@ public class SlotView extends JPanel implements Observer{
 	
 	public void setItemImage(){
 		if (slot.has()){
-			this.itemImage = this.slot.get().getImage(ITEM_IMAGE_SCALE);
+			this.slot.get().accept(itemVisitor);
+			this.itemImage = this.itemVisitor.getImage();
 		}
 	}
 	

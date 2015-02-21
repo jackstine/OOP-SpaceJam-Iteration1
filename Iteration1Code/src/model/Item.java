@@ -4,10 +4,8 @@ import java.awt.image.BufferedImage;
 
 public interface Item {
 	public boolean action(Avatar avatar);
-
-	public BufferedImage getImage(int scale);
 	
-	public String getImagePath();
+	public void accept(ItemVisitor visitor);
 	
 	public String getItemName();
 }

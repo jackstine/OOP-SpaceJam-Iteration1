@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.image.BufferedImage;
 
 public class DamagingOneShotItem extends OneShotItem {
 
@@ -15,22 +14,14 @@ public class DamagingOneShotItem extends OneShotItem {
 		return this.percentDamage;
 	}
 	
+	public void accept(ItemVisitor visitor){
+		visitor.accept(this);
+	}
+	
 	@Override
 	public boolean action(Avatar avatar) {
 		EffectApplication.apply(avatar, this);		
 		return true;
-	}
-	
-	@Override
-	public BufferedImage getImage(int scale) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getImagePath() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	public String toString() {

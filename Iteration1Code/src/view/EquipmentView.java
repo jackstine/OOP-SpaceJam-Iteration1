@@ -12,6 +12,7 @@ import utilities.Scaling;
 import model.ArmorSlot;
 import model.BufferSlot;
 import model.Equipment;
+import model.ItemImageVisitor;
 import model.Point;
 
 public class EquipmentView extends JComponent{
@@ -64,6 +65,8 @@ public class EquipmentView extends JComponent{
 	private BufferedImage leggingsImage;
 	private BufferedImage helmetImage;
 	
+	private ItemImageVisitor itemVisitor = new ItemImageVisitor();
+	
 	
 	// NOTE IT IS NOT SPECIFIC TO THE SLOT,  BUT ONLY TO EQUIPMENT
 	//  			equipment.getArmorSlot().unequip();   will NOT work
@@ -74,19 +77,16 @@ public class EquipmentView extends JComponent{
 		this.setEquipmentImages();
 	}
 	
-	private BufferedImage getEquipmentSlotImage(String equipment, String itemImage){
-		System.out.println(equipment + "    "+ itemImage+ "   "+SIZE_OF_SLOT + "    " +  EQUIPMENT_SLOT_OFFSET);
-		System.out.println(Scaling.EQUIPMENT_SLOT_OFFSET_WIDTH+ "   "+ Scaling.EQUIPMENT_SLOT_OFFSET_HEIGHT);
-		return ImageProcessing.overlayImages(equipment, SIZE_OF_SLOT,itemImage,EQUIPMENT_SLOT_OFFSET);
+	private BufferedImage getEquipmentSlotImage(BufferedImage equipment, BufferedImage itemImage){
+		return ImageProcessing.overlayImages(equipment,itemImage,SIZE_OF_SLOT.sub(EQUIPMENT_SLOT_OFFSET));
 	}
 	
 	private BufferedImage setImage(BufferSlot slot, String imagePath){
-		BufferedImage image;
+		BufferedImage image = ImageProcessing.scaleImage(SIZE_OF_SLOT, imagePath);
 		if (slot.has()){
-			image= this.getEquipmentSlotImage(imagePath,slot.get().getImagePath());
-		}
-		else{
-			image = ImageProcessing.scaleImage(SIZE_OF_SLOT, imagePath);
+			slot.get().accept(itemVisitor);
+			BufferedImage itemImage = itemVisitor.getImage();
+			image= this.getEquipmentSlotImage(image,itemImage);
 		}
 		return image;
 	}

@@ -84,6 +84,7 @@ public final class Scaling {
 	public static final int TILE_HEIGHT = 100;
 	public static final Point TILE_SCALE = new Point(TILE_WIDTH,TILE_HEIGHT);
 	public static final int TILE_OVERLAY_IMAGE_OFFSET = (int) (35 * (TILE_WIDTH/100.0));
+	public static final Point TILE_TAKEABLE_ITEM_OFFSET = new Point(TILE_WIDTH - TILE_OVERLAY_IMAGE_OFFSET, TILE_HEIGHT - TILE_OVERLAY_IMAGE_OFFSET);
 	
 	/*************ENTITYVIEW************/
 	public static final int ENTITY_MIDDLE = TILE_WIDTH*3;		//starts 3 spaces on the map

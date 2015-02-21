@@ -1,9 +1,6 @@
 package model;
 
 
-import java.awt.image.BufferedImage;
-
-
 public class MountainTerrain extends Terrain {
 	
 	private boolean passable;
@@ -17,10 +14,7 @@ public class MountainTerrain extends Terrain {
 		return passable;
 	}
 	
-	public BufferedImage getImage(){
-		return TerrainImageProxy.getTerrainImage(this);
-	}
-	public BufferedImage getNewImage(){
-		return TerrainImageProxy.getNewTerrainImage(this);
+	public void accept(TerrainVisitor visitor){
+		visitor.accept(this);
 	}
 }

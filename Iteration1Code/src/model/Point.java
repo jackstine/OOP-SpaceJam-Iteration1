@@ -36,6 +36,10 @@ public class Point{
     	this.y=y;
     }
     
+    public Point sub(Point other){
+    	return new Point(this.x - other.x,this.y - other.y);
+    }
+    
     public String toString(){
     	return "X:"+this.x+" Y:"+this.y;
     }

@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.image.BufferedImage;
-
 public class TreasureChest extends InteractiveItem {
 	private int state;
 	private int reward;
@@ -13,6 +11,10 @@ public class TreasureChest extends InteractiveItem {
 		reward=1000;
 		actionDone=false;
 		ITEM_NAME = "Treasure Chest";
+	}
+	
+	public void accept(ItemVisitor visitor){
+		visitor.accept(this);
 	}
 	
 	public boolean action(Avatar avatar) {
@@ -27,13 +29,6 @@ public class TreasureChest extends InteractiveItem {
 		return false;
 	}
 	
-	public BufferedImage getImage(int scale) {
-		return ItemImageProxy.getItemImage(this,state);
-	}
-	public BufferedImage getNewImage(int scale) {
-		return ItemImageProxy.getNewItemImage(this,state);
-	}
-	
 	public void changeState(){
 		if(state==0){
 			state=1;
@@ -43,8 +38,9 @@ public class TreasureChest extends InteractiveItem {
 		}
 	}
 	
-	public String getImagePath(){
-		return "";  //not used
+	//probably needs to be in the InteractiveItem Abstract Class
+	public int getState(){
+		return this.state;
 	}
 	
 	public String toString() {

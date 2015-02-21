@@ -163,4 +163,12 @@ public class ImageProcessing {
 		Point centerImagePoint = new Point(centerBack.getX()-x,centerBack.getY()-y);
 		return centerImagePoint;
 	}
+	
+	public static BufferedImage createNewImage(BufferedImage image){
+		BufferedImage imageCreated = new BufferedImage(image.getWidth(),image.getHeight(),image.getType());
+		Graphics2D g = imageCreated.createGraphics();
+		g.drawImage(image, 0, 0, null);
+		g.dispose();
+		return imageCreated;
+	}
 }

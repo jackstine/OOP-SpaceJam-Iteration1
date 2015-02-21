@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.image.BufferedImage;
 
 public class HealingOneShotItem extends OneShotItem {
 
@@ -14,24 +13,14 @@ public class HealingOneShotItem extends OneShotItem {
 		return this.percentHealth;
 	}
 	
+	public void accept(ItemVisitor visitor){
+		visitor.accept(this);
+	}
+	
 	@Override
 	public boolean action(Avatar avatar) {
 		EffectApplication.apply(avatar, this);
 		return true;
-	}
-	
-	@Override
-	public BufferedImage getImage(int scale) {
-		return ItemImageProxy.getItemImage(this);
-	}
-	public BufferedImage getNewImage(int scale) {
-		return ItemImageProxy.getNewItemImage(this);
-	}
-
-	@Override
-	public String getImagePath() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	public String toString() {

@@ -1,16 +1,11 @@
 package model;
 
-import java.awt.image.BufferedImage;
-
 
 public abstract class Terrain {
 	
 	protected char terrainID;
 	
 	public abstract boolean isPassable();
-	
-	public abstract BufferedImage getImage();
-	public abstract BufferedImage getNewImage();
 	
 	public char getTerrainID() {
 		return terrainID;
@@ -19,4 +14,6 @@ public abstract class Terrain {
 	public String toString() {
 		return "Terrain:" + this.terrainID;
 	}
+	
+	public abstract void accept(TerrainVisitor visitor);
 }
