@@ -16,23 +16,23 @@ import model.ItemImageVisitor;
 import model.Point;
 
 public class EquipmentView extends JComponent{
-	private final Point POINT_OF_WEAPON = new Point(Scaling.EQUIPMENT_WEAPON_X,Scaling.EQUIPMENT_WEAPON_Y);
-	private final Point POINT_OF_ARMOR = new Point(Scaling.EQUIPMENT_ARMOR_X,Scaling.EQUIPMENT_ARMOR_Y);
-	private final Point POINT_OF_HELMET = new Point(Scaling.EQUIPMENT_HELMET_X, Scaling.EQUIPMENT_HELMET_Y);
-	private final Point POINT_OF_GLOVES = new Point(Scaling.EQUIPMENT_GLOVES_X, Scaling.EQUIPMENT_GLOVES_Y);
-	private final Point POINT_OF_LEGGINGS = new Point(Scaling.EQUIPMENT_LEGGINGS_X, Scaling.EQUIPMENT_LEGGINGS_Y);
-	private final Point POINT_OF_SHIELD = new Point(Scaling.EQUIPMENT_SHIELD_X, Scaling.EQUIPMENT_SHIELD_Y);
-	private final Point POINT_OF_BOOTS = new Point(Scaling.EQUIPMENT_BOOTS_X, Scaling.EQUIPMENT_BOOTS_Y);
-	private final Point SIZE_OF_SLOT = new Point(Scaling.EQUIPMENT_SLOT_WIDTH, Scaling.EQUIPMENT_SLOT_HEIGHT);
-	private final Point EQUIPMENT_SLOT_OFFSET = new Point(Scaling.EQUIPMENT_SLOT_OFFSET_WIDTH,Scaling.EQUIPMENT_SLOT_OFFSET_HEIGHT);
+	private static final Point POINT_OF_WEAPON = new Point(Scaling.EQUIPMENT_WEAPON_X,Scaling.EQUIPMENT_WEAPON_Y);
+	private static final Point POINT_OF_ARMOR = new Point(Scaling.EQUIPMENT_ARMOR_X,Scaling.EQUIPMENT_ARMOR_Y);
+	private static final Point POINT_OF_HELMET = new Point(Scaling.EQUIPMENT_HELMET_X, Scaling.EQUIPMENT_HELMET_Y);
+	private static final Point POINT_OF_GLOVES = new Point(Scaling.EQUIPMENT_GLOVES_X, Scaling.EQUIPMENT_GLOVES_Y);
+	private static final Point POINT_OF_LEGGINGS = new Point(Scaling.EQUIPMENT_LEGGINGS_X, Scaling.EQUIPMENT_LEGGINGS_Y);
+	private static final Point POINT_OF_SHIELD = new Point(Scaling.EQUIPMENT_SHIELD_X, Scaling.EQUIPMENT_SHIELD_Y);
+	private static final Point POINT_OF_BOOTS = new Point(Scaling.EQUIPMENT_BOOTS_X, Scaling.EQUIPMENT_BOOTS_Y);
+	private static final Point SIZE_OF_SLOT = new Point(Scaling.EQUIPMENT_SLOT_WIDTH, Scaling.EQUIPMENT_SLOT_HEIGHT);
+	private static final Point EQUIPMENT_SLOT_OFFSET = new Point(Scaling.EQUIPMENT_SLOT_OFFSET_WIDTH,Scaling.EQUIPMENT_SLOT_OFFSET_HEIGHT);
 	
-	private final String EQUIPMENT_WEAPON_IMAGE_PATH = "src/res/img/Equipment_Weapon_Slot.png";
-	private final String EQUIPMENT_ARMOR_IMAGE_PATH = "src/res/img/Equipment_Armor_Slot.png";
-	private final String EQUIPMENT_BOOTS_IMAGE_PATH = "src/res/img/Equipment_Boots_Slot.png";
-	private final String EQUIPMENT_GLOVES_IMAGE_PATH = "src/res/img/Equipment_Gloves_Slot.png";
-	private final String EQUIPMENT_LEGGINGS_IMAGE_PATH = "src/res/img/Equipment_Leggings_Slot.png";
-	private final String EQUIPMENT_SHIELD_IMAGE_PATH = "src/res/img/Equipment_Shield_Slot.png";
-	private final String EQUIPMENT_HELMET_IMAGE_PATH = "src/res/img/Equipment_Helmet_Slot.png";
+	private static final String EQUIPMENT_WEAPON_IMAGE_PATH = "src/res/img/Equipment_Weapon_Slot.png";
+	private static final String EQUIPMENT_ARMOR_IMAGE_PATH = "src/res/img/Equipment_Armor_Slot.png";
+	private static final String EQUIPMENT_BOOTS_IMAGE_PATH = "src/res/img/Equipment_Boots_Slot.png";
+	private static final String EQUIPMENT_GLOVES_IMAGE_PATH = "src/res/img/Equipment_Gloves_Slot.png";
+	private static final String EQUIPMENT_LEGGINGS_IMAGE_PATH = "src/res/img/Equipment_Leggings_Slot.png";
+	private static final String EQUIPMENT_SHIELD_IMAGE_PATH = "src/res/img/Equipment_Shield_Slot.png";
+	private static final String EQUIPMENT_HELMET_IMAGE_PATH = "src/res/img/Equipment_Helmet_Slot.png";
 	
 	
 	/**************************  POINTS ON THE GRAPH,  SLOTS FOR ARRAYS   ***********************************/
@@ -57,15 +57,15 @@ public class EquipmentView extends JComponent{
 	private ArmorSlot uselessSlot = new ArmorSlot();
 	
 	private Equipment equipment;
-	private BufferedImage weaponImage;
-	private BufferedImage armorImage;
-	private BufferedImage bootsImage;
-	private BufferedImage shieldImage;
-	private BufferedImage glovesImage;
-	private BufferedImage leggingsImage;
-	private BufferedImage helmetImage;
+	private static BufferedImage weaponImage;
+	private static BufferedImage armorImage;
+	private static BufferedImage bootsImage;
+	private static BufferedImage shieldImage;
+	private static BufferedImage glovesImage;
+	private static BufferedImage leggingsImage;
+	private static BufferedImage helmetImage;
 	
-	private ItemImageVisitor itemVisitor = new ItemImageVisitor();
+	private static ItemImageVisitor itemVisitor = new ItemImageVisitor(EQUIPMENT_SLOT_OFFSET);
 	
 	
 	// NOTE IT IS NOT SPECIFIC TO THE SLOT,  BUT ONLY TO EQUIPMENT
@@ -78,7 +78,7 @@ public class EquipmentView extends JComponent{
 	}
 	
 	private BufferedImage getEquipmentSlotImage(BufferedImage equipment, BufferedImage itemImage){
-		return ImageProcessing.overlayImages(equipment,itemImage,SIZE_OF_SLOT.sub(EQUIPMENT_SLOT_OFFSET));
+		return ImageProcessing.overlayImages(equipment,itemImage);
 	}
 	
 	private BufferedImage setImage(BufferSlot slot, String imagePath){

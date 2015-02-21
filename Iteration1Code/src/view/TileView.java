@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
  
 
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.ItemImageVisitor;
@@ -17,8 +18,9 @@ public class TileView extends JComponent{
     public static final int SCALE = Scaling.TILE_SCALE.getX();
     private Tile tile;
     private BufferedImage image;
-    private TerrainImageVisitor terrainVisitor = new TerrainImageVisitor();
-    private ItemImageVisitor itemVisitor = new ItemImageVisitor();
+    private static final TerrainImageVisitor terrainVisitor = new TerrainImageVisitor(Scaling.TILE_SCALE);
+    //NOTE This is static because TileView will always be the same with each TileView
+    private static final ItemImageVisitor itemVisitor = new ItemImageVisitor(Scaling.TILE_TAKEABLE_ITEM_OFFSET);
    
     public TileView(Tile tile) {
             this.tile = tile;

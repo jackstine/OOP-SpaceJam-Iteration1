@@ -22,12 +22,13 @@ public class SlotView extends JPanel implements Observer{
 	private static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
 	private static final int ITEM_IMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
 	private static final int ITEM_IMAGE_SCALE = (ITEM_IMAGE_HEIGHT + ITEM_IMAGE_WIDTH) /2;
+	private static final Point SLOT_SCALE = new Point(SLOTIMAGE_WIDTH,SLOTIMAGE_HEIGHT);
 
 	private final String INVENTORY_IMAGE = "src/res/img/brown-InventorySlot.png";
 
 	private static final long serialVersionUID = 15475L;
 	
-	private ItemImageVisitor itemVisitor = new ItemImageVisitor();
+	private static ItemImageVisitor itemVisitor = new ItemImageVisitor(SLOT_SCALE);
 	
 	private Point point;
 	private BufferedImage slotImage;

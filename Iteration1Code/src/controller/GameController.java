@@ -39,7 +39,7 @@ public class GameController {
         private boolean saved = false;
         private boolean spawned = false;
         private Game game = new Game();
-        private int yourLvl = game.getAvatar().getStatValue("Level");
+        private int yourLvl;
        
         //Components
         // private JTextField input = new JTextField(20);
@@ -53,9 +53,9 @@ public class GameController {
        
         //Views
         private View gameView = new View();
-        private GameView board = new GameView(game.getMap(),game.getAvatar());
-        private InventoryEquipmentView character = new InventoryEquipmentView(game.getAvatar());
-        private StatusView statusView = new StatusView(game.getAvatar());
+        private GameView board;
+        private InventoryEquipmentView character;
+        private StatusView statusView;
        
         public GameController(Game gameToCreate){
                

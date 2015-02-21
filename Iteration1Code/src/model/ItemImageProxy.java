@@ -13,27 +13,39 @@ public final class ItemImageProxy  {
 	private static String GIANT_ROCK_IMAGE ="src/res/img/giant_rock.png";
 	private static String DAVE = "src/res/img/dave.jpg";
 	
-	private static BufferedImage healingpotionImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE,  HEALINGPOTION_IMAGE_PATH);
-	private static BufferedImage closedtreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[0]);
-	private static BufferedImage opentreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[1]);
-	private static BufferedImage armorImage= ImageProcessing.scaleImage(Scaling.TILE_TAKEABLE_ITEM_OFFSET, ARMOR_IMAGE);
-	private static BufferedImage weaponImage= ImageProcessing.scaleImage(Scaling.TILE_TAKEABLE_ITEM_OFFSET, WEAPON_IMAGE);
-	private static BufferedImage giantRockImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, GIANT_ROCK_IMAGE);
-	private static BufferedImage dave = ImageProcessing.scaleImage(Scaling.TILE_SCALE,DAVE);
+	private BufferedImage healingpotionImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE,  HEALINGPOTION_IMAGE_PATH);
+	private BufferedImage closedtreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[0]);
+	private BufferedImage opentreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[1]);
+	private BufferedImage armorImage;
+	private BufferedImage weaponImage;
+	private BufferedImage giantRockImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, GIANT_ROCK_IMAGE);
+	private BufferedImage dave = ImageProcessing.scaleImage(Scaling.TILE_SCALE,DAVE);
+	
+	private Point scale;
 	
 	//TODO maybe we want a set Scale function that when instantiated, will set the scale size of the images
 	//TODO  the images in the inventory and Equipment are off centered
 	
+	public ItemImageProxy(Point scale){
+		this.scale = scale;
+		this.setImages();
+	}
+	
+	private void setImages(){
+		armorImage= ImageProcessing.scaleImage(this.scale, ARMOR_IMAGE);
+		weaponImage= ImageProcessing.scaleImage(this.scale, WEAPON_IMAGE);
+	}
+	
 	public final BufferedImage getImage(HealingOneShotItem item){
-		return ItemImageProxy.healingpotionImage;
+		return healingpotionImage;
 	}
 	
 	public final BufferedImage getImage(TreasureChest item){
 		if(item.getState() == 0){
-			return ItemImageProxy.closedtreasurechestImage; //wrong. need to add open as well
+			return closedtreasurechestImage; //wrong. need to add open as well
 		}
 		else{
-			return ItemImageProxy.opentreasurechestImage;
+			return opentreasurechestImage;
 		}
 	}
 	

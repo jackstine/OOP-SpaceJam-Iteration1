@@ -3,8 +3,12 @@ package model;
 import java.awt.image.BufferedImage;
 
 public class TerrainImageVisitor implements TerrainVisitor{
-	private TerrainImageProxy imageProxy = new TerrainImageProxy();
+	private TerrainImageProxy imageProxy;
 	private BufferedImage image;
+	
+	public TerrainImageVisitor(Point scale){
+		imageProxy = new TerrainImageProxy(scale);
+	}
 
 	public void accept(DesertTerrain t){
 		this.image = imageProxy.getTerrainImage(t);
