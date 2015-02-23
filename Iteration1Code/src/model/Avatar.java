@@ -14,11 +14,6 @@ public class Avatar extends Entity {
 	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",
 											"Movement", "Strength"};
-
-	public Avatar() {
-		//this.location = new Location(INITIAL_X_LIE,INITIAL_Y_LIE);	// this is a lie
-		//occupation.initializeStats();
-	}
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
@@ -53,6 +48,11 @@ public class Avatar extends Entity {
     	int beginValue = 1;
     	this.equipment.equipSlot(Equipment.ARMOR_SLOT, new Armor(beginValue));
     	this.equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(beginValue));
+    	this.equipment.equipSlot(Equipment.BOOTS_SLOT, new Boots(beginValue));
+    	this.equipment.equipSlot(Equipment.SHIELD_SLOT, new Shield(beginValue));
+    	this.equipment.equipSlot(Equipment.GLOVES_SLOT, new Gloves(beginValue));
+    	this.equipment.equipSlot(Equipment.LEGGINGS_SLOT, new Leggings(beginValue));
+    	this.equipment.equipSlot(Equipment.HELMET_SLOT, new Helmet(beginValue));
     }
 	
 	public BufferedImage getImage(){

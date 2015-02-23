@@ -9,6 +9,10 @@ public abstract class BufferSlot extends Observable {
     
     public BufferSlot(){}
     
+    public BufferSlot(Equipment equipment){
+    	this.addObserver(equipment);
+    }
+    
     //BONUS BUFFER METHODS
     public final int getBonus(){
     	return this.bonus;
@@ -60,6 +64,11 @@ public abstract class BufferSlot extends Observable {
     
     public abstract boolean equip(Weapon item);
     public abstract boolean equip(Armor armor);
+    public abstract boolean equip(Helmet helmet);
+    public abstract boolean equip(Gloves gloves);
+    public abstract boolean equip(Leggings leggings);
+    public abstract boolean equip(Shield shield);
+    public abstract boolean equip(Boots boots);
     
     // This is used to send info to update the Observers
     public final void send(){

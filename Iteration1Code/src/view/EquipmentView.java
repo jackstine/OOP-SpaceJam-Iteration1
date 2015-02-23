@@ -38,23 +38,37 @@ public class EquipmentView extends JComponent{
 	/**************************  POINTS ON THE GRAPH,  SLOTS FOR ARRAYS   ***********************************/
 	public static final Point ARMOR_POINT = new Point((Scaling.EQUIPMENT_ARMOR_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_ARMOR_Y/ Scaling.EQUIPMENT_SLOT_HEIGHT));
+	/**************************************WEAPON POINT***********************************************************/
 	public static final Point WEAPON_POINT = new Point ((Scaling.EQUIPMENT_WEAPON_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_WEAPON_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	/**************************************HELMET POINT***********************************************************/
 	public static final Point HELMET_POINT = new Point ((Scaling.EQUIPMENT_HELMET_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_HELMET_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	/**************************************GLOVES POINT***********************************************************/
 	public static final Point GLOVES_POINT = new Point ((Scaling.EQUIPMENT_GLOVES_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_GLOVES_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	/**************************************BOOTS POINT***********************************************************/
 	public static final Point BOOTS_POINT = new Point ((Scaling.EQUIPMENT_BOOTS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_BOOTS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	/**************************************SHIELD POINT***********************************************************/
 	public static final Point SHIELD_POINT = new Point ((Scaling.EQUIPMENT_SHIELD_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_SHIELD_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	/**************************************LEGGINGS POINT***********************************************************/
 	public static final Point LEGGINGS_POINT = new Point ((Scaling.EQUIPMENT_LEGGINGS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_LEGGINGS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
-	
-	private static final long serialVersionUID = 147952L;
+	/**************************************TWO HANDED POINT***********************************************************/
+	public static final Point TWO_HANDED_WEAPON_POINT = new Point((Scaling.EQUIPMENT_LEGGINGS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_LEGGINGS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
 	
 	// DELETE THIS ONCE WE HAVE ALL THE SLOTS IN EQUIPMENT  boots, Shield,......
 	private ArmorSlot uselessSlot = new ArmorSlot();
+	
+	
+	//To add a slot you will need to change the Euqipment, and EquipmentSlot, and the Equipable Item.
+	// Add the Point on the Equipment View,  add the Equip method for the Equipable Item,
+	// add the equip method for the Slot that cause this.equipItem(item)
+	// make sure to add the Image of the Item to the Image Proxy and have it linked to the ItemImagevisitor
+	
 	
 	private Equipment equipment;
 	private static BufferedImage weaponImage;
@@ -95,11 +109,11 @@ public class EquipmentView extends JComponent{
 	public void setEquipmentImages(){
 		weaponImage = this.setImage(this.equipment.getSlot(Equipment.WEAPON_SLOT), EQUIPMENT_WEAPON_IMAGE_PATH);
 		armorImage = this.setImage(this.equipment.getSlot(Equipment.ARMOR_SLOT), EQUIPMENT_ARMOR_IMAGE_PATH);
-		bootsImage = this.setImage(this.uselessSlot, EQUIPMENT_BOOTS_IMAGE_PATH);
-		glovesImage = this.setImage(this.uselessSlot, EQUIPMENT_GLOVES_IMAGE_PATH);
-		shieldImage = this.setImage(this.uselessSlot, EQUIPMENT_SHIELD_IMAGE_PATH);
-		leggingsImage = this.setImage(this.uselessSlot, EQUIPMENT_LEGGINGS_IMAGE_PATH);
-		helmetImage = this.setImage(this.uselessSlot, EQUIPMENT_HELMET_IMAGE_PATH);
+		bootsImage = this.setImage(this.equipment.getSlot(Equipment.BOOTS_SLOT), EQUIPMENT_BOOTS_IMAGE_PATH);
+		glovesImage = this.setImage(this.equipment.getSlot(Equipment.GLOVES_SLOT), EQUIPMENT_GLOVES_IMAGE_PATH);
+		shieldImage = this.setImage(this.equipment.getSlot(Equipment.SHIELD_SLOT), EQUIPMENT_SHIELD_IMAGE_PATH);
+		leggingsImage = this.setImage(this.equipment.getSlot(Equipment.LEGGINGS_SLOT), EQUIPMENT_LEGGINGS_IMAGE_PATH);
+		helmetImage = this.setImage(this.equipment.getSlot(Equipment.HELMET_SLOT), EQUIPMENT_HELMET_IMAGE_PATH);
 	}
 	
 	public void update() {

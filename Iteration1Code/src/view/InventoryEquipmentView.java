@@ -89,13 +89,16 @@ public class InventoryEquipmentView extends JPanel {
 		private void unequipItem(MouseEvent e){
 			Point slotPoint = getInventorySlot(e);
 			inventory.getInventory().getSlot(slotPoint).unequip();
-			System.out.println(slotPoint);
 		}
 		
 		private void equipItem(MouseEvent e){
 			Point pointOfSlot = this.getInventorySlot(e);
+			System.out.println(pointOfSlot);
 			TakeableItem item = inventory.getInventory().getSlot(pointOfSlot).unequip();
-			item.action(avatar);
+			boolean notEmpty = item != null;
+			if (notEmpty){
+				item.action(avatar);
+			}
 			equipment.repaint();
 		}
 		

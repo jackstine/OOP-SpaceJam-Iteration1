@@ -1,31 +1,25 @@
 package model;
 
-
-public class ArmorSlot extends BufferSlot{
-    
-	public ArmorSlot(DerivedStat armorRating){
-    	this.addObserver(armorRating);
-    }
+public class GlovesSlot extends BufferSlot{
 	
-	public ArmorSlot(){}
-
-	public ArmorSlot(Equipment equipment) {
-		this.addObserver(equipment);
+	public GlovesSlot(Equipment equipment){
+		super(equipment);
 	}
-
+	
 	public boolean equip(Weapon item) {
 		return false;
 	}
+
 	public boolean equip(Armor armor) {
-		return this.equipItem(armor);
+		return false;
 	}
-	
+
 	public boolean equip(Helmet helmet) {
 		return false;
 	}
 
 	public boolean equip(Gloves gloves) {
-		return false;
+		return this.equipItem(gloves);
 	}
 
 	public boolean equip(Leggings leggings) {
@@ -39,9 +33,5 @@ public class ArmorSlot extends BufferSlot{
 	public boolean equip(Boots boots) {
 		return false;
 	}
-	
-	public String toString(){
-		if (this.has()) return "Item:Armor:" + this.bonus;
-		else return "Item:Armor:-1";
-	}
+
 }

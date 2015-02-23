@@ -3,8 +3,9 @@ package model;
 import view.EquipmentView;
 
 public class Armor extends Equipable {
+	protected final static Point SLOT = EquipmentView.ARMOR_POINT;
+	
 	protected int armor;
-	protected Point slot = EquipmentView.ARMOR_POINT;
 	
 	public Armor(){}
 	 
@@ -38,10 +39,25 @@ public class Armor extends Equipable {
 	public boolean equip(WeaponSlot slot) {
 		return slot.equip(this);
 	}
+	public boolean equip(HelmetSlot slot){
+		return false;
+	}
+	public boolean equip(BootsSlot slot){
+		return false;
+	}
+	public boolean equip(ShieldSlot slot){
+		return false;
+	}
+	public boolean equip(LeggingsSlot slot){
+		return false;
+	}
+	public boolean equip(GlovesSlot slot){
+		return false;
+	}
 	
 	public TakeableItem equipSlot(Equipment equipment) {
-		TakeableItem item = equipment.unequipSlot(this.slot);
-		equipment.equipSlot(this.slot,this);
+		TakeableItem item = equipment.unequipSlot(SLOT);
+		equipment.equipSlot(SLOT,this);
 		return item;
 	}
 

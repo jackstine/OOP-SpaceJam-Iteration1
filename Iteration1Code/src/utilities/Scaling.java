@@ -115,8 +115,8 @@ public final class Scaling {
 	public static final int EQUIPMENT_SLOT_HEIGHT = 75;
 	public static final int EQUIPMENT_SLOT_OFFSET_WIDTH = (int) (80 * (Scaling.EQUIPMENT_SLOT_WIDTH/100.0));
 	public static final int EQUIPMENT_SLOT_OFFSET_HEIGHT = (int) (80 * (Scaling.EQUIPMENT_SLOT_HEIGHT/100.0));
-	public static final int EQUIPMENT_SLOTS_WIDTH_NUM = 3;
-	public static final int EQUIPMENT_SLOTS_HEIGHT_NUM = 4;
+	public static final int EQUIPMENT_SLOTS_WIDTH_NUM = 4;
+	public static final int EQUIPMENT_SLOTS_HEIGHT_NUM = 5;
 	public static final int EQUIPMENT_VIEW_WIDTH = Scaling.EQUIPMENT_SLOT_WIDTH * EQUIPMENT_SLOTS_WIDTH_NUM;
 	public static final int EQUIPMENT_VIEW_HEIGHT = Scaling.EQUIPMENT_SLOT_HEIGHT * EQUIPMENT_SLOTS_HEIGHT_NUM;
 	
