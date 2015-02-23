@@ -46,4 +46,7 @@ public class TwoHandedWeapon extends Equipable{
 	public boolean equip(GlovesSlot slot){
 		return false;
 	}
+	public boolean equip(QuiverSlot slot){
+		return false;
+	}
 }

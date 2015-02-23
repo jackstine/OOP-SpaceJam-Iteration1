@@ -1,11 +1,11 @@
 package model;
 
-public class LeggingsSlot extends BufferSlot{
+public class QuiverSlot extends BufferSlot{
 	
-	public LeggingsSlot(Equipment equipment){
+	public QuiverSlot(Equipment equipment){
 		super(equipment);
 	}
-	
+
 	public boolean equip(Weapon item) {
 		return false;
 	}
@@ -23,7 +23,7 @@ public class LeggingsSlot extends BufferSlot{
 	}
 
 	public boolean equip(Leggings leggings) {
-		return this.equipItem(leggings);
+		return false;
 	}
 
 	public boolean equip(Shield shield) {
@@ -33,8 +33,9 @@ public class LeggingsSlot extends BufferSlot{
 	public boolean equip(Boots boots) {
 		return false;
 	}
+	
 	public boolean equip(Projectile projectile){
-		return false;
+		return this.equipItem(projectile);
 	}
 
 }

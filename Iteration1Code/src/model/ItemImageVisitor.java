@@ -65,4 +65,7 @@ public class ItemImageVisitor implements ItemVisitor{
 	public void accept(Boots boots){
 		this.image = imageProxy.getImage(boots);
 	}
+	public void accept(Projectile projectile){
+		this.image = imageProxy.getImage(projectile);
+	}
 }

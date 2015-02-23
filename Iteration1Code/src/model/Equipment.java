@@ -14,6 +14,7 @@ public class Equipment implements Observer{
 	public static final Point BOOTS_SLOT = EquipmentView.BOOTS_POINT;
 	public static final Point SHIELD_SLOT = EquipmentView.SHIELD_POINT;
 	public static final Point LEGGINGS_SLOT = EquipmentView.LEGGINGS_POINT;
+	public static final Point QUIVER_SLOT = EquipmentView.QUIVER_POINT;
 	
 	private final BufferSlot[][] slots = new BufferSlot[Scaling.EQUIPMENT_SLOTS_WIDTH_NUM][Scaling.EQUIPMENT_SLOTS_HEIGHT_NUM];
     
@@ -24,6 +25,7 @@ public class Equipment implements Observer{
     private BufferSlot leggingsSlot;
     private BufferSlot shieldSlot;
     private BufferSlot glovesSlot;
+    private BufferSlot quiverSlot;
     
     private EquipmentView equipmentView;
 	
@@ -39,6 +41,7 @@ public class Equipment implements Observer{
     	this.leggingsSlot = new LeggingsSlot(this);
     	this.shieldSlot = new ShieldSlot(this);
     	this.bootsSlot = new BootsSlot(this);
+    	this.quiverSlot = new QuiverSlot(this);
     	setArrayPoints();
     }
     
@@ -58,6 +61,7 @@ public class Equipment implements Observer{
     	this.setSlot(GLOVES_SLOT, this.glovesSlot);
     	this.setSlot(HELMET_SLOT, this.helmetSlot);
     	this.setSlot(LEGGINGS_SLOT, this.leggingsSlot);
+    	this.setSlot(QUIVER_SLOT, this.quiverSlot);
     }
     
     private void setSlot(Point point, BufferSlot slot){

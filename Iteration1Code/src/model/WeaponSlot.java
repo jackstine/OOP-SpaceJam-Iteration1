@@ -43,4 +43,7 @@ public class WeaponSlot extends BufferSlot{
 	public boolean equip(Boots boots) {
 		return false;
 	}
+	public boolean equip(Projectile projectile){
+		return false;
+	}
 }

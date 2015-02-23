@@ -13,4 +13,5 @@ public interface ItemVisitor {
 	public void accept(Shield shield);
 	public void accept(Helmet helmet);
 	public void accept(Boots boots);
+	public void accept(Projectile projectile);
 }

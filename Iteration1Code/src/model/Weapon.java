@@ -48,7 +48,10 @@ public class Weapon extends Equipable {
 	public boolean equip(GlovesSlot slot){
 		return false;
 	}
-
+	public boolean equip(QuiverSlot slot){
+		return false;
+	}
+	
 	public TakeableItem equipSlot(Equipment equipment) {
 		TakeableItem item = equipment.unequipSlot(this.slot);
 		equipment.equipSlot(this.slot,this);

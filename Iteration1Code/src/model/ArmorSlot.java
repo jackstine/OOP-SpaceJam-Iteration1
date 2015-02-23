@@ -39,6 +39,9 @@ public class ArmorSlot extends BufferSlot{
 	public boolean equip(Boots boots) {
 		return false;
 	}
+	public boolean equip(Projectile projectile){
+		return false;
+	}
 	
 	public String toString(){
 		if (this.has()) return "Item:Armor:" + this.bonus;

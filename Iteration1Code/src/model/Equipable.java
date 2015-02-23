@@ -23,4 +23,5 @@ public abstract class Equipable extends TakeableItem{
 	public abstract boolean equip(BootsSlot slot);
 	public abstract boolean equip(LeggingsSlot slot);
 	public abstract boolean equip(ShieldSlot slot);
+	public abstract boolean equip(QuiverSlot slot);
 }

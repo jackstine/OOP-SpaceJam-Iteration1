@@ -29,6 +29,9 @@ public class ShieldSlot extends BufferSlot{
 	public boolean equip(Shield shield) {
 		return this.equipItem(shield);
 	}
+	public boolean equip(Projectile projectile){
+		return false;
+	}
 
 	public boolean equip(Boots boots) {
 		return false;

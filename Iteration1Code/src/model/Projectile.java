@@ -2,31 +2,22 @@ package model;
 
 import view.EquipmentView;
 
-public class Shield extends Equipable{
-	protected final static Point SLOT = EquipmentView.SHIELD_POINT;
+public class Projectile extends Equipable{
+	private static final Point SLOT = EquipmentView.QUIVER_POINT;
+	private int attack;
 	
-	private int armor;
-
-	public Shield(int armor){
-		this.armor = armor;
+	public Projectile(int attack){
+		this.attack = attack;
 	}
 	
-	public void accept(ItemVisitor visitor) {
-		visitor.accept(this);
+	public int getBonus() {
+		return this.attack;
 	}
-
-	public String getItemName() {
-		return null;
-	}
-
+	
 	public TakeableItem equipSlot(Equipment equipment) {
 		TakeableItem item = equipment.unequipSlot(SLOT);
 		equipment.equipSlot(SLOT,this);
 		return item;
-	}
-
-	public int getBonus() {
-		return this.armor;
 	}
 
 	public boolean equip(ArmorSlot slot) {
@@ -42,7 +33,7 @@ public class Shield extends Equipable{
 		return false;
 	}
 	public boolean equip(ShieldSlot slot){
-		return slot.equip(this);
+		return false;
 	}
 	public boolean equip(LeggingsSlot slot){
 		return false;
@@ -53,4 +44,14 @@ public class Shield extends Equipable{
 	public boolean equip(QuiverSlot slot){
 		return false;
 	}
+
+	public void accept(ItemVisitor visitor) {
+		visitor.accept(this);
+	}
+	
+	public String getItemName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

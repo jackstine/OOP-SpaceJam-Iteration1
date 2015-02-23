@@ -49,5 +49,7 @@ public class Gloves extends Equipable{
 	public boolean equip(GlovesSlot slot){
 		return slot.equip(this);
 	}
-
+	public boolean equip(QuiverSlot slot){
+		return false;
+	}
 }

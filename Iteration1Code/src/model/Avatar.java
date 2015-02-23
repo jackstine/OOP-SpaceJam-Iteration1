@@ -45,14 +45,8 @@ public class Avatar extends Entity {
 	
 	
     private void setEquipmentBegin(){
-    	int beginValue = 1;
-    	this.equipment.equipSlot(Equipment.ARMOR_SLOT, new Armor(beginValue));
-    	this.equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(beginValue));
-    	this.equipment.equipSlot(Equipment.BOOTS_SLOT, new Boots(beginValue));
-    	this.equipment.equipSlot(Equipment.SHIELD_SLOT, new Shield(beginValue));
-    	this.equipment.equipSlot(Equipment.GLOVES_SLOT, new Gloves(beginValue));
-    	this.equipment.equipSlot(Equipment.LEGGINGS_SLOT, new Leggings(beginValue));
-    	this.equipment.equipSlot(Equipment.HELMET_SLOT, new Helmet(beginValue));
+    	EquipmentBuilder ebuild = new EquipmentBuilder();
+    	ebuild.buildBeginningEquipment(this.equipment);
     }
 	
 	public BufferedImage getImage(){

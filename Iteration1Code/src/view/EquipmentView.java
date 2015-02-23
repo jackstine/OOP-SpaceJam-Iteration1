@@ -23,6 +23,7 @@ public class EquipmentView extends JComponent{
 	private static final Point POINT_OF_LEGGINGS = new Point(Scaling.EQUIPMENT_LEGGINGS_X, Scaling.EQUIPMENT_LEGGINGS_Y);
 	private static final Point POINT_OF_SHIELD = new Point(Scaling.EQUIPMENT_SHIELD_X, Scaling.EQUIPMENT_SHIELD_Y);
 	private static final Point POINT_OF_BOOTS = new Point(Scaling.EQUIPMENT_BOOTS_X, Scaling.EQUIPMENT_BOOTS_Y);
+	private static final Point POINT_OF_QUIVER = new Point(Scaling.EQUIPMENT_QUIVER_X, Scaling.EQUIPMENT_QUIVER_Y);
 	private static final Point SIZE_OF_SLOT = new Point(Scaling.EQUIPMENT_SLOT_WIDTH, Scaling.EQUIPMENT_SLOT_HEIGHT);
 	private static final Point EQUIPMENT_SLOT_OFFSET = new Point(Scaling.EQUIPMENT_SLOT_OFFSET_WIDTH,Scaling.EQUIPMENT_SLOT_OFFSET_HEIGHT);
 	
@@ -33,6 +34,7 @@ public class EquipmentView extends JComponent{
 	private static final String EQUIPMENT_LEGGINGS_IMAGE_PATH = "src/res/img/Equipment_Leggings_Slot.png";
 	private static final String EQUIPMENT_SHIELD_IMAGE_PATH = "src/res/img/Equipment_Shield_Slot.png";
 	private static final String EQUIPMENT_HELMET_IMAGE_PATH = "src/res/img/Equipment_Helmet_Slot.png";
+	private static final String EQUIPMENT_QUIVER_IMAGE_PATH = "src/res/img/Equipment_Quiver_Slot.png";
 	
 	
 	/**************************  POINTS ON THE GRAPH,  SLOTS FOR ARRAYS   ***********************************/
@@ -57,8 +59,11 @@ public class EquipmentView extends JComponent{
 	public static final Point LEGGINGS_POINT = new Point ((Scaling.EQUIPMENT_LEGGINGS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_LEGGINGS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
 	/**************************************TWO HANDED POINT***********************************************************/
-	public static final Point TWO_HANDED_WEAPON_POINT = new Point((Scaling.EQUIPMENT_LEGGINGS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
-			,(Scaling.EQUIPMENT_LEGGINGS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	//public static final Point TWO_HANDED_WEAPON_POINT = new Point((Scaling.EQUIPMENT_LEGGINGS_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+	//		,(Scaling.EQUIPMENT_LEGGINGS_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
+	/**************************************QUIVER POINT***********************************************************/
+	public static final Point QUIVER_POINT = new Point((Scaling.EQUIPMENT_QUIVER_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
+			,(Scaling.EQUIPMENT_QUIVER_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
 	
 	// DELETE THIS ONCE WE HAVE ALL THE SLOTS IN EQUIPMENT  boots, Shield,......
 	private ArmorSlot uselessSlot = new ArmorSlot();
@@ -78,6 +83,7 @@ public class EquipmentView extends JComponent{
 	private static BufferedImage glovesImage;
 	private static BufferedImage leggingsImage;
 	private static BufferedImage helmetImage;
+	private static BufferedImage quiverImage;
 	
 	private static ItemImageVisitor itemVisitor = new ItemImageVisitor(EQUIPMENT_SLOT_OFFSET);
 	
@@ -114,6 +120,7 @@ public class EquipmentView extends JComponent{
 		shieldImage = this.setImage(this.equipment.getSlot(Equipment.SHIELD_SLOT), EQUIPMENT_SHIELD_IMAGE_PATH);
 		leggingsImage = this.setImage(this.equipment.getSlot(Equipment.LEGGINGS_SLOT), EQUIPMENT_LEGGINGS_IMAGE_PATH);
 		helmetImage = this.setImage(this.equipment.getSlot(Equipment.HELMET_SLOT), EQUIPMENT_HELMET_IMAGE_PATH);
+		quiverImage = this.setImage(this.equipment.getSlot(Equipment.QUIVER_SLOT), EQUIPMENT_QUIVER_IMAGE_PATH);
 	}
 	
 	public void update() {
@@ -133,6 +140,7 @@ public class EquipmentView extends JComponent{
 		g.drawImage(shieldImage, POINT_OF_SHIELD.getX(), POINT_OF_SHIELD.getY(), null);
 		g.drawImage(helmetImage, POINT_OF_HELMET.getX(), POINT_OF_HELMET.getY(), null);
 		g.drawImage(leggingsImage, POINT_OF_LEGGINGS.getX(), POINT_OF_LEGGINGS.getY(), null);
+		g.drawImage(quiverImage, POINT_OF_QUIVER.getX(), POINT_OF_QUIVER.getY(), null);
 	}
 	
 	public Dimension getPreferredSize(){

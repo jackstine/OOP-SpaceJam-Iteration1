@@ -33,5 +33,8 @@ public class BootsSlot extends BufferSlot{
 	public boolean equip(Boots boots) {
 		return this.equipItem(boots);
 	}
+	public boolean equip(Projectile projectile){
+		return false;
+	}
 
 }

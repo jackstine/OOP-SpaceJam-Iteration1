@@ -98,6 +98,9 @@ public final class Scaling {
 	// Helmet is the top view of the Equipment View
 	public static final int EQUIPMENT_HELMET_X = Scaling.EQUIPMENT_SLOT_WIDTH;
 	public static final int EQUIPMENT_HELMET_Y = 0;
+	//Quiver is right of the Helmet///  for now
+	public static final int EQUIPMENT_QUIVER_X = Scaling.EQUIPMENT_HELMET_X + Scaling.EQUIPMENT_SLOT_WIDTH;
+	public static final int EQUIPMENT_QUIVER_Y = Scaling.EQUIPMENT_HELMET_Y;
 	// left of the Armor
 	public static final int EQUIPMENT_SHIELD_X = EQUIPMENT_ARMOR_X + Scaling.EQUIPMENT_SLOT_WIDTH;
 	public static final int EQUIPMENT_SHIELD_Y = EQUIPMENT_ARMOR_Y;

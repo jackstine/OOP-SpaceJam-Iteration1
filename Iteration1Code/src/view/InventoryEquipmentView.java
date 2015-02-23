@@ -3,13 +3,11 @@ package view;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
 import model.Avatar;
-import model.Equipment;
 import model.Point;
 import model.TakeableItem;
 
@@ -23,7 +21,6 @@ Consists of three buttons for saving, quitting, and 'saving and quitting' the ga
 
 public class InventoryEquipmentView extends JPanel {
 	private JLabel title;
-	private JButton stats;
 	private Avatar avatar;
 	private InventoryView inventory;
 	private EquipmentView equipment;
@@ -35,7 +32,6 @@ public class InventoryEquipmentView extends JPanel {
 		inventory.addMouseListener(new InventoryMouseListener());
 		this.equipment = new EquipmentView(avatar.getEquipment());
 		equipment.addMouseListener(new EquipmentMouseListener());
-		this.stats = new JButton("Stats");
 		this.title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
 		add(this.title);
 		add(this.inventory);

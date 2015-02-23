@@ -18,6 +18,7 @@ public final class ItemImageProxy  {
 	private static String GLOVES_IMAGE = "src/res/img/gloves.png";
 	private static String SHIELD_IMAGE = "src/res/img/shield.png";
 	private static String BOOTS_IMAGE = "src/res/img/boots.png";
+	private static String PROJECTILE_IMAGE = "src/res/img/projectile.png";
 	
 	private BufferedImage healingpotionImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE,  HEALINGPOTION_IMAGE_PATH);
 	private BufferedImage closedtreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[0]);
@@ -32,6 +33,7 @@ public final class ItemImageProxy  {
 	private BufferedImage glovesImage;
 	private BufferedImage leggingsImage;
 	private BufferedImage shieldImage;
+	private BufferedImage projectileImage;
 	
 	
 	private Point scale;
@@ -53,8 +55,7 @@ public final class ItemImageProxy  {
 		glovesImage = ImageProcessing.scaleImage(this.scale, GLOVES_IMAGE);
 		leggingsImage = ImageProcessing.scaleImage(this.scale, LEGGINGS_IMAGE);
 		shieldImage = ImageProcessing.scaleImage(this.scale, SHIELD_IMAGE);
-		
-		
+		projectileImage = ImageProcessing.scaleImage(this.scale, PROJECTILE_IMAGE);
 	}
 	
 	public final BufferedImage getImage(HealingOneShotItem item){
@@ -104,6 +105,9 @@ public final class ItemImageProxy  {
 	}
 	public BufferedImage getImage(Boots b){
 		return bootsImage;
+	}
+	public BufferedImage getImage(Projectile projectile) {
+		return projectileImage;
 	}
 	
 	
