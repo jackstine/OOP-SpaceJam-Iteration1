@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
+      <x>513</x>
       <y>81</y>
       <w>198</w>
       <h>117</h>
@@ -19,7 +19,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1134</x>
+      <x>1080</x>
       <y>108</y>
       <w>234</w>
       <h>72</h>
@@ -35,7 +35,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
+      <x>702</x>
       <y>135</y>
       <w>396</w>
       <h>27</h>
@@ -46,7 +46,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
+      <x>576</x>
       <y>531</y>
       <w>198</w>
       <h>54</h>
@@ -61,7 +61,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>396</x>
+      <x>342</x>
       <y>531</y>
       <w>198</w>
       <h>54</h>
@@ -76,7 +76,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
+      <x>810</x>
       <y>531</y>
       <w>198</w>
       <h>54</h>
@@ -91,7 +91,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1098</x>
+      <x>1044</x>
       <y>531</y>
       <w>198</w>
       <h>54</h>
@@ -106,7 +106,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
+      <x>450</x>
       <y>612</y>
       <w>198</w>
       <h>54</h>
@@ -120,7 +120,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>747</x>
+      <x>693</x>
       <y>612</y>
       <w>198</w>
       <h>54</h>
@@ -135,7 +135,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>990</x>
+      <x>936</x>
       <y>612</y>
       <w>198</w>
       <h>54</h>
@@ -150,7 +150,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>837</x>
+      <x>783</x>
       <y>351</y>
       <w>27</w>
       <h>117</h>
@@ -161,7 +161,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>603</x>
+      <x>549</x>
       <y>414</y>
       <w>27</w>
       <h>216</h>
@@ -172,7 +172,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>477</x>
+      <x>423</x>
       <y>414</y>
       <w>27</w>
       <h>135</h>
@@ -183,7 +183,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1197</x>
+      <x>1143</x>
       <y>414</y>
       <w>27</w>
       <h>135</h>
@@ -194,7 +194,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>837</x>
+      <x>783</x>
       <y>441</y>
       <w>27</w>
       <h>189</h>
@@ -205,7 +205,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1071</x>
+      <x>1017</x>
       <y>414</y>
       <w>27</w>
       <h>216</h>
@@ -216,7 +216,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>477</x>
+      <x>423</x>
       <y>414</y>
       <w>747</w>
       <h>27</h>
@@ -227,7 +227,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>711</x>
+      <x>657</x>
       <y>414</y>
       <w>27</w>
       <h>135</h>
@@ -238,7 +238,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>954</x>
+      <x>900</x>
       <y>414</y>
       <w>27</w>
       <h>135</h>
@@ -249,7 +249,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>963</x>
+      <x>909</x>
       <y>747</y>
       <w>198</w>
       <h>72</h>
@@ -265,7 +265,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
+      <x>684</x>
       <y>288</y>
       <w>216</w>
       <h>72</h>
@@ -281,7 +281,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>837</x>
+      <x>783</x>
       <y>243</y>
       <w>495</w>
       <h>27</h>
@@ -292,7 +292,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>837</x>
+      <x>783</x>
       <y>243</y>
       <w>27</w>
       <h>63</h>
@@ -303,7 +303,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1143</x>
+      <x>1089</x>
       <y>243</y>
       <w>189</w>
       <h>522</h>
@@ -314,7 +314,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>945</x>
+      <x>891</x>
       <y>306</y>
       <w>162</w>
       <h>459</h>
@@ -325,7 +325,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>882</x>
+      <x>828</x>
       <y>1008</y>
       <w>198</w>
       <h>54</h>
@@ -340,7 +340,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1116</x>
+      <x>1062</x>
       <y>1008</y>
       <w>198</w>
       <h>63</h>
@@ -356,7 +356,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1350</x>
+      <x>1296</x>
       <y>1008</y>
       <w>198</w>
       <h>63</h>
@@ -372,7 +372,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>756</x>
+      <x>702</x>
       <y>1089</y>
       <w>198</w>
       <h>54</h>
@@ -386,7 +386,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>999</x>
+      <x>945</x>
       <y>1089</y>
       <w>198</w>
       <h>54</h>
@@ -401,7 +401,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1242</x>
+      <x>1188</x>
       <y>1089</y>
       <w>198</w>
       <h>54</h>
@@ -416,7 +416,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
+      <x>801</x>
       <y>891</y>
       <w>27</w>
       <h>216</h>
@@ -427,7 +427,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1449</x>
+      <x>1395</x>
       <y>891</y>
       <w>27</w>
       <h>135</h>
@@ -438,7 +438,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1089</x>
+      <x>1035</x>
       <y>891</y>
       <w>27</w>
       <h>216</h>
@@ -449,7 +449,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1323</x>
+      <x>1269</x>
       <y>891</y>
       <w>27</w>
       <h>216</h>
@@ -460,7 +460,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
+      <x>909</x>
       <y>891</y>
       <w>27</w>
       <h>135</h>
@@ -471,7 +471,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1206</x>
+      <x>1152</x>
       <y>891</y>
       <w>27</w>
       <h>135</h>
@@ -482,7 +482,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
+      <x>801</x>
       <y>891</y>
       <w>621</w>
       <h>27</h>
@@ -493,7 +493,7 @@ Stat
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1062</x>
+      <x>1008</x>
       <y>810</y>
       <w>27</w>
       <h>108</h>
@@ -504,7 +504,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
+      <x>378</x>
       <y>297</y>
       <w>216</w>
       <h>27</h>
@@ -517,7 +517,7 @@ Stat
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1269</x>
+      <x>1215</x>
       <y>756</y>
       <w>216</w>
       <h>45</h>
@@ -531,7 +531,7 @@ Observer
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1152</x>
+      <x>1098</x>
       <y>765</y>
       <w>135</w>
       <h>27</h>
@@ -542,7 +542,7 @@ Observer
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1233</x>
+      <x>1179</x>
       <y>171</y>
       <w>27</w>
       <h>99</h>
@@ -553,7 +553,7 @@ Observer
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>639</x>
+      <x>585</x>
       <y>306</y>
       <w>117</w>
       <h>27</h>
@@ -564,7 +564,7 @@ Observer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>54</x>
+      <x>0</x>
       <y>0</y>
       <w>198</w>
       <h>27</h>
