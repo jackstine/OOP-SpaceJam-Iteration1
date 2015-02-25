@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>170</x>
+      <y>470</y>
+      <w>230</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>CharacterMenu
+--
+-characterInfo : Panel
+-levelUpButton : JButton
+-Inventory:Grid&lt; &lt; SlotView&gt; &gt;
+
+--
++displayStats(Map&lt;String,Stat&gt;)
++displayInventory(Inventory)
++displayAvatarPortrait()
++displayEquipment(Equipment)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>360</x>
+      <y>100</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>The level up button is extraneous if we are doing automatic level ups.
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>530</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>0</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>SlotView
+--
+-slotNum:Point
+-item:Image
+--
++display()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>130</y>
+      <w>90</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+m2=1
+m1=1...*</panel_attributes>
+    <additional_attributes>50.0;10.0;50.0;60.0;10.0;60.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>520</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>CharacterMenuController
+--
+avatar:Avatar
+--
++equip(Point)
++unequip(Point,Point)
++swap(Point,Point)
++dropItem(Point)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>240</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>InventoryView
+--
+-slotNum:Point
+-item:Image
+--
++display()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>240</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>EquipmentView
+--
+-slotNum:Point
+-item:Image
+--
++display()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>180</y>
+      <w>260</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;60.0</additional_attributes>
+  </element>
+</diagram>

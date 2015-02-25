@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1576</x>
-      <y>360</y>
+      <y>384</y>
       <w>240</w>
       <h>88</h>
     </coordinates>
@@ -23,7 +23,7 @@ in addition to adding an effect to the avatar.</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1696</x>
-      <y>144</y>
+      <y>168</y>
       <w>184</w>
       <h>80</h>
     </coordinates>
@@ -37,7 +37,7 @@ Item
     <id>UMLClass</id>
     <coordinates>
       <x>1352</x>
-      <y>296</y>
+      <y>320</y>
       <w>176</w>
       <h>88</h>
     </coordinates>
@@ -55,7 +55,7 @@ the avatar's inventory upon touch.</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1832</x>
-      <y>368</y>
+      <y>392</y>
       <w>200</w>
       <h>88</h>
     </coordinates>
@@ -73,7 +73,7 @@ event (like opening a door).</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>2040</x>
-      <y>368</y>
+      <y>392</y>
       <w>232</w>
       <h>88</h>
     </coordinates>
@@ -91,7 +91,7 @@ Responsibilities
     <id>Relation</id>
     <coordinates>
       <x>1240</x>
-      <y>296</y>
+      <y>320</y>
       <w>128</w>
       <h>40</h>
     </coordinates>
@@ -102,7 +102,7 @@ Responsibilities
     <id>UMLClass</id>
     <coordinates>
       <x>1352</x>
-      <y>88</y>
+      <y>112</y>
       <w>216</w>
       <h>80</h>
     </coordinates>
@@ -118,7 +118,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>1128</x>
-      <y>320</y>
+      <y>344</y>
       <w>160</w>
       <h>136</h>
     </coordinates>
@@ -140,7 +140,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1408</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -151,7 +151,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1560</x>
-      <y>96</y>
+      <y>120</y>
       <w>232</w>
       <h>64</h>
     </coordinates>
@@ -162,7 +162,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1784</x>
-      <y>216</y>
+      <y>240</y>
       <w>24</w>
       <h>80</h>
     </coordinates>
@@ -173,7 +173,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1472</x>
-      <y>272</y>
+      <y>296</y>
       <w>632</w>
       <h>24</h>
     </coordinates>
@@ -184,7 +184,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1472</x>
-      <y>272</y>
+      <y>296</y>
       <w>24</w>
       <h>40</h>
     </coordinates>
@@ -195,7 +195,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>2080</x>
-      <y>272</y>
+      <y>296</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -206,7 +206,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1912</x>
-      <y>272</y>
+      <y>296</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -217,7 +217,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1672</x>
-      <y>272</y>
+      <y>296</y>
       <w>24</w>
       <h>104</h>
     </coordinates>
@@ -228,7 +228,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>1096</x>
-      <y>0</y>
+      <y>24</y>
       <w>176</w>
       <h>24</h>
     </coordinates>
@@ -240,7 +240,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>952</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -261,7 +261,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>760</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -282,7 +282,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>568</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -303,7 +303,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>384</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -324,7 +324,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>192</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -345,7 +345,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -366,7 +366,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>1320</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -387,7 +387,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>1136</x>
-      <y>568</y>
+      <y>592</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -408,7 +408,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1056</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -419,7 +419,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1192</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -430,7 +430,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1200</x>
-      <y>448</y>
+      <y>472</y>
       <w>24</w>
       <h>48</h>
     </coordinates>
@@ -442,7 +442,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>1192</x>
-      <y>464</y>
+      <y>488</y>
       <w>240</w>
       <h>32</h>
     </coordinates>
@@ -453,7 +453,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>288</x>
-      <y>464</y>
+      <y>488</y>
       <w>928</w>
       <h>32</h>
     </coordinates>
@@ -464,7 +464,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>848</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -475,7 +475,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>664</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -486,7 +486,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -497,7 +497,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -508,7 +508,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>88</x>
-      <y>472</y>
+      <y>496</y>
       <w>24</w>
       <h>112</h>
     </coordinates>
@@ -519,7 +519,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>88</x>
-      <y>472</y>
+      <y>496</y>
       <w>224</w>
       <h>24</h>
     </coordinates>
@@ -530,7 +530,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>2232</x>
-      <y>8</y>
+      <y>32</y>
       <w>120</w>
       <h>64</h>
     </coordinates>
@@ -546,7 +546,7 @@ ItemVisitor
     <id>UMLClass</id>
     <coordinates>
       <x>2176</x>
-      <y>128</y>
+      <y>152</y>
       <w>176</w>
       <h>96</h>
     </coordinates>
@@ -563,7 +563,7 @@ ALL THE ITEMS...
     <id>UMLClass</id>
     <coordinates>
       <x>1936</x>
-      <y>136</y>
+      <y>160</y>
       <w>168</w>
       <h>80</h>
     </coordinates>
@@ -580,7 +580,7 @@ ALL the Images of Items
     <id>Relation</id>
     <coordinates>
       <x>2096</x>
-      <y>160</y>
+      <y>184</y>
       <w>96</w>
       <h>24</h>
     </coordinates>
@@ -591,7 +591,7 @@ ALL the Images of Items
     <id>Relation</id>
     <coordinates>
       <x>2280</x>
-      <y>64</y>
+      <y>88</y>
       <w>24</w>
       <h>80</h>
     </coordinates>
@@ -602,7 +602,7 @@ ALL the Images of Items
     <id>UMLClass</id>
     <coordinates>
       <x>1544</x>
-      <y>752</y>
+      <y>776</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -623,7 +623,7 @@ ALL the Images of Items
     <id>UMLClass</id>
     <coordinates>
       <x>1360</x>
-      <y>752</y>
+      <y>776</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -644,7 +644,7 @@ ALL the Images of Items
     <id>UMLClass</id>
     <coordinates>
       <x>1168</x>
-      <y>752</y>
+      <y>776</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -665,7 +665,7 @@ ALL the Images of Items
     <id>Relation</id>
     <coordinates>
       <x>1392</x>
-      <y>680</y>
+      <y>704</y>
       <w>24</w>
       <h>88</h>
     </coordinates>
@@ -676,7 +676,7 @@ ALL the Images of Items
     <id>Relation</id>
     <coordinates>
       <x>1256</x>
-      <y>704</y>
+      <y>728</y>
       <w>408</w>
       <h>24</h>
     </coordinates>
@@ -687,7 +687,7 @@ ALL the Images of Items
     <id>Relation</id>
     <coordinates>
       <x>1640</x>
-      <y>704</y>
+      <y>728</y>
       <w>24</w>
       <h>64</h>
     </coordinates>
@@ -698,7 +698,7 @@ ALL the Images of Items
     <id>Relation</id>
     <coordinates>
       <x>1256</x>
-      <y>704</y>
+      <y>728</y>
       <w>24</w>
       <h>64</h>
     </coordinates>
@@ -709,7 +709,7 @@ ALL the Images of Items
     <id>Relation</id>
     <coordinates>
       <x>1808</x>
-      <y>32</y>
+      <y>56</y>
       <w>440</w>
       <h>128</h>
     </coordinates>
@@ -720,11 +720,11 @@ ALL the Images of Items
     <id>UMLClass</id>
     <coordinates>
       <x>2376</x>
-      <y>128</y>
+      <y>152</y>
       <w>176</w>
       <h>96</h>
     </coordinates>
-    <panel_attributes>ItemButingVisitor
+    <panel_attributes>ItemBuyingVisitor
 --
 ALL THE ITEMS...
 --
@@ -737,7 +737,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>2280</x>
-      <y>88</y>
+      <y>112</y>
       <w>192</w>
       <h>24</h>
     </coordinates>
@@ -748,7 +748,7 @@ ALL THE ITEMS...
     <id>Relation</id>
     <coordinates>
       <x>2448</x>
-      <y>88</y>
+      <y>112</y>
       <w>24</w>
       <h>56</h>
     </coordinates>
@@ -759,7 +759,7 @@ ALL THE ITEMS...
     <id>UMLNote</id>
     <coordinates>
       <x>2480</x>
-      <y>80</y>
+      <y>104</y>
       <w>96</w>
       <h>24</h>
     </coordinates>
@@ -771,7 +771,7 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1536</x>
-      <y>656</y>
+      <y>680</y>
       <w>112</w>
       <h>56</h>
     </coordinates>
