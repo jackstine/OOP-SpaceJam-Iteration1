@@ -109,6 +109,4 @@ public final class ItemImageProxy  {
 	public BufferedImage getImage(Projectile projectile) {
 		return projectileImage;
 	}
-	
-	
 }

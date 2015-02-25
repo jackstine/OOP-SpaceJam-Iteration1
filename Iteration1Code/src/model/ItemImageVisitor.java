@@ -37,31 +37,21 @@ public class ItemImageVisitor implements ItemVisitor{
 	public BufferedImage getImage(){
 		return this.image;
 	}
-
 	public void accept(TwoHandedWeapon w) {
 		this.image = imageProxy.getImage(w);
 	}
-
-	@Override
 	public void accept(Gloves gloves) {
 		this.image = imageProxy.getImage(gloves);
 	}
-
-	@Override
 	public void accept(Leggings leggings) {
 		this.image = imageProxy.getImage(leggings);
 	}
-
-	@Override
 	public void accept(Shield shield) {
 		this.image = imageProxy.getImage(shield);
 	}
-
-	@Override
 	public void accept(Helmet helmet) {
 		this.image = imageProxy.getImage(helmet);	
 	}
-	
 	public void accept(Boots boots){
 		this.image = imageProxy.getImage(boots);
 	}

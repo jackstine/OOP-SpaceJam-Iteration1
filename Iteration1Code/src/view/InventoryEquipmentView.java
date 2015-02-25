@@ -89,7 +89,7 @@ public class InventoryEquipmentView extends JPanel {
 		
 		private void equipItem(MouseEvent e){
 			Point pointOfSlot = this.getInventorySlot(e);
-			System.out.println(pointOfSlot);
+			//TODO CHANGE TO unequipSLOT()
 			TakeableItem item = inventory.getInventory().getSlot(pointOfSlot).unequip();
 			boolean notEmpty = item != null;
 			if (notEmpty){
@@ -100,7 +100,6 @@ public class InventoryEquipmentView extends JPanel {
 		
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
-			System.out.println(e);
 			if (e.getButton() == RIGHT_CLICK){
 				this.unequipItem(e);
 			}

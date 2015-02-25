@@ -13,5 +13,4 @@ public class EquipmentBuilder {
     	equipment.equipSlot(Equipment.HELMET_SLOT, new Helmet(beginValue));
     	equipment.equipSlot(Equipment.QUIVER_SLOT, new Projectile(beginValue));
 	}
-
 }
