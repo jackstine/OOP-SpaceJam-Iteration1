@@ -9,7 +9,7 @@ public class GameMap {
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
-	private HashMap<Tile, Item> tileToItemMap;
+//	private HashMap<Tile, Item> tileToItemMap;
 	private int width;
 	private int height;
 	private Avatar avatar;
@@ -20,7 +20,7 @@ public class GameMap {
 		map = m.generateStructuredMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
-		tileToItemMap = new HashMap<Tile,Item>();
+//		tileToItemMap = new HashMap<Tile,Item>();
 	}
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
@@ -70,9 +70,9 @@ public class GameMap {
 		entityToLocationMap.put(e,loc);	
 	}
 	
-	public void updateItemLocation(Tile t, Item i){
-		tileToItemMap.put(t, i);
-	}
+//	public void updateItemLocation(Tile t, Item i){
+//		tileToItemMap.put(t, i);
+//	}
 	
 	public Location getLocation(Entity e){
 		return entityToLocationMap.get(e);

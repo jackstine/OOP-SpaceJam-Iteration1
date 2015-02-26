@@ -3,6 +3,8 @@ package model;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.slots.ArmorSlot;
+
 public class ArmorRating extends DerivedStat implements Observer{
 	private ArmorSlot slotSubject;
 	private int armorBonus;

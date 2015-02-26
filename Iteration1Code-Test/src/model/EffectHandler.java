@@ -1,5 +1,8 @@
 package model;
 
+import model.items.HealingOneShotItem;
+import model.items.Item;
+
 public class EffectHandler {
 	//private Tile tile;
 	//GameMap map;

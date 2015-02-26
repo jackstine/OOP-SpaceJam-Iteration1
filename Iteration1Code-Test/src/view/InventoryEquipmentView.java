@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import utilities.Scaling;
 import model.Avatar;
 import model.Point;
-import model.TakeableItem;
+import model.items.TakeableItem;
 
 /*
 

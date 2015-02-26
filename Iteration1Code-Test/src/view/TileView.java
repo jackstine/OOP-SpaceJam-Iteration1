@@ -8,11 +8,12 @@ import javax.swing.JComponent;
  
 
 
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
-import model.ItemImageVisitor;
 import model.TerrainImageVisitor;
 import model.Tile;
+import model.items.ItemImageVisitor;
  
 public class TileView extends JComponent{
     public static final int SCALE = Scaling.TILE_SCALE.getX();

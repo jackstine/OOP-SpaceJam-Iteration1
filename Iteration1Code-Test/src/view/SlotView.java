@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
-import model.InventorySlot;
-import model.ItemImageVisitor;
 import model.Point;
+import model.items.ItemImageVisitor;
+import model.slots.InventorySlot;
 
 
 public class SlotView extends JPanel implements Observer{

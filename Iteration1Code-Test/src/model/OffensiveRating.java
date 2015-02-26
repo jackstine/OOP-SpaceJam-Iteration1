@@ -3,6 +3,8 @@ package model;
 
 import java.util.Observable;
 
+import model.slots.WeaponSlot;
+
 public class OffensiveRating extends DerivedStat{
 	private WeaponSlot slotSubject;
 	private int weaponBonus;

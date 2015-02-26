@@ -9,11 +9,11 @@ import javax.swing.JComponent;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
-import model.ArmorSlot;
-import model.BufferSlot;
-import model.Equipment;
-import model.ItemImageVisitor;
 import model.Point;
+import model.items.ItemImageVisitor;
+import model.slots.ArmorSlot;
+import model.slots.BufferSlot;
+import model.slots.Equipment;
 
 public class EquipmentView extends JComponent{
 	private static final Point POINT_OF_WEAPON = new Point(Scaling.EQUIPMENT_WEAPON_X,Scaling.EQUIPMENT_WEAPON_Y);

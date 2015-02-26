@@ -1,5 +1,8 @@
 package model;
 
+import model.items.Item;
+import model.items.TreasureChest;
+
 public class QuestHandler {
 private Avatar avatar;
 	

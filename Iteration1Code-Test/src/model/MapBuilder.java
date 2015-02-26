@@ -1,5 +1,12 @@
 package model;
 
+import model.items.Armor;
+import model.items.GiantRock;
+import model.items.HealingOneShotItem;
+import model.items.Item;
+import model.items.TreasureChest;
+import model.items.Weapon;
+
 public class MapBuilder{
 	protected Tile[][] map;
 	protected int width;

@@ -15,9 +15,9 @@ import javax.swing.border.LineBorder;
 
 import model.Game;
 import model.Location;
-import model.TakeableItem;
  
 import model.Point;
+import model.items.TakeableItem;
 import utilities.Scaling;
 import view.InventoryEquipmentView;
 import view.GameView;

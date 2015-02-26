@@ -2,7 +2,17 @@ package controller;
 
 import java.util.*;
 import java.io.*;
+
 import model.*;
+import model.items.Armor;
+import model.items.DamagingOneShotItem;
+import model.items.GiantRock;
+import model.items.HealingOneShotItem;
+import model.items.Item;
+import model.items.TreasureChest;
+import model.items.Weapon;
+import model.slots.Equipment;
+import model.slots.Inventory;
 
 public class SaveLoadController {
 	

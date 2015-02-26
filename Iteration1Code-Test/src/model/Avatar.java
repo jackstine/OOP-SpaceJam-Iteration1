@@ -2,6 +2,9 @@ package model;
 
 import java.awt.image.BufferedImage;
 
+import model.slots.Equipment;
+import model.slots.EquipmentBuilder;
+import model.slots.Inventory;
 import utilities.*;
 
 public class Avatar extends Entity {

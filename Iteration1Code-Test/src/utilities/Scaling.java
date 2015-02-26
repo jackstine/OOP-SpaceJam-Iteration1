@@ -2,8 +2,8 @@ package utilities;
 
 import java.awt.Toolkit;
 
-import model.Inventory;
 import model.Point;
+import model.slots.Inventory;
 
 // ALL scaling conventions are in here
 public final class Scaling {

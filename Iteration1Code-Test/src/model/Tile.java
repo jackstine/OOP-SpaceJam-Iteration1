@@ -1,5 +1,8 @@
 package model;
 
+import model.items.Item;
+import model.items.ObstacleItem;
+
 public class Tile {	
 	
 	private Terrain terrain;

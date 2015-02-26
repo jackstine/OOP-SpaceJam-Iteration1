@@ -1,5 +1,8 @@
 package model;
 
+import model.items.DamagingOneShotItem;
+import model.items.HealingOneShotItem;
+
 
 
 public class EffectApplication{
