@@ -4,6 +4,7 @@ import model.items.Armor;
 import model.items.GiantRock;
 import model.items.HealingOneShotItem;
 import model.items.Item;
+import model.items.TerminatorWeapon;
 import model.items.TreasureChest;
 import model.items.Weapon;
 
@@ -37,7 +38,7 @@ public class MapBuilder{
 		for (int i = 5;i <= 8;i++){
 			for (int j=3; j<=8; j++){
 				if (j%2==0){
-					Weapon weapon = new Weapon(i+j);
+					Weapon weapon = new TerminatorWeapon(i+j);
 					this.map[i][j].setItem(weapon);
 				}
 				else{
@@ -56,7 +57,7 @@ public class MapBuilder{
 			for(int j=0;j<this.height;j++){
 				this.map[j][i] = new Tile(new DesertTerrain(),i,j);
 				if (j%2==0){
-					Weapon weapon = new Weapon(i+j);
+					Weapon weapon = new TerminatorWeapon(i+j);
 					this.map[j][i].setItem(weapon);
 					this.items[j][i] = weapon;
 				}
@@ -94,7 +95,7 @@ public class MapBuilder{
 		this.map[3][10].setItem(armor);
 		this.items[3][10] = armor;
 		
-		Weapon weapon = new Weapon(20+49);
+		Weapon weapon = new TerminatorWeapon(20+49);
 		this.map[8][8].setItem(weapon);
 		this.items[8][8] = weapon;
 		
@@ -128,7 +129,7 @@ public class MapBuilder{
 		this.map[3][20].setItem(armor);
 		this.items[3][20] = armor;
 		
-		Weapon weapon = new Weapon(20+49);
+		Weapon weapon = new TerminatorWeapon(20+49);
 		this.map[8][8].setItem(weapon);
 		this.items[8][8] = weapon;
 		

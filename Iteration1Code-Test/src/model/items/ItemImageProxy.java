@@ -20,6 +20,8 @@ public final class ItemImageProxy  {
 	private static String SHIELD_IMAGE = "src/res/img/shield.png";
 	private static String BOOTS_IMAGE = "src/res/img/boots.png";
 	private static String PROJECTILE_IMAGE = "src/res/img/projectile.png";
+	private static String ALCHEMIST_WEAPON_IMAGE = "src/res/img/alchemistWeapon.jpg";
+	private static String HUNTER_WEAPON_IMAGE = "src/res/img/hunterWeapon.png";
 	
 	private BufferedImage healingpotionImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE,  HEALINGPOTION_IMAGE_PATH);
 	private BufferedImage closedtreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[0]);
@@ -35,7 +37,8 @@ public final class ItemImageProxy  {
 	private BufferedImage leggingsImage;
 	private BufferedImage shieldImage;
 	private BufferedImage projectileImage;
-	
+	private BufferedImage hunterWeaponImage;
+	private BufferedImage alchemistWeaponImage;
 	
 	private Point scale;
 	
@@ -57,10 +60,8 @@ public final class ItemImageProxy  {
 		leggingsImage = ImageProcessing.scaleImage(this.scale, LEGGINGS_IMAGE);
 		shieldImage = ImageProcessing.scaleImage(this.scale, SHIELD_IMAGE);
 		projectileImage = ImageProcessing.scaleImage(this.scale, PROJECTILE_IMAGE);
-	}
-	
-	public final BufferedImage getImage(HealingOneShotItem item){
-		return healingpotionImage;
+		hunterWeaponImage = ImageProcessing.scaleImage(this.scale, HUNTER_WEAPON_IMAGE);
+		alchemistWeaponImage = ImageProcessing.scaleImage(this.scale, ALCHEMIST_WEAPON_IMAGE);
 	}
 	
 	public final BufferedImage getImage(TreasureChest item){
@@ -71,24 +72,20 @@ public final class ItemImageProxy  {
 			return opentreasurechestImage;
 		}
 	}
+	public final BufferedImage getImage(HealingOneShotItem item){
+		return healingpotionImage;
+	}
 	
 	//TODO  the decals return the image for this, maybe get rid of decals???
 	public final BufferedImage getImage(DamagingOneShotItem item){
 		return daveImage;
 	}
-	
 	public final BufferedImage getImage(Armor item){
 		return armorImage;
 	}
-
-	public final BufferedImage getImage(Weapon item){
-		return weaponImage;
-	}
-	
 	public final BufferedImage getImage(GiantRock item){
 		return giantRockImage;
 	}
-
 	public BufferedImage getImage(TwoHandedWeapon w) {
 		return twoHandedWeaponImage;
 	}
@@ -110,4 +107,23 @@ public final class ItemImageProxy  {
 	public BufferedImage getImage(Projectile projectile) {
 		return projectileImage;
 	}
+	
+	public final BufferedImage getImage(TerminatorWeapon item){
+		BufferedImage image = weaponImage;
+		if (Weapons.SWORD.equals(item)) image = weaponImage;
+		else if (Weapons.LONGSWORD.equals(item)) image = bootsImage;
+		else if (Weapons.DAVESWORD.equals(item)) image = daveImage;
+		return image;
+	}
+	
+	public final BufferedImage getImage(AlchemistWeapon item){
+		BufferedImage image = alchemistWeaponImage;
+		return image;
+	}
+	
+	public final BufferedImage getImage(HunterWeapon item){
+		BufferedImage image = hunterWeaponImage;
+		return image;
+	}
+	
 }

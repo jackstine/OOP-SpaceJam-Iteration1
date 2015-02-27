@@ -106,6 +106,8 @@ public class EquipmentView extends JComponent{
 		if (slot.has()){
 			slot.get().accept(itemVisitor);
 			BufferedImage itemImage = itemVisitor.getImage();
+			System.out.println(itemImage);
+			System.out.println(slot.get());
 			image= this.getEquipmentSlotImage(image,itemImage);
 		}
 		return image;
@@ -125,10 +127,6 @@ public class EquipmentView extends JComponent{
 	
 	public void update() {
 		this.setEquipmentImages();
-	}
-	
-	public Equipment getEquipment(){
-		return this.equipment;
 	}
 
 	public void paint(Graphics g){

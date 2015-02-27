@@ -4,7 +4,7 @@ import model.Point;
 import model.slots.Equipment;
 import view.EquipmentView;
 
-public class Weapon extends Equipable {
+public abstract class Weapon extends Equipable {
 	private int attack;
 	protected Point slot = EquipmentView.WEAPON_POINT;
 	
@@ -18,9 +18,7 @@ public class Weapon extends Equipable {
 		this.ITEM_NAME = "Weapon";
 	}
 	
-	public void accept(ItemVisitor visitor){
-		visitor.accept(this);
-	}
+	public abstract void accept(ItemVisitor visitor);
 	
 	public int getBonus() {
 		return this.attack;
@@ -34,7 +32,7 @@ public class Weapon extends Equipable {
 		equipment.equipSlot(this.slot,this);
 		return item;
 	}
-
+	
 	public String getItemName() {
 		return this.ITEM_NAME;
 	}

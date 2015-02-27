@@ -50,9 +50,9 @@ public class InventoryEquipmentView extends JPanel {
 			int x = e.getX() / Scaling.EQUIPMENT_SLOT_WIDTH;
 			int y = e.getY() / Scaling.EQUIPMENT_SLOT_HEIGHT;
 			Point point = new Point(x,y);
-			TakeableItem item =equipment.getEquipment().getItemFromSlot(point);
-			if (inventory.getInventory().findAndEquip(item)){
-				equipment.getEquipment().unequipSlot(point);
+			TakeableItem item = avatar.unequipSlot(point);
+			if (avatar.equipInventory(item)){
+				avatar.unequipSlot(point);
 			}
 			equipment.repaint();
 			return item;
@@ -84,13 +84,13 @@ public class InventoryEquipmentView extends JPanel {
 		
 		private void unequipItem(MouseEvent e){
 			Point slotPoint = getInventorySlot(e);
-			inventory.getInventory().getSlot(slotPoint).unequip();
+			avatar.unequipInventorySlot(slotPoint);
 		}
 		
 		private void equipItem(MouseEvent e){
 			Point pointOfSlot = this.getInventorySlot(e);
 			//TODO CHANGE TO unequipSLOT()
-			TakeableItem item = inventory.getInventory().getSlot(pointOfSlot).unequip();
+			TakeableItem item = avatar.unequipInventorySlot(pointOfSlot);
 			boolean notEmpty = item != null;
 			if (notEmpty){
 				item.action(avatar);

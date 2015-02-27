@@ -3,7 +3,7 @@ package view;
 import javax.swing.JFrame;
 
 import model.Avatar;
-import model.Terminator;
+import model.occupation.Terminator;
 
 
 public class TestStatusView extends JFrame{

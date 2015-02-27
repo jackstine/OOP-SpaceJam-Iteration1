@@ -2,6 +2,9 @@ package model;
 
 import java.io.*;
 
+import model.occupation.Alchemist;
+import model.occupation.Occupation;
+import model.occupation.Terminator;
 import controller.SaveLoadController;
 
 public class Game {

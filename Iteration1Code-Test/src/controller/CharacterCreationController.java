@@ -19,6 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import model.*;
+import model.occupation.Alchemist;
+import model.occupation.Hunter;
+import model.occupation.Terminator;
 import utilities.FontHandler;
 import utilities.Scaling;
 import view.CharacterCreationButton;

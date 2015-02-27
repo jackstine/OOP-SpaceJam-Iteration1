@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.1">
+<diagram program="umlet" version="13.0">
   <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>322</x>
+      <x>413</x>
       <y>154</y>
       <w>168</w>
       <h>105</h>
@@ -25,7 +25,7 @@ Avatar
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
+      <x>707</x>
       <y>147</y>
       <w>175</w>
       <h>119</h>
@@ -42,7 +42,7 @@ Avatar
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
+      <x>574</x>
       <y>203</y>
       <w>147</w>
       <h>28</h>
@@ -55,7 +55,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>91</x>
+      <x>182</x>
       <y>182</y>
       <w>154</w>
       <h>49</h>
@@ -72,7 +72,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>238</x>
+      <x>329</x>
       <y>196</y>
       <w>98</w>
       <h>28</h>
@@ -85,7 +85,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>371</x>
+      <x>462</x>
       <y>63</y>
       <w>70</w>
       <h>42</h>
@@ -98,7 +98,7 @@ from Java</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>329</x>
+      <x>420</x>
       <y>322</y>
       <w>154</w>
       <h>133</h>
@@ -120,7 +120,7 @@ from Java</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>399</x>
+      <x>490</x>
       <y>98</y>
       <w>21</w>
       <h>70</h>
@@ -131,7 +131,7 @@ from Java</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
+      <x>483</x>
       <y>252</y>
       <w>21</w>
       <h>84</h>
@@ -144,7 +144,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>189</x>
+      <x>280</x>
       <y>280</y>
       <w>140</w>
       <h>49</h>
@@ -158,7 +158,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
+      <x>427</x>
       <y>532</y>
       <w>154</w>
       <h>112</h>
@@ -180,7 +180,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>399</x>
+      <x>490</x>
       <y>448</y>
       <w>21</w>
       <h>98</h>
@@ -191,7 +191,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>91</x>
       <y>0</y>
       <w>154</w>
       <h>21</h>

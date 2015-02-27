@@ -4,6 +4,7 @@ import java.util.Observable;
 
 import model.items.Equipable;
 import model.items.TakeableItem;
+import model.items.TerminatorWeapon;
 
 public abstract class BufferSlot extends Observable {
 	//TOD this should not implement, or at least the implementation should be in another abstract/class
@@ -52,7 +53,7 @@ public abstract class BufferSlot extends Observable {
         }
     }
     
-    protected final <K extends Equipable> boolean equipItem(K item){
+    protected <K extends Equipable> boolean equipItem(K item){
 		if (this.has()) return false;
 		else {
 			this.equippedItem = item;
@@ -60,7 +61,7 @@ public abstract class BufferSlot extends Observable {
 			return true;
 		}
     }
-    
+   
     public final TakeableItem get(){
         return this.equippedItem;
     }

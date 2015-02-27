@@ -42,11 +42,6 @@ public class InventoryView extends JPanel{
 		}
 	}
 	
-	
-	public Inventory getInventory(){
-		return this.inventory;
-	}
-	
 	public Dimension getPreferredSize(){
 		return new Dimension(INVENTORY_WIDTH,INVENTORY_HEIGHT);
 	}

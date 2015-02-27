@@ -16,10 +16,15 @@ public class ItemImageVisitor implements ItemVisitor{
 		this.image = imageProxy.getImage(a);
 	}
 	
-	public void accept(Weapon w) {
+	public void accept(TerminatorWeapon w) {
 		this.image = imageProxy.getImage(w);
 	}
-	
+	public void accept(AlchemistWeapon a){
+		this.image = imageProxy.getImage(a);
+	}
+	public void accept(HunterWeapon h){
+		this.image = imageProxy.getImage(h);
+	}
 	public void accept(GiantRock g) {
 		this.image = imageProxy.getImage(g);
 	}

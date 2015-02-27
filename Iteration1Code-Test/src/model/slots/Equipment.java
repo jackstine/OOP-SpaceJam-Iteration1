@@ -39,9 +39,10 @@ public class Equipment implements Observer{
     //Since this class extends the SlotContainer, it can 
     
     //TODO delete this constructor  JUST FOR TESTING PURPOSES
-    public Equipment(){
+    //TODO we will need to form the two WeaponSlots together
+    public Equipment(WeaponSlot weaponSlot){
     	this.armorSlot = new ArmorSlot(this);
-    	this.weaponSlot = new WeaponSlot(this);
+    	this.weaponSlot = weaponSlot;
     	this.helmetSlot = new HelmetSlot(this);
     	this.glovesSlot = new GlovesSlot(this);
     	this.leggingsSlot = new LeggingsSlot(this);
@@ -51,13 +52,14 @@ public class Equipment implements Observer{
     	setArrayPoints();
     }
     
-    public Equipment(DerivedStat armorRating, DerivedStat offensiveRating){
-        this.armorSlot = new ArmorSlot(armorRating);
-        ((ArmorRating)armorRating).setSlotSubject((ArmorSlot)this.armorSlot);
-        this.weaponSlot = new WeaponSlot(offensiveRating);
-        ((OffensiveRating)offensiveRating).setSlotSubject((WeaponSlot)this.weaponSlot);
-        setArrayPoints();
-    }
+    //DEPRECATED  as of now
+//    public Equipment(DerivedStat armorRating, DerivedStat offensiveRating){
+//        this.armorSlot = new ArmorSlot(armorRating);
+//        ((ArmorRating)armorRating).setSlotSubject((ArmorSlot)this.armorSlot);
+//        this.weaponSlot = new WeaponSlot(offensiveRating);
+//        ((OffensiveRating)offensiveRating).setSlotSubject((WeaponSlot)this.weaponSlot);
+//        setArrayPoints();
+//    }
     
     private void setArrayPoints(){
     	this.setSlot(ARMOR_SLOT, this.armorSlot);

@@ -9,8 +9,11 @@ import model.items.DamagingOneShotItem;
 import model.items.GiantRock;
 import model.items.HealingOneShotItem;
 import model.items.Item;
+import model.items.TerminatorWeapon;
 import model.items.TreasureChest;
-import model.items.Weapon;
+import model.occupation.Alchemist;
+import model.occupation.Hunter;
+import model.occupation.Terminator;
 import model.slots.Equipment;
 import model.slots.Inventory;
 
@@ -74,10 +77,10 @@ public class SaveLoadController {
 			int itemValue = Integer.parseInt(inventoryItem[2]);
 			// fix this later too
 			if (itemType.equals("Armor")) inventory.findAndEquip(new Armor(itemValue));
-			if (itemType.equals("Weapon")) inventory.findAndEquip(new Weapon(itemValue));
+			if (itemType.equals("Weapon")) inventory.findAndEquip(new TerminatorWeapon(itemValue));
 		}
 		
-		Equipment equipment = new Equipment();
+		Equipment equipment = new Equipment(avatar.getOccupation().makeWeaponSlot());
 		
 		String[] equipmentArmor = in.next().split(":");
 		int armorValue = Integer.parseInt(equipmentArmor[2]);
@@ -85,7 +88,7 @@ public class SaveLoadController {
 		
 		String[] equipmentWeapon = in.next().split(":");
 		int weaponValue = Integer.parseInt(equipmentWeapon[2]);
-		if (weaponValue != -1) equipment.equipSlot(Equipment.WEAPON_SLOT,new Weapon(weaponValue));
+		if (weaponValue != -1) equipment.equipSlot(Equipment.WEAPON_SLOT,new TerminatorWeapon(weaponValue));
 		
 		String[] avatarLevels = in.next().split(":");
 		int levels = Integer.parseInt(avatarLevels[1]);
@@ -150,7 +153,7 @@ public class SaveLoadController {
 						if (itemType.equals("DamagingOneShotItem")) item = new DamagingOneShotItem(value);
 						if (itemType.equals("HealingOneShotItem")) item = new HealingOneShotItem(value);
 						if (itemType.equals("Armor")) item = new Armor((int)value);
-						if (itemType.equals("Weapon")) item = new Weapon((int)value);
+						if (itemType.equals("Weapon")) item = new TerminatorWeapon((int)value);
 					}
 				}
 				tile.setItem(item);	

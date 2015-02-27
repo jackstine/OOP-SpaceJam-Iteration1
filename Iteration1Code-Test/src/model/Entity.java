@@ -2,11 +2,15 @@ package model;
 
 import java.util.Map;
 
+import model.occupation.Occupation;
+import model.slots.Equipment;
+
 public abstract class Entity {
 	protected Map<String,Stat> stats; 
 	protected Occupation occupation;
 	protected String name;
 	protected int direction;
+	protected Equipment equipment;
 	
 	// private GameMap map;
 	// private Equipable equipment;
@@ -18,6 +22,7 @@ public abstract class Entity {
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
 		this.stats = occupation.createStats();
+		this.equipment = new Equipment(occupation.makeWeaponSlot());
 	}
 	// -------------------------------------------
 	

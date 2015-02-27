@@ -2,8 +2,10 @@ package model;
 
 import java.awt.image.BufferedImage;
 
+import model.items.Equipable;
+import model.items.TakeableItem;
+import model.occupation.Occupation;
 import model.slots.Equipment;
-import model.slots.EquipmentBuilder;
 import model.slots.Inventory;
 import utilities.*;
 
@@ -12,7 +14,8 @@ public class Avatar extends Entity {
 	private Inventory inventory = new Inventory();
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
-	private Equipment equipment = new Equipment();
+	//deprecated all entities need a equipment now
+//	private Equipment equipment = new Equipment();
 	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",
@@ -96,6 +99,27 @@ public class Avatar extends Entity {
 		this.levels = levels;
 	}
 	
+	public TakeableItem unequipSlot(Point point){
+		return this.equipment.unequipSlot(point);
+	}
+	
+	public boolean equipSlot(Equipable equipItem){
+		TakeableItem item = equipItem.equipSlot(equipment);
+		boolean notEmpty = (item != null);
+		if (notEmpty){
+			inventory.findAndEquip(item);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean equipInventory(TakeableItem item){
+		return this.inventory.findAndEquip(item);
+	}
+	
+	public TakeableItem unequipInventorySlot(Point slotPoint){
+		return this.inventory.unequip(slotPoint);
+	}
 	/*
 	//private void attack() {
 	//	
