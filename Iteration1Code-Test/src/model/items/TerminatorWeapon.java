@@ -14,10 +14,8 @@ public class TerminatorWeapon extends Weapon{
 		visitor.accept(this);
 	}
 	
-	public TakeableItem equipSlot(Equipment equipment) {
-		TakeableItem item = equipment.unequipSlot(this.slot);
-		equipment.equipSlot(this.slot,this);
-		return item;
+	public boolean equipToWeaponSlot(Equipment equipment){
+		return (! equipment.equipSlot(this.slot,this));
 	}
 	
 	public boolean equipWeaponSlot(TerminatorWeaponSlot t){return true;}

@@ -28,10 +28,19 @@ public abstract class Weapon extends Equipable {
 	}
 	
 	public TakeableItem equipSlot(Equipment equipment) {
-		TakeableItem item = equipment.unequipSlot(this.slot);
-		equipment.equipSlot(this.slot,this);
+		Equipable item = equipment.unequipSlot(this.slot);
+		boolean doesNotEquip = this.equipToWeaponSlot(equipment);
+		//necessary to have this transaction, because the
+		//weaponslots we always keep their weapons if the 
+		// weapon in the slot is not replaced
+		if (doesNotEquip){
+			equipment.equipSlot(this.slot, item);
+			item = null;
+		}
 		return item;
 	}
+	
+	public abstract boolean equipToWeaponSlot(Equipment equipment);
 	
 	public String getItemName() {
 		return this.ITEM_NAME;

@@ -27,6 +27,22 @@ public class EquipingTest {
 		System.out.println();
 	}
 	
+	public static void equippingAll(Occupation oc,Weapon weapon){
+		TerminatorWeapon terminatorWeapon = new TerminatorWeapon(5);
+		HunterWeapon hunterWeapon = new HunterWeapon(10);
+		AlchemistWeapon alchemistWeapon = new AlchemistWeapon(15);
+		Avatar avatar = new Avatar(oc);
+		weapon.action(avatar);
+		System.out.print(avatar.getEquipment().getSlot(Equipment.WEAPON_SLOT) + "  ");
+		terminatorWeapon.action(avatar);
+		System.out.println();
+		System.out.print(avatar.getEquipment().getSlot(Equipment.WEAPON_SLOT) + "  ");
+		hunterWeapon.action(avatar);
+		System.out.print(avatar.getEquipment().getSlot(Equipment.WEAPON_SLOT) + "  ");
+		alchemistWeapon.action(avatar);
+		System.out.print(avatar.getEquipment().getSlot(Equipment.WEAPON_SLOT) + "\n");
+	}
+	
 	public static void main(String[] args){
 		TerminatorWeapon terminatorWeapon = new TerminatorWeapon(5);
 		HunterWeapon hunterWeapon = new HunterWeapon(10);
@@ -38,6 +54,10 @@ public class EquipingTest {
 		// 5   -1    -1
 		// -1  10   -1
 		// -1  -1    15
+		
+		equippingAll(new Terminator(),terminatorWeapon);  //  5   5   5
+		equippingAll(new Hunter(),hunterWeapon);     //  10   10  10
+		equippingAll(new Alchemist(),alchemistWeapon);  //  15   15  15
 	}
 
 }

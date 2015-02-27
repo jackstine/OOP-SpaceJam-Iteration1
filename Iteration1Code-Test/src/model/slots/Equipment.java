@@ -88,16 +88,19 @@ public class Equipment implements Observer{
 		}
 	}
     
-	public TakeableItem unequipSlot(Point point){
-		TakeableItem item = this.getSlot(point).unequip();
+	public Equipable unequipSlot(Point point){
+		Equipable item = this.getSlot(point).unequip();
     	this.notifyView();
     	return item;
     }
 	
 	public <K extends Equipable> boolean equipSlot(Point point, K item){
-		boolean value = this.getSlot(point).equipItem(item);
-		this.notifyView();
-		return value;
+		boolean itemExist = item != null;
+		if (itemExist){
+			boolean value = this.getSlot(point).equipItem(item);
+			this.notifyView();
+			return value;
+		}else return false;
 	}
     
     public void addObserver(EquipmentView equipmentView){

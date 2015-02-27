@@ -40,10 +40,10 @@ public abstract class BufferSlot extends Observable {
         }
     }
     
-    public TakeableItem unequip(){
+    public Equipable unequip(){
         if (this.has()){
         	Equipable item = this.equippedItem;
-            TakeableItem pointer = item;
+            Equipable pointer = item;
             this.equippedItem = null;
             this.resetBonus();
             return pointer;
