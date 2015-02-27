@@ -106,8 +106,6 @@ public class EquipmentView extends JComponent{
 		if (slot.has()){
 			slot.get().accept(itemVisitor);
 			BufferedImage itemImage = itemVisitor.getImage();
-			System.out.println(itemImage);
-			System.out.println(slot.get());
 			image= this.getEquipmentSlotImage(image,itemImage);
 		}
 		return image;

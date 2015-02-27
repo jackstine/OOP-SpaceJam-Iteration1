@@ -7,6 +7,7 @@ import model.items.Helmet;
 import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
+import model.items.Weapons;
 import model.slots.Equipment;
 
 public class EquipmentBuilder {
@@ -15,14 +16,19 @@ public class EquipmentBuilder {
 	public void buildBeginningEquipment(Equipment equipment){
 		equipment.equipSlot(Equipment.ARMOR_SLOT, new Armor(beginValue));
 		//deprecated taken care of by the Occupation class
-//    	equipment.equipSlot(Equipment.WEAPON_SLOT,Weapons.LONGBOW.weapon);
     	equipment.equipSlot(Equipment.BOOTS_SLOT, new Boots(beginValue));
     	equipment.equipSlot(Equipment.SHIELD_SLOT, new Shield(beginValue));
     	equipment.equipSlot(Equipment.GLOVES_SLOT, new Gloves(beginValue));
     	equipment.equipSlot(Equipment.LEGGINGS_SLOT, new Leggings(beginValue));
     	equipment.equipSlot(Equipment.HELMET_SLOT, new Helmet(beginValue));
     	equipment.equipSlot(Equipment.QUIVER_SLOT, new Projectile(beginValue));
+    	setBeginWeaponSlot(equipment);
 	}
 	
+	private void setBeginWeaponSlot(Equipment equipment){
+		equipment.equipSlot(Equipment.WEAPON_SLOT,Weapons.SWORD.weapon);
+		equipment.equipSlot(Equipment.WEAPON_SLOT,Weapons.LONGBOW.weapon);
+		equipment.equipSlot(Equipment.WEAPON_SLOT, Weapons.PHILOSOPHERS_STONE.weapon);
+	}
 	
 }

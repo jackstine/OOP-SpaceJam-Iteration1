@@ -35,7 +35,7 @@ public abstract class Weapon extends Equipable {
 		// weapon in the slot is not replaced
 		if (doesNotEquip){
 			equipment.equipSlot(this.slot, item);
-			item = null;
+			item = this;
 		}
 		return item;
 	}
