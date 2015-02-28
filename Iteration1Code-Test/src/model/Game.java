@@ -21,8 +21,6 @@ public class Game {
 	public Game(Occupation occupation, String name) {
 		map = new GameMap();
 		//build the Avatar equipment
-		EquipmentBuilder equipmentBuilder = new EquipmentBuilder();
-		Equipment equipment = equipmentBuilder.buildBeginerEquipment(occupation);
 		
 		avatar = new Avatar(occupation);
 		avatar.setName(name);

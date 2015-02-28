@@ -50,6 +50,9 @@ public class StatFactory {
 		DerivedStat mana = new Mana(mp);
 		OffensiveRating off = new OffensiveRating(equipment.getSlot(EquipmentView.WEAPON_POINT));
 		ArmorRating armor = new ArmorRating(equipment.getArmrorSlots());
+		off.addStat(strength);
+		off.addStat(level);
+		armor.addStat(hardiness);
 		
 		//Adding references to observers to derive value from.
 		experience.addAllObservers(level);

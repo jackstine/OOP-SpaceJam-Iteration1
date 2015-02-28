@@ -7,7 +7,7 @@ import java.util.Observer;
 import model.slots.BufferSlot;
 
 public class ArmorRating extends DerivedStat implements Observer{
-	private ArrayList<BufferSlot> slotSubjects;
+	private ArrayList<BufferSlot> slotSubjects = new ArrayList<BufferSlot>();
 	private int[] armorBonusArray;
 	private int armorBonus;
 	

@@ -39,6 +39,7 @@ public class OffensiveRating extends DerivedStat{
 	
 	@Override
 	public void calculateValue() {
+		//TODO calling inherited variables...
 		int strength = this.stats.get(0).getValue();
 		int level = this.stats.get(1).getValue();
 		this.value = this.weaponBonus + (strength * level);

@@ -26,6 +26,7 @@ public abstract class DerivedStat extends Observable implements Stat, Observer {
 	public abstract void calculateValue();
 	
 	// ONLY LEVEL WILL OVERRIDE THIS!!!!!!
+	// this is bad
 	public void addAllObservers(DerivedStat...derivedStats) {}
 	
 	// add a stat to the list of stats being observed

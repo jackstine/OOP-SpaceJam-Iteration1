@@ -2,6 +2,7 @@ package model.occupation;
 
 import java.util.Map;
 
+import model.EquipmentBuilder;
 import model.Stat;
 import model.StatFactory;
 import model.slots.Equipment;
@@ -26,7 +27,8 @@ public abstract class Occupation{
 	}
 	
 	public void createNecessities(){
-		Equipment equipment = new Equipment(this.makeWeaponSlot());
+		EquipmentBuilder equipmentBuilder = new EquipmentBuilder();
+		this.equipment = equipmentBuilder.buildBeginerEquipment(this);
 		StatFactory statFactory = this.getStatFactory(equipment);
 		this.stats = statFactory.initializeStats();
 	}

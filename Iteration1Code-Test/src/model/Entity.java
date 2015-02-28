@@ -21,6 +21,7 @@ public abstract class Entity {
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
+		occupation.createNecessities();
 		this.stats = occupation.getStats();
 		this.equipment = occupation.getEquipment();
 	}
@@ -40,6 +41,10 @@ public abstract class Entity {
 	
 	public void setStatValue(String key, int value) {
 		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
+	}
+	
+	public Equipment getEquipment() {
+		return this.equipment;
 	}
 	
 	public void setName(String name) {

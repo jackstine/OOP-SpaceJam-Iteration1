@@ -62,10 +62,6 @@ public class Avatar extends Entity {
 		this.inventory = inventory;
 	}
 	
-	public Equipment getEquipment() {
-		return this.equipment;
-	}
-	
 	public void setEquipment(Equipment equipment) {
 		this.equipment = equipment;
 	}	
