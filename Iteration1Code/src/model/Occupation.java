@@ -5,6 +5,7 @@ import java.util.Map;
 public abstract class Occupation{
 	
 	protected String portraitLocation;
+	//MIXED DOMAIN ANTICOHESION
 	protected String name;
 	
 	public abstract void attack();

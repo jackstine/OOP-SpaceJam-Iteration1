@@ -21,9 +21,14 @@ public class SpriteSheetUtility {
 	private BufferedImage image;
 	private BufferedImage sprite;
 	private BufferedImage[] spriteArray = new BufferedImage[10];
+	
+	//Slice size from sprite sheet.
 	private final int width = 40;
 	private final int height = 50;
+	
+	//Locates where in the sprite sheet it is.
 	private int offsetX, offsetY;
+	
 	public static final String HUNTER = "HUNTER";
 	public static final String TERMINATOR = "TERMINATOR";
 	public static final String ALCHEMIST = "ALCHEMIST";
@@ -34,6 +39,7 @@ public class SpriteSheetUtility {
 		initializeSpriteArray();
 	}
 	public SpriteSheetUtility(String s) {
+		//Decide which SpriteSheet to use, based on key passed in. 
 		if (s.equalsIgnoreCase(ALCHEMIST)) {
 			imagePath = "src/res/img/alchemist_spritesheet.png";
 		}
@@ -51,6 +57,7 @@ public class SpriteSheetUtility {
 		catch(IOException e) {
 			System.err.println("LOL 404 IMAGE NOT FOUND");
 		}
+		
 		initializeSpriteArray();
 	}
 	

@@ -9,6 +9,7 @@ public class Avatar extends Entity {
 	private Inventory inventory = new Inventory();
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
+	//THESE IMAGES ARE MIXED DOMAIN ANTICOHESION
 	private Equipment equipment = new Equipment();
 	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
@@ -26,6 +27,8 @@ public class Avatar extends Entity {
 	
 	public String getStat(String s){
 		return Integer.toString(stats.get(s).getValue());
+		//MOVE UP TO ENTITY???
+		//MIXED ROLE ANTICOHESION
 	}
 	
 	/*

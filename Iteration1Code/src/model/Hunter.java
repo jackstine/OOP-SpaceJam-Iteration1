@@ -6,6 +6,7 @@ import java.util.Map;
 public class Hunter extends Occupation{
 
 	public Hunter() {
+		//BELOW LINE IS UBER EVIL but not Hunter's fault.
 		portraitLocation = "src/res/img/hunter_portrait.jpg";
 		name = "Hunter";
 	}
