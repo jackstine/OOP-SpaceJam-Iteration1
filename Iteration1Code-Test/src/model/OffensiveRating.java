@@ -3,23 +3,24 @@ package model;
 
 import java.util.Observable;
 
-import model.slots.WeaponSlot;
+import model.slots.BufferSlot;
 
 public class OffensiveRating extends DerivedStat{
-	private WeaponSlot slotSubject;
+	private BufferSlot slotSubject;
 	private int weaponBonus;
 	
-	public OffensiveRating(){
-		super();
-	}
+	//DEPRECATED
+//	public OffensiveRating(){
+//		super();
+//	}
 	
-	public OffensiveRating(int initialValue, WeaponSlot subject){
-		this.value = initialValue;
+	public OffensiveRating(BufferSlot subject){
+		super();
 		this.slotSubject = subject;
 		this.weaponBonus = 0;
 	}
 	
-	public void setSlotSubject(WeaponSlot slot){
+	public void setSlotSubject(BufferSlot slot){
 		this.slotSubject = slot;
 	}	
 	

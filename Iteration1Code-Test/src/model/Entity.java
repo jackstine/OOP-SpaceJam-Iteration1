@@ -21,8 +21,8 @@ public abstract class Entity {
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
-		this.stats = occupation.createStats();
-		this.equipment = new Equipment(occupation.makeWeaponSlot());
+		this.stats = occupation.getStats();
+		this.equipment = occupation.getEquipment();
 	}
 	// -------------------------------------------
 	

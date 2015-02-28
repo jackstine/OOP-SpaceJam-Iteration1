@@ -17,7 +17,7 @@ public class Avatar extends Entity {
 	//deprecated all entities need a equipment now
 //	private Equipment equipment = new Equipment();
 	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
-	private static String[] primaryStats = {"Agility", "Experience", "Hardiness",
+	private final static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",
 											"Movement", "Strength"};
 	
@@ -26,7 +26,6 @@ public class Avatar extends Entity {
 		String occString = occupation.getName().toUpperCase();
 		SpriteSheetUtility util = new SpriteSheetUtility(occString);
 		spriteSheet = (util.getSpriteArray());
-		this.setEquipmentBegin();
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
@@ -48,12 +47,6 @@ public class Avatar extends Entity {
 		g.drawImage(image,Scaling.AVATAR_WIDTH*x,Scaling.AVATAR_HEIGHT*y,null);
 	}
 	*/
-	
-	
-    private void setEquipmentBegin(){
-    	EquipmentBuilder ebuild = new EquipmentBuilder();
-    	ebuild.buildBeginningEquipment(this.equipment);
-    }
 	
 	public BufferedImage getImage(){
 		BufferedImage imageToDisplay = spriteSheet[direction];

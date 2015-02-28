@@ -1,11 +1,9 @@
 package model.occupation;
 
 
-import java.util.Map;
-
 import model.HunterStatFactory;
-import model.Stat;
 import model.StatFactory;
+import model.slots.Equipment;
 import model.slots.HunterWeaponSlot;
 import model.slots.WeaponSlot;
 
@@ -25,14 +23,19 @@ public class Hunter extends Occupation{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	protected StatFactory getStatFactory(Equipment equipment){
+		return new HunterStatFactory(equipment);
+	}
+	
 	public WeaponSlot makeWeaponSlot(){
 		return new HunterWeaponSlot();
 	}
 
-	@Override
-	public Map<String, Stat> createStats() {
-		StatFactory statFactory = new HunterStatFactory();
-		return statFactory.initializeStats();
-	}
+//	@Override
+//	public Map<String, Stat> createStats() {
+//		StatFactory statFactory = new HunterStatFactory();
+//		return statFactory.initializeStats();
+//	}
 
 }

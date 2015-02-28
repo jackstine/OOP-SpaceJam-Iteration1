@@ -4,7 +4,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import model.ArmorRating;
-import model.DerivedStat;
 import model.OffensiveRating;
 import model.Point;
 import model.items.Equipable;
@@ -35,7 +34,6 @@ public class Equipment implements Observer{
     
     private EquipmentView equipmentView;
 	
-	
     //Since this class extends the SlotContainer, it can 
     
     //TODO delete this constructor  JUST FOR TESTING PURPOSES
@@ -51,15 +49,6 @@ public class Equipment implements Observer{
     	this.quiverSlot = new QuiverSlot(this);
     	setArrayPoints();
     }
-    
-    //DEPRECATED  as of now
-//    public Equipment(DerivedStat armorRating, DerivedStat offensiveRating){
-//        this.armorSlot = new ArmorSlot(armorRating);
-//        ((ArmorRating)armorRating).setSlotSubject((ArmorSlot)this.armorSlot);
-//        this.weaponSlot = new WeaponSlot(offensiveRating);
-//        ((OffensiveRating)offensiveRating).setSlotSubject((WeaponSlot)this.weaponSlot);
-//        setArrayPoints();
-//    }
     
     private void setArrayPoints(){
     	this.setSlot(ARMOR_SLOT, this.armorSlot);
@@ -117,5 +106,24 @@ public class Equipment implements Observer{
 	
 	public void update(Observable arg0, Object arg1) {
 		this.notifyView();
+	}
+
+	public BufferSlot[] getArmrorSlots() {
+		BufferSlot[] slots = {this.getSlot(ARMOR_SLOT),
+				this.getSlot(BOOTS_SLOT), this.getSlot(GLOVES_SLOT),
+				this.getSlot(HELMET_SLOT), this.getSlot(LEGGINGS_SLOT),
+				this.getSlot(SHIELD_SLOT)};
+		return slots;
+	}
+	
+	public void setDerivedStats(ArmorRating armor,OffensiveRating off){
+	   	this.getSlot(ARMOR_SLOT).addObserver(armor);
+    	this.getSlot(WEAPON_SLOT).addObserver(off);
+    	this.getSlot(BOOTS_SLOT).addObserver(armor);
+    	this.getSlot(SHIELD_SLOT).addObserver(armor);
+    	this.getSlot(GLOVES_SLOT).addObserver(armor);
+    	this.getSlot(HELMET_SLOT).addObserver(armor);
+    	this.getSlot(LEGGINGS_SLOT).addObserver(armor);
+    	this.getSlot(QUIVER_SLOT).addObserver(armor);
 	}
 }

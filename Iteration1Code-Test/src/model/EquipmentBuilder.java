@@ -8,14 +8,15 @@ import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
 import model.items.Weapons;
+import model.occupation.Occupation;
 import model.slots.Equipment;
 
 public class EquipmentBuilder {
 	private int beginValue = 1;
 	
-	public void buildBeginningEquipment(Equipment equipment){
+	public Equipment buildBeginerEquipment(Occupation occupation){
+		Equipment equipment = new Equipment(occupation.makeWeaponSlot());
 		equipment.equipSlot(Equipment.ARMOR_SLOT, new Armor(beginValue));
-		//deprecated taken care of by the Occupation class
     	equipment.equipSlot(Equipment.BOOTS_SLOT, new Boots(beginValue));
     	equipment.equipSlot(Equipment.SHIELD_SLOT, new Shield(beginValue));
     	equipment.equipSlot(Equipment.GLOVES_SLOT, new Gloves(beginValue));
@@ -23,6 +24,7 @@ public class EquipmentBuilder {
     	equipment.equipSlot(Equipment.HELMET_SLOT, new Helmet(beginValue));
     	equipment.equipSlot(Equipment.QUIVER_SLOT, new Projectile(beginValue));
     	setBeginWeaponSlot(equipment);
+    	return equipment;
 	}
 	
 	private void setBeginWeaponSlot(Equipment equipment){

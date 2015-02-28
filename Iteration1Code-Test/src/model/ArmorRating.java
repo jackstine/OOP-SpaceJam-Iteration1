@@ -1,41 +1,56 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import model.slots.ArmorSlot;
+import model.slots.BufferSlot;
 
 public class ArmorRating extends DerivedStat implements Observer{
-	private ArmorSlot slotSubject;
+	private ArrayList<BufferSlot> slotSubjects;
+	private int[] armorBonusArray;
 	private int armorBonus;
 	
-	public ArmorRating(){
+	
+	//DEPRECATED
+//	public ArmorRating(){
+//		super();
+//	}
+	
+	public ArmorRating(BufferSlot[] subjects){
 		super();
+		this.setSlotSubjects(subjects);
 	}
 	
-	public ArmorRating(int initialValue ,ArmorSlot subject){
-		this.value = initialValue;
-		this.slotSubject = subject;
-		subject.addObserver(this);	//Not only are we adding the Observer, we are adding the subject
-		this.armorBonus = 0;	    //Starts as 0
+	private void addSubjects(BufferSlot[] subjects){
+		for (int i = 0 ; i < subjects.length ; i++){
+			this.slotSubjects.add(subjects[i]);
+		}
 	}
 	
-	public void setSlotSubject(ArmorSlot slot){
-		this.slotSubject = slot;
+	public void setSlotSubjects(BufferSlot[] slots){
+		this.armorBonusArray = new int[slots.length];
+		this.slotSubjects.clear();
+		this.addSubjects(slots);
 	}	
 	
 	@Override
 	public void update(Observable observable, Object arg) {
-		if (observable == slotSubject){
-			this.updateArmorBonus(slotSubject.getBonus());
+		if (this.slotSubjects.contains(observable)){
+			this.updateArmorBonus(slotSubjects.indexOf(observable));
 		}
 		this.calculateValue();
 	}
 	
 	//used to update The Slot Value, ported form Subjects
-	public void updateArmorBonus(int value){
-		//TODO do we want a negative value???
-		this.armorBonus = value;
+	// the int is the index of the subjectSlots
+	public void updateArmorBonus(int index){
+		// subtract the value you are changing
+		//then change it
+		//then add it
+		this.armorBonus -= this.armorBonusArray[index];
+		this.armorBonusArray[index] = slotSubjects.get(index).getBonus();
+		this.armorBonus += this.armorBonusArray[index];
 	}
 
 	@Override

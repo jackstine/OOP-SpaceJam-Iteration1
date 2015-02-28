@@ -4,7 +4,6 @@ import java.util.Observable;
 
 import model.items.Equipable;
 import model.items.TakeableItem;
-import model.items.TerminatorWeapon;
 
 public abstract class BufferSlot extends Observable {
 	//TOD this should not implement, or at least the implementation should be in another abstract/class
@@ -53,6 +52,11 @@ public abstract class BufferSlot extends Observable {
         }
     }
     
+    //because we use Point system we do not need a equip(EquipableType<K>)
+    //in each of the subclasses.  The only distinction is that anyType of
+    //equipable can be equiped to the slot. If we instead left the equippedItem
+    //then we would need to declare a boolean function equip(EquipType<K>) for 
+    //each type of item and make this function a template
     protected <K extends Equipable> boolean equipItem(K item){
 		if (this.has()) return false;
 		else {

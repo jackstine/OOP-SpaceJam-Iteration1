@@ -4,13 +4,20 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
+import view.EquipmentView;
+import model.slots.Equipment;
+
 public class StatFactory {
 	
 	private Map<String,Stat> map;
+	private Equipment equipment;
 	
-	public StatFactory() {
-		
+	public StatFactory(Equipment equipment){
+		this.equipment = equipment;
 	}
+	
+	//DEPRECATED
+//	public StatFactory() {}
 	
 	public final Map<String, Stat> initializeStats() {
 		map = createMap();
@@ -41,6 +48,8 @@ public class StatFactory {
 		DerivedStat level = new Level();
 		DerivedStat life = new Life(hp);
 		DerivedStat mana = new Mana(mp);
+		OffensiveRating off = new OffensiveRating(equipment.getSlot(EquipmentView.WEAPON_POINT));
+		ArmorRating armor = new ArmorRating(equipment.getArmrorSlots());
 		
 		//Adding references to observers to derive value from.
 		experience.addAllObservers(level);
@@ -65,15 +74,16 @@ public class StatFactory {
 		map.put("Movement", movement);
 		map.put("MP", mp);
 		map.put("Strength", strength);
-	
-		
+
 		//INSERT DERIVED STATS INTO MAP
 		map.put("Level", level);
 		map.put("Life", life);
 		map.put("Mana", mana);
-		map.put("OffensiveRating", new OffensiveRating());
+		map.put("OffensiveRating", off);
+		//TODO  Defensive Rating is based on Agility rating
 		map.put("DefensiveRating", new DefensiveRating());
-		map.put("ArmorRating", new ArmorRating());
+		map.put("ArmorRating", armor);
+		equipment.setDerivedStats(armor, off);
 	}
 	
 	protected int getLivesLeft() {

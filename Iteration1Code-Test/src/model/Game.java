@@ -1,15 +1,17 @@
 package model;
 
 import java.io.*;
+import java.util.Map;
 
 import model.occupation.Alchemist;
 import model.occupation.Occupation;
 import model.occupation.Terminator;
+import model.slots.Equipment;
 import controller.SaveLoadController;
 
 public class Game {
-	GameMap map = new GameMap();
-	Avatar avatar = new Avatar(new Alchemist());
+	GameMap map;
+	Avatar avatar;
 	
 	public Game() {
 		map = new GameMap();
@@ -18,6 +20,10 @@ public class Game {
 	
 	public Game(Occupation occupation, String name) {
 		map = new GameMap();
+		//build the Avatar equipment
+		EquipmentBuilder equipmentBuilder = new EquipmentBuilder();
+		Equipment equipment = equipmentBuilder.buildBeginerEquipment(occupation);
+		
 		avatar = new Avatar(occupation);
 		avatar.setName(name);
 		map.setAvatar(avatar);

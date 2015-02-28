@@ -1,9 +1,13 @@
 package model;
 
+import model.slots.Equipment;
+
 
 public class AlchemistStatFactory extends StatFactory{
-	public AlchemistStatFactory() {
-		
+//	public AlchemistStatFactory(){}\
+	
+	public AlchemistStatFactory(Equipment equipment){
+		super(equipment);
 	}
 	
 	protected int getIntellect() {

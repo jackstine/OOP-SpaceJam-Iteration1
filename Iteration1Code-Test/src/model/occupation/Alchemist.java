@@ -1,10 +1,8 @@
 package model.occupation;
 
-import java.util.Map;
-
 import model.AlchemistStatFactory;
-import model.Stat;
 import model.StatFactory;
+import model.slots.Equipment;
 import model.slots.WeaponSlot;
 import model.slots.AlchemistWeaponSlot;
 
@@ -25,13 +23,17 @@ public class Alchemist extends Occupation{
 	
 	}
 	
+	protected StatFactory getStatFactory(Equipment equipment){
+		return new AlchemistStatFactory(equipment);
+	}
+	
 	public WeaponSlot makeWeaponSlot(){
 		return new AlchemistWeaponSlot();
 	}
 
-	@Override
-	public Map<String, Stat> createStats() {
-		StatFactory statFactory = new AlchemistStatFactory();
-		return statFactory.initializeStats();
-	}
+//	@Override
+//	public Map<String, Stat> createStats() {
+//		StatFactory statFactory = new AlchemistStatFactory();
+//		return statFactory.initializeStats();
+//	}
 }

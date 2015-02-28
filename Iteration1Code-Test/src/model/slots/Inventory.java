@@ -58,8 +58,8 @@ public class Inventory extends SlotContainer{
     	int count = 0;
     	for (int i = 0; i < ROW; i++) {
     		for (int j = 0; j < COL; j++) {
-    			if (!this.items[i][j].has()) return count;
-    			count++;
+    			if (this.items[i][j].has())
+    				count++;
     		}
     	}
     	return count;
