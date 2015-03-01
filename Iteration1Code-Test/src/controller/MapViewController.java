@@ -31,16 +31,22 @@ public class MapViewController{
 	//public BufferedImage image;
 	private boolean keyReleased;
 	
-	public MapViewController(GameController game,JFrame frame){ //added GameMap here
+	public MapViewController(GameMap map,Avatar avatar,JFrame frame){ //added GameMap here
 		frame.addKeyListener(new CharacterKeyboardController());
-		this.avatar = game.getGame().getAvatar();
-		this.map= game.getGame().getMap();
-		this.game = game;
+		this.avatar = avatar;
+		this.map= map;
 		effectHandler= new EffectHandler(avatar);
 		questHandler = new QuestHandler(avatar);
 		map.setAvatar(avatar);
 		//image=avatar.loadImage();
 		//TODO fir good reasons
+		this.active = false;
+		this.keyReleased = true;
+	}
+	
+	public MapViewController(){ //Don't use this, but don't delete it either
+		this.avatar = null;
+		this.map= null;
 		this.active = false;
 		this.keyReleased = true;
 	}

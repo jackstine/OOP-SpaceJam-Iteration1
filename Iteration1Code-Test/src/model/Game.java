@@ -18,6 +18,11 @@ public class Game {
 		avatar = new Avatar(new Terminator());
 	}
 	
+	public Game(GameMap map, Avatar avatar) {
+		this.map = map;
+		this.avatar = avatar;
+	}
+	
 	public Game(Occupation occupation, String name) {
 		map = new GameMap();
 		//build the Avatar equipment

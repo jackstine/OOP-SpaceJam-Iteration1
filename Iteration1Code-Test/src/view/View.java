@@ -5,19 +5,25 @@ import java.awt.Toolkit;
 import javax.swing.JLayeredPane;
 
 
-public class View {
+public abstract class View {
 	private boolean redraw;
 	private String next;
-	private JLayeredPane panel;
+	protected JLayeredPane canvas;
 	
 	public View(){
 		setRedraw(false);
 		next = "";
-		panel = new JLayeredPane();
-		panel.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
-		panel.setFocusable(true);
-		panel.setVisible(true);
+		canvas = new JLayeredPane();
+		canvas.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+		canvas.setFocusable(true);
+		canvas.setVisible(true);
 	}
+	
+	
+	/**
+	 * Gets the next state.
+	 * @return The "next state"
+	 */
 	public String getNext() {
 		return next;
 	}
@@ -25,12 +31,17 @@ public class View {
 		this.next = next;
 	}
 	public JLayeredPane getCanvas() {
-		return panel;
+		return canvas;
 	}
-	public void setCanvas(JLayeredPane panel) {
-		this.panel = panel;
+	public void setCanvas(JLayeredPane canvas) {
+		this.canvas = canvas;
 	}
-	
+	/**
+	 * Resets the state variables: <br>
+	 * redraw = false <br>
+	 * next = ""
+	 * @return The "next state"
+	 */
 	public void reset(){
 		setRedraw(false);
 		next = "";
@@ -42,7 +53,7 @@ public class View {
 		this.redraw = redraw;
 	}
 	public void setBackground(String s) {
-		panel.add(new ImagePanel(s));
+		canvas.add(new ImagePanel(s));
 	}
 	
 }

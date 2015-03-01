@@ -1,207 +1,104 @@
 package controller;
- 
-import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 
-import javax.swing.JButton;
 import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.swing.border.LineBorder;
 
+import model.Avatar;
 import model.Game;
+import model.GameMap;
 import model.Location;
  
 import model.Point;
 import model.items.TakeableItem;
 import utilities.Scaling;
-import view.InventoryEquipmentView;
-import view.GameView;
+import view.CombinedGameView;
 import view.LevelUpView;
 import view.MapView;
 import view.StatisticsView;
-import view.StatusView;
 import view.SystemMenuView;
 import view.View;
  
-public class GameController {       
-        //Dimensions
-        int boardDimensions[] = {Scaling.BOARD_X,Scaling.BOARD_Y,Scaling.BOARD_WIDTH,Scaling.BOARD_HEIGHT};
-        int characterDimensions[] = {Scaling.CHAR_X , Scaling.CHAR_Y, Scaling.CHAR_WIDTH, Scaling.CHAR_HEIGHT};
-        int buttonDimensions[] = {Scaling.SYSTEM_BUTTON_X , Scaling.SYSTEM_BUTTON_Y, Scaling.SYSTEM_BUTTON_WIDTH, Scaling.SYSTEM_BUTTON_HEIGHT};
-        int statusDimensions[] = {Scaling.STATUS_X , Scaling.STATUS_Y, Scaling.STATUS_WIDTH, Scaling.STATUS_HEIGHT};
-       
-        //MISC
-        private boolean saved = false;
+public class GameController {
+        
+		private GameMap map;
+		private Avatar avatar;
+        private boolean reset = false;
         private boolean spawned = false;
-        private Game game = new Game();
         private int yourLvl;
-       
-        //Components
-        // private JTextField input = new JTextField(20);
-        private JPanel buttons = new JPanel();
-        private JButton systemButton = new JButton("Systems");
-        private JButton statButton = new JButton("Statistics");
-        private JButton levelUp = new JButton("Level Up!");
+        
+        private CombinedGameView combinedGameView = null;
         private JInternalFrame systemMenu;
         private JInternalFrame statsView;
-        private LevelUpView leveledView;
-       
-        //Views
-        private View gameView = new View();
-        private GameView board;
-        private InventoryEquipmentView character;
-        private StatusView statusView;
-       
-        public GameController(Game gameToCreate){
-               
-                game = gameToCreate;
-                board = new GameView(game.getMap(),game.getAvatar());
-                character = new InventoryEquipmentView(game.getAvatar());
-                statusView = new StatusView(game.getAvatar());
-                
-                // add the mouse listener to the board
-                board.addMouseListener(new BoardMouseListener());
-                //Add to the canvas
-                buttons.add(systemButton);
-                buttons.add(statButton);
-                buttons.add(levelUp);
-                buttons.setBorder(new LineBorder(Color.black, 3));
-                gameView.getCanvas().add(buttons);
-//                              gameView.getCanvas().add(input);
-//                              gameView.getCanvas().add(savedText);
-                gameView.getCanvas().add(board);
-                character.setBorder(new LineBorder(Color.black, 3));
-                gameView.getCanvas().add(character);
-                statusView.setBorder(new LineBorder(Color.black, 3));
-                gameView.getCanvas().add(statusView);
-               
-                //Alignment --NEEDS ADJUSTMENT
-                //systemButton.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 5, 0, 100, 25);
-                //input.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 106, 0, 200, 25);
-                //savedText.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 306, 100, 200, 25);
- 
-                board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
-                character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
-                buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
-                statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
-               
-                systemButton.setToolTipText("(ESC)");
-                statButton.setToolTipText("(C)");
-                
-                levelUp.setFocusable(false);
-                levelUp.addActionListener(new LevelUPButton());
-
-                systemButton.setFocusable(false);
-                systemButton.addActionListener(new SystemsMenuButton());
-                
-               
-                statButton.setFocusable(false);
-                statButton.addActionListener(new StatButtonAction());
-                
-                Timer timer = new Timer(20, new DeathLevelCheck());
-        		timer.start();
-               
+        private JInternalFrame leveledView;
+        
+        public GameController(){
+        	//This should never be called.
         }
         
-        public GameController(String indicator) {
-        	try {
-				game.load();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        	
-        	 board = new GameView(game.getMap(),game.getAvatar());
-             character = new InventoryEquipmentView(game.getAvatar());
-             statusView = new StatusView(game.getAvatar());
-             yourLvl = game.getAvatar().getStatValue("Level");
-             // add the mouse listener to the board
-             board.addMouseListener(new BoardMouseListener());
-             //Add to the canvas
-             buttons.add(systemButton);
-             buttons.add(statButton);
-             buttons.add(levelUp);
-             buttons.setBorder(new LineBorder(Color.black, 3));
-             gameView.getCanvas().add(buttons);
-             gameView.getCanvas().add(board);
-             character.setBorder(new LineBorder(Color.black, 3));
-             gameView.getCanvas().add(character);
-             statusView.setBorder(new LineBorder(Color.black, 3));
-             gameView.getCanvas().add(statusView);
-            
-             board.setBounds(boardDimensions[0],boardDimensions[1],boardDimensions[2],boardDimensions[3]);
-             character.setBounds(characterDimensions[0], characterDimensions[1], characterDimensions[2], characterDimensions[3]);
-             buttons.setBounds(buttonDimensions[0],buttonDimensions[1], buttonDimensions[2], buttonDimensions[3]);
-             statusView.setBounds(statusDimensions[0],statusDimensions[1], statusDimensions[2], statusDimensions[3]);
-            
-             systemButton.setToolTipText("(ESC)");
-             statButton.setToolTipText("(C)");
-             
-             levelUp.setFocusable(false);
-             levelUp.addActionListener(new LevelUPButton());
-
-             systemButton.setFocusable(false);
-             systemButton.addActionListener(new SystemsMenuButton());
-             
-            
-             statButton.setFocusable(false);
-             statButton.addActionListener(new StatButtonAction());
-             
-             Timer timer = new Timer(20, new DeathLevelCheck());
-     		 timer.start();
+        public GameController(Game game){
+        	this.map = game.getMap();
+        	this.avatar = game.getAvatar();
+        	yourLvl = avatar.getStatValue("Level");
+        	combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
+        	Timer timer = new Timer(20, new DeathLevelCheck());
+     		timer.start();
         }
+       
+        
        
         /********************MISC OPERATIONS**********************/
         public View getView(){
-                return gameView;
+                return combinedGameView;
         }
        
-        public boolean pressedSave(){
-                return saved;
+        public boolean startReset(){
+                return reset;
         }
         
-        public void doneSaving(){
-            saved  = false;
+        public void stopReset(){
+            reset  = false;
         }
        
-        public Game getGame(){ 
-                return game;
-        }
+//        public Game getGame(){ 
+//                return game;
+//        }
        
         public void spawnSystems(){
                 if(!spawned){
-                        systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton());
-                        gameView.getCanvas().add(systemMenu);
-                        systemMenu.moveToFront();
-                        gameView.setNext("Game");
-                        gameView.setRedraw(true);
-                        spawned = true;
+                    systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton());
+                    combinedGameView.addExternalView(systemMenu);
+                    systemMenu.moveToFront();
+                    combinedGameView.setNext("Game");
+                    combinedGameView.setRedraw(true);
+                    spawned = true;
                 }
         }
        
         public void spawnStats(){
                 if(!spawned){                  
-                        statsView = new StatisticsView(game.getAvatar(), new RetGameStatsButton());
-                        gameView.getCanvas().add(statsView);
-                        statsView.moveToFront();
-                        gameView.setNext("Game");
-                        gameView.setRedraw(true);
-                        spawned = true;
+                    statsView = new StatisticsView(avatar, new RetGameStatsButton());
+                    combinedGameView.addExternalView(statsView);
+                    statsView.moveToFront();
+                    combinedGameView.setNext("Game");
+                    combinedGameView.setRedraw(true);
+                    spawned = true;
                 }
         }
         
         public void spawnLevelUp(){
-            if(!spawned && game.getAvatar().getLevels() > 0){                  
-            	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Inellect"));
-                    gameView.getCanvas().add(leveledView);
-                    leveledView.moveToFront();
-                    gameView.setNext("Game");
-                    gameView.setRedraw(true);
-                    spawned = true;
+            if(!spawned && avatar.getLevels() > 0){                  
+            	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Intellect"));
+                combinedGameView.addExternalView(leveledView);
+                leveledView.moveToFront();
+                combinedGameView.setNext("Game");
+                combinedGameView.setRedraw(true);
+                spawned = true;
             }
     }
        
@@ -211,38 +108,37 @@ public class GameController {
         public class BackButtonListener implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
-                        gameView.setNext("Main");
-                        gameView.setRedraw(true);
+                    combinedGameView.setNext("Main");
+                    combinedGameView.setRedraw(true);
                 }
         }
         
         public class LevelUPButton implements ActionListener {
             
             public void actionPerformed(ActionEvent e) {
-            		spawnLevelUp();
+    			spawnLevelUp();
             }
     }
        
         public class SaveGameButton implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
-                        try {
-							game.save();
-							saved = true;
-						} catch (IOException e1) {
-							saved = false;
-						}
+                    try {
+						new Game(map, avatar).save();
+						reset = true;
+					} catch (IOException e1) {
+						reset = false;
+					}
                 }
         }
        
         public class RetGameButton implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
-                        gameView.getCanvas().remove(systemMenu);
-                        gameView.getCanvas().getTopLevelAncestor().requestFocus();
-                        spawned = false;
-                        gameView.setNext("Game");
-                        gameView.setRedraw(true);
+                    combinedGameView.removeExternalView(systemMenu);
+                    spawned = false;
+                    combinedGameView.setNext("Game");
+                    combinedGameView.setRedraw(true);
                 }
         }
        
@@ -250,11 +146,10 @@ public class GameController {
         public class RetGameStatsButton implements ActionListener {
                
                 public void actionPerformed(ActionEvent e) {
-                        gameView.getCanvas().remove(statsView);
-                        gameView.getCanvas().getTopLevelAncestor().requestFocus();
-                        spawned = false;
-                        gameView.setNext("Game");
-                        gameView.setRedraw(true);
+                	combinedGameView.removeExternalView(statsView);
+                    spawned = false;
+                    combinedGameView.setNext("Game");
+                    combinedGameView.setRedraw(true);
                 }
         }
  
@@ -277,13 +172,12 @@ public class GameController {
         		stat = s; 
         	}
             public void actionPerformed(ActionEvent e) {
-            	game.getAvatar().setStatValue(stat, game.getAvatar().getStatValue(stat)+1);
-            	game.getAvatar().setLevels(game.getAvatar().getLevels()-1);
-            	gameView.getCanvas().remove(leveledView);
-                gameView.getCanvas().getTopLevelAncestor().requestFocus();
+            	avatar.setStatValue(stat, avatar.getStatValue(stat)+1);
+            	avatar.setLevels(avatar.getLevels()-1);
+            	combinedGameView.removeExternalView(leveledView);
                 spawned = false;
-                gameView.setNext("Game");
-                gameView.setRedraw(true);
+                combinedGameView.setNext("Game");
+                combinedGameView.setRedraw(true);
             }
     }
     
@@ -295,7 +189,7 @@ public class GameController {
         // Point of Reference needs to be added to the tileY and tileX
         // the point of reference is the point that reflects the change in the display of the map
         public Location getTileLocation(MouseEvent e){
-        	Point point = board.getMap().getLocation(board.getAvatar());
+        	Point point = map.getLocation(avatar);
             int tileY = e.getY()/Scaling.TILE_HEIGHT;
             int tileX = e.getX()/Scaling.TILE_WIDTH;
             int xOff = point.getX() + (tileX - MapView.CHARACTER_OFFSET);
@@ -309,13 +203,13 @@ public class GameController {
             // TODO  This is a Type Cast type casting is bad,  it leads to broke people on the streets and
             // corrupts governments,  please dont type cast,  Hackers love type casting. 
             // Testing Purposes for Iteration 1 only,   Implementation
-            TakeableItem droppedItem = (TakeableItem) board.getMap().getTile(tileLocation).getItem();
+            TakeableItem droppedItem = (TakeableItem) map.getTile(tileLocation).getItem();
             System.out.println(droppedItem+"  "+tileLocation);
-            boolean itemIsOnAvatar = (board.getMap().getTile(tileLocation).getItem() == droppedItem) 
-            	&& (game.getMap().getEntityTile(game.getAvatar()) == game.getMap().getTile(tileLocation));
+            boolean itemIsOnAvatar = (map.getTile(tileLocation).getItem() == droppedItem) 
+            	&& (map.getEntityTile(avatar) == map.getTile(tileLocation));
             if( itemIsOnAvatar){
-            	if (board.getAvatar().getInventory().findAndEquip(droppedItem)){
-                    board.getMap().getTile(tileLocation).dropItem();
+            	if (avatar.getInventory().findAndEquip(droppedItem)){
+                    map.getTile(tileLocation).dropItem();
             	}
         	}
         }
@@ -327,17 +221,18 @@ public class GameController {
     
     public class DeathLevelCheck implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(game.getAvatar().getStatValue("Lives") == 0){
-				 gameView.setNext("Main");
-                 gameView.setRedraw(true);
+			if(avatar.getStatValue("Lives") == 0){
+				 reset = true;
+				 combinedGameView.setNext("Main");
+	             combinedGameView.setRedraw(true);
 			}
-			else if(game.getAvatar().getStatValue("HP") == 0){
-				game.getAvatar().setStatValue("Lives", game.getAvatar().getStatValue("Lives")-1);
-				game.getAvatar().setStatValue("HP", game.getAvatar().getStatValue("Life"));
+			else if(avatar.getStatValue("HP") == 0){
+				avatar.setStatValue("Lives", avatar.getStatValue("Lives")-1);
+				avatar.setStatValue("HP", avatar.getStatValue("Life"));
 			}
-			else if(yourLvl != game.getAvatar().getStatValue("Level")){
-				game.getAvatar().setLevels(game.getAvatar().getLevels()+game.getAvatar().getStatValue("Level")-yourLvl);
-				yourLvl = game.getAvatar().getStatValue("Level");
+			else if(yourLvl != avatar.getStatValue("Level")){
+				avatar.setLevels(avatar.getLevels()+avatar.getStatValue("Level")-yourLvl);
+				yourLvl = avatar.getStatValue("Level");
 			}
 		}
 	}
