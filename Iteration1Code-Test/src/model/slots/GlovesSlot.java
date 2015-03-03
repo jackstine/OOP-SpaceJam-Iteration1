@@ -1,49 +1,41 @@
 package model.slots;
 
-import model.items.Armor;
-import model.items.Boots;
+import model.items.Equipable;
 import model.items.Gloves;
-import model.items.Helmet;
-import model.items.Leggings;
-import model.items.Projectile;
-import model.items.Shield;
-import model.items.Weapon;
+import model.items.TakeableItem;
+
 
 public class GlovesSlot extends BufferSlot{
+	private Gloves equippedItem;
 	
 	public GlovesSlot(Equipment equipment){
 		super(equipment);
 	}
 	
-	public boolean equip(Weapon item) {
-		return false;
+	public boolean equip(Gloves gloves){
+		if(this.has()) return false;
+		else{
+			this.equippedItem = gloves;
+			this.send();
+			return true;
+		}
+	}
+	
+	public int calculateBonus() {
+		return this.equippedItem.getBonus();
 	}
 
-	public boolean equip(Armor armor) {
-		return false;
+	public boolean has() {
+		return (this.equippedItem != null);
 	}
 
-	public boolean equip(Helmet helmet) {
-		return false;
+	protected Equipable unequipItem() {
+		Equipable temp = this.equippedItem;
+		this.equippedItem = null;
+		return temp;
 	}
 
-	public boolean equip(Gloves gloves) {
-		return this.equipItem(gloves);
+	public TakeableItem get() {
+		return this.equippedItem;
 	}
-
-	public boolean equip(Leggings leggings) {
-		return false;
-	}
-
-	public boolean equip(Shield shield) {
-		return false;
-	}
-
-	public boolean equip(Boots boots) {
-		return false;
-	}
-	public boolean equip(Projectile projectile){
-		return false;
-	}
-
 }

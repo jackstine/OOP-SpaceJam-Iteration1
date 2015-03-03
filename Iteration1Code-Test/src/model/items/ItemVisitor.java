@@ -3,10 +3,10 @@ package model.items;
 
 public interface ItemVisitor {
 	public void accept(Armor a);
-	public void accept(TerminatorWeapon w);
+	public void accept(TerminatorSingleWeapon w);
+	public void accept(TerminatorTwoHandedWeapon thw);
 	public void accept(AlchemistWeapon a);
 	public void accept(HunterWeapon h);
-	public void accept(TwoHandedWeapon w);
 	public void accept(GiantRock g);
 	public void accept(HealingOneShotItem h);
 	public void accept(DamagingOneShotItem d);

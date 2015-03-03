@@ -1,6 +1,7 @@
 package model.occupation;
 
 import model.AlchemistStatFactory;
+import model.EquipmentBuilder;
 import model.StatFactory;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
@@ -29,6 +30,10 @@ public class Alchemist extends Occupation{
 	
 	public WeaponSlot makeWeaponSlot(){
 		return new AlchemistWeaponSlot();
+	}
+	
+	public Equipment createEquipment(EquipmentBuilder eb) {
+		return eb.buildBeginerEquipment(this);
 	}
 
 //	@Override

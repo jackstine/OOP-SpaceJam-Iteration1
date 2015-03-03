@@ -3,6 +3,7 @@ package testing;
 import model.Avatar;
 import model.items.AlchemistWeapon;
 import model.items.HunterWeapon;
+import model.items.TerminatorSingleWeapon;
 import model.items.TerminatorWeapon;
 import model.items.Weapon;
 import model.slots.Equipment;
@@ -28,7 +29,7 @@ public class EquipingTest {
 	}
 	
 	public static void equippingAll(Occupation oc,Weapon weapon){
-		TerminatorWeapon terminatorWeapon = new TerminatorWeapon(5);
+		TerminatorWeapon terminatorWeapon = new TerminatorSingleWeapon(5);
 		HunterWeapon hunterWeapon = new HunterWeapon(10);
 		AlchemistWeapon alchemistWeapon = new AlchemistWeapon(15);
 		Avatar avatar = new Avatar(oc);
@@ -44,7 +45,7 @@ public class EquipingTest {
 	}
 	
 	public static void main(String[] args){
-		TerminatorWeapon terminatorWeapon = new TerminatorWeapon(5);
+		TerminatorWeapon terminatorWeapon = new TerminatorSingleWeapon(5);
 		HunterWeapon hunterWeapon = new HunterWeapon(10);
 		AlchemistWeapon alchemistWeapon = new AlchemistWeapon(15);
 		equipping(terminatorWeapon);	// should be 5

@@ -1,6 +1,7 @@
 package model.occupation;
 
 
+import model.EquipmentBuilder;
 import model.HunterStatFactory;
 import model.StatFactory;
 import model.slots.Equipment;
@@ -30,6 +31,10 @@ public class Hunter extends Occupation{
 	
 	public WeaponSlot makeWeaponSlot(){
 		return new HunterWeaponSlot();
+	}
+
+	public Equipment createEquipment(EquipmentBuilder eb) {
+		return eb.buildBeginerEquipment(this);
 	}
 
 //	@Override

@@ -1,25 +1,26 @@
 package model.items;
 
-import model.Point;
+import model.Avatar;
 import model.slots.Equipment;
-import view.EquipmentView;
+
 
 public class Projectile extends Equipable{
-	private static final Point SLOT = EquipmentView.QUIVER_POINT;
 	private int attack;
 	
 	public Projectile(int attack){
 		this.attack = attack;
 	}
 	
-	public int getBonus() {
-		return this.attack;
+	public boolean action(Avatar avatar){
+		return avatar.equip(this);
 	}
 	
-	public TakeableItem equipSlot(Equipment equipment) {
-		TakeableItem item = equipment.unequipSlot(SLOT);
-		equipment.equipSlot(SLOT,this);
-		return item;
+	public boolean equipItem(Equipment equipment){
+		return equipment.equip(this);
+	}
+	
+	public int getBonus() {
+		return this.attack;
 	}
 	
 	public void accept(ItemVisitor visitor) {
@@ -29,6 +30,10 @@ public class Projectile extends Equipable{
 	public String getItemName() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void accept(EquipableVisitor visitor){
+		visitor.accept(this);
 	}
 
 }

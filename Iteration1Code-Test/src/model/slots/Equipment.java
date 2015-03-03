@@ -6,8 +6,17 @@ import java.util.Observer;
 import model.ArmorRating;
 import model.OffensiveRating;
 import model.Point;
+import model.items.Armor;
+import model.items.Boots;
 import model.items.Equipable;
+import model.items.Gloves;
+import model.items.Helmet;
+import model.items.Leggings;
+import model.items.Projectile;
+import model.items.Shield;
 import model.items.TakeableItem;
+import model.items.TerminatorTwoHandedWeapon;
+import model.items.Weapon;
 import utilities.Scaling;
 import view.EquipmentView;
 
@@ -23,14 +32,15 @@ public class Equipment implements Observer{
 	
 	private final BufferSlot[][] slots = new BufferSlot[Scaling.EQUIPMENT_SLOTS_WIDTH_NUM][Scaling.EQUIPMENT_SLOTS_HEIGHT_NUM];
     
-    private BufferSlot armorSlot;
-    private BufferSlot weaponSlot;
-    private BufferSlot helmetSlot;
-    private BufferSlot bootsSlot;
-    private BufferSlot leggingsSlot;
-    private BufferSlot shieldSlot;
-    private BufferSlot glovesSlot;
-    private BufferSlot quiverSlot;
+    private ArmorSlot armorSlot;
+    private WeaponSlot weaponSlot;
+    private HelmetSlot helmetSlot;
+    private BootsSlot bootsSlot;
+    private LeggingsSlot leggingsSlot;
+    private ShieldSlot shieldSlot;
+    private GlovesSlot glovesSlot;
+    private QuiverSlot quiverSlot;
+    private TwoHandedWeaponSlot THWSlot;
     
     private EquipmentView equipmentView;
 	
@@ -38,9 +48,23 @@ public class Equipment implements Observer{
     
     //TODO delete this constructor  JUST FOR TESTING PURPOSES
     //TODO we will need to form the two WeaponSlots together
-    public Equipment(WeaponSlot weaponSlot){
+    public Equipment(TerminatorWeaponSlot weaponSlot){
+    	this.createEquipment(weaponSlot);
+    	this.THWSlot = new TwoHandedWeaponSlot(weaponSlot,this.shieldSlot);
+    }
+    
+    public Equipment(HunterWeaponSlot weaponSlot){
+    	createEquipment(weaponSlot);
+    }
+    
+    public Equipment(AlchemistWeaponSlot weaponSlot){
+    	createEquipment(weaponSlot);
+    }
+    
+    private void createEquipment(WeaponSlot weaponSlot){
     	this.armorSlot = new ArmorSlot(this);
     	this.weaponSlot = weaponSlot;
+    	this.weaponSlot.addObserver(this);
     	this.helmetSlot = new HelmetSlot(this);
     	this.glovesSlot = new GlovesSlot(this);
     	this.leggingsSlot = new LeggingsSlot(this);
@@ -77,21 +101,37 @@ public class Equipment implements Observer{
 		}
 	}
     
-	public Equipable unequipSlot(Point point){
-		Equipable item = this.getSlot(point).unequip();
-    	this.notifyView();
-    	return item;
-    }
-	
-	public <K extends Equipable> boolean equipSlot(Point point, K item){
-		boolean itemExist = item != null;
-		if (itemExist){
-			boolean value = this.getSlot(point).equipItem(item);
-			this.notifyView();
-			return value;
-		}else return false;
+	public Equipable unequipHelmet(){return helmetSlot.unequip();}
+	public Equipable unequipArmor(){return armorSlot.unequip();}
+	public Equipable unequipWeapon(){return weaponSlot.unequip();}
+	public Equipable unequipLeggings(){return leggingsSlot.unequip();}
+	public Equipable unequipBoots(){return bootsSlot.unequip();}
+	public Equipable unequipGloves(){return glovesSlot.unequip();}
+	public Equipable unequipProjectile(){return quiverSlot.unequip();}
+	public Equipable unequipShield(){
+		if (THWSlot != null)
+			return this.unequipShieldTHW();
+		else
+			return shieldSlot.unequip();
 	}
-    
+	public Equipable unequipTHW(){
+		if (THWSlot != null)return THWSlot.unequip();
+		else return null;
+	}
+	public Equipable unequipWeaponTHW(){
+		if (THWSlot != null)
+			return this.THWSlot.unequipWeapon();
+		else return null;
+	}
+	public Equipable unequipShieldTHW(){
+		if (THWSlot != null)
+			if (THWSlot.has())
+				return this.THWSlot.unequip();
+			else
+				return this.THWSlot.unequipShield();
+		else return null;
+	}
+
     public void addObserver(EquipmentView equipmentView){
     	this.equipmentView = equipmentView;
     }
@@ -106,6 +146,12 @@ public class Equipment implements Observer{
 	
 	public void update(Observable arg0, Object arg1) {
 		this.notifyView();
+	}
+	
+	public Equipable unequipSlot(Point point){
+		Equipable item = this.slots[point.getY()][point.getX()].unequip();
+		this.notifyView();
+		return item;
 	}
 
 	public BufferSlot[] getArmrorSlots() {
@@ -125,5 +171,24 @@ public class Equipment implements Observer{
     	this.getSlot(HELMET_SLOT).addObserver(armor);
     	this.getSlot(LEGGINGS_SLOT).addObserver(armor);
     	this.getSlot(QUIVER_SLOT).addObserver(armor);
+	}
+	
+	public boolean equip(TerminatorTwoHandedWeapon thw){
+		if (this.THWSlot != null)
+			return this.THWSlot.equip(thw);
+		else return false;
+	}
+	
+	public boolean equip(Helmet helmet){return this.helmetSlot.equip(helmet);}
+	public boolean equip(Weapon weapon){return this.weaponSlot.equip(weapon);}
+	public boolean equip(Armor armor){return this.armorSlot.equip(armor);}
+	public boolean equip(Leggings leggings){return this.leggingsSlot.equip(leggings);}
+	public boolean equip(Boots boots){return this.bootsSlot.equip(boots);}
+	public boolean equip(Gloves gloves){return this.glovesSlot.equip(gloves);}
+	public boolean equip(Projectile projectile){return this.quiverSlot.equip(projectile);}
+	public boolean equip(Shield shield){return this.shieldSlot.equip(shield);}
+
+	public boolean equipItem(Equipable item) {
+		return item.equipItem(this);
 	}
 }

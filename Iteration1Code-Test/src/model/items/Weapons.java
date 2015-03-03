@@ -4,9 +4,9 @@ public enum Weapons {
 	//All these will need to be UNIQUE weapons
 	
 	/*********TERMINATOR WEAPONS**********************/
-	SWORD(new TerminatorWeapon(1)),
-	LONGSWORD(new TerminatorWeapon(3)),
-	DAVESWORD(new TerminatorWeapon(100)),
+	SWORD(new TerminatorSingleWeapon(1)),
+	LONGSWORD(new TerminatorSingleWeapon(3)),
+	DAVESWORD(new TerminatorSingleWeapon(100)),
 	/*********HUNTER WEAPONS**********************/
 	LONGBOW(new HunterWeapon(100)),
 	/*********ALCHEMIST WEAPONS**********************/

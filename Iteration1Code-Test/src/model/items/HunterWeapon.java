@@ -8,14 +8,17 @@ public class HunterWeapon extends Weapon{
 	public HunterWeapon(int attack) {
 		super(attack);
 	}
+	
+	public boolean equipItem(Equipment equipment){
+		return equipment.equip(this);
+	}
 
 	public void accept(ItemVisitor visitor){
 		visitor.accept(this);
 	}
 	
-	public boolean equipToWeaponSlot(Equipment equipment){
-		return (! equipment.equipSlot(this.slot,this));
+	@Override
+	public boolean equip(HunterWeaponSlot slot){
+		return slot.equipItem(this);
 	}
-	
-	public boolean equipWeaponSlot(HunterWeaponSlot t){return true;}
 }

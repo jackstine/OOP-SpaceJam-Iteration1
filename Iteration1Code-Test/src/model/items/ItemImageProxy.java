@@ -13,7 +13,6 @@ public final class ItemImageProxy  {
 	private static String WEAPON_IMAGE ="src/res/img/weapon.png";
 	private static String GIANT_ROCK_IMAGE ="src/res/img/giant_rock.png";
 	private static String DAVE = "src/res/img/dave.jpg";
-	private static String TWO_HANDED_WEAPON_IMAGE = "src/res/img/two_handed_weapon.png";
 	private static String HELMET_IMAGE = "src/res/img/helmet.png";
 	private static String LEGGINGS_IMAGE = "src/res/img/leggings.png";
 	private static String GLOVES_IMAGE = "src/res/img/gloves.png";
@@ -22,6 +21,7 @@ public final class ItemImageProxy  {
 	private static String PROJECTILE_IMAGE = "src/res/img/projectile.png";
 	private static String ALCHEMIST_WEAPON_IMAGE = "src/res/img/alchemistWeapon.jpg";
 	private static String HUNTER_WEAPON_IMAGE = "src/res/img/hunterWeapon.png";
+	private static String TWO_HANDED_WEAPON_IMAGE = "src/res/img/two_handed_weapon.png";
 	
 	private BufferedImage healingpotionImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE,  HEALINGPOTION_IMAGE_PATH);
 	private BufferedImage closedtreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[0]);
@@ -86,9 +86,6 @@ public final class ItemImageProxy  {
 	public final BufferedImage getImage(GiantRock item){
 		return giantRockImage;
 	}
-	public BufferedImage getImage(TwoHandedWeapon w) {
-		return twoHandedWeaponImage;
-	}
 	public BufferedImage getImage(Helmet helmet){
 		return helmetImage;
 	}
@@ -107,8 +104,11 @@ public final class ItemImageProxy  {
 	public BufferedImage getImage(Projectile projectile) {
 		return projectileImage;
 	}
+	public BufferedImage getImage(TerminatorTwoHandedWeapon thw){
+		return twoHandedWeaponImage;
+	}
 	
-	public final BufferedImage getImage(TerminatorWeapon item){
+	public final BufferedImage getImage(TerminatorSingleWeapon item){
 		BufferedImage image = weaponImage;
 		if (Weapons.SWORD.equals(item)) image = weaponImage;
 		else if (Weapons.LONGSWORD.equals(item)) image = bootsImage;

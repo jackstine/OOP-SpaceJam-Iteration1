@@ -1,6 +1,7 @@
 package model.slots;
 
 import model.DerivedStat;
+import model.items.Weapon;
 
 public abstract class WeaponSlot extends BufferSlot{
 	
@@ -13,6 +14,8 @@ public abstract class WeaponSlot extends BufferSlot{
 	public WeaponSlot(Equipment equipment) {
 		this.addObserver(equipment);
 	}
+	
+	public abstract boolean equip(Weapon weapon);
     
 	public String toString(){
 		if (this.has()) return "Item:Weapon:" + this.bonus;

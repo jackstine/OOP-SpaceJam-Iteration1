@@ -1,12 +1,12 @@
 package model.items;
 
-import model.Point;
-import model.slots.Equipment;
-import view.EquipmentView;
+import model.Avatar;
+import model.slots.AlchemistWeaponSlot;
+import model.slots.HunterWeaponSlot;
+import model.slots.TerminatorWeaponSlot;
 
 public abstract class Weapon extends Equipable {
 	private int attack;
-	protected Point slot = EquipmentView.WEAPON_POINT;
 	
 	public Weapon(int attack) {
 		this.attack = attack;
@@ -18,6 +18,10 @@ public abstract class Weapon extends Equipable {
 		this.ITEM_NAME = "Weapon";
 	}
 	
+	public boolean action(Avatar avatar){
+		return avatar.equip(this);
+	}
+	
 	public abstract void accept(ItemVisitor visitor);
 	
 	public int getBonus() {
@@ -27,22 +31,15 @@ public abstract class Weapon extends Equipable {
 		return "Item:Weapon:" + this.attack;
 	}
 	
-	public TakeableItem equipSlot(Equipment equipment) {
-		Equipable item = equipment.unequipSlot(this.slot);
-		boolean doesNotEquip = this.equipToWeaponSlot(equipment);
-		//necessary to have this transaction, because the
-		//weaponslots we always keep their weapons if the 
-		// weapon in the slot is not replaced
-		if (doesNotEquip){
-			equipment.equipSlot(this.slot, item);
-			item = this;
-		}
-		return item;
-	}
-	
-	public abstract boolean equipToWeaponSlot(Equipment equipment);
+	public boolean equip(TerminatorWeaponSlot slot){return false;}
+	public boolean equip(HunterWeaponSlot slot){return false;}
+	public boolean equip(AlchemistWeaponSlot slot){return false;}
 	
 	public String getItemName() {
 		return this.ITEM_NAME;
+	}
+	
+	public void accept(EquipableVisitor visitor){
+		visitor.accept(this);
 	}
 }

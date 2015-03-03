@@ -16,7 +16,7 @@ public class ItemImageVisitor implements ItemVisitor{
 		this.image = imageProxy.getImage(a);
 	}
 	
-	public void accept(TerminatorWeapon w) {
+	public void accept(TerminatorSingleWeapon w) {
 		this.image = imageProxy.getImage(w);
 	}
 	public void accept(AlchemistWeapon a){
@@ -44,9 +44,6 @@ public class ItemImageVisitor implements ItemVisitor{
 	public BufferedImage getImage(){
 		return this.image;
 	}
-	public void accept(TwoHandedWeapon w) {
-		this.image = imageProxy.getImage(w);
-	}
 	public void accept(Gloves gloves) {
 		this.image = imageProxy.getImage(gloves);
 	}
@@ -64,5 +61,8 @@ public class ItemImageVisitor implements ItemVisitor{
 	}
 	public void accept(Projectile projectile){
 		this.image = imageProxy.getImage(projectile);
+	}
+	public void accept(TerminatorTwoHandedWeapon thw) {
+		this.image = imageProxy.getImage(thw);
 	}
 }
