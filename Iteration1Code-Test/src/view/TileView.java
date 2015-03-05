@@ -32,7 +32,7 @@ public class TileView extends JComponent{
     private BufferedImage updateImage(){
         this.tile.getTerrain().accept(terrainVisitor);
         BufferedImage imageOfTerrain = terrainVisitor.getImage();
-        BufferedImage itemImage,imageToDisplay, decalImage; //added decalImage
+        BufferedImage itemImage,imageToDisplay, decalImage, trapImage; //added decalImage
         
         // Could use a ENUM here 
         if (tile.getItem() != null){
@@ -46,6 +46,11 @@ public class TileView extends JComponent{
                 decalImage = tile.getDecal().getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
                 imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
                 imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,decalImage);
+        }
+        if(tile.getTrap()!=null){
+        	trapImage= tile.getTrap().getImage(); //need to add a proxy for this
+        	imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
+            imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,trapImage);
         }
         else{
                 imageToDisplay = imageOfTerrain;

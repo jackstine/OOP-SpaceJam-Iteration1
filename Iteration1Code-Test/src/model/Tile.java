@@ -11,6 +11,7 @@ public class Tile {
 	// private Entity entity;
 	// private AreaEffect areaEffect;
 	private Decal decal;
+	private Trap trap;
 
 	public Tile(Terrain terrain, int x,int y){ //will take more parameters(maybe)
 		this.terrain=terrain;
@@ -69,6 +70,14 @@ public class Tile {
 	
 	public void setDecal(Decal decal){
 			this.decal=decal;
+	}
+	
+	public Trap getTrap(){
+		return trap;
+	}
+	
+	public void setTrap(Trap trap){
+		this.trap=trap;
 	}
 	
 	/*

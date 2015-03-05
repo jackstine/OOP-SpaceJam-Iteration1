@@ -13,10 +13,16 @@ public class EffectHandler {
 		this.avatar=avatar;
 	}
 	
-	//TODO  encumberance
+	//need to find out how to fix this.
 	public void apply(Tile tile){
+		//tile.getDecal().getAreaEffect().apply(avatar);
+		//TrapDamageApplication.apply(avatar,tile.getTrap());
+		
+		
+		
 		Decal decal=tile.getDecal();
 		Item item =  tile.getItem(); 
+		Trap trap= tile.getTrap();
 		if(decal!=null){
 			decal.getAreaEffect().apply(avatar); 
 			}
@@ -24,9 +30,11 @@ public class EffectHandler {
 			item.action(avatar); //add effect after getting clicked /add this
 			tile.setItem(null);
 		}
-		
+		if(tile.getTrap()!=null)
+		TrapDamageApplication.apply(avatar,tile.getTrap());
 		
 	}
+	
 	
 
 }

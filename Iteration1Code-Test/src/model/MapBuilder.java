@@ -104,6 +104,9 @@ public class MapBuilder{
 		this.map[3][8].setItem(gr);
 		this.items[3][8] = gr;
 		
+		this.map[3][12].setTrap(new SpikeTrap()); //this
+		
+		
 		
 		return this.map;
 	}
