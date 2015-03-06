@@ -15,7 +15,6 @@ public abstract class BufferSlot extends Observable {
     	this.addObserver(equipment);
     }
     
-    
     protected abstract Equipable unequipItem();
     public abstract TakeableItem get();
 	public abstract int calculateBonus();
@@ -34,17 +33,13 @@ public abstract class BufferSlot extends Observable {
 	
     public final void resetBonus(){
     	this.bonus = 0;
+    	if (this.has()) this.bonus = this.calculateBonus();
     }
     
     public Equipable unequip(){
-        if (this.has()){
-        	Equipable pointer = this.unequipItem();
-            this.resetBonus();
-            return pointer;
-        }
-        else{
-            return null;
-        }
+    	Equipable pointer = this.unequipItem();
+        this.resetBonus();
+        return pointer;
     }
     
     // This is used to send info to update the Observers
