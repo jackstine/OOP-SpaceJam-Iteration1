@@ -27,6 +27,10 @@ public class SpriteSheetUtility {
 	public static final String HUNTER = "HUNTER";
 	public static final String TERMINATOR = "TERMINATOR";
 	public static final String ALCHEMIST = "ALCHEMIST";
+	public static final String MERCHANT = "MERCHANT";
+	public static final String SKELETON = "SKELETON";
+	public static final String ORC = "ORC";
+	
 	
 	public SpriteSheetUtility() {
 		//DEFAULT WILL JUST BE A TERMINATOR FOR SAFETY REASONS
@@ -40,9 +44,19 @@ public class SpriteSheetUtility {
 		else if (s.equalsIgnoreCase(HUNTER)) {
 			imagePath = "src/res/img/hunter_spritesheet.png";
 		}
-		else {
+		else  if (s.equalsIgnoreCase(TERMINATOR)){
 			imagePath = "src/res/img/terminator_spritesheet.png";
 		}
+		else if (s.equalsIgnoreCase(MERCHANT)) {
+			imagePath = "src/res/img/merchant_spritesheet.png";
+		}
+		else if (s.equalsIgnoreCase(SKELETON)) {
+			imagePath = "src/res/img/skeleton_spritesheet.png";	
+		}
+		else if (s.equalsIgnoreCase(ORC)) {
+			imagePath = "src/res/img/orc_spritesheet.png";
+		}
+		else {}
 		
 		try {
 			image = ImageIO.read(new File(imagePath));
