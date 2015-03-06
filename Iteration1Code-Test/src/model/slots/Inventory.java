@@ -20,7 +20,7 @@ public class Inventory extends SlotContainer{
                 this.items[i][j] = new InventorySlot();
             }
         }
-        this.items[2][2].equip(new TerminatorTwoHandedWeapon(5));
+        this.items[0][0].equip(new TerminatorTwoHandedWeapon(5));
     }
 
     //Use this method to access slots with a point
@@ -53,6 +53,7 @@ public class Inventory extends SlotContainer{
     }
     
     public final TakeableItem get(Point point){
+    	TakeableItem temp = this.getSlot(point).get();
         return this.getSlot(point).get();
     }
     

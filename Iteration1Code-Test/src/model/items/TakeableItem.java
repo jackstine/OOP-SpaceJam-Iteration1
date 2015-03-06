@@ -21,6 +21,4 @@ public abstract class TakeableItem implements Item {
 	public String getImagePath(){
 		return ITEM_IMAGE;
 	}
-	
-	
 }

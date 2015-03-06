@@ -207,6 +207,6 @@ public class Equipment implements Observer{
 	}
 	
     public String toString() {
-   	 return this.armorSlot + "\n" + this.weaponSlot;
+    	return this.armorSlot + "\n" + this.weaponSlot;
    }
 }

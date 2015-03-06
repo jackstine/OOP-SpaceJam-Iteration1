@@ -14,6 +14,7 @@ import javax.swing.border.LineBorder;
 import model.Avatar;
 import model.Game;
 import model.GameMap;
+import model.Location;
 import utilities.Scaling;
 import controller.GameController.BoardMouseListener;
 import controller.GameController.DeathLevelCheck;
@@ -43,7 +44,7 @@ public class CombinedGameView extends View {
    
     public CombinedGameView(GameMap map, Avatar avatar, MouseListener mouse, ActionListener lvlup, ActionListener sysbtn, ActionListener statbtn){
     		
-            board = new GameView(map,avatar);
+            board = new GameView(map,avatar, map.getLocation(avatar));
             character = new InventoryEquipmentView(avatar);
             statusView = new StatusView(avatar);
             

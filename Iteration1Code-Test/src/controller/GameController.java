@@ -125,7 +125,7 @@ public class GameController {
                 public void actionPerformed(ActionEvent e) {
                     try {
 						new Game(map, avatar).save();
-						reset = true;
+						reset = false;
 					} catch (IOException e1) {
 						reset = false;
 					}
