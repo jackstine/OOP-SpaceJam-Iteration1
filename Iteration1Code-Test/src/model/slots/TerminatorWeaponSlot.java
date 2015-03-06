@@ -7,6 +7,7 @@ import model.items.Weapon;
 
 public class TerminatorWeaponSlot extends WeaponSlot{
 	private TerminatorWeapon equippedItem;
+	private TwoHandedWeaponSlot thw;
     
 	public boolean equip(Weapon weapon){
 		return weapon.equip(this);
@@ -36,11 +37,24 @@ public class TerminatorWeaponSlot extends WeaponSlot{
 	}
 
 	protected Equipable unequipItem() {
-		Equipable temp = this.equippedItem;
+		if (thw != null && thw.has()){
+			return thw.unequip();
+		}
+		else{
+			Equipable temp = this.equippedItem;
+			this.equippedItem = null;
+			return temp;
+		}
+	}
+	
+	public void drop(){
 		this.equippedItem = null;
-		return temp;
 	}
 
+	public void setTHW(TwoHandedWeaponSlot thw){
+		this.thw = thw;
+	}
+	
 	public TakeableItem get() {
 		return this.equippedItem;
 	}

@@ -147,18 +147,8 @@ public class Equipment implements Observer{
 	private Equipable unequipBoots(){return bootsSlot.unequip();}
 	private Equipable unequipGloves(){return glovesSlot.unequip();}
 	private Equipable unequipProjectile(){return quiverSlot.unequip();}
-	
-	private Equipable unequipShield(){
-		if (THWSlot != null && THWSlot.has()){
-			return THWSlot.unequip();
-		}else return shieldSlot.unequip();
-	}
-	
-	private Equipable unequipWeapon(){
-		if (THWSlot != null && THWSlot.has()){
-			return THWSlot.unequip();
-		} else return weaponSlot.unequip();	
-	}
+	private Equipable unequipShield(){return shieldSlot.unequip();}
+	private Equipable unequipWeapon(){return weaponSlot.unequip();	}
 	
 	private Equipable[] unequipTwoHandedWeapon(){
 		Equipable[] items = new Equipable[3];

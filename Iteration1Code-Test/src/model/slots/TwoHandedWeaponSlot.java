@@ -14,13 +14,15 @@ public class TwoHandedWeaponSlot extends BufferSlot{
 	public TwoHandedWeaponSlot(TerminatorWeaponSlot weaponSlot, ShieldSlot shieldSlot){
 		this.weaponSlot = weaponSlot;
 		this.shieldSlot = shieldSlot;
+		this.weaponSlot.setTHW(this);
+		this.shieldSlot.setTHW(this);
 	}
 
 	//**************  UNEQUIP ***************************
 	protected Equipable unequipItem() {
 		Equipable temp = this.equippedItem;
 		this.equippedItem = null;
-		this.weaponSlot.unequip();
+		this.weaponSlot.drop();
 		return temp;
 	}
 	
