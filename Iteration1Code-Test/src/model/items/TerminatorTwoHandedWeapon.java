@@ -1,6 +1,7 @@
 package model.items;
 
-import model.Avatar;
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
 
 public class TerminatorTwoHandedWeapon extends TerminatorWeapon{
 
@@ -8,16 +9,14 @@ public class TerminatorTwoHandedWeapon extends TerminatorWeapon{
 		super(attack);
 	}
 	
-	
-	public boolean action(Avatar avatar){
-		return avatar.equip(this);
-	}
-	
-	
 	public boolean isTHW(){return true;}
 
-
 	public void accept(ItemVisitor visitor){
+		visitor.accept(this);
+	}
+
+	@Override
+	public void accept(EquipableVisitor visitor) {
 		visitor.accept(this);
 	}
 	

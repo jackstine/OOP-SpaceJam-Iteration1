@@ -1,7 +1,7 @@
 package model.items;
 
-import model.Avatar;
-import model.slots.Equipment;
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
 
 public class Armor extends Equipable {
 	protected int armor;
@@ -17,14 +17,6 @@ public class Armor extends Equipable {
 	public Armor(int armor, String image) {
 		this.armor = armor;
 		this.ITEM_NAME = "Armor";
-	}
-	
-	public boolean action(Avatar avatar){
-		return avatar.equip(this);
-	}
-	
-	public boolean equipItem(Equipment equipment){
-		return equipment.equip(this);
 	}
 	
 	public void accept(ItemVisitor visitor){

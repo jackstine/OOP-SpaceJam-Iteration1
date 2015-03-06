@@ -15,7 +15,24 @@ public class TwoHandedWeaponSlot extends BufferSlot{
 		this.weaponSlot = weaponSlot;
 		this.shieldSlot = shieldSlot;
 	}
+
+	//**************  UNEQUIP ***************************
+	protected Equipable unequipItem() {
+		Equipable temp = this.equippedItem;
+		this.equippedItem = null;
+		this.weaponSlot.unequip();
+		return temp;
+	}
 	
+	public Equipable unequipShield(){
+		return this.shieldSlot.unequip();
+	}
+	
+	public Equipable unequipWeapon(){
+		return this.weaponSlot.unequip();
+	}
+	
+	//**********************  EQUIP ******************************
 	public boolean equip(TerminatorTwoHandedWeapon thw){
 		if (this.weaponSlot.has() || this.shieldSlot.has()) return false;
 		else{
@@ -25,25 +42,10 @@ public class TwoHandedWeaponSlot extends BufferSlot{
 			return true;
 		}
 	}
-
-	protected Equipable unequipItem() {
-		Equipable temp = this.equippedItem;
-		this.equippedItem = null;
-		this.weaponSlot.unequip();
-		return temp;
-	}
 	
 	public boolean equipShield(Shield shield){
 		if (this.has()) return false;
 		else return this.shieldSlot.equip(shield);
-	}
-	
-	public Equipable unequipShield(){
-		return this.shieldSlot.unequip();
-	}
-	
-	public Equipable unequipWeapon(){
-		return this.weaponSlot.unequip();
 	}
 	
 	public boolean equipWeapon(Weapon weapon){

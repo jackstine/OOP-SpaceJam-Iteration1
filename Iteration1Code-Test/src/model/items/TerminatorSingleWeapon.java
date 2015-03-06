@@ -1,5 +1,8 @@
 package model.items;
 
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
+
 public class TerminatorSingleWeapon extends TerminatorWeapon{
 
 	public TerminatorSingleWeapon(int attack) {
@@ -10,4 +13,7 @@ public class TerminatorSingleWeapon extends TerminatorWeapon{
 		visitor.accept(this);
 	}
 
+	public void accept(EquipableVisitor visitor){
+		visitor.accept(this);
+	}
 }

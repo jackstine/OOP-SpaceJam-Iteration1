@@ -1,21 +1,13 @@
 package model.items;
 
-import model.Avatar;
-import model.slots.Equipment;
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
 
 public class Boots extends Equipable{
 	private int armor;
 
 	public Boots(int armor){
 		this.armor = armor;
-	}
-	
-	public boolean action(Avatar avatar){
-		return avatar.equip(this);
-	}
-	
-	public boolean equipItem(Equipment equipment){
-		return equipment.equip(this);
 	}
 	
 	public void accept(ItemVisitor visitor) {

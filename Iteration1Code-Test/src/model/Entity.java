@@ -2,15 +2,19 @@ package model;
 
 import java.util.Map;
 
+import model.items.Equipable;
+import model.items.TakeableItem;
 import model.occupation.Occupation;
 import model.slots.Equipment;
+import model.slots.Inventory;
+import model.slots.InventoryEquipment;
 
 public abstract class Entity {
 	protected Map<String,Stat> stats; 
 	protected Occupation occupation;
 	protected String name;
 	protected int direction;
-	protected Equipment equipment;
+	protected InventoryEquipment inventoryEquipment;
 	
 	// private GameMap map;
 	// private Equipable equipment;
@@ -23,10 +27,9 @@ public abstract class Entity {
 		this.occupation = occupation;
 		occupation.createNecessities();
 		this.stats = occupation.getStats();
-		this.equipment = occupation.getEquipment();
+		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
 	}
-	// -------------------------------------------
-	
+
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
@@ -39,12 +42,43 @@ public abstract class Entity {
 		return -1;
 	}
 	
-	public void setStatValue(String key, int value) {
-		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
+	
+	//**************   INVENTORY  ********************************
+	public Inventory getInventory(){
+		return inventoryEquipment.getInventory();
 	}
 	
-	public Equipment getEquipment() {
-		return this.equipment;
+	public void setInventory(Inventory inventory){
+		this.inventoryEquipment.setInventory(inventory);
+	}
+	
+	public boolean equipInventory(TakeableItem item){
+		return this.inventoryEquipment.equipInventory(item);
+	}
+	
+	public TakeableItem unequipInventorySlot(Point slotPoint){
+		return this.inventoryEquipment.unequipInventory(slotPoint);
+	}
+	
+	//*************  EQUIPMENT *************************
+	public void setEquipment(Equipment equipment){
+		this.inventoryEquipment.setEquipment(equipment);
+	}
+	
+	public Equipment getEquipment(){
+		return inventoryEquipment.getEquipment();
+	}
+	
+	public void equip(Equipable item){
+		this.inventoryEquipment.equipEquipment(item);
+	}
+	
+	public TakeableItem unequipEquipment(Point point){
+		return this.inventoryEquipment.unequipEquipment(point);
+	}
+	
+	public void setStatValue(String key, int value) {
+		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
 	}
 	
 	public void setName(String name) {

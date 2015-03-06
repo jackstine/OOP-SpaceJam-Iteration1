@@ -1,9 +1,10 @@
 package model.items;
 
-import model.Avatar;
 import model.slots.AlchemistWeaponSlot;
 import model.slots.HunterWeaponSlot;
 import model.slots.TerminatorWeaponSlot;
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
 
 public abstract class Weapon extends Equipable {
 	private int attack;
@@ -16,10 +17,6 @@ public abstract class Weapon extends Equipable {
 	public Weapon(int attack, String image) {
 		this.attack = attack;
 		this.ITEM_NAME = "Weapon";
-	}
-	
-	public boolean action(Avatar avatar){
-		return avatar.equip(this);
 	}
 	
 	public abstract void accept(ItemVisitor visitor);
@@ -39,7 +36,5 @@ public abstract class Weapon extends Equipable {
 		return this.ITEM_NAME;
 	}
 	
-	public void accept(EquipableVisitor visitor){
-		visitor.accept(this);
-	}
+	public abstract void accept(EquipableVisitor visitor);
 }

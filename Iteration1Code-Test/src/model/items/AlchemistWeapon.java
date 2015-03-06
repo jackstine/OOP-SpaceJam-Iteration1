@@ -1,17 +1,13 @@
 package model.items;
 
-import model.Avatar;
 import model.slots.AlchemistWeaponSlot;
-import model.slots.Equipment;
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
 
 public class AlchemistWeapon extends Weapon{
 
 	public AlchemistWeapon(int attack) {
 		super(attack);
-	}
-	
-	public boolean equipItem(Equipment equipment){
-		return equipment.equip(this);
 	}
 	
 	public void accept(ItemVisitor visitor){
@@ -21,5 +17,9 @@ public class AlchemistWeapon extends Weapon{
 	@Override
 	public boolean equip(AlchemistWeaponSlot slot){
 		return slot.equipItem(this);
+	}
+	
+	public void accept(EquipableVisitor visitor){
+		visitor.accept(this);
 	}
 }

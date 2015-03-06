@@ -1,6 +1,7 @@
 package model.items;
 
 import model.Avatar;
+import model.visitor.ItemVisitor;
 
 public class GiantRock extends ObstacleItem {
 

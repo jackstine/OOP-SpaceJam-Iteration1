@@ -3,13 +3,16 @@ package view;
 import java.awt.Dimension;
 import java.awt.Graphics;
  
+
 import javax.swing.JComponent;
  
+
 import utilities.Scaling;
 import model.Avatar;
 import model.GameMap;
 import model.Location;
  
+@SuppressWarnings("serial")
 public class MapView extends JComponent{
         private GameMap map;
         private Avatar avatar;

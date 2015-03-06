@@ -9,12 +9,15 @@ import javax.swing.JComponent;
 
 
 
+
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.TerrainImageVisitor;
 import model.Tile;
-import model.items.ItemImageVisitor;
+import model.visitor.ItemImageVisitor;
  
+@SuppressWarnings("serial")
 public class TileView extends JComponent{
     public static final int SCALE = Scaling.TILE_SCALE.getX();
     private Tile tile;
