@@ -1,11 +1,10 @@
 package model.items;
 
-import model.Point;
-import model.slots.Equipment;
-import view.EquipmentView;
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
+
 
 public class Helmet extends Equipable{
-	private final static Point SLOT = EquipmentView.HELMET_POINT;
 	private int armor;
 
 	public Helmet(int armor){
@@ -21,13 +20,11 @@ public class Helmet extends Equipable{
 		return null;
 	}
 
-	public TakeableItem equipSlot(Equipment equipment) {
-		TakeableItem item = equipment.unequipSlot(SLOT);
-		equipment.equipSlot(SLOT,this);
-		return item;
-	}
-
 	public int getBonus() {
 		return this.armor;
+	}
+	
+	public void accept(EquipableVisitor visitor){
+		visitor.accept(this);
 	}
 }

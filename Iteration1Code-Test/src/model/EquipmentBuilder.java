@@ -8,29 +8,46 @@ import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
 import model.items.Weapons;
-import model.occupation.Occupation;
+import model.occupation.*;
+import model.slots.AlchemistWeaponSlot;
 import model.slots.Equipment;
+import model.slots.HunterWeaponSlot;
+import model.slots.TerminatorWeaponSlot;
 
 public class EquipmentBuilder {
 	private int beginValue = 1;
 	
-	public Equipment buildBeginerEquipment(Occupation occupation){
-		Equipment equipment = new Equipment(occupation.makeWeaponSlot());
-		equipment.equipSlot(Equipment.ARMOR_SLOT, new Armor(beginValue));
-    	equipment.equipSlot(Equipment.BOOTS_SLOT, new Boots(beginValue));
-    	equipment.equipSlot(Equipment.SHIELD_SLOT, new Shield(beginValue));
-    	equipment.equipSlot(Equipment.GLOVES_SLOT, new Gloves(beginValue));
-    	equipment.equipSlot(Equipment.LEGGINGS_SLOT, new Leggings(beginValue));
-    	equipment.equipSlot(Equipment.HELMET_SLOT, new Helmet(beginValue));
-    	equipment.equipSlot(Equipment.QUIVER_SLOT, new Projectile(beginValue));
+	public Equipment buildBeginerEquipment(Terminator occupation){
+		Equipment equipment = new Equipment(new TerminatorWeaponSlot());
+		return setBeginEquipment(equipment);
+	}
+	
+	public Equipment buildBeginerEquipment(Hunter occupation){
+		Equipment equipment = new Equipment(new HunterWeaponSlot());
+		return setBeginEquipment(equipment);
+	}
+	
+	public Equipment buildBeginerEquipment(Alchemist occupation){
+		Equipment equipment = new Equipment(new AlchemistWeaponSlot());
+		return setBeginEquipment(equipment);
+	}
+	
+	public Equipment setBeginEquipment(Equipment equipment){
+		equipment.equip( new Armor(beginValue));
+    	equipment.equip( new Boots(beginValue));
+    	equipment.equip(new Shield(beginValue));
+    	equipment.equip( new Gloves(beginValue));
+    	equipment.equip(new Leggings(beginValue));
+    	equipment.equip( new Helmet(beginValue));
+    	equipment.equip(new Projectile(beginValue));
     	setBeginWeaponSlot(equipment);
     	return equipment;
 	}
 	
 	private void setBeginWeaponSlot(Equipment equipment){
-		equipment.equipSlot(Equipment.WEAPON_SLOT,Weapons.SWORD.weapon);
-		equipment.equipSlot(Equipment.WEAPON_SLOT,Weapons.LONGBOW.weapon);
-		equipment.equipSlot(Equipment.WEAPON_SLOT, Weapons.PHILOSOPHERS_STONE.weapon);
+		equipment.equip(Weapons.SWORD.weapon);
+		equipment.equip(Weapons.LONGBOW.weapon);
+		equipment.equip(Weapons.PHILOSOPHERS_STONE.weapon);
 	}
 	
 }

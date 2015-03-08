@@ -1,5 +1,6 @@
 package model.occupation;
 
+import model.EquipmentBuilder;
 import model.StatFactory;
 import model.TerminatorStatFactory;
 import model.slots.Equipment;
@@ -29,6 +30,10 @@ public class Terminator extends Occupation{
 	
 	public WeaponSlot makeWeaponSlot(){
 		return new TerminatorWeaponSlot();
+	}
+	
+	public Equipment createEquipment(EquipmentBuilder eb) {
+		return eb.buildBeginerEquipment(this);
 	}
 
 //	@Override

@@ -21,9 +21,9 @@ public class MainMenuView extends View{
 	private Font titleFont = new Font("serif", Font.PLAIN, 24);
 	private Font buttonFont = new Font("serif", Font.PLAIN, 24);
 	
-	private JButton startGameButton = new MainMenuButton("New Game", buttonFont);
-	private JButton loadGameButton = new MainMenuButton("Load Game", buttonFont);
-	private JButton quitGameButton = new MainMenuButton("Quit Game", buttonFont);
+	private JButton startGameButton;
+	private JButton loadGameButton;
+	private JButton quitGameButton;
 	// private JLabel background;
 	private JLabel title;
 	
@@ -41,6 +41,11 @@ public class MainMenuView extends View{
 		FontHandler fh = new FontHandler();
 		titleFont = fh.ApocalypseNowFont();
 		buttonFont = fh.AfterDisasterFont();
+		
+		startGameButton = new MainMenuButton("New Game", buttonFont);
+		loadGameButton = new MainMenuButton("Load Game", buttonFont);
+		quitGameButton = new MainMenuButton("Quit Game", buttonFont);
+
 		
 		title = new JLabel("THE DAVE AFTER TOMORROW");
 		title.setFont(titleFont.deriveFont(100f));

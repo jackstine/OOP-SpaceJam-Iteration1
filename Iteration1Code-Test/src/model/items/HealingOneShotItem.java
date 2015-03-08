@@ -2,6 +2,7 @@ package model.items;
 
 import model.Avatar;
 import model.EffectApplication;
+import model.visitor.ItemVisitor;
 
 
 public class HealingOneShotItem extends OneShotItem {

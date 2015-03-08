@@ -1,6 +1,7 @@
 package model.items;
 
 import model.Avatar;
+import model.visitor.ItemVisitor;
 
 public class TreasureChest extends InteractiveItem {
 	private int state;

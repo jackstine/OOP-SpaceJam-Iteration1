@@ -1,17 +1,11 @@
 package model;
 
 import java.awt.image.BufferedImage;
-
-import model.items.Equipable;
-import model.items.TakeableItem;
 import model.occupation.Occupation;
-import model.slots.Equipment;
-import model.slots.Inventory;
 import utilities.*;
 
 public class Avatar extends Entity {
 	private int levels = 0;
-	private Inventory inventory = new Inventory();
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
 	//deprecated all entities need a equipment now
@@ -54,18 +48,6 @@ public class Avatar extends Entity {
 		return image;
 	}
 	
-	public Inventory getInventory(){
-		return inventory;
-	}
-	
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
-	}
-	
-	public void setEquipment(Equipment equipment) {
-		this.equipment = equipment;
-	}	
-	
 	// used for writing to the save file
 	// name, occupation, stats, direction, inventory, equipment
 	public String toString() {
@@ -74,8 +56,8 @@ public class Avatar extends Entity {
 		result += "\n" + this.occupation;
 		for (String key : primaryStats) result += "\n" + this.stats.get(key);
 		result += "\nDirection:" + this.direction;
-		result += "\n" + this.inventory;
-		result += "\n" + this.equipment;
+		result += "\n" + this.inventoryEquipment.getInventory();
+		result += "\n" + this.inventoryEquipment.getEquipment();
 		result += "\nLevels:" + this.levels;
 		return result;
 	}
@@ -88,27 +70,16 @@ public class Avatar extends Entity {
 		this.levels = levels;
 	}
 	
-	public TakeableItem unequipSlot(Point point){
-		return this.equipment.unequipSlot(point);
-	}
+//	public boolean equipSlot(Equipable equipItem){
+//		TakeableItem item = equipItem.equipSlot(equipment);
+//		boolean notEmpty = (item != null);
+//		if (notEmpty){
+//			inventory.findAndEquip(item);
+//			return true;
+//		}
+//		return false;
+//	}
 	
-	public boolean equipSlot(Equipable equipItem){
-		TakeableItem item = equipItem.equipSlot(equipment);
-		boolean notEmpty = (item != null);
-		if (notEmpty){
-			inventory.findAndEquip(item);
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean equipInventory(TakeableItem item){
-		return this.inventory.findAndEquip(item);
-	}
-	
-	public TakeableItem unequipInventorySlot(Point slotPoint){
-		return this.inventory.unequip(slotPoint);
-	}
 	/*
 	//private void attack() {
 	//	

@@ -2,6 +2,7 @@ package model.slots;
 
 import model.Point;
 import model.items.TakeableItem;
+import model.items.TerminatorTwoHandedWeapon;
 
 public class Inventory extends SlotContainer{
     public static final int COL = 6;
@@ -19,6 +20,7 @@ public class Inventory extends SlotContainer{
                 this.items[i][j] = new InventorySlot();
             }
         }
+        this.items[0][0].equip(new TerminatorTwoHandedWeapon(5));
     }
 
     //Use this method to access slots with a point
@@ -51,6 +53,7 @@ public class Inventory extends SlotContainer{
     }
     
     public final TakeableItem get(Point point){
+    	TakeableItem temp = this.getSlot(point).get();
         return this.getSlot(point).get();
     }
     

@@ -1,22 +1,16 @@
 package model.items;
 
 import model.Avatar;
-import model.slots.AlchemistWeaponSlot;
-import model.slots.Equipment;
-import model.slots.HunterWeaponSlot;
-import model.slots.TerminatorWeaponSlot;
+import model.visitor.EquipableVisitor;
 
 public abstract class Equipable extends TakeableItem{
 	
 	public boolean action(Avatar avatar){
-		return avatar.equipSlot(this);
+		avatar.equip(this);
+		return true;
 	}
 	
-	public abstract TakeableItem equipSlot(Equipment equipment);
-	
-	public boolean equipWeaponSlot(TerminatorWeaponSlot t){return false;}
-	public boolean equipWeaponSlot(AlchemistWeaponSlot t){return false;}
-	public boolean equipWeaponSlot(HunterWeaponSlot t){return false;}
-	
 	public abstract int getBonus();
+	
+	public abstract void accept(EquipableVisitor visitor);
 }

@@ -48,24 +48,28 @@ public class StatFactory {
 		DerivedStat level = new Level();
 		DerivedStat life = new Life(hp);
 		DerivedStat mana = new Mana(mp);
-		OffensiveRating off = new OffensiveRating(equipment.getSlot(EquipmentView.WEAPON_POINT));
-		ArmorRating armor = new ArmorRating(equipment.getArmrorSlots());
-		off.addStat(strength);
-		off.addStat(level);
-		armor.addStat(hardiness);
+		DerivedStat off = new OffensiveRating(equipment.getSlot(EquipmentView.WEAPON_POINT));
+		DerivedStat armor = new ArmorRating(equipment.getArmrorSlots());
+		DerivedStat def = new DefensiveRating();
+		//off.addStat(strength);
+		//off.addStat(level);
+		//armor.addStat(hardiness);
 		
 		//Adding references to observers to derive value from.
 		experience.addAllObservers(level);
-		hardiness.addAllObservers(life);
+		hardiness.addAllObservers(life, armor);
 		intellect.addAllObservers(mana);
-		level.addAllObservers(life, mana);
-		//ADD Offensive, Defensive, and Armor Rating observer registries
+		agility.addAllObservers(def);
+		strength.addAllObservers(off);
+		level.addAllObservers(life, mana, def, off);
 		
 		//Init derived stat values
+		armor.calculateValue();
+		def.calculateValue();
 		level.calculateValue();
 		life.calculateValue();
 		mana.calculateValue();
-		//ADD Offensive, Defensive, and Armor Rating calculations here
+		off.calculateValue();
 		
 		//INSERT PRIMARY STATS INTO MAP
 		map.put("Agility", agility);
@@ -83,10 +87,9 @@ public class StatFactory {
 		map.put("Life", life);
 		map.put("Mana", mana);
 		map.put("OffensiveRating", off);
-		//TODO  Defensive Rating is based on Agility rating
-		map.put("DefensiveRating", new DefensiveRating());
+		map.put("DefensiveRating", def);
 		map.put("ArmorRating", armor);
-		equipment.setDerivedStats(armor, off);
+		equipment.setDerivedStats((ArmorRating) armor, (OffensiveRating) off);
 	}
 	
 	protected int getLivesLeft() {

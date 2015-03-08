@@ -38,6 +38,7 @@ public class GameView extends JPanel {
 	}
 	
 	public GameView(GameMap map, Avatar avatar, Location location){
+		if (location == null) location = new Location(3, 3);
 		this.map = map;
 		this.avatar = avatar;
 		entityView=new EntityView(avatar);

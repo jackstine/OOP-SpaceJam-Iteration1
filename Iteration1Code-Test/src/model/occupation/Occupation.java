@@ -27,11 +27,13 @@ public abstract class Occupation{
 	}
 	
 	public void createNecessities(){
-		EquipmentBuilder equipmentBuilder = new EquipmentBuilder();
-		this.equipment = equipmentBuilder.buildBeginerEquipment(this);
+		EquipmentBuilder eb = new EquipmentBuilder();
+		this.equipment = createEquipment(eb);
 		StatFactory statFactory = this.getStatFactory(equipment);
 		this.stats = statFactory.initializeStats();
 	}
+	
+	public abstract Equipment createEquipment(EquipmentBuilder eb);
 	
 	protected abstract StatFactory getStatFactory(Equipment equipment);
 	public abstract WeaponSlot makeWeaponSlot();

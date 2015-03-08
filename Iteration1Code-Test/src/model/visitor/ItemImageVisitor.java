@@ -1,8 +1,23 @@
-package model.items;
+package model.visitor;
 
 import java.awt.image.BufferedImage;
 
 import model.Point;
+import model.items.AlchemistWeapon;
+import model.items.Armor;
+import model.items.Boots;
+import model.items.DamagingOneShotItem;
+import model.items.GiantRock;
+import model.items.Gloves;
+import model.items.HealingOneShotItem;
+import model.items.Helmet;
+import model.items.HunterWeapon;
+import model.items.Leggings;
+import model.items.Projectile;
+import model.items.Shield;
+import model.items.TerminatorSingleWeapon;
+import model.items.TerminatorTwoHandedWeapon;
+import model.items.TreasureChest;
 
 public class ItemImageVisitor implements ItemVisitor{
 	private ItemImageProxy imageProxy;
@@ -16,7 +31,7 @@ public class ItemImageVisitor implements ItemVisitor{
 		this.image = imageProxy.getImage(a);
 	}
 	
-	public void accept(TerminatorWeapon w) {
+	public void accept(TerminatorSingleWeapon w) {
 		this.image = imageProxy.getImage(w);
 	}
 	public void accept(AlchemistWeapon a){
@@ -44,9 +59,6 @@ public class ItemImageVisitor implements ItemVisitor{
 	public BufferedImage getImage(){
 		return this.image;
 	}
-	public void accept(TwoHandedWeapon w) {
-		this.image = imageProxy.getImage(w);
-	}
 	public void accept(Gloves gloves) {
 		this.image = imageProxy.getImage(gloves);
 	}
@@ -64,5 +76,8 @@ public class ItemImageVisitor implements ItemVisitor{
 	}
 	public void accept(Projectile projectile){
 		this.image = imageProxy.getImage(projectile);
+	}
+	public void accept(TerminatorTwoHandedWeapon thw) {
+		this.image = imageProxy.getImage(thw);
 	}
 }

@@ -8,9 +8,10 @@ public class Tile {
 	private Terrain terrain;
 	private Location location;
 	private Item item;
-	// private Entity entity;
+	private NPC npc;
 	// private AreaEffect areaEffect;
 	private Decal decal;
+	private Trap trap;
 
 	public Tile(Terrain terrain, int x,int y){ //will take more parameters(maybe)
 		this.terrain=terrain;
@@ -36,15 +37,24 @@ public class Tile {
 	}
 
 	public boolean isPassable(){
-		return terrain.isPassable() && !(item instanceof ObstacleItem);  
+		
+		return terrain.isPassable() && !(item instanceof ObstacleItem) && npc == null;  
 	}
 	//will probably need to add a setTerrain for the purpose
 	//of making the map 
  
+	public void setNPC(NPC n) {
+		this.npc = n;
+	}
+	
 	public void setTerrain(Terrain ter){  
 		terrain=ter;
 	}
 
+	public NPC getNPC() {
+		return npc;
+	}
+	
 	public Terrain getTerrain(){
 		return terrain;
 	}
@@ -69,6 +79,14 @@ public class Tile {
 	
 	public void setDecal(Decal decal){
 			this.decal=decal;
+	}
+	
+	public Trap getTrap(){
+		return trap;
+	}
+	
+	public void setTrap(Trap trap){
+		this.trap=trap;
 	}
 	
 	/*

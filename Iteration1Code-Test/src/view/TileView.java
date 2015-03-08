@@ -9,12 +9,15 @@ import javax.swing.JComponent;
 
 
 
+
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.TerrainImageVisitor;
 import model.Tile;
-import model.items.ItemImageVisitor;
+import model.visitor.ItemImageVisitor;
  
+@SuppressWarnings("serial")
 public class TileView extends JComponent{
     public static final int SCALE = Scaling.TILE_SCALE.getX();
     private Tile tile;
@@ -32,7 +35,7 @@ public class TileView extends JComponent{
     private BufferedImage updateImage(){
         this.tile.getTerrain().accept(terrainVisitor);
         BufferedImage imageOfTerrain = terrainVisitor.getImage();
-        BufferedImage itemImage,imageToDisplay, decalImage; //added decalImage
+        BufferedImage itemImage,imageToDisplay, decalImage, trapImage, NPCimage; //added decalImage
         
         // Could use a ENUM here 
         if (tile.getItem() != null){
@@ -46,6 +49,16 @@ public class TileView extends JComponent{
                 decalImage = tile.getDecal().getImage(Scaling.TILE_WIDTH-Scaling.TILE_OVERLAY_IMAGE_OFFSET);
                 imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
                 imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,decalImage);
+        }
+        if(tile.getTrap()!=null){
+        	trapImage= tile.getTrap().getImage(); //need to add a proxy for this
+        	imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
+            imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,trapImage);
+        }
+        if(tile.getNPC()!=null){
+        	NPCimage= tile.getNPC().getImage(); //need to add a proxy for this
+        	imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
+            imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,NPCimage);
         }
         else{
                 imageToDisplay = imageOfTerrain;

@@ -1,12 +1,9 @@
 package model.items;
 
-import model.Point;
-import model.slots.Equipment;
-import view.EquipmentView;
+import model.visitor.EquipableVisitor;
+import model.visitor.ItemVisitor;
 
 public class Armor extends Equipable {
-	protected final static Point SLOT = EquipmentView.ARMOR_POINT;
-	
 	protected int armor;
 	
 	public Armor(){}
@@ -33,15 +30,12 @@ public class Armor extends Equipable {
 	public String toString(){
 		return "Item:Armor:" + this.armor;
 	}
-	
-	public TakeableItem equipSlot(Equipment equipment) {
-		TakeableItem item = equipment.unequipSlot(SLOT);
-		equipment.equipSlot(SLOT,this);
-		return item;
-	}
 
-	@Override
 	public String getItemName() {
 		return this.ITEM_NAME;
+	}
+	
+	public void accept(EquipableVisitor visitor){
+		visitor.accept(this);
 	}
 }

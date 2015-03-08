@@ -12,16 +12,13 @@ import javax.swing.JPanel;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
-import model.items.ItemImageVisitor;
 import model.slots.InventorySlot;
+import model.visitor.ItemImageVisitor;
 
 
 public class SlotView extends JPanel implements Observer{
 	private static final int SLOTIMAGE_HEIGHT = Scaling.SLOT_VIEW_HEIGHT;
 	private static final int SLOTIMAGE_WIDTH = Scaling.SLOT_VIEW_WIDTH;
-	private static final int ITEM_IMAGE_HEIGHT = (3*SLOTIMAGE_HEIGHT)/4;
-	private static final int ITEM_IMAGE_WIDTH = (3*SLOTIMAGE_WIDTH)/4;
-	private static final int ITEM_IMAGE_SCALE = (ITEM_IMAGE_HEIGHT + ITEM_IMAGE_WIDTH) /2;
 	private static final Point SLOT_SCALE = new Point(SLOTIMAGE_WIDTH,SLOTIMAGE_HEIGHT);
 
 	private final String INVENTORY_IMAGE = "src/res/img/brown-InventorySlot.png";
@@ -60,7 +57,7 @@ public class SlotView extends JPanel implements Observer{
 	public void setItemImage(){
 		if (slot.has()){
 			this.slot.get().accept(itemVisitor);
-			this.itemImage = this.itemVisitor.getImage();
+			this.itemImage = itemVisitor.getImage();
 		}
 	}
 	

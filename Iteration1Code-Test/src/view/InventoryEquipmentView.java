@@ -19,6 +19,7 @@ Consists of three buttons for saving, quitting, and 'saving and quitting' the ga
 
 */
 
+@SuppressWarnings("serial")
 public class InventoryEquipmentView extends JPanel {
 	private JLabel title;
 	private Avatar avatar;
@@ -50,9 +51,9 @@ public class InventoryEquipmentView extends JPanel {
 			int x = e.getX() / Scaling.EQUIPMENT_SLOT_WIDTH;
 			int y = e.getY() / Scaling.EQUIPMENT_SLOT_HEIGHT;
 			Point point = new Point(x,y);
-			TakeableItem item = avatar.unequipSlot(point);
+			TakeableItem item = avatar.unequipEquipment(point);
 			if (avatar.equipInventory(item)){
-				avatar.unequipSlot(point);
+				avatar.unequipEquipment(point);
 			}
 			equipment.repaint();
 			return item;
@@ -87,7 +88,7 @@ public class InventoryEquipmentView extends JPanel {
 			avatar.unequipInventorySlot(slotPoint);
 		}
 		
-		private void equipItem(MouseEvent e){
+		private void useItem(MouseEvent e){
 			Point pointOfSlot = this.getInventorySlot(e);
 			//TODO CHANGE TO unequipSLOT()
 			TakeableItem item = avatar.unequipInventorySlot(pointOfSlot);
@@ -104,7 +105,7 @@ public class InventoryEquipmentView extends JPanel {
 				this.unequipItem(e);
 			}
 			if (e.getButton()== LEFT_CLICK){
-				this.equipItem(e);
+				this.useItem(e);
 			}
 		}
 		
