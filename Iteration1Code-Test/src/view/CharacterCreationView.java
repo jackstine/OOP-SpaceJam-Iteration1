@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import utilities.FontHandler;
 import utilities.Scaling;
 
+@SuppressWarnings("serial")
 public class CharacterCreationView extends View {
 	private JButton backGameButton;
 	private JButton startAlchemistButton;
@@ -30,9 +31,9 @@ public class CharacterCreationView extends View {
 	// private final int STARTINGY=3;
 
 	public CharacterCreationView( ActionListener backAction, ActionListener alchemistAction, ActionListener terminatorAction, ActionListener hunterAction ){
-		canvas.setPreferredSize(new Dimension(Scaling.CHARACTER_CREATION_WIDTH, Scaling.CHARACTER_CREATION_HEIGHT));
+		setPreferredSize(new Dimension(Scaling.CHARACTER_CREATION_WIDTH, Scaling.CHARACTER_CREATION_HEIGHT));
 		//canvas.setBorder(new LineBorder(Color.black, 5));
-		canvas.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		
 		Font titleFont = new Font("serif", Font.PLAIN, 24);
 		Font labelFont = new Font("serif", Font.PLAIN, 24);
@@ -142,7 +143,7 @@ public class CharacterCreationView extends View {
 		
 		//canvas.add(main, BorderLayout.CENTER);
 		
-		canvas.add(backgroundPanel);
+		add(backgroundPanel);
 		
 		backGameButton.addActionListener(backAction);
 		startAlchemistButton.addActionListener(alchemistAction);

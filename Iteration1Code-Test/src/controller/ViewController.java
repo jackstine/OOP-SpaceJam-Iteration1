@@ -18,12 +18,11 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import model.Game;
-import model.occupation.Occupation;
 import view.View;
  
 /**
  * Main controller used to handle view changes and game state changes.<BR>
- * Also spawns all other view/game controllers.
+ * Also spawns all other view/game controllers and attaches the key listener.
  * @author Ryan
  *
  */
@@ -70,7 +69,7 @@ public class ViewController {
             frame.setLayout(new FlowLayout());
             frame.setExtendedState(Frame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(current.getCanvas());
+            frame.add(current);
             frame.setVisible(true);
             frame.repaint();
         }
@@ -86,12 +85,12 @@ public class ViewController {
          */
         public void changePanel(){
                 previous = current;
-                if(views.get(current.getNext()) == null && !current.getNext().equals("New")){
+                if(views.get(current.getNext()) == null && !current.nextStateEquals("New")){
                     System.out.println("Illegal Path: " + current.getNext());
                     current.setNext("Quit");
                 }
                 else{
-                    if(current.getNext().equals("New")){
+                    if(current.nextStateEquals("New")){
                     	reLoad("New");
                         current = views.get("Game");
                     }
@@ -99,8 +98,8 @@ public class ViewController {
                         current = views.get(current.getNext());
                     }
                     current.reset();
-                    frame.remove(previous.getCanvas());
-                    frame.add(current.getCanvas());
+                    frame.remove(previous);
+                    frame.add(current);
                     frame.revalidate();
                     frame.repaint();
                 }
@@ -139,13 +138,13 @@ public class ViewController {
          */
         public class RunGameTimer implements ActionListener {
     		public void actionPerformed(ActionEvent e) {
-    			if(current.getNext().equals("Quit")){
+    			if(current.nextStateEquals("Quit")){
     				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     			}
     			if(current.getRedraw()){
     				changePanel();
     			}
-    			if(inGame.startReset()){
+    			if(inGame.startReset()){ 
     				reLoad("Load");
     			}
     		}

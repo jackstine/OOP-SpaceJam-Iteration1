@@ -3,25 +3,17 @@ package view;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 import javax.swing.border.LineBorder;
 
 import model.Avatar;
-import model.Game;
 import model.GameMap;
 import utilities.Scaling;
-import controller.GameController.BoardMouseListener;
-import controller.GameController.DeathLevelCheck;
-import controller.GameController.LevelUPButton;
-import controller.GameController.RetGameStatsButton;
-import controller.GameController.StatButtonAction;
-import controller.GameController.SystemsMenuButton;
 
+@SuppressWarnings("serial")
 public class CombinedGameView extends View {
 	 //Dimensions
     int boardDimensions[] = {Scaling.BOARD_X,Scaling.BOARD_Y,Scaling.BOARD_WIDTH,Scaling.BOARD_HEIGHT};
@@ -54,14 +46,14 @@ public class CombinedGameView extends View {
             buttons.add(statButton);
             buttons.add(levelUp);
             buttons.setBorder(new LineBorder(Color.black, 3));
-            canvas.add(buttons);
-//                          canvas.add(input);
-//                          canvas.add(savedText);
-            canvas.add(board);
+            add(buttons);
+//                          add(input);
+//                          add(savedText);
+            add(board);
             character.setBorder(new LineBorder(Color.black, 3));
-            canvas.add(character);
+            add(character);
             statusView.setBorder(new LineBorder(Color.black, 3));
-            canvas.add(statusView);
+            add(statusView);
            
             //Alignment --NEEDS ADJUSTMENT
             //systemButton.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 + 5, 0, 100, 25);
@@ -88,12 +80,19 @@ public class CombinedGameView extends View {
                        
     }
     
-    public void addExternalView(JInternalFrame info){
-        canvas.add(info);
+    public void updateStatus(){
+    	statusView.updateStatus();
+    }
+    
+    public void addExternalViews(JInternalFrame info){
+        add(info);
+        info.setVisible(false);
+        info.moveToBack();
     }
     
     public void removeExternalView(JInternalFrame info){
-    	canvas.remove(info);
-        canvas.getTopLevelAncestor().requestFocus();
+    	info.moveToBack();
+    	info.setVisible(false);
+        getTopLevelAncestor().requestFocus();
     }
 }

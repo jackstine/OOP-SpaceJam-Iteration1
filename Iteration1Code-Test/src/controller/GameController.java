@@ -18,6 +18,7 @@ import model.Point;
 import model.items.TakeableItem;
 import utilities.Scaling;
 import view.CombinedGameView;
+import view.ControlConfigView;
 import view.LevelUpView;
 import view.MapView;
 import view.StatisticsView;
@@ -28,37 +29,47 @@ public class GameController {
         
 		private GameMap map;
 		private Avatar avatar;
-        private boolean reset = false;
+		private boolean reset = false;
         private boolean spawned = false;
-        private int yourLvl;
         
         private CombinedGameView combinedGameView = null;
         private JInternalFrame systemMenu;
-        private JInternalFrame statsView;
+        private StatisticsView statsView;
         private JInternalFrame leveledView;
+        private ControlConfigView controlConfig;
+        
         
         public GameController(){
-        	//This should never be called.
+        	//This is needed. DON'T DELETE. We should probably make some temp game here.
         }
         
         public GameController(Game game){
         	this.map = game.getMap();
         	this.avatar = game.getAvatar();
-        	yourLvl = avatar.getStatValue("Level");
         	combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
-        	Timer timer = new Timer(20, new DeathLevelCheck());
-     		timer.start();
+        	statsView = new StatisticsView(avatar, new RetGameStatsButton());
+        	systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton(), new OpenControlConfig());
+        	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Intellect"));
+        	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), map.getKeySet());
+        	
+        	combinedGameView.addExternalViews(systemMenu);
+        	combinedGameView.addExternalViews(statsView);
+        	combinedGameView.addExternalViews(leveledView);
+        	combinedGameView.addExternalViews(controlConfig);
+     		
+     		Timer statUpdater = new Timer(100, new StatCheck());
+     		statUpdater.start();
         }
        
         
        
         /********************MISC OPERATIONS**********************/
         public View getView(){
-                return combinedGameView;
+        	return combinedGameView;
         }
        
         public boolean startReset(){
-                return reset;
+        	return reset;
         }
         
         public void stopReset(){
@@ -70,80 +81,110 @@ public class GameController {
 //        }
        
         public void spawnSystems(){
-                if(!spawned){
-                    systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton());
-                    combinedGameView.addExternalView(systemMenu);
-                    systemMenu.moveToFront();
-                    combinedGameView.setNext("Game");
-                    combinedGameView.setRedraw(true);
-                    spawned = true;
-                }
-        }
-       
-        public void spawnStats(){
-                if(!spawned){                  
-                    statsView = new StatisticsView(avatar, new RetGameStatsButton());
-                    combinedGameView.addExternalView(statsView);
-                    statsView.moveToFront();
-                    combinedGameView.setNext("Game");
-                    combinedGameView.setRedraw(true);
-                    spawned = true;
-                }
-        }
-        
-        public void spawnLevelUp(){
-            if(!spawned && avatar.getLevels() > 0){                  
-            	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Intellect"));
-                combinedGameView.addExternalView(leveledView);
-                leveledView.moveToFront();
-                combinedGameView.setNext("Game");
-                combinedGameView.setRedraw(true);
+            if(!spawned){
+            	systemMenu.setVisible(true);
+                systemMenu.moveToFront();
                 spawned = true;
             }
-    }
+        }
+        
+        public void spawnStats(){
+            if(!spawned){
+            	statsView.setVisible(true);
+                statsView.moveToFront();
+                spawned = true;
+            }
+        }
+        public void spawnLevelUp(){
+            if(!spawned && avatar.getLevels() > 0){
+            	leveledView.setVisible(true);
+                leveledView.moveToFront();
+                spawned = true;
+            }
+        }
+        
+        public void spawnControlConfig(){
+        	controlConfig.setVisible(true);
+            controlConfig.moveToFront();
+        }
        
        
         /********************Action Listeners**********************/
-    
-        public class BackButtonListener implements ActionListener {
+        
+        
+        
+        public class BackButtonUIListener implements ActionListener {//ControlConfig
+            
+            public void actionPerformed(ActionEvent e) {
+            	spawned = false;
+            	combinedGameView.removeExternalView(controlConfig);
+            	combinedGameView.setNext("Game");
+                combinedGameView.setRedraw(true);
+            	spawnSystems();
+            }
+        }
+        
+        public class ChangeControlListener implements ActionListener {//ControlConfig
+            public void actionPerformed(ActionEvent e) {
+            	controlConfig.BindKey();
+            }
+        }
+        
+        public class ResetControlsListener implements ActionListener {//ControlConfig
+            public void actionPerformed(ActionEvent e) {
+            	map.genDefaultKeys();
+            	controlConfig.reset();
+            }
+        }
+        
+        
+        public class OpenControlConfig implements ActionListener { //Systems
+            public void actionPerformed(ActionEvent e) {
+            	spawnControlConfig();
+            	combinedGameView.removeExternalView(systemMenu);
+            	combinedGameView.setNext("Game");
+                combinedGameView.setRedraw(true);
+            }
+        }
+        
+        public class BackButtonListener implements ActionListener {//Systems
                
                 public void actionPerformed(ActionEvent e) {
                     combinedGameView.setNext("Main");
                     combinedGameView.setRedraw(true);
                 }
         }
-        
-        public class LevelUPButton implements ActionListener {
-            
-            public void actionPerformed(ActionEvent e) {
-    			spawnLevelUp();
-            }
-    }
        
-        public class SaveGameButton implements ActionListener {
+        public class SaveGameButton implements ActionListener {//Systems
                
                 public void actionPerformed(ActionEvent e) {
                     try {
 						new Game(map, avatar).save();
-						reset = true;
+						reset = false;
 					} catch (IOException e1) {
 						reset = false;
 					}
                 }
         }
        
-        public class RetGameButton implements ActionListener {
+        public class RetGameButton implements ActionListener {//Systems
                
                 public void actionPerformed(ActionEvent e) {
-                    combinedGameView.removeExternalView(systemMenu);
+                	combinedGameView.removeExternalView(systemMenu);
                     spawned = false;
                     combinedGameView.setNext("Game");
                     combinedGameView.setRedraw(true);
                 }
         }
+        
+        public class SystemsMenuButton implements ActionListener { //Systems
+            public void actionPerformed(ActionEvent e) {
+                    spawnSystems();
+            }
+        }
        
        
-        public class RetGameStatsButton implements ActionListener {
+        public class RetGameStatsButton implements ActionListener {//Statistics
                
                 public void actionPerformed(ActionEvent e) {
                 	combinedGameView.removeExternalView(statsView);
@@ -152,21 +193,21 @@ public class GameController {
                     combinedGameView.setRedraw(true);
                 }
         }
- 
        
-        public class SystemsMenuButton implements ActionListener {
-                public void actionPerformed(ActionEvent e) {
-                        spawnSystems();
-                }
-        }
-       
-        public class StatButtonAction implements ActionListener {
+        public class StatButtonAction implements ActionListener {//Statistics
                 public void actionPerformed(ActionEvent e) {
                         spawnStats();
                 }
         }
         
-        public class LevelStat implements ActionListener {
+        public class LevelUPButton implements ActionListener {//LevelUP
+            
+            public void actionPerformed(ActionEvent e) {
+    			spawnLevelUp();
+            }
+        }
+        
+        public class LevelStat implements ActionListener { //LevelUP
         	String stat = "";
         	public LevelStat(String s){
         		stat = s; 
@@ -219,14 +260,18 @@ public class GameController {
         public void mouseReleased(MouseEvent e) {}
     }
     
-    public class DeathLevelCheck implements ActionListener {
+    public class StatCheck implements ActionListener {
+    	private int yourLvl;
+    	public StatCheck(){
+    		yourLvl = avatar.getStatValue("Level"); 
+    	}
 		public void actionPerformed(ActionEvent e) {
-			if(avatar.getStatValue("Lives") == 0){
+			if(avatar.getStatValue("Lives") <= 0){
 				 reset = true;
 				 combinedGameView.setNext("Main");
 	             combinedGameView.setRedraw(true);
 			}
-			else if(avatar.getStatValue("HP") == 0){
+			else if(avatar.getStatValue("HP") <= 0){
 				avatar.setStatValue("Lives", avatar.getStatValue("Lives")-1);
 				avatar.setStatValue("HP", avatar.getStatValue("Life"));
 			}
@@ -234,6 +279,8 @@ public class GameController {
 				avatar.setLevels(avatar.getLevels()+avatar.getStatValue("Level")-yourLvl);
 				yourLvl = avatar.getStatValue("Level");
 			}
+			statsView.Updatetable(avatar);
+			combinedGameView.updateStatus();
 		}
 	}
        

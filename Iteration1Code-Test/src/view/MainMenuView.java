@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import utilities.FontHandler;
 import utilities.Scaling;
 
+@SuppressWarnings("serial")
 public class MainMenuView extends View{
 	private Font titleFont = new Font("serif", Font.PLAIN, 24);
 	private Font buttonFont = new Font("serif", Font.PLAIN, 24);
@@ -34,7 +35,7 @@ public class MainMenuView extends View{
 		
 		backgroundImage = new BufferedImage(1, 1, 1);
 		try {
-			BufferedImage backgroundImage = ImageIO.read(new File("src/res/img/main_menu_bg.gif"));
+			backgroundImage = ImageIO.read(new File("src/res/img/main_menu_bg.gif"));
 		} catch (Exception e) {System.out.println("Didn't find.");}
 		
 		FontHandler fh = new FontHandler();
@@ -54,8 +55,8 @@ public class MainMenuView extends View{
 		ghost.setContentAreaFilled(false);
 		ghost.setBorderPainted(false);
 		
-		canvas.setPreferredSize(new Dimension(Scaling.MAIN_MENU_WIDTH, Scaling.MAIN_MENU_HEIGHT));
-		canvas.setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(Scaling.MAIN_MENU_WIDTH, Scaling.MAIN_MENU_HEIGHT));
+		setLayout(new BorderLayout());
 		
 		startGameButton.setMaximumSize(new Dimension(200,50));
 		loadGameButton.setMaximumSize(new Dimension(200,50));
@@ -68,7 +69,7 @@ public class MainMenuView extends View{
 		backGroundPanel.add(loadGameButton);
 		backGroundPanel.add(quitGameButton);
 		
-		canvas.add(backGroundPanel);
+		add(backGroundPanel);
 		
 		startGameButton.addActionListener(newAction);
 		quitGameButton.addActionListener(quitAction);

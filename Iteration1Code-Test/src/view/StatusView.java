@@ -1,14 +1,11 @@
 package view;
 
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.Timer;
 
 import utilities.FontHandler;
 
@@ -23,6 +20,7 @@ Displays player portrait, all relevant stats, and the character/system menu butt
 
 */
 
+@SuppressWarnings("serial")
 public class StatusView extends JPanel {
 	
 	private Avatar avatar;
@@ -143,9 +141,6 @@ public class StatusView extends JPanel {
 		statusInfo.add(abilitiesPanel);
 		
 		add(statusInfo, BorderLayout.CENTER);
-		
-		Timer timer = new Timer(20, new updateStatus());
-		timer.start();
 	}
 
 	public StatusView() {
@@ -163,11 +158,9 @@ public class StatusView extends JPanel {
 	public void displayAvatarPortrait() {
 	}
 	
-	 public class updateStatus implements ActionListener {
- 		public void actionPerformed(ActionEvent e) {
- 			avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")+"    *Lives: " +avatar.getStatValue("Lives")+"*");
- 			avatarMana.setText("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
- 			avatarLevel.setText("Lv. "+avatar.getStatValue("Level") + "   Level Ups: " + avatar.getLevels());
- 		}
+	 public void updateStatus() {
+		avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")+"    *Lives: " +avatar.getStatValue("Lives")+"*");
+		avatarMana.setText("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
+		avatarLevel.setText("Lv. "+avatar.getStatValue("Level") + "   Level Ups: " + avatar.getLevels());
  	}
 }

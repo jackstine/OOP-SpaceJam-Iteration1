@@ -5,18 +5,17 @@ import java.awt.Toolkit;
 import javax.swing.JLayeredPane;
 
 
-public abstract class View {
+@SuppressWarnings("serial")
+public abstract class View extends JLayeredPane {
 	private boolean redraw;
 	private String next;
-	protected JLayeredPane canvas;
 	
 	public View(){
 		setRedraw(false);
 		next = "";
-		canvas = new JLayeredPane();
-		canvas.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
-		canvas.setFocusable(true);
-		canvas.setVisible(true);
+		setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+		setFocusable(true);
+		setVisible(true);
 	}
 	
 	
@@ -29,12 +28,6 @@ public abstract class View {
 	}
 	public void setNext(String next) {
 		this.next = next;
-	}
-	public JLayeredPane getCanvas() {
-		return canvas;
-	}
-	public void setCanvas(JLayeredPane canvas) {
-		this.canvas = canvas;
 	}
 	/**
 	 * Resets the state variables: <br>
@@ -53,7 +46,17 @@ public abstract class View {
 		this.redraw = redraw;
 	}
 	public void setBackground(String s) {
-		canvas.add(new ImagePanel(s));
+		add(new ImagePanel(s));
+	}
+	/**
+	 * @param s -String to compare with the next state
+	 * @return -boolean indicating if String s is equal to "next state"
+	 */
+	public boolean nextStateEquals(String s){
+		if(next.equals(s)){
+			return true;
+		}
+		return false;
 	}
 	
 }

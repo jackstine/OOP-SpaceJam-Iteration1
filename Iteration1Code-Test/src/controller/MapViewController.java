@@ -11,13 +11,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import utilities.Directions;
+import view.View;
 
 
 //public class MapViewController extends JFrame{
@@ -30,11 +33,13 @@ public class MapViewController{
 	private QuestHandler questHandler;
 	//public BufferedImage image;
 	private boolean keyReleased;
+	private Map<String, Integer> keySet;
 	
 	public MapViewController(GameMap map,Avatar avatar,JFrame frame){ //added GameMap here
 		frame.addKeyListener(new CharacterKeyboardController());
 		this.avatar = avatar;
 		this.map= map;
+		this.keySet = map.getKeySet();
 		effectHandler= new EffectHandler(avatar);
 		questHandler = new QuestHandler(avatar);
 		map.setAvatar(avatar);
@@ -64,6 +69,8 @@ public class MapViewController{
 		private final Point NORTHEAST = new Point(1,-1);
 		private final Point SOUTHEAST = new Point(1,1);
 		private final Point EAST = new Point(1,0);
+		
+		
 		
 		HashSet<Integer> pressedKeys = new HashSet<Integer>();
 		
@@ -114,34 +121,34 @@ public class MapViewController{
 			if(!active){
 				return;
 			}
-			if(key==KeyEvent.VK_NUMPAD1 || key==KeyEvent.VK_1){
+			if(key == KeyEvent.VK_NUMPAD1  ||key == keySet.get("SOUTHWEST")){
 				this.move(SOUTHWEST, Directions.SOUTHWEST);
 			}
-			else if(key==KeyEvent.VK_NUMPAD2 || key==KeyEvent.VK_2 || key==KeyEvent.VK_S){
+			else if(key == KeyEvent.VK_NUMPAD2  || key==keySet.get("SOUTH")){
 				this.move(SOUTH, Directions.SOUTH);
 			}
-			else if(key==KeyEvent.VK_NUMPAD3 || key==KeyEvent.VK_3){
+			else if(key==KeyEvent.VK_NUMPAD3 || key==keySet.get("SOUTHEAST")){
 				this.move(SOUTHEAST, Directions.SOUTHEAST);
 			}
-			else if(key==KeyEvent.VK_NUMPAD6 || key==KeyEvent.VK_6 || key==KeyEvent.VK_D){
+			else if(key==KeyEvent.VK_NUMPAD6 || key==keySet.get("EAST")){
 				this.move(EAST, Directions.EAST);
 			}
-			else if(key==KeyEvent.VK_NUMPAD9 || key==KeyEvent.VK_9){
+			else if(key==KeyEvent.VK_NUMPAD9 || key==keySet.get("NORTHEAST")){
 				this.move(NORTHEAST, Directions.NORTHEAST);
 			}
-			else if(key==KeyEvent.VK_NUMPAD8 || key==KeyEvent.VK_8 || key==KeyEvent.VK_W){
+			else if(key==KeyEvent.VK_NUMPAD8 || key==keySet.get("NORTH")){
 				this.move(NORTH, Directions.NORTH);
 			}
-			else if(key==KeyEvent.VK_NUMPAD7 || key==KeyEvent.VK_7){
+			else if(key==KeyEvent.VK_NUMPAD7 || key==keySet.get("NORTHWEST")){
 				this.move(NORTHWEST, Directions.NORTHWEST);
 			}
-			else if(key==KeyEvent.VK_NUMPAD4 || key==KeyEvent.VK_4 || key==KeyEvent.VK_A){
+			else if(key==KeyEvent.VK_NUMPAD4 || key==keySet.get("WEST")){
 				this.move(WEST, Directions.WEST);
 			}
-			else if(key==KeyEvent.VK_NUMPAD0 || key==KeyEvent.VK_0){
+			else if(key==KeyEvent.VK_NUMPAD0 || key==keySet.get("DANCE1")){
 				this.move(new Point(0,0), Directions.DANCE);
 			}
-			else if(key==KeyEvent.VK_NUMPAD5 || key==KeyEvent.VK_5){
+			else if(key==KeyEvent.VK_NUMPAD5 || key==keySet.get("DANCE2")){
 				this.move(new Point(0,0), Directions.CENTRAL);
 			}
 			else if(key==KeyEvent.VK_ESCAPE){

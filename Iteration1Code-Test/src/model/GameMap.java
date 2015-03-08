@@ -13,15 +13,44 @@ public class GameMap {
 	private int width;
 	private int height;
 	private Avatar avatar;
-
+	
+	private Map<String, Integer> keySet = new HashMap<String, Integer>(); //THIS NEEDS TO BE SAVED	
 
 	public GameMap(){
 		MapBuilder m= new MapBuilder();
 		map = m.generateStructuredMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
+		genDefaultKeys();
 //		tileToItemMap = new HashMap<Tile,Item>();
 	}
+	
+	//Key Bind Functions
+	/**
+	 * Generates the default key set.
+	 */
+	public void genDefaultKeys(){
+		keySet.put("SOUTHWEST",97);
+		keySet.put("SOUTH",83);
+		keySet.put("SOUTHEAST",99);
+		keySet.put("EAST",68);
+		keySet.put("NORTHEAST",105);
+		keySet.put("NORTH",87);
+		keySet.put("NORTHWEST",103);
+		keySet.put("WEST",65);
+		keySet.put("DANCE1",48);
+		keySet.put("DANCE2",53);
+	}
+	
+	public Map<String, Integer> getKeySet(){
+		return keySet;
+	}
+	
+	public void editKeySet(String s, int i){
+		keySet.put(s,i);
+	}
+	
+	
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
 	private void setWidthHeight(){
