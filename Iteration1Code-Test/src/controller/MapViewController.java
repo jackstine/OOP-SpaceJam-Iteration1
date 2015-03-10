@@ -36,7 +36,7 @@ public class MapViewController{
 	private Map<String, Integer> keySet;
 	
 	public MapViewController(GameMap map,Avatar avatar,JFrame frame){ //added GameMap here
-		frame.addKeyListener(new CharacterKeyboardController());
+		frame.addKeyListener(new CharacterKeyboardController(avatar));
 		this.avatar = avatar;
 		this.map= map;
 		this.keySet = map.getKeySet();
@@ -70,25 +70,16 @@ public class MapViewController{
 		private final Point SOUTHEAST = new Point(1,1);
 		private final Point EAST = new Point(1,0);
 		
-		
-		
-		HashSet<Integer> pressedKeys = new HashSet<Integer>();
-		
-		public CharacterKeyboardController(){
-	           new Timer(1000, new ActionListener(){
-	                @Override
-	                public void actionPerformed(ActionEvent arg0) {
-	                    String keysString = "";
-	                    if(!pressedKeys.isEmpty()){
-	                        Iterator<Integer> i = pressedKeys.iterator();
-	                        while(i.hasNext()){
-	                            keysString += i.next() + ",";
-	                        }
-	                    } 
-	                    System.out.println(keysString);
-	                }
-	            }).start();	
+		public CharacterKeyboardController(Avatar avatar){
+			Timer timer = new Timer(25*avatar.getStatValue("Movement"), new ActionListener(){
+	            @Override
+	            public void actionPerformed(ActionEvent arg0) {
+	                keyReleased = true;
+	            }
+	        });
+			timer.start();
 		}
+		
 		
 		public Location getAvatarLocation(){
 			return map.getLocation(avatar);
@@ -113,6 +104,7 @@ public class MapViewController{
 		public void keyPressed(KeyEvent e) {
 			if(keyReleased == false) return;
 			keyReleased = false;
+			//timer.start();
 			avatarLocation = this.getAvatarLocation();
 			temp= new Location(avatarLocation.getX(),avatarLocation.getY());
 			
@@ -160,15 +152,10 @@ public class MapViewController{
 			map.updateEntityLocation(avatar, avatarLocation);
 			System.out.println(map.getLocation(avatar).toString());
 			
-            int keyCode = key;
-            pressedKeys.add(keyCode);
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			keyReleased = true;
-            int keyCode = e.getKeyCode();
-            pressedKeys.remove(keyCode);
 		}
 
 		@Override

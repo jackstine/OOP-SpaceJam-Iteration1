@@ -9,10 +9,11 @@ Lives:3
 MP:63
 Movement:15
 Strength:10
-Direction:2
-Inventory:0
+Direction:8
+Inventory:1
+Item:Weapon:5
 Item:Armor:1
-Item:Weapon:-1
+Item:Weapon:100
 Levels:1
 Map:18,18
 Tile:0,0
@@ -1314,4 +1315,4 @@ Terrain:M
 null
 null
 1
-Arnold:5,6
+Arnold:6,5
