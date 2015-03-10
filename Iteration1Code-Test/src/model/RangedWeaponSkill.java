@@ -7,6 +7,6 @@ public class RangedWeaponSkill extends Skill {
 	}
 	
 	public String toString() {
-		return "RangedWeapon:" + this.getSkillLevel();
+		return "Ranged weapon:" + this.getSkillLevel();
 	}
 }

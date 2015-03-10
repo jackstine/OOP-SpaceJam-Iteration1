@@ -12,8 +12,8 @@ public class TerminatorSkillFactory extends SkillFactory {
 		Skill twoHandedWeapon = new TwoHandedWeaponSkill();
 		Skill brawling = new BrawlingSkill();
 		
-		map.put("OneHandedWeapon", oneHandedWeapon);
-		map.put("TwoHandedWeapon", twoHandedWeapon);
+		map.put("One-handed weapon", oneHandedWeapon);
+		map.put("Two-handed weapon", twoHandedWeapon);
 		map.put("Brawling", brawling);
 		
 		return map;

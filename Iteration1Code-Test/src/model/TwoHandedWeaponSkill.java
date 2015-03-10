@@ -7,6 +7,6 @@ public class TwoHandedWeaponSkill extends Skill {
 	}
 	
 	public String toString() {
-		return "TwoHandedWeapon:" + this.getSkillLevel();
+		return "Two-handed weapon:" + this.getSkillLevel();
 	}
 }

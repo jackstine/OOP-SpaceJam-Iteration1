@@ -7,7 +7,7 @@ public class BindWoundsSkill extends Skill {
 	}
 	
 	public String toString() {
-		return "BindWounds:" + this.getSkillLevel();
+		return "Bind wounds:" + this.getSkillLevel();
 	}
 	
 }
