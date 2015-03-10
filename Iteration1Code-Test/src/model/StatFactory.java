@@ -40,8 +40,8 @@ public class StatFactory {
 		DerivedStat level = new Level();
 		DerivedStat life = new Life(hp);
 		DerivedStat mana = new Mana(mp);
-		DerivedStat off = new OffensiveRating(equipment.getSlot(EquipmentView.WEAPON_POINT));
-		DerivedStat armor = new ArmorRating(equipment.getArmrorSlots());
+		OffensiveRating off = new OffensiveRating(equipment.getSlot(EquipmentView.WEAPON_POINT));
+		ArmorRating armor = new ArmorRating(equipment.getArmrorSlots());
 		DerivedStat def = new DefensiveRating();
 		//off.addStat(strength);
 		//off.addStat(level);
@@ -81,7 +81,7 @@ public class StatFactory {
 		map.put("OffensiveRating", off);
 		map.put("DefensiveRating", def);
 		map.put("ArmorRating", armor);
-		equipment.setDerivedStats((ArmorRating) armor, (OffensiveRating) off);
+		equipment.setDerivedStats(armor, off);
 	}
 	
 	protected int getLivesLeft() {

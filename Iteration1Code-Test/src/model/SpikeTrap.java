@@ -13,14 +13,11 @@ public class SpikeTrap extends Trap {
 	public int getDamage(){
 		return damage;
 	}
-	
 	public void apply(Entity e) {
-		System.out.println("THIS RUNS");
 		TrapDamageApplication.apply(e, this);
 	}
-	
 	public BufferedImage getImage(){
-		return ImageProcessing.scaleImage(Scaling.TILE_SCALE,  "src/res/img/SpikeTrap.jpg");
+		return TrapImageProxy.getTrapImage(this);
 	}
 	
 }
