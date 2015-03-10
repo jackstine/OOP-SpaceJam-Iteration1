@@ -15,7 +15,9 @@ public class HP extends PrimaryStat {
 
 	@Override
 	protected boolean updateValue(int value) {
-		if (value <= 0) return false; // you are dead!
+//		if (value <= 0) {
+//			// you are dead!
+//		}
 		this.value = Math.min(life.getValue(), value);
 		return true;
 	}
