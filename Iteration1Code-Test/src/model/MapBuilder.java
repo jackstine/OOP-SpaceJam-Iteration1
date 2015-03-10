@@ -113,6 +113,45 @@ public class MapBuilder{
 		
 		return this.map;
 	}
+	
+	public Tile[][] generateStructuredMapv3(){
+		this.map = new Tile[this.height][this.width]; // Sets the map size
+		this.items = new Item[this.height][this.width];
+		for(int i = 0; i < this.width; i++){
+			for(int j = 0; j < this.height; j++){
+				if(i < 3 || j < 3 || i > this.width-4 || j > this.height-4)	// Mountains around the perimeter
+					this.map[i][j] = new Tile(new MountainTerrain(),i,j);
+				else if ((i == this.width/2 || (i == ((this.width/2) + 1))) &&  (j == this.height/2 || j == ((this.height/2)+1)))	//Waste in the middle
+					this.map[i][j] = new Tile(new RadioactiveWasteTerrain(),i,j);
+				else{
+					this.map[i][j] = new Tile(new DesertTerrain(),i,j);		//Desert everywhere else
+				}
+			}
+		}
+		this.map[10][5].setDecal(new GoldStarDecal());
+		this.map[8][8].setDecal(new RedCrossDecal());
+		this.map[8][5].setDecal(new SkullAndCrossbonesDecal(new DamageAreaEffect(.50)));
+		this.map[14][8].setDecal(new SkullAndCrossbonesDecal(new DeathAreaEffect()));
+		this.map[14][7].setItem(new HealingOneShotItem(.50)); 
+		this.map[8][10].setItem(new TreasureChest());
+		Armor armor = new Armor(3+10);
+		this.map[3][10].setItem(armor);
+		this.items[3][10] = armor;
+		
+		
+		GiantRock gr = new GiantRock();
+		this.map[3][8].setItem(gr);
+		this.items[3][8] = gr;
+		
+		this.map[3][12].setTrap(new SpikeTrap()); //this
+		
+		//NPC TEST
+		this.map[3][13].setNPC(new Merchant());
+		this.map[6][12].setNPC(new Skeleton());
+		this.map[12][12].setNPC(new Orc());
+		
+		return this.map;
+	}
 	//renamed OLD map(this one) to V2
 	public Tile[][] generateStructuredMapV2(){
 		this.map = new Tile[this.height][this.width]; // Sets the map size
