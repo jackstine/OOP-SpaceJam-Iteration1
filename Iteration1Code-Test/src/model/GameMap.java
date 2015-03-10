@@ -130,6 +130,7 @@ public class GameMap {
 			Location location = entityToLocationMap.get(entity);
 			result += "\n" + entity.getName() + ":" + location.getX() + "," + location.getY();
 		}
+		for (String key : this.keySet.keySet()) result += "\n" + key + ":" + this.keySet.get(key);
 		return result;
 	}
 }

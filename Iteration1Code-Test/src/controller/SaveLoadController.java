@@ -173,6 +173,13 @@ public class SaveLoadController {
 			map.updateEntityLocation(avatar, new Location(x, y));
 		}
 		
+		for (int i = 0; i < 10; i++) {
+			String line = in.next();
+			String dir = line.substring(0, line.indexOf(":"));
+			int key = Integer.parseInt(line.substring(line.indexOf(":") + 1));
+			map.editKeySet(dir, key);
+		}
+		
 		game.setMap(map);
 		System.out.println("GAME LOADED\n---------------");
 		return game;

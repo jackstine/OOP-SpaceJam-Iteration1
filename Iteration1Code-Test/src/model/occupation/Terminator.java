@@ -1,27 +1,13 @@
 package model.occupation;
 
-import model.EquipmentBuilder;
-import model.StatFactory;
-import model.TerminatorStatFactory;
-import model.slots.Equipment;
-import model.slots.TerminatorWeaponSlot;
-import model.slots.WeaponSlot;
+import model.*;
+import model.slots.*;
 
 public class Terminator extends Occupation{
 
 	public Terminator() {
-		portraitLocation = "src/res/img/terminator_portrait.jpg";
-		name = "Terminator";
-	}
-	
-	public void attack() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void useAbiltiy() {
-		// TODO Auto-generated method stub
-		
+		this.portraitLocation = "src/res/img/terminator_portrait.jpg";
+		this.name = "Terminator";
 	}
 	
 	protected StatFactory getStatFactory(Equipment equipment){
@@ -35,10 +21,14 @@ public class Terminator extends Occupation{
 	public Equipment createEquipment(EquipmentBuilder eb) {
 		return eb.buildBeginerEquipment(this);
 	}
+	
+	public void attack(Entity entity) {
+		// create "CombatSimulator" class that will carry
+		// out the fighting between Avatar and Entity		
+	}
 
-//	@Override
-//	public Map<String, Stat> createStats() {
-//		StatFactory statFactory = new TerminatorStatFactory();
-//		return statFactory.initializeStats();
-//	}
+	@Override
+	protected SkillFactory getSkillFactory() {
+		return new TerminatorSkillFactory();
+	}
 }

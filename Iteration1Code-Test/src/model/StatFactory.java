@@ -16,18 +16,10 @@ public class StatFactory {
 		this.equipment = equipment;
 	}
 	
-	//DEPRECATED
-//	public StatFactory() {}
-	
 	public final Map<String, Stat> initializeStats() {
-		map = createMap();
+		this.map = new HashMap<String, Stat>();
 		createStats();
-		return map;
-	}
-	
-	protected Map<String, Stat> createMap() {
-		map = new HashMap<String, Stat>();
-		return map;
+		return this.map;
 	}
 	
 	protected void createStats() {
