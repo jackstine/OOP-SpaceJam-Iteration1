@@ -12,6 +12,7 @@ import model.items.HunterWeapon;
 import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
+import model.items.TerminatorBrawling;
 import model.items.TerminatorSingleWeapon;
 import model.items.TerminatorTwoHandedWeapon;
 import model.items.TreasureChest;
@@ -33,4 +34,5 @@ public interface ItemVisitor {
 	public void accept(Helmet helmet);
 	public void accept(Boots boots);
 	public void accept(Projectile projectile);
+	public void accept(TerminatorBrawling terminatorBrawling);
 }

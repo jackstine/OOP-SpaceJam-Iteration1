@@ -3,6 +3,7 @@ package model.slots;
 import model.Point;
 import model.items.TakeableItem;
 import model.items.TerminatorTwoHandedWeapon;
+import model.items.Weapons;
 
 public class Inventory extends SlotContainer{
     public static final int COL = 6;
@@ -20,7 +21,25 @@ public class Inventory extends SlotContainer{
                 this.items[i][j] = new InventorySlot();
             }
         }
-        this.items[0][0].equip(new TerminatorTwoHandedWeapon(5));
+        this.items[0][0].equip(Weapons.DAVESWORD.weapon);
+        this.items[0][1].equip(Weapons.LONGSWORD.weapon);
+        this.items[0][2].equip(Weapons.SWORD.weapon);
+       
+        this.items[1][0].equip(Weapons.DRAGONTHW.weapon);
+        this.items[1][1].equip(Weapons.HALBERD.weapon);
+        this.items[1][2].equip(Weapons.RUNETHW.weapon);
+        
+        this.items[2][0].equip(Weapons.AIRSTAFF.weapon);
+        this.items[2][1].equip(Weapons.LAVASTAFF.weapon);
+        this.items[2][2].equip(Weapons.PHILOSOPHERS_STONE.weapon);
+        
+        this.items[3][0].equip(Weapons.LONGBOW.weapon);
+        this.items[3][1].equip(Weapons.PRESTINEBOW.weapon);
+        this.items[3][2].equip(Weapons.DRAGONBOW.weapon);
+        
+        this.items[4][0].equip(Weapons.STEELCLAWS.weapon);
+        this.items[4][1].equip(Weapons.WHITECLAWS.weapon);
+        this.items[4][2].equip(Weapons.DRAGONCLAWS.weapon);
     }
 
     //Use this method to access slots with a point

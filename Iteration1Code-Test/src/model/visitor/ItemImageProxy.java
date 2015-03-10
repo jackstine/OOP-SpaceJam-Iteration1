@@ -15,6 +15,7 @@ import model.items.HunterWeapon;
 import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
+import model.items.TerminatorBrawling;
 import model.items.TerminatorSingleWeapon;
 import model.items.TerminatorTwoHandedWeapon;
 import model.items.TreasureChest;
@@ -26,7 +27,6 @@ public final class ItemImageProxy  {
 	private static String HEALINGPOTION_IMAGE_PATH = "src/res/img/healing_potion.png";
 	private static String[] TREASURECHEST_IMAGE_PATH = {"src/res/img/ClosedTreasureChest.png","src/res/img/OpenTreasureChest.png"};
 	private static String ARMOR_IMAGE = "src/res/img/armor.png";
-	private static String WEAPON_IMAGE ="src/res/img/weapon.png";
 	private static String GIANT_ROCK_IMAGE ="src/res/img/giant_rock.png";
 	private static String DAVE = "src/res/img/dave.jpg";
 	private static String HELMET_IMAGE = "src/res/img/helmet.png";
@@ -35,26 +35,19 @@ public final class ItemImageProxy  {
 	private static String SHIELD_IMAGE = "src/res/img/shield.png";
 	private static String BOOTS_IMAGE = "src/res/img/boots.png";
 	private static String PROJECTILE_IMAGE = "src/res/img/projectile.png";
-	private static String ALCHEMIST_WEAPON_IMAGE = "src/res/img/alchemistWeapon.jpg";
-	private static String HUNTER_WEAPON_IMAGE = "src/res/img/hunterWeapon.png";
-	private static String TWO_HANDED_WEAPON_IMAGE = "src/res/img/two_handed_weapon.png";
 	
 	private BufferedImage healingpotionImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE,  HEALINGPOTION_IMAGE_PATH);
 	private BufferedImage closedtreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[0]);
 	private BufferedImage opentreasurechestImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, TREASURECHEST_IMAGE_PATH[1]);
 	private BufferedImage armorImage;
-	private BufferedImage weaponImage;
 	private BufferedImage giantRockImage= ImageProcessing.scaleImage(Scaling.TILE_SCALE, GIANT_ROCK_IMAGE);
 	private BufferedImage daveImage = ImageProcessing.scaleImage(Scaling.TILE_SCALE,DAVE);
-	private BufferedImage twoHandedWeaponImage;
 	private BufferedImage helmetImage;
 	private BufferedImage bootsImage;
 	private BufferedImage glovesImage;
 	private BufferedImage leggingsImage;
 	private BufferedImage shieldImage;
 	private BufferedImage projectileImage;
-	private BufferedImage hunterWeaponImage;
-	private BufferedImage alchemistWeaponImage;
 	
 	private Point scale;
 	
@@ -68,16 +61,12 @@ public final class ItemImageProxy  {
 	
 	private void setImages(){
 		armorImage= ImageProcessing.scaleImage(this.scale, ARMOR_IMAGE);
-		weaponImage= ImageProcessing.scaleImage(this.scale, WEAPON_IMAGE);
-		twoHandedWeaponImage = ImageProcessing.scaleImage(this.scale, TWO_HANDED_WEAPON_IMAGE);
 		helmetImage = ImageProcessing.scaleImage(this.scale, HELMET_IMAGE);
 		bootsImage = ImageProcessing.scaleImage(this.scale, BOOTS_IMAGE);
 		glovesImage = ImageProcessing.scaleImage(this.scale, GLOVES_IMAGE);
 		leggingsImage = ImageProcessing.scaleImage(this.scale, LEGGINGS_IMAGE);
 		shieldImage = ImageProcessing.scaleImage(this.scale, SHIELD_IMAGE);
 		projectileImage = ImageProcessing.scaleImage(this.scale, PROJECTILE_IMAGE);
-		hunterWeaponImage = ImageProcessing.scaleImage(this.scale, HUNTER_WEAPON_IMAGE);
-		alchemistWeaponImage = ImageProcessing.scaleImage(this.scale, ALCHEMIST_WEAPON_IMAGE);
 	}
 	
 	public final BufferedImage getImage(TreasureChest item){
@@ -120,26 +109,19 @@ public final class ItemImageProxy  {
 	public BufferedImage getImage(Projectile projectile) {
 		return projectileImage;
 	}
-	public BufferedImage getImage(TerminatorTwoHandedWeapon thw){
-		return twoHandedWeaponImage;
+	public BufferedImage getImage(TerminatorTwoHandedWeapon item){
+		return ImageProcessing.scaleImage(this.scale,Weapons.getTerminatorTHWImage(item));
 	}
-	
 	public final BufferedImage getImage(TerminatorSingleWeapon item){
-		BufferedImage image = weaponImage;
-		if (Weapons.SWORD.equals(item)) image = weaponImage;
-		else if (Weapons.LONGSWORD.equals(item)) image = bootsImage;
-		else if (Weapons.DAVESWORD.equals(item)) image = daveImage;
-		return image;
+		return ImageProcessing.scaleImage(this.scale,Weapons.getTerminatorSingleWeaponImage(item));
 	}
-	
 	public final BufferedImage getImage(AlchemistWeapon item){
-		BufferedImage image = alchemistWeaponImage;
-		return image;
+		return ImageProcessing.scaleImage(this.scale,Weapons.getAlchemistWeapon(item));
 	}
-	
 	public final BufferedImage getImage(HunterWeapon item){
-		BufferedImage image = hunterWeaponImage;
-		return image;
+		return ImageProcessing.scaleImage(this.scale,Weapons.getHuntersWeapon(item));
 	}
-	
+	public BufferedImage getImage(TerminatorBrawling item) {
+		return ImageProcessing.scaleImage(this.scale,Weapons.getTerminatorBrawling(item));
+	}
 }

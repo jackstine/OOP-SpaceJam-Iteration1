@@ -11,6 +11,7 @@ import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
 import model.items.TakeableItem;
+import model.items.TerminatorBrawling;
 import model.items.TerminatorSingleWeapon;
 import model.items.TerminatorTwoHandedWeapon;
 import model.items.Weapon;
@@ -138,6 +139,10 @@ public class EquipVisitor implements EquipableVisitor{
 		else{
 			this.equipBack(temp, weapon);
 		}
+	}
+
+	public void accept(TerminatorBrawling terminatorBrawling) {
+		this.equipWeapon(terminatorBrawling);
 	}
 }
 	

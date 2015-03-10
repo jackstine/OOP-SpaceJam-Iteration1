@@ -9,6 +9,7 @@ import model.items.HunterWeapon;
 import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
+import model.items.TerminatorBrawling;
 import model.items.TerminatorSingleWeapon;
 import model.items.TerminatorTwoHandedWeapon;
 
@@ -24,4 +25,5 @@ public interface EquipableVisitor {
 	public abstract void accept(AlchemistWeapon alchemistWeapon);
 	public abstract void accept(TerminatorSingleWeapon terminatorSingleWeapon);
 	public abstract void accept(TerminatorTwoHandedWeapon terminatorTwoHandedWeapon);
+	public abstract void accept(TerminatorBrawling terminatorBrawling);
 }

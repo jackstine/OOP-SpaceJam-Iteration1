@@ -15,6 +15,7 @@ import model.items.HunterWeapon;
 import model.items.Leggings;
 import model.items.Projectile;
 import model.items.Shield;
+import model.items.TerminatorBrawling;
 import model.items.TerminatorSingleWeapon;
 import model.items.TerminatorTwoHandedWeapon;
 import model.items.TreasureChest;
@@ -79,5 +80,8 @@ public class ItemImageVisitor implements ItemVisitor{
 	}
 	public void accept(TerminatorTwoHandedWeapon thw) {
 		this.image = imageProxy.getImage(thw);
+	}
+	public void accept(TerminatorBrawling terminatorBrawling) {
+		this.image = imageProxy.getImage(terminatorBrawling);
 	}
 }
