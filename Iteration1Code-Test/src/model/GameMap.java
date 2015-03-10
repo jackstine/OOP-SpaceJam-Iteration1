@@ -18,7 +18,7 @@ public class GameMap {
 
 	public GameMap(){
 		MapBuilder m= new MapBuilder();
-		map = m.generateStructuredMapv3();
+		map = m.generateStructuredMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
 		genDefaultKeys();
