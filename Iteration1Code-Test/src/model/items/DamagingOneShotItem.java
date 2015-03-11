@@ -1,7 +1,7 @@
 package model.items;
 
-import model.Avatar;
 import model.EffectApplication;
+import model.Entity.Avatar;
 import model.visitor.ItemVisitor;
 
 

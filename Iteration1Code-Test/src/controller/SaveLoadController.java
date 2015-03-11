@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import model.*;
+import model.Entity.Avatar;
 import model.items.Armor;
 import model.items.DamagingOneShotItem;
 import model.items.GiantRock;

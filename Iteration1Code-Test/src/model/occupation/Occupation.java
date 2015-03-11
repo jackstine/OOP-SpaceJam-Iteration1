@@ -2,12 +2,12 @@ package model.occupation;
 
 import java.util.Map;
 
-import model.Entity;
 import model.EquipmentBuilder;
 import model.Skill;
 import model.SkillFactory;
 import model.Stat;
 import model.StatFactory;
+import model.Entity.Entity;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
 

@@ -7,8 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
-import model.Avatar;
 import model.Point;
+import model.Entity.Avatar;
 import model.items.TakeableItem;
 
 /*

@@ -1,6 +1,7 @@
 package model.occupation;
 
 import model.*;
+import model.Entity.Entity;
 import model.slots.*;
 
 public class Alchemist extends Occupation{

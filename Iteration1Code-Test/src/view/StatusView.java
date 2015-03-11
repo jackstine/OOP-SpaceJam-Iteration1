@@ -12,6 +12,7 @@ import utilities.FontHandler;
 import java.util.*;
 
 import model.*;
+import model.Entity.Avatar;
 
 /*
 

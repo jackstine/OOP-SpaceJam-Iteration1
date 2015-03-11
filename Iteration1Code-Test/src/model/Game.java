@@ -3,6 +3,7 @@ package model;
 import java.io.*;
 import java.util.Map;
 
+import model.Entity.Avatar;
 import model.occupation.Alchemist;
 import model.occupation.Occupation;
 import model.occupation.Terminator;

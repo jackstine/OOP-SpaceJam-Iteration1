@@ -1,5 +1,6 @@
 package model;
 
+import model.Entity.Avatar;
 import model.items.Item;
 import model.items.TreasureChest;
 

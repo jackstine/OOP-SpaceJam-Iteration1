@@ -1,11 +1,11 @@
 package controller;
 
-import model.Avatar;
 import model.EffectHandler;
 import model.GameMap;
 import model.Location;
 import model.QuestHandler;
 import model.Point;
+import model.Entity.Avatar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

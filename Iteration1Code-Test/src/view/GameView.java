@@ -9,9 +9,9 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
-import model.Avatar;
 import model.GameMap;
 import model.Location;
+import model.Entity.Avatar;
 
 public class GameView extends JPanel {
 	GameMap map;

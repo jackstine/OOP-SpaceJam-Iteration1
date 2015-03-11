@@ -1,5 +1,6 @@
 package model;
 
+import model.Entity.Entity;
 import model.items.DamagingOneShotItem;
 import model.items.HealingOneShotItem;
 

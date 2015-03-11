@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 
 import utilities.Scaling;
-import model.Avatar;
+import model.Entity.Avatar;
 
 /*
 

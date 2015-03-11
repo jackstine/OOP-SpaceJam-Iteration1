@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
-import model.Avatar;
+import model.Entity.Avatar;
 
 @SuppressWarnings("serial")
 public class StatisticsView extends JInternalFrame {

@@ -2,6 +2,7 @@ package model;
 
 import java.awt.image.BufferedImage;
 
+import model.Entity.Entity;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 
