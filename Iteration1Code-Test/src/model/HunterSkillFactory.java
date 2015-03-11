@@ -14,8 +14,8 @@ public class HunterSkillFactory extends SkillFactory {
 		Skill trap = new TrapSkill();
 		
 		map.put("Creep", creep);
-		map.put("PickPocket", pickPocket);
-		map.put("RangedWeapon", rangedWeapon);
+		map.put("Pick pocket", pickPocket);
+		map.put("Ranged weapon", rangedWeapon);
 		map.put("Trap", trap);
 		
 		return map;

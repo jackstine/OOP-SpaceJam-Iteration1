@@ -7,6 +7,6 @@ public class OneHandedWeaponSkill extends Skill {
 	}
 	
 	public String toString() {
-		return "OneHandedWeaponSkill:" + this.getSkillLevel();
+		return "One-handed weapon:" + this.getSkillLevel();
 	}
 }

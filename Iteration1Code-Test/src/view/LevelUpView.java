@@ -2,36 +2,37 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Skill;
+import controller.GameController.LevelStat;
 import utilities.Scaling;
 
 public class LevelUpView extends JInternalFrame {
-	private JButton strength = new JButton("Strength");
-	private JButton agility = new JButton("Agility");
-	private JButton intellect = new JButton("Intellect");
 	private JPanel levelUpMenu = new JPanel();
 	private int dimensions[] = {Scaling.INTERNAL_X,Scaling.INTERNAL_Y,Scaling.INTERNAL_WIDTH,Scaling.INTERNAL_HEIGHT};
-	public LevelUpView(ActionListener strengthAction, ActionListener agilityAction, ActionListener intellectAction) {
-		strength.setFocusable(false);
-		agility.setFocusable(false);
-		intellect.setFocusable(false);
-		
+	public LevelUpView(Map<String, ActionListener> m) {
 		getContentPane().add(new JLabel("You Leveled Up."), BorderLayout.CENTER);
 		setBounds(dimensions[0], dimensions[1], dimensions[2], dimensions[3]);
 		setTitle("Choose a Stat to Increase:");
-		levelUpMenu.add(strength);
-		levelUpMenu.add(agility);
-		levelUpMenu.add(intellect);
+		String key;
+		ActionListener a;
+		JButton button = new JButton();
+    	for(Entry<String, ActionListener> entry: m.entrySet()){
+   			key = entry.getKey();
+   			a = entry.getValue();
+   			button = new JButton(key);
+   			button.addActionListener(a);
+   			button.setFocusable(false);
+   			levelUpMenu.add(button);
+   		 }
 		add(levelUpMenu);
 		setVisible(true);
-		
-		strength.addActionListener(strengthAction);
-		agility.addActionListener(agilityAction);
-		intellect.addActionListener(intellectAction);
 	}
 }

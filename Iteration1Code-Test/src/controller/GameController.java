@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Random;
 
 import javax.swing.JInternalFrame;
 import javax.swing.Timer;
@@ -15,8 +19,16 @@ import model.GameMap;
 import model.Location;
  
 import model.Point;
+<<<<<<< HEAD
 import model.Entity.Avatar;
+=======
+import model.Skill;
+>>>>>>> origin/master
 import model.items.TakeableItem;
+import model.occupation.Alchemist;
+import model.occupation.Hunter;
+import model.occupation.Terminator;
+import model.occupation.Occupation;
 import utilities.Scaling;
 import view.CombinedGameView;
 import view.ControlConfigView;
@@ -50,7 +62,7 @@ public class GameController {
         	combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
         	statsView = new StatisticsView(avatar, new RetGameStatsButton());
         	systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton(), new OpenControlConfig());
-        	leveledView = new LevelUpView(new LevelStat("Strength"),new LevelStat("Agility"),new LevelStat("Intellect"));
+        	leveledView = new LevelUpView(genSkillListeners(avatar.getOccupation()));
         	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), map.getKeySet());
         	
         	combinedGameView.addExternalViews(systemMenu);
@@ -65,6 +77,18 @@ public class GameController {
         
        
         /********************MISC OPERATIONS**********************/
+        public Map<String, ActionListener> genSkillListeners(Occupation e){
+        	Map<String, ActionListener> skillmap = new HashMap<String, ActionListener>();
+  			int i = 0;
+  			String key;
+        	for(Entry<String, Skill> entry: e.getSkills().entrySet()){
+	   			 key = entry.getKey();
+	   			 skillmap.put(key, new LevelStat(key));
+	   			 if(i == 4) i = 0;
+	   		 }
+        	return skillmap;        	
+        }
+        
         public View getView(){
         	return combinedGameView;
         }
@@ -210,14 +234,31 @@ public class GameController {
         
         public class LevelStat implements ActionListener { //LevelUP
         	String stat = "";
-        	public LevelStat(String s){
-        		stat = s; 
+        	String skill = "";
+        	String[] stats = {"Strength", "Intellect", "Agility", "Hardiness","Movement"};
+        	Random rn = new Random();
+        	public LevelStat(String skill){
+        		this.skill = skill;        		
         	}
             public void actionPerformed(ActionEvent e) {
-            	avatar.setStatValue(stat, avatar.getStatValue(stat)+1);
+            	//avatar.setStatValue(stat, avatar.getStatValue(stat)+1);
+            	int i = rn.nextInt(5);
+            	String text = "Here are your random stat increases:\n";
+            	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
+            	text += stats[i] + "\n";
+            	i = rn.nextInt(5);
+            	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
+            	text += stats[i]+ "\n";
+            	i = rn.nextInt(5);
+            	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
+            	text += stats[i]+ "\n";
+            	avatar.writeJournal(text);
+            	
+            	avatar.incSkillValue(skill);
             	avatar.setLevels(avatar.getLevels()-1);
             	combinedGameView.removeExternalView(leveledView);
                 spawned = false;
+                System.out.println(skill+":"+avatar.getSkillValue(skill));
                 combinedGameView.setNext("Game");
                 combinedGameView.setRedraw(true);
             }

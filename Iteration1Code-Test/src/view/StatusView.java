@@ -12,7 +12,11 @@ import utilities.FontHandler;
 import java.util.*;
 
 import model.*;
+<<<<<<< HEAD
 import model.Entity.Avatar;
+=======
+import model.occupation.Occupation;
+>>>>>>> origin/master
 
 /*
 
@@ -25,6 +29,7 @@ Displays player portrait, all relevant stats, and the character/system menu butt
 public class StatusView extends JPanel {
 	
 	private Avatar avatar;
+	//private Occupation occ = avatar.getOccupation();
 	private JPanel statusInfo;
 	
 	private PortraitView portraitView;
@@ -52,6 +57,8 @@ public class StatusView extends JPanel {
 	
 	private FontHandler fh = new FontHandler();
 	Font labelFont;
+	
+	private JTextArea terminal = new JTextArea();
 	
 	public StatusView(Avatar a) {
 		
@@ -128,18 +135,21 @@ public class StatusView extends JPanel {
 		 * abilitiesPanel. If this is not the best solution due to controller issues, we can
 		 * discuss other options. */
 		//For now, default buttons
-		for(int i = 1; i < 5; i++) {
-			JButton temp = new JButton("Ability "+i);
-			temp.setFont(labelFont.deriveFont(20f));
-			temp.setFocusable(false);
-			abilityButtons.add(temp);
-			abilitiesPanel.add(abilityButtons.get(abilityButtons.size()-1));
-		}
+//		for(String key: 1) {
+//			JButton temp = new JButton("Ability "+i);
+//			temp.setFont(labelFont.deriveFont(20f));
+//			temp.setFocusable(false);
+//			abilityButtons.add(temp);
+//			abilitiesPanel.add(abilityButtons.get(abilityButtons.size()-1));
+//		}
 		
 		statusInfo.setLayout(new GridLayout(1,2));
-		
+		terminal.setText(avatar.getJournal());
+		terminal.setEditable(false);
+		JScrollPane scroll = new JScrollPane ( terminal );
+	    scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
 		statusInfo.add(portraitStatsPanel);
-		statusInfo.add(abilitiesPanel);
+		statusInfo.add(scroll);
 		
 		add(statusInfo, BorderLayout.CENTER);
 	}
@@ -163,5 +173,9 @@ public class StatusView extends JPanel {
 		avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")+"    *Lives: " +avatar.getStatValue("Lives")+"*");
 		avatarMana.setText("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
 		avatarLevel.setText("Lv. "+avatar.getStatValue("Level") + "   Level Ups: " + avatar.getLevels());
+		if(avatar.isWriting()){
+			terminal.setText(avatar.getJournal());
+			avatar.doneWriting();
+		}
  	}
 }

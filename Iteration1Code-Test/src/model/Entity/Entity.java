@@ -13,6 +13,7 @@ import model.slots.InventoryEquipment;
 
 public abstract class Entity {
 	protected Map<String,Stat> stats; 
+	protected Map<String,Skill> skills;
 	protected Occupation occupation;
 	protected String name;
 	protected int direction;
@@ -29,6 +30,7 @@ public abstract class Entity {
 		this.occupation = occupation;
 		occupation.createNecessities();
 		this.stats = occupation.getStats();
+		this.skills = occupation.getSkills();
 		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
 	}
 
@@ -41,6 +43,10 @@ public abstract class Entity {
 	}
 	public int getStatValue(String key) {
 		if (this.stats.containsKey(key)) return this.stats.get(key).getValue();
+		return -1;
+	}
+	public int getSkillValue(String key) {
+		if (this.skills.containsKey(key)) return this.skills.get(key).getSkillLevel();
 		return -1;
 	}
 	
@@ -81,6 +87,9 @@ public abstract class Entity {
 	
 	public void setStatValue(String key, int value) {
 		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
+	}
+	public void incSkillValue(String key) {
+		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
 	}
 	
 	public void setName(String name) {

@@ -70,14 +70,27 @@ public class MapViewController{
 		private final Point SOUTHEAST = new Point(1,1);
 		private final Point EAST = new Point(1,0);
 		
+		private final int baseDelay = 5000;
+		private Timer timer;
+		
 		public CharacterKeyboardController(Avatar avatar){
-			Timer timer = new Timer(25*avatar.getStatValue("Movement"), new ActionListener(){
-	            @Override
-	            public void actionPerformed(ActionEvent arg0) {
-	                keyReleased = true;
-	            }
-	        });
-			timer.start();
+			if(avatar != null){
+				timer = new Timer(baseDelay/avatar.getStatValue("Movement"), new ActionListener(){
+		            @Override
+		            public void actionPerformed(ActionEvent arg0) {
+		                keyReleased = true;
+		                SyncDelay();	                
+		            }
+		        });
+				timer.start();
+			}
+		}
+		
+		public void SyncDelay(){
+			if(timer.getDelay() != baseDelay/avatar.getStatValue("Movement")){
+            	timer.setDelay(baseDelay/avatar.getStatValue("Movement"));
+            	avatar.writeJournal("Just updated movment speed:" + timer.getDelay());
+            }
 		}
 		
 		

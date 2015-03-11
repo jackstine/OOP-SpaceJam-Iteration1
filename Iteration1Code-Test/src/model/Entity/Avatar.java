@@ -1,11 +1,19 @@
 package model.Entity;
 
 import java.awt.image.BufferedImage;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import model.occupation.Occupation;
 import utilities.*;
 
 public class Avatar extends Entity {
 	private int levels = 0;
+	private ArrayList<String> journal = new ArrayList<String>();
+	private boolean writing = false;
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
 	//deprecated all entities need a equipment now
@@ -68,6 +76,32 @@ public class Avatar extends Entity {
 
 	public void setLevels(int levels) {
 		this.levels = levels;
+	}
+	
+	public void writeJournal(String s){
+		DateFormat df = new SimpleDateFormat("HH:mm:ss");
+		Date today = Calendar.getInstance().getTime(); 
+		String reportDate = df.format(today);
+		s = reportDate + ": \n--------------------------------------------\n" + s;
+		s += "\n--------------------------------------------\n";
+		if(journal.size() > 20){
+			journal.remove(0);
+		}
+		journal.add(s);
+		writing = true;
+	} 
+	public void doneWriting(){
+		writing = false;
+	}
+	public boolean isWriting(){
+		return writing;
+	}
+	public String getJournal(){
+		String j = "";
+		for(int i = 0; i < journal.size(); ++i){
+			j += journal.get(i);
+		}
+		return j;
 	}
 	
 //	public boolean equipSlot(Equipable equipItem){

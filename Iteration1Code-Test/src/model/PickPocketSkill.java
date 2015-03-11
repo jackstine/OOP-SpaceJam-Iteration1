@@ -7,6 +7,6 @@ public class PickPocketSkill extends Skill {
 	}
 	
 	public String toString() {
-		return "PickPocket:" + this.getSkillLevel();
+		return "Pick pocket:" + this.getSkillLevel();
 	}
 }
