@@ -12,11 +12,8 @@ import utilities.FontHandler;
 import java.util.*;
 
 import model.*;
-<<<<<<< HEAD
 import model.Entity.Avatar;
-=======
 import model.occupation.Occupation;
->>>>>>> origin/master
 
 /*
 

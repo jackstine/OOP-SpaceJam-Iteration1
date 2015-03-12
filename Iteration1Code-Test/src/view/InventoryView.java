@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 import utilities.Scaling;
 import model.Point;
 import model.slots.Inventory;
 
-public class InventoryView extends JPanel{
+public class InventoryView extends JComponent{
 	// AHHAHAHAHAHAHA   CONNASCENCE    =)
 	private static final int INVENTORY_HEIGHT = Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
 	private static final int INVENTORY_WIDTH = Inventory.COL * Scaling.SLOT_VIEW_WIDTH;

@@ -19,15 +19,8 @@ import model.GameMap;
 import model.Location;
  
 import model.Point;
-<<<<<<< HEAD
 import model.Entity.Avatar;
-=======
 import model.Skill;
->>>>>>> origin/master
-import model.items.TakeableItem;
-import model.occupation.Alchemist;
-import model.occupation.Hunter;
-import model.occupation.Terminator;
 import model.occupation.Occupation;
 import utilities.Scaling;
 import view.CombinedGameView;
@@ -264,7 +257,6 @@ public class GameController {
             }
     }
     
- 
     public class BoardMouseListener implements MouseListener{
         // all these classes need to be defined in the MapView
     	private MapMouseHandler handler;
@@ -272,9 +264,22 @@ public class GameController {
     	public BoardMouseListener(){
     		this.handler = new MapMouseHandler(map,avatar);
     	}
+    	
+        // Point of Reference needs to be added to the tileY and tileX
+        // the point of reference is the point that reflects the change in the display of the map
+        private Location getTileLocation(MouseEvent e){
+        	Point point = map.getLocation(avatar);
+            int tileY = e.getY()/Scaling.TILE_HEIGHT;
+            int tileX = e.getX()/Scaling.TILE_WIDTH;
+            int xOff = point.getX() + (tileX - MapView.CHARACTER_OFFSET);
+            int yOff = point.getY() + (tileY - MapView.CHARACTER_OFFSET);
+            return new Location(xOff,yOff);
+        }
            
         public void mouseClicked(MouseEvent e) {
-           this.handler.pickupItem(e);
+        	Location tileLocation = this.getTileLocation(e);
+            this.handler.pickupItem(tileLocation);
+            this.handler.useSpell(tileLocation);
         }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) { }

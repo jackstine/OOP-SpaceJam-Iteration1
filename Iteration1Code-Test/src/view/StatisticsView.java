@@ -11,12 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
-<<<<<<< HEAD
 import model.Entity.Avatar;
-=======
-import model.Avatar;
 import model.Skill;
->>>>>>> origin/master
+
 
 @SuppressWarnings("serial")
 public class StatisticsView extends JInternalFrame {

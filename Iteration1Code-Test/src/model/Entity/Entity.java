@@ -3,6 +3,7 @@ package model.Entity;
 import java.util.Map;
 
 import model.Point;
+import model.Skill;
 import model.Stat;
 import model.items.Equipable;
 import model.items.TakeableItem;

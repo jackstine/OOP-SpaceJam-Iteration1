@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -25,6 +26,7 @@ public class InventoryEquipmentView extends JPanel {
 	private Avatar avatar;
 	private InventoryView inventory;
 	private EquipmentView equipment;
+	private SpellView spell;
 
 	public InventoryEquipmentView(Avatar avatar) {
 				
@@ -33,10 +35,20 @@ public class InventoryEquipmentView extends JPanel {
 		inventory.addMouseListener(new InventoryMouseListener());
 		this.equipment = new EquipmentView(avatar.getEquipment());
 		equipment.addMouseListener(new EquipmentMouseListener());
+		this.spell = new SpellView();
 		this.title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
-		add(this.title);
-		add(this.inventory);
-		add(this.equipment);
+//		add(this.title);
+//		add(this.spell);
+//		add(this.inventory);
+//		add(this.equipment);
+		
+		
+		this.setLayout(new BorderLayout());
+		add(this.title,BorderLayout.NORTH);
+		add(this.spell,BorderLayout.WEST);
+		add(this.inventory,BorderLayout.CENTER);
+		add(this.equipment,BorderLayout.EAST);
+		
 		
 		setFocusable(true);
 		setVisible(true);

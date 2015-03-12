@@ -11,6 +11,7 @@ import model.items.TerminatorSingleWeapon;
 import model.items.TerminatorWeapon;
 import model.items.TreasureChest;
 import model.items.Weapon;
+import model.items.Weapons;
 
 public class MapBuilder{
 	protected Tile[][] map;
@@ -99,7 +100,7 @@ public class MapBuilder{
 		this.map[3][10].setItem(armor);
 		this.items[3][10] = armor;
 		
-		Weapon weapon = new TerminatorSingleWeapon(20+49);
+		Weapon weapon = Weapons.DAVESWORD.weapon;
 		this.map[8][8].setItem(weapon);
 		this.items[8][8] = weapon;
 		
@@ -178,7 +179,7 @@ public class MapBuilder{
 		this.map[3][20].setItem(armor);
 		this.items[3][20] = armor;
 		
-		Weapon weapon = new TerminatorSingleWeapon(20+49);
+		Weapon weapon = Weapons.DAVESWORD.weapon;
 		this.map[8][8].setItem(weapon);
 		this.items[8][8] = weapon;
 		
