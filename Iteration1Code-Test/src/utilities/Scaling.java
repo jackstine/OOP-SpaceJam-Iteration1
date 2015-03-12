@@ -124,6 +124,38 @@ public final class Scaling {
 	public static final int EQUIPMENT_VIEW_HEIGHT = Scaling.EQUIPMENT_SLOT_HEIGHT * EQUIPMENT_SLOTS_HEIGHT_NUM;
 	
 	
+	/**********************SPELLS***************************/
+	public static final int SPELL_OFFSET_X = 10;
+	public static final int SPELL_OFFSET_Y = 0;
+	public static final int SPELL_SPACE_X = 10 + Scaling.SPELL_WIDTH;
+	public static final int SPELL_SPACE_Y = 20 + Scaling.SPELL_HEIGHT;
+	//bane spells on the top
+	public static final int FIRE_SPELL_X = SPELL_OFFSET_X;
+	public static final int FIRE_SPELL_Y = SPELL_OFFSET_Y;
+	public static final int EARTH_SPELL_X = FIRE_SPELL_X + SPELL_SPACE_X;
+	public static final int EARTH_SPELL_Y = FIRE_SPELL_Y;
+	public static final int PLASMA_RAY_X = EARTH_SPELL_X + SPELL_SPACE_X;
+	public static final int PLASMA_RAY_Y = FIRE_SPELL_Y;
+	
+	//enchantment spells in the middle
+	public static final int PACIFISM_X = FIRE_SPELL_X;
+	public static final int PACIFISM_Y = FIRE_SPELL_Y + SPELL_SPACE_Y;
+	public static final int CONFUSE_X = PACIFISM_X + SPELL_SPACE_X;
+	public static final int CONFUSE_Y = FIRE_SPELL_Y + SPELL_SPACE_Y;
+	public static final int ANGRY_X = CONFUSE_X + SPELL_SPACE_X;
+	public static final int AMGRY_Y =FIRE_SPELL_Y + SPELL_SPACE_Y;
+	//boon spells in the below
+	public static final int GLORY_HEAL_X = PACIFISM_X;
+	public static final int GLORY_HEAL_Y = PACIFISM_Y + SPELL_SPACE_Y;
+	public static final int MANA_BUFF_X = GLORY_HEAL_X + SPELL_SPACE_X;
+	public static final int MANA_BUFF_Y = PACIFISM_Y + SPELL_SPACE_Y;
+	public static final int MAGIC_CIRCLE_X = MANA_BUFF_X + SPELL_SPACE_X;
+	public static final int MAGIC_CIRCLE_Y = PACIFISM_Y + SPELL_SPACE_Y;
+	
+	public static final int SPELL_WIDTH = 30;
+	public static final int SPELL_HEIGHT = 30;
+	
+	
 	
 	/*****************GAMEVIEW*********************/
 	//   NUM TILES WIDTH and NUM_TILES_HEIGHT   display the number of tiles on the map board
