@@ -3,6 +3,7 @@ package controller;
 import model.EffectHandler;
 import model.GameMap;
 import model.Location;
+import model.NpcEffectHandler;
 import model.QuestHandler;
 import model.Point;
 import model.Entity.Avatar;
@@ -31,6 +32,7 @@ public class MapViewController{
 	private GameController game;
 	private EffectHandler effectHandler;
 	private QuestHandler questHandler;
+	private NpcEffectHandler npcEffectHandler;
 	//public BufferedImage image;
 	private boolean keyReleased;
 	private Map<String, Integer> keySet;
@@ -42,6 +44,7 @@ public class MapViewController{
 		this.keySet = map.getKeySet();
 		effectHandler= new EffectHandler(avatar);
 		questHandler = new QuestHandler(avatar);
+		npcEffectHandler = new NpcEffectHandler(avatar);
 		map.setAvatar(avatar);
 		//image=avatar.loadImage();
 		//TODO fir good reasons
@@ -105,6 +108,13 @@ public class MapViewController{
 				questHandler.apply(map.getTile(avatarLocation));
 				effectHandler.apply(map.getTile(avatarLocation));
 				
+			}
+			else{
+//				temp.add(point);
+				System.out.println(temp + "   this is the temp location");
+				System.out.println(avatarLocation + "   this is the avtar");
+				System.out.println(map.getTile(temp).getNPC());
+				npcEffectHandler.apply(map.getTile(temp).getNPC());
 			}
 			System.out.println(map.getTile(avatarLocation).getTerrain());	
 		}

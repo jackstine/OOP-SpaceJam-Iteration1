@@ -2,6 +2,7 @@ package model.Entity;
 
 import java.awt.image.BufferedImage;
 
+import model.AreaEffect;
 import model.occupation.Terminator;
 import model.occupation.Occupation;
 import utilities.ImageProcessing;
@@ -27,4 +28,7 @@ public abstract class NPC extends Entity {
 		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
 		return image;
 	}
+	
+	public abstract AreaEffect getAreaEffect();
+	
 }

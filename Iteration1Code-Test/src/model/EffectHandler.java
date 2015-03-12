@@ -1,6 +1,7 @@
 package model;
 
 import model.Entity.Avatar;
+import model.Entity.NPC;
 import model.items.HealingOneShotItem;
 import model.items.Item;
 
@@ -24,6 +25,7 @@ public class EffectHandler {
 		Decal decal=tile.getDecal();
 		Item item =  tile.getItem(); 
 		Trap trap= tile.getTrap();
+		
 		if(decal!=null){
 			decal.getAreaEffect().apply(avatar); 
 			}
