@@ -17,6 +17,9 @@ public class DamageAreaEffect implements AreaEffect{
 		return this.percentDamage;
 	}
 	
+	public void setPercentDamage(double percentDamage) {
+		this.percentDamage = percentDamage;
+	}
 	public void apply(Entity entity) {
 		EffectApplication.apply(entity, this);
 	}
