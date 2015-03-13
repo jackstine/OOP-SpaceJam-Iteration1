@@ -6,7 +6,8 @@ import model.DamageAreaEffect;
 public class Orc extends NPC {
 	protected AreaEffect effect;
 	protected AreaEffect effect1=new DamageAreaEffect(0.0);
-	protected int count=100;
+	protected int hp=100;
+	
 	public Orc(AreaEffect effect) {
 		super("Orc");
 		// TODO Auto-generated constructor stub
@@ -18,13 +19,14 @@ public class Orc extends NPC {
 		
 	}
 	public AreaEffect getAreaEffect() {
-		if(count>=0){
-		count=count-10;
-		System.out.println("Health of ORC is: "+count);
+		if(hp>=0){
+		hp=hp-10;
+		System.out.println("Health of ORC is: "+hp);
 		return this.effect;
 		}
 		else{
 			return effect1;
 		}
 	}
+	
 }

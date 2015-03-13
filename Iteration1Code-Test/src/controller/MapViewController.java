@@ -1,27 +1,22 @@
 package controller;
 
-import model.EffectHandler;
-import model.GameMap;
-import model.Location;
-import model.NpcEffectHandler;
-import model.QuestHandler;
-import model.Point;
-import model.Entity.Avatar;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import model.EffectHandler;
+import model.GameMap;
+import model.Location;
+import model.NpcEffectHandler;
+import model.Point;
+import model.QuestHandler;
+import model.Entity.Avatar;
 import utilities.Directions;
-import view.View;
 
 
 //public class MapViewController extends JFrame{
@@ -108,13 +103,14 @@ public class MapViewController{
 				questHandler.apply(map.getTile(avatarLocation));
 				effectHandler.apply(map.getTile(avatarLocation));
 				
+				
 			}
 			else{
 //				temp.add(point);
 				System.out.println(temp + "   this is the temp location");
 				System.out.println(avatarLocation + "   this is the avtar");
 				System.out.println(map.getTile(temp).getNPC());
-				npcEffectHandler.apply(map.getTile(temp).getNPC());
+				npcEffectHandler.apply(map.getTile(temp).getNPC(),avatarLocation);
 			}
 			System.out.println(map.getTile(avatarLocation).getTerrain());	
 		}
