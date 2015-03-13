@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import model.AreaEffect;
 import model.occupation.Occupation;
 import utilities.*;
 
@@ -29,14 +30,6 @@ public class Avatar extends Entity {
 		SpriteSheetUtility util = new SpriteSheetUtility(occString);
 		spriteSheet = (util.getSpriteArray());
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
-	}
-	
-	public String getStat(String s){
-		return Integer.toString(stats.get(s).getValue());
-	}
-	
-	public int getMana(){
-		return stats.get("MP").getValue();
 	}
 	
 	/*
@@ -66,7 +59,7 @@ public class Avatar extends Entity {
 		String result = "";
 		result += "Avatar:" + this.name;
 		result += "\n" + this.occupation;
-		for (String key : primaryStats) result += "\n" + this.stats.get(key);
+		for (String key : primaryStats) result += "\n" + this.stats.getString(key);
 		result += "\nDirection:" + this.direction;
 		result += "\n" + this.inventoryEquipment.getInventory();
 		result += "\n" + this.inventoryEquipment.getEquipment();
@@ -106,6 +99,12 @@ public class Avatar extends Entity {
 			j += journal.get(i);
 		}
 		return j;
+	}
+
+	@Override
+	public AreaEffect getAreaEffect() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 //	public boolean equipSlot(Equipable equipItem){

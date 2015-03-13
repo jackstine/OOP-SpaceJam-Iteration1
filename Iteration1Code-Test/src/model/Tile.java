@@ -1,5 +1,6 @@
 package model;
 
+import model.Entity.Entity;
 import model.Entity.NPC;
 import model.items.Item;
 import model.items.ObstacleItem;
@@ -9,7 +10,7 @@ public class Tile {
 	private Terrain terrain;
 	private Location location;
 	private Item item;
-	private NPC npc;
+	private Entity npc;
 	// private AreaEffect areaEffect;
 	private Decal decal;
 	private Trap trap;
@@ -44,7 +45,7 @@ public class Tile {
 	//will probably need to add a setTerrain for the purpose
 	//of making the map 
  
-	public void setNPC(NPC n) {
+	public void setNPC(Entity n) {
 		this.npc = n;
 	}
 	
@@ -52,7 +53,7 @@ public class Tile {
 		terrain=ter;
 	}
 
-	public NPC getNPC() {
+	public Entity getNPC() {
 		return npc;
 	}
 	

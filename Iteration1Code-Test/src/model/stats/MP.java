@@ -16,7 +16,7 @@ public class MP extends PrimaryStat  {
 
 	@Override
 	protected boolean updateValue(int value) {
-		if (value <= 0) return false; // zero mana
+		if (value < 0) return false; // mana cannot be zero
 		this.value = Math.min(mana.getValue(), value);
 		return true;
 	}
