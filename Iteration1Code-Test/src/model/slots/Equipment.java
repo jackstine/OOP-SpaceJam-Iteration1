@@ -3,8 +3,6 @@ package model.slots;
 import java.util.Observable;
 import java.util.Observer;
 
-import model.ArmorRating;
-import model.OffensiveRating;
 import model.Point;
 import model.items.Armor;
 import model.items.Boots;
@@ -17,6 +15,8 @@ import model.items.Shield;
 import model.items.TakeableItem;
 import model.items.TerminatorTwoHandedWeapon;
 import model.items.Weapon;
+import model.stats.ArmorRating;
+import model.stats.OffensiveRating;
 import utilities.Scaling;
 import view.EquipmentView;
 

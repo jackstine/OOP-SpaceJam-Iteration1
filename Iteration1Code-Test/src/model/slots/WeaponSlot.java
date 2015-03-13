@@ -1,7 +1,7 @@
 package model.slots;
 
-import model.DerivedStat;
 import model.items.Weapon;
+import model.stats.DerivedStat;
 
 public abstract class WeaponSlot extends BufferSlot{
 	

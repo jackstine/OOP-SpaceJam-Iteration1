@@ -4,13 +4,13 @@ import java.util.Map;
 
 import model.Point;
 import model.Skill;
-import model.Stat;
 import model.items.Equipable;
 import model.items.TakeableItem;
 import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
 import model.slots.InventoryEquipment;
+import model.stats.Stat;
 
 public abstract class Entity {
 	protected Map<String,Stat> stats; 
@@ -42,17 +42,13 @@ public abstract class Entity {
 	public int getDirection() {
 		return direction;
 	}
-	public int getStatValue(String key) {
-		if (this.stats.containsKey(key)) return this.stats.get(key).getValue();
-		return -1;
-	}
 	public int getSkillValue(String key) {
 		if (this.skills.containsKey(key)) return this.skills.get(key).getSkillLevel();
 		return -1;
 	}
 	
 	
-	//**************   INVENTORY  ********************************
+	/**************   INVENTORY  ********************************/
 	public Inventory getInventory(){
 		return inventoryEquipment.getInventory();
 	}
@@ -69,7 +65,7 @@ public abstract class Entity {
 		return this.inventoryEquipment.unequipInventory(slotPoint);
 	}
 	
-	//*************  EQUIPMENT *************************
+	/*************  EQUIPMENT *************************/
 	public void setEquipment(Equipment equipment){
 		this.inventoryEquipment.setEquipment(equipment);
 	}
@@ -86,9 +82,52 @@ public abstract class Entity {
 		return this.inventoryEquipment.unequipEquipment(point);
 	}
 	
+	/********************** STATS ***********************/
 	public void setStatValue(String key, int value) {
 		if (this.stats.containsKey(key)) this.stats.get(key).setValue(value);
 	}
+	
+	public int getStatValue(String key) {
+		if (this.stats.containsKey(key)) return this.stats.get(key).getValue();
+		return -1;
+	}
+	
+	private int getSV(String stat){
+		return this.stats.get(stat).getValue();
+	}
+	
+	private void subSV(String stat,int change){
+		int valueLeft = this.getSV(stat) - change;
+		this.stats.get(stat).setValue(valueLeft);
+	}
+	
+	private void addSV(String stat,int change){
+		int valueLeft = this.getSV(stat) + change;
+		this.stats.get(stat).setValue(valueLeft);
+	}
+	
+	public int getAgility(){return this.getSV("Agility");}
+	public int getExperience(){return this.getSV("Experience");}
+	public int getHardiness(){return this.getSV("Hardiness");}
+	public int getHP(){return this.getSV("HP");}
+	public int getIntellect(){return this.getSV("Intellect");}
+	public int getLives(){return this.getSV("Lives");}
+	public int getMovement(){return this.getSV("Movement");}
+	public int getMP(){return this.getSV("MP");}
+	public int getLevel(){return this.getSV("Level");}
+	public int getStrength(){return this.getSV("Strength");}
+	public int getLife(){return this.getSV("Life");}
+	public int getMana(){return this.getSV("Mana");}
+	public int getOffensiveRating(){return this.getSV("DefensiveRating");}
+	public int getDefensiveRating(){return this.getSV("DefensiveRating");}
+	public int getArmorRating(){return this.getSV("ArmorRating");}
+	
+	public void subHP(int change){this.subSV("HP", change);}
+	public void subMana(int change){this.subSV("Mana", change);}
+	
+	public void addHP(int change){this.addSV("HP", change);}
+	public void addMana(int change){this.addSV("Mana", change);}
+	
 	public void incSkillValue(String key) {
 		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
 	}

@@ -6,6 +6,24 @@ import java.util.Map;
 
 import view.EquipmentView;
 import model.slots.Equipment;
+import model.stats.Agility;
+import model.stats.ArmorRating;
+import model.stats.DefensiveRating;
+import model.stats.DerivedStat;
+import model.stats.Experience;
+import model.stats.HP;
+import model.stats.Hardiness;
+import model.stats.Intellect;
+import model.stats.Level;
+import model.stats.Life;
+import model.stats.Lives;
+import model.stats.MP;
+import model.stats.Mana;
+import model.stats.Movement;
+import model.stats.OffensiveRating;
+import model.stats.PrimaryStat;
+import model.stats.Stat;
+import model.stats.Strength;
 
 public class StatFactory {
 	

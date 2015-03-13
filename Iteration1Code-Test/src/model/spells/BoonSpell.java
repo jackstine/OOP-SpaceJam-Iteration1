@@ -1,7 +1,14 @@
 package model.spells;
 
-public class BoonSpell implements Spellable{
-	//used to heal, add buffers for a time, immunities...
-	
+import model.Entity.Entity;
 
+public abstract class BoonSpell implements Spellable{
+
+	public void affect(Entity entityToAffect) {
+		
+	}
+	
+	public boolean able(Entity entity) {
+		return false;
+	}
 }

@@ -6,10 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JComponent;
-import javax.swing.border.LineBorder;
-
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
@@ -52,8 +49,8 @@ public class SpellView extends JComponent{
 	 
 	
 	private Point spellSelected;
-	
-	private LineBorder selectedBorder = new LineBorder(Color.YELLOW,5);
+	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
+	private final int SELECTED_SPELL_X_OFFSET = 5;
 
 	public SpellView(){
 		this.setFocusable(true);
@@ -62,13 +59,17 @@ public class SpellView extends JComponent{
 		this.addMouseListener(new SpellListener());
 	}
 	
-	public void paint(Graphics g){
-		g.setColor(Color.YELLOW);
+	private void paintSelectedSpell(Graphics g){
 		if (spellSelected != null){
-			int pointX = (spellSelected.getX() * Scaling.SPELL_SPACE_X) + 5;
+			g.setColor(Color.YELLOW);
+			int pointX = (spellSelected.getX() * Scaling.SPELL_SPACE_X) + SELECTED_SPELL_X_OFFSET;
 			int pointY = (spellSelected.getY() * Scaling.SPELL_SPACE_Y);
-			g.fillRect(pointX, pointY, 40, 40);
+			g.fillRect(pointX, pointY, SELECTED_SPELL_SCALE.getX(), SELECTED_SPELL_SCALE.getY());
 		}
+	}
+	
+	public void paint(Graphics g){
+		this.paintSelectedSpell(g);
 		g.drawImage(FIRE_SPELL_IMAGE, FIRE_SPELL_POINT.getX(), FIRE_SPELL_POINT.getY(), null);
 		g.drawImage(EARTH_SPELL_IMAGE, EARTH_SPELL_POINT.getX(), EARTH_SPELL_POINT.getY(), null);
 		g.drawImage(PLASMA_RAY_IMAGE, PLASMA_RAY_POINT.getX(), PLASMA_RAY_POINT.getY(), null);

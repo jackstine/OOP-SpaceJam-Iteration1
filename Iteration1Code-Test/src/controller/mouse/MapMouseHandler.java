@@ -50,10 +50,14 @@ public class MapMouseHandler {
     public void useSpell(Location tileLocation){
     	boolean NPCExist = map.getTile(tileLocation).getNPC() != null;
     	if (NPCExist){
-    		Entity entity = map.getTile(tileLocation).getNPC();
-    		entity.setStatValue("HP",(int)(entity.getStatValue("HP") - 10));	// this here applies the damage to the NPC
-    		System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
-    		System.out.println(entity);											// prints the NPC
+    		boolean avatarHasMana = (avatar.getMana() > 10);
+    		if (avatarHasMana){
+    			avatar.setStatValue("Mana", avatar.getMana() - 10);
+				Entity entity = map.getTile(tileLocation).getNPC();
+				entity.setStatValue("HP",(int)(entity.getStatValue("HP") - 10));	// this here applies the damage to the NPC
+				System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
+				System.out.println(entity);											// prints the NPC
+    		}
     	}
     }
 

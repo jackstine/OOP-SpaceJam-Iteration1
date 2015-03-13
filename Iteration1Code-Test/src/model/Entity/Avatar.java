@@ -35,6 +35,10 @@ public class Avatar extends Entity {
 		return Integer.toString(stats.get(s).getValue());
 	}
 	
+	public int getMana(){
+		return stats.get("MP").getValue();
+	}
+	
 	/*
 	public void move(int x,int y){ //this is not needed either -Juan
 		location.add(x,y);

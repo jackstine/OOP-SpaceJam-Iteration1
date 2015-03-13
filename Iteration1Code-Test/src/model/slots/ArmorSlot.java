@@ -1,9 +1,9 @@
 package model.slots;
 
-import model.DerivedStat;
 import model.items.Armor;
 import model.items.Equipable;
 import model.items.TakeableItem;
+import model.stats.DerivedStat;
 
 
 public class ArmorSlot extends BufferSlot{
