@@ -3,9 +3,12 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
+import javax.swing.border.LineBorder;
 
 import utilities.ImageProcessing;
 import utilities.Scaling;
@@ -48,17 +51,24 @@ public class SpellView extends JComponent{
 	private static final BufferedImage MAGIC_CIRCLE_IMAGE = ImageProcessing.scaleImage(SPELL_SLOT,MAGIC_CIRCLE_PATH);
 	 
 	
+	private Point spellSelected;
 	
-	
+	private LineBorder selectedBorder = new LineBorder(Color.YELLOW,5);
+
 	public SpellView(){
-		setFocusable(true);
-		setBackground(Color.BLACK);
-		setVisible(true);
+		this.setFocusable(true);
+		this.setBackground(Color.BLACK);
+		this.setVisible(true);
+		this.addMouseListener(new SpellListener());
 	}
 	
 	public void paint(Graphics g){
-		g.setColor(Color.WHITE);
-		System.out.println("Painting the spell *********************************");
+		g.setColor(Color.YELLOW);
+		if (spellSelected != null){
+			int pointX = (spellSelected.getX() * Scaling.SPELL_SPACE_X) + 5;
+			int pointY = (spellSelected.getY() * Scaling.SPELL_SPACE_Y);
+			g.fillRect(pointX, pointY, 40, 40);
+		}
 		g.drawImage(FIRE_SPELL_IMAGE, FIRE_SPELL_POINT.getX(), FIRE_SPELL_POINT.getY(), null);
 		g.drawImage(EARTH_SPELL_IMAGE, EARTH_SPELL_POINT.getX(), EARTH_SPELL_POINT.getY(), null);
 		g.drawImage(PLASMA_RAY_IMAGE, PLASMA_RAY_POINT.getX(), PLASMA_RAY_POINT.getY(), null);
@@ -73,4 +83,25 @@ public class SpellView extends JComponent{
 	public Dimension getPreferredSize(){
 		return new Dimension(150,300);
 	}
+	
+	public class SpellListener implements MouseListener{
+		
+		public void mouseClicked(MouseEvent e){
+			int pointX = e.getX() / Scaling.SPELL_SPACE_X;
+			int pointY = (e.getY() - Scaling.SPELL_OFFSET_Y) / Scaling.SPELL_SPACE_Y;
+			spellSelected = new Point(pointX,pointY);
+			System.out.println(spellSelected);
+			repaint();
+		}
+
+		public void mouseEntered(MouseEvent e) {
+		}
+		public void mouseExited(MouseEvent e) {
+		}
+		public void mousePressed(MouseEvent e) {
+		}
+		public void mouseReleased(MouseEvent e) {
+		}
+	}
+	
 }

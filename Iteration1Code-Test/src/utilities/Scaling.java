@@ -126,9 +126,9 @@ public final class Scaling {
 	
 	/**********************SPELLS***************************/
 	public static final int SPELL_OFFSET_X = 10;
-	public static final int SPELL_OFFSET_Y = 0;
+	public static final int SPELL_OFFSET_Y = 5;
 	public static final int SPELL_SPACE_X = 10 + Scaling.SPELL_WIDTH;
-	public static final int SPELL_SPACE_Y = 20 + Scaling.SPELL_HEIGHT;
+	public static final int SPELL_SPACE_Y = 10 + Scaling.SPELL_HEIGHT;
 	//bane spells on the top
 	public static final int FIRE_SPELL_X = SPELL_OFFSET_X;
 	public static final int FIRE_SPELL_Y = SPELL_OFFSET_Y;
