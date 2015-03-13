@@ -69,11 +69,14 @@ public class MapViewController{
 		private final Point EAST = new Point(1,0);
 		
 		private final int baseDelay = 5000;
+		private final int developmentDelay = 0;
 		private Timer timer;
 		
 		public CharacterKeyboardController(Avatar avatar){
+			
 			if(avatar != null){
-				timer = new Timer(baseDelay/avatar.getStatValue("Movement"), new ActionListener(){
+				// TODO change the timer to baseDelay when issuing product
+				timer = new Timer(developmentDelay/avatar.getStatValue("Movement"), new ActionListener(){
 		            @Override
 		            public void actionPerformed(ActionEvent arg0) {
 		                keyReleased = true;
@@ -170,7 +173,6 @@ public class MapViewController{
 			}
 			map.updateEntityLocation(avatar, avatarLocation);
 			System.out.println(map.getLocation(avatar).toString());
-			
 		}
 
 		@Override

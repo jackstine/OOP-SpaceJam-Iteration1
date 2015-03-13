@@ -98,9 +98,11 @@ public class GameMap {
 
 	public void updateEntityLocation(Entity e, Location loc){
 		System.out.println(e.getName() + " - (" + loc.getX() + ", " + loc.getY() + ")");
-		entityToLocationMap.put(e,loc);	
+		entityToLocationMap.put(e,loc);
+//		map[loc.getX()][loc.getY()].setNPC(e);
+//		map[loc.getX()][loc.getY()].setNPC(0);
 	}
-	
+
 //	public void updateItemLocation(Tile t, Item i){
 //		tileToItemMap.put(t, i);
 //	}

@@ -1,11 +1,12 @@
 package model;
 
 import model.Entity.Avatar;
+import model.Entity.Entity;
 import model.Entity.Merchant;
 import model.Entity.NPC;
 import model.Entity.Orc;
 import model.Entity.Skeleton;
-import view.MerchantView;
+//import view.MerchantView;
 
 public class NpcEffectHandler {
 	private Avatar avatar;
@@ -16,7 +17,7 @@ public class NpcEffectHandler {
 		this.avatar=avatar;
 		
 	}
-	public void apply(NPC npc,Location avatarLocation){
+	public void apply(Entity npc,Location avatarLocation){
 		
 		
 		
@@ -76,8 +77,8 @@ public class NpcEffectHandler {
 		else if(npc!=null && npc instanceof Merchant){
 			//if(Integer.parseInt(avatar.getStat("Level"))>1){
 			
-					MerchantView mv=new MerchantView();
-					mv.setVisible(true);
+//					MerchantView mv=new MerchantView();
+//					mv.setVisible(true);
 					//npc.action(avatar);
 					//tile.setItem(it);
 				}
