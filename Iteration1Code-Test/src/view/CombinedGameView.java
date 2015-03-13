@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import model.GameMap;
-import model.Location;
 import model.Entity.Avatar;
 import utilities.Scaling;
 

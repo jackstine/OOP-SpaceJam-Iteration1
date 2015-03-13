@@ -8,7 +8,6 @@ import model.items.GiantRock;
 import model.items.HealingOneShotItem;
 import model.items.Item;
 import model.items.TerminatorSingleWeapon;
-import model.items.TerminatorWeapon;
 import model.items.TreasureChest;
 import model.items.Weapon;
 import model.items.Weapons;
