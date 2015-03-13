@@ -12,7 +12,7 @@ import utilities.SpriteSheetUtility;
 public abstract class NPC extends Entity {
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
-	
+	private int state= 0;
 	
 	public NPC(String role) {
 		super(new Terminator());
@@ -24,9 +24,45 @@ public abstract class NPC extends Entity {
 	}
 	
 	public BufferedImage getImage(){
-		BufferedImage imageToDisplay = spriteSheet[direction];
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
-		return image;
+		if(this instanceof Orc )
+		{
+			if (state==1){
+				BufferedImage imageToDisplay = spriteSheet[4];
+				image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
+				return image;
+			}
+			else if (state==2){
+				BufferedImage imageToDisplay = spriteSheet[5];
+				image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
+				return image;
+			}
+			else if(state==3){
+				BufferedImage imageToDisplay = spriteSheet[2];
+				image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
+				return image;
+			}
+			else
+			{
+				BufferedImage imageToDisplay = spriteSheet[direction];
+				image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
+				return image;
+			}
+			
+		}
+		else {
+			BufferedImage imageToDisplay = spriteSheet[direction];
+			image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
+			return image;
+			
+		}
+	}
+	public void setState(int state){
+		this.state=state;
+	
+	}
+	public int getState(){
+		return this.state;
+	
 	}
 	
 	public abstract AreaEffect getAreaEffect();

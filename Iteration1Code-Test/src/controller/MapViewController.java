@@ -108,13 +108,14 @@ public class MapViewController{
 				questHandler.apply(map.getTile(avatarLocation));
 				effectHandler.apply(map.getTile(avatarLocation));
 				
+				
 			}
 			else{
 //				temp.add(point);
 				System.out.println(temp + "   this is the temp location");
 				System.out.println(avatarLocation + "   this is the avtar");
 				System.out.println(map.getTile(temp).getNPC());
-				npcEffectHandler.apply(map.getTile(temp).getNPC());
+				npcEffectHandler.apply(map.getTile(temp).getNPC(),avatarLocation);
 			}
 			System.out.println(map.getTile(avatarLocation).getTerrain());	
 		}

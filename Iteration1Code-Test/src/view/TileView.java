@@ -11,10 +11,12 @@ import javax.swing.JComponent;
 
 
 
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.TerrainImageVisitor;
 import model.Tile;
+import model.Entity.NPC;
 import model.visitor.ItemImageVisitor;
  
 @SuppressWarnings("serial")
@@ -56,6 +58,8 @@ public class TileView extends JComponent{
             imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,trapImage);
         }
         if(tile.getNPC()!=null){
+        //	tile.getNPC().accept(itemVisitor);
+        	
         	NPCimage= tile.getNPC().getImage(); //need to add a proxy for this
         	imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
             imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,NPCimage);
