@@ -8,16 +8,19 @@ import model.Point;
 import model.Entity.Avatar;
 import model.Entity.Entity;
 import model.items.TakeableItem;
+import model.stats.EntityStats;
 import utilities.Scaling;
 import view.MapView;
 
 public class MapMouseHandler {
 	private GameMap map;
 	private Avatar avatar;
+	private EntityStats avatarStats;
 	
 	public MapMouseHandler(GameMap map, Avatar avatar){
 		this.avatar = avatar;
 		this.map = map;
+		this.avatarStats = avatar.getStats();
 	}
 	
     // all these classes need to be defined in the MapView
@@ -48,11 +51,13 @@ public class MapMouseHandler {
     }
     
     public void useSpell(Location tileLocation){
+    	System.out.println("Using spell");
     	boolean NPCExist = map.getTile(tileLocation).getNPC() != null;
     	if (NPCExist){
-    		boolean avatarHasMana = (avatar.getMana() > 10);
+    		boolean avatarHasMana = (avatarStats.getMP() >= 10);
+    		System.out.println("Using MP " + avatarStats.getMP() + "   getting Mana   " + avatarStats.getMana());
     		if (avatarHasMana){
-    			avatar.setStatValue("Mana", avatar.getMana() - 10);
+    			avatarStats.subMana(10);
 				Entity entity = map.getTile(tileLocation).getNPC();
 				entity.setStatValue("HP",(int)(entity.getStatValue("HP") - 10));	// this here applies the damage to the NPC
 				System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
