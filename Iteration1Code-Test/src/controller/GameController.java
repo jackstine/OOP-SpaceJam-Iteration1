@@ -32,7 +32,8 @@ import view.SystemMenuView;
 import view.View;
  
 public class GameController {
-        
+	
+		private World world;
 		private GameMap map;
 		private Avatar avatar;
 		private boolean reset = false;
@@ -43,7 +44,7 @@ public class GameController {
         private StatisticsView statsView;
         private JInternalFrame leveledView;
         private ControlConfigView controlConfig;
-        private World world;
+        
         
         
         public GameController(){
@@ -51,14 +52,14 @@ public class GameController {
         }
         
         public GameController(Game game){
-        	this.map = game.getMap();
+        	this.world = game.getWorld();
         	this.avatar = game.getAvatar();
+        	this.map = world.getMap(avatar.getCurrMap());
         	combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
         	statsView = new StatisticsView(avatar, new RetGameStatsButton());
         	systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton(), new OpenControlConfig());
         	leveledView = new LevelUpView(genSkillListeners(avatar.getOccupation()));
-        	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), map.getKeySet());
-        	world= new World(map);
+        	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), world.getKeySet());
         	combinedGameView.addExternalViews(systemMenu);
         	combinedGameView.addExternalViews(statsView);
         	combinedGameView.addExternalViews(leveledView);
@@ -151,7 +152,7 @@ public class GameController {
         
         public class ResetControlsListener implements ActionListener {//ControlConfig
             public void actionPerformed(ActionEvent e) {
-            	map.genDefaultKeys();
+            	world.genDefaultKeys();
             	controlConfig.reset();
             }
         }
@@ -178,7 +179,7 @@ public class GameController {
                
                 public void actionPerformed(ActionEvent e) {
                     try {
-						new Game(map, avatar).save();
+						new Game(world, avatar).save();
 						reset = false;
 					} catch (IOException e1) {
 						reset = false;
@@ -301,10 +302,6 @@ public class GameController {
 				 combinedGameView.setNext("Main");
 	             combinedGameView.setRedraw(true);
 			}
-			else if(!currMap.equals(avatar.getCurrMap())){
-				currMap=avatar.getCurrMap();
-				combinedGameView.changeMap(world.getMap(currMap));
-			}
 			else if(avatar.getStatValue("HP") <= 0){
 				avatar.setStatValue("Lives", avatar.getStatValue("Lives")-1);
 				avatar.setStatValue("HP", avatar.getStatValue("Life"));
@@ -312,6 +309,10 @@ public class GameController {
 			else if(yourLvl != avatar.getStatValue("Level")){
 				avatar.setLevels(avatar.getLevels()+avatar.getStatValue("Level")-yourLvl);
 				yourLvl = avatar.getStatValue("Level");
+			}
+			else if(!currMap.equals(avatar.getCurrMap())){
+				currMap=avatar.getCurrMap();
+				combinedGameView.changeMap(world.getMap(currMap));
 			}
 			statsView.Updatetable(avatar);
 			combinedGameView.updateStatus();

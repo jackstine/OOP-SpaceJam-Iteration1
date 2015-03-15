@@ -128,7 +128,7 @@ public class ViewController {
     		}
             inGame = new GameController(game);
             views.put("Game", inGame.getView());
-            mv = new MapViewController(game.getMap(),game.getAvatar(),frame);
+            mv = new MapViewController(game.getWorld(),game.getAvatar(),frame);
             inGame.stopReset();
             frame.revalidate();
             frame.repaint();
