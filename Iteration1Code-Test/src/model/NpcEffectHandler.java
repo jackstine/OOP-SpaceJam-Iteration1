@@ -3,6 +3,7 @@ package model;
 import java.util.Random;
 
 import model.Entity.Avatar;
+import model.Entity.Conversable;
 import model.Entity.Entity;
 //import model.Entity.Merchant;
 import model.Entity.NPC;
@@ -25,6 +26,10 @@ public class NpcEffectHandler {
 	
 	public void apply(Entity entity,Location avatarLocation){
 		// Let us now begin the Satan Ceremony
+		if (entity != null && entity instanceof Conversable) {
+			avatar.writeJournal(((Conversable) (entity)).getDialogue());
+		}
+		
 		if(entity!=null && entity instanceof Orc){
 			//if(Integer.parseInt(avatar.getStat("Level"))>1){
 			
