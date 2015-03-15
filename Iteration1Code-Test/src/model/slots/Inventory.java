@@ -2,7 +2,6 @@ package model.slots;
 
 import model.Point;
 import model.items.TakeableItem;
-import model.items.TerminatorTwoHandedWeapon;
 import model.items.Weapons;
 
 public class Inventory extends SlotContainer{

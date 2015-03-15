@@ -112,7 +112,7 @@ public class MapViewController{
 //				temp.add(point);
 				System.out.println(temp + "   this is the temp location");
 				System.out.println(avatarLocation + "   this is the avtar");
-				System.out.println(map.getTile(temp).getNPC());
+				//System.out.println(map.getTile(temp).getNPC());
 				npcEffectHandler.apply(map.getTile(temp).getNPC(),avatarLocation);
 			}
 			System.out.println(map.getTile(avatarLocation).getTerrain());	

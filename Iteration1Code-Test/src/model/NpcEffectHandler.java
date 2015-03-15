@@ -7,7 +7,9 @@ import model.Entity.Entity;
 import model.Entity.Merchant;
 import model.Entity.Orc;
 import model.Entity.Skeleton;
-//import model.Entity.Merchant;
+import model.items.TakeableItem;
+import model.items.Weapon;
+import model.items.Weapons;
 
 
 public class NpcEffectHandler {
@@ -76,7 +78,25 @@ public class NpcEffectHandler {
 					//tile.setItem(it);
 					int randomness=randNo();
 					if(randomness<5){
-						System.out.println("Steal Success");
+						System.out.println("You Can not Steal");
+						if(avatar.getOccupation().getName()=="Hunter" ){
+							System.out.println("Steal Success");
+							Weapon weapon;
+							if(randomness<=2){
+								weapon= Weapons.LONGBOW.weapon;
+							}
+							else if(randomness==3)
+							{
+								weapon= Weapons.DRAGONBOW.weapon;
+							}
+							else{
+								weapon= Weapons.PRESTINEBOW.weapon;
+							}
+							//TakeableItem droppedItem = (TakeableItem) map.getTile(tileLocation).getItem();
+							TakeableItem droppedItem = (TakeableItem) weapon;
+							avatar.getInventory().findAndEquip(droppedItem);
+						}
+						
 						
 					}
 					if(randomness>=5){
