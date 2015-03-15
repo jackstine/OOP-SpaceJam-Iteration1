@@ -1,6 +1,7 @@
 package model;
 
 import model.Entity.Avatar;
+import model.Entity.Entity;
 //import model.Entity.Merchant;
 import model.Entity.NPC;
 import model.Entity.Orc;
@@ -16,36 +17,36 @@ public class NpcEffectHandler {
 		this.avatar=avatar;
 		
 	}
-	public void apply(NPC npc,Location avatarLocation){
+	public void apply(Entity entity,Location avatarLocation){
 		
 		
 		
 		// Let us now begin the Satan Ceremony
-		if(npc!=null && npc instanceof Orc){
+		if(entity!=null && entity instanceof Orc){
 			//if(Integer.parseInt(avatar.getStat("Level"))>1){
 			
-			npc.getAreaEffect().apply(avatar); 
+			entity.getAreaEffect().apply(avatar); 
 					int x,y;
 					x=avatarLocation.getX();
 					y=avatarLocation.getY();
 					//System.out.println(x + " " + y);
 					if(x==13 && y ==12)
 					{
-						npc.setState(1);
+						entity.setState(1);
 					}
 					else if(x==14 && y==11)
 					{
-						npc.setState(2);
+						entity.setState(2);
 					}
 					else if(x==14 && y==13)
 					{
-						npc.setState(3);
+						entity.setState(3);
 					}
 					//npc.action(avatar);
 					//tile.setItem(it);
 				}
 		
-		else if(npc!=null && npc instanceof Skeleton){
+		else if(entity!=null && entity instanceof Skeleton){
 			//if(Integer.parseInt(avatar.getStat("Level"))>1){
 			
 			
@@ -55,19 +56,19 @@ public class NpcEffectHandler {
 					//System.out.println(x + " " + y);
 					if(x==8 && y ==12)
 					{
-						npc.setState(1);
+						entity.setState(1);
 					}
 					else if(x==9 && y==11)
 					{
-						npc.setState(2);
+						entity.setState(2);
 					}
 					else if(x==9 && y==13)
 					{
-						npc.setState(3);
+						entity.setState(3);
 					}
 					else if(x==10 && y==12)
 					{
-						npc.setState(4);
+						entity.setState(4);
 					}
 					//npc.action(avatar);
 					//tile.setItem(it);

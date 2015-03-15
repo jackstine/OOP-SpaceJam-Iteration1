@@ -57,7 +57,7 @@ public class MapMouseHandler {
     		boolean avatarHasMana = (avatarStats.getMP() >= 10);
     		System.out.println("Using MP " + avatarStats.getMP() + "   getting Mana   " + avatarStats.getMana());
     		if (avatarHasMana){
-    			avatarStats.subMana(10);
+    			avatarStats.subMP(10);
 				Entity entity = map.getTile(tileLocation).getNPC();
 				entity.setStatValue("HP",(int)(entity.getStatValue("HP") - 10));	// this here applies the damage to the NPC
 				System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
