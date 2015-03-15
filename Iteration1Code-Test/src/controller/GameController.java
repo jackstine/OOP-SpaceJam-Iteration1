@@ -285,6 +285,9 @@ public class GameController {
         	Location tileLocation = this.getTileLocation(e);
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
+            if(this.handler.getEntity(tileLocation) != null){
+            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString());
+            }
         }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) { }
@@ -297,7 +300,7 @@ public class GameController {
     	private String currMap;
     	public StatCheck(){
     		yourLvl = avatar.getStatValue("Level"); 
-    		currMap=avatar.getCurrMap();
+    		currMap = avatar.getCurrMap();
     	}
 		public void actionPerformed(ActionEvent e) {
 			if(avatar.getStatValue("Lives") <= 0){
@@ -315,6 +318,7 @@ public class GameController {
 			}
 			else if(!currMap.equals(avatar.getCurrMap())){
 				currMap=avatar.getCurrMap();
+				map = world.getMap(avatar.getCurrMap());
 				combinedGameView.changeMap(world.getMap(currMap));
 			}
 			statsView.Updatetable(avatar);

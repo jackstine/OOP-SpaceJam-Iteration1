@@ -74,5 +74,9 @@ public class MapMouseHandler {
 //    		}
     	}
     }
+    
+    public Entity getEntity(Location tileLocation){
+    	return map.getTile(tileLocation).getNPC();
+    }
 
 }
