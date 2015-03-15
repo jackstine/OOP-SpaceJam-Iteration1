@@ -104,6 +104,15 @@ public abstract class Entity {
 		return this.stats.getStatValue(key);
 	}
 	
+	public int getMP(){return this.stats.getMP();}
+	
+	public void subHP(int change){this.stats.subHP(change);}
+	public void subMP(int change){this.stats.subMP(change);}
+	
+	public void addHP(int change){this.stats.addHP(change);}
+	public void addMP(int change){this.stats.addMP(change);}
+	
+	
 	public void incSkillValue(String key) {
 		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
 	}

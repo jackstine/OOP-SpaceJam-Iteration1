@@ -1,7 +1,10 @@
 package model.spells;
 
-public class BaneSpell implements Spellable{
+import model.Entity.Entity;
+
+public interface BaneSpell{
 	//does damage to a NPC, is used to destroy things, cause mayhem
+	public int getDamage();
 	
-	
+	abstract void applyDamage(Entity entity);
 }

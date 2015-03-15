@@ -56,6 +56,12 @@ public class GameView extends JPanel {
         setVisible(true);
 	}
 	
+	public void changeMap(GameMap map){
+		this.map=map;
+		this.map.updateEntityLocation(avatar, new Location(3,3));// NOT NEEDED ANYMORE
+		mapView.setMap(map);
+	}
+	
 	
 	public GameMap getMap() {
 		return map;
