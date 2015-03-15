@@ -12,6 +12,7 @@ import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
 import model.slots.InventoryEquipment;
+import model.spells.Spells;
 import model.stats.EntityStats;
 import model.stats.Stat;
 
@@ -23,6 +24,9 @@ public abstract class Entity {
 	protected int direction;
 	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
+	
+	//TODO change the spells so that they are only associated with Alchemists
+	protected Spells spells = new Spells(this);
 	
 	protected BufferedImage image;	//TODO Delete this line
 	
@@ -111,6 +115,15 @@ public abstract class Entity {
 	
 	public void addHP(int change){this.stats.addHP(change);}
 	public void addMP(int change){this.stats.addMP(change);}
+	
+	
+	/******************** SPELLS ******************************/
+	public Spells getSpells(){
+		return this.spells;
+	}
+	public void setSelectedSpell(Point spell){
+		this.spells.setSelectedSpell(spell);
+	}
 	
 	
 	public void incSkillValue(String key) {

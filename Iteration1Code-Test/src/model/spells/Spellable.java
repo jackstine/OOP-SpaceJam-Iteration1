@@ -11,5 +11,5 @@ public interface Spellable {
 	//maybe it needs to be boolean?
 	public void apply(Entity entityToAffect);
 	
-	public boolean able(Entity entity);	
+	public boolean able();	
 }

@@ -90,8 +90,9 @@ public class SpellView extends JComponent{
 		public void mouseClicked(MouseEvent e){
 			int pointX = e.getX() / Scaling.SPELL_SPACE_X;
 			int pointY = (e.getY() - Scaling.SPELL_OFFSET_Y) / Scaling.SPELL_SPACE_Y;
-			spellSelected = new Point(pointX,pointY);
-			System.out.println(spellSelected);
+			boolean spellSelectedInRange = pointY < Scaling.SPELLS_HEIGHT_NUM;
+			if (spellSelectedInRange)
+				spellSelected = new Point(pointX,pointY);
 			repaint();
 		}
 
