@@ -3,7 +3,7 @@ package controller;
 import javax.swing.JFrame;
 
 import model.EffectHandler;
-import model.Entity;
+import model.Entity.Entity;
 import model.GameMap;
 
 public class EntityMovementController {
