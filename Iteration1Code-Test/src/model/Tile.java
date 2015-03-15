@@ -109,7 +109,6 @@ public class Tile {
 		result += "\n" + this.terrain;
 		result += "\n" + this.decal;
 		result += "\n" + this.item;	
-		result += "\n" + this.npc;
 		return result;
 	}
 }

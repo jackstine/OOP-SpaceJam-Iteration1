@@ -72,16 +72,21 @@ public class SaveLoadController {
 		String[] avatarInventory = in.next().split(":");
 		int inventorySize = Integer.parseInt(avatarInventory[1]);
 		
+		//System.out.println("inventorySize = " + inventorySize);
+		
 		// query through all items in the inventory
 		for (int j = 0; j < inventorySize; j++) {
 			String[] inventoryItem = in.next().split(":");
 			String itemType = inventoryItem[1];
 			int itemValue = Integer.parseInt(inventoryItem[2]);
+			//System.out.printf("num = %d, itemType = %s, itemValue = %d\n", j+1, itemType, itemValue);
 			// fix this later too
 			if (itemType.equals("Armor")) inventory.findAndEquip(new Armor(itemValue));
 			if (itemType.equals("Weapon")) inventory.findAndEquip(new TerminatorSingleWeapon(itemValue));
 		}
+		
 		avatar.getOccupation().createNecessities();
+		
 		Equipment equipment = avatar.getOccupation().getEquipment();
 		
 		String[] equipmentArmor = in.next().split(":");
@@ -115,12 +120,10 @@ public class SaveLoadController {
 				String[] tileLocation = in.next().split(":");
 				
 				String[] tileTerrain = in.next().split(":");
-				if (tileTerrain[0].equals("Terrain")) {
-					String terrainType = tileTerrain[1];
-					if (terrainType.equals("M")) terrain = new MountainTerrain();
-					if (terrainType.equals("R")) terrain = new RadioactiveWasteTerrain();
-					if (terrainType.equals("D")) terrain = new DesertTerrain();
-				}
+				String terrainType = tileTerrain[1];
+				if (terrainType.equals("M")) terrain = new MountainTerrain();
+				if (terrainType.equals("R")) terrain = new RadioactiveWasteTerrain();
+				if (terrainType.equals("D")) terrain = new DesertTerrain();
 				
 				String[] tileDecal = in.next().split(":");
 				if (tileDecal[0].equals("Decal")) {
@@ -162,7 +165,7 @@ public class SaveLoadController {
 				map.setTile(tile);
 			}
 		}
-		
+		// error here
 		int entities = Integer.parseInt(in.next());
 		for (int k = 0; k < entities; k++) {
 			String[] entityLocation = in.next().split(":");
