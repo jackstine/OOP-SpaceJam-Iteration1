@@ -2,7 +2,6 @@ package model.slots;
 
 import model.Point;
 import model.items.TakeableItem;
-import model.items.TerminatorTwoHandedWeapon;
 import model.items.Weapons;
 
 public class Inventory extends SlotContainer{
@@ -92,7 +91,7 @@ public class Inventory extends SlotContainer{
     	builder.append("Inventory:" + this.itemCount());
         for (int i = 0; i < ROW; i++){
             for (int j = 0; j < COL; j++){
-            	if (this.get(new Point(i, j)) == null) return builder.toString();
+            	if (this.get(new Point(i, j)) == null) continue;
                 builder.append("\n" + this.get(new Point(i,j)).toString());
             }
         }

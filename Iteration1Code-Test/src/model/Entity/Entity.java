@@ -21,6 +21,7 @@ public abstract class Entity {
 	protected Occupation occupation;
 	protected String name;
 	protected int direction;
+	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
 	
 	protected BufferedImage image;	//TODO Delete this line
@@ -154,4 +155,12 @@ public abstract class Entity {
 		//occupation.useAbility();
 	}
 	// -------------------------------------------
+
+	public String getCurrMap() {
+		return currMap;
+	}
+
+	public void setCurrMap(String currMap) {
+		this.currMap = currMap;
+	}
 }
