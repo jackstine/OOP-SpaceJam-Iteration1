@@ -28,7 +28,7 @@ public abstract class InfluenceSet {
 	public void printInfluenceSet() {
 		System.out.println("Printing Influence Set: ");
 		for (InfluenceTile tile: getInfluenceSet()) {
-			System.out.println("tile");
+			System.out.println(tile);
 		}
 	}
 }

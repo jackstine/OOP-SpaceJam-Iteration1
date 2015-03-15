@@ -16,8 +16,10 @@ import javax.swing.Timer;
 import controller.mouse.MapMouseHandler;
 import model.Game;
 import model.GameMap;
+import model.InfluenceSet;
 import model.Location;
 import model.Point;
+import model.RadialInfluenceSet;
 import model.World;
 import model.Entity.Avatar;
 import model.Skill;
@@ -224,6 +226,7 @@ public class GameController {
             
             public void actionPerformed(ActionEvent e) {
     			spawnLevelUp();
+    			//applyEffect(new RadialInfluenceSet(map, map.getEntityTile(avatar),0,0));
             }
         }
         
@@ -319,6 +322,9 @@ public class GameController {
 		}
 	}
     
+    public void applyEffect(InfluenceSet i) {
+    	i.printInfluenceSet();
+    }
  
        
 }

@@ -23,7 +23,7 @@ public class Merchant extends NPC implements Conversable {
 	@Override
 	public String getDialogue() {
 		// TODO Auto-generated method stub
-		return "Merchant: Hey there! Have a look at my wares. \n";
+		return "Merchant: Hey there! Have a look at my wares.";
 	}
 
 }

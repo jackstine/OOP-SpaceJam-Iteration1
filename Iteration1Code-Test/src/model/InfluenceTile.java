@@ -7,6 +7,7 @@ public class InfluenceTile extends Tile {
 	
 	public InfluenceTile(Tile tile, int radius) {
 		super(tile);
+		this.tile = tile;
 		this.radius = radius;
 	}
 	
