@@ -17,7 +17,6 @@ import sun.applet.Main;
 
 public class BackgroundMusicPlayer {
 
-	private static final String filePath = "src/res/audio/HumanAbstract-CrossingTheRubicon8Bit.wav";
 	private static URL mp3URL = null;
 	private static AudioClip clip = null;
 	
@@ -28,15 +27,19 @@ public class BackgroundMusicPlayer {
 		}
 	}
 	
-	private void playMusic() {
+	protected String getFilePath() {
+		return "src/res/audio/HumanAbstract-CrossingTheRubicon8Bit.wav";
+	}
+	
+	protected void playMusic() {
 		MusicThread thread = new MusicThread();
 		thread.start();
 	}
 	
-	private void fetchMP3URL() {
+	protected void fetchMP3URL() {
 		
 		try {
-			mp3URL = new File(filePath).toURI().toURL();
+			mp3URL = new File(getFilePath()).toURI().toURL();
 			System.out.println("Background music successfully initialized.");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -45,7 +48,7 @@ public class BackgroundMusicPlayer {
 		
 	}
 	
-	private class MusicThread extends Thread {
+	protected class MusicThread extends Thread {
 		@Override
 		public void run() {
 			try {
