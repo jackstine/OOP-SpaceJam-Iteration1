@@ -9,9 +9,26 @@ public abstract class InfluenceSet {
 	protected int direction;
 	
 	public abstract Collection<InfluenceTile> getInfluenceSet();
-	public abstract void setSource(Tile source);
-	public abstract void setRadius(int radius);
-	public abstract void setDirection(int direction);
-	public abstract void setMap(GameMap map);
 	
+	
+	public void setSource(Tile source) {
+		this.source = source;
+	}
+	public  void setRadius(int radius) {
+		this.radius = radius;
+	}
+	public  void setDirection(int direction) {
+		this.direction = direction;
+	}
+	public  void setMap(GameMap map) {
+		this.map = map;
+	}
+	
+	
+	public void printInfluenceSet() {
+		System.out.println("Printing Influence Set: ");
+		for (InfluenceTile tile: getInfluenceSet()) {
+			System.out.println("tile");
+		}
+	}
 }

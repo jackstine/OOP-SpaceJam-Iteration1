@@ -14,5 +14,14 @@ public class InfluenceTile extends Tile {
 	public int getRadius() { return radius; }
 	public void setTile(Tile tile) { this.tile = tile; }
 	public void setRadius(int radius) { this.radius = radius; }
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Influence Tile at: \n");
+		sb.append(tile.getLocation() + "\n");
+		sb.append("With radius " + radius + "\n");
+		
+		return sb.toString();
+	}
 
 }
