@@ -83,6 +83,7 @@ public class CombinedGameView extends View {
     public void updateStatus(){
     	statusView.updateStatus();
     }
+ 
     
     public void addExternalViews(JInternalFrame info){
         add(info);
@@ -94,5 +95,9 @@ public class CombinedGameView extends View {
     	info.moveToBack();
     	info.setVisible(false);
         getTopLevelAncestor().requestFocus();
+    }
+    
+    public void changeMap(GameMap map){
+    	board.changeMap(map);
     }
 }

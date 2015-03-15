@@ -17,8 +17,8 @@ import controller.mouse.MapMouseHandler;
 import model.Game;
 import model.GameMap;
 import model.Location;
- 
 import model.Point;
+import model.World;
 import model.Entity.Avatar;
 import model.Skill;
 import model.occupation.Occupation;
@@ -43,6 +43,7 @@ public class GameController {
         private StatisticsView statsView;
         private JInternalFrame leveledView;
         private ControlConfigView controlConfig;
+        private World world;
         
         
         public GameController(){
@@ -57,7 +58,7 @@ public class GameController {
         	systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton(), new OpenControlConfig());
         	leveledView = new LevelUpView(genSkillListeners(avatar.getOccupation()));
         	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), map.getKeySet());
-        	
+        	world= new World(map);
         	combinedGameView.addExternalViews(systemMenu);
         	combinedGameView.addExternalViews(statsView);
         	combinedGameView.addExternalViews(leveledView);
@@ -289,14 +290,20 @@ public class GameController {
     
     public class StatCheck implements ActionListener {
     	private int yourLvl;
+    	private String currMap;
     	public StatCheck(){
     		yourLvl = avatar.getStatValue("Level"); 
+    		currMap=avatar.getCurrMap();
     	}
 		public void actionPerformed(ActionEvent e) {
 			if(avatar.getStatValue("Lives") <= 0){
 				 reset = true;
 				 combinedGameView.setNext("Main");
 	             combinedGameView.setRedraw(true);
+			}
+			else if(!currMap.equals(avatar.getCurrMap())){
+				currMap=avatar.getCurrMap();
+				combinedGameView.changeMap(world.getMap(currMap));
 			}
 			else if(avatar.getStatValue("HP") <= 0){
 				avatar.setStatValue("Lives", avatar.getStatValue("Lives")-1);
@@ -310,5 +317,7 @@ public class GameController {
 			combinedGameView.updateStatus();
 		}
 	}
+    
+ 
        
 }

@@ -27,6 +27,14 @@ public class GameMap {
 //		tileToItemMap = new HashMap<Tile,Item>();
 	}
 	
+	public GameMap(int state){
+		MapBuilder m= new MapBuilder();
+		map = m.generateStructuredMapv3();
+		this.setWidthHeight();
+		entityToLocationMap=new HashMap<Entity,Location>();
+		genDefaultKeys();
+	}
+	
 	//Key Bind Functions
 	/**
 	 * Generates the default key set.
