@@ -11,34 +11,35 @@ import model.slots.Equipment;
 import controller.SaveLoadController;
 
 public class Game {
-	GameMap map;
+	World world;
 	Avatar avatar;
 	
 	public Game() {
-		map = new GameMap();
+		world = new World();
 		avatar = new Avatar(new Terminator());
 	}
 	
-	public Game(GameMap map, Avatar avatar) {
-		this.map = map;
+	public Game(World world, Avatar avatar) {
+		this.world = world;
 		this.avatar = avatar;
 	}
 	
 	public Game(Occupation occupation, String name) {
-		map = new GameMap();
+		world = new World();
 		//build the Avatar equipment
 		
 		avatar = new Avatar(occupation);
 		avatar.setName(name);
-		map.setAvatar(avatar);
+		world.setAvatar(avatar);
 	}
-	
-	public GameMap getMap() {
-		return map;
+	public World getWorld() {
+		return world;
 	}
-	public void setMap(GameMap map) {
-		this.map = map;
+
+	public void setWorld(World world) {
+		this.world = world;
 	}
+
 	public Avatar getAvatar() {
 		return avatar;
 	}
@@ -53,6 +54,6 @@ public class Game {
 	public void load() throws IOException {
 		Game game = SaveLoadController.load();
 		this.setAvatar(game.getAvatar());
-		this.setMap(game.getMap());
+		//this.setMap(game.getMap());
 	}
 }
