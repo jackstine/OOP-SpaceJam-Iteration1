@@ -38,4 +38,9 @@ public class HunterWeaponSlot extends WeaponSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return this.equippedItem.toString();
+		else return "Weapon:HunterWeapon:-1";
+	}
 }

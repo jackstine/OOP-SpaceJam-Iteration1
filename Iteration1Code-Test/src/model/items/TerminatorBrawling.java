@@ -16,4 +16,8 @@ public class TerminatorBrawling extends TerminatorWeapon{
 	public void accept(EquipableVisitor visitor) {
 		visitor.accept(this);
 	}
+	
+	public String toString() {
+		return "Weapon:TerminatorBrawling:" + this.getBonus();
+	}
 }

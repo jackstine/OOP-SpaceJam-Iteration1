@@ -66,4 +66,9 @@ public class TwoHandedWeaponSlot extends BufferSlot{
 	public boolean has() {
 		return weaponSlot.hasTHW();
 	}
+	
+	public String toString() {
+		if (this.has()) return "Weapon:TwoHandedWeapon:" + this.getBonus();
+		else return "Weapon:TwoHandedWeapon:-1";
+	}
 }

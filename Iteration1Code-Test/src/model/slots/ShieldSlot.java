@@ -49,4 +49,9 @@ public class ShieldSlot extends BufferSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return "Armor:Shield:" + this.getBonus();
+		else return "Armor:Shield:-1";
+	}
 }

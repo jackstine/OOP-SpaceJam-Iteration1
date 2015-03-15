@@ -12,8 +12,6 @@ import java.util.Map;
  
 
 
-
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 

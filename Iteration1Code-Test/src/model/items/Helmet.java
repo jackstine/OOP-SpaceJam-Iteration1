@@ -27,4 +27,8 @@ public class Helmet extends Equipable{
 	public void accept(EquipableVisitor visitor){
 		visitor.accept(this);
 	}
+	
+	public String toString() {
+		return "Helmet:" + this.getBonus();
+	}
 }

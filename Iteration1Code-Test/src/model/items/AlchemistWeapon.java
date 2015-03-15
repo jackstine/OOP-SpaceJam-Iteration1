@@ -22,4 +22,8 @@ public class AlchemistWeapon extends Weapon{
 	public void accept(EquipableVisitor visitor){
 		visitor.accept(this);
 	}
+	
+	public String toString() {
+		return "Weapon:AlchemistWeapon:" + this.getBonus();
+	}
 }

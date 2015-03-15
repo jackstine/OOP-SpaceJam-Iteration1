@@ -20,4 +20,8 @@ public class TerminatorTwoHandedWeapon extends TerminatorWeapon{
 		visitor.accept(this);
 	}
 	
+	public String toString() {
+		return "Weapon:TerminatorTwoHandedWeapon:" + this.getBonus();
+	}
+	
 }

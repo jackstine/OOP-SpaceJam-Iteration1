@@ -58,4 +58,9 @@ public class TerminatorWeaponSlot extends WeaponSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return this.equippedItem.toString();
+		else return "Weapon:TerminatorWeapon:-1";
+	}
 }

@@ -1,9 +1,8 @@
 package controller;
 
-import model.Entity;
+import model.Entity.*;
 import model.GameMap;
 import model.Location;
-import model.NPC;
 import model.Point;
 import model.Tile;
 

@@ -42,7 +42,13 @@ public abstract class Occupation{
 		this.skills = skillFactory.initializeSkills();
 	}
 	
+	public void createEmptyNecessities() {
+		EquipmentBuilder eb = new EquipmentBuilder();
+		this.equipment = createEmptyEquipment(eb);
+	}
+	
 	public abstract Equipment createEquipment(EquipmentBuilder eb);
+	public abstract Equipment createEmptyEquipment(EquipmentBuilder eb);
 	public abstract WeaponSlot makeWeaponSlot();
 	
 	protected abstract StatFactory getStatFactory(Equipment equipment);

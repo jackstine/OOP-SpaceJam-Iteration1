@@ -23,6 +23,10 @@ public class Terminator extends Occupation{
 		return eb.buildBeginerEquipment(this);
 	}
 	
+	public Equipment createEmptyEquipment(EquipmentBuilder eb) {
+		return eb.emptyEquipment(this);
+	}
+	
 	public void attack(Entity entity) {
 		// create "CombatSimulator" class that will carry
 		// out the fighting between Avatar and Entity		

@@ -49,5 +49,17 @@ public class EquipmentBuilder {
 		equipment.equip(Weapons.LONGBOW.weapon);
 		equipment.equip(Weapons.PHILOSOPHERS_STONE.weapon);
 	}
+
+	public Equipment emptyEquipment(Terminator terminator) {
+		return new Equipment(new TerminatorWeaponSlot());
+	}
+	
+	public Equipment emptyEquipment(Alchemist alchemist) {
+		return new Equipment(new AlchemistWeaponSlot());
+	}
+	
+	public Equipment emptyEquipment(Hunter hunter) {
+		return new Equipment(new HunterWeaponSlot());
+	}
 	
 }

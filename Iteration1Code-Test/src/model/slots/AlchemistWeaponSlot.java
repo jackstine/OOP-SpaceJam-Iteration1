@@ -38,4 +38,9 @@ public class AlchemistWeaponSlot extends WeaponSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return this.equippedItem.toString();
+		else return "Weapon:AlchemistWeapon:-1";
+	}
 }

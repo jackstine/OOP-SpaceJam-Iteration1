@@ -38,4 +38,9 @@ public class GlovesSlot extends BufferSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return "Armor:Gloves:" + this.getBonus();
+		else return "Armor:Gloves:-1";
+	}
 }

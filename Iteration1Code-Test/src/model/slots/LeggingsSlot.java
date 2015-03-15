@@ -38,4 +38,9 @@ public class LeggingsSlot extends BufferSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return "Armor:Leggings:" + this.getBonus();
+		else return "Armor:Leggings:-1";
+	}
 }

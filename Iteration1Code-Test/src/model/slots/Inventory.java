@@ -12,6 +12,13 @@ public class Inventory extends SlotContainer{
     public Inventory(){
         setItems();
     }
+    
+    public Inventory(String empty) {
+    	this.items = new InventorySlot[ROW][COL];
+    	for (int i = 0; i < ROW; i++) {
+    		for (int j = 0; j < COL; j++) this.items[i][j] = new InventorySlot();
+    	}
+    }
 
     private void setItems(){
         this.items = new InventorySlot[ROW][COL];

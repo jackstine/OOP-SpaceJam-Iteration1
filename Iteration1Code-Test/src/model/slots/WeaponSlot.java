@@ -16,9 +16,4 @@ public abstract class WeaponSlot extends BufferSlot{
 	}
 	
 	public abstract boolean equip(Weapon weapon);
-    
-	public String toString(){
-		if (this.has()) return "Item:Weapon:" + this.bonus;
-		else return "Item:Weapon:-1";
-	}
 }

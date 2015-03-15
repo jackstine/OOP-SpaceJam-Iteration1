@@ -5,13 +5,7 @@ import java.io.*;
 
 import model.*;
 import model.Entity.Avatar;
-import model.items.Armor;
-import model.items.DamagingOneShotItem;
-import model.items.GiantRock;
-import model.items.HealingOneShotItem;
-import model.items.Item;
-import model.items.TerminatorSingleWeapon;
-import model.items.TerminatorWeapon;
+import model.items.*;
 import model.items.TreasureChest;
 import model.occupation.Alchemist;
 import model.occupation.Hunter;
@@ -39,6 +33,7 @@ public class SaveLoadController {
 	
 	public static Game load() throws IOException {
 		System.out.println("LOADING GAME");
+		
 		Scanner in = new Scanner(new File("savedGame.txt"));
 		Game game = new Game();
 		
@@ -68,34 +63,75 @@ public class SaveLoadController {
 		avatar.setName(name);
 		avatar.setDirection(direction);
 		
-		Inventory inventory = new Inventory();
+		Inventory inventory = new Inventory("oop");
 		String[] avatarInventory = in.next().split(":");
 		int inventorySize = Integer.parseInt(avatarInventory[1]);
-		
-		//System.out.println("inventorySize = " + inventorySize);
 		
 		// query through all items in the inventory
 		for (int j = 0; j < inventorySize; j++) {
 			String[] inventoryItem = in.next().split(":");
 			String itemType = inventoryItem[1];
-			int itemValue = Integer.parseInt(inventoryItem[2]);
-			//System.out.printf("num = %d, itemType = %s, itemValue = %d\n", j+1, itemType, itemValue);
-			// fix this later too
+			String weaponType = (itemType.equals("Armor") ? "" : inventoryItem[2]);
+			String stringValue = inventoryItem[inventoryItem.length - 1];
+			
+			int itemValue = Integer.parseInt(stringValue);
+			
 			if (itemType.equals("Armor")) inventory.findAndEquip(new Armor(itemValue));
-			if (itemType.equals("Weapon")) inventory.findAndEquip(new TerminatorSingleWeapon(itemValue));
+			else if (itemType.equals("Weapon")) inventory.findAndEquip(getWeapon(weaponType, itemValue));
 		}
 		
-		avatar.getOccupation().createNecessities();
+		avatar.getOccupation().createEmptyNecessities();
 		
+		// reading the equipment
 		Equipment equipment = avatar.getOccupation().getEquipment();
 		
+		// reading the equipped chest
 		String[] equipmentArmor = in.next().split(":");
 		int armorValue = Integer.parseInt(equipmentArmor[2]);
 		if (armorValue != -1) equipment.equip(new Armor(armorValue));
 		
+		// reading the equipped weapon
 		String[] equipmentWeapon = in.next().split(":");
+		String weaponType = equipmentWeapon[1];
 		int weaponValue = Integer.parseInt(equipmentWeapon[2]);
-		if (weaponValue != -1) equipment.equip(new TerminatorSingleWeapon(weaponValue));
+		if (weaponValue != -1) equipWeapon(equipment, weaponType, weaponValue);
+		
+		// reading the equipped boots 
+		String[] equipmentBoots = in.next().split(":");
+		int bootsValue = Integer.parseInt(equipmentBoots[2]);
+		if (bootsValue != -1) equipment.equip(new Boots(bootsValue));
+		
+		// reading the equipped gloves
+		String[] equipmentGloves = in.next().split(":");
+		int glovesValue = Integer.parseInt(equipmentGloves[2]);
+		if (glovesValue != -1) equipment.equip(new Gloves(glovesValue));
+		
+		// reading the equipped helmet
+		String[] equipmentHelmet = in.next().split(":");
+		int helmetValue = Integer.parseInt(equipmentHelmet[2]);
+		if (helmetValue != -1) equipment.equip(new Helmet(helmetValue));
+		
+		// reading the equipped leggins
+		String[] equipmentLeggings = in.next().split(":");
+		int leggingsValue = Integer.parseInt(equipmentLeggings[2]);
+		if (leggingsValue != -1) equipment.equip(new Leggings(leggingsValue));
+		
+		// reading the equipped quiver
+		String[] equipmentQuiver = in.next().split(":");
+		int quiverValue = Integer.parseInt(equipmentQuiver[2]);
+		if (quiverValue != -1) equipment.equip(new Projectile(quiverValue));
+			
+		// reading the equipped shield
+		String[] equipmentShield = in.next().split(":");
+		int shieldValue = Integer.parseInt(equipmentShield[2]);
+		if (shieldValue != -1) equipment.equals(new Shield(shieldValue));
+		
+		// reading the equipped two-handed weapon
+		String[] equipmentTHW = in.next().split(":");
+		if (!equipmentTHW.equals("null")) {
+			int THWValue = Integer.parseInt(equipmentTHW[2]);
+			if (THWValue != -1) equipment.equip(new TerminatorTwoHandedWeapon(THWValue));
+		}		
 		
 		String[] avatarLevels = in.next().split(":");
 		int levels = Integer.parseInt(avatarLevels[1]);
@@ -154,17 +190,27 @@ public class SaveLoadController {
 						String actionDone = tileItem[2];
 						if (actionDone.equals("true")) ((TreasureChest) item).setActionDone();
 					} else {
-						double value = Double.parseDouble(tileItem[2]);
-						if (itemType.equals("DamagingOneShotItem")) item = new DamagingOneShotItem(value);
-						if (itemType.equals("HealingOneShotItem")) item = new HealingOneShotItem(value);
-						if (itemType.equals("Armor")) item = new Armor((int)value);
-						if (itemType.equals("Weapon")) item = new TerminatorSingleWeapon((int)value);
+						if (itemType.equals("Weapon")) {
+							String weaponName = tileItem[2];
+							int weaponBonus = Integer.parseInt(tileItem[3]);
+							item = getWeapon(weaponName, weaponBonus);
+						} else if (itemType.equals("Armor")) {
+							String armorName = tileItem[2];
+							int armorBonus = Integer.parseInt(tileItem[3]);
+							item = getArmor(armorName, armorBonus);
+						} else {
+							double value = Double.parseDouble(tileItem[2]);
+							if (itemType.equals("DamagingOneShotItem")) item = new DamagingOneShotItem(value);
+							if (itemType.equals("HealingOneShotItem")) item = new HealingOneShotItem(value);
+						}
 					}
 				}
 				tile.setItem(item);	
 				map.setTile(tile);
 			}
 		}
+		
+		
 		// error here
 		int entities = Integer.parseInt(in.next());
 		for (int k = 0; k < entities; k++) {
@@ -187,5 +233,31 @@ public class SaveLoadController {
 		game.setMap(map);
 		System.out.println("GAME LOADED\n---------------");
 		return game;
+	}
+	
+	public static TakeableItem getWeapon(String name, int value) {
+		if (name.equals("AlchemistWeapon")) return new AlchemistWeapon(value);
+		else if (name.equals("HunterWeapon")) return new HunterWeapon(value);
+		else if (name.equals("TerminatorBrawling")) return new TerminatorBrawling(value);
+		else if (name.equals("TerminatorSingleWeapon")) return new TerminatorSingleWeapon(value);
+		else return new TerminatorTwoHandedWeapon(value);
+	}
+	
+	public static void equipWeapon(Equipment equipment, String name, int value) {
+		if (name.equals("AlchemistWeapon")) equipment.equip(new AlchemistWeapon(value));
+		else if (name.equals("HunterWeapon")) equipment.equip(new HunterWeapon(value));
+		else if (name.equals("TerminatorBrawling")) equipment.equip(new TerminatorBrawling(value));
+		else if (name.equals("TerminatorSingleWeapon")) equipment.equip(new TerminatorSingleWeapon(value));
+		else equipment.equip(new TerminatorTwoHandedWeapon(value));
+	}
+	
+	public static TakeableItem getArmor(String name, int value) {
+		if (name.equals("Chest")) return new Armor(value);
+		else if (name.equals("Boots")) return new Boots(value);
+		else if (name.equals("Gloves")) return new Gloves(value);
+		else if (name.equals("Helmet")) return new Helmet(value);
+		else if (name.equals("Leggings")) return new Leggings(value);
+		else if (name.equals("Quiver")) return new Projectile(value);
+		else return new Shield(value);
 	}
 }

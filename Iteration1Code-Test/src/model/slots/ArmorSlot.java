@@ -47,7 +47,7 @@ public class ArmorSlot extends BufferSlot{
 	}
 	
 	public String toString(){
-		if (this.has()) return "Item:Armor:" + this.bonus;
-		else return "Item:Armor:-1";
+		if (this.has()) return "Armor:Chest:" + this.bonus;
+		else return "Armor:Chest:-1";
 	}
 }

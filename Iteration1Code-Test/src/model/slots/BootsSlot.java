@@ -37,4 +37,9 @@ public class BootsSlot extends BufferSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return "Armor:Boots:" + this.getBonus();
+		else return "Armor:Boots:-1";
+	}
 }

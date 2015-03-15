@@ -26,4 +26,8 @@ public class Shield extends Equipable{
 	public void accept(EquipableVisitor visitor){
 		visitor.accept(this);
 	}
+	
+	public String toString() {
+		return "Shield:" + this.getBonus();
+	}
 }

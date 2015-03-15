@@ -28,7 +28,7 @@ public class Armor extends Equipable {
 	}
 	
 	public String toString(){
-		return "Item:Armor:" + this.armor;
+		return "Item:Armor:Chest:" + this.armor;
 	}
 
 	public String getItemName() {

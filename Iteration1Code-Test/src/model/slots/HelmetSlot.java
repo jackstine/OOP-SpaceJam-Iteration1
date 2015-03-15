@@ -37,4 +37,9 @@ public class HelmetSlot extends BufferSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return "Armor:Helmet:" + this.getBonus();
+		else return "Armor:Helmet:-1";
+	}
 }

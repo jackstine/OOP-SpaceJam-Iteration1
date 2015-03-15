@@ -26,7 +26,7 @@ public class MapView extends JComponent{
                 this.map = map;
                 this.entityView = entityView;
                 this.avatar = avatar;
-                this.map.updateEntityLocation(this.avatar, new Location(3,3));
+                //this.map.updateEntityLocation(this.avatar, new Location(3,3));
                 this.setTileComponents();
 //              this.setLayout(new GridLayout(7,7));
 //              this.setComponents();

@@ -38,4 +38,9 @@ public class QuiverSlot extends BufferSlot{
 	public TakeableItem get() {
 		return this.equippedItem;
 	}
+	
+	public String toString() {
+		if (this.has()) return "Armor:Quiver:" + this.getBonus();
+		else return "Armor:Quiver:-1";
+	}
 }
