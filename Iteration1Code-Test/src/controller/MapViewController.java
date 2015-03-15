@@ -15,13 +15,15 @@ import model.Location;
 import model.NpcEffectHandler;
 import model.Point;
 import model.QuestHandler;
+import model.World;
 import model.Entity.Avatar;
 import utilities.Directions;
 
 
 //public class MapViewController extends JFrame{
 public class MapViewController{
-	private GameMap map ;
+	private GameMap currMap ;
+	private World world;
 	private Avatar avatar;
 	private boolean active;
 	private GameController game;
@@ -32,15 +34,16 @@ public class MapViewController{
 	private boolean keyReleased;
 	private Map<String, Integer> keySet;
 	
-	public MapViewController(GameMap map,Avatar avatar,JFrame frame){ //added GameMap here
+	public MapViewController(World world,Avatar avatar,JFrame frame){ //added GameMap here
 		frame.addKeyListener(new CharacterKeyboardController(avatar));
 		this.avatar = avatar;
-		this.map= map;
-		this.keySet = map.getKeySet();
+		this.world=world;
+		
+		this.keySet = world.getKeySet();
 		effectHandler= new EffectHandler(avatar);
 		questHandler = new QuestHandler(avatar);
 		npcEffectHandler = new NpcEffectHandler(avatar);
-		map.setAvatar(avatar);
+		world.setAvatar(avatar);
 		//image=avatar.loadImage();
 		//TODO fir good reasons
 		this.active = false;
@@ -49,7 +52,6 @@ public class MapViewController{
 	
 	public MapViewController(){ //Don't use this, but don't delete it either
 		this.avatar = null;
-		this.map= null;
 		this.active = false;
 		this.keyReleased = true;
 	}
@@ -94,17 +96,20 @@ public class MapViewController{
             }
 		}
 		
+		public GameMap getCurrMap(){
+			return world.getMap(avatar.getCurrMap());
+		}
 		
 		public Location getAvatarLocation(){
-			return map.getLocation(avatar);
+			return getCurrMap().getLocation(avatar);
 		}
 		
 		public void move(Point point, int direction){
 			avatar.setDirection(direction);
-			if(map.getTile(temp.addLocation(point)).isPassable()){
+			if(getCurrMap().getTile(temp.addLocation(point)).isPassable()){
 				avatarLocation.add(point);
-				questHandler.apply(map.getTile(avatarLocation));
-				effectHandler.apply(map.getTile(avatarLocation));
+				questHandler.apply(getCurrMap().getTile(avatarLocation));
+				effectHandler.apply(getCurrMap().getTile(avatarLocation));
 				
 				
 			}
@@ -113,9 +118,9 @@ public class MapViewController{
 				System.out.println(temp + "   this is the temp location");
 				System.out.println(avatarLocation + "   this is the avtar");
 				//System.out.println(map.getTile(temp).getNPC());
-				npcEffectHandler.apply(map.getTile(temp).getNPC(),avatarLocation);
+				npcEffectHandler.apply(getCurrMap().getTile(temp).getNPC(),avatarLocation);
 			}
-			System.out.println(map.getTile(avatarLocation).getTerrain());	
+			System.out.println(getCurrMap().getTile(avatarLocation).getTerrain());	
 		}
 		
 		private Location avatarLocation;
@@ -171,8 +176,8 @@ public class MapViewController{
 			else if(key==KeyEvent.VK_C){
 				game.spawnStats();
 			}
-			map.updateEntityLocation(avatar, avatarLocation);
-			System.out.println(map.getLocation(avatar).toString());
+			getCurrMap().updateEntityLocation(avatar, avatarLocation);
+			System.out.println(getCurrMap().getLocation(avatar).toString());
 		}
 
 		@Override
