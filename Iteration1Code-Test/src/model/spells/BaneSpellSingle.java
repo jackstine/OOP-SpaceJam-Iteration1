@@ -9,8 +9,12 @@ public abstract class BaneSpellSingle extends SpellSingleAffect implements BaneS
 		super(entity);
 	}
 	
-	public void apply(Entity entityToAffect){
-		this.applyDamage(entityToAffect);
+	public final void apply(Entity entityToAffect){
+		if (this.able()){
+			EntityEffectHandler.consumeMana(this.entity, this.getManaRequirement());
+			this.applyDamage(entityToAffect);
+		}
+		//ELSE DO NOTHING
 	}
 	
 	public void applyDamage(Entity entity){

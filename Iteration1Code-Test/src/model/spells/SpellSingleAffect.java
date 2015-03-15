@@ -12,7 +12,9 @@ public abstract class SpellSingleAffect implements Spellable{
 	public abstract int getManaRequirement();
 	
 	public boolean able(){
-		if ( this.getEntity().getMP() >= this.getManaRequirement())return true;
+		if ( this.getEntity().getMP() >= this.getManaRequirement()){
+			return true;
+		}
 		else return false;
 	}
 	

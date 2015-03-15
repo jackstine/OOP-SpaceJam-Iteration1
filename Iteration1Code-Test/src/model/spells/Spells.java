@@ -21,10 +21,15 @@ public class Spells {
 	
 	private void setSpells(){
 		spells[0][0] = new FireSpell(this.entity);
+		spells[0][1] = new EarthSpell(this.entity);
+		spells[0][2] = new PlasmaRay(this.entity);
 	}
 	
 	public void setSelectedSpell(Point spell){
 		this.selectedSpell = spell;
+	}
+	public Spellable getSelectedSpell(){
+		return this.spells[this.selectedSpell.getY()][this.selectedSpell.getX()];
 	}
 
 }

@@ -6,10 +6,13 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+
 import javax.swing.JComponent;
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
+import model.Entity.Avatar;
 
 @SuppressWarnings("serial")
 public class SpellView extends JComponent{
@@ -51,8 +54,10 @@ public class SpellView extends JComponent{
 	private Point spellSelected;
 	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
 	private final int SELECTED_SPELL_X_OFFSET = 5;
+	private Avatar avatar;
 
-	public SpellView(){
+	public SpellView(Avatar avatar){
+		this.avatar = avatar;
 		this.setFocusable(true);
 		this.setBackground(Color.BLACK);
 		this.setVisible(true);
@@ -91,8 +96,10 @@ public class SpellView extends JComponent{
 			int pointX = e.getX() / Scaling.SPELL_SPACE_X;
 			int pointY = (e.getY() - Scaling.SPELL_OFFSET_Y) / Scaling.SPELL_SPACE_Y;
 			boolean spellSelectedInRange = pointY < Scaling.SPELLS_HEIGHT_NUM;
-			if (spellSelectedInRange)
+			if (spellSelectedInRange){
 				spellSelected = new Point(pointX,pointY);
+				avatar.setSelectedSpell(spellSelected);
+			}
 			repaint();
 		}
 

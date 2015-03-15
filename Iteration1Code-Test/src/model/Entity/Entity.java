@@ -12,6 +12,7 @@ import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
 import model.slots.InventoryEquipment;
+import model.spells.Spellable;
 import model.spells.Spells;
 import model.stats.EntityStats;
 import model.stats.Stat;
@@ -123,6 +124,9 @@ public abstract class Entity {
 	}
 	public void setSelectedSpell(Point spell){
 		this.spells.setSelectedSpell(spell);
+	}
+	public Spellable getSelectedSpell(){
+		return this.spells.getSelectedSpell();
 	}
 	
 	
