@@ -8,7 +8,8 @@ import utilities.Scaling;
 
 public class SpikeTrap extends Trap {
 	private int damage=10;
-	private boolean visible=false; //need to implement level stuff.
+	private int detectionLevelRequired=5;
+	private boolean isVisible=false; //need to implement level stuff.
 	
 	
 	public int getDamage(){
@@ -17,6 +18,19 @@ public class SpikeTrap extends Trap {
 	public void apply(Entity e) {
 		TrapDamageApplication.apply(e, this);
 	}
+	
+	public int detectionRequired(){
+		return detectionLevelRequired;
+	}
+	
+	public boolean isVisible(){
+		return isVisible;
+	}
+	
+	public void setVisible(boolean isVisible){
+		this.isVisible=isVisible;
+	}
+	
 	public BufferedImage getImage(){
 		return TrapImageProxy.getTrapImage(this);
 	}

@@ -53,7 +53,7 @@ public class TileView extends JComponent{
                 imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,decalImage);
         }
         if(tile.getTrap()!=null){
-        	trapImage= tile.getTrap().getImage(); //need to add a proxy for this
+        	trapImage= tile.getTrap().getImage(); 
         	imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
             imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,trapImage);
         }
