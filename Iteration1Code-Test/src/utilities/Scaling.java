@@ -125,6 +125,8 @@ public final class Scaling {
 	
 	
 	/**********************SPELLS***************************/
+	public static final int SPELLS_WIDTH_NUM = 3;
+	public static final int SPELLS_HEIGHT_NUM = 3;
 	public static final int SPELL_OFFSET_X = 10;
 	public static final int SPELL_OFFSET_Y = 5;
 	public static final int SPELL_SPACE_X = 10 + Scaling.SPELL_WIDTH;

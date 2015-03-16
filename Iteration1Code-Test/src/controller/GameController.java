@@ -16,9 +16,11 @@ import javax.swing.Timer;
 import controller.mouse.MapMouseHandler;
 import model.Game;
 import model.GameMap;
+import model.InfluenceSet;
 import model.Location;
- 
 import model.Point;
+import model.RadialInfluenceSet;
+import model.World;
 import model.Entity.Avatar;
 import model.Skill;
 import model.occupation.Occupation;
@@ -32,7 +34,8 @@ import view.SystemMenuView;
 import view.View;
  
 public class GameController {
-        
+	
+		private World world;
 		private GameMap map;
 		private Avatar avatar;
 		private boolean reset = false;
@@ -45,19 +48,20 @@ public class GameController {
         private ControlConfigView controlConfig;
         
         
+        
         public GameController(){
         	//This is needed. DON'T DELETE. We should probably make some temp game here.
         }
         
         public GameController(Game game){
-        	this.map = game.getMap();
+        	this.world = game.getWorld();
         	this.avatar = game.getAvatar();
+        	this.map = world.getMap(avatar.getCurrMap());
         	combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
         	statsView = new StatisticsView(avatar, new RetGameStatsButton());
         	systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton(), new OpenControlConfig());
         	leveledView = new LevelUpView(genSkillListeners(avatar.getOccupation()));
-        	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), map.getKeySet());
-        	
+        	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), world.getKeySet());
         	combinedGameView.addExternalViews(systemMenu);
         	combinedGameView.addExternalViews(statsView);
         	combinedGameView.addExternalViews(leveledView);
@@ -150,7 +154,7 @@ public class GameController {
         
         public class ResetControlsListener implements ActionListener {//ControlConfig
             public void actionPerformed(ActionEvent e) {
-            	map.genDefaultKeys();
+            	world.genDefaultKeys();
             	controlConfig.reset();
             }
         }
@@ -177,7 +181,7 @@ public class GameController {
                
                 public void actionPerformed(ActionEvent e) {
                     try {
-						new Game(map, avatar).save();
+						new Game(world, avatar).save();
 						reset = false;
 					} catch (IOException e1) {
 						reset = false;
@@ -222,6 +226,7 @@ public class GameController {
             
             public void actionPerformed(ActionEvent e) {
     			spawnLevelUp();
+    			//applyEffect(new RadialInfluenceSet(map, map.getEntityTile(avatar),0,0));
             }
         }
         
@@ -289,8 +294,10 @@ public class GameController {
     
     public class StatCheck implements ActionListener {
     	private int yourLvl;
+    	private String currMap;
     	public StatCheck(){
     		yourLvl = avatar.getStatValue("Level"); 
+    		currMap=avatar.getCurrMap();
     	}
 		public void actionPerformed(ActionEvent e) {
 			if(avatar.getStatValue("Lives") <= 0){
@@ -306,9 +313,18 @@ public class GameController {
 				avatar.setLevels(avatar.getLevels()+avatar.getStatValue("Level")-yourLvl);
 				yourLvl = avatar.getStatValue("Level");
 			}
+			else if(!currMap.equals(avatar.getCurrMap())){
+				currMap=avatar.getCurrMap();
+				combinedGameView.changeMap(world.getMap(currMap));
+			}
 			statsView.Updatetable(avatar);
 			combinedGameView.updateStatus();
 		}
 	}
+    
+    public void applyEffect(InfluenceSet i) {
+    	i.printInfluenceSet();
+    }
+ 
        
 }

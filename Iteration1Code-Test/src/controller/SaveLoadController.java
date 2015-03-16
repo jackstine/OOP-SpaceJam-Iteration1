@@ -24,7 +24,7 @@ public class SaveLoadController {
 		out.println(avatar);
 		
 		// write everything about the map
-		GameMap map = game.getMap();
+		GameMap map = new GameMap();
 		out.println(map);		
 		
 		out.close();
@@ -227,10 +227,10 @@ public class SaveLoadController {
 			String line = in.next();
 			String dir = line.substring(0, line.indexOf(":"));
 			int key = Integer.parseInt(line.substring(line.indexOf(":") + 1));
-			map.editKeySet(dir, key);
+			//map.editKeySet(dir, key);
 		}
 		
-		game.setMap(map);
+		//game.setMap(map);
 		System.out.println("GAME LOADED\n---------------");
 		return game;
 	}

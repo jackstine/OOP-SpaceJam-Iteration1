@@ -9,7 +9,7 @@ public interface Spellable {
 	
 	
 	//maybe it needs to be boolean?
-	public void affect(Entity entityToAffect);
+	public void apply(Entity entityToAffect);
 	
-	public boolean able(Entity entity);	
+	public boolean able();	
 }

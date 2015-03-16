@@ -58,8 +58,8 @@ public class EntityStats {
 	public int getArmorRating(){return this.getSV("ArmorRating");}
 	
 	public void subHP(int change){this.subSV("HP", change);}
-	public void subMana(int change){this.subSV("MP", change);}
+	public void subMP(int change){this.subSV("MP", change);}
 	
 	public void addHP(int change){this.addSV("HP", change);}
-	public void addMana(int change){this.addSV("MP", change);}
+	public void addMP(int change){this.addSV("MP", change);}
 }

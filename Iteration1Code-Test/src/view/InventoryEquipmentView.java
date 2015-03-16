@@ -35,7 +35,7 @@ public class InventoryEquipmentView extends JPanel {
 		inventory.addMouseListener(new InventoryMouseListener());
 		this.equipment = new EquipmentView(avatar.getEquipment());
 		equipment.addMouseListener(new EquipmentMouseListener());
-		this.spell = new SpellView();
+		this.spell = new SpellView(this.avatar);
 		this.title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
 //		add(this.title);
 //		add(this.spell);

@@ -28,6 +28,15 @@ public class Tile {
 			
 	}
 	
+	public Tile (Tile tile) {
+		this.terrain = tile.getTerrain();
+		this.location = tile.getLocation();
+		this.item = tile.getItem();
+		this.npc = tile.getNPC();
+		this.decal = tile.getDecal();
+		this.trap = tile.getTrap();
+	}
+	
 	/*
 	public Tile getTile(){  //not sure if this is needed. Leaving it here for later
 		return this;

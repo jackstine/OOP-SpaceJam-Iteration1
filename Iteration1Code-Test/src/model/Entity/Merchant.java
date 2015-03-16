@@ -2,7 +2,7 @@ package model.Entity;
 
 import model.AreaEffect;
 
-public class Merchant extends NPC{
+public class Merchant extends NPC implements Conversable {
 
 	
 	public Merchant() {
@@ -18,6 +18,12 @@ public class Merchant extends NPC{
 	public AreaEffect getAreaEffect() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getDialogue() {
+		// TODO Auto-generated method stub
+		return "Merchant: Hey there! Have a look at my wares.";
 	}
 
 }

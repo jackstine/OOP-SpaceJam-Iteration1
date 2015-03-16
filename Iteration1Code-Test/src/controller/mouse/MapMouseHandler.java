@@ -8,6 +8,7 @@ import model.Point;
 import model.Entity.Avatar;
 import model.Entity.Entity;
 import model.items.TakeableItem;
+import model.spells.Spellable;
 import model.stats.EntityStats;
 import utilities.Scaling;
 import view.MapView;
@@ -54,15 +55,23 @@ public class MapMouseHandler {
     	System.out.println("Using spell");
     	boolean NPCExist = map.getTile(tileLocation).getNPC() != null;
     	if (NPCExist){
+    		Spellable spellChosenToAttack = this.avatar.getSelectedSpell();
+    		Entity entity = map.getTile(tileLocation).getNPC();
+    		System.out.println("this spell is able "+spellChosenToAttack.able());
+    		if (spellChosenToAttack.able()){
+    			spellChosenToAttack.apply(entity);
+    		}
     		boolean avatarHasMana = (avatarStats.getMP() >= 10);
     		System.out.println("Using MP " + avatarStats.getMP() + "   getting Mana   " + avatarStats.getMana());
-    		if (avatarHasMana){
-    			avatarStats.subMana(10);
-				Entity entity = map.getTile(tileLocation).getNPC();
-				entity.setStatValue("HP",(int)(entity.getStatValue("HP") - 10));	// this here applies the damage to the NPC
-				System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
-				System.out.println(entity);											// prints the NPC
-    		}
+    		System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
+			System.out.println(entity);		
+//    		if (avatarHasMana){
+//    			avatarStats.subMP(10);
+//				Entity entity = map.getTile(tileLocation).getNPC();
+//				entity.setStatValue("HP",(int)(entity.getStatValue("HP") - 10));	// this here applies the damage to the NPC
+//				System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
+//				System.out.println(entity);											// prints the NPC
+//    		}
     	}
     }
 

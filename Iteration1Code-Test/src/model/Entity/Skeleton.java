@@ -4,7 +4,7 @@ import java.util.Random;
 
 import model.AreaEffect;
 
-public class Skeleton extends NPC {
+public class Skeleton extends NPC implements Conversable {
 	protected AreaEffect effect;
 	public Skeleton(AreaEffect effect) {
 		super("Skeleton");
@@ -24,6 +24,12 @@ public class Skeleton extends NPC {
 		Random rand=new Random();
 		x=rand.nextInt();
 		return x;
+	}
+
+	@Override
+	public String getDialogue() {
+		// TODO Auto-generated method stub
+		return "Skeleton: I'M A SCARY SKELETON RAAWWRRR";
 	}
 
 }

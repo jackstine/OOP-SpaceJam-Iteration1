@@ -17,6 +17,7 @@ public class Avatar extends Entity {
 	private boolean writing = false;
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
+	private String currMap="Main";
 	//deprecated all entities need a equipment now
 //	private Equipment equipment = new Equipment();
 	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
@@ -105,6 +106,14 @@ public class Avatar extends Entity {
 	public AreaEffect getAreaEffect() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public String getCurrMap() {
+		return currMap;
+	}
+
+	public void setCurrMap(String currMap) {
+		this.currMap = currMap;
 	}
 	
 //	public boolean equipSlot(Equipable equipItem){

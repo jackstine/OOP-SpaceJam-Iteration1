@@ -12,6 +12,8 @@ import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
 import model.slots.InventoryEquipment;
+import model.spells.Spellable;
+import model.spells.Spells;
 import model.stats.EntityStats;
 import model.stats.Stat;
 
@@ -21,7 +23,11 @@ public abstract class Entity {
 	protected Occupation occupation;
 	protected String name;
 	protected int direction;
+	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
+	
+	//TODO change the spells so that they are only associated with Alchemists
+	protected Spells spells = new Spells(this);
 	
 	protected BufferedImage image;	//TODO Delete this line
 	
@@ -103,6 +109,27 @@ public abstract class Entity {
 		return this.stats.getStatValue(key);
 	}
 	
+	public int getMP(){return this.stats.getMP();}
+	
+	public void subHP(int change){this.stats.subHP(change);}
+	public void subMP(int change){this.stats.subMP(change);}
+	
+	public void addHP(int change){this.stats.addHP(change);}
+	public void addMP(int change){this.stats.addMP(change);}
+	
+	
+	/******************** SPELLS ******************************/
+	public Spells getSpells(){
+		return this.spells;
+	}
+	public void setSelectedSpell(Point spell){
+		this.spells.setSelectedSpell(spell);
+	}
+	public Spellable getSelectedSpell(){
+		return this.spells.getSelectedSpell();
+	}
+	
+	
 	public void incSkillValue(String key) {
 		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
 	}
@@ -145,4 +172,12 @@ public abstract class Entity {
 		//occupation.useAbility();
 	}
 	// -------------------------------------------
+
+	public String getCurrMap() {
+		return currMap;
+	}
+
+	public void setCurrMap(String currMap) {
+		this.currMap = currMap;
+	}
 }

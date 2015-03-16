@@ -31,6 +31,11 @@ public class MapView extends JComponent{
 //              this.setLayout(new GridLayout(7,7));
 //              this.setComponents();
         }
+        
+        public void setMap(GameMap map){
+        	this.map=map;
+        	this.setTileComponents();
+        }
        
         void setTileComponents(){
                
