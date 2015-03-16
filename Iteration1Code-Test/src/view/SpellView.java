@@ -97,7 +97,19 @@ public class SpellView extends JComponent{
 			int pointY = (e.getY() - Scaling.SPELL_OFFSET_Y) / Scaling.SPELL_SPACE_Y;
 			boolean spellSelectedInRange = pointY < Scaling.SPELLS_HEIGHT_NUM;
 			if (spellSelectedInRange){
-				spellSelected = new Point(pointX,pointY);
+				boolean spellSelectedExist = spellSelected != null;
+				Point spellToBeSelected = new Point(pointX,pointY);
+				if (spellSelectedExist){
+					boolean spellSelectedIsEqualTo = spellSelected.equals(spellToBeSelected);
+					System.out.println(spellSelectedIsEqualTo+"  spell selected is equal to     "+ spellToBeSelected + "    "+ spellSelected);
+					if (spellSelectedIsEqualTo){
+						spellSelected = null;
+					}else{
+						spellSelected = spellToBeSelected;
+					}
+				}else{
+					spellSelected = spellToBeSelected;
+				}
 				avatar.setSelectedSpell(spellSelected);
 			}
 			repaint();
