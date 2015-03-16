@@ -53,9 +53,9 @@ public class MapMouseHandler {
     
     public void useSpell(Location tileLocation){
     	System.out.println("Using spell");
-    	boolean NPCExist = map.getTile(tileLocation).getNPC() != null;
-    	if (NPCExist){
-    		Spellable spellChosenToAttack = this.avatar.getSelectedSpell();
+    	Spellable spellChosenToAttack = this.avatar.getSelectedSpell();
+    	boolean NPCExistAndSpellChosen = (map.getTile(tileLocation).getNPC() != null) && (spellChosenToAttack != null);
+    	if (NPCExistAndSpellChosen){
     		Entity entity = map.getTile(tileLocation).getNPC();
     		System.out.println("this spell is able "+spellChosenToAttack.able());
     		if (spellChosenToAttack.able()){

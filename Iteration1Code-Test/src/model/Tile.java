@@ -100,6 +100,9 @@ public class Tile {
 		this.trap=trap;
 	}
 	
+	public void dropEntity(){
+		this.npc = null;
+	}	
 	/*
 	public AreaEffect getAreaEffect(){
 		return areaEffect;

@@ -50,6 +50,10 @@ public class GameMap {
 		return map[x][y];
 	}
 	
+	public Location getEntityLocation(Entity entity){
+		return this.entityToLocationMap.get(entity);
+	}
+	
 	public Point getMapLength(){
 		return new Point(map.length,map[0].length);
 	}
@@ -73,11 +77,22 @@ public class GameMap {
 		return map;
 	}
 
-	public void updateEntityLocation(Entity e, Location loc){
-		System.out.println(e.getName() + " - (" + loc.getX() + ", " + loc.getY() + ")");
-		entityToLocationMap.put(e,loc);
-//		map[loc.getX()][loc.getY()].setNPC(e);
-//		map[loc.getX()][loc.getY()].setNPC(0);
+	public void updateEntityLocation(Entity e, Location locationToUpdate){
+		//TODO this method is very bug prone, it needs to be changed and split to other methods
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println(e.getName() + " - (" + locationToUpdate.getX() + ", " + locationToUpdate.getY() + ")");
+		//FROM
+		Location locationOfEntity = this.getEntityLocation(e);
+		//Move, DROP
+		if (locationOfEntity != null){
+			System.out.println("This is the location of the entity" + locationOfEntity);
+			this.getTile(locationOfEntity).dropEntity();
+		}
+		//MOVE TO
+		this.getTile(locationToUpdate).setNPC(e);
+		entityToLocationMap.put(e,locationToUpdate);
 	}
 
 //	public void updateItemLocation(Tile t, Item i){

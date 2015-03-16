@@ -11,8 +11,7 @@ public class EntityEffectHandler {
 		entity.addHP(heal);
 	}
 	
-	public static void consumeMana(Entity entity, int mana){
-		entity.subMP(mana);
-	}
+	public static void subMP(Entity entity, int mana){entity.subMP(mana);}
+	public static void addMP(Entity entity,int mana){entity.addMP(mana);}
 
 }

@@ -107,11 +107,9 @@ public class MapViewController{
 		public void move(Point point, int direction){
 			avatar.setDirection(direction);
 			if(getCurrMap().getTile(temp.addLocation(point)).isPassable()){
-				avatarLocation.add(point);
+				getCurrMap().updateEntityLocation(avatar, temp);
 				questHandler.apply(getCurrMap().getTile(avatarLocation));
 				effectHandler.apply(getCurrMap().getTile(avatarLocation));
-				
-				
 			}
 			else{
 //				temp.add(point);
@@ -120,7 +118,7 @@ public class MapViewController{
 				//System.out.println(map.getTile(temp).getNPC());
 				npcEffectHandler.apply(getCurrMap().getTile(temp).getNPC(),avatarLocation);
 			}
-			System.out.println(getCurrMap().getTile(avatarLocation).getTerrain());	
+			System.out.println(getCurrMap().getTile(avatarLocation).getTerrain());
 		}
 		
 		private Location avatarLocation;
@@ -176,7 +174,6 @@ public class MapViewController{
 			else if(key==KeyEvent.VK_C){
 				game.spawnStats();
 			}
-			getCurrMap().updateEntityLocation(avatar, avatarLocation);
 			System.out.println(getCurrMap().getLocation(avatar).toString());
 		}
 

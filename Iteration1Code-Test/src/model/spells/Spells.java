@@ -23,13 +23,17 @@ public class Spells {
 		spells[0][0] = new FireSpell(this.entity);
 		spells[0][1] = new EarthSpell(this.entity);
 		spells[0][2] = new PlasmaRay(this.entity);
+		spells[2][0] = new GloryHeal(this.entity);
+		spells[2][1] = new ManaBuff(this.entity);
 	}
 	
 	public void setSelectedSpell(Point spell){
 		this.selectedSpell = spell;
 	}
 	public Spellable getSelectedSpell(){
-		return this.spells[this.selectedSpell.getY()][this.selectedSpell.getX()];
+		if (this.selectedSpell != null)
+			return this.spells[this.selectedSpell.getY()][this.selectedSpell.getX()];
+		else return null;
 	}
 
 }

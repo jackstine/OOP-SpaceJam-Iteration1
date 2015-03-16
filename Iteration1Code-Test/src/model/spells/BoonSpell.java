@@ -2,13 +2,9 @@ package model.spells;
 
 import model.Entity.Entity;
 
-public abstract class BoonSpell implements Spellable{
+public interface BoonSpell{
 
-	public void appply(Entity entityToAffect) {
-		
-	}
+	public void applyBoon(Entity entityToAffect);
 	
-	public boolean able(Entity entity) {
-		return false;
-	}
+	public int getBoon();
 }

@@ -11,7 +11,7 @@ public abstract class BaneSpellSingle extends SpellSingleAffect implements BaneS
 	
 	public final void apply(Entity entityToAffect){
 		if (this.able()){
-			EntityEffectHandler.consumeMana(this.entity, this.getManaRequirement());
+			EntityEffectHandler.subMP(this.entity, this.getManaRequirement());
 			this.applyDamage(entityToAffect);
 		}
 		//ELSE DO NOTHING
