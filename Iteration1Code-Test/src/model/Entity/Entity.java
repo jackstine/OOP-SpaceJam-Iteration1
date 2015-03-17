@@ -15,7 +15,6 @@ import model.slots.InventoryEquipment;
 import model.spells.Spellable;
 import model.spells.Spells;
 import model.stats.EntityStats;
-import model.stats.Stat;
 
 public abstract class Entity {
 	protected EntityStats stats; 

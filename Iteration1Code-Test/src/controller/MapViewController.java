@@ -28,7 +28,7 @@ public class MapViewController{
 	private Map<String, Integer> keySet;
 	
 	public MapViewController(World world,Avatar avatar,JFrame frame){ //added GameMap here
-		frame.addKeyListener(new CharacterKeyboardController(avatar));
+		frame.addKeyListener(new CharacterKeyboardController(avatar,world));
 		this.avatar = avatar;
 		this.world=world;
 		
@@ -58,7 +58,7 @@ public class MapViewController{
 		
 		private MovementController movement;
 		
-		public CharacterKeyboardController(Avatar avatar){
+		public CharacterKeyboardController(Avatar avatar, World world){
 			this.movement = new MovementController(avatar, world);
 			
 			if(avatar != null){

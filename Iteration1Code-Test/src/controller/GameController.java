@@ -259,7 +259,6 @@ public class GameController {
     }
     
     public class BoardMouseListener implements MouseListener{
-        // all these classes need to be defined in the MapView
     	private MapMouseHandler handler;
     	
     	public BoardMouseListener(){
@@ -267,6 +266,8 @@ public class GameController {
     	}
            
         public void mouseClicked(MouseEvent e) {
+        	// thing here is we would like to separate pickup items and using a spell
+        	// when clicking
         	Location tileLocation = this.handler.getTileLocation(e);
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
