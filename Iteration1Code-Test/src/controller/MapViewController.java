@@ -104,34 +104,30 @@ public class MapViewController{
 			return getCurrMap().getLocation(avatar);
 		}
 		
-		public void move(Point point, int direction){
+		public void move(Point step, int direction){
+			Location avatarLocation = this.getAvatarLocation();
+			Location pointToMove = new Location(this.getAvatarLocation());
+			pointToMove.addLocation(step);
 			avatar.setDirection(direction);
-			if(getCurrMap().getTile(temp.addLocation(point)).isPassable()){
-				getCurrMap().updateEntityLocation(avatar, temp);
-				questHandler.apply(getCurrMap().getTile(avatarLocation));
-				effectHandler.apply(getCurrMap().getTile(avatarLocation));
+			if(this.getCurrMap().isPassable(pointToMove)){
+				getCurrMap().updateEntityLocation(avatar, pointToMove);
+				questHandler.apply(this.getCurrMap().getTile(avatarLocation));
+				effectHandler.apply(this.getCurrMap().getTile(avatarLocation));
 			}
 			else{
 //				temp.add(point);
-				System.out.println(temp + "   this is the temp location");
-				System.out.println(avatarLocation + "   this is the avtar");
+//				System.out.println(temp + "   this is the temp location");
+//				System.out.println(avatarLocation + "   this is the avtar");
 				//System.out.println(map.getTile(temp).getNPC());
-				npcEffectHandler.apply(getCurrMap().getTile(temp).getNPC(),avatarLocation);
+				npcEffectHandler.apply(this.getCurrMap().getTileEntity(pointToMove),avatarLocation);
 			}
-			System.out.println(getCurrMap().getTile(avatarLocation).getTerrain());
+			System.out.println(this.getCurrMap().getTile(avatarLocation).getTerrain());
 		}
 		
-		private Location avatarLocation;
-		private Location temp;
-		
-		
-		@Override
 		public void keyPressed(KeyEvent e) {
 			if(keyReleased == false) return;
 			keyReleased = false;
 			//timer.start();
-			avatarLocation = this.getAvatarLocation();
-			temp= new Location(avatarLocation.getX(),avatarLocation.getY());
 			
 			int key = e.getKeyCode();
 			//System.out.println(e.getKeyCode()); used for debugging

@@ -6,6 +6,12 @@ public class Location extends Point{
 	public Location(int x,int y){
 		super(x,y);
 	}
+	
+	public Location(Point point){
+		super(point);
+	}
+	
+	
 	public void add(int x,int y){
 		this.x += x;
 		this.y += y;

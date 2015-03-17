@@ -37,10 +37,14 @@ public class GameMap {
 		this.width = map[0].length * TILE_SCALE;
 	}
 	
-	public Tile getTile(Location location){
+	public Tile getTile(Point location){
 		int x=location.getX();
 		int y=location.getY();
 		return map[x][y];
+	}
+	
+	public Entity getTileEntity(Point point){
+		return this.getTile(point).getNPC();
 	}
 
 	public Tile getEntityTile(Entity entity){
@@ -75,6 +79,10 @@ public class GameMap {
 
 	public Tile[][] tileSet(){    //returns two d array of the map tileset
 		return map;
+	}
+	
+	public boolean isPassable(Point pointOfTile){
+		return this.getTile(pointOfTile).isPassable();
 	}
 
 	public void updateEntityLocation(Entity e, Location locationToUpdate){

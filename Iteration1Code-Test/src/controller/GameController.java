@@ -18,17 +18,13 @@ import model.Game;
 import model.GameMap;
 import model.InfluenceSet;
 import model.Location;
-import model.Point;
-import model.RadialInfluenceSet;
 import model.World;
 import model.Entity.Avatar;
 import model.Skill;
 import model.occupation.Occupation;
-import utilities.Scaling;
 import view.CombinedGameView;
 import view.ControlConfigView;
 import view.LevelUpView;
-import view.MapView;
 import view.StatisticsView;
 import view.SystemMenuView;
 import view.View;
@@ -269,20 +265,9 @@ public class GameController {
     	public BoardMouseListener(){
     		this.handler = new MapMouseHandler(map,avatar);
     	}
-    	
-        // Point of Reference needs to be added to the tileY and tileX
-        // the point of reference is the point that reflects the change in the display of the map
-        private Location getTileLocation(MouseEvent e){
-        	Point point = map.getLocation(avatar);
-            int tileY = e.getY()/Scaling.TILE_HEIGHT;
-            int tileX = e.getX()/Scaling.TILE_WIDTH;
-            int xOff = point.getX() + (tileX - MapView.CHARACTER_OFFSET);
-            int yOff = point.getY() + (tileY - MapView.CHARACTER_OFFSET);
-            return new Location(xOff,yOff);
-        }
            
         public void mouseClicked(MouseEvent e) {
-        	Location tileLocation = this.getTileLocation(e);
+        	Location tileLocation = this.handler.getTileLocation(e);
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
             if(this.handler.getEntity(tileLocation) != null){

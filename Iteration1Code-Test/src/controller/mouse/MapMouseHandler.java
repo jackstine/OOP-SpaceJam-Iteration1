@@ -26,8 +26,9 @@ public class MapMouseHandler {
 	
     // all these classes need to be defined in the MapView
     
-    
-    private Location getTileLocation(MouseEvent e){
+    // Point of Reference needs to be added to the tileY and tileX
+    // the point of reference is the point that reflects the change in the display of the map
+    public Location getTileLocation(MouseEvent e){
     	Point point = map.getLocation(avatar);
         int tileY = e.getY()/Scaling.TILE_HEIGHT;
         int tileX = e.getX()/Scaling.TILE_WIDTH;
@@ -52,26 +53,17 @@ public class MapMouseHandler {
     }
     
     public void useSpell(Location tileLocation){
-    	System.out.println("Using spell");
+//    	System.out.println("Using spell");
     	Spellable spellChosenToAttack = this.avatar.getSelectedSpell();
     	boolean NPCExistAndSpellChosen = (map.getTile(tileLocation).getNPC() != null) && (spellChosenToAttack != null);
     	if (NPCExistAndSpellChosen){
     		Entity entity = map.getTile(tileLocation).getNPC();
-    		System.out.println("this spell is able "+spellChosenToAttack.able());
+//    		System.out.println("this spell is able "+spellChosenToAttack.able());
     		if (spellChosenToAttack.able()){
     			spellChosenToAttack.apply(entity);
     		}
-    		boolean avatarHasMana = (avatarStats.getMP() >= 10);
-    		System.out.println("Using MP " + avatarStats.getMP() + "   getting Mana   " + avatarStats.getMana());
-    		System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
-			System.out.println(entity);		
-//    		if (avatarHasMana){
-//    			avatarStats.subMP(10);
-//				Entity entity = map.getTile(tileLocation).getNPC();
-//				entity.setStatValue("HP",(int)(entity.getStatValue("HP") - 10));	// this here applies the damage to the NPC
 //				System.out.println(entity.getStatValue("HP"));						// prints the HP value after the damage
 //				System.out.println(entity);											// prints the NPC
-//    		}
     	}
     }
     
