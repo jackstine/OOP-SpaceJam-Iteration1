@@ -54,6 +54,8 @@ public class ItemQuestVisitor implements ItemVisitor{
 
 	
 	public void accept(HealingOneShotItem h) {
+		h.action(avatar); //add effect after getting clicked /add this
+		tile.setItem(null);
 	}
 
 	

@@ -1,6 +1,5 @@
 package controller;
 
-import model.EffectHandler;
 import model.GameMap;
 import model.Location;
 import model.NpcEffectHandler;
@@ -23,14 +22,12 @@ public class MovementController {
 	private Avatar avatar;
 	private World world;
 	
-	private EffectHandler effectHandler;
 	private QuestHandler questHandler;
 	private NpcEffectHandler npcEffectHandler;
 	
 	public MovementController(Avatar avatar,World world){
 		this.avatar = avatar;
 		this.world = world;
-		this.effectHandler = new EffectHandler(avatar);
 		this.questHandler = new QuestHandler(avatar);
 		this.npcEffectHandler = new NpcEffectHandler(avatar);
 	}
@@ -51,7 +48,6 @@ public class MovementController {
 		if(this.getCurrMap().isPassable(pointToMove)){
 			getCurrMap().updateEntityLocation(avatar, pointToMove);
 			questHandler.apply(this.getCurrMap().getTile(pointToMove));
-			effectHandler.apply(this.getCurrMap().getTile(pointToMove));
 		}
 		else{
 //			temp.add(point);
