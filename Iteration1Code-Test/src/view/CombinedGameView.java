@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
@@ -9,7 +10,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import controller.mouse.MapMouseHandler;
 import model.GameMap;
+import model.Location;
 import model.Entity.Avatar;
 import utilities.Scaling;
 
@@ -32,15 +35,17 @@ public class CombinedGameView extends View {
     private GameView board;
     private InventoryEquipmentView character;
     private StatusView statusView;
+    private Avatar avatar;
    
-    public CombinedGameView(GameMap map, Avatar avatar, MouseListener mouse, ActionListener lvlup, ActionListener sysbtn, ActionListener statbtn){
+    public CombinedGameView(GameMap map, Avatar avatar, ActionListener lvlup, ActionListener sysbtn, ActionListener statbtn){
+    		this.avatar = avatar;
     		
             board = new GameView(map,avatar, map.getLocation(avatar));
             character = new InventoryEquipmentView(avatar);
             statusView = new StatusView(avatar);
             
             // add the mouse listener to the board
-            board.addMouseListener(mouse);
+            board.addMouseListener(new BoardMouseListener(avatar, map));
             //Add to the canvas
             buttons.add(systemButton);
             buttons.add(statButton);
@@ -99,5 +104,29 @@ public class CombinedGameView extends View {
     
     public void changeMap(GameMap map){
     	board.changeMap(map);
+    }
+    
+    
+    public class BoardMouseListener implements MouseListener{
+    	private MapMouseHandler handler;
+    	
+    	public BoardMouseListener(Avatar avatar, GameMap map){
+    		this.handler = new MapMouseHandler(map,avatar);
+    	}
+           
+        public void mouseClicked(MouseEvent e) {
+        	// thing here is we would like to separate pickup items and using a spell
+        	// when clicking
+        	Location tileLocation = this.handler.getTileLocation(e);
+            this.handler.pickupItem(tileLocation);
+            this.handler.useSpell(tileLocation);
+            if(this.handler.getEntity(tileLocation) != null){
+            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString());
+            }
+        }
+        public void mouseEntered(MouseEvent e) {}
+        public void mouseExited(MouseEvent e) { }
+        public void mousePressed(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {}
     }
 }

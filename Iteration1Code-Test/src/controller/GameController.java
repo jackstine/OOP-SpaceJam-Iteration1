@@ -2,8 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +11,9 @@ import java.util.Random;
 import javax.swing.JInternalFrame;
 import javax.swing.Timer;
 
-import controller.mouse.MapMouseHandler;
 import model.Game;
 import model.GameMap;
 import model.InfluenceSet;
-import model.Location;
 import model.World;
 import model.Entity.Avatar;
 import model.Skill;
@@ -53,7 +49,7 @@ public class GameController {
         	this.world = game.getWorld();
         	this.avatar = game.getAvatar();
         	this.map = world.getMap(avatar.getCurrMap());
-        	combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
+        	combinedGameView = new CombinedGameView(map, avatar, new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
         	statsView = new StatisticsView(avatar, new RetGameStatsButton());
         	systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton(), new OpenControlConfig());
         	leveledView = new LevelUpView(genSkillListeners(avatar.getOccupation()));
@@ -256,29 +252,6 @@ public class GameController {
                 combinedGameView.setNext("Game");
                 combinedGameView.setRedraw(true);
             }
-    }
-    
-    public class BoardMouseListener implements MouseListener{
-    	private MapMouseHandler handler;
-    	
-    	public BoardMouseListener(){
-    		this.handler = new MapMouseHandler(map,avatar);
-    	}
-           
-        public void mouseClicked(MouseEvent e) {
-        	// thing here is we would like to separate pickup items and using a spell
-        	// when clicking
-        	Location tileLocation = this.handler.getTileLocation(e);
-            this.handler.pickupItem(tileLocation);
-            this.handler.useSpell(tileLocation);
-            if(this.handler.getEntity(tileLocation) != null){
-            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString());
-            }
-        }
-        public void mouseEntered(MouseEvent e) {}
-        public void mouseExited(MouseEvent e) { }
-        public void mousePressed(MouseEvent e) {}
-        public void mouseReleased(MouseEvent e) {}
     }
     
     public class StatCheck implements ActionListener {
