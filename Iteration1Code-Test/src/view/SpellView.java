@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
+import controller.mouse.SpellMouseHandler;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
@@ -55,6 +56,7 @@ public class SpellView extends JComponent{
 	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
 	private final int SELECTED_SPELL_X_OFFSET = 5;
 	private Avatar avatar;
+	private SpellMouseHandler handler;
 
 	public SpellView(Avatar avatar){
 		this.avatar = avatar;
@@ -62,10 +64,11 @@ public class SpellView extends JComponent{
 		this.setBackground(Color.BLACK);
 		this.setVisible(true);
 		this.addMouseListener(new SpellListener());
+		this.handler = new SpellMouseHandler(this,this.avatar);
 	}
 	
 	private void paintSelectedSpell(Graphics g){
-		if (spellSelected != null){
+		if (handler.getSelected() != null){
 			g.setColor(Color.YELLOW);
 			int pointX = (spellSelected.getX() * Scaling.SPELL_SPACE_X) + SELECTED_SPELL_X_OFFSET;
 			int pointY = (spellSelected.getY() * Scaling.SPELL_SPACE_Y);
@@ -93,26 +96,7 @@ public class SpellView extends JComponent{
 	public class SpellListener implements MouseListener{
 		
 		public void mouseClicked(MouseEvent e){
-			int pointX = e.getX() / Scaling.SPELL_SPACE_X;
-			int pointY = (e.getY() - Scaling.SPELL_OFFSET_Y) / Scaling.SPELL_SPACE_Y;
-			boolean spellSelectedInRange = pointY < Scaling.SPELLS_HEIGHT_NUM;
-			if (spellSelectedInRange){
-				boolean spellSelectedExist = spellSelected != null;
-				Point spellToBeSelected = new Point(pointX,pointY);
-				if (spellSelectedExist){
-					boolean spellSelectedIsEqualTo = spellSelected.equals(spellToBeSelected);
-					System.out.println(spellSelectedIsEqualTo+"  spell selected is equal to     "+ spellToBeSelected + "    "+ spellSelected);
-					if (spellSelectedIsEqualTo){
-						spellSelected = null;
-					}else{
-						spellSelected = spellToBeSelected;
-					}
-				}else{
-					spellSelected = spellToBeSelected;
-				}
-				avatar.setSelectedSpell(spellSelected);
-			}
-			repaint();
+			handler.selectSpell(e);
 		}
 
 		public void mouseEntered(MouseEvent e) {

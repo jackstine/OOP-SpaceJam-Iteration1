@@ -11,7 +11,6 @@ import model.Point;
 import model.slots.Inventory;
 
 public class InventoryView extends JComponent{
-	// AHHAHAHAHAHAHA   CONNASCENCE    =)
 	private static final int INVENTORY_HEIGHT = Inventory.ROW * Scaling.SLOT_VIEW_HEIGHT;
 	private static final int INVENTORY_WIDTH = Inventory.COL * Scaling.SLOT_VIEW_WIDTH;
 	

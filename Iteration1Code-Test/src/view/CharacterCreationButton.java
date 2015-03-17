@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class CharacterCreationButton extends JButton {
 	public CharacterCreationButton() {
 		super();

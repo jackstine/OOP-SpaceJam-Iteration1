@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 
+@SuppressWarnings("serial")
 public class PortraitView extends JPanel{
 	
 	//the height of every portrait image is 168px

@@ -15,6 +15,7 @@ Contains an instance of an Entity to be rendered as part of a Tile
 
 */
 
+@SuppressWarnings("serial")
 public class EntityView extends JComponent {
 	private Avatar avatar;
 	public static final int MIDDLEX=GameView.STARTING_X*Scaling.TILE_WIDTH;

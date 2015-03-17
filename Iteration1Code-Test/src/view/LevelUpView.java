@@ -14,6 +14,7 @@ import model.Skill;
 import controller.GameController.LevelStat;
 import utilities.Scaling;
 
+@SuppressWarnings("serial")
 public class LevelUpView extends JInternalFrame {
 	private JPanel levelUpMenu = new JPanel();
 	private int dimensions[] = {Scaling.INTERNAL_X,Scaling.INTERNAL_Y,Scaling.INTERNAL_WIDTH,Scaling.INTERNAL_HEIGHT};

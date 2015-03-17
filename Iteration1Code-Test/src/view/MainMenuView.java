@@ -5,10 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,16 +24,16 @@ public class MainMenuView extends View{
 	// private JLabel background;
 	private JLabel title;
 	
-	private BufferedImage backgroundImage;
+//	private BufferedImage backgroundImage;
 	
 	public MainMenuView(ActionListener newAction, ActionListener loadAction, ActionListener quitAction){
 		super();
 		//Image scaledImage = originalImage.getScaledInstance(jPanel.getWidth(),jPanel.getHeight(),Image.SCALE_SMOOTH);
 		
-		backgroundImage = new BufferedImage(1, 1, 1);
-		try {
-			backgroundImage = ImageIO.read(new File("src/res/img/main_menu_bg.gif"));
-		} catch (Exception e) {System.out.println("Didn't find.");}
+//		backgroundImage = new BufferedImage(1, 1, 1);
+//		try {
+//			backgroundImage = ImageIO.read(new File("src/res/img/main_menu_bg.gif"));
+//		} catch (Exception e) {System.out.println("Didn't find.");}
 		
 		FontHandler fh = new FontHandler();
 		titleFont = fh.ApocalypseNowFont();

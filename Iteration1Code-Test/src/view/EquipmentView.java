@@ -10,11 +10,11 @@ import javax.swing.JComponent;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
-import model.slots.ArmorSlot;
 import model.slots.BufferSlot;
 import model.slots.Equipment;
 import model.visitor.ItemImageVisitor;
 
+@SuppressWarnings("serial")
 public class EquipmentView extends JComponent{
 	private static final Point POINT_OF_WEAPON = new Point(Scaling.EQUIPMENT_WEAPON_X,Scaling.EQUIPMENT_WEAPON_Y);
 	private static final Point POINT_OF_ARMOR = new Point(Scaling.EQUIPMENT_ARMOR_X,Scaling.EQUIPMENT_ARMOR_Y);
@@ -64,9 +64,6 @@ public class EquipmentView extends JComponent{
 	/**************************************QUIVER POINT***********************************************************/
 	public static final Point QUIVER_POINT = new Point((Scaling.EQUIPMENT_QUIVER_X/ Scaling.EQUIPMENT_SLOT_WIDTH)
 			,(Scaling.EQUIPMENT_QUIVER_Y/ Scaling.EQUIPMENT_SLOT_WIDTH));
-	
-	// DELETE THIS ONCE WE HAVE ALL THE SLOTS IN EQUIPMENT  boots, Shield,......
-	private ArmorSlot uselessSlot = new ArmorSlot();
 	
 	
 	//To add a slot you will need to change the Euqipment, and EquipmentSlot, and the Equipable Item.

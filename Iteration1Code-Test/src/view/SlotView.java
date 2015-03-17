@@ -32,14 +32,6 @@ public class SlotView extends JPanel implements Observer{
 	private InventorySlot slot;
 	private BufferedImage itemImage;
 	
-	//TODO not sure if Slot should be referenced inside the SlotView, or just the point reference to it
-	
-	public SlotView(InventorySlot slot){
-		this.slot = slot;
-		this.setImages();
-		this.point= new Point(0,0);
-	}
-	
 	public SlotView(InventorySlot slot,Point pointOfSlot){
 		this.slot = slot;
 		this.setImages();
@@ -62,7 +54,7 @@ public class SlotView extends JPanel implements Observer{
 	}
 	
 	public void paintComponent(Graphics g){
-		// the point is refractored with the Width and Height, 
+		// the point is refactored with the Width and Height, 
 		//  they fill in their respective Grid
 		//  each point is a fill for a Grid
 		int heightLocation = this.point.getX() * SLOTIMAGE_HEIGHT;
@@ -70,7 +62,8 @@ public class SlotView extends JPanel implements Observer{
 		g.drawImage(this.slotImage, widthLocation , heightLocation , null);
 	}
 	
-	//TODO make private method
+	//Dave said not to query the model in the view
+	//so prop make a controller to set the image
 	public void resetImage(){
 		if (this.slot.has()){
 			this.setImages();
@@ -89,7 +82,7 @@ public class SlotView extends JPanel implements Observer{
        }
 	}
 	
-	@Override	//just resets the image according to the inventorySlot
+	//just resets the image according to the inventorySlot
 	public void update(Observable arg0, Object arg1) {
 		this.resetImage();
 	}

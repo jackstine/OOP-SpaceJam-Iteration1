@@ -13,6 +13,7 @@ import model.GameMap;
 import model.Location;
 import model.Entity.Avatar;
 
+@SuppressWarnings("serial")
 public class GameView extends JPanel {
 	GameMap map;
 	Avatar avatar;
