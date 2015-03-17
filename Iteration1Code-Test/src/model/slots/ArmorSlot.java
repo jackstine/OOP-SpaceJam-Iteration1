@@ -50,4 +50,11 @@ public class ArmorSlot extends BufferSlot{
 		if (this.has()) return "Armor:Chest:" + this.bonus;
 		else return "Armor:Chest:-1";
 	}
+	
+    // This is used to send info to update the Observers upon equip
+    protected final void send(){
+        this.setBonus();
+        this.setChanged();  		//notify the Observers of change
+        this.notifyObservers();
+    }
 }

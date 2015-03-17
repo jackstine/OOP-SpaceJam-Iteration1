@@ -71,4 +71,11 @@ public class TwoHandedWeaponSlot extends BufferSlot{
 		if (this.has()) return "Weapon:TwoHandedWeapon:" + this.getBonus();
 		else return "Weapon:TwoHandedWeapon:-1";
 	}
+	
+    // This is used to send info to update the Observers upon equip
+    protected final void send(){
+        this.setBonus();
+        this.setChanged();  		//notify the Observers of change
+        this.notifyObservers();
+    }
 }

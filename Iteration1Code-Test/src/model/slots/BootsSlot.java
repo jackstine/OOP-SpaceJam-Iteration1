@@ -42,4 +42,11 @@ public class BootsSlot extends BufferSlot{
 		if (this.has()) return "Armor:Boots:" + this.getBonus();
 		else return "Armor:Boots:-1";
 	}
+	
+    // This is used to send info to update the Observers upon equip
+    protected final void send(){
+        this.setBonus();
+        this.setChanged();  		//notify the Observers of change
+        this.notifyObservers();
+    }
 }
