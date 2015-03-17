@@ -86,21 +86,17 @@ public class GameMap {
 	}
 
 	public void updateEntityLocation(Entity e, Location locationToUpdate){
-		//TODO this method is very bug prone, it needs to be changed and split to other methods
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println(e.getName() + " - (" + locationToUpdate.getX() + ", " + locationToUpdate.getY() + ")");
-		//FROM
-		Location locationOfEntity = this.getEntityLocation(e);
-		//Move, DROP
-		if (locationOfEntity != null){
-			System.out.println("This is the location of the entity" + locationOfEntity);
-			this.getTile(locationOfEntity).dropEntity();
+		//keeps the invariant with the if condition
+		if (this.isPassable(locationToUpdate)){
+			Location locationOfEntity = this.getEntityLocation(e);	
+			if (locationOfEntity != null){
+				// I dont like this method at all, cause it is basically saying
+				// get rid of this entity, even if it is not the entity I want
+				this.getTile(locationOfEntity).dropEntity();
+			}
+			this.getTile(locationToUpdate).setNPC(e);
+			entityToLocationMap.put(e,locationToUpdate);
 		}
-		//MOVE TO
-		this.getTile(locationToUpdate).setNPC(e);
-		entityToLocationMap.put(e,locationToUpdate);
 	}
 
 //	public void updateItemLocation(Tile t, Item i){

@@ -9,12 +9,8 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import model.EffectHandler;
 import model.GameMap;
-import model.Location;
-import model.NpcEffectHandler;
 import model.Point;
-import model.QuestHandler;
 import model.World;
 import model.Entity.Avatar;
 import utilities.Directions;
@@ -27,9 +23,6 @@ public class MapViewController{
 	private Avatar avatar;
 	private boolean active;
 	private GameController game;
-	private EffectHandler effectHandler;
-	private QuestHandler questHandler;
-	private NpcEffectHandler npcEffectHandler;
 	//public BufferedImage image;
 	private boolean keyReleased;
 	private Map<String, Integer> keySet;
@@ -40,9 +33,6 @@ public class MapViewController{
 		this.world=world;
 		
 		this.keySet = world.getKeySet();
-		effectHandler= new EffectHandler(avatar);
-		questHandler = new QuestHandler(avatar);
-		npcEffectHandler = new NpcEffectHandler(avatar);
 		world.setAvatar(avatar);
 		//image=avatar.loadImage();
 		//TODO fir good reasons
@@ -61,20 +51,15 @@ public class MapViewController{
 	}
 	
 	public class CharacterKeyboardController implements KeyListener{
-		private final Point NORTH = new Point(0,-1);
-		private final Point SOUTH = new Point(0,1);
-		private final Point SOUTHWEST = new Point(-1,1);
-		private final Point NORTHWEST = new Point(-1,-1);
-		private final Point WEST = new Point(-1,0);
-		private final Point NORTHEAST = new Point(1,-1);
-		private final Point SOUTHEAST = new Point(1,1);
-		private final Point EAST = new Point(1,0);
 		
 		private final int baseDelay = 5000;
 		private final int developmentDelay = 0;
 		private Timer timer;
 		
+		private MovementController movement;
+		
 		public CharacterKeyboardController(Avatar avatar){
+			this.movement = new MovementController(avatar, world);
 			
 			if(avatar != null){
 				// TODO change the timer to baseDelay when issuing product
@@ -96,34 +81,6 @@ public class MapViewController{
             }
 		}
 		
-		public GameMap getCurrMap(){
-			return world.getMap(avatar.getCurrMap());
-		}
-		
-		public Location getAvatarLocation(){
-			return getCurrMap().getLocation(avatar);
-		}
-		
-		public void move(Point step, int direction){
-			Location avatarLocation = this.getAvatarLocation();
-			Location pointToMove = new Location(this.getAvatarLocation());
-			pointToMove.addLocation(step);
-			avatar.setDirection(direction);
-			if(this.getCurrMap().isPassable(pointToMove)){
-				getCurrMap().updateEntityLocation(avatar, pointToMove);
-				questHandler.apply(this.getCurrMap().getTile(avatarLocation));
-				effectHandler.apply(this.getCurrMap().getTile(avatarLocation));
-			}
-			else{
-//				temp.add(point);
-//				System.out.println(temp + "   this is the temp location");
-//				System.out.println(avatarLocation + "   this is the avtar");
-				//System.out.println(map.getTile(temp).getNPC());
-				npcEffectHandler.apply(this.getCurrMap().getTileEntity(pointToMove),avatarLocation);
-			}
-			System.out.println(this.getCurrMap().getTile(avatarLocation).getTerrain());
-		}
-		
 		public void keyPressed(KeyEvent e) {
 			if(keyReleased == false) return;
 			keyReleased = false;
@@ -135,34 +92,34 @@ public class MapViewController{
 				return;
 			}
 			if(key == KeyEvent.VK_NUMPAD1  ||key == keySet.get("SOUTHWEST")){
-				this.move(SOUTHWEST, Directions.SOUTHWEST);
+				this.movement.move(MovementController.SOUTHWEST, Directions.SOUTHWEST);
 			}
 			else if(key == KeyEvent.VK_NUMPAD2  || key==keySet.get("SOUTH")){
-				this.move(SOUTH, Directions.SOUTH);
+				this.movement.move(MovementController.SOUTH, Directions.SOUTH);
 			}
 			else if(key==KeyEvent.VK_NUMPAD3 || key==keySet.get("SOUTHEAST")){
-				this.move(SOUTHEAST, Directions.SOUTHEAST);
+				this.movement.move(MovementController.SOUTHEAST, Directions.SOUTHEAST);
 			}
 			else if(key==KeyEvent.VK_NUMPAD6 || key==keySet.get("EAST")){
-				this.move(EAST, Directions.EAST);
+				this.movement.move(MovementController.EAST, Directions.EAST);
 			}
 			else if(key==KeyEvent.VK_NUMPAD9 || key==keySet.get("NORTHEAST")){
-				this.move(NORTHEAST, Directions.NORTHEAST);
+				this.movement.move(MovementController.NORTHEAST, Directions.NORTHEAST);
 			}
 			else if(key==KeyEvent.VK_NUMPAD8 || key==keySet.get("NORTH")){
-				this.move(NORTH, Directions.NORTH);
+				this.movement.move(MovementController.NORTH, Directions.NORTH);
 			}
 			else if(key==KeyEvent.VK_NUMPAD7 || key==keySet.get("NORTHWEST")){
-				this.move(NORTHWEST, Directions.NORTHWEST);
+				this.movement.move(MovementController.NORTHWEST, Directions.NORTHWEST);
 			}
 			else if(key==KeyEvent.VK_NUMPAD4 || key==keySet.get("WEST")){
-				this.move(WEST, Directions.WEST);
+				this.movement.move(MovementController.WEST, Directions.WEST);
 			}
 			else if(key==KeyEvent.VK_NUMPAD0 || key==keySet.get("DANCE1")){
-				this.move(new Point(0,0), Directions.DANCE);
+				this.movement.move(new Point(0,0), Directions.DANCE);
 			}
 			else if(key==KeyEvent.VK_NUMPAD5 || key==keySet.get("DANCE2")){
-				this.move(new Point(0,0), Directions.CENTRAL);
+				this.movement.move(new Point(0,0), Directions.CENTRAL);
 			}
 			else if(key==KeyEvent.VK_ESCAPE){
 				game.spawnSystems();
@@ -170,7 +127,6 @@ public class MapViewController{
 			else if(key==KeyEvent.VK_C){
 				game.spawnStats();
 			}
-			System.out.println(getCurrMap().getLocation(avatar).toString());
 		}
 
 		@Override
