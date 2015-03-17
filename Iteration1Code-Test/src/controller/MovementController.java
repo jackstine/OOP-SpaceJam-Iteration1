@@ -50,8 +50,8 @@ public class MovementController {
 		avatar.setDirection(direction);
 		if(this.getCurrMap().isPassable(pointToMove)){
 			getCurrMap().updateEntityLocation(avatar, pointToMove);
-			questHandler.apply(this.getCurrMap().getTile(avatarLocation));
-			effectHandler.apply(this.getCurrMap().getTile(avatarLocation));
+			questHandler.apply(this.getCurrMap().getTile(pointToMove));
+			effectHandler.apply(this.getCurrMap().getTile(pointToMove));
 		}
 		else{
 //			temp.add(point);
