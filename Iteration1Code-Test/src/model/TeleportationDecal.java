@@ -3,10 +3,12 @@ package model;
 import java.awt.image.BufferedImage;
 
 public class TeleportationDecal extends Decal {
+	private String nextMap;
 	
-	public TeleportationDecal(){
+	public TeleportationDecal(String nextMap){
 		super();
-		this.effect= new TeleportationAreaEffect();
+		this.nextMap=nextMap;
+		this.effect= new TeleportationAreaEffect(nextMap);
 		this.decalID = 'O';
 	}
 	

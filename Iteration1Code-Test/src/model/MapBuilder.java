@@ -95,7 +95,7 @@ public class MapBuilder{
 		this.map[7][8].setDecal(new SkullAndCrossbonesDecal(new DeathAreaEffect()));
 		this.map[7][7].setItem(new HealingOneShotItem(.50)); 
 		this.map[4][10].setItem(new TreasureChest());
-		this.map[6][12].setDecal(new TeleportationDecal());
+		this.map[6][12].setDecal(new TeleportationDecal("Cave"));
 		Armor armor = new Armor(3+10);
 		this.map[3][10].setItem(armor);
 		this.items[3][10] = armor;
@@ -142,7 +142,7 @@ public class MapBuilder{
 		this.map[3][10].setItem(armor);
 		this.items[3][10] = armor;
 		
-		
+		this.map[4][8].setDecal(new TeleportationDecal("Main"));
 		GiantRock gr = new GiantRock();
 		this.map[3][8].setItem(gr);
 		this.items[3][8] = gr;
