@@ -121,12 +121,6 @@ public class MapViewController{
 			else if(key==KeyEvent.VK_NUMPAD5 || key==keySet.get("DANCE2")){
 				this.movement.move(new Point(0,0), Directions.CENTRAL);
 			}
-			else if(key==KeyEvent.VK_ESCAPE){
-				game.spawnSystems();
-			}
-			else if(key==KeyEvent.VK_C){
-				game.spawnStats();
-			}
 		}
 
 		@Override

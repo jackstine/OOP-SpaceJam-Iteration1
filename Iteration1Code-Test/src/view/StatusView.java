@@ -21,6 +21,7 @@ import javax.swing.ScrollPaneConstants;
 import utilities.FontHandler;
 
 
+import model.GameLog;
 import model.Entity.Avatar;
 
 /*

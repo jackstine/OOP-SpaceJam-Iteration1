@@ -10,8 +10,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.Skill;
-import controller.GameController.LevelStat;
 import utilities.Scaling;
 
 @SuppressWarnings("serial")

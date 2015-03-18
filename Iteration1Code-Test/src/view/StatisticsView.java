@@ -24,7 +24,7 @@ public class StatisticsView extends JInternalFrame {
 	private int dimensions[] = {Scaling.INTERNAL_X,Scaling.INTERNAL_Y,Scaling.INTERNAL_WIDTH,700};
 	public StatisticsView(Avatar avatar, ActionListener retAction) {
 		ret.setFocusable(false);
-		Updatetable(avatar);
+		updatetable(avatar);
 		JPanel tables = new JPanel();
 		tables.add(primaryStats);
 		tables.add(derivedStats);
@@ -37,7 +37,7 @@ public class StatisticsView extends JInternalFrame {
 		ret.addActionListener(retAction);
 	}
 	
-	public void Updatetable(Avatar avatar){
+	public void updatetable(Avatar avatar){
 		
 		 Map<String, Skill> avSkills = avatar.getOccupation().getSkills();
 		 String skillList = "<html><style type='text/css'>.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:10px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-e3zv{font-weight:bold}</style><table class='tg'>  <tr>    <th class='tg-e3zv'>Skills</th>    <th class='tg-e3zv'>Value</th>  </tr>";

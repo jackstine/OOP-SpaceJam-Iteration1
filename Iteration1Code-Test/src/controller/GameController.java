@@ -15,6 +15,7 @@ import javax.swing.Timer;
 
 import controller.mouse.MapMouseHandler;
 import model.Game;
+import model.GameLog;
 import model.GameMap;
 import model.InfluenceSet;
 import model.Location;
@@ -35,13 +36,14 @@ public class GameController {
 		private GameMap map;
 		private Avatar avatar;
 		private boolean reset = false;
-        private boolean spawned = false;
         
-        private CombinedGameView combinedGameView = null;
-        private JInternalFrame systemMenu;
-        private StatisticsView statsView;
-        private JInternalFrame leveledView;
-        private ControlConfigView controlConfig;
+        private SystemsController systems;
+        private StatsController stats;
+        private LevelUpController levelUp;
+        
+        private CombinedGameView combinedGameView;
+        
+        //private GameLog log = new GameLog();
         
         
         
@@ -54,33 +56,17 @@ public class GameController {
         	this.avatar = game.getAvatar();
         	this.map = world.getMap(avatar.getCurrMap());
         	combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
-        	statsView = new StatisticsView(avatar, new RetGameStatsButton());
-        	systemMenu = new SystemMenuView(new BackButtonListener(),new SaveGameButton(), new RetGameButton(), new OpenControlConfig());
-        	leveledView = new LevelUpView(genSkillListeners(avatar.getOccupation()));
-        	controlConfig = new ControlConfigView(new BackButtonUIListener(), new ChangeControlListener(), new ResetControlsListener(), world.getKeySet());
-        	combinedGameView.addExternalViews(systemMenu);
-        	combinedGameView.addExternalViews(statsView);
-        	combinedGameView.addExternalViews(leveledView);
-        	combinedGameView.addExternalViews(controlConfig);
+        	
+        	systems = new SystemsController(combinedGameView, avatar, world);
+        	stats = new StatsController(combinedGameView, avatar); 
+        	levelUp = new LevelUpController(combinedGameView, avatar);
      		
      		Timer statUpdater = new Timer(100, new StatCheck());
      		statUpdater.start();
-        }
-       
-        
-       
+        }  
+                       
         /********************MISC OPERATIONS**********************/
-        public Map<String, ActionListener> genSkillListeners(Occupation e){
-        	Map<String, ActionListener> skillmap = new HashMap<String, ActionListener>();
-  			int i = 0;
-  			String key;
-        	for(Entry<String, Skill> entry: e.getSkills().entrySet()){
-	   			 key = entry.getKey();
-	   			 skillmap.put(key, new LevelStat(key));
-	   			 if(i == 4) i = 0;
-	   		 }
-        	return skillmap;        	
-        }
+        
         
         public View getView(){
         	return combinedGameView;
@@ -92,171 +78,30 @@ public class GameController {
         
         public void stopReset(){
             reset  = false;
-        }
-       
-//        public Game getGame(){ 
-//                return game;
-//        }
-       
-        public void spawnSystems(){
-            if(!spawned){
-            	systemMenu.setVisible(true);
-                systemMenu.moveToFront();
-                spawned = true;
-            }
-        }
-        
-        public void spawnStats(){
-            if(!spawned){
-            	statsView.setVisible(true);
-                statsView.moveToFront();
-                spawned = true;
-            }
-        }
-        public void spawnLevelUp(){
-            if(!spawned && avatar.getLevels() > 0){
-            	leveledView.setVisible(true);
-                leveledView.moveToFront();
-                spawned = true;
-            }
-        }
-        
-        public void spawnControlConfig(){
-        	controlConfig.setVisible(true);
-            controlConfig.moveToFront();
-        }
-       
-       
-        /********************Action Listeners**********************/
-        
-        
-        
-        public class BackButtonUIListener implements ActionListener {//ControlConfig
-            
-            public void actionPerformed(ActionEvent e) {
-            	spawned = false;
-            	combinedGameView.removeExternalView(controlConfig);
-            	combinedGameView.setNext("Game");
-                combinedGameView.setRedraw(true);
-            	spawnSystems();
-            }
-        }
-        
-        public class ChangeControlListener implements ActionListener {//ControlConfig
-            public void actionPerformed(ActionEvent e) {
-            	controlConfig.BindKey();
-            }
-        }
-        
-        public class ResetControlsListener implements ActionListener {//ControlConfig
-            public void actionPerformed(ActionEvent e) {
-            	world.genDefaultKeys();
-            	controlConfig.reset();
-            }
-        }
-        
-        
-        public class OpenControlConfig implements ActionListener { //Systems
-            public void actionPerformed(ActionEvent e) {
-            	spawnControlConfig();
-            	combinedGameView.removeExternalView(systemMenu);
-            	combinedGameView.setNext("Game");
-                combinedGameView.setRedraw(true);
-            }
-        }
-        
-        public class BackButtonListener implements ActionListener {//Systems
-               
-                public void actionPerformed(ActionEvent e) {
-                    combinedGameView.setNext("Main");
-                    combinedGameView.setRedraw(true);
-                }
-        }
-       
-        public class SaveGameButton implements ActionListener {//Systems
-               
-                public void actionPerformed(ActionEvent e) {
-                    try {
-						new Game(world, avatar).save();
-						reset = false;
-					} catch (IOException e1) {
-						reset = false;
-					}
-                }
-        }
-       
-        public class RetGameButton implements ActionListener {//Systems
-               
-                public void actionPerformed(ActionEvent e) {
-                	combinedGameView.removeExternalView(systemMenu);
-                    spawned = false;
-                    combinedGameView.setNext("Game");
-                    combinedGameView.setRedraw(true);
-                }
-        }
-        
+        }    
+                   
+        /********************Action Listeners**********************/    
+      
         public class SystemsMenuButton implements ActionListener { //Systems
             public void actionPerformed(ActionEvent e) {
-                    spawnSystems();
+            	systems.spawnSystems();
             }
-        }
-       
-       
-        public class RetGameStatsButton implements ActionListener {//Statistics
-               
-                public void actionPerformed(ActionEvent e) {
-                	combinedGameView.removeExternalView(statsView);
-                    spawned = false;
-                    combinedGameView.setNext("Game");
-                    combinedGameView.setRedraw(true);
-                }
-        }
+        }     
        
         public class StatButtonAction implements ActionListener {//Statistics
-                public void actionPerformed(ActionEvent e) {
-                        spawnStats();
-                }
+            public void actionPerformed(ActionEvent e) {
+                stats.spawnStats();
+            }
         }
         
         public class LevelUPButton implements ActionListener {//LevelUP
             
             public void actionPerformed(ActionEvent e) {
-    			spawnLevelUp();
+            	levelUp.spawnLevelUp();
     			//applyEffect(new RadialInfluenceSet(map, map.getEntityTile(avatar),0,0));
             }
         }
         
-        public class LevelStat implements ActionListener { //LevelUP
-        	String stat = "";
-        	String skill = "";
-        	String[] stats = {"Strength", "Intellect", "Agility", "Hardiness","Movement"};
-        	Random rn = new Random();
-        	public LevelStat(String skill){
-        		this.skill = skill;        		
-        	}
-            public void actionPerformed(ActionEvent e) {
-            	//avatar.setStatValue(stat, avatar.getStatValue(stat)+1);
-            	int i = rn.nextInt(5);
-            	String text = "Here are your random stat increases:\n";
-            	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
-            	text += stats[i] + "\n";
-            	i = rn.nextInt(5);
-            	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
-            	text += stats[i]+ "\n";
-            	i = rn.nextInt(5);
-            	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
-            	text += stats[i]+ "\n";
-            	avatar.writeJournal(text);
-            	
-            	avatar.incSkillValue(skill);
-            	avatar.setLevels(avatar.getLevels()-1);
-            	combinedGameView.removeExternalView(leveledView);
-                spawned = false;
-                System.out.println(skill+":"+avatar.getSkillValue(skill));
-                combinedGameView.setNext("Game");
-                combinedGameView.setRedraw(true);
-            }
-    }
     
     public class BoardMouseListener implements MouseListener{
     	private MapMouseHandler handler;
@@ -303,11 +148,11 @@ public class GameController {
 				yourLvl = avatar.getStatValue("Level");
 			}
 			else if(!currMap.equals(avatar.getCurrMap())){
-				currMap=avatar.getCurrMap();
-				map = world.getMap(avatar.getCurrMap());
-				combinedGameView.changeMap(world.getMap(currMap));
+				currMap = avatar.getCurrMap();
+				map = world.getMap(currMap);
+				combinedGameView.changeMap(map);
 			}
-			statsView.Updatetable(avatar);
+			stats.updatetable();
 			combinedGameView.updateStatus();
 		}
 	}
