@@ -2,20 +2,26 @@ package model.Entity;
 
 import java.util.Random;
 
+import utilities.SpriteSheetUtility;
+
 import model.AreaEffect;
 
 public class Skeleton extends NPC implements Conversable {
 	protected AreaEffect effect;
+	
 	public Skeleton(AreaEffect effect) {
-		super("Skeleton");
+		super();
 		this.effect=effect;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public AreaEffect getAreaEffect() {
 		// TODO Auto-generated method stub
 		return this.effect;
+	}
+	
+	public SpriteSheetUtility getSpriteSheet() {
+		return new SpriteSheetUtility(this);
 	}
 	
 	public int randNo()

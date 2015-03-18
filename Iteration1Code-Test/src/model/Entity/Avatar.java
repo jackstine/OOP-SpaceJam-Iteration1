@@ -27,9 +27,8 @@ public class Avatar extends Entity {
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
-		String occString = occupation.getName().toUpperCase();
-		SpriteSheetUtility util = new SpriteSheetUtility(occString);
-		spriteSheet = (util.getSpriteArray());
+		SpriteSheetUtility util = occupation.getSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	

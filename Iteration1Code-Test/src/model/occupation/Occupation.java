@@ -11,6 +11,8 @@ import model.slots.Equipment;
 import model.slots.WeaponSlot;
 import model.stats.Stat;
 
+import utilities.SpriteSheetUtility;
+
 public abstract class Occupation{
 	
 	protected String portraitLocation;
@@ -53,6 +55,8 @@ public abstract class Occupation{
 	
 	protected abstract StatFactory getStatFactory(Equipment equipment);
 	protected abstract SkillFactory getSkillFactory();
+	
+	public abstract SpriteSheetUtility getSpriteSheet();
 	
 	public String getPortraitLocation() {
 			return portraitLocation;

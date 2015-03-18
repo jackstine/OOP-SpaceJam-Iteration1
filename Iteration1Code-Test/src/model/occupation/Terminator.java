@@ -1,5 +1,6 @@
 package model.occupation;
 
+import utilities.SpriteSheetUtility;
 import model.*;
 import model.Entity.Entity;
 import model.slots.*;
@@ -30,6 +31,10 @@ public class Terminator extends Occupation{
 	public void attack(Entity entity) {
 		// create "CombatSimulator" class that will carry
 		// out the fighting between Avatar and Entity		
+	}
+	
+	public SpriteSheetUtility getSpriteSheet() {
+		return new SpriteSheetUtility(this);
 	}
 
 	@Override

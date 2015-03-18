@@ -1,17 +1,21 @@
 package model.Entity;
 
+import utilities.SpriteSheetUtility;
 import model.AreaEffect;
 
 public class Merchant extends NPC implements Conversable {
 
 	
 	public Merchant() {
-		super("Merchant");
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 	public String toString(){
 		return "I am a MERCHANT I SELL>>>>";
+	}
+	
+	public SpriteSheetUtility getSpriteSheet() {
+		return new SpriteSheetUtility(this);
 	}
 
 	@Override

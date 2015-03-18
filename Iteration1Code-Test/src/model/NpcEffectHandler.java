@@ -2,25 +2,17 @@ package model;
 
 import java.util.Random;
 
-import model.Entity.Avatar;
-import model.Entity.Conversable;
-import model.Entity.Entity;
-//import model.Entity.Merchant;
-import model.Entity.NPC;
-import model.Entity.Merchant;
-import model.Entity.Orc;
-import model.Entity.Skeleton;
-import model.items.TakeableItem;
-import model.items.Weapon;
-import model.items.Weapons;
-
+import model.Entity.*;
+import model.items.*;
 
 public class NpcEffectHandler {
 	private Avatar avatar;
 	
-	public NpcEffectHandler(Avatar avatar){
-		
-		this.avatar=avatar;
+	public NpcEffectHandler(Avatar avatar){		
+		this.avatar=avatar;		
+	}
+	
+	public void apply(Orc o) {
 		
 	}
 	

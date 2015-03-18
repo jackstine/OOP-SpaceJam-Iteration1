@@ -14,7 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import model.occupation.Occupation;
+import model.occupation.*;
+import model.Entity.*;
 
 public class SpriteSheetUtility {
 	private String imagePath = "";
@@ -37,27 +38,38 @@ public class SpriteSheetUtility {
 		imagePath = "src/res/img/terminator_spritesheet.png";
 		initializeSpriteArray();
 	}
-	public SpriteSheetUtility(String s) {
-		if (s.equalsIgnoreCase(ALCHEMIST)) {
-			imagePath = "src/res/img/alchemist_spritesheet.png";
-		}
-		else if (s.equalsIgnoreCase(HUNTER)) {
-			imagePath = "src/res/img/hunter_spritesheet.png";
-		}
-		else  if (s.equalsIgnoreCase(TERMINATOR)){
-			imagePath = "src/res/img/terminator_spritesheet.png";
-		}
-		else if (s.equalsIgnoreCase(MERCHANT)) {
-			imagePath = "src/res/img/merchant_spritesheet.png";
-		}
-		else if (s.equalsIgnoreCase(SKELETON)) {
-			imagePath = "src/res/img/skeleton_spritesheet.png";	
-		}
-		else if (s.equalsIgnoreCase(ORC)) {
-			imagePath = "src/res/img/orc_spritesheet.png";
-		}
-		else {}
-		
+	
+	public SpriteSheetUtility(Alchemist a) {
+		imagePath = "src/res/img/alchemist_spritesheet.png";
+		initialize();
+	}
+	
+	public SpriteSheetUtility(Hunter h) {
+		imagePath = "src/res/img/hunter_spritesheet.png";
+		initialize();
+	}
+	
+	public SpriteSheetUtility(Merchant m) {
+		imagePath = "src/res/img/merchant_spritesheet.png";
+		initialize();
+	}
+	
+	public SpriteSheetUtility(Orc o) {
+		imagePath = "src/res/img/orc_spritesheet.png";
+		initialize();
+	}
+	
+	public SpriteSheetUtility(Skeleton s) {
+		imagePath = "src/res/img/skeleton_spritesheet.png";	
+		initialize();
+	}
+	
+	public SpriteSheetUtility(Terminator t) {
+		imagePath = "src/res/img/terminator_spritesheet.png";
+		initialize();
+	}
+	
+	private void initialize() {
 		try {
 			image = ImageIO.read(new File(imagePath));
 		} 

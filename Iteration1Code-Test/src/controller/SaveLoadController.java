@@ -128,7 +128,7 @@ public class SaveLoadController {
 		
 		// reading the equipped two-handed weapon
 		String[] equipmentTHW = in.next().split(":");
-		if (!equipmentTHW.equals("null")) {
+		if (!equipmentTHW[0].equals("null")) {
 			int THWValue = Integer.parseInt(equipmentTHW[2]);
 			if (THWValue != -1) equipment.equip(new TerminatorTwoHandedWeapon(THWValue));
 		}		

@@ -2,25 +2,24 @@ package model.Entity;
 
 import java.awt.image.BufferedImage;
 
-import model.AreaEffect;
-import model.occupation.Terminator;
-import utilities.ImageProcessing;
-import utilities.Scaling;
-import utilities.SpriteSheetUtility;
+import model.*;
+import model.occupation.*;
+import utilities.*;
 
 public abstract class NPC extends Entity {
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
 	private int state= 0;
 	
-	public NPC(String role) {
+	public NPC() {
 		super(new Terminator());
-		String occString = role.toUpperCase();
-		SpriteSheetUtility util = new SpriteSheetUtility(occString);
-		spriteSheet = (util.getSpriteArray());
+		SpriteSheetUtility util = this.getSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
 		setDirection(2);
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
+	
+	public abstract SpriteSheetUtility getSpriteSheet();
 	
 	public BufferedImage getImage(){
 		if(this instanceof Orc )
@@ -99,5 +98,4 @@ public abstract class NPC extends Entity {
 	}
 	
 	public abstract AreaEffect getAreaEffect();
-	
 }

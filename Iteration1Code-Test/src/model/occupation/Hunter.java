@@ -1,6 +1,7 @@
 package model.occupation;
 
 
+import utilities.SpriteSheetUtility;
 import model.*;
 import model.Entity.Entity;
 import model.slots.*;
@@ -33,6 +34,10 @@ public class Hunter extends Occupation{
 		// out the fighting between Avatar and Entity		
 	}
 
+	public SpriteSheetUtility getSpriteSheet() {
+		return new SpriteSheetUtility(this);
+	}
+	
 	@Override
 	protected SkillFactory getSkillFactory() {
 		return new HunterSkillFactory();
