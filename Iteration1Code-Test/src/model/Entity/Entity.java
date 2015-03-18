@@ -30,12 +30,6 @@ public abstract class Entity {
 	
 	protected BufferedImage image;	//TODO Delete this line
 	
-	
-	// private GameMap map;
-	// private Equipable equipment;
-	
-	// -------------------------------------------
-	// Need to decide on what constructor we're using for Entity
 	public Entity() {}
 	
 	public Entity(Occupation occupation) {
@@ -46,6 +40,8 @@ public abstract class Entity {
 		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
 	}
 
+	public abstract void engage(Avatar avatar);
+	
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
@@ -146,14 +142,8 @@ public abstract class Entity {
 	}
 	
 	
-	/********************** FIX THEN DELETE THESE ******************/
-	public int setState(){
-		return -1;
-	}
-	
+	/********************** FIX THEN DELETE THESE ******************/	
 	public void setState(int state){}
-	
-	public abstract AreaEffect getAreaEffect();
 	
 	public BufferedImage getImage(){
 		return image;

@@ -101,18 +101,20 @@ public class Avatar extends Entity {
 		return j;
 	}
 
-	@Override
-	public AreaEffect getAreaEffect() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public String getCurrMap() {
 		return currMap;
 	}
 
 	public void setCurrMap(String currMap) {
 		this.currMap = currMap;
+	}
+
+	@Override
+	public void engage(Avatar avatar) {
+		System.out.println("MASSIVE");
+		System.out.println("MULTIPLAYER");
+		System.out.println("GAAAAAMMMMMMMMEEEEEEE");
+		// we think
 	}
 	
 //	public boolean equipSlot(Equipable equipItem){

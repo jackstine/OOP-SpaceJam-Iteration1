@@ -5,6 +5,7 @@ import java.util.Random;
 import utilities.SpriteSheetUtility;
 
 import model.AreaEffect;
+import model.NpcEffectHandler;
 
 public class Skeleton extends NPC implements Conversable {
 	protected AreaEffect effect;
@@ -36,6 +37,11 @@ public class Skeleton extends NPC implements Conversable {
 	public String getDialogue() {
 		// TODO Auto-generated method stub
 		return "Skeleton: I'M A SCARY SKELETON RAAWWRRR";
+	}
+	
+	@Override
+	public void engage(Avatar avatar) {
+		NpcEffectHandler.apply(avatar, this);
 	}
 
 }

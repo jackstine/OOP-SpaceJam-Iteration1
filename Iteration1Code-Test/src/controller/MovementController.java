@@ -23,13 +23,11 @@ public class MovementController {
 	private World world;
 	
 	private QuestHandler questHandler;
-	private NpcEffectHandler npcEffectHandler;
 	
 	public MovementController(Avatar avatar,World world){
 		this.avatar = avatar;
 		this.world = world;
 		this.questHandler = new QuestHandler(avatar);
-		this.npcEffectHandler = new NpcEffectHandler(avatar);
 	}
 	
 	public GameMap getCurrMap(){
@@ -50,11 +48,8 @@ public class MovementController {
 			questHandler.apply(this.getCurrMap().getTile(pointToMove));
 		}
 		else{
-//			temp.add(point);
-//			System.out.println(temp + "   this is the temp location");
-//			System.out.println(avatarLocation + "   this is the avtar");
-			//System.out.println(map.getTile(temp).getNPC());
-			npcEffectHandler.apply(this.getCurrMap().getTileEntity(pointToMove),avatarLocation);
+			// FIX THIS LoD
+			this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
 		}
 		System.out.println(this.getCurrMap().getTile(avatarLocation).getTerrain());
 		System.out.println(getCurrMap().getLocation(avatar).toString());

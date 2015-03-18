@@ -3,6 +3,7 @@ package model.Entity;
 import utilities.SpriteSheetUtility;
 import model.AreaEffect;
 import model.DamageAreaEffect;
+import model.NpcEffectHandler;
 
 public class Orc extends NPC {
 	protected AreaEffect effect;
@@ -32,6 +33,11 @@ public class Orc extends NPC {
 		else{
 			return effect1;
 		}
+	}
+
+	@Override
+	public void engage(Avatar avatar) {
+		NpcEffectHandler.apply(avatar, this);
 	}
 	
 }

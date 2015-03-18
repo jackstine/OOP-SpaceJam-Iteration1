@@ -2,6 +2,7 @@ package model.Entity;
 
 import utilities.SpriteSheetUtility;
 import model.AreaEffect;
+import model.NpcEffectHandler;
 
 public class Merchant extends NPC implements Conversable {
 
@@ -28,6 +29,11 @@ public class Merchant extends NPC implements Conversable {
 	public String getDialogue() {
 		// TODO Auto-generated method stub
 		return "Merchant: Hey there! Have a look at my wares.";
+	}
+	
+	@Override
+	public void engage(Avatar avatar) {
+		NpcEffectHandler.apply(avatar, this);
 	}
 
 }
