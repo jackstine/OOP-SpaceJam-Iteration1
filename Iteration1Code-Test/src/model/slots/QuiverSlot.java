@@ -43,4 +43,11 @@ public class QuiverSlot extends BufferSlot{
 		if (this.has()) return "Armor:Quiver:" + this.getBonus();
 		else return "Armor:Quiver:-1";
 	}
+	
+    // This is used to send info to update the Observers upon equip
+    protected final void send(){
+        this.setBonus();
+        this.setChanged();  		//notify the Observers of change
+        this.notifyObservers();
+    }
 }

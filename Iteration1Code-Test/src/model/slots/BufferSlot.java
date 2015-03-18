@@ -43,13 +43,6 @@ public abstract class BufferSlot extends Observable {
         return pointer;
     }
     
-    // This is used to send info to update the Observers upon equip
-    protected final void send(){
-        this.setBonus();
-        this.setChanged();  		//notify the Observers of change
-        this.notifyObservers();
-    }
-    
     // This is used to send info to update the Observers upon unequip
     protected final void unequipSend() {
     	this.setChanged();  		//notify the Observers of change
