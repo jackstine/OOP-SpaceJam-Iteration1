@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class GameLog {
+public final class GameLog {
 	private static ArrayList<String> log = new ArrayList<String>();
 	private static boolean writing = false;
 	

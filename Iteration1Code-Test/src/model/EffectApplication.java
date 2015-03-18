@@ -5,7 +5,6 @@ import model.items.DamagingOneShotItem;
 import model.items.HealingOneShotItem;
 
 
-
 public class EffectApplication{
 	
 	public static void apply(Entity entity, DeathAreaEffect areaEffect) {
