@@ -1,7 +1,7 @@
 package model.spells;
 
-import model.Entity.Entity;
-import model.Entity.EntityEffectHandler;
+import model.entity.Entity;
+import model.entity.EntityEffectHandler;
 
 public class GloryHeal extends BoonSpellSingle{
 	private int manaRequired = 10;

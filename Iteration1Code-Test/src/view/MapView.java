@@ -5,14 +5,16 @@ import java.awt.Graphics;
  
 
 
+
 import javax.swing.JComponent;
  
+
 
 
 import utilities.Scaling;
 import model.GameMap;
 import model.Location;
-import model.Entity.Avatar;
+import model.entity.Avatar;
  
 @SuppressWarnings("serial")
 public class MapView extends JComponent{

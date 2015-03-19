@@ -1,6 +1,6 @@
 package model.spells;
 
-import model.Entity.Entity;
+import model.entity.Entity;
 
 public abstract class BaneAreaOfAffect extends SpellAreaOfEffect implements BaneSpell{
 }

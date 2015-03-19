@@ -1,6 +1,6 @@
 package controller;
 
-import model.Entity.*;
+import model.entity.*;
 import model.GameMap;
 import model.Location;
 import model.Point;

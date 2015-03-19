@@ -14,8 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import model.entity.*;
 import model.occupation.*;
-import model.Entity.*;
 
 public class SpriteSheetUtility {
 	private String imagePath = "";

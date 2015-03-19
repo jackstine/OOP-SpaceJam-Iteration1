@@ -1,6 +1,6 @@
 package model.spells;
 
-import model.Entity.Entity;
+import model.entity.Entity;
 
 public class PlasmaRay extends BaneSpellSingle{
 	private int damage = 15;

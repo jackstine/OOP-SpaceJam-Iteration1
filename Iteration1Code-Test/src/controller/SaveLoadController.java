@@ -4,9 +4,8 @@ import java.util.*;
 import java.io.*;
 
 import model.*;
-import model.Entity.Avatar;
+import model.entity.Avatar;
 import model.items.*;
-import model.items.TreasureChest;
 import model.occupation.Alchemist;
 import model.occupation.Hunter;
 import model.occupation.Terminator;

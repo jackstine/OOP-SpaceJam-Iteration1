@@ -6,11 +6,10 @@ import model.EquipmentBuilder;
 import model.Skill;
 import model.SkillFactory;
 import model.StatFactory;
-import model.Entity.Entity;
+import model.entity.Entity;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
 import model.stats.Stat;
-
 import utilities.SpriteSheetUtility;
 
 public abstract class Occupation{

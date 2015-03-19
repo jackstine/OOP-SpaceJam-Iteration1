@@ -1,6 +1,6 @@
 package model.spells;
 
-import model.Entity.Entity;
+import model.entity.Entity;
 
 public interface Spellable {
 	//so a spell will consume a certain amount of mana

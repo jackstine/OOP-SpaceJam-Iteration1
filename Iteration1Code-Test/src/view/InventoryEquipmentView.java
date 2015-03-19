@@ -10,8 +10,7 @@ import javax.swing.JPanel;
 
 import controller.mouse.InventoryEquipmentMouseHandler;
 import model.Point;
-import model.Entity.Avatar;
-import model.items.TakeableItem;
+import model.entity.Avatar;
 import model.slots.InventorySlot;
 
 /*

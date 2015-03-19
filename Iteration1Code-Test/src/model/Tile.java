@@ -1,7 +1,7 @@
 package model;
 
-import model.Entity.Entity;
-import model.Entity.NPC;
+import model.entity.Entity;
+import model.entity.NPC;
 import model.items.Item;
 import model.items.ObstacleItem;
 

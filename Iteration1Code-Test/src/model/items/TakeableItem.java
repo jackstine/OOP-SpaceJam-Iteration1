@@ -2,7 +2,7 @@ package model.items;
 
 import java.awt.image.BufferedImage;
 
-import model.Entity.Avatar;
+import model.entity.Avatar;
 import utilities.ImageProcessing;
 
 public abstract class TakeableItem implements Item {

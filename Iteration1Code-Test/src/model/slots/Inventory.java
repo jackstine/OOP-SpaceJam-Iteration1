@@ -78,7 +78,6 @@ public class Inventory extends SlotContainer{
     }
     
     public final TakeableItem get(Point point){
-    	TakeableItem temp = this.getSlot(point).get();
         return this.getSlot(point).get();
     }
     

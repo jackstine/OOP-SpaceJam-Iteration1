@@ -1,8 +1,8 @@
 package model;
 
-import model.Entity.Merchant;
-import model.Entity.Orc;
-import model.Entity.Skeleton;
+import model.entity.Merchant;
+import model.entity.Orc;
+import model.entity.Skeleton;
 import model.items.Armor;
 import model.items.GiantRock;
 import model.items.HealingOneShotItem;

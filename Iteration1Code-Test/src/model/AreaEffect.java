@@ -1,6 +1,6 @@
 package model;
 
-import model.Entity.Entity;
+import model.entity.Entity;
 
 
 //An interface using another interface is extension, apparently?

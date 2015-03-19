@@ -2,8 +2,8 @@ package model;
 
 import java.util.*;
 
-import model.Entity.Avatar;
-import model.Entity.Entity;
+import model.entity.Avatar;
+import model.entity.Entity;
 import utilities.Scaling;
 
 public class GameMap {

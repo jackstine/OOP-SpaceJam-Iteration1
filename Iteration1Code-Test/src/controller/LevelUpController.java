@@ -8,8 +8,9 @@ import java.util.Random;
 import java.util.Map.Entry;
 
 
+
 import model.Skill;
-import model.Entity.Avatar;
+import model.entity.Avatar;
 import model.occupation.Occupation;
 import view.CombinedGameView;
 import view.LevelUpView;

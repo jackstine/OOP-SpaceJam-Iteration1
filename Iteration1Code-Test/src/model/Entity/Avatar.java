@@ -1,4 +1,4 @@
-package model.Entity;
+package model.entity;
 
 import java.awt.image.BufferedImage;
 import java.text.DateFormat;
@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import model.AreaEffect;
 import model.occupation.Occupation;
 import utilities.*;
 

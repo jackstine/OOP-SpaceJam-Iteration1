@@ -2,7 +2,7 @@ package model;
 
 import java.awt.image.BufferedImage;
 
-import model.Entity.Entity;
+import model.entity.Entity;
 
 public abstract class Trap {
 	

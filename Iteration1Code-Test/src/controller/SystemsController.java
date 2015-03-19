@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import model.Game;
 import model.World;
-import model.Entity.Avatar;
+import model.entity.Avatar;
 import view.CombinedGameView;
 import view.ControlConfigView;
 import view.SystemMenuView;
