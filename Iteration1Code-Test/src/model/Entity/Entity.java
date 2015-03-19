@@ -5,6 +5,8 @@ import java.util.Map;
 
 import model.Point;
 import model.Skill;
+import model.behavior.Behavior;
+import model.behavior.State;
 import model.items.Equipable;
 import model.items.TakeableItem;
 import model.occupation.Occupation;
@@ -23,6 +25,8 @@ public abstract class Entity {
 	protected int direction;
 	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
+	protected State preferredState;
+	protected State engagedState;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells = new Spells(this);
@@ -36,9 +40,25 @@ public abstract class Entity {
 		this.skills = occupation.getSkills();
 		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
 	}
-
-	public abstract void engage(Avatar avatar);
 	
+	/**************O BEHAVE ****************************************/
+	public void setPrefferedBehavior(Behavior behavior){
+		this.preferredState.setState(behavior);
+	}
+	
+	public void setEngageBehavior(Behavior behavior){
+		this.engagedState.setState(behavior);
+	}
+	
+	public void idle(){
+		//WE FUCKED
+		this.preferredState.perform(this, this);
+	}
+
+	public void engage(Avatar avatar){
+		this.engagedState.perform(this, avatar);
+	}
+
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
@@ -52,7 +72,7 @@ public abstract class Entity {
 	}
 	
 	
-	/**************   INVENTORY  ********************************/
+	/******************* INVENTORY  ********************************/
 	public Inventory getInventory(){
 		return inventoryEquipment.getInventory();
 	}
@@ -162,5 +182,17 @@ public abstract class Entity {
 
 	public void setCurrMap(String currMap) {
 		this.currMap = currMap;
+	}
+
+	
+	/*************   FIX THIS STUFF ***********************/
+	public Object getDialogue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void writeJournal(Object dialogue) {
+		// TODO Auto-generated method stub
+		
 	}
 }

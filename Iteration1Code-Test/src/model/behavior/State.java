@@ -8,13 +8,17 @@ import model.entity.Entity;
 public class State {
 	private Stack<Behavior> states;
 	
-	public State(Behavior behavior){
+	public State(){
 		this.states = new Stack<Behavior>();
-		this.states.push(behavior);
 	}
 	
-	public void perform(Entity entity){
-		this.states.peek().perform(entity);;
+	public State(Behavior behavior){
+		this();
+		this.setState(behavior);
+	}
+	
+	public void perform(Entity initiate,Entity receiver){
+		this.states.peek().perform(initiate,receiver);;
 	}
 	
 	public void setState(Behavior behavior){
