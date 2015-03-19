@@ -94,7 +94,6 @@ public class SpellView extends JComponent{
 	public class SpellListener implements MouseListener{
 		
 		public void mouseClicked(MouseEvent e){
-			System.out.println(e);
 			handler.selectSpell(e);
 		}
 

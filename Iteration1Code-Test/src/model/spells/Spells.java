@@ -20,6 +20,7 @@ public class Spells {
 	}
 	
 	private void setSpells(){
+		//TODO get rid of these magic numbers once we get this class on the go
 		spells[0][0] = new FireSpell(this.entity);
 		spells[0][1] = new EarthSpell(this.entity);
 		spells[0][2] = new PlasmaRay(this.entity);

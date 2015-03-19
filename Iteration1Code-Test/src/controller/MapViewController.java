@@ -126,11 +126,7 @@ public class MapViewController{
 			}
 		}
 
-		@Override
-		public void keyReleased(KeyEvent e) {
-		}
-
-		@Override
+		public void keyReleased(KeyEvent e) {}
 		public void keyTyped(KeyEvent arg0) {}
 		
 	}

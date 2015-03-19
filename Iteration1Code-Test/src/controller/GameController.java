@@ -147,6 +147,7 @@ public class GameController {
             if(this.handler.getEntity(tileLocation) != null){
             	avatar.writeJournal(this.handler.getEntity(tileLocation).toString());
             }
+            getMapView().repaint();
         }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) { }

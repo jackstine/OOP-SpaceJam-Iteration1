@@ -10,7 +10,6 @@ public class TrapImageProxy {
 	public static BufferedImage spikeTrap = ImageProcessing.scaleImage(Scaling.TILE_SCALE,  SPIKETRAP_IMAGE_PATH);
 	
 	public final static BufferedImage getTrapImage(SpikeTrap trap){
-		System.out.println(trap.isVisible());
 		if (trap.isVisible()) return TrapImageProxy.spikeTrap;
 		else return null;
 	}
