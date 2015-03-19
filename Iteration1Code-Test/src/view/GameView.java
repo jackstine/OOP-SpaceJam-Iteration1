@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import utilities.Scaling;
 import model.GameMap;
 import model.Location;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 
 @SuppressWarnings("serial")
 public class GameView extends JPanel {

@@ -1,6 +1,6 @@
 package testing;
 
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.items.AlchemistWeapon;
 import model.items.HunterWeapon;
 import model.items.TerminatorSingleWeapon;

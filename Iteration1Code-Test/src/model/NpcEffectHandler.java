@@ -3,7 +3,7 @@ package model;
 import java.util.Random;
 
 import utilities.Directions;
-import model.entity.*;
+import model.Entity.*;
 import model.items.*;
 
 public class NpcEffectHandler {

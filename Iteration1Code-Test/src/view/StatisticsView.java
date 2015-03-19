@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import utilities.Scaling;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.Skill;
 
 

@@ -3,7 +3,7 @@ package controller.mouse;
 import java.awt.event.MouseEvent;
 
 import model.Point;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import utilities.Scaling;
 import view.SpellView;
 

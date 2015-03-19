@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 
 import model.Skill;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.occupation.Occupation;
 import view.CombinedGameView;
 import view.LevelUpView;

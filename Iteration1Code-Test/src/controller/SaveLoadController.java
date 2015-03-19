@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import model.*;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.items.*;
 import model.occupation.Alchemist;
 import model.occupation.Hunter;

@@ -13,7 +13,7 @@ import model.GameMap;
 import model.InfluenceSet;
 import model.Location;
 import model.World;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import view.CombinedGameView;
 import view.MapView;
 import view.View;

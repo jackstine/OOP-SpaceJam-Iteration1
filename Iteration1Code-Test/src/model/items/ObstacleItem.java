@@ -2,7 +2,7 @@ package model.items;
 
 import java.awt.image.BufferedImage;
 
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import utilities.ImageProcessing;
 
 public abstract class ObstacleItem implements Item {

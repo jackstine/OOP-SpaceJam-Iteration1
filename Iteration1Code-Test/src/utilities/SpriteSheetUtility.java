@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import model.entity.*;
+import model.Entity.*;
 import model.occupation.*;
 
 public class SpriteSheetUtility {

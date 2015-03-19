@@ -2,7 +2,7 @@ package controller;
 
 import javax.swing.JFrame;
 
-import model.entity.*;
+import model.Entity.*;
 import model.GameMap;
 
 public class EntityMovementController {

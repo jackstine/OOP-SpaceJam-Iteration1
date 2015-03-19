@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import view.ControlField;
 
 public class World {

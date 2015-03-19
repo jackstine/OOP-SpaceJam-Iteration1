@@ -1,6 +1,6 @@
 package model.spells;
 
-import model.entity.Entity;
+import model.Entity.Entity;
 
 public interface BaneSpell{
 	//does damage to a NPC, is used to destroy things, cause mayhem

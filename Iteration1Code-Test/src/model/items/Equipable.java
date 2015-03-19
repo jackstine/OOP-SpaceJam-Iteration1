@@ -1,6 +1,6 @@
 package model.items;
 
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.visitor.EquipableVisitor;
 
 public abstract class Equipable extends TakeableItem{

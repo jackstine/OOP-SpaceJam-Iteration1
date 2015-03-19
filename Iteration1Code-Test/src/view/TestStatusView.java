@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.JFrame;
 
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.occupation.Terminator;
 
 

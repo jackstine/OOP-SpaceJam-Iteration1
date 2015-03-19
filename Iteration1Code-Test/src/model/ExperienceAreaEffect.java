@@ -1,6 +1,6 @@
 package model;
 
-import model.entity.Entity;
+import model.Entity.Entity;
 
 
 public class ExperienceAreaEffect implements AreaEffect {

@@ -1,4 +1,4 @@
-package model.entity;
+package model.Entity;
 
 import utilities.SpriteSheetUtility;
 import model.NpcEffectHandler;

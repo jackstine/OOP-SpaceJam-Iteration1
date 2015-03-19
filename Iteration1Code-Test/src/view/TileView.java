@@ -17,7 +17,7 @@ import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.TerrainImageVisitor;
 import model.Tile;
-import model.entity.NPC;
+import model.Entity.NPC;
 import model.visitor.ItemImageVisitor;
  
 @SuppressWarnings("serial")

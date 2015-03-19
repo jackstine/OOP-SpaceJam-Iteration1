@@ -7,7 +7,7 @@ import model.NpcEffectHandler;
 import model.Point;
 import model.QuestHandler;
 import model.World;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 
 public class MovementController {
 	public static final Point NORTH = new Point(0,-1);

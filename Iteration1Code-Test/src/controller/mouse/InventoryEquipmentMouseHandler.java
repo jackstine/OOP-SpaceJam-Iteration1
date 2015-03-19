@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import utilities.Scaling;
 import view.InventoryEquipmentView;
 import model.Point;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.items.TakeableItem;
 import model.slots.InventorySlot;
 

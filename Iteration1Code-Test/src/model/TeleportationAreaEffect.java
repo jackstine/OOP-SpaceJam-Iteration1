@@ -1,6 +1,6 @@
 package model;
 
-import model.entity.Entity;
+import model.Entity.Entity;
 
 public class TeleportationAreaEffect implements AreaEffect {
 	private String nextMap;

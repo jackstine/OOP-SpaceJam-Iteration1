@@ -1,6 +1,6 @@
 package model.spells;
 
-import model.entity.Entity;
+import model.Entity.Entity;
 
 public abstract class SpellSingleAffect implements Spellable{
 	protected Entity entity;

@@ -12,7 +12,7 @@ import javax.swing.Timer;
 import model.GameMap;
 import model.Point;
 import model.World;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import utilities.Directions;
 import view.MapView;
 

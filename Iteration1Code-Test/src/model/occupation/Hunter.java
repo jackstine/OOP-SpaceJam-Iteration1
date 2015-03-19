@@ -3,7 +3,7 @@ package model.occupation;
 
 import utilities.SpriteSheetUtility;
 import model.*;
-import model.entity.Entity;
+import model.Entity.Entity;
 import model.slots.*;
 
 public class Hunter extends Occupation{

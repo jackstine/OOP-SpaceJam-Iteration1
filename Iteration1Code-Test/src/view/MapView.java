@@ -14,7 +14,7 @@ import javax.swing.JComponent;
 import utilities.Scaling;
 import model.GameMap;
 import model.Location;
-import model.entity.Avatar;
+import model.Entity.Avatar;
  
 @SuppressWarnings("serial")
 public class MapView extends JComponent{

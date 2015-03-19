@@ -1,7 +1,7 @@
 package model.spells;
 
-import model.entity.Entity;
-import model.entity.EntityEffectHandler;
+import model.Entity.Entity;
+import model.Entity.EntityEffectHandler;
 
 public abstract class BoonSpellSingle extends SpellSingleAffect implements BoonSpell{
 

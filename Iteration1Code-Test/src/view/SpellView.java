@@ -13,7 +13,7 @@ import controller.mouse.SpellMouseHandler;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 
 @SuppressWarnings("serial")
 public class SpellView extends JComponent{

@@ -1,6 +1,6 @@
 package model.items;
 
-import model.entity.Avatar;
+import model.Entity.Avatar;
 
 
 public abstract class OneShotItem implements Item {

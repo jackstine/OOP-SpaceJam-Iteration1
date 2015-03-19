@@ -22,7 +22,7 @@ import utilities.FontHandler;
 
 
 import model.GameLog;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 
 /*
 

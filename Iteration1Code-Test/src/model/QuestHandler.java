@@ -1,6 +1,6 @@
 package model;
 
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import model.items.Item;
 import model.visitor.ItemQuestVisitor;
 

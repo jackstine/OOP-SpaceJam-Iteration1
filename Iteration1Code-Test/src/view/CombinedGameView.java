@@ -10,7 +10,7 @@ import javax.swing.border.LineBorder;
 
 import controller.GameController.BoardMouseListener;
 import model.GameMap;
-import model.entity.Avatar;
+import model.Entity.Avatar;
 import utilities.Scaling;
 
 @SuppressWarnings("serial")
