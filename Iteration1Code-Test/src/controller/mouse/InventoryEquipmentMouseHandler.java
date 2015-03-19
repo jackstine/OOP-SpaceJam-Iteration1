@@ -67,6 +67,7 @@ public class InventoryEquipmentMouseHandler {
 				inventoryEquipmentView.setDraggingSlot(draggingSlot);
 			}
 		}
+		this.inventoryEquipmentView.repaintInventoryView();
 	}
 	
 	public Point getDraggingSlotPoint(MouseEvent e){
@@ -84,6 +85,7 @@ public class InventoryEquipmentMouseHandler {
 				avatar.equipInventory(item);
 			}
 		}
+		this.inventoryEquipmentView.repaintInventoryView();
 	}
 
 }

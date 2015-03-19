@@ -62,6 +62,10 @@ public class InventoryEquipmentView extends JPanel {
 		this.inventory.setDraggingSlotPoint(point);
 	}
 	
+	public void repaintInventoryView(){
+		this.inventory.repaint();
+	}
+	
 	public class EquipmentMouseListener implements MouseListener{
 		// private final int RIGHT_CLICK = MouseEvent.BUTTON3;
 		private final int LEFT_CLICK = MouseEvent.BUTTON1;
@@ -93,21 +97,12 @@ public class InventoryEquipmentView extends JPanel {
 			if (e.getButton()== LEFT_CLICK){
 				handler.useItem(e);
 			}
-			
-			System.out.println("CLICKED");
 		}
 		
-		public void mouseEntered(MouseEvent e) {
-			System.out.println("ENTERED");
-		}
-		public void mouseExited(MouseEvent e) {	
-			System.out.println("EXITED");
-		}
-		public void mousePressed(MouseEvent e) {
-			System.out.println("PRESSED");
-		}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {	}
+		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {
-			System.out.println("RELEASED");
 			handler.releaseItem(e);
 		}
 	}
@@ -115,14 +110,10 @@ public class InventoryEquipmentView extends JPanel {
 	public class InventoryMouseMotionListener implements MouseMotionListener{
 
 		public void mouseDragged(MouseEvent e) {
-			System.out.println("DRAGGING");
 			handler.dragItem(e);
 		}
 
-		public void mouseMoved(MouseEvent e) {
-			System.out.println("MOVING");
-		}
-		
+		public void mouseMoved(MouseEvent e) {}
 	}
 	
 	

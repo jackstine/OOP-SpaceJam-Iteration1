@@ -61,7 +61,7 @@ public class InventoryView extends JComponent{
 		this.paintDraggingSlot(g);
 		
 		g.dispose();
-		repaint();
+//		repaint();
 	}
 	
 	public void paintDraggingSlot(Graphics g){
