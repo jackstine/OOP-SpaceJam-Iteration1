@@ -32,6 +32,7 @@ public class Game {
 		avatar.setName(name);
 		world.setAvatar(avatar);
 	}
+	
 	public World getWorld() {
 		return world;
 	}
@@ -54,6 +55,6 @@ public class Game {
 	public void load() throws IOException {
 		Game game = SaveLoadController.load();
 		this.setAvatar(game.getAvatar());
-		//this.setMap(game.getMap());
+		this.setWorld(game.getWorld());
 	}
 }

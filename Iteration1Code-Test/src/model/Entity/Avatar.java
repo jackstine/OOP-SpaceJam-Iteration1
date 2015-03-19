@@ -16,7 +16,7 @@ public class Avatar extends Entity {
 	private boolean writing = false;
 	private BufferedImage image;
 	private BufferedImage[] spriteSheet;
-	private String currMap="Main";
+	private String currMap = "Main";
 	//deprecated all entities need a equipment now
 //	private Equipment equipment = new Equipment();
 	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
@@ -63,6 +63,7 @@ public class Avatar extends Entity {
 		result += "\n" + this.inventoryEquipment.getInventory();
 		result += "\n" + this.inventoryEquipment.getEquipment();
 		result += "\nLevels:" + this.levels;
+		result += "\nCurrentMap:" + this.currMap;
 		return result;
 	}
 

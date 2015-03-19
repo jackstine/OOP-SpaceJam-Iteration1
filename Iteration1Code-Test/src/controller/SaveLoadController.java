@@ -23,8 +23,8 @@ public class SaveLoadController {
 		out.println(avatar);
 		
 		// write everything about the map
-		GameMap map = new GameMap();
-		out.println(map);		
+		World world = game.getWorld();
+		out.println(world);		
 		
 		out.close();
 		System.out.println("GAME SAVED\n---------------");
@@ -34,7 +34,6 @@ public class SaveLoadController {
 		System.out.println("LOADING GAME");
 		
 		Scanner in = new Scanner(new File("savedGame.txt"));
-		Game game = new Game();
 		
 		// load the Avatar information
 		Avatar avatar = null;
@@ -62,7 +61,7 @@ public class SaveLoadController {
 		avatar.setName(name);
 		avatar.setDirection(direction);
 		
-		Inventory inventory = new Inventory("oop");
+		Inventory inventory = new Inventory("Empty Inventory");
 		String[] avatarInventory = in.next().split(":");
 		int inventorySize = Integer.parseInt(avatarInventory[1]);
 		
@@ -136,102 +135,125 @@ public class SaveLoadController {
 		int levels = Integer.parseInt(avatarLevels[1]);
 		avatar.setLevels(levels);
 		
+		String[] currentMapString = in.next().split(":");
+		String currentMap = currentMapString[1];
+		
 		avatar.setInventory(inventory);
 		avatar.setEquipment(equipment);
-		game.setAvatar(avatar);
+		avatar.setCurrMap(currentMap);
+		//game.setAvatar(avatar);
 		
-		// load the GameMap information
-		GameMap map = new GameMap();
-		map.setAvatar(avatar);
-		String[] mapSize = in.next().split(":");
-		String[] size = mapSize[1].split(",");
-		int height = Integer.parseInt(size[0]);
-		int width = Integer.parseInt(size[1]);
+		String[] world = in.next().split(":");
+		int numGames = Integer.parseInt(world[1]);
 		
-		for (int row = 0; row < height; row++) {
-			for (int col = 0; col < width; col++) {
-				Terrain terrain = null;
-				Decal decal = null;
-				String[] tileLocation = in.next().split(":");
-				
-				String[] tileTerrain = in.next().split(":");
-				String terrainType = tileTerrain[1];
-				if (terrainType.equals("M")) terrain = new MountainTerrain();
-				if (terrainType.equals("R")) terrain = new RadioactiveWasteTerrain();
-				if (terrainType.equals("D")) terrain = new DesertTerrain();
-				
-				String[] tileDecal = in.next().split(":");
-				if (tileDecal[0].equals("Decal")) {
-					String decalID = tileDecal[1];
-					if (decalID.equals("+")) decal = new RedCrossDecal();
-					if (decalID.equals("X")){
-						AreaEffect effect = null;
-						String[] tileEffect = in.next().split(":");
-						String effectType = tileEffect[0];
-						if (effectType.equals("DeathAreaEffect")) effect = new DeathAreaEffect();
-						if (effectType.equals("DamageAreaEffect")) {
-							double value = Double.parseDouble(tileEffect[1]);
-							effect = new DamageAreaEffect(value);
+		Map<String, GameMap> games = new HashMap<String, GameMap>();
+		
+		for (int i = 0; i < numGames; i++) {
+			// load the GameMap information
+			String gameName = in.next();
+			GameMap map = new GameMap();
+			map.setAvatar(avatar);
+			String[] mapSize = in.next().split(":");
+			String[] size = mapSize[1].split(",");
+			int height = Integer.parseInt(size[0]);
+			int width = Integer.parseInt(size[1]);
+			
+			for (int row = 0; row < height; row++) {
+				for (int col = 0; col < width; col++) {
+					Terrain terrain = null;
+					Decal decal = null;
+					String[] tileLocation = in.next().split(":");
+					
+					String[] tileTerrain = in.next().split(":");
+					String terrainType = tileTerrain[1];
+					if (terrainType.equals("M")) terrain = new MountainTerrain();
+					if (terrainType.equals("R")) terrain = new RadioactiveWasteTerrain();
+					if (terrainType.equals("D")) terrain = new DesertTerrain();
+					
+					String[] tileDecal = in.next().split(":");
+					if (tileDecal[0].equals("Decal")) {
+						String decalID = tileDecal[1];
+						if (decalID.equals("+")) decal = new RedCrossDecal();
+						if (decalID.equals("X")){
+							AreaEffect effect = null;
+							String[] tileEffect = in.next().split(":");
+							String effectType = tileEffect[0];
+							if (effectType.equals("DeathAreaEffect")) effect = new DeathAreaEffect();
+							if (effectType.equals("DamageAreaEffect")) {
+								double value = Double.parseDouble(tileEffect[1]);
+								effect = new DamageAreaEffect(value);
+							}
+							decal = new SkullAndCrossbonesDecal(effect);
 						}
-						decal = new SkullAndCrossbonesDecal(effect);
+						if (decalID.equals("*")) decal = new GoldStarDecal();
+						if (decalID.equals("O")) {
+							String nextWorld = in.next();
+							decal = new TeleportationDecal(nextWorld);
+						}
 					}
-					if (decalID.equals("*")) decal = new GoldStarDecal();
-				}
-				Tile tile = new Tile(terrain, decal, row, col);
-				
-				Item item = null;
-				String[] tileItem = in.next().split(":");
-				if (tileItem[0].equals("Item")) {
-					String itemType = tileItem[1];
-					if (itemType.equals("GiantRock")) item = new GiantRock();
-					else if (itemType.equals("TreasureChest")) {
-						item = new TreasureChest();
-						String actionDone = tileItem[2];
-						if (actionDone.equals("true")) ((TreasureChest) item).setActionDone();
-					} else {
-						if (itemType.equals("Weapon")) {
-							String weaponName = tileItem[2];
-							int weaponBonus = Integer.parseInt(tileItem[3]);
-							item = getWeapon(weaponName, weaponBonus);
-						} else if (itemType.equals("Armor")) {
-							String armorName = tileItem[2];
-							int armorBonus = Integer.parseInt(tileItem[3]);
-							item = getArmor(armorName, armorBonus);
+					Tile tile = new Tile(terrain, decal, row, col);
+					
+					Item item = null;
+					String[] tileItem = in.next().split(":");
+					if (tileItem[0].equals("Item")) {
+						String itemType = tileItem[1];
+						if (itemType.equals("GiantRock")) item = new GiantRock();
+						else if (itemType.equals("TreasureChest")) {
+							item = new TreasureChest();
+							String actionDone = tileItem[2];
+							if (actionDone.equals("true")) ((TreasureChest) item).setActionDone();
 						} else {
-							double value = Double.parseDouble(tileItem[2]);
-							if (itemType.equals("DamagingOneShotItem")) item = new DamagingOneShotItem(value);
-							if (itemType.equals("HealingOneShotItem")) item = new HealingOneShotItem(value);
+							if (itemType.equals("Weapon")) {
+								String weaponName = tileItem[2];
+								int weaponBonus = Integer.parseInt(tileItem[3]);
+								item = getWeapon(weaponName, weaponBonus);
+							} else if (itemType.equals("Armor")) {
+								String armorName = tileItem[2];
+								int armorBonus = Integer.parseInt(tileItem[3]);
+								item = getArmor(armorName, armorBonus);
+							} else {
+								double value = Double.parseDouble(tileItem[2]);
+								if (itemType.equals("DamagingOneShotItem")) item = new DamagingOneShotItem(value);
+								if (itemType.equals("HealingOneShotItem")) item = new HealingOneShotItem(value);
+							}
 						}
 					}
+					tile.setItem(item);	
+					map.setTile(tile);
 				}
-				tile.setItem(item);	
-				map.setTile(tile);
 			}
+			
+			
+			// error here
+			int entities = Integer.parseInt(in.next());
+			for (int k = 0; k < entities; k++) {
+				String[] entityLocation = in.next().split(":");
+				String entityName = entityLocation[0];
+				String[] location = entityLocation[1].split(",");
+				int x = Integer.parseInt(location[0]);
+				int y = Integer.parseInt(location[1]);
+				// will fix this later to include all entities
+				map.updateEntityLocation(avatar, new Location(x, y));
+			}
+			
+			games.put(gameName, map);
 		}
 		
-		
-		// error here
-		int entities = Integer.parseInt(in.next());
-		for (int k = 0; k < entities; k++) {
-			String[] entityLocation = in.next().split(":");
-			String entityName = entityLocation[0];
-			String[] location = entityLocation[1].split(",");
-			int x = Integer.parseInt(location[0]);
-			int y = Integer.parseInt(location[1]);
-			// will fix this later to include all entities
-			map.updateEntityLocation(avatar, new Location(x, y));
-		}
+		Map<String, Integer> keySet = new HashMap<String, Integer>();
 		
 		for (int i = 0; i < 10; i++) {
 			String line = in.next();
 			String dir = line.substring(0, line.indexOf(":"));
 			int key = Integer.parseInt(line.substring(line.indexOf(":") + 1));
-			//map.editKeySet(dir, key);
+			keySet.put(dir, key);
 		}
+		
+		World finalWorld = new World(games, keySet);
+		//game.setWorld(finalWorld);
 		
 		//game.setMap(map);
 		System.out.println("GAME LOADED\n---------------");
-		return game;
+		return new Game(finalWorld, avatar);
 	}
 	
 	public static TakeableItem getWeapon(String name, int value) {

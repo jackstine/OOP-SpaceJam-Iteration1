@@ -15,7 +15,12 @@ public class TeleportationDecal extends Decal {
 	public BufferedImage getImage(int scale){
 		return DecalImageProxy.getDecalImage(this);
 	}
+	
 	public BufferedImage getNewImage(){
 		return DecalImageProxy.getNewDecalImage(this);
 	}	
+	
+	public String toString() {
+		return "Decal:O" + "\n" + this.nextMap;
+	}
 }

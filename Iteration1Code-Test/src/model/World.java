@@ -66,13 +66,12 @@ public class World {
 	}
 	
 	public String toString(){
-		String result = "WORLD:";
-		result += maps.keySet().size();
+		String result = "World:" + maps.keySet().size();
 		for (Entry<String, GameMap> entry : maps.entrySet()) {
 		    String key = entry.getKey();
 		    GameMap map = entry.getValue();
 		    result = result +  "\n" + key;
-		    result = result + "\n" +  map.toString();
+		    result = result + "\n" +  map;
 		}
 		for (String key : this.keySet.keySet()) result += "\n" + key + ":" + this.keySet.get(key);
 		return result;
