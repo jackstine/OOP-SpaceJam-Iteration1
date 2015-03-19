@@ -1,5 +1,8 @@
 package utilities;
 
+import controller.MovementController;
+import model.Point;
+
 public class Directions {
 	
 	public final static int SOUTHWEST = 1;
@@ -23,6 +26,18 @@ public class Directions {
 		if (direction == NORTHWEST) return SOUTHEAST;
 		if (direction == WEST) return EAST;
 		return -1;
+	}
+	
+	public final static Point getPoint(int direction){
+		if (direction == SOUTHWEST) return MovementController.SOUTHWEST;
+		if (direction == SOUTH) return MovementController.SOUTH;
+		if (direction == SOUTHEAST) return MovementController.SOUTHEAST;
+		if (direction == EAST) return MovementController.EAST;
+		if (direction == NORTHEAST)return MovementController.NORTHEAST;
+		if (direction == NORTH) return MovementController.NORTH;
+		if (direction == NORTHWEST) return MovementController.NORTHWEST;
+		if (direction == WEST) return MovementController.WEST;
+		return null;
 	}
 	
 }
