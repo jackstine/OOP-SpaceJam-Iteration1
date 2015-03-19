@@ -3,6 +3,7 @@ package model;
 import java.util.Random;
 
 import utilities.Directions;
+import utilities.RNG;
 import model.Entity.*;
 import model.items.*;
 
@@ -19,7 +20,8 @@ public class NpcEffectHandler {
 		int oppositeDirection = getOppositeDirection(avatar);
 		npc.setDirection(oppositeDirection);
 		
-		int randomness = randomNumber();
+		int randomness = RNG.next(10);
+		System.out.println(randomness);
 		if (randomness < 5) {
 			System.out.println("You can not steal");
 			if (avatar.getOccupation().getName().equals("Hunter")) {
@@ -50,9 +52,5 @@ public class NpcEffectHandler {
 		return Directions.getOppositeDirection(avatar.getDirection());
 	}
 	
-	private static int randomNumber() {
-		Random rand = new Random();
-		return rand.nextInt()%10;
-	}
 	
 }
