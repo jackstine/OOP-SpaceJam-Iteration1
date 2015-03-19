@@ -1,6 +1,6 @@
 package model.items;
 
-import model.Entity.Avatar;
+import model.entity.Avatar;
 
 public abstract class InteractiveItem implements Item {
 	protected String ITEM_NAME;

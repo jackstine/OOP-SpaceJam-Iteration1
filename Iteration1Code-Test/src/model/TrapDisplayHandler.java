@@ -1,6 +1,6 @@
 package model;
 
-import model.Entity.Avatar;
+import model.entity.Avatar;
 
 public class TrapDisplayHandler {
 	Avatar avatar;

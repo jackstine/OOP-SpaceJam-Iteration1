@@ -4,7 +4,7 @@ import java.util.Random;
 
 import utilities.Directions;
 import utilities.RNG;
-import model.Entity.*;
+import model.entity.*;
 import model.items.*;
 
 public class NpcEffectHandler {

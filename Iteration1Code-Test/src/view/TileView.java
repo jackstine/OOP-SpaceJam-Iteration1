@@ -13,11 +13,12 @@ import javax.swing.JComponent;
 
 
 
+
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.TerrainImageVisitor;
 import model.Tile;
-import model.Entity.NPC;
+import model.entity.NPC;
 import model.visitor.ItemImageVisitor;
  
 @SuppressWarnings("serial")

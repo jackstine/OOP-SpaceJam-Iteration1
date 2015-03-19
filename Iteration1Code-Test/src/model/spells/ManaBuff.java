@@ -1,7 +1,7 @@
 package model.spells;
 
-import model.Entity.Entity;
-import model.Entity.EntityEffectHandler;
+import model.entity.Entity;
+import model.entity.EntityEffectHandler;
 
 public class ManaBuff extends BoonSpellSingle{
 	private int manaRequired = 0;

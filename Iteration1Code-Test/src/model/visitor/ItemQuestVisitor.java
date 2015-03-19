@@ -1,7 +1,7 @@
 package model.visitor;
 
 import model.Tile;
-import model.Entity.Avatar;
+import model.entity.Avatar;
 import model.items.AlchemistWeapon;
 import model.items.Armor;
 import model.items.Boots;

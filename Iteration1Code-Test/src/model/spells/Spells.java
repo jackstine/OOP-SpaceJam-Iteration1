@@ -2,7 +2,7 @@ package model.spells;
 
 import utilities.Scaling;
 import model.Point;
-import model.Entity.Entity;
+import model.entity.Entity;
 import model.spells.Spellable;
 
 public class Spells {

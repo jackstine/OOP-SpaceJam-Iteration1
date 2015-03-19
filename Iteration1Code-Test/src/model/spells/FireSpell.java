@@ -1,6 +1,6 @@
 package model.spells;
 
-import model.Entity.Entity;
+import model.entity.Entity;
 
 public class FireSpell extends BaneSpellSingle{
 	// for now we will have a spell that will have a constant damage applied to it

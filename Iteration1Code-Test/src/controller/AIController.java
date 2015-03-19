@@ -1,7 +1,7 @@
 package controller;
 
 import model.GameMap;
-import model.Entity.NPC;
+import model.entity.NPC;
 
 public abstract class AIController {
 	private NPC npc;

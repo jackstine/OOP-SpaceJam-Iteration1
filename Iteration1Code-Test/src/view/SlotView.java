@@ -30,8 +30,10 @@ public class SlotView extends JPanel implements Observer{
 	private BufferedImage slotImage;
 	private InventorySlot slot;
 	private BufferedImage itemImage;
+	private InventoryView inventoryView;
 	
-	public SlotView(InventorySlot slot,Point pointOfSlot){
+	public SlotView(InventorySlot slot,Point pointOfSlot, InventoryView inventoryView){
+		this.inventoryView = inventoryView;
 		this.slot = slot;
 		this.setImages();
 		this.point= pointOfSlot;
@@ -83,7 +85,9 @@ public class SlotView extends JPanel implements Observer{
 	
 	//just resets the image according to the inventorySlot
 	public void update(Observable arg0, Object arg1) {
+		System.out.println("REPAINTING THE ITEM");
 		this.resetImage();
 		this.repaint();
+		this.inventoryView.repaint();
 	}
 }

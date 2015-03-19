@@ -1,6 +1,6 @@
 package model.spells;
 
-import model.Entity.Entity;
+import model.entity.Entity;
 
 public class EarthSpell extends BaneSpellSingle{
 	private int damage = 12;
