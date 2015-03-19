@@ -4,15 +4,12 @@ import java.util.Random;
 
 import utilities.SpriteSheetUtility;
 
-import model.AreaEffect;
 import model.NpcEffectHandler;
 
 public class Skeleton extends NPC implements Conversable {
-	protected AreaEffect effect;
 	
-	public Skeleton(AreaEffect effect) {
+	public Skeleton() {
 		super();
-		this.effect=effect;
 	}
 	
 	public SpriteSheetUtility getSpriteSheet() {

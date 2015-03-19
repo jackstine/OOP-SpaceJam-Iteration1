@@ -41,6 +41,9 @@ public class InventoryEquipment {
 	public boolean equipInventory(TakeableItem item){
 		return this.inventory.findAndEquip(item);
 	}
+	public boolean equipInventory(TakeableItem item,Point point){
+		return this.inventory.equip(point, item);
+	}
 	
 	public TakeableItem unequipInventory(Point point){
 		return this.inventory.unequip(point);

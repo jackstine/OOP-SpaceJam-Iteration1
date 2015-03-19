@@ -3,7 +3,6 @@ package model.Entity;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 
-import model.AreaEffect;
 import model.Point;
 import model.Skill;
 import model.items.Equipable;
@@ -68,6 +67,10 @@ public abstract class Entity {
 	
 	public TakeableItem unequipInventorySlot(Point slotPoint){
 		return this.inventoryEquipment.unequipInventory(slotPoint);
+	}
+	
+	public boolean equipInventory(TakeableItem item, Point point){
+		return this.inventoryEquipment.equipInventory(item,point);
 	}
 	
 	/*************  EQUIPMENT *************************/
@@ -143,8 +146,9 @@ public abstract class Entity {
 	
 	// -------------------------------------------
 	// not 1st iteration stuff
-	private void attack() {
-		//occupation.attack();
+	//TODO  fix this code  it is bad really bad, cause now your attack is fixed to 5
+	public int attack(){
+		return 5;
 	}
 	
 	private void useAbility() {

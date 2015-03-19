@@ -117,6 +117,8 @@ public class Avatar extends Entity {
 		// we think
 	}
 	
+	
+	
 //	public boolean equipSlot(Equipable equipItem){
 //		TakeableItem item = equipItem.equipSlot(equipment);
 //		boolean notEmpty = (item != null);

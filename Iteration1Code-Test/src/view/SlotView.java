@@ -16,14 +16,13 @@ import model.slots.InventorySlot;
 import model.visitor.ItemImageVisitor;
 
 
+@SuppressWarnings("serial")
 public class SlotView extends JPanel implements Observer{
 	private static final int SLOTIMAGE_HEIGHT = Scaling.SLOT_VIEW_HEIGHT;
 	private static final int SLOTIMAGE_WIDTH = Scaling.SLOT_VIEW_WIDTH;
 	private static final Point SLOT_SCALE = new Point(SLOTIMAGE_WIDTH,SLOTIMAGE_HEIGHT);
 
 	private final String INVENTORY_IMAGE = "src/res/img/brown-InventorySlot.png";
-
-	private static final long serialVersionUID = 15475L;
 	
 	private static ItemImageVisitor itemVisitor = new ItemImageVisitor(SLOT_SCALE);
 	

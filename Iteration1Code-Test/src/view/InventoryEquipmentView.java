@@ -3,12 +3,16 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.mouse.InventoryEquipmentMouseHandler;
+import model.Point;
 import model.Entity.Avatar;
+import model.items.TakeableItem;
+import model.slots.InventorySlot;
 
 /*
 
@@ -32,6 +36,7 @@ public class InventoryEquipmentView extends JPanel {
 		this.avatar = avatar;
 		this.inventory = new InventoryView(avatar.getInventory());
 		inventory.addMouseListener(new InventoryMouseListener());
+		inventory.addMouseMotionListener(new InventoryMouseMotionListener());
 		this.equipment = new EquipmentView(avatar.getEquipment());
 		equipment.addMouseListener(new EquipmentMouseListener());
 		this.spell = new SpellView(this.avatar);
@@ -47,6 +52,14 @@ public class InventoryEquipmentView extends JPanel {
 		
 		setFocusable(true);
 		setVisible(true);
+	}
+	
+	public void setDraggingSlot(InventorySlot slot){
+		this.inventory.setDraggingSlot(slot);
+	}
+	
+	public void setDraggingSlotPoint(Point point){
+		this.inventory.setDraggingSlotPoint(point);
 	}
 	
 	public class EquipmentMouseListener implements MouseListener{
@@ -80,12 +93,36 @@ public class InventoryEquipmentView extends JPanel {
 			if (e.getButton()== LEFT_CLICK){
 				handler.useItem(e);
 			}
+			
+			System.out.println("CLICKED");
 		}
 		
-		public void mouseEntered(MouseEvent e) {}
-		public void mouseExited(MouseEvent e) {	}
-		public void mousePressed(MouseEvent e) {}
-		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {
+			System.out.println("ENTERED");
+		}
+		public void mouseExited(MouseEvent e) {	
+			System.out.println("EXITED");
+		}
+		public void mousePressed(MouseEvent e) {
+			System.out.println("PRESSED");
+		}
+		public void mouseReleased(MouseEvent e) {
+			System.out.println("RELEASED");
+			handler.releaseItem(e);
+		}
+	}
+	
+	public class InventoryMouseMotionListener implements MouseMotionListener{
+
+		public void mouseDragged(MouseEvent e) {
+			System.out.println("DRAGGING");
+			handler.dragItem(e);
+		}
+
+		public void mouseMoved(MouseEvent e) {
+			System.out.println("MOVING");
+		}
+		
 	}
 	
 	

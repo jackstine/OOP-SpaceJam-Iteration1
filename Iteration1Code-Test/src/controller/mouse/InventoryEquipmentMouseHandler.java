@@ -7,17 +7,19 @@ import view.InventoryEquipmentView;
 import model.Point;
 import model.Entity.Avatar;
 import model.items.TakeableItem;
+import model.slots.InventorySlot;
 
 public class InventoryEquipmentMouseHandler {
 	private Avatar avatar;
-	private InventoryEquipmentView equipmentView;
+	private InventoryEquipmentView inventoryEquipmentView;
+	private InventorySlot draggingSlot = new InventorySlot();
 	
-	public InventoryEquipmentMouseHandler(Avatar avatar, InventoryEquipmentView equipmentView){
+	public InventoryEquipmentMouseHandler(Avatar avatar, InventoryEquipmentView inventoryEquipmentView){
 		this.avatar = avatar;
-		this.equipmentView = equipmentView;
+		this.inventoryEquipmentView = inventoryEquipmentView;
 	}
 	
-	private Point getInventorySlot(MouseEvent e){
+	public Point getInventorySlot(MouseEvent e){
 		int x = e.getY()/Scaling.SLOT_VIEW_SCALE;
 		int y = e.getX()/Scaling.SLOT_VIEW_SCALE;
 		return new Point(x,y);
@@ -38,7 +40,7 @@ public class InventoryEquipmentMouseHandler {
 		if (notEmpty){
 			item.action(avatar);
 		}
-		equipmentView.repaint();
+		inventoryEquipmentView.repaint();
 	}
 	
 	public TakeableItem unequipEquipmentSlot(MouseEvent e){
@@ -49,8 +51,39 @@ public class InventoryEquipmentMouseHandler {
 		if (avatar.equipInventory(item)){
 			avatar.unequipEquipment(point);
 		}
-		equipmentView.repaint();
+		inventoryEquipmentView.repaint();
 		return item;
+	}
+	
+	public void dragItem(MouseEvent e){
+		if (draggingSlot.has()){
+			this.inventoryEquipmentView.setDraggingSlotPoint(this.getDraggingSlotPoint(e));
+		}
+		else{
+			TakeableItem itemPressed = avatar.unequipInventorySlot(this.getInventorySlot(e));
+			if (itemPressed != null){
+				draggingSlot.equip(itemPressed);
+				inventoryEquipmentView.setDraggingSlotPoint(this.getDraggingSlotPoint(e));
+				inventoryEquipmentView.setDraggingSlot(draggingSlot);
+			}
+		}
+	}
+	
+	public Point getDraggingSlotPoint(MouseEvent e){
+		int pointX = e.getX() - (Scaling.SLOT_VIEW_WIDTH/2);
+		int pointY = e.getY() - (Scaling.SLOT_VIEW_HEIGHT/2);
+		return new Point(pointX,pointY);
+	}
+	
+	public void releaseItem(MouseEvent e){
+		if (draggingSlot != null){
+			TakeableItem item = draggingSlot.unequip();
+			Point point = this.getInventorySlot(e);
+			boolean itemNotEquipped = ! avatar.equipInventory(item,point);
+			if (itemNotEquipped){
+				avatar.equipInventory(item);
+			}
+		}
 	}
 
 }

@@ -10,7 +10,7 @@ import model.items.*;
 public class NpcEffectHandler {
 	
 	public static void apply(Avatar avatar, Orc npc) {
-		npc.getAreaEffect().apply(avatar);
+		EntityEffectHandler.applyDamage(avatar, npc.attack());
 		int oppositeDirection = getOppositeDirection(avatar);
 		npc.setDirection(oppositeDirection);
 	}

@@ -10,6 +10,10 @@ public final class GameLog {
 	private static ArrayList<String> log = new ArrayList<String>();
 	private static boolean writing = false;
 	
+	
+	public static void write(String s){
+		GameLog.writeToLog(s);
+	}
 	public static void writeToLog(String s){
 		DateFormat df = new SimpleDateFormat("HH:mm:ss");
 		Date today = Calendar.getInstance().getTime(); 

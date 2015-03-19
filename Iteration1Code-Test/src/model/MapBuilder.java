@@ -112,8 +112,8 @@ public class MapBuilder{
 		
 		//NPC TEST
 		this.map[4][12].setNPC(new Merchant());
-		this.map[9][12].setNPC(new Skeleton(new DamageAreaEffect(.20)));
-		this.map[14][12].setNPC(new Orc(new DamageAreaEffect(.50)));
+		this.map[9][12].setNPC(new Skeleton());
+		this.map[14][12].setNPC(new Orc());
 		return this.map;
 		
 	}
@@ -151,8 +151,8 @@ public class MapBuilder{
 		
 		//NPC TEST
 		this.map[3][13].setNPC(new Merchant());
-		this.map[6][12].setNPC(new Skeleton(new DamageAreaEffect(.20)));
-		this.map[12][12].setNPC(new Orc(new DamageAreaEffect(.50)));
+		this.map[6][12].setNPC(new Skeleton());
+		this.map[12][12].setNPC(new Orc());
 		
 		return this.map;
 	}
