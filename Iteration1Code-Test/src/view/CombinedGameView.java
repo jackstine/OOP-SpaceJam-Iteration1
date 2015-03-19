@@ -82,6 +82,10 @@ public class CombinedGameView extends View {
                        
     }
     
+    public MapView getMapView(){
+    	return board.getMapView();
+    }
+    
     public void updateStatus(){
     	statusView.updateStatus();
     }

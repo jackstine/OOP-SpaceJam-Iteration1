@@ -26,13 +26,16 @@ public class SpellMouseHandler {
 		int pointY = (e.getY() - Scaling.SPELL_OFFSET_Y) / Scaling.SPELL_SPACE_Y;
 		Point spellToBeSelected = new Point(pointX,pointY);
 		
-		boolean spellSelectedIsEqualTo = spellSelected.equals(spellToBeSelected);
 		boolean spellSelectedInRange = pointY < Scaling.SPELLS_HEIGHT_NUM;
 		boolean spellSelectedExist = spellSelected != null;
 
 		if (spellSelectedExist){
+			boolean spellSelectedIsEqualTo = spellSelected.equals(spellToBeSelected);
 			if (spellSelectedIsEqualTo){
 				spellSelected = null;
+			} else{
+				spellSelected = spellToBeSelected;
+				avatar.setSelectedSpell(spellSelected);
 			}
 		}
 		else if(spellSelectedInRange){

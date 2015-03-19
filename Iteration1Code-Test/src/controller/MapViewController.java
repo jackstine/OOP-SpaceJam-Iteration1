@@ -14,6 +14,7 @@ import model.Point;
 import model.World;
 import model.Entity.Avatar;
 import utilities.Directions;
+import view.MapView;
 
 
 //public class MapViewController extends JFrame{
@@ -26,9 +27,11 @@ public class MapViewController{
 	//public BufferedImage image;
 	private boolean keyReleased;
 	private Map<String, Integer> keySet;
+	private MapView mapView;
 	
-	public MapViewController(World world,Avatar avatar,JFrame frame){ //added GameMap here
-		frame.addKeyListener(new CharacterKeyboardController(avatar,world));
+	public MapViewController(World world,Avatar avatar,JFrame frame,MapView mapView){ //added GameMap here
+		this.mapView = mapView;
+		frame.addKeyListener(new CharacterKeyboardController(avatar,world,mapView));
 		this.avatar = avatar;
 		this.world=world;
 		
@@ -58,8 +61,8 @@ public class MapViewController{
 		
 		private MovementController movement;
 		
-		public CharacterKeyboardController(Avatar avatar, World world){
-			this.movement = new MovementController(avatar, world);
+		public CharacterKeyboardController(Avatar avatar, World world, MapView mapView){
+			this.movement = new MovementController(avatar, world, mapView);
 			
 			if(avatar != null){
 				// TODO change the timer to baseDelay when issuing product

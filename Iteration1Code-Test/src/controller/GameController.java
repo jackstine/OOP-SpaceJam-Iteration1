@@ -15,6 +15,7 @@ import model.Location;
 import model.World;
 import model.Entity.Avatar;
 import view.CombinedGameView;
+import view.MapView;
 import view.View;
  
 public class GameController {
@@ -52,6 +53,10 @@ public class GameController {
      		Timer statUpdater = new Timer(100, new StatCheck());
      		statUpdater.start();
         }  
+        
+        public MapView getMapView(){
+        	return combinedGameView.getMapView();
+        }
                        
         /********************MISC OPERATIONS**********************/
         

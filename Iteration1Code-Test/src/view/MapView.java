@@ -59,7 +59,6 @@ public class MapView extends JComponent{
                                 }
                         }
                 }
-                repaint();
                 g.dispose();
         }      
         public Dimension getPreferredSize(){

@@ -51,8 +51,6 @@ public class SpellView extends JComponent{
 	private static final BufferedImage MANA_BUFF_IMAGE = ImageProcessing.scaleImage(SPELL_SLOT,MANA_BUFF_PATH);
 	private static final BufferedImage MAGIC_CIRCLE_IMAGE = ImageProcessing.scaleImage(SPELL_SLOT,MAGIC_CIRCLE_PATH);
 	 
-	
-	private Point spellSelected;
 	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
 	private final int SELECTED_SPELL_X_OFFSET = 5;
 	private Avatar avatar;
@@ -70,8 +68,8 @@ public class SpellView extends JComponent{
 	private void paintSelectedSpell(Graphics g){
 		if (handler.getSelected() != null){
 			g.setColor(Color.YELLOW);
-			int pointX = (spellSelected.getX() * Scaling.SPELL_SPACE_X) + SELECTED_SPELL_X_OFFSET;
-			int pointY = (spellSelected.getY() * Scaling.SPELL_SPACE_Y);
+			int pointX = (handler.getSelected().getX() * Scaling.SPELL_SPACE_X) + SELECTED_SPELL_X_OFFSET;
+			int pointY = (handler.getSelected().getY() * Scaling.SPELL_SPACE_Y);
 			g.fillRect(pointX, pointY, SELECTED_SPELL_SCALE.getX(), SELECTED_SPELL_SCALE.getY());
 		}
 	}
@@ -96,6 +94,7 @@ public class SpellView extends JComponent{
 	public class SpellListener implements MouseListener{
 		
 		public void mouseClicked(MouseEvent e){
+			System.out.println(e);
 			handler.selectSpell(e);
 		}
 

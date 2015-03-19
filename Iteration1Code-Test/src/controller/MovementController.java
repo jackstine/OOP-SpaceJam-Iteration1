@@ -1,5 +1,6 @@
 package controller;
 
+import view.MapView;
 import model.GameMap;
 import model.Location;
 import model.NpcEffectHandler;
@@ -21,10 +22,12 @@ public class MovementController {
 	
 	private Avatar avatar;
 	private World world;
+	private MapView mapView;
 	
 	private QuestHandler questHandler;
 	
-	public MovementController(Avatar avatar,World world){
+	public MovementController(Avatar avatar,World world, MapView mapView){
+		this.mapView = mapView;
 		this.avatar = avatar;
 		this.world = world;
 		this.questHandler = new QuestHandler(avatar);
@@ -53,6 +56,7 @@ public class MovementController {
 		}
 		System.out.println(this.getCurrMap().getTile(avatarLocation).getTerrain());
 		System.out.println(getCurrMap().getLocation(avatar).toString());
+		this.mapView.repaint();
 	}
 
 }
