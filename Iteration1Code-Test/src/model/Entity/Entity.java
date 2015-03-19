@@ -28,8 +28,6 @@ public abstract class Entity {
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells = new Spells(this);
 	
-	protected BufferedImage image;	//TODO Delete this line
-	
 	public Entity() {}
 	
 	public Entity(Occupation occupation) {
@@ -141,15 +139,7 @@ public abstract class Entity {
 		return occupation;
 	}
 	
-	
-	/********************** FIX THEN DELETE THESE ******************/	
-	public void setState(int state){}
-	
-	public BufferedImage getImage(){
-		return image;
-	}
-	/**********************  END OF DELETION**********************/
-	
+	public abstract BufferedImage getImage();
 	
 	// -------------------------------------------
 	// not 1st iteration stuff

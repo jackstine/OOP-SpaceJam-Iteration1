@@ -14,12 +14,6 @@ public class Skeleton extends NPC implements Conversable {
 		super();
 		this.effect=effect;
 	}
-
-	@Override
-	public AreaEffect getAreaEffect() {
-		// TODO Auto-generated method stub
-		return this.effect;
-	}
 	
 	public SpriteSheetUtility getSpriteSheet() {
 		return new SpriteSheetUtility(this);

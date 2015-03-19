@@ -54,8 +54,10 @@ public class TileView extends JComponent{
         }
         if(tile.getTrap()!=null){
         	trapImage= tile.getTrap().getImage(); 
-        	imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
-            imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,trapImage);
+        	if (trapImage != null){
+        		imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
+        		imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,trapImage);
+        	}
         }
         if(tile.getNPC()!=null){
         //	tile.getNPC().accept(itemVisitor);

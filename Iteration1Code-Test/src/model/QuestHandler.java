@@ -35,8 +35,7 @@ public class QuestHandler {
 			it.accept(this.visitor);
 		}
 		
-		if(tile.getTrap()!=null)
-		TrapDamageApplication.apply(avatar,tile.getTrap());
+		if(tile.getTrap()!=null) trap.apply(avatar);
 		
 	}
 	

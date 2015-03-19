@@ -34,8 +34,9 @@ public class NpcEffectHandler {
 				TakeableItem droppedItem = weapon;
 				avatar.getInventory().findAndEquip(droppedItem);
 			}			
-		} else {			
-			npc.getAreaEffect().apply(avatar); 
+		} else {	// on unsuccessful pickpockit the avatar takes damage
+			int damage = 5;
+			EntityEffectHandler.applyDamage(avatar, damage);
 			System.out.println("Steal failure");
 		}
 	}
