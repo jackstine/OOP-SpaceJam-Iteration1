@@ -25,10 +25,7 @@ public class QuestHandler {
 			//violation of LoD
 			decal.getAreaEffect().apply(avatar); 
 		}
-		
-		
-		
-		
+
 		// Let us now begin the Satan Ceremony
 		boolean itemExist = it != null;
 		if (itemExist){

@@ -36,6 +36,7 @@ public class MapView extends JComponent{
         public void setMap(GameMap map){
         	this.map=map;
         	this.setTileComponents();
+        	this.repaint();
         }
        
         void setTileComponents(){
