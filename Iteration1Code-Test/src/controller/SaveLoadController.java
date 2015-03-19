@@ -4,13 +4,10 @@ import java.util.*;
 import java.io.*;
 
 import model.*;
-import model.entity.Avatar;
+import model.entity.*;
 import model.items.*;
-import model.occupation.Alchemist;
-import model.occupation.Hunter;
-import model.occupation.Terminator;
-import model.slots.Equipment;
-import model.slots.Inventory;
+import model.occupation.*;
+import model.slots.*;
 
 public class SaveLoadController {
 	
@@ -218,6 +215,21 @@ public class SaveLoadController {
 							}
 						}
 					}
+					
+					Entity npc = null;
+					String[] tileEntity = in.next().split(":");
+					
+					if (!tileEntity[0].equals("null")) {
+						if (tileEntity[0].equals("NPC")) {
+							String typeNPC = tileEntity[1];
+							if (typeNPC.equals("Orc")) npc = new Orc();
+							if (typeNPC.equals("Skeleton")) npc = new Skeleton();
+							if (typeNPC.equals("Merchant")) npc = new Merchant();
+						}
+						if (tileEntity[0].equals("Avatar")) npc = null;
+						tile.setEntity(npc);
+					}
+					
 					tile.setItem(item);	
 					map.setTile(tile);
 				}

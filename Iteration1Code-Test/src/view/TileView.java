@@ -61,10 +61,10 @@ public class TileView extends JComponent{
         		imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,trapImage);
         	}
         }
-        if(tile.getNPC()!=null){
+        if(tile.getEntity()!=null){
         //	tile.getNPC().accept(itemVisitor);
         	
-        	NPCimage= tile.getNPC().getImage(); //need to add a proxy for this
+        	NPCimage= tile.getEntity().getImage(); //need to add a proxy for this
         	imageOfTerrain = ImageProcessing.createNewImage(imageOfTerrain);
             imageToDisplay = ImageProcessing.overlayImagesBottomLeftCorner(imageOfTerrain,NPCimage);
         }

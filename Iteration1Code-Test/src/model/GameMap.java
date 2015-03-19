@@ -44,7 +44,7 @@ public class GameMap {
 	}
 	
 	public Entity getTileEntity(Point point){
-		return this.getTile(point).getNPC();
+		return this.getTile(point).getEntity();
 	}
 
 	public Tile getEntityTile(Entity entity){
@@ -94,7 +94,7 @@ public class GameMap {
 				// get rid of this entity, even if it is not the entity I want
 				this.getTile(locationOfEntity).dropEntity();
 			}
-			this.getTile(locationToUpdate).setNPC(e);
+			this.getTile(locationToUpdate).setEntity(e);
 			entityToLocationMap.put(e,locationToUpdate);
 		}
 	}

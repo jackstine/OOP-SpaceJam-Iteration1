@@ -10,7 +10,7 @@ public class Tile {
 	private Terrain terrain;
 	private Location location;
 	private Item item;
-	private Entity npc;
+	private Entity entity;
 	// private AreaEffect areaEffect;
 	private Decal decal;
 	private Trap trap;
@@ -32,7 +32,7 @@ public class Tile {
 		this.terrain = tile.getTerrain();
 		this.location = tile.getLocation();
 		this.item = tile.getItem();
-		this.npc = tile.getNPC();
+		this.entity = tile.getEntity();
 		this.decal = tile.getDecal();
 		this.trap = tile.getTrap();
 	}
@@ -49,21 +49,21 @@ public class Tile {
 
 	public boolean isPassable(){
 		
-		return terrain.isPassable() && !(item instanceof ObstacleItem) && npc == null;  
+		return terrain.isPassable() && !(item instanceof ObstacleItem) && this.entity == null;  
 	}
 	//will probably need to add a setTerrain for the purpose
 	//of making the map 
  
-	public void setNPC(Entity n) {
-		this.npc = n;
+	public void setEntity(Entity entity) {
+		this.entity = entity;
 	}
 	
 	public void setTerrain(Terrain ter){  
-		terrain=ter;
+		terrain = ter;
 	}
 
-	public Entity getNPC() {
-		return npc;
+	public Entity getEntity() {
+		return this.entity;
 	}
 	
 	public Terrain getTerrain(){
@@ -101,19 +101,8 @@ public class Tile {
 	}
 	
 	public void dropEntity(){
-		this.npc = null;
+		this.entity = null;
 	}	
-	/*
-	public AreaEffect getAreaEffect(){
-		return areaEffect;
-	}
-	*/
-	
-	/*
-	public String toString(){
-		return "Printing the image at ("+this.location.getX()+","+this.location.getY()+")";
-	}
-	*/
 	
 	public String toString() {
 		String result = "";
@@ -121,6 +110,14 @@ public class Tile {
 		result += "\n" + this.terrain;
 		result += "\n" + this.decal;
 		result += "\n" + this.item;	
+		result += "\n" + (isAvatar(this.entity) ? "Avatar" : this.entity);
 		return result;
+	}
+	
+	private boolean isAvatar(Entity entity) {
+		if (entity == null) return false;
+		String s = entity.toString();
+		if (s.substring(0, s.indexOf(":")).equals("Avatar")) return true;
+		return false;
 	}
 }

@@ -10,10 +10,6 @@ public class Merchant extends NPC implements Conversable {
 		super();
 	}
 	
-	public String toString(){
-		return "I am a MERCHANT I SELL>>>>";
-	}
-	
 	public SpriteSheetUtility getSpriteSheet() {
 		return new SpriteSheetUtility(this);
 	}
@@ -25,6 +21,10 @@ public class Merchant extends NPC implements Conversable {
 	
 	public void engage(Avatar avatar) {
 		NpcEffectHandler.apply(avatar, this);
+	}
+	
+	public String toString() {
+		return "NPC:Merchant";
 	}
 
 }

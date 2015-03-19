@@ -15,14 +15,6 @@ public class Skeleton extends NPC implements Conversable {
 	public SpriteSheetUtility getSpriteSheet() {
 		return new SpriteSheetUtility(this);
 	}
-	
-	public int randNo()
-	{
-		int x;
-		Random rand=new Random();
-		x=rand.nextInt();
-		return x;
-	}
 
 	@Override
 	public String getDialogue() {
@@ -33,6 +25,10 @@ public class Skeleton extends NPC implements Conversable {
 	@Override
 	public void engage(Avatar avatar) {
 		NpcEffectHandler.apply(avatar, this);
+	}
+	
+	public String toString() {
+		return "NPC:Skeleton";
 	}
 
 }
