@@ -1,15 +1,13 @@
 package model.entity;
 
-import java.util.Random;
-
 import utilities.SpriteSheetUtility;
-
-import model.NpcEffectHandler;
+import model.behavior.PickPockit;
 
 public class Skeleton extends NPC implements Conversable {
 	
 	public Skeleton() {
 		super();
+		this.engagedState.setState(new PickPockit());
 	}
 	
 	public SpriteSheetUtility getSpriteSheet() {
@@ -20,11 +18,6 @@ public class Skeleton extends NPC implements Conversable {
 	public String getDialogue() {
 		// TODO Auto-generated method stub
 		return "Skeleton: I'M A SCARY SKELETON RAAWWRRR";
-	}
-	
-	@Override
-	public void engage(Avatar avatar) {
-		NpcEffectHandler.apply(avatar, this);
 	}
 	
 	public String toString() {

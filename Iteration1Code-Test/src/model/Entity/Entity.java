@@ -2,9 +2,7 @@ package model.entity;
 
 import java.awt.image.BufferedImage;
 import java.util.Map;
-import java.util.Map.Entry;
 
-import view.ControlField;
 import model.Point;
 import model.Skill;
 import model.behavior.Behavior;
@@ -27,8 +25,8 @@ public abstract class Entity {
 	protected int direction;
 	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
-	protected State preferredState;
-	protected State engagedState;
+	protected State preferredState = new State();
+	protected State engagedState = new State();
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells = new Spells(this);
