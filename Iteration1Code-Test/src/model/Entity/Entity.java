@@ -2,7 +2,9 @@ package model.entity;
 
 import java.awt.image.BufferedImage;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import view.ControlField;
 import model.Point;
 import model.Skill;
 import model.behavior.Behavior;
@@ -156,6 +158,16 @@ public abstract class Entity {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public String observation(int x){
+		String s = "Observation: \n";
+		String[] info = {"Level","Life","HP", "Agility", "Strength",
+				 "Intellect", "MP", "Hardiness"};
+		for(int i = 0; i < x; ++i){
+			s += (info[i] + ":" + stats.getStatValue(info[i]) + "\n");
+		}
+		return s;
 	}
 	
 	public Occupation getOccupation() {

@@ -29,20 +29,20 @@ public final class Scaling {
 	
 	
 	/**************GAMECONTROLLER***********/
-	public static final int CHAR_X = Scaling.STATUS_X;
-	public static final int CHAR_Y = 0;
-	public static final int CHAR_WIDTH = 870;
-	public static final int CHAR_HEIGHT = 400;
 	public static final int BOARD_WIDTH = Scaling.NUM_TILES_WIDTH * Scaling.TILE_WIDTH;
 	public static final int BOARD_HEIGHT = Scaling.NUM_TILES_HEIGHT * Scaling.TILE_HEIGHT;
 	public static final int BOARD_X = 5;
 	public static final int BOARD_Y = 0;
+	public static final int CHAR_X = Scaling.STATUS_X;
+	public static final int CHAR_Y = 0;
+	public static final int CHAR_WIDTH = SCREEN_WIDTH - BOARD_WIDTH - 15;
+	public static final int CHAR_HEIGHT = 375;
 	public static final int SYSTEM_BUTTON_X = Scaling.STATUS_X;
 	public static final int SYSTEM_BUTTON_Y = CHAR_HEIGHT;
 	public static final int SYSTEM_BUTTON_WIDTH = CHAR_WIDTH;
 	public static final int SYSTEM_BUTTON_HEIGHT = 50;
-	public static final int STATUS_WIDTH = CHAR_WIDTH;
-	public static final int STATUS_HEIGHT = 230;
+	public static final int STATUS_WIDTH = SCREEN_WIDTH - BOARD_WIDTH - 15;
+	public static final int STATUS_HEIGHT = BOARD_HEIGHT - CHAR_HEIGHT - SYSTEM_BUTTON_HEIGHT;
 	public static final int STATUS_X = BOARD_WIDTH + 18;
 	public static final int STATUS_Y = SYSTEM_BUTTON_Y + SYSTEM_BUTTON_HEIGHT;
 	public static final int GAME_CONTROLLER_INPUT_X = 101;

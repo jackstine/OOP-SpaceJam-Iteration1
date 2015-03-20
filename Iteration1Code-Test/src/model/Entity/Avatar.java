@@ -98,6 +98,7 @@ public class Avatar extends Entity {
 		for(int i = 0; i < journal.size(); ++i){
 			j += journal.get(i);
 		}
+		writing = false;
 		return j;
 	}
 
