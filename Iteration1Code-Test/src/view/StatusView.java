@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -14,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
@@ -66,6 +68,11 @@ public class StatusView extends JPanel {
 	
 	private JTextArea terminal = new JTextArea();
 	
+	JProgressBar health;
+	JProgressBar mana;
+	JProgressBar lives;
+	JLabel avatarInfo;
+	
 	public StatusView(Avatar a) {
 		
 		avatar = a;
@@ -87,7 +94,7 @@ public class StatusView extends JPanel {
 		buttonPanel.setLayout(new GridLayout(2,1));
 		systemMenu = new JButton("System");
 		characterMenu = new JButton("Character");*/
-		
+		avatarInfo = new JLabel("<html>" + avatar.getOccupation().getName() + " " + avatar.getName() + "<br>Lv." + avatar.getStatValue("Level") +" Level Ups: " + avatar.getLevels() + "</html>");
 		vitalsPanel = new JPanel();
 		avatarName = new JLabel(avatar.getName());
 		avatarName.setFont(labelFont.deriveFont(20f));
@@ -97,9 +104,24 @@ public class StatusView extends JPanel {
 		
 		avatarLevel = new JLabel("Lv. "+avatar.getStatValue("Level"));
 		avatarLevel.setFont(labelFont.deriveFont(20f));
-	
-		avatarLife = new JLabel("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life") + " Lives: " +avatar.getStatValue("Lives"));
-		avatarLife.setFont(labelFont.deriveFont(18f));
+		
+		health = new JProgressBar(0, avatar.getStatValue("Life"));
+		health.setStringPainted(true);
+		health.setForeground(Color.RED);
+		health.setString("Health: " + avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life"));
+		health.setValue(avatar.getStatValue("HP"));
+		
+		mana = new JProgressBar(0, avatar.getStatValue("Mana"));
+		mana.setStringPainted(true);
+		mana.setForeground(Color.BLUE);
+		mana.setString("Mana: " + avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
+		mana.setValue(avatar.getStatValue("MP"));
+		
+		lives = new JProgressBar(0, 3);
+		lives.setStringPainted(true);
+		lives.setForeground(Color.GRAY);
+		lives.setString("Lives: " + avatar.getStatValue("Lives")+"/"+3);
+		lives.setValue(avatar.getStatValue("Lives"));
 		
 		avatarMana = new JLabel("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
 		avatarMana.setFont(labelFont.deriveFont(20f));
@@ -111,11 +133,11 @@ public class StatusView extends JPanel {
 		levelClassPanel.add(avatarLevel);
 		levelClassPanel.add(avatarOccupation);
 		
-		vitalsPanel.setLayout(new GridLayout(4,1));
-		vitalsPanel.add(avatarName);
-		vitalsPanel.add(levelClassPanel);
-		vitalsPanel.add(avatarLife);
-		vitalsPanel.add(avatarMana);
+		//vitalsPanel.setLayout(new GridLayout(4,1));
+		vitalsPanel.add(avatarInfo);
+		vitalsPanel.add(lives);
+		vitalsPanel.add(health);
+		vitalsPanel.add(mana);
 		
 		portraitView = new PortraitView(avatarPortrait);
 		portraitView.setPreferredSize(new Dimension(210, 168));
@@ -176,9 +198,19 @@ public class StatusView extends JPanel {
 	}
 	
 	 public void updateStatus() {
-		avatarLife.setText("Life: "+avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life")+"    *Lives: " +avatar.getStatValue("Lives")+"*");
-		avatarMana.setText("Mana: "+avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
-		avatarLevel.setText("Lv. "+avatar.getStatValue("Level") + "   Level Ups: " + avatar.getLevels());
+		 avatarInfo.setText("<html>" + avatar.getOccupation().getName() + " " + avatar.getName() + "<br>Lv." + avatar.getStatValue("Level") +" Level Ups: " + avatar.getLevels() + "</html>");
+		
+		health.setMaximum(avatar.getStatValue("Life"));
+		health.setString("Health: " + avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life"));
+		health.setValue(avatar.getStatValue("HP"));
+		
+		mana.setMaximum(avatar.getStatValue("Mana"));
+		mana.setString("Mana: " + avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
+		mana.setValue(avatar.getStatValue("MP"));
+		
+		lives.setString("Lives: " + avatar.getStatValue("Lives")+"/"+3);
+		lives.setValue(avatar.getStatValue("Lives"));
+		
 		if(avatar.isWriting()){
 			terminal.setText(avatar.getJournal());
 			avatar.doneWriting();

@@ -25,8 +25,8 @@ public abstract class Entity {
 	protected int direction;
 	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
-	protected State preferredState;
-	protected State engagedState;
+	protected State preferredState = new State();
+	protected State engagedState = new State();
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells = new Spells(this);
@@ -156,6 +156,16 @@ public abstract class Entity {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public String observation(int x){
+		String s = "Observation: \n";
+		String[] info = {"Level","Life","HP", "Agility", "Strength",
+				 "Intellect", "MP", "Hardiness"};
+		for(int i = 0; i < x; ++i){
+			s += (info[i] + ":" + stats.getStatValue(info[i]) + "\n");
+		}
+		return s;
 	}
 	
 	public Occupation getOccupation() {

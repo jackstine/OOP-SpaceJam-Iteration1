@@ -23,6 +23,18 @@ public abstract class InfluenceSet {
 	public  void setMap(GameMap map) {
 		this.map = map;
 	}
+	public GameMap getMap() {
+		return map;
+	}
+	public Tile getTile() {
+		return source;
+	}
+	public int getRadius() {
+		return radius;
+	}
+	public int getDirection() {
+		return direction;
+	}
 	
 	
 	public void printInfluenceSet() {
@@ -30,5 +42,7 @@ public abstract class InfluenceSet {
 		for (InfluenceTile tile: getInfluenceSet()) {
 			System.out.println(tile);
 		}
+		System.out.println("Done printing.");
+		
 	}
 }

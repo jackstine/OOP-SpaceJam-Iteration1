@@ -9,8 +9,8 @@ public class Barter implements Behavior{
 
 	public void perform(Entity initiate, Entity receiver) {
 		initiate.writeJournal(receiver.getDialogue());
-		int oppositeDirection = Directions.getOppositeDirection(initiate.getDirection());
-		receiver.setDirection(oppositeDirection);	
+		int oppositeDirection = Directions.getOppositeDirection(receiver.getDirection());
+		initiate.setDirection(oppositeDirection);	
 	}
 
 	public void getBuffs() {}

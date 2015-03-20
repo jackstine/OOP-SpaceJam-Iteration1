@@ -20,6 +20,16 @@ public abstract class Occupation{
 	protected Map<String, Stat> stats;
 	protected Map<String, Skill> skills;
 	
+	
+	public abstract Equipment createEquipment(EquipmentBuilder eb);
+	public abstract Equipment createEmptyEquipment(EquipmentBuilder eb);
+	public abstract WeaponSlot makeWeaponSlot();
+	public abstract SpriteSheetUtility getSpriteSheet();
+	public abstract void attack(Entity entity);
+	
+	protected abstract StatFactory getStatFactory(Equipment equipment);
+	protected abstract SkillFactory getSkillFactory();
+	
 	public Map<String, Stat> getStats() {
 		return this.stats;
 	}
@@ -48,15 +58,6 @@ public abstract class Occupation{
 		this.equipment = createEmptyEquipment(eb);
 	}
 	
-	public abstract Equipment createEquipment(EquipmentBuilder eb);
-	public abstract Equipment createEmptyEquipment(EquipmentBuilder eb);
-	public abstract WeaponSlot makeWeaponSlot();
-	
-	protected abstract StatFactory getStatFactory(Equipment equipment);
-	protected abstract SkillFactory getSkillFactory();
-	
-	public abstract SpriteSheetUtility getSpriteSheet();
-	
 	public String getPortraitLocation() {
 			return portraitLocation;
 	}
@@ -68,6 +69,4 @@ public abstract class Occupation{
 	public String toString() {
 		return "Occupation:" + this.name;
 	}
-	
-	public abstract void attack(Entity entity);
 }

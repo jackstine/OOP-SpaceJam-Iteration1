@@ -4,6 +4,7 @@ import utilities.Scaling;
 import utilities.SpriteSheetUtility;
 import view.MerchantView;
 import model.NpcEffectHandler;
+import model.behavior.Barter;
 
 public class Merchant extends NPC implements Conversable {
 	private MerchantView mvc;
@@ -12,6 +13,7 @@ public class Merchant extends NPC implements Conversable {
 		super();
 		this.mvc=new MerchantView();
 		mvc.setBounds(Scaling.MERCHANTVIEW_X , Scaling.MERCHANTVIEW_Y, Scaling.MERCHANTVIEW_WIDTH, Scaling.MERCHANTVIEW_HEIGHT);
+		this.engagedState.setState(new Barter());
 	}
 	
 	public SpriteSheetUtility getSpriteSheet() {
@@ -22,12 +24,7 @@ public class Merchant extends NPC implements Conversable {
 		// TODO Auto-generated method stub
 		return "Merchant: Hey there! Have a look at my wares.";
 	}
-	
-	public void engage(Avatar avatar) {
-		mvc.setAvatar(avatar);
-		NpcEffectHandler.apply(avatar, this);
-	}
-	
+
 	public String toString() {
 		return "NPC:Merchant";
 	}

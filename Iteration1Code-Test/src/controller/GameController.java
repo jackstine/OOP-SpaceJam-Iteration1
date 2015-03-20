@@ -145,7 +145,7 @@ public class GameController {
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
             if(this.handler.getEntity(tileLocation) != null){
-            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString());
+            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation")));
             }
             getMapView().repaint();
         }

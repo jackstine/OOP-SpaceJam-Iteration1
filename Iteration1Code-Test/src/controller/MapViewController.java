@@ -65,7 +65,7 @@ public class MapViewController{
 			
 			if(avatar != null){
 				// TODO change the timer to baseDelay when issuing product
-				timer = new Timer(developmentDelay/avatar.getStatValue("Movement"), new ActionListener(){
+				timer = new Timer(baseDelay/avatar.getStatValue("Movement"), new ActionListener(){
 		            @Override
 		            public void actionPerformed(ActionEvent arg0) {
 		                keyReleased = true;

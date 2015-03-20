@@ -10,7 +10,7 @@ public class Attack implements Behavior{
 	
 	public void perform(Entity attacker,Entity theAttacked) {
 		EntityEffectHandler.applyDamage(theAttacked, attacker.attack());
-		int oppositeDirection = Directions.getOppositeDirection(attacker.getDirection());
+		int oppositeDirection = Directions.getOppositeDirection(theAttacked.getDirection());
 		attacker.setDirection(oppositeDirection);
 	}
 
