@@ -3,7 +3,6 @@ package controller;
 import view.MapView;
 import model.GameMap;
 import model.Location;
-import model.NpcEffectHandler;
 import model.Point;
 import model.QuestHandler;
 import model.World;
@@ -52,7 +51,8 @@ public class MovementController {
 		}
 		else{
 			// FIX THIS LoD
-			this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
+			if (pointToMove != null)
+				this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
 		}
 		System.out.println(this.getCurrMap().getTile(avatarLocation).getTerrain());
 		System.out.println(getCurrMap().getLocation(avatar).toString());  //throws exception on Teleportation
