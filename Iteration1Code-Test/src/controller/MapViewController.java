@@ -34,7 +34,6 @@ public class MapViewController{
 		frame.addKeyListener(new CharacterKeyboardController(avatar,world,mapView));
 		this.avatar = avatar;
 		this.world=world;
-		
 		this.keySet = world.getKeySet();
 		world.setAvatar(avatar);
 		//image=avatar.loadImage();

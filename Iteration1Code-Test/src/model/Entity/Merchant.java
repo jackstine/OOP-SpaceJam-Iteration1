@@ -1,13 +1,17 @@
 package model.entity;
 
+import utilities.Scaling;
 import utilities.SpriteSheetUtility;
+import view.MerchantView;
 import model.NpcEffectHandler;
 
 public class Merchant extends NPC implements Conversable {
-
+	private MerchantView mvc;
 	
 	public Merchant() {
 		super();
+		this.mvc=new MerchantView();
+		mvc.setBounds(Scaling.MERCHANTVIEW_X , Scaling.MERCHANTVIEW_Y, Scaling.MERCHANTVIEW_WIDTH, Scaling.MERCHANTVIEW_HEIGHT);
 	}
 	
 	public SpriteSheetUtility getSpriteSheet() {
@@ -20,11 +24,15 @@ public class Merchant extends NPC implements Conversable {
 	}
 	
 	public void engage(Avatar avatar) {
+		mvc.setAvatar(avatar);
 		NpcEffectHandler.apply(avatar, this);
 	}
 	
 	public String toString() {
 		return "NPC:Merchant";
+	}
+	public MerchantView getMerchantView(){
+		return this.mvc;
 	}
 
 }

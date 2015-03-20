@@ -175,4 +175,10 @@ public final class Scaling {
 	public static final int SLOT_VIEW_HEIGHT = 60;
 	public static final int SLOT_VIEW_WIDTH = 60;
 	public static final int SLOT_VIEW_SCALE = 60;			//should equal Slot_View_Scale
+	
+	/**********************MERCHANTVIEW************************/
+	public static final int MERCHANTVIEW_HEIGHT =  Inventory.ROW * 68;
+	public static final int MERCHANTVIEW_WIDTH = Inventory.COL * 62;
+	public static final int MERCHANTVIEW_X = 0;
+	public static final int MERCHANTVIEW_Y = 0;
 }
