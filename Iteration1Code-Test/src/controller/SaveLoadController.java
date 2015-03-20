@@ -5,6 +5,7 @@ import java.io.*;
 
 import model.*;
 import model.entity.*;
+import model.entity.Orc;
 import model.items.*;
 import model.occupation.*;
 import model.slots.*;

@@ -11,6 +11,7 @@ import utilities.Scaling;
 import view.InventoryView;
 import model.Point;
 import model.entity.Avatar;
+import model.entity.Entity;
 import model.items.TakeableItem;
 import model.slots.Inventory;
 
@@ -19,7 +20,7 @@ public class MerchantView extends JFrame{
 //public class MerchantView extends JComponent{	
 private Inventory inventory;
 private InventoryView inventoryView;
-private Avatar avatar;
+private Entity entity;
 
 public MerchantView()
 {	
@@ -40,9 +41,9 @@ public void showMerchantView()
 	//this.moveToFront(inventoryView);
 }
 
-public void setAvatar(Avatar avatar)
+public void setEntity(Entity entity)
 {
-	this.avatar=avatar;
+	this.entity=entity;
 	
 }
 	
@@ -61,7 +62,7 @@ public void setAvatar(Avatar avatar)
 			Point slotPoint = getInventorySlot(e);
 			TakeableItem item=inventory.get(slotPoint);
 			inventory.unequip(slotPoint);
-			avatar.getInventory().findAndEquip(item);
+			entity.getInventory().findAndEquip(item);
 		}
 
 		@Override

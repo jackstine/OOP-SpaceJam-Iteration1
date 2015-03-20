@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import model.entity.*;
+import model.entity.Orc;
 import model.occupation.*;
 
 public class SpriteSheetUtility {
