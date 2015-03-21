@@ -43,7 +43,7 @@ public abstract class Entity implements Dieable{
 	private BufferedImage image;
 	
 	//TODO change the spells so that they are only associated with Alchemists
-	protected Spells spells = new Spells(this);
+	protected Spells spells;
 	
 	private Timer buffTime;
 	private boolean buffed = false;
@@ -57,6 +57,17 @@ public abstract class Entity implements Dieable{
 		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
 		SpriteSheetUtility util = occupation.getSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
+		this.setSpells();
+	}
+	
+	public void setSpells(){
+		this.spells = occupation.getSpells();
+		if (this.spells != null)
+			this.spells.setEntity(this);
+	}
+	public boolean hasSpells() {
+		if (this.spells != null) return true;
+		else return false;
 	}
 	
 	public BufferedImage getImage(){

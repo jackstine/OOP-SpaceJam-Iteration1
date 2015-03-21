@@ -9,6 +9,7 @@ import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
+import model.spells.Spells;
 import model.stats.Stat;
 import model.stats.factory.StatFactory;
 import utilities.DeathSoundEffect;
@@ -22,6 +23,7 @@ public abstract class Occupation{
 	protected Equipment equipment;
 	protected Map<String, Stat> stats;
 	protected Map<String, Skill> skills;
+	protected Spells spells;
 	
 	
 	public abstract Equipment createEquipment(EquipmentBuilder eb);
@@ -29,9 +31,14 @@ public abstract class Occupation{
 	public abstract WeaponSlot makeWeaponSlot();
 	public abstract SpriteSheetUtility getSpriteSheet();
 	public abstract void attack(Entity entity);
+	public abstract Spells createSpells();
 	
 	protected abstract StatFactory getStatFactory(Equipment equipment);
 	protected abstract SkillFactory getSkillFactory();
+	
+	public Spells getSpells(){
+		return this.spells;
+	}
 	
 	public Map<String, Stat> getStats() {
 		return this.stats;
@@ -54,6 +61,8 @@ public abstract class Occupation{
 		
 		SkillFactory skillFactory = this.getSkillFactory();
 		this.skills = skillFactory.initializeSkills();
+		
+		this.spells = this.createSpells();
 	}
 	
 	public void createEmptyNecessities() {
