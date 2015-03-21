@@ -4,12 +4,15 @@ import java.util.Map;
 
 import model.Skill;
 import model.SkillFactory;
+import model.entity.Dieable;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
 import model.stats.Stat;
 import model.stats.factory.StatFactory;
+import utilities.DeathSoundEffect;
+import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
 
 public abstract class Occupation{

@@ -1,22 +1,19 @@
 package utilities;
 
-import model.entity.Entity;
+public class FriendlyDeathSoundEffect extends SoundEffect{
 
-public class DeathSoundEffect extends SoundEffect {
-
-	public DeathSoundEffect() {
+public FriendlyDeathSoundEffect() {
+		
 		fetchMP3URL();
 		if (getURL() != null) {
 			playMusic();
 		}
-		
 	}
 	
 	@Override
 	protected String getFilePath() {
 		// TODO Auto-generated method stub
-		return "src/res/audio/EnemyDeath.wav";
+		return "src/res/audio/FriendlyDeath.wav";
 	}
 
 }
-

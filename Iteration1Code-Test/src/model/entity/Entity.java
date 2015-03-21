@@ -3,8 +3,10 @@ package model.entity;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 
+import utilities.DeathSoundEffect;
 import utilities.ImageProcessing;
 import utilities.Scaling;
+import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
 import model.Point;
 import model.Skill;
@@ -20,7 +22,7 @@ import model.spells.Spellable;
 import model.spells.Spells;
 import model.stats.EntityStats;
 
-public abstract class Entity {
+public abstract class Entity implements Dieable{
 	protected EntityStats stats; 
 	protected Map<String,Skill> skills;
 	protected Occupation occupation;
@@ -30,6 +32,7 @@ public abstract class Entity {
 	protected InventoryEquipment inventoryEquipment;
 	protected State preferredState = new State();
 	protected State engagedState = new State();
+	protected SoundEffect soundEffect;
 	private BufferedImage[] spriteSheet;
 	private BufferedImage image;
 	
@@ -235,5 +238,10 @@ public abstract class Entity {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public void makeDeathSoundEffect(){
+		soundEffect = new DeathSoundEffect();
 	}
 }
