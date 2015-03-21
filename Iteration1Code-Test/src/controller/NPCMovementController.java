@@ -13,6 +13,7 @@ import model.World;
 public class NPCMovementController extends MovementController {
 
 	private Entity entity;
+	private Thread task;
 	
 	public NPCMovementController(Entity entity){
 		//this.mapView = mapView;
@@ -20,18 +21,22 @@ public class NPCMovementController extends MovementController {
 	}
 	
 	public GameMap getCurrMap(){
-		//System.out.println(World.getMap("Main"));
 		return World.getMap(entity.getCurrMap());
 	}
 	
 	public Location getEntityLocation(){
-		//System.out.println(getCurrMap().getLocation(entity));
 		return getCurrMap().getLocation(entity);
 	}
 	
 	public void doArtificialIntelligence() {
-		Thread task = new CircleTask();
+		task = new CircleTask();
 		task.start();
+	}
+	
+	public void interrupt(){
+		try{
+			this.task.interrupt();
+		}catch(Exception e){}
 	}
 	
 	private class CircleTask extends Thread {
@@ -40,20 +45,20 @@ public class NPCMovementController extends MovementController {
 		
 		@Override
 		public void run() {
-			int i = 0;
-			while (i < 5) {
-				//System.out.println(map+"aye");
-				//tile = map.getEntityTile(entity);
-				//if (tile != null) {
-					move(MovementController.WEST, Directions.WEST);
-				//
-				
-				try {
-					Thread.sleep(5000);
-
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+			try {
+				int i = 0;
+				while (i < 5 && (! interrupted())) {
+					//System.out.println(map+"aye");
+					//tile = map.getEntityTile(entity);
+					//if (tile != null) {
+						move(MovementController.WEST, Directions.WEST);
+	
+					try{
+						sleep(5000);
+					}catch(Exception e){}
+	
 				}
+			} catch (Exception e) {
 			}
 			
 			
@@ -62,16 +67,9 @@ public class NPCMovementController extends MovementController {
 
 	public void move(Point step, int direction) {		
 		Location pointToMove = new Location(this.getEntityLocation());
-//		System.out.println(this.getEntityLocation());
-//		System.out.println(entity.getClass().getName() + "@" + Integer.toHexString(entity.hashCode()));
 		pointToMove.addLocation(step);
 		entity.setDirection(direction);
-		//if(this.getCurrMap().isPassable(pointToMove)){
 		getCurrMap().updateEntityLocation(entity, pointToMove);
-//			System.out.println("I HAVE MOOOOVED");
-		//}
-		//System.out.println(this.getCurrMap().getTile(entityLocation).getTerrain());
-		//this.mapView.repaint();
 	}
 
 	

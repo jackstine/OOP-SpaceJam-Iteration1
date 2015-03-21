@@ -26,4 +26,7 @@ public class Attack implements Behavior{
 	}
 
 	public void getBuffs() {}
+
+	public void kill() {
+	}
 }

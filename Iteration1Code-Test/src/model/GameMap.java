@@ -21,9 +21,7 @@ public class GameMap extends Observable{
 	public GameMap () {
 		MapBuilder m= new MapBuilder();
 		map = m.generateStructuredMap();
-		System.out.println("I WAS MADE WITHOUT A PARAMETER");
 		entityToLocationMap = map.grabEntityLocations();
-		System.out.println(entityToLocationMap);
 		this.setWidthHeight();
 		this.setEntitiesLocations();
 	}
@@ -63,9 +61,9 @@ public class GameMap extends Observable{
 	
 	public void kill(Location loc){
 		Entity entity = this.getTile(loc).dropEntity();
-		System.out.println(entity);
 		this.entityToLocationMap.remove(entity);
 		entity.makeDeathSoundEffect();
+		entity.kill();
 	}
 	
 	public GameMap(int state){
@@ -101,8 +99,6 @@ public class GameMap extends Observable{
 	}
 
 	public Tile getEntityTile(Entity entity){
-		System.out.println(entity);
-		System.out.println(this.entityToLocationMap.get(entity)+"I AM PROBABLY THE LAST NULL");
 		Location location= this.entityToLocationMap.get(entity);
 		int x=(int)location.getX();
 		int y=(int)location.getY();
@@ -152,7 +148,6 @@ public class GameMap extends Observable{
 			}
 			this.getTile(locationToUpdate).setEntity(e);
 			entityToLocationMap.put(e,locationToUpdate);
-			System.out.println("BAM BOOM BAM");
 			this.setChanged();
 			this.notifyObservers();
 			this.setChanged();
@@ -163,10 +158,8 @@ public class GameMap extends Observable{
 //		tileToItemMap.put(t, i);
 //	}
 	
-	public void notifyObservers()
-	{
+	public void notifyObservers(){
 	    super.notifyObservers();
-	    System.out.println("pls help");
 	}
 	
 	public Location getLocation(Entity e){

@@ -41,9 +41,7 @@ public class MapSet {
 		for(int r = 0; r < getHeight(); r++) {
 			for(int c = 0; c < getWidth(); c++) {
 				if(getTile(r,c).getEntity() != null) {
-					//System.out.println("ADDING "+getTile(r,c).getEntity());
 					entityLocations.put(getTile(r,c).getEntity(), new Location(r,c));
-					System.out.println(getTile(r,c).getEntity().getClass().getName() + "@" + Integer.toHexString(getTile(r,c).getEntity().hashCode()));
 				}
 			}
 		}

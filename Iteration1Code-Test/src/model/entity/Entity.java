@@ -55,6 +55,11 @@ public abstract class Entity implements Dieable{
 			return image;
 	}
 	
+	public void kill(){
+		this.preferredState.kill();
+		this.engagedState.kill();
+	}
+	
 	/********************** O BEHAVE ****************************************/
 	public void setPrefferedBehavior(Behavior behavior){
 		this.preferredState.setState(behavior);
@@ -205,7 +210,6 @@ public abstract class Entity implements Dieable{
 	// -------------------------------------------
 
 	public String getCurrMap() {
-		//System.out.println("1returning "+currMap);
 		return currMap;
 	}
 

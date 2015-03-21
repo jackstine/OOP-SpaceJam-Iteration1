@@ -44,8 +44,6 @@ public class AvatarMovementController extends MovementController {
 				if (pointToMove != null)
 					this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
 			}
-//			System.out.println(this.getCurrMap().getTile(avatarLocation).getTerrain());
-//			System.out.println(getCurrMap().getLocation(avatar).toString());  //throws exception on Teleportation
 			this.mapView.repaint();
 		}
 	}

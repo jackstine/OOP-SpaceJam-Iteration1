@@ -125,23 +125,18 @@ public class GameController {
 			}
 			stats.updatetable();
 			combinedGameView.updateStatus();
+			Location killLocation = null;
 			for (Entry<Entity, Location> entry : map.getEntityToLocationMap().entrySet()) {
+				killLocation = null;
 				Entity key = entry.getKey();
 				Location loc = entry.getValue();
-//				System.out.println();
-//            	System.out.println();
-//            	System.out.println();
-//            	System.out.println("STAT CHECKING STAT CHECKING STAT CHECKING STAT CHECKING");
-//				System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
-//				System.out.println(key.getClass().getName() + "@" + Integer.toHexString(key.hashCode()));
-//				System.out.println(loc);
-				//System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
 				if(key.getStats().getStatValue("HP") <= 0){
-					System.out.println("KILLED IT");
-					map.kill(loc);
+					killLocation = loc;
 					break;
 				}
 			}
+			if (killLocation != null)
+				map.kill(killLocation);
 		}
 	}
     
@@ -157,21 +152,11 @@ public class GameController {
     	}
            
         public void mouseClicked(MouseEvent e) {
-        	// thing here is we would like to separate pickup items and using a spell
-        	// when clicking
         	Location tileLocation = this.handler.getTileLocation(e);
-        	System.out.println("LOCATION CLICKED   " + tileLocation);
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
             if(this.handler.getEntity(tileLocation) != null){
-//            	System.out.println();
-//            	System.out.println();
-//            	System.out.println("MOUSE CLICKING MOUSE CLICKING MOUSE CLICKING MOUSE CLICKING");
             	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation")));
-//            	System.out.println(this.handler.getEntity(tileLocation).getClass().getName() + "@" + Integer.toHexString(this.handler.getEntity(tileLocation).hashCode()));
-//            	if(this.handler.getEntity(tileLocation).getStats().getStatValue("HP") <= 0){
-//					map.kill(tileLocation);
-//				}
             }
             getMapView().repaint();
         }

@@ -7,4 +7,6 @@ public interface Behavior {
 	public void perform(Entity initiate,Entity receiver);
 
 	public void getBuffs();
+	
+	public void kill();
 }

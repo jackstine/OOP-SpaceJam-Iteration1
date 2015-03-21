@@ -15,7 +15,6 @@ public class EquipingTest {
 	public static void equip(Weapon weapon,Occupation oc){
 		Avatar avatar = new Avatar(oc);
 		weapon.action(avatar);
-		System.out.print(avatar.getEquipment().getSlot(Equipment.WEAPON_SLOT) + "  ");
 	}
 	
 	public static void equipping (Weapon weapon){
@@ -25,7 +24,6 @@ public class EquipingTest {
 		equip(weapon,termOc);
 		equip(weapon,hunterOc);
 		equip(weapon,alchemistOc);
-		System.out.println();
 	}
 	
 	public static void equippingAll(Occupation oc,Weapon weapon){

@@ -92,25 +92,9 @@ public class MapViewController{
 			//timer.start();
 			
 			int key = e.getKeyCode();
-			//System.out.println(e.getKeyCode()); used for debugging
 			if(!active){
 				return;
 			}
-			for (Entry<Entity, Location> entry : mapView.getMap().getEntityToLocationMap().entrySet()) {
-				Entity keye = entry.getKey();
-				Location loc = entry.getValue();
-//				System.out.println();
-//            	System.out.println();
-//            	System.out.println();
-//            	System.out.println("STAT CHECKING STAT CHECKING STAT CHECKING STAT CHECKING");
-//				System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
-				System.out.println(keye.getClass().getName() + "@" + Integer.toHexString(keye.hashCode()));
-//				System.out.println(loc);
-				//System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
-			}
-			
-			
-			
 			if(key == KeyEvent.VK_NUMPAD1  ||key == keySet.get("SOUTHWEST")){
 				this.movement.move(MovementController.SOUTHWEST, Directions.SOUTHWEST);
 			}

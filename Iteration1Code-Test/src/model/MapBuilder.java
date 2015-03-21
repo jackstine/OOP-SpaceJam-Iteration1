@@ -114,12 +114,8 @@ public class MapBuilder{
 		
 		//NPC TEST
 		Skeleton phil = new Skeleton();
-		System.out.println("CREATING ENTITIES");
-		System.out.println(phil.getClass().getName() + "@" + Integer.toHexString(phil.hashCode()));
 		Orc bob = new Orc();
-		System.out.println(bob.getClass().getName() + "@" + Integer.toHexString(bob.hashCode()));
 		Merchant fred = new Merchant();
-		System.out.println(fred.getClass().getName() + "@" + Integer.toHexString(fred.hashCode()));
 		this.map[4][12].setEntity(new Merchant());
 		this.map[9][12].setEntity(new Skeleton());
 		this.map[14][12].setEntity(new Orc());
@@ -209,7 +205,6 @@ public class MapBuilder{
 		this.map[3][8].setDecal(new RedCrossDecal());
 		this.map[3][5].setDecal(new SkullAndCrossbonesDecal(new DamageAreaEffect(.50)));
 		this.map[2][8].setDecal(new SkullAndCrossbonesDecal(new DeathAreaEffect()));
-		System.out.println("ASSSSSSS");
 		this.map[4][5].setTerrain(new RadioactiveWasteTerrain());
 		Armor armor = new Armor(3+20);
 		this.map[3][20].setItem(armor);

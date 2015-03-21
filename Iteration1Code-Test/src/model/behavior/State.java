@@ -18,7 +18,7 @@ public class State {
 	}
 	
 	public void perform(Entity initiate,Entity receiver){
-		this.states.peek().perform(initiate,receiver);;
+		this.states.peek().perform(initiate,receiver);
 	}
 	
 	public void setState(Behavior behavior){
@@ -28,6 +28,13 @@ public class State {
 	public void pop(){
 		//TODO test time constraints so that we can keep the invariant of the states
 		this.states.pop();
+	}
+	
+	public void kill(){
+		while( ! this.states.empty()){
+			states.peek().kill();
+			states.pop();
+		}
 	}
 
 }

@@ -19,14 +19,19 @@ public class Patrol extends IdleBehavior{
 	
 	//TODO I think that Idle Behaviors will not take in a Entity
 	public void perform(Entity initiate, Entity receiver) {
-		NPCMovementController moveme = new NPCMovementController(entity);
-		moveme.doArtificialIntelligence();
+		this.movementController = new NPCMovementController(entity);
+		this.movementController.doArtificialIntelligence();
 	}
 
 	@Override
 	public void getBuffs() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void kill() {
+		
+		this.movementController.interrupt();
 	}
 
 }

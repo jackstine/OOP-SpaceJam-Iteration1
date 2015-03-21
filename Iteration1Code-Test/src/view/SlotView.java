@@ -85,7 +85,6 @@ public class SlotView extends JPanel implements Observer{
 	
 	//just resets the image according to the inventorySlot
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("REPAINTING THE ITEM");
 		this.resetImage();
 		this.repaint();
 		this.inventoryView.repaint();

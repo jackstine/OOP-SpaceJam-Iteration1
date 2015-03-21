@@ -31,4 +31,7 @@ public class BehaviorComposite implements Behavior{
 
 	public void getBuffs() {
 	}
+
+	public void kill() {
+	}
 }

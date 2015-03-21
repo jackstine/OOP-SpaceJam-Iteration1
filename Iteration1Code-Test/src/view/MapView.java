@@ -81,7 +81,6 @@ public class MapView extends JComponent implements Observer{
 
 		@Override
 		public void update(Observable o, Object arg) {
-			System.out.println("OBSERVED");
 			repaint();			
 		}
 }

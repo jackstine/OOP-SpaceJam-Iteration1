@@ -18,4 +18,6 @@ public class Stand extends IdleBehavior {
 		// TODO Auto-generated method stub
 		
 	}
+	public void kill() {
+	}
 }

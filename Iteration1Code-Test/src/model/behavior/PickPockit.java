@@ -21,11 +21,8 @@ public class PickPockit extends EngagedBehavior{
 		initiate.setDirection(oppositeDirection);
 		
 		int randomness = RNG.next(10);
-		System.out.println(randomness);
 		if (randomness < 5) {
-			System.out.println("You can not steal");
 			if (initiate.getOccupation().getName().equals("Hunter")) {
-				System.out.println("Steal Success");
 				
 				Weapon weapon;
 				if (randomness <= 2) weapon = Weapons.LONGBOW.weapon;
@@ -38,12 +35,14 @@ public class PickPockit extends EngagedBehavior{
 		} else {	// on unsuccessful pickpockit the avatar takes damage
 			int damage = 5;
 			EntityEffectHandler.applyDamage(initiate, receiver.attack());
-			System.out.println("Steal failure");
 		}
 	}
 
 	public void getBuffs() {
 
+	}
+
+	public void kill() {
 	}
 
 }
