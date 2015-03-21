@@ -112,9 +112,11 @@ public class ViewController {
          * Reloads game variables and their associated views.
          */
         public void reLoad(String command){
-        	Game game = new Game();
+        	// the game only needs to be instantiated once, or we will loose information
+        	Game game = null;
         	if(command.equals("Load")){	
         		try {
+        	       	game = new Game();
     				game.load();
     			} catch (IOException e) {
     				// TODO Auto-generated catch block
@@ -123,6 +125,8 @@ public class ViewController {
         	}
     		else if(command.equals("New")){
     			game = new Game(charGen.getOccupation(), charGen.getName());
+    		}else{
+    			game = new Game();
     		}
             inGame = new GameController(game);
             views.put("Game", inGame.getView());
