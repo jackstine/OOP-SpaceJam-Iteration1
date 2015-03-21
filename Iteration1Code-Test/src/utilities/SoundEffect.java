@@ -36,7 +36,7 @@ public abstract class SoundEffect {
 		
 		try {
 			mp3URL = new File(getFilePath()).toURI().toURL();
-			System.out.println("Background music successfully initialized.");
+			System.out.println("Sound effect successfully initialized.");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error finding sound file.");
@@ -55,7 +55,6 @@ public abstract class SoundEffect {
 		            getAudioInputStream( mp3URL );
 		        clip.open(ais);
 		        clip.loop(0);
-		        System.out.println("LOOPIN AND A LOOPIN");
 		   
 			}
 			catch (Exception e) {

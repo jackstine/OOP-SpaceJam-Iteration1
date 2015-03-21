@@ -1,8 +1,8 @@
 package model.spells;
 
+import utilities.BlazeSoundEffect;
 import utilities.SoundEffect;
 import model.entity.Entity;
-import model.utilities.BlazeSoundEffect;
 
 public class FireSpell extends BaneSpellSingle{
 	// for now we will have a spell that will have a constant damage applied to it

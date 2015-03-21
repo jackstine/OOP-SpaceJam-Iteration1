@@ -1,5 +1,6 @@
 package model.spells;
 
+import utilities.BlazeSoundEffect;
 import utilities.PlasmaRaySoundEffect;
 import utilities.SoundEffect;
 import model.entity.Entity;
