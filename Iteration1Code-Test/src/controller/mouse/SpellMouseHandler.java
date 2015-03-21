@@ -28,7 +28,6 @@ public class SpellMouseHandler {
 		
 		boolean spellSelectedInRange = pointY < Scaling.SPELLS_HEIGHT_NUM;
 		boolean spellSelectedExist = spellSelected != null;
-
 		if (spellSelectedExist){
 			boolean spellSelectedIsEqualTo = spellSelected.equals(spellToBeSelected);
 			if (spellSelectedIsEqualTo){

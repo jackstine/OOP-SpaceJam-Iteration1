@@ -6,6 +6,7 @@ import model.*;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
+import model.spells.Spells;
 import model.stats.factory.HunterStatFactory;
 import model.stats.factory.StatFactory;
 
@@ -35,6 +36,10 @@ public abstract class Hunter extends Occupation{
 	public void attack(Entity entity) {
 		// create "CombatSimulator" class that will carry
 		// out the fighting between Avatar and Entity		
+	}
+	
+	public Spells createSpells(){
+		return null;
 	}
 	
 	@Override

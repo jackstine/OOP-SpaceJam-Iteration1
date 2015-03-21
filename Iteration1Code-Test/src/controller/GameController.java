@@ -37,6 +37,8 @@ public class GameController {
         
         private CombinedGameView combinedGameView;
         
+        Timer statUpdater;
+        
         //private GameLog log = new GameLog();
         
         
@@ -55,7 +57,7 @@ public class GameController {
         	stats = new StatsController(combinedGameView, avatar); 
         	levelUp = new LevelUpController(combinedGameView, avatar);
         	     		
-     		Timer statUpdater = new Timer(100, new StatCheck());
+     		statUpdater = new Timer(100, new StatCheck());
      		statUpdater.start();
         }  
         
@@ -113,6 +115,7 @@ public class GameController {
 				 combinedGameView.setNext("Main");
 	             combinedGameView.setRedraw(true);
 	             avatar.makeDeathSoundEffect();
+	             statUpdater.stop();
 			}
 			else if(avatar.getStatValue("HP") <= 0){
 				avatar.setStatValue("Lives", avatar.getStatValue("Lives")-1);
@@ -131,7 +134,7 @@ public class GameController {
 			stats.updatetable();
 			combinedGameView.updateStatus();
 			Location killLocation = null;
-			for (Entry<Entity, Location> entry : map.getEntityToLocationMap().entrySet()) {
+			for (Entry<Entity, Location> entry : World.getMap(avatar.getCurrMap()).getEntityToLocationMap().entrySet()) {
 				killLocation = null;
 				Entity key = entry.getKey();
 				Location loc = entry.getValue();
@@ -140,8 +143,10 @@ public class GameController {
 					break;
 				}
 			}
-			if (killLocation != null)
+			if (killLocation != null){
 				map.kill(killLocation);
+				avatar.makeGoldTransaction(50);
+			}
 		}
 	}
     

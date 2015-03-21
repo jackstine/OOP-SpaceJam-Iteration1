@@ -45,6 +45,14 @@ public class GameMap extends Observable{
 		this.setEntitiesLocations();
 	}
 	
+	public GameMap(MapBuilder m) {
+		map = m.generateStructuredMapv3();
+		this.setWidthHeight();
+		//addObserver(mv);
+		entityToLocationMap=new HashMap<Entity,Location>();
+		this.setEntitiesLocations();
+	}
+	
 	private void setEntitiesLocations(){
 		for (int i = 0; i < this.map.getMap().length; i++)
 			for (int j = 0; j < this.map.getMap()[i].length; j++)
@@ -65,18 +73,6 @@ public class GameMap extends Observable{
 		entity.makeDeathSoundEffect();
 		entity.kill();
 		this.send();
-	}
-	
-	public GameMap(int state){
-//		tileToItemMap = new HashMap<Tile,Item>();
-	}
-	
-	public GameMap(MapBuilder m) {
-		
-		map = m.generateStructuredMapv3();
-		this.setWidthHeight();
-		//addObserver(mv);
-		entityToLocationMap=new HashMap<Entity,Location>();
 	}
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED

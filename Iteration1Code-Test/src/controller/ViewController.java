@@ -102,10 +102,10 @@ public class ViewController {
                     frame.repaint();
                 }
                 if(current == views.get("Game")){
-                        mv.setActive(true);
+                    mv.setActive(true);
                 }
                 else{
-                        mv.setActive(false);
+                    mv.setActive(false);
                 }
         }
         /**
@@ -114,7 +114,7 @@ public class ViewController {
         public void reLoad(String command){
         	// the game only needs to be instantiated once, or we will loose information
         	Game game = null;
-        	if(command.equals("Load")){	
+        	if(command.equals("Load") && (new File("savedGame.txt").isFile())){	
         		try {
         	       	game = new Game();
     				game.load();

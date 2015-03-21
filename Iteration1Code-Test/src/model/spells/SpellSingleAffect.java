@@ -2,27 +2,12 @@ package model.spells;
 
 import model.entity.Entity;
 
-public abstract class SpellSingleAffect implements Spellable{
-	protected Entity entity;
-	
-	public SpellSingleAffect(Entity entity){
-		this.entity = entity;
+public abstract class SpellSingleAffect extends Spell{
+
+	public SpellSingleAffect(Entity entity) {
+		super(entity);
 	}
 	
-	public abstract int getManaRequirement();
-	
-	public boolean able(){
-		if ( this.getEntity().getMP() >= this.getManaRequirement()){
-			return true;
-		}
-		else return false;
-	}
-	
-	public Entity getEntity(){
-		return this.entity;
-	}
-	
-	public void makeSoundEffect() {
-		//Overridable.
-	}
+	//TODO create a single spell thingy  if there is one
+
 }

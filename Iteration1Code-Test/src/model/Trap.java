@@ -5,11 +5,24 @@ import java.awt.image.BufferedImage;
 import model.entity.Entity;
 
 public abstract class Trap {
+	protected int detectionLevelRequired=1;
+	protected boolean visible=false;
+	protected int damage=1;
 	
 	public abstract int getDamage();
 	public abstract BufferedImage getImage();
 	public abstract void apply(Entity e);
 	//true by default
 	public boolean isVisible(){return true;}
+	
+	public int detectionRequired(){
+		return detectionLevelRequired;
+	}
+	
+	public void makeVisible(){
+		visible=true;
+	}
+	
+	
 	
 }

@@ -16,13 +16,15 @@ public class Spells {
 	
 	public Spells(Entity entity){
 		this.entity = entity;
-		this.setSpells();
+	}
+	
+	public Spells(){
 	}
 	
 	private void setSpells(){
 		//TODO get rid of these magic numbers once we get this class on the go
-		//spells[0][0] = new FireSpell(this.entity);
-		spells[0][0] =new BuffSpell(this.entity,100,"Movement");
+		spells[0][0] = new FireSpell(this.entity);
+//		spells[0][0] =new BuffSpell(this.entity,100,"Movement");
 		spells[0][1] = new EarthSpell(this.entity);
 		spells[0][2] = new PlasmaRay(this.entity);
 		spells[2][0] = new GloryHeal(this.entity);
@@ -37,6 +39,11 @@ public class Spells {
 		if (this.selectedSpell != null)
 			return this.spells[this.selectedSpell.getY()][this.selectedSpell.getX()];
 		else return null;
+	}
+
+	public void setEntity(Entity entity) {
+		this.entity = entity;
+		this.setSpells();
 	}
 
 }

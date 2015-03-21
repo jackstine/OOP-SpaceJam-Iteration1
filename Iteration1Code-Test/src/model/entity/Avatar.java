@@ -109,7 +109,6 @@ public class Avatar extends Entity {
 		// we think
 	}
 	
-	@Override
 	public void makeDeathSoundEffect(){
 		soundEffect = new FriendlyDeathSoundEffect();
 	}

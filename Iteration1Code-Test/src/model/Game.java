@@ -25,21 +25,22 @@ public class Game {
 	Avatar avatar;
 
 	public Game() {
-		world = new World();
 		avatar = new Avatar(new AvatarTerminator());
+		world = new World(avatar);
 		Map<String, GameMap> maps = world.getMaps();
 		Set<String> mapNames = maps.keySet();
 	}
 	
 	public Game(World world, Avatar avatar) {
-		this.world = world;
 		this.avatar = avatar;
+		this.world = world;
+		this.world.setWorldAvatar(avatar);
 	}
 	
 	public Game(Occupation occupation, String name) {
-		world = new World();
-		//build the Avatar equipment
 		avatar = new Avatar(occupation);
+		world = new World(avatar);
+		//build the Avatar equipment
 		avatar.setName(name);
 	}
 	

@@ -17,7 +17,7 @@ public class AvatarMovementController extends MovementController {
 		this.mapView = mapView;
 		this.avatar = avatar;
 		this.world = world;
-		this.questHandler = new QuestHandler(avatar);
+		this.questHandler = new QuestHandler(avatar,World.getMap(avatar.getCurrMap()));
 	}
 
 	public GameMap getCurrMap(){

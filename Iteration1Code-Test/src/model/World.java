@@ -12,8 +12,10 @@ import view.MapView;
 public class World {
 	private static Map<String, GameMap> maps = new HashMap<String, GameMap>();
 	private Map<String, Integer> keySet = new HashMap<String, Integer>();
+	private Avatar avatar;
 	
-	public World(){//MapView mv){
+	public World(Avatar avatar){//MapView mv){
+		this.avatar = avatar;
 		MapBuilder m = new MapBuilder();
 		m.generateStructuredMapv3();
 		maps.put("Main",new GameMap());
@@ -22,14 +24,16 @@ public class World {
 		this.runEntities();
 	}
 	
-	public World(GameMap Main){//, MapView mv){
+	public World(GameMap Main, Avatar avatar){//, MapView mv){
+		this.avatar = avatar;
 		maps.put("Main",Main);
 		maps.put("Cave", new GameMap());
 		genDefaultKeys();
 		this.runEntities();
 	}
 	
-	public World( Map<String, GameMap> maps, Map<String, Integer> keySet){
+	public World( Map<String, GameMap> maps, Map<String, Integer> keySet,Avatar avatar){
+		this.avatar = avatar;
 		this.maps = maps;
 		this.keySet = keySet;
 		this.runEntities();
@@ -38,6 +42,10 @@ public class World {
 	public void setMapView(MapView mv) {
 		maps.get("Main").setMapView(mv);
 		maps.get("Cave").setMapView(mv);
+	}
+	
+	public void setWorldAvatar(Avatar avatar){
+		this.avatar = avatar;
 	}
 	
 	public Map<String, GameMap> getMaps() {
@@ -81,10 +89,10 @@ public class World {
 	}
 	
 	public Set<Entity> getEntities(){
-		Set<Entity> mainEntities = this.maps.get("Main").getEntities();
-		Set<Entity> caveEntities = this.maps.get("Cave").getEntities();
-		mainEntities.addAll(caveEntities);
-		return mainEntities;
+//		Set<Entity> mainEntities = this.maps.get("Main").getEntities();
+//		Set<Entity> caveEntities = this.maps.get("Cave").getEntities();
+//		mainEntities.addAll(caveEntities);
+		return this.maps.get(this.avatar.getCurrMap()).getEntities();
 	}
 	
 	// this method is called to run all Entities in idle states, whatever they may be
