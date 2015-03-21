@@ -14,7 +14,7 @@ public class Merchant extends NPC implements Conversable {
 	public Merchant() {
 		super(new MerchantHunter());
 		this.engagedState.setState(new Barter());
-		SoundEffect effect = new FriendlyDeathSoundEffect();
+		//SoundEffect effect = new FriendlyDeathSoundEffect();
 	}
 
 	public String getDialogue() {

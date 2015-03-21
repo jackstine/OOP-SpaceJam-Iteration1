@@ -1,7 +1,11 @@
 package model.entity;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.Map;
+
+import javax.swing.Timer;
 
 import utilities.DeathSoundEffect;
 import utilities.ImageProcessing;
@@ -38,6 +42,9 @@ public abstract class Entity implements Dieable{
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells = new Spells(this);
+	
+	private Timer buffTime;
+	private boolean buffed = false;
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
@@ -137,6 +144,15 @@ public abstract class Entity implements Dieable{
 	
 	public int getStatValue(String key) {
 		return this.stats.getStatValue(key);
+	}
+	
+	public void tempIncStat(String s, int value){
+		if(buffed)return;
+		buffed = true;
+		int old = stats.getStatValue(s);
+		this.stats.setStatValue(s, Math.max(0,old + value));
+		buffTime = new Timer(500,new BuffTimer(old,s));
+		buffTime.start();
 	}
 	
 	public int getMP(){return this.stats.getMP();}
@@ -244,4 +260,26 @@ public abstract class Entity implements Dieable{
 //	public void makeDeathSoundEffect(){
 //		soundEffect = new DeathSoundEffect();
 //	}
+	public class BuffTimer implements ActionListener {
+		long start = System.currentTimeMillis();
+		int value = 0;
+		String stat = "";
+		public BuffTimer(int value, String stat){
+			this.value = value;
+			this.stat = stat;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			long timePassed = System.currentTimeMillis() - start;
+			if(timePassed > 5000){
+				stats.setStatValue(stat, value);
+				buffed = false;
+				buffTime.stop();
+			}
+			
+		}
+
+	}
 }
+
+
