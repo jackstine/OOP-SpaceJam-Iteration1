@@ -1,7 +1,11 @@
 package model.entity;
 
+import utilities.DeathSoundEffect;
+import utilities.SoundEffect;
 import model.behavior.Attack;
+import model.behavior.IdleBehavior;
 import model.behavior.Patrol;
+import model.behavior.Stand;
 import model.occupation.SkeletonAlchemist;
 
 public class Skeleton extends NPC implements Conversable {
@@ -9,7 +13,7 @@ public class Skeleton extends NPC implements Conversable {
 	public Skeleton() {
 		super(new SkeletonAlchemist());
 		this.engagedState.setState(new Attack(this));
-		this.preferredState.setState(new Patrol(this));
+		this.preferredState.setState(new Stand(this));
 	}
 
 	@Override
@@ -23,6 +27,7 @@ public class Skeleton extends NPC implements Conversable {
 	}
 
 	public void makeDeathSoundEffect() {
+		SoundEffect effect = new DeathSoundEffect();
 	}
 
 }
