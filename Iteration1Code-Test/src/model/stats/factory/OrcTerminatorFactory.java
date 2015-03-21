@@ -13,11 +13,11 @@ public class OrcTerminatorFactory extends StatFactory{
 	}
 	
 	protected int getStrength() {
-		return 10;
+		return 2;
 	}
 	
 	protected int getAgility() {
-		return 10;
+		return 4;
 	}
 	
 	protected int getIntellect() {
@@ -25,7 +25,7 @@ public class OrcTerminatorFactory extends StatFactory{
 	}
 	
 	protected int getHardiness() {
-		return 10;
+		return 50;
 	}
 	
 	protected int getExperience() {
