@@ -7,10 +7,13 @@ package model.behavior;
 import java.util.List;
 import java.util.ArrayList;
 
-public class BehaviorComposite {
+import model.entity.Entity;
+
+public class BehaviorComposite implements Behavior{
 	private List<Behavior> behaviors;
+	private Entity entity;
 	
-	public BehaviorComposite (Behavior... behaviors) {
+	public BehaviorComposite (Entity entity,Behavior... behaviors) {
 		
 		this.behaviors = new ArrayList<Behavior>();
 		
@@ -21,5 +24,11 @@ public class BehaviorComposite {
 
 	public BehaviorIterator iterator () {
 		return new BehaviorIterator(behaviors);
+	}
+
+	public void perform(Entity initiate, Entity receiver) {
+	}
+
+	public void getBuffs() {
 	}
 }
