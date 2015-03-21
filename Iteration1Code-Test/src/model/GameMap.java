@@ -54,6 +54,14 @@ public class GameMap extends Observable{
 		entityToLocationMap=new HashMap<Entity,Location>();
 //		tileToItemMap = new HashMap<Tile,Item>();
 	}
+	
+	public GameMap(MapBuilder m) {
+		
+		map = m.generateStructuredMapv3();
+		this.setWidthHeight();
+		//addObserver(mv);
+		entityToLocationMap=new HashMap<Entity,Location>();
+	}
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
 	private void setWidthHeight(){
@@ -88,9 +96,6 @@ public class GameMap extends Observable{
 		return this.entityToLocationMap.get(entity);
 	}
 	
-	public HashMap<Entity,Location> getEntityToLocationMap() {
-		return entityToLocationMap;
-	}
 	
 	public Point getMapLength(){
 		return new Point(map.getHeight(), map.getWidth());
