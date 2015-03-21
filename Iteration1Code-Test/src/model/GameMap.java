@@ -4,7 +4,9 @@ import java.util.*;
 
 import model.entity.Avatar;
 import model.entity.Entity;
+import utilities.DeathSoundEffect;
 import utilities.Scaling;
+import utilities.SoundEffect;
 import view.MapView;
 
 public class GameMap extends Observable{
@@ -31,6 +33,7 @@ public class GameMap extends Observable{
 		Entity entity = this.getTile(loc).dropEntity();
 		System.out.println(entity);
 		this.entityToLocationMap.remove(entity);
+		SoundEffect effect = new DeathSoundEffect();
 	}
 	
 	public HashMap<Entity, Location> getEntityToLocationMap() {

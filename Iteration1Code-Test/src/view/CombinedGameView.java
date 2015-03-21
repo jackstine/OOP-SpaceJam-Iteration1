@@ -119,4 +119,8 @@ public class CombinedGameView extends View {
     public void changeMap(GameMap map){
     	board.changeMap(map);
     }
+    
+    public void flash(MapFlash flash) {
+    	
+    }
 }
