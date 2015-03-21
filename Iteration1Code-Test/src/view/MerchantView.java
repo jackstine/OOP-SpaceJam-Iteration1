@@ -22,6 +22,7 @@ private Inventory inventory;
 private InventoryView inventoryView;
 private Entity entity;
 private Entity reciever;
+private int basePrice;
 
 public MerchantView()
 {	
@@ -31,6 +32,7 @@ public MerchantView()
 	inventoryView.addMouseListener(new MerchantMouseListener());
 	add(inventoryView,BorderLayout.CENTER);
 	setVisible(false);	
+	basePrice = 100;
 	}
 
 public void showMerchantView()
@@ -62,17 +64,20 @@ public void setEntity(Entity entity)
 			Point slotPoint = getInventorySlot(e);
 			TakeableItem item=inventory.get(slotPoint);
 			inventory.unequip(slotPoint);
-			entity.getInventory().findAndEquip(item);
+			reciever.getInventory().findAndEquip(item);
 		}
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			if (e.getButton() == RIGHT_CLICK && reciever.getGold() >= 100){
+			System.out.println("price of item: " + (basePrice-(reciever.getSkillValue("Bargain")*10)));
+			if (e.getButton() == RIGHT_CLICK && reciever.getGold() >= basePrice-(reciever.getSkillValue("Bargain")*10)){
 				System.out.println("Gold amount before: "+ reciever.getGold());
-				reciever.makeGoldTransaction(-100);
+				reciever.makeGoldTransaction(-basePrice+(reciever.getSkillValue("Bargain")*10));
 				System.out.println("Gold amount after: "+ reciever.getGold());
 				this.unequipItem(e);
+			} else{
+				System.out.println("Not enough gold");
 			}
 		}
 

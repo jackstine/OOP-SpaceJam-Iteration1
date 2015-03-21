@@ -143,8 +143,10 @@ public class GameController {
 					break;
 				}
 			}
-			if (killLocation != null)
+			if (killLocation != null){
 				map.kill(killLocation);
+				avatar.makeGoldTransaction(50);
+			}
 		}
 	}
     

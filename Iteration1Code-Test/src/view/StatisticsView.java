@@ -23,6 +23,7 @@ public class StatisticsView extends JInternalFrame {
 	JLabel primaryStats = new JLabel();
 	JLabel derivedStats = new JLabel();
 	JLabel skills = new JLabel();
+	JLabel avatarGold = new JLabel();
 	private FontHandler fh = new FontHandler();
 	Font statsFont;
 	private int dimensions[] = {Scaling.INTERNAL_X,Scaling.INTERNAL_Y,Scaling.INTERNAL_WIDTH,700};
@@ -57,6 +58,7 @@ public class StatisticsView extends JInternalFrame {
 			 Skill skill = entry.getValue();
 			 skillList += "<tr>    <td class='tg-031e'>" + key+  "</td>    <td class='tg-031e'>" + skill.getSkillLevel() + "</td>  </tr>";
 		 }
+		 skillList += "<tr>    <td class='tg-031e'>" + "Gold " +  "</td>    <td class='tg-031e'>" + avatar.getGold() + "</td>  </tr>";
 		 skillList += "</table></html>";
 		
 		String livesLeft = Integer.toString(avatar.getStatValue("Lives"));
