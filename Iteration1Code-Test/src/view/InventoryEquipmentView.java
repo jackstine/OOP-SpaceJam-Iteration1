@@ -1,12 +1,15 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import utilities.FontHandler;
 
 import controller.mouse.InventoryEquipmentMouseHandler;
 import model.Point;
@@ -29,6 +32,8 @@ public class InventoryEquipmentView extends JPanel {
 	private EquipmentView equipment;
 	private SpellView spell;
 	private InventoryEquipmentMouseHandler handler;
+	private FontHandler fh = new FontHandler();
+	private Font labelFont;
 
 	public InventoryEquipmentView(Avatar avatar) {
 				
@@ -39,7 +44,9 @@ public class InventoryEquipmentView extends JPanel {
 		this.equipment = new EquipmentView(avatar.getEquipment());
 		equipment.addMouseListener(new EquipmentMouseListener());
 		this.spell = new SpellView(this.avatar);
+		labelFont = fh.AfterDisasterFont();
 		this.title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
+		this.title.setFont(labelFont.deriveFont(25f));
 	
 		this.setLayout(new BorderLayout());
 		add(this.title,BorderLayout.NORTH);

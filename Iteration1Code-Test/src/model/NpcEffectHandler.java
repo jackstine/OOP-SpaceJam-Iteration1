@@ -45,7 +45,6 @@ public class NpcEffectHandler {
 		avatar.writeJournal(npc.getDialogue());
 		int oppositeDirection = getOppositeDirection(avatar);
 		npc.setDirection(oppositeDirection);
-		npc.getMerchantView().showMerchantView();
 	}
 	
 	private static int getOppositeDirection(Avatar avatar) {

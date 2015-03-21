@@ -16,7 +16,6 @@ import model.Location;
 import model.World;
 import model.entity.Avatar;
 import model.entity.Entity;
-import view.AvatarInventoryView;
 import view.CombinedGameView;
 import view.ControlField;
 import view.MapView;

@@ -149,7 +149,10 @@ public class SaveLoadController {
 		for (int i = 0; i < numGames; i++) {
 			// load the GameMap information
 			String gameName = in.next();
+			
+			//this needs an instance of the mapview to pass into the gamemap constructor
 			GameMap map = new GameMap();
+			
 			map.setAvatar(avatar);
 			String[] mapSize = in.next().split(":");
 			String[] size = mapSize[1].split(",");
