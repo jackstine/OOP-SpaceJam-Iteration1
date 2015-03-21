@@ -244,7 +244,7 @@ public abstract class Entity implements Dieable{
 	public String diaryEntry() {
 		return "This looks like "+toString()+"\nProbably has "+stats.getStatValue("HP")+"HP left\n";
 	}
-}
+
 
 //	@Override
 //	public int hashCode() {

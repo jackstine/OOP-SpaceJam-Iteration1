@@ -21,4 +21,8 @@ public abstract class SpellSingleAffect implements Spellable{
 	public Entity getEntity(){
 		return this.entity;
 	}
+	
+	public void makeSoundEffect() {
+		//Overridable.
+	}
 }

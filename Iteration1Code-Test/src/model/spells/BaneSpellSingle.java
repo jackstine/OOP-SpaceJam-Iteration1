@@ -13,6 +13,7 @@ public abstract class BaneSpellSingle extends SpellSingleAffect implements BaneS
 		if (this.able()){
 			EntityEffectHandler.subMP(this.entity, this.getManaRequirement());
 			this.applyDamage(entityToAffect);
+			this.makeSoundEffect();
 		}
 		//ELSE DO NOTHING
 	}
