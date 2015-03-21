@@ -114,11 +114,15 @@ public class MapBuilder{
 		
 		//NPC TEST
 		Skeleton phil = new Skeleton();
-		Orc bob = new Orc("bob");
+		System.out.println("CREATING ENTITIES");
+		System.out.println(phil.getClass().getName() + "@" + Integer.toHexString(phil.hashCode()));
+		Orc bob = new Orc();
+		System.out.println(bob.getClass().getName() + "@" + Integer.toHexString(bob.hashCode()));
 		Merchant fred = new Merchant();
-		this.map[4][12].setEntity(fred);
-		this.map[9][12].setEntity(phil);
-		this.map[14][12].setEntity(bob);
+		System.out.println(fred.getClass().getName() + "@" + Integer.toHexString(fred.hashCode()));
+		this.map[4][12].setEntity(new Merchant());
+		this.map[9][12].setEntity(new Skeleton());
+		this.map[14][12].setEntity(new Orc());
 		//NPCMovementController movePhil = new NPCMovementController(phil);
 		//movePhil.doArtificialIntelligence();
 		return new MapSet(this.map);
@@ -175,8 +179,8 @@ public class MapBuilder{
 		//NPC TEST
 		
 		Skeleton jacob = new Skeleton();
-		Orc steve = new Orc("steve");
-		Orc dan = new Orc("dan");
+		Orc steve = new Orc();
+		Orc dan = new Orc();
 		Merchant ryan = new Merchant();
 		
 		this.map[3][13].setEntity(ryan);

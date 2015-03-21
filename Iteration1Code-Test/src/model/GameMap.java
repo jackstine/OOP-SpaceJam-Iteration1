@@ -4,9 +4,7 @@ import java.util.*;
 
 import model.entity.Avatar;
 import model.entity.Entity;
-import utilities.DeathSoundEffect;
 import utilities.Scaling;
-import utilities.SoundEffect;
 import view.MapView;
 
 public class GameMap extends Observable{
@@ -57,6 +55,10 @@ public class GameMap extends Observable{
 					this.map.getMap()[i][j].getLocation();
 					this.entityToLocationMap.put(this.map.getMap()[i][j].getEntity(), new Location(i,j));
 				}
+	}
+	
+	public HashMap<Entity, Location> getEntityToLocationMap() {
+		return entityToLocationMap;
 	}
 	
 	

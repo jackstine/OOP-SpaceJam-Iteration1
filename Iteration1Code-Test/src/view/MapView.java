@@ -53,6 +53,10 @@ public class MapView extends JComponent implements Observer{
                         }
                 }
         }
+        
+        public GameMap getMap(){
+        	return this.map;
+        }
        
         public void paintComponent(Graphics g){;
                 this.setTileComponents();

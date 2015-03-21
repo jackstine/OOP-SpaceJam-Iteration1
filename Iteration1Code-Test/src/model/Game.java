@@ -5,6 +5,7 @@ import java.io.*;
 import model.entity.Avatar;
 import model.occupation.AvatarTerminator;
 import model.occupation.Occupation;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -27,22 +28,23 @@ public class Game {
 	
 	
 	public Game() {
-		world = new World();		
+		world = new World();
 		avatar = new Avatar(new AvatarTerminator());
 		Map<String, GameMap> maps = world.getMaps();
 		Set<String> mapNames = maps.keySet();
-		for(String s : mapNames) {
-			GameMap curMap = world.getMap(s);
-			HashMap<Entity,Location> entityMap = curMap.getEntityToLocationMap();
-			Set<Entity> entities = entityMap.keySet();
-			for(Entity e : entities) {
-				System.out.println(e);
-				if(!(e instanceof Avatar)) {
-					NPCMovementController moveme = new NPCMovementController(e);
-					moveme.doArtificialIntelligence();
-				}
-			}
-		}
+//		for(String s : mapNames) {
+//			GameMap curMap = world.getMap(s);
+//			HashMap<Entity,Location> entityMap = curMap.getEntityToLocationMap();
+//			Set<Entity> entities = entityMap.keySet();
+//			for(Entity e : entities) {
+//				System.out.println(e);
+//				System.out.println("PRINTING THIS");
+//				if(!(e instanceof Avatar)) {
+//					NPCMovementController moveme = new NPCMovementController(e);
+//					moveme.doArtificialIntelligence();
+//				}
+//			}
+//		}
 
 		
 	}
@@ -55,10 +57,26 @@ public class Game {
 	public Game(Occupation occupation, String name) {
 		world = new World();
 		//build the Avatar equipment
-		
 		avatar = new Avatar(occupation);
 		avatar.setName(name);
 		world.setAvatar(avatar);
+		
+		
+//		Map<String, GameMap> maps = world.getMaps();
+//		Set<String> mapNames = maps.keySet();
+//		for(String s : mapNames) {
+//			GameMap curMap = world.getMap(s);
+//			HashMap<Entity,Location> entityMap = curMap.getEntityToLocationMap();
+//			Set<Entity> entities = entityMap.keySet();
+//			for(Entity e : entities) {
+//				System.out.println(e);
+//				System.out.println("PRINTING THIS");
+//				if(!(e instanceof Avatar)) {
+//					NPCMovementController moveme = new NPCMovementController(e);
+//					moveme.doArtificialIntelligence();
+//				}
+//			}
+//		}
 	}
 	
 	public World getWorld() {

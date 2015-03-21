@@ -128,13 +128,13 @@ public class GameController {
 			for (Entry<Entity, Location> entry : map.getEntityToLocationMap().entrySet()) {
 				Entity key = entry.getKey();
 				Location loc = entry.getValue();
-				System.out.println();
+//				System.out.println();
 //            	System.out.println();
 //            	System.out.println();
 //            	System.out.println("STAT CHECKING STAT CHECKING STAT CHECKING STAT CHECKING");
 //				System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
-				System.out.println(key.getClass().getName() + "@" + Integer.toHexString(key.hashCode()));
-				System.out.println(loc);
+//				System.out.println(key.getClass().getName() + "@" + Integer.toHexString(key.hashCode()));
+//				System.out.println(loc);
 				//System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
 				if(key.getStats().getStatValue("HP") <= 0){
 					System.out.println("KILLED IT");

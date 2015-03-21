@@ -5,14 +5,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import model.GameMap;
+import model.Location;
 import model.Point;
 import model.World;
 import model.entity.Avatar;
+import model.entity.Entity;
 import utilities.Directions;
 import view.MapView;
 
@@ -93,6 +96,21 @@ public class MapViewController{
 			if(!active){
 				return;
 			}
+			for (Entry<Entity, Location> entry : mapView.getMap().getEntityToLocationMap().entrySet()) {
+				Entity keye = entry.getKey();
+				Location loc = entry.getValue();
+//				System.out.println();
+//            	System.out.println();
+//            	System.out.println();
+//            	System.out.println("STAT CHECKING STAT CHECKING STAT CHECKING STAT CHECKING");
+//				System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
+				System.out.println(keye.getClass().getName() + "@" + Integer.toHexString(keye.hashCode()));
+//				System.out.println(loc);
+				//System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
+			}
+			
+			
+			
 			if(key == KeyEvent.VK_NUMPAD1  ||key == keySet.get("SOUTHWEST")){
 				this.movement.move(MovementController.SOUTHWEST, Directions.SOUTHWEST);
 			}

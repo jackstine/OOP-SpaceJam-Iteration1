@@ -15,7 +15,13 @@ public class World {
 	public World(){//MapView mv){
 		MapBuilder m = new MapBuilder();
 		m.generateStructuredMapv3();
-		
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("I WAS CALLED ON TOOOOOOO");
+		System.out.println();
+		System.out.println();
+		System.out.println();
 		maps.put("Main",new GameMap());
 		maps.put("Cave", new GameMap(m));
 		genDefaultKeys();

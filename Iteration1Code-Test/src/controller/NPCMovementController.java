@@ -63,6 +63,8 @@ public class NPCMovementController extends MovementController {
 	@Override
 	public void move(Point step, int direction) {		
 		Location pointToMove = new Location(this.getEntityLocation());
+		System.out.println(this.getEntityLocation());
+		System.out.println(entity.getClass().getName() + "@" + Integer.toHexString(entity.hashCode()));
 		pointToMove.addLocation(step);
 		entity.setDirection(direction);
 		//if(this.getCurrMap().isPassable(pointToMove)){

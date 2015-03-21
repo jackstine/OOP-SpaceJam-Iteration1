@@ -43,6 +43,7 @@ public class MapSet {
 				if(getTile(r,c).getEntity() != null) {
 					//System.out.println("ADDING "+getTile(r,c).getEntity());
 					entityLocations.put(getTile(r,c).getEntity(), new Location(r,c));
+					System.out.println(getTile(r,c).getEntity().getClass().getName() + "@" + Integer.toHexString(getTile(r,c).getEntity().hashCode()));
 				}
 			}
 		}
