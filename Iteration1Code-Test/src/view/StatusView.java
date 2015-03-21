@@ -95,6 +95,7 @@ public class StatusView extends JPanel {
 		systemMenu = new JButton("System");
 		characterMenu = new JButton("Character");*/
 		avatarInfo = new JLabel("<html>" + avatar.getOccupation().getName() + " " + avatar.getName() + "<br>Lv." + avatar.getStatValue("Level") +" Level Ups: " + avatar.getLevels() + "</html>");
+		avatarInfo.setFont(labelFont.deriveFont(20f));
 		vitalsPanel = new JPanel();
 		avatarName = new JLabel(avatar.getName());
 		avatarName.setFont(labelFont.deriveFont(20f));
@@ -108,18 +109,21 @@ public class StatusView extends JPanel {
 		health = new JProgressBar(0, avatar.getStatValue("Life"));
 		health.setStringPainted(true);
 		health.setForeground(Color.RED);
+		health.setFont(labelFont.deriveFont(15f));
 		health.setString("Health: " + avatar.getStatValue("HP")+"/"+avatar.getStatValue("Life"));
 		health.setValue(avatar.getStatValue("HP"));
 		
 		mana = new JProgressBar(0, avatar.getStatValue("Mana"));
 		mana.setStringPainted(true);
 		mana.setForeground(Color.BLUE);
+		mana.setFont(labelFont.deriveFont(15f));
 		mana.setString("Mana: " + avatar.getStatValue("MP")+"/"+avatar.getStatValue("Mana"));
 		mana.setValue(avatar.getStatValue("MP"));
 		
 		lives = new JProgressBar(0, 3);
 		lives.setStringPainted(true);
 		lives.setForeground(Color.GRAY);
+		lives.setFont(labelFont.deriveFont(15f));
 		lives.setString("Lives: " + avatar.getStatValue("Lives")+"/"+3);
 		lives.setValue(avatar.getStatValue("Lives"));
 		
