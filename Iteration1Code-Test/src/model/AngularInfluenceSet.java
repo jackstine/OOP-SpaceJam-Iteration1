@@ -17,8 +17,9 @@ public class AngularInfluenceSet extends InfluenceSet {
 	private int[] west= new int[]{6,3,7};
 	private int[] north= new int[]{6,2,5};
 	private int[] northeast= new int[]{2,1,5};
-	private int[] southwest= new int[]{3,0,7};
+	private int[] southwest= new int[]{0,3,7};
 	private int[] northwest= new int[]{2,3,6};
+	private int[] southeast= new int[]{0,1,4};
 	
 	public AngularInfluenceSet(GameMap map, Tile source, int radius, int direction) {
 		setMap(map);
@@ -42,6 +43,7 @@ public class AngularInfluenceSet extends InfluenceSet {
 		visited[x][y]=true;
 		int curr=1;
 		int check=radius*radius;
+		
 		switch(direction){
 		case 9:
 			boolean first=true;
@@ -84,10 +86,37 @@ public class AngularInfluenceSet extends InfluenceSet {
 					 x= t.getLocation().getX() + dx[south[i]];
 					 y= t.getLocation().getY() + dy[south[i]];
 				if(!visited[x][y]){  
-					//System.out.println("x: " + x + " y: " + y);
 					if(x<map.getWidth()/Scaling.TILE_WIDTH && y<map.getHeight()/Scaling.TILE_HEIGHT){
 					source= map.getTile(new Point(x,y));
 					queue.add(new InfluenceTile(source,y-initY));
+					visited[x][y]=true;
+					}
+				}
+				}
+				curr++;
+			}
+		case 3:
+			first=true;
+			length=southeast.length-1;
+			 r=0;
+			if(x+1<map.getWidth()/Scaling.TILE_WIDTH && y+1<map.getHeight()/Scaling.TILE_HEIGHT){
+				source=map.getTile(new Point(x+1,y+1));
+				queue.add(new InfluenceTile(source,curr));
+			}
+			while(!queue.isEmpty() && curr<=check-1){
+				InfluenceTile t=queue.remove();
+				list.add(t);
+				if(first==false) length=southeast.length;
+				for(int i=0;i<length;i++){
+					first=false;
+					 x= t.getLocation().getX() + dx[southeast[i]];
+					 y= t.getLocation().getY() + dy[southeast[i]];
+				if(!visited[x][y]){  
+					if(x<map.getWidth()/Scaling.TILE_WIDTH && y<map.getHeight()/Scaling.TILE_HEIGHT){
+					source= map.getTile(new Point(x,y));
+					if(x-initX==y-initY) r=x-initX+1;
+					else r=Math.max(x-initX,y-initY);
+					queue.add(new InfluenceTile(source,r));
 					visited[x][y]=true;
 					}
 				}
@@ -106,7 +135,6 @@ public class AngularInfluenceSet extends InfluenceSet {
 					 x= t.getLocation().getX() + dx[west[i]];
 					 y= t.getLocation().getY() + dy[west[i]];
 				if(!visited[x][y]){  
-					//System.out.println("x: " + x + " y: " + y);
 					if(x<map.getWidth()/Scaling.TILE_WIDTH && y<map.getHeight()/Scaling.TILE_HEIGHT){
 					source= map.getTile(new Point(x,y));
 					queue.add(new InfluenceTile(source,initX-x));
@@ -128,7 +156,6 @@ public class AngularInfluenceSet extends InfluenceSet {
 				for(int i=0;i<east.length;i++){
 					 x= t.getLocation().getX() + dx[east[i]];
 					 y= t.getLocation().getY() + dy[east[i]];
-					// System.out.println("x: " + x + "y: " + y); //check bounds for all
 					 if(x<map.getWidth()/Scaling.TILE_WIDTH && y<map.getHeight()/Scaling.TILE_HEIGHT){
 						 if(!visited[x][y]){  
 							 source= map.getTile(new Point(x,y));
@@ -149,14 +176,14 @@ public class AngularInfluenceSet extends InfluenceSet {
 			}
 			while(!queue.isEmpty() && curr<=check-1){
 				InfluenceTile t=queue.remove();
-				list.add(t);
+				System.out.println("RADIUS OF THIS: " + t.getRadius());
+				if(t.getRadius()<=radius) list.add(t);
 				if(first==false) length=northwest.length;
 				for(int i=0;i<length;i++){
 					first=false;
 					 x= t.getLocation().getX() + dx[northwest[i]];
 					 y= t.getLocation().getY() + dy[northwest[i]];
 				if(!visited[x][y]){  
-					//System.out.println("x: " + x + " y: " + y);
 					if(x<map.getWidth()/Scaling.TILE_WIDTH && y<map.getHeight()/Scaling.TILE_HEIGHT){
 					source= map.getTile(new Point(x,y));
 					if(initX-x==initY-y) r=initX-x+1;
@@ -180,7 +207,6 @@ public class AngularInfluenceSet extends InfluenceSet {
 					 x= t.getLocation().getX() + dx[north[i]];
 					 y= t.getLocation().getY() + dy[north[i]];
 				if(!visited[x][y]){  
-					//System.out.println("x: " + x + " y: " + y);
 					if(x<map.getWidth()/Scaling.TILE_WIDTH && y<map.getHeight()/Scaling.TILE_HEIGHT){
 					source= map.getTile(new Point(x,y));
 					queue.add(new InfluenceTile(source,initY-y));
@@ -194,20 +220,19 @@ public class AngularInfluenceSet extends InfluenceSet {
 			first=true;
 			length=southwest.length-1;
 			 r=0;
-			if(x+1<map.getWidth()/Scaling.TILE_WIDTH && y-1>=0){
+			if(x-1>=0 && y+1<=map.getHeight()){
 				source=map.getTile(new Point(x-1,y+1));
 				queue.add(new InfluenceTile(source,curr));
 			}
 			while(!queue.isEmpty() && curr<=check-1){
 				InfluenceTile t=queue.remove();
-				list.add(t);
+				if(t.getRadius()<=radius) list.add(t);
 				if(first==false) length=southwest.length;
 				for(int i=0;i<length;i++){
 					first=false;
 					 x= t.getLocation().getX() + dx[southwest[i]];
 					 y= t.getLocation().getY() + dy[southwest[i]];
 				if(!visited[x][y]){  
-					//System.out.println("x: " + x + " y: " + y);
 					if(x<map.getWidth()/Scaling.TILE_WIDTH && y<map.getHeight()/Scaling.TILE_HEIGHT){
 					source= map.getTile(new Point(x,y));
 					if(initX-x==y-initY) r=initX-x+1;
@@ -221,7 +246,7 @@ public class AngularInfluenceSet extends InfluenceSet {
 			}
 			
 		}
-		
+		if(direction==3 || direction==7 || direction==9) ((ArrayList)list).remove(list.size()-1);
 		return list;
 	}
 	

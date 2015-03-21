@@ -14,13 +14,15 @@ public class Attack implements Behavior{
 	}
 	
 	public void perform(Entity attacker,Entity theAttacked) {
+		
+		//in a typical engagement scenario, 
 		int oppositeDirection = Directions.getOppositeDirection(theAttacked.getDirection());
 		attacker.setDirection(oppositeDirection);
 		if(attacker.attack() > theAttacked.defense()) {
 			EntityEffectHandler.applyDamage(theAttacked, (attacker.attack()-theAttacked.defense()));
 		}
 		if(theAttacked.attack() > attacker.defense()) {
-			EntityEffectHandler.applyDamage(theAttacked, (theAttacked.attack()-attacker.defense()));
+			EntityEffectHandler.applyDamage(attacker, (theAttacked.attack()-attacker.defense()));
 		}
 		SoundEffect effect = new HurtSoundEffect();
 	}

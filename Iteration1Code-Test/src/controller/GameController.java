@@ -16,6 +16,9 @@ import model.Location;
 import model.World;
 import model.entity.Avatar;
 import model.entity.Entity;
+import utilities.DeathSoundEffect;
+import utilities.FriendlyDeathSoundEffect;
+import utilities.SoundEffect;
 import view.CombinedGameView;
 import view.ControlField;
 import view.MapView;
@@ -109,10 +112,12 @@ public class GameController {
 				 reset = true;
 				 combinedGameView.setNext("Main");
 	             combinedGameView.setRedraw(true);
+	             avatar.makeDeathSoundEffect();
 			}
 			else if(avatar.getStatValue("HP") <= 0){
 				avatar.setStatValue("Lives", avatar.getStatValue("Lives")-1);
 				avatar.setStatValue("HP", avatar.getStatValue("Life"));
+				avatar.makeDeathSoundEffect();
 			}
 			else if(yourLvl != avatar.getStatValue("Level")){
 				avatar.setLevels(avatar.getLevels()+avatar.getStatValue("Level")-yourLvl);
@@ -156,7 +161,7 @@ public class GameController {
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
             if(this.handler.getEntity(tileLocation) != null){
-            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation")));
+            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar))));
             }
             getMapView().repaint();
         }
