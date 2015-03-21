@@ -26,8 +26,8 @@ public class Spells {
 		spells[0][1] = new EarthSpell(this.entity);
 		spells[0][2] = new PlasmaRay(this.entity);
 		spells[2][0] = new GloryHeal(this.entity);
-		//spells[2][1] = new ManaBuff(this.entity);
-		spells[2][1] = new BuffSpell(this.entity,-50,"Strength");
+		spells[2][1] = new ManaBuff(this.entity);
+//		spells[2][1] = new BuffSpell(this.entity,-50,"Strength");
 	}
 	
 	public void setSelectedSpell(Point spell){

@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import model.GameMap;
 import model.Location;
 import model.Point;
+import model.World;
 import model.entity.Avatar;
 import model.entity.Entity;
 import model.items.TakeableItem;
@@ -14,13 +15,13 @@ import utilities.Scaling;
 import view.MapView;
 
 public class MapMouseHandler {
-	private GameMap map;
+	private World world;
 	private Avatar avatar;
 	private EntityStats avatarStats;
 	
-	public MapMouseHandler(GameMap map, Avatar avatar){
+	public MapMouseHandler(World world, Avatar avatar){
 		this.avatar = avatar;
-		this.map = map;
+		this.world = world;
 		this.avatarStats = avatar.getStats();
 	}
 	
@@ -29,7 +30,7 @@ public class MapMouseHandler {
     // Point of Reference needs to be added to the tileY and tileX
     // the point of reference is the point that reflects the change in the display of the map
     public Location getTileLocation(MouseEvent e){
-    	Point point = map.getLocation(avatar);
+    	Point point = world.getMap(avatar.getCurrMap()).getLocation(avatar);
         int tileY = e.getY()/Scaling.TILE_HEIGHT;
         int tileX = e.getX()/Scaling.TILE_WIDTH;
         int xOff = point.getX() + (tileX - MapView.CHARACTER_OFFSET);
@@ -43,12 +44,12 @@ public class MapMouseHandler {
         // corrupts governments,  please dont type cast,  Hackers love type casting. 
         // Testing Purposes for Iteration 1 only,   Implementation
     	
-        TakeableItem droppedItem = (TakeableItem) map.getTile(tileLocation).getItem();
-        boolean itemIsOnAvatar = (map.getTile(tileLocation).getItem() == droppedItem) 
-        	&& (map.getEntityTile(avatar) == map.getTile(tileLocation));
+        TakeableItem droppedItem = (TakeableItem) world.getMap(avatar.getCurrMap()).getTile(tileLocation).getItem();
+        boolean itemIsOnAvatar = (world.getMap(avatar.getCurrMap()).getTile(tileLocation).getItem() == droppedItem) 
+        	&& (world.getMap(avatar.getCurrMap()).getEntityTile(avatar) == world.getMap(avatar.getCurrMap()).getTile(tileLocation));
         if( itemIsOnAvatar){
         	if (avatar.getInventory().findAndEquip(droppedItem)){
-                map.getTile(tileLocation).dropItem();
+        		world.getMap(avatar.getCurrMap()).getTile(tileLocation).dropItem();
         	}
         }
     }
@@ -56,9 +57,9 @@ public class MapMouseHandler {
     public void useSpell(Location tileLocation){
 //    	System.out.println("Using spell");
     	Spellable spellChosenToAttack = this.avatar.getSelectedSpell();
-    	boolean NPCExistAndSpellChosen = (map.getTile(tileLocation).getEntity() != null) && (spellChosenToAttack != null);
+    	boolean NPCExistAndSpellChosen = (world.getMap(avatar.getCurrMap()).getTile(tileLocation).getEntity() != null) && (spellChosenToAttack != null);
     	if (NPCExistAndSpellChosen){
-    		Entity entity = map.getTile(tileLocation).getEntity();
+    		Entity entity = world.getMap(avatar.getCurrMap()).getTile(tileLocation).getEntity();
 //    		System.out.println("this spell is able "+spellChosenToAttack.able());
     		if (spellChosenToAttack.able()){
     			spellChosenToAttack.apply(entity);
@@ -69,7 +70,7 @@ public class MapMouseHandler {
     }
     
     public Entity getEntity(Location tileLocation){
-    	return map.getTile(tileLocation).getEntity();
+    	return world.getMap(avatar.getCurrMap()).getTile(tileLocation).getEntity();
     }
 
 }

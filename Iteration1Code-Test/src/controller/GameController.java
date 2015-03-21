@@ -49,7 +49,7 @@ public class GameController {
         	this.world = game.getWorld();
         	this.avatar = game.getAvatar();
         	this.map = world.getMap(avatar.getCurrMap());
-			combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(avatar,map), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
+			combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(avatar,world), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
         	this.world.setMapView(getMapView());
         	systems = new SystemsController(combinedGameView, avatar, world);
         	stats = new StatsController(combinedGameView, avatar); 
@@ -152,8 +152,8 @@ public class GameController {
     public class BoardMouseListener implements MouseListener{
     	private MapMouseHandler handler;
     	
-    	public BoardMouseListener(Avatar avatar, GameMap map){
-    		this.handler = new MapMouseHandler(map,avatar);
+    	public BoardMouseListener(Avatar avatar, World world){
+    		this.handler = new MapMouseHandler(world,avatar);
     	}
            
         public void mouseClicked(MouseEvent e) {
