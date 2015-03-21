@@ -244,6 +244,27 @@ public abstract class Entity implements Dieable{
 	public String diaryEntry() {
 		return "This looks like "+toString()+"\nProbably has "+stats.getStatValue("HP")+"HP left\n";
 	}
+	
+	public class BuffTimer implements ActionListener {
+		long start = System.currentTimeMillis();
+		int value = 0;
+		String stat = "";
+		public BuffTimer(int value, String stat){
+			this.value = value;
+			this.stat = stat;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			long timePassed = System.currentTimeMillis() - start;
+			if(timePassed > 5000){
+				stats.setStatValue(stat, value);
+				buffed = false;
+				buffTime.stop();
+			}
+			
+		}
+
+	}
 }
 
 //	@Override
@@ -270,25 +291,5 @@ public abstract class Entity implements Dieable{
 //		soundEffect = new DeathSoundEffect();
 //	}
 
-	public class BuffTimer implements ActionListener {
-		long start = System.currentTimeMillis();
-		int value = 0;
-		String stat = "";
-		public BuffTimer(int value, String stat){
-			this.value = value;
-			this.stat = stat;
-		}
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			long timePassed = System.currentTimeMillis() - start;
-			if(timePassed > 5000){
-				stats.setStatValue(stat, value);
-				buffed = false;
-				buffTime.stop();
-			}
-			
-		}
 
-	}
-}
 
