@@ -9,6 +9,7 @@ import javax.swing.Timer;
 
 import utilities.DeathSoundEffect;
 import utilities.ImageProcessing;
+import utilities.RNG;
 import utilities.Scaling;
 import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
@@ -189,12 +190,19 @@ public abstract class Entity implements Dieable{
 		return name;
 	}
 	
-	public String observation(int x){
+	public String observation(int x, int d){
 		String s = "Observation: \n";
 		String[] info = {"Level","Life","HP", "Agility", "Strength",
 				 "Intellect", "MP", "Hardiness"};
+		int n = 0;
 		for(int i = 0; i < x && i < 7; ++i){
-			s += (info[i] + ":" + stats.getStatValue(info[i]) + "\n");
+			if(RNG.genRandDouble() > 1/d){
+				n = RNG.generateRand(0,30);
+			}
+			else{
+				n = stats.getStatValue(info[i]);
+			}
+			s += (info[i] + ":" + n + "\n");
 		}
 		s += (getClass().getName().toString() + "@" + Integer.toHexString(hashCode()).toString());
 		return s;

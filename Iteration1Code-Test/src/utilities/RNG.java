@@ -4,9 +4,15 @@ import java.util.*;
 import model.Point;
 
 public class RNG {
-	private static int generateRand(int low, int high){
+	public static int generateRand(int low, int high){
 		Random rand = new Random();
 	    int random = rand.nextInt((high - low) + 1) + low;
+	    return random;
+	}
+	
+	public static double genRandDouble(){
+		Random rand = new Random();
+	    double random = rand.nextDouble();
 	    return random;
 	}
 	
