@@ -4,7 +4,9 @@ import java.util.*;
 
 import model.entity.Avatar;
 import model.entity.Entity;
+import utilities.DeathSoundEffect;
 import utilities.Scaling;
+import utilities.SoundEffect;
 import view.MapView;
 
 public class GameMap extends Observable{
@@ -21,12 +23,22 @@ public class GameMap extends Observable{
 	public GameMap () {
 		MapBuilder m= new MapBuilder();
 		map = m.generateStructuredMap();
+		System.out.println("I WAS MADE WITHOUT A PARAMETER");
 		entityToLocationMap = map.grabEntityLocations();
+		System.out.println(entityToLocationMap);
 		this.setWidthHeight();
-		entityToLocationMap=new HashMap<Entity,Location>();
 //		tileToItemMap = new HashMap<Tile,Item>();
 		this.setEntitiesLocations();
 	}
+	
+//	public GameMap(MapView mv){
+//		MapBuilder m= new MapBuilder();
+//		map = m.generateStructuredMap();
+//		this.setWidthHeight();
+//		addObserver(mv);
+//		entityToLocationMap=new HashMap<Entity,Location>();
+////		tileToItemMap = new HashMap<Tile,Item>();
+//	}
 	
 	public GameMap(MapView mv){
 		MapBuilder m= new MapBuilder();
@@ -52,14 +64,19 @@ public class GameMap extends Observable{
 		Entity entity = this.getTile(loc).dropEntity();
 		System.out.println(entity);
 		this.entityToLocationMap.remove(entity);
-	}
-	
-	public HashMap<Entity, Location> getEntityToLocationMap() {
-		return entityToLocationMap;
+		SoundEffect effect = new DeathSoundEffect();
 	}
 	
 	public GameMap(int state){
 //		tileToItemMap = new HashMap<Tile,Item>();
+	}
+	
+	public GameMap(MapBuilder m) {
+		
+		map = m.generateStructuredMapv3();
+		this.setWidthHeight();
+		//addObserver(mv);
+		entityToLocationMap=new HashMap<Entity,Location>();
 	}
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
@@ -83,7 +100,8 @@ public class GameMap extends Observable{
 	}
 
 	public Tile getEntityTile(Entity entity){
-		System.out.println(this.entityToLocationMap.get(entity));
+		System.out.println(entity);
+		System.out.println(this.entityToLocationMap.get(entity)+"I AM PROBABLY THE LAST NULL");
 		Location location= this.entityToLocationMap.get(entity);
 		int x=(int)location.getX();
 		int y=(int)location.getY();
@@ -93,6 +111,7 @@ public class GameMap extends Observable{
 	public Location getEntityLocation(Entity entity){
 		return this.entityToLocationMap.get(entity);
 	}
+	
 	
 	public Point getMapLength(){
 		return new Point(map.getHeight(), map.getWidth());
@@ -132,6 +151,10 @@ public class GameMap extends Observable{
 			}
 			this.getTile(locationToUpdate).setEntity(e);
 			entityToLocationMap.put(e,locationToUpdate);
+			System.out.println("BAM BOOM BAM");
+			this.setChanged();
+			this.notifyObservers();
+			this.setChanged();
 		}
 	}
 
@@ -139,8 +162,13 @@ public class GameMap extends Observable{
 //		tileToItemMap.put(t, i);
 //	}
 	
+	public void notifyObservers()
+	{
+	    super.notifyObservers();
+	    System.out.println("pls help");
+	}
+	
 	public Location getLocation(Entity e){
-		System.out.println("found me at "+entityToLocationMap.get(e));
 		return entityToLocationMap.get(e);
 	}
 	

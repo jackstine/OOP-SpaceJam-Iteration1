@@ -1,5 +1,8 @@
 package model.entity;
 
+import utilities.HurtSoundEffect;
+import utilities.SoundEffect;
+
 public class EntityEffectHandler {
 	
 	

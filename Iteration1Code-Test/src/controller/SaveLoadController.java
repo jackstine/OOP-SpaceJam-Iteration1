@@ -226,7 +226,7 @@ public class SaveLoadController {
 					if (!tileEntity[0].equals("null")) {
 						if (tileEntity[0].equals("NPC")) {
 							String typeNPC = tileEntity[1];
-							if (typeNPC.equals("Orc")) npc = new Orc();
+							if (typeNPC.equals("Orc")) npc = new Orc("daniel");
 							if (typeNPC.equals("Skeleton")) npc = new Skeleton();
 							if (typeNPC.equals("Merchant")) npc = new Merchant();
 						}
