@@ -28,5 +28,6 @@ public class FireSpell extends BaneSpellSingle{
 
 	public void makeSoundEffect() {
 		SoundEffect e = new BlazeSoundEffect();
+		System.out.println("Damage scaling: " + damage);
 	}
 }

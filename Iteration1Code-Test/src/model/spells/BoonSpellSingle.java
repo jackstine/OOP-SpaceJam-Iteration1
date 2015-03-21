@@ -11,4 +11,5 @@ public abstract class BoonSpellSingle extends SpellSingleAffect implements BoonS
 		applyBoon(entityToAffect);
 	}
 	public abstract void applyBoon(Entity entityToAffect);
+
 }

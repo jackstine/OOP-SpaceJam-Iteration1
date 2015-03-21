@@ -3,24 +3,28 @@ package model.spells;
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
-public class GloryHeal extends BoonSpellSingle{
-	private int manaRequired = 10;
+public class BindWoundsSpell extends BoonSpellSingle{
+	private int manaRequirement = 10;
 	private int heal = 10;
-
-	public GloryHeal(Entity entity) {
-		super(entity);
-	}
 	
+	public BindWoundsSpell(Entity entity) {
+		super(entity);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
 	public int getBoon() {
 		return this.heal;
 	}
 
+	@Override
 	public void applyBoon(Entity entityToAffect) {
 		EntityEffectHandler.applyHeal(entityToAffect, this.heal*this.getEntity().getSkillValue("Boon"));
 	}
-	
+
+	@Override
 	public int getManaRequirement() {
-		return this.manaRequired;
+		return this.manaRequirement;
 	}
 
 }

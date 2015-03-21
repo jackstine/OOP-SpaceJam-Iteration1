@@ -10,6 +10,7 @@ public abstract class BaneSpellSingle extends SpellSingleAffect implements BaneS
 	}
 	
 	protected final void doTheSpell(Entity entityToAffect) {
-		EntityEffectHandler.applyDamage(entityToAffect, this.getDamage());
+		EntityEffectHandler.applyDamage(entityToAffect, this.getDamage()*this.getEntity().getSkillValue("Bane"));
+		//System.out.println("Damage scaling: " + this.getDamage()*this.getEntity().getSkillValue("Bane"));
 	}
 }
