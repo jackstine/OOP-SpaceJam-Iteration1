@@ -21,6 +21,7 @@ public class MerchantView extends JFrame{
 private Inventory inventory;
 private InventoryView inventoryView;
 private Entity entity;
+private Entity reciever;
 
 public MerchantView()
 {	
@@ -29,8 +30,7 @@ public MerchantView()
 	inventoryView=new InventoryView(inventory);
 	inventoryView.addMouseListener(new MerchantMouseListener());
 	add(inventoryView,BorderLayout.CENTER);
-	setVisible(false);
-	
+	setVisible(false);	
 	}
 
 public void showMerchantView()
@@ -43,7 +43,7 @@ public void showMerchantView()
 
 public void setEntity(Entity entity)
 {
-	this.entity=entity;
+	this.reciever=entity;
 	
 }
 	
@@ -68,7 +68,10 @@ public void setEntity(Entity entity)
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			if (e.getButton() == RIGHT_CLICK){
+			if (e.getButton() == RIGHT_CLICK && reciever.getGold() >= 100){
+				System.out.println("Gold amount before: "+ reciever.getGold());
+				reciever.makeGoldTransaction(-100);
+				System.out.println("Gold amount after: "+ reciever.getGold());
 				this.unequipItem(e);
 			}
 		}

@@ -33,6 +33,7 @@ public abstract class Entity implements Dieable{
 	protected Occupation occupation;
 	protected String name;
 	protected int direction;
+	protected int gold;
 	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
 	protected State preferredState = new State();
@@ -49,6 +50,7 @@ public abstract class Entity implements Dieable{
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
+		gold = 0;
 		occupation.createNecessities();
 		this.stats = new EntityStats(occupation.getStats());
 		this.skills = occupation.getSkills();
@@ -96,6 +98,14 @@ public abstract class Entity implements Dieable{
 	public int getSkillValue(String key) {
 		if (this.skills.containsKey(key)) return this.skills.get(key).getSkillLevel();
 		return -1;
+	}
+	
+	public int getGold(){
+		return gold;
+	}
+	
+	public void makeGoldTransaction(int amount){
+		gold += amount;
 	}
 	
 	

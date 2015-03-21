@@ -24,6 +24,7 @@ public class Avatar extends Entity {
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
+		gold = 200;
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
