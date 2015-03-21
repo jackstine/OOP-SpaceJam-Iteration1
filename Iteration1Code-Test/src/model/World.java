@@ -3,9 +3,10 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import model.entity.Avatar;
-import view.ControlField;
+import model.entity.Entity;
 import view.MapView;
 
 public class World {
@@ -15,27 +16,23 @@ public class World {
 	public World(){//MapView mv){
 		MapBuilder m = new MapBuilder();
 		m.generateStructuredMapv3();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println("I WAS CALLED ON TOOOOOOO");
-		System.out.println();
-		System.out.println();
-		System.out.println();
 		maps.put("Main",new GameMap());
 		maps.put("Cave", new GameMap(m));
 		genDefaultKeys();
+		this.runEntities();
 	}
 	
 	public World(GameMap Main){//, MapView mv){
 		maps.put("Main",Main);
 		maps.put("Cave", new GameMap());
 		genDefaultKeys();
+		this.runEntities();
 	}
 	
 	public World( Map<String, GameMap> maps, Map<String, Integer> keySet){
 		this.maps = maps;
 		this.keySet = keySet;
+		this.runEntities();
 	}
 	
 	public void setMapView(MapView mv) {
@@ -81,6 +78,21 @@ public class World {
 	
 	public void editKeySet(String s, int i){
 		keySet.put(s,i);
+	}
+	
+	public Set<Entity> getEntities(){
+		Set<Entity> mainEntities = this.maps.get("Main").getEntities();
+		Set<Entity> caveEntities = this.maps.get("Cave").getEntities();
+		mainEntities.addAll(caveEntities);
+		return mainEntities;
+	}
+	
+	// this method is called to run all Entities in idle states, whatever they may be
+	public void runEntities(){
+		Set<Entity> entities = this.getEntities();
+		for (Entity ent : entities){
+			ent.idle();
+		}
 	}
 	
 	public String toString(){

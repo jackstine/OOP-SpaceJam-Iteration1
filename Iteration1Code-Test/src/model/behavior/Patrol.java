@@ -7,15 +7,20 @@ public class Patrol extends IdleBehavior{
 
 	private int patrolDistance;
 	private NPCMovementController movementController;
+	private Entity entity;
+	
+	public Patrol(Entity entity){
+		this.entity = entity;
+	}
 	
 	public Patrol(int patrolDistance) {
 		this.patrolDistance = patrolDistance;
-		//this.movementController = new NPCMovementController();
 	}
 	
-	@Override
+	//TODO I think that Idle Behaviors will not take in a Entity
 	public void perform(Entity initiate, Entity receiver) {
-		//movementController.move(initiate);
+		NPCMovementController moveme = new NPCMovementController(entity);
+		moveme.doArtificialIntelligence();
 	}
 
 	@Override

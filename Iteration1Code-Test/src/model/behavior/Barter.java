@@ -8,8 +8,10 @@ import model.entity.Entity;
 public class Barter implements Behavior{
 	
 	private MerchantView mvc;
+	private Entity entity;
 	
-	public Barter(){
+	public Barter(Entity entity){
+		this.entity = entity;
 		this.mvc=new MerchantView();
 		mvc.setBounds(Scaling.MERCHANTVIEW_X , Scaling.MERCHANTVIEW_Y, Scaling.MERCHANTVIEW_WIDTH, Scaling.MERCHANTVIEW_HEIGHT);
 	}
