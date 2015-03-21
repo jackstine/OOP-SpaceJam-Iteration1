@@ -18,7 +18,7 @@ public class Skeleton extends NPC implements Conversable {
 	}
 	
 	public String toString() {
-		return "NPC:Skeleton";
+		return "a Skeleton";
 	}
 
 	public void makeDeathSoundEffect() {

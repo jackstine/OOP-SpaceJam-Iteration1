@@ -13,7 +13,7 @@ public class Merchant extends NPC implements Conversable {
 	
 	public Merchant() {
 		super(new MerchantHunter());
-		this.engagedState.setState(new Barter());
+		this.engagedState.setState(new Barter(this));
 		//SoundEffect effect = new FriendlyDeathSoundEffect();
 	}
 
@@ -23,7 +23,7 @@ public class Merchant extends NPC implements Conversable {
 	}
 	
 	public String toString() {
-		return "NPC:Merchant";
+		return "a Merchant";
 	}
 	
 	@Override
