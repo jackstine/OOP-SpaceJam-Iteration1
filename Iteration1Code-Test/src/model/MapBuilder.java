@@ -165,8 +165,8 @@ public class MapBuilder{
 		
 		this.map[4][8].setDecal(new TeleportationDecal("Main"));
 		GiantRock gr = new GiantRock();
-		this.map[3][8].setItem(gr);
-		this.items[11][12] = gr;
+		this.map[11][12].setItem(gr);
+		//this.items[11][12] = gr;
 		
 		this.map[6][7].setTrap(new SpikeTrap());
 		this.map[6][8].setTrap(new SpikeTrap());
