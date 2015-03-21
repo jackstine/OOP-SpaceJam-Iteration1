@@ -1,5 +1,6 @@
 package model.entity;
 
+import utilities.DarthVaderNoooooSoundEffect;
 import utilities.DeathSoundEffect;
 import utilities.SoundEffect;
 import model.behavior.Attack;
@@ -21,7 +22,7 @@ public class Orc extends NPC {
 	}
 
 	public void makeDeathSoundEffect() {
-		SoundEffect effect = new DeathSoundEffect();
+		SoundEffect effect = new DarthVaderNoooooSoundEffect();
 	}
 	
 }
