@@ -25,7 +25,28 @@ public class GameMap extends Observable{
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
 //		tileToItemMap = new HashMap<Tile,Item>();
+		this.setEntitiesLocations();
 	}
+	
+	public GameMap(MapView mv){
+		MapBuilder m= new MapBuilder();
+		map = m.generateStructuredMap();
+		this.setWidthHeight();
+		addObserver(mv);
+		entityToLocationMap=new HashMap<Entity,Location>();
+//		tileToItemMap = new HashMap<Tile,Item>();
+		this.setEntitiesLocations();
+	}
+	
+	private void setEntitiesLocations(){
+		for (int i = 0; i < this.map.getMap().length; i++)
+			for (int j = 0; j < this.map.getMap()[i].length; j++)
+				if (this.map.getMap()[i][j].hasEntity()){
+					this.map.getMap()[i][j].getLocation();
+					this.entityToLocationMap.put(this.map.getMap()[i][j].getEntity(), new Location(i,j));
+				}
+	}
+	
 	
 	public void kill(Location loc){
 		Entity entity = this.getTile(loc).dropEntity();
@@ -38,15 +59,6 @@ public class GameMap extends Observable{
 	}
 	
 	public GameMap(int state){
-//		tileToItemMap = new HashMap<Tile,Item>();
-	}
-	
-	public GameMap(MapView mv){
-		MapBuilder m= new MapBuilder();
-		map = m.generateStructuredMap();
-		this.setWidthHeight();
-		addObserver(mv);
-		entityToLocationMap=new HashMap<Entity,Location>();
 //		tileToItemMap = new HashMap<Tile,Item>();
 	}
 

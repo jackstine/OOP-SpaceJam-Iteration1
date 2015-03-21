@@ -250,6 +250,7 @@ public class SaveLoadController {
 				int y = Integer.parseInt(location[1]);
 				// will fix this later to include all entities
 				map.updateEntityLocation(avatar, new Location(x, y));
+				System.out.println(new Location(x,y));
 			}
 			
 			games.put(gameName, map);

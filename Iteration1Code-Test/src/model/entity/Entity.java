@@ -177,6 +177,7 @@ public abstract class Entity {
 		for(int i = 0; i < x && i < 7; ++i){
 			s += (info[i] + ":" + stats.getStatValue(info[i]) + "\n");
 		}
+		s += (getClass().getName().toString() + "@" + Integer.toHexString(hashCode()).toString());
 		return s;
 	}
 	

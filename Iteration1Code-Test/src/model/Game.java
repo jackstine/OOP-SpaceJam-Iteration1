@@ -1,14 +1,10 @@
 package model;
 
 import java.io.*;
-import java.util.Map;
 
 import model.entity.Avatar;
-import model.occupation.Alchemist;
 import model.occupation.AvatarTerminator;
 import model.occupation.Occupation;
-import model.occupation.Terminator;
-import model.slots.Equipment;
 import controller.SaveLoadController;
 
 public class Game {
