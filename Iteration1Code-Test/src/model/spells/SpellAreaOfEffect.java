@@ -1,5 +1,13 @@
 package model.spells;
 
-public abstract class SpellAreaOfEffect implements Spellable{
+import model.entity.Entity;
+
+public abstract class SpellAreaOfEffect extends Spell{
+
+	public SpellAreaOfEffect(Entity entity) {
+		super(entity);
+	}
+	
+	//TODO do Spell AreaEffect here
 
 }
