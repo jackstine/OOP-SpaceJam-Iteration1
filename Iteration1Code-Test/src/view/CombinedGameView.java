@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -11,6 +12,7 @@ import javax.swing.border.LineBorder;
 import controller.GameController.BoardMouseListener;
 import model.GameMap;
 import model.entity.Avatar;
+import utilities.FontHandler;
 import utilities.Scaling;
 
 @SuppressWarnings("serial")
@@ -33,9 +35,19 @@ public class CombinedGameView extends View {
     private InventoryEquipmentView character;
     private StatusView statusView;
     private Avatar avatar;
+    
+    //Utilities
+    private FontHandler fh = new FontHandler();
+    private Font buttonFont;
    
     public CombinedGameView(GameMap map, Avatar avatar,BoardMouseListener boardListener, ActionListener lvlup, ActionListener sysbtn, ActionListener statbtn){
     		this.avatar = avatar;
+    		
+    		//Set font to buttons
+    		buttonFont = fh.AfterDisasterFont();
+    		systemButton.setFont(buttonFont.deriveFont(15f));
+    		statButton.setFont(buttonFont.deriveFont(15f));
+    		levelUp.setFont(buttonFont.deriveFont(15f));    		
     		
             board = new GameView(map,avatar, map.getLocation(avatar));
             character = new InventoryEquipmentView(avatar);

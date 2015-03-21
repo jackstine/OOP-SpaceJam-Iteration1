@@ -64,7 +64,7 @@ public class StatusView extends JPanel {
 	private BufferedImage avatarPortrait;
 	
 	private FontHandler fh = new FontHandler();
-	Font labelFont;
+	private Font labelFont;
 	
 	private JTextArea terminal = new JTextArea();
 	
