@@ -35,11 +35,11 @@ public final class Scaling {
 	public static final int BOARD_Y = 0;
 	public static final int CHAR_X = Scaling.STATUS_X;
 	public static final int CHAR_Y = 0;
-	public static final int CHAR_WIDTH = SCREEN_WIDTH - BOARD_WIDTH - 15;
+	public static final int CHAR_WIDTH = 870;
 	public static final int CHAR_HEIGHT = 375;
 	public static final int SYSTEM_BUTTON_X = Scaling.STATUS_X;
 	public static final int SYSTEM_BUTTON_Y = CHAR_HEIGHT;
-	public static final int SYSTEM_BUTTON_WIDTH = CHAR_WIDTH;
+	public static final int SYSTEM_BUTTON_WIDTH = SCREEN_WIDTH - BOARD_WIDTH - 15;
 	public static final int SYSTEM_BUTTON_HEIGHT = 50;
 	public static final int STATUS_WIDTH = SCREEN_WIDTH - BOARD_WIDTH - 15;
 	public static final int STATUS_HEIGHT = BOARD_HEIGHT - CHAR_HEIGHT - SYSTEM_BUTTON_HEIGHT;

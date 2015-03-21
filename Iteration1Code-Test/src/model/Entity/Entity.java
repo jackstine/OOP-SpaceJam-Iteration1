@@ -126,6 +126,7 @@ public abstract class Entity {
 	}
 	
 	public int getMP(){return this.stats.getMP();}
+	public int getHP(){return this.stats.getHP();}
 	
 	public void subHP(int change){this.stats.subHP(change);}
 	public void subMP(int change){this.stats.subMP(change);}
@@ -162,7 +163,7 @@ public abstract class Entity {
 		String s = "Observation: \n";
 		String[] info = {"Level","Life","HP", "Agility", "Strength",
 				 "Intellect", "MP", "Hardiness"};
-		for(int i = 0; i < x; ++i){
+		for(int i = 0; i < x && i < 7; ++i){
 			s += (info[i] + ":" + stats.getStatValue(info[i]) + "\n");
 		}
 		return s;

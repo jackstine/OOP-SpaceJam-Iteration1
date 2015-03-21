@@ -79,6 +79,7 @@ public class CombinedGameView extends View {
            
             statButton.setFocusable(false);
             statButton.addActionListener(statbtn);
+            
                        
     }
     

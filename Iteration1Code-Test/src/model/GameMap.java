@@ -11,7 +11,8 @@ public class GameMap {
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private Tile[][] map;
 	private HashMap<Entity,Location> entityToLocationMap;
-//	private HashMap<Tile, Item> tileToItemMap;
+
+	//	private HashMap<Tile, Item> tileToItemMap;
 	private int width;
 	private int height;
 	private Avatar avatar;
@@ -21,7 +22,29 @@ public class GameMap {
 		map = m.generateStructuredMap();
 		this.setWidthHeight();
 		entityToLocationMap=new HashMap<Entity,Location>();
+		setEntities();
 //		tileToItemMap = new HashMap<Tile,Item>();
+	}
+	
+	private void setEntities(){
+		for (int i = 0; i<map.length;i++){
+			for (int j = 0; j < map[i].length; j++){
+				if (map[i][j].hasEntity()){
+					Location loc = new Location(j,i);
+					entityToLocationMap.put(map[i][j].getEntity(),loc);
+				}
+			}
+		}
+	}
+	
+	public void kill(Location loc){
+		Entity entity = this.getTile(loc).dropEntity();
+		System.out.println(entity);
+		this.entityToLocationMap.remove(entity);
+	}
+	
+	public HashMap<Entity, Location> getEntityToLocationMap() {
+		return entityToLocationMap;
 	}
 	
 	public GameMap(int state){
