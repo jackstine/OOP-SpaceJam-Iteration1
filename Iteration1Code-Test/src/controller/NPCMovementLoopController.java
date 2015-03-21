@@ -35,15 +35,9 @@ public class NPCMovementLoopController extends NPCMovementController{
 		@Override
 		public void run() {
 			try {
-				
 				int instructionTrack = 0;
 				while ((! interrupted()) && !stopThread) {
-					System.out.println("boom");
-					System.out.println(movementLoop);
 						if(movementLoop.get(instructionTrack%movementLoop.size()).equals("forward")) {
-							System.out.println("moving");
-							System.out.println(entity);
-							System.out.println("LALALA"+entity.getDirection());
 							move(Directions.getPoint(entity.getDirection()),entity.getDirection());
 						}
 						else if(movementLoop.get(instructionTrack%movementLoop.size()).equals("clockwise")) {
@@ -51,11 +45,9 @@ public class NPCMovementLoopController extends NPCMovementController{
 							move(Directions.getPoint(entity.getDirection()),entity.getDirection());
 						}
 						instructionTrack++;
-					System.out.println("yeah");
 					try{
 						sleep(10000/entity.getStats().getStatValue("Movement"));
 					}catch(Exception e){}
-					System.out.println(stopThread);
 				}
 			} catch (Exception e) {
 			}

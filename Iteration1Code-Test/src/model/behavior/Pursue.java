@@ -3,11 +3,12 @@ package model.behavior;
 import java.util.ArrayList;
 
 import controller.NPCMovementController;
+import controller.NPCMovementDirectiveController;
 import model.entity.Entity;
 
-public class Pursue extends IdleBehavior{
+public class Pursue extends EngagedBehavior{
 
-	private NPCMovementController movementController;
+	private NPCMovementDirectiveController movementController;
 	private Entity entity;
 	
 	public Pursue(Entity entity){
@@ -16,9 +17,9 @@ public class Pursue extends IdleBehavior{
 	
 	//TODO I think that Idle Behaviors will not take in a Entity
 	public void perform(Entity initiate, Entity receiver) {
-		//this.movementController = new NPCMovementController(entity);
-		//movementController.setMovementLoop(patrolLoop());
-		//this.movementController.doArtificialIntelligence();
+		this.movementController = new NPCMovementDirectiveController(entity);
+		movementController.setDirective("follow",receiver);
+		this.movementController.doArtificialIntelligence();
 	}
 
 	@Override
