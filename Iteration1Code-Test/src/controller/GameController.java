@@ -37,6 +37,8 @@ public class GameController {
         
         private CombinedGameView combinedGameView;
         
+        Timer statUpdater;
+        
         //private GameLog log = new GameLog();
         
         
@@ -55,7 +57,7 @@ public class GameController {
         	stats = new StatsController(combinedGameView, avatar); 
         	levelUp = new LevelUpController(combinedGameView, avatar);
         	     		
-     		Timer statUpdater = new Timer(100, new StatCheck());
+     		statUpdater = new Timer(100, new StatCheck());
      		statUpdater.start();
         }  
         
@@ -113,6 +115,7 @@ public class GameController {
 				 combinedGameView.setNext("Main");
 	             combinedGameView.setRedraw(true);
 	             avatar.makeDeathSoundEffect();
+	             statUpdater.stop();
 			}
 			else if(avatar.getStatValue("HP") <= 0){
 				avatar.setStatValue("Lives", avatar.getStatValue("Lives")-1);
