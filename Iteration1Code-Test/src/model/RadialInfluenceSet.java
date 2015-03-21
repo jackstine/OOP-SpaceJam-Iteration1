@@ -32,7 +32,7 @@ public class RadialInfluenceSet extends InfluenceSet {
 		sourceTile.setRadius(0);
 
 		computeAllTiles(sourceTile);
-		
+		((ArrayList)list).remove(list.size()-1);	//BECAUSE MY ALGORITHM IS EVIL
 		return list;
 	}
 	
@@ -59,7 +59,7 @@ public class RadialInfluenceSet extends InfluenceSet {
 	}
 
 		public void visitAllDirections(QueueInfluenceTile tile) {
-			list.add(tile);
+			//list.add(tile);
 			
 			//COMMENCE BLACK MAGIC POWERED SATANIC SUMMONING RITUAL
 			int baseX = tile.getLocation().getX();
@@ -70,9 +70,9 @@ public class RadialInfluenceSet extends InfluenceSet {
 			for (int i=0; i < dx.length; ++i) {
 				try {
 					attempt = influenceMap[baseX + dx[i]][baseY + dy[i]];
-					System.out.println(attempt);
-					if (!attempt.visited() && (attempt.getRadius() < getRadius())) {
-						System.out.println("Adding element to return set!");
+					//System.out.println(attempt);
+					if (!attempt.visited() && (attempt.getRadius() < getRadius()) && !list.contains(attempt)) {
+						//System.out.println("Adding element to return set!");
 						list.add(attempt);
 						queue.offer(attempt);
 						attempt.setRadius(tile.getRadius() + 1);
@@ -88,7 +88,7 @@ public class RadialInfluenceSet extends InfluenceSet {
 		}
 
 		public void visitCardinalDirections(QueueInfluenceTile tile) {
-			list.add(tile);
+			//list.add(tile);
 			
 			int baseX = tile.getLocation().getX();
 			int baseY = tile.getLocation().getY();
@@ -97,8 +97,8 @@ public class RadialInfluenceSet extends InfluenceSet {
 			for (int i=0; i < 4; ++i) {
 				try {
 					attempt = influenceMap[baseX + dx[i]][baseY + dy[i]];
-					if (!attempt.visited() && (attempt.getRadius() < getRadius())) {
-						System.out.println("Adding element to return set!");
+					if (!attempt.visited() && (attempt.getRadius() < getRadius()) && !list.contains(attempt)) {
+						//System.out.println("Adding element to return set!");
 						list.add(attempt);
 						queue.offer(attempt);
 						attempt.setRadius(tile.getRadius() + 1);
@@ -113,26 +113,26 @@ public class RadialInfluenceSet extends InfluenceSet {
 		}
 
 		public void computeAllTiles(QueueInfluenceTile tile) {
+			//System.out.println("Doing compute. Desired Radius: " + getRadius());
+			
+			tile.setVisited(true);
 			queue.offer(tile);
+			list.add(tile);
 			
 			while(!queue.isEmpty()) {
-				//System.out.println("Queue not empty! " +queue.size());
-				//System.out.println(queue.peek());
-				if (queue.peek().getRadius() <= getRadius()) {
-					//System.out.println("Adding a tile to queue!");
+
+				if (queue.peek().getRadius() < getRadius()) {
 					if (queue.peek().getRadius() == 1) {	//not purely evil because I made the queue :)
-						//System.out.println("Doing CARDINAL add.");
 						visitCardinalDirections(queue.poll());
 					}
 					else {
-						//System.out.println("Doing ALL add.");
 						visitAllDirections(queue.poll());
 					}
 				}
-				//System.out.println("Tile outside radius. Abort.");
-				queue.poll();
+				else
+					queue.poll();
 			}
-			System.out.println("WE'VE ESCAPED THE QUEUE");
+			
 		}		
 		
 }
