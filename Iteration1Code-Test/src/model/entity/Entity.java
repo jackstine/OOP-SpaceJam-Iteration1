@@ -45,6 +45,7 @@ public abstract class Entity implements Dieable{
 	private BufferedImage image;
 	private WeaponVisitor weaponVisitor= new WeaponVisitor(this);
 	private boolean buyingMode = false;
+	private Entity sellingPartner;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells;
@@ -85,6 +86,16 @@ public abstract class Entity implements Dieable{
 		this.engagedState.kill();
 	}
 	
+	public void buy(TakeableItem item){
+		this.inventoryEquipment.equipInventory(item);
+	}
+	
+	public void sellToPartner(TakeableItem itemToSell) {
+		int basePrice = 100;
+		this.makeGoldTransaction(100+(this.getSkillValue("Bargain")*10));
+		this.sellingPartner.buy(itemToSell);
+	}
+	
 	/********************** O BEHAVE ****************************************/
 	public void setPrefferedBehavior(Behavior behavior){
 		this.preferredState.setState(behavior);
@@ -99,8 +110,8 @@ public abstract class Entity implements Dieable{
 		this.preferredState.perform(this);
 	}
 
-	public void engage(Avatar avatar){
-		this.engagedState.perform(avatar);
+	public void engage(Entity entity){
+		this.engagedState.perform(entity);
 		this.preferredState.kill();
 	}
 
@@ -321,6 +332,18 @@ public abstract class Entity implements Dieable{
 	
 	public boolean getBuyingMode(){
 		return this.buyingMode;
+	}
+
+	public void setSellingPartner(Entity receiver) {
+		this.sellingPartner = receiver;
+	}
+	
+	public void resetSellingPartner(){
+		this.sellingPartner = null;
+	}
+
+	public void revertEngageBehavior() {
+		this.engagedState.revert();
 	}
 	
 }

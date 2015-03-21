@@ -3,6 +3,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -24,11 +26,11 @@ private Entity entity;
 private Entity reciever;
 private int basePrice;
 
-public MerchantView()
+public MerchantView(Entity barter)
 {	
 	super("Merchant");
-	inventory=new Inventory();
-	inventoryView=new InventoryView(inventory);
+	this.entity = barter;
+	inventoryView=new InventoryView(barter.getInventory());
 	inventoryView.addMouseListener(new MerchantMouseListener());
 	add(inventoryView,BorderLayout.CENTER);
 	setVisible(false);	
@@ -41,6 +43,8 @@ public void showMerchantView()
 	this.setVisible(true);
 	this.requestFocus();
 	//this.moveToFront(inventoryView);
+	this.setAlwaysOnTop(true);
+	this.addWindowListener(new MerchantCloseOp());
 }
 
 public void setEntity(Entity entity)
@@ -106,5 +110,29 @@ public void setEntity(Entity entity)
 		}
 		
 	}
+	
+	public class MerchantCloseOp implements WindowListener{
+
+		public void windowActivated(WindowEvent arg0) {
+		}
+
+		public void windowClosed(WindowEvent arg0) {
+		}
+
+		public void windowClosing(WindowEvent arg0) {
+			entity.revertEngageBehavior();
+		}
+
+		public void windowDeactivated(WindowEvent arg0) {
+		}
+
+		public void windowDeiconified(WindowEvent arg0) {
+		}
+
+		public void windowIconified(WindowEvent arg0) {
+		}
+
+		public void windowOpened(WindowEvent arg0) {
+		}}
 	
 }

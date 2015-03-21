@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import model.items.TakeableItem;
 import model.occupation.Occupation;
 import utilities.*;
 
@@ -99,14 +100,6 @@ public class Avatar extends Entity {
 
 	public void setCurrMap(String currMap) {
 		this.currMap = currMap;
-	}
-
-	@Override
-	public void engage(Avatar avatar) {
-		System.out.println("MASSIVE");
-		System.out.println("MULTIPLAYER");
-		System.out.println("GAAAAAMMMMMMMMEEEEEEE");
-		// we think
 	}
 	
 	public void makeDeathSoundEffect(){
