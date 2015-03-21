@@ -64,6 +64,7 @@ public class GameMap extends Observable{
 		this.entityToLocationMap.remove(entity);
 		entity.makeDeathSoundEffect();
 		entity.kill();
+		this.send();
 	}
 	
 	public GameMap(int state){
@@ -148,19 +149,19 @@ public class GameMap extends Observable{
 			}
 			this.getTile(locationToUpdate).setEntity(e);
 			entityToLocationMap.put(e,locationToUpdate);
-			this.setChanged();
-			this.notifyObservers();
-			this.setChanged();
+			this.send();
 		}
+	}
+	
+	public void send(){
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 //	public void updateItemLocation(Tile t, Item i){
 //		tileToItemMap.put(t, i);
 //	}
 	
-	public void notifyObservers(){
-	    super.notifyObservers();
-	}
 	
 	public Location getLocation(Entity e){
 		return entityToLocationMap.get(e);
