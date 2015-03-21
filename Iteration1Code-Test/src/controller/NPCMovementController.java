@@ -20,38 +20,36 @@ public class NPCMovementController extends MovementController {
 	}
 	
 	public GameMap getCurrMap(){
-		System.out.println(World.getMap("Main"));
+		//System.out.println(World.getMap("Main"));
 		return World.getMap(entity.getCurrMap());
 	}
 	
 	public Location getEntityLocation(){
+		//System.out.println(getCurrMap().getLocation(entity));
 		return getCurrMap().getLocation(entity);
 	}
 	
 	public void doArtificialIntelligence() {
 		Thread task = new CircleTask();
-		task.run();
+		task.start();
 	}
 	
 	private class CircleTask extends Thread {
 		//Entity entity = getNPC();
 		GameMap map = getCurrMap();
-		Tile tile;
 		
 		@Override
 		public void run() {
-			while (true) {
-				
-				System.out.println(map);
-				tile = map.getEntityTile(entity);
-				if (tile != null) {
+			int i = 0;
+			while (i < 5) {
+				//System.out.println(map+"aye");
+				//tile = map.getEntityTile(entity);
+				//if (tile != null) {
 					move(MovementController.WEST, Directions.WEST);
-				}
-				
-				System.out.println("AI RUNNING AND IN A LOOP");
+				//
 				
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(10000);
 
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -65,12 +63,16 @@ public class NPCMovementController extends MovementController {
 	@Override
 	public void move(Point step, int direction) {
 		//Location entityLocation = this.getEntityLocation();
+		System.out.println("I AM LOOKING AT A "+entity);
+		System.out.println(this.getEntityLocation()+"WHERE IS THIS ENTITY");
+		
 		Location pointToMove = new Location(this.getEntityLocation());
 		pointToMove.addLocation(step);
 		entity.setDirection(direction);
-		if(this.getCurrMap().isPassable(pointToMove)){
+		//if(this.getCurrMap().isPassable(pointToMove)){
 			getCurrMap().updateEntityLocation(entity, pointToMove);
-		}
+			System.out.println("I HAVE MOOOOVED");
+		//}
 		//System.out.println(this.getCurrMap().getTile(entityLocation).getTerrain());
 		//this.mapView.repaint();
 	}

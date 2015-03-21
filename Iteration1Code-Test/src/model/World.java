@@ -34,6 +34,10 @@ public class World {
 		maps.get("Cave").setMapView(mv);
 	}
 	
+	public Map<String, GameMap> getMaps() {
+		return maps;
+	}
+	
 	public static GameMap getMap(String s){
 		return maps.get(s);
 	}

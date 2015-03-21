@@ -44,7 +44,7 @@ public class GameController {
         	this.avatar = game.getAvatar();
         	this.map = world.getMap(avatar.getCurrMap());
 			combinedGameView = new CombinedGameView(map, avatar, new BoardMouseListener(avatar,map), new LevelUPButton(), new SystemsMenuButton(), new StatButtonAction());
-        	
+        	this.world.setMapView(getMapView());
         	systems = new SystemsController(combinedGameView, avatar, world);
         	stats = new StatsController(combinedGameView, avatar); 
         	levelUp = new LevelUpController(combinedGameView, avatar);

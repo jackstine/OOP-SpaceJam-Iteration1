@@ -6,8 +6,9 @@ import model.behavior.Attack;
 
 public class Orc extends NPC {
 	
-	public Orc(){
+	public Orc(String name){
 		super();
+		this.name = name;
 		this.engagedState.setState(new Attack());
 	}
 	
@@ -16,7 +17,7 @@ public class Orc extends NPC {
 	}
 	
 	public String toString() {
-		return "NPC:Orc";
+		return name+"NPC:Orc";
 	}
 	
 }

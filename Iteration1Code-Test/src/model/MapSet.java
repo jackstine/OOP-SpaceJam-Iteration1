@@ -9,8 +9,8 @@ public class MapSet {
 	
 	public MapSet(Tile[][] map) {
 		this.map = new Tile[map.length][map[0].length];
-		for(int r = 0; r < map.length; r++) {
-			for(int c = 0; c < map[r].length; c++) {
+		for(int c = 0; c < map[0].length; c++) {
+			for(int r = 0; r < map.length; r++) {
 				this.map[r][c] = map[r][c];
 			}
 		}
@@ -41,6 +41,7 @@ public class MapSet {
 		for(int r = 0; r < getHeight(); r++) {
 			for(int c = 0; c < getWidth(); c++) {
 				if(getTile(r,c).getEntity() != null) {
+					//System.out.println("ADDING "+getTile(r,c).getEntity());
 					entityLocations.put(getTile(r,c).getEntity(), new Location(r,c));
 				}
 			}
