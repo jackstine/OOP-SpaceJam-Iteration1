@@ -41,7 +41,6 @@ public class Game {
 		//build the Avatar equipment
 		avatar = new Avatar(occupation);
 		avatar.setName(name);
-		world.setAvatar(avatar);
 	}
 	
 	public World getWorld() {

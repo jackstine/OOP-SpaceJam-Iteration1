@@ -1,12 +1,10 @@
 package model.entity;
 
 import utilities.FriendlyDeathSoundEffect;
-import utilities.Scaling;
 import utilities.SoundEffect;
-import utilities.SpriteSheetUtility;
-import view.MerchantView;
-import model.NpcEffectHandler;
 import model.behavior.Barter;
+import model.behavior.Patrol;
+import model.behavior.Stand;
 import model.occupation.MerchantHunter;
 
 public class Merchant extends NPC implements Conversable {
@@ -14,6 +12,7 @@ public class Merchant extends NPC implements Conversable {
 	public Merchant() {
 		super(new MerchantHunter());
 		this.engagedState.setState(new Barter(this));
+		this.preferredState.setState(new Stand(this));
 		//SoundEffect effect = new FriendlyDeathSoundEffect();
 	}
 

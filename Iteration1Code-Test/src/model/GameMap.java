@@ -25,7 +25,6 @@ public class GameMap extends Observable{
 		entityToLocationMap = map.grabEntityLocations();
 		System.out.println(entityToLocationMap);
 		this.setWidthHeight();
-//		tileToItemMap = new HashMap<Tile,Item>();
 		this.setEntitiesLocations();
 	}
 	
@@ -198,5 +197,9 @@ public class GameMap extends Observable{
 			result += "\n" + entity.getName() + ":" + location.getX() + "," + location.getY();
 		}
 		return result;
+	}
+
+	public Set<Entity> getEntities() {
+		return this.entityToLocationMap.keySet();
 	}
 }
