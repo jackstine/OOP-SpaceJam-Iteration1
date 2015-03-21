@@ -8,9 +8,12 @@ import model.items.TakeableItem;
 import model.items.Weapon;
 import model.items.Weapons;
 
-public class PickPockit implements Behavior{
+public class PickPockit extends EngagedBehavior{
+	private Entity entity;
 
-	public PickPockit(){}
+	public PickPockit(Entity entity){
+		this.entity = entity;
+	}
 	
 	public void perform(Entity initiate, Entity receiver) {
 		initiate.writeJournal(receiver.getDialogue());

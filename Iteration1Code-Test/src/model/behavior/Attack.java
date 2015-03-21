@@ -7,8 +7,11 @@ import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
 public class Attack implements Behavior{
+	private Entity entity;
 	
-	public Attack(){}
+	public Attack(Entity entity){
+		this.entity = entity;
+	}
 	
 	public void perform(Entity attacker,Entity theAttacked) {
 		int oppositeDirection = Directions.getOppositeDirection(theAttacked.getDirection());
