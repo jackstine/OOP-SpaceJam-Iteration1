@@ -1,10 +1,14 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import utilities.Directions;
 import model.GameMap;
 import model.Location;
+import model.Tile;
 import model.entity.Entity;
 
 public class NPCMovementDirectiveController extends NPCMovementController{
