@@ -66,7 +66,7 @@ public class StatusView extends JPanel {
 	private FontHandler fh = new FontHandler();
 	private Font labelFont;
 	
-	private JTextArea terminal = new JTextArea();
+	private static JTextArea terminal = new JTextArea();
 	
 	JProgressBar health;
 	JProgressBar mana;
@@ -218,9 +218,9 @@ public class StatusView extends JPanel {
 		lives.setString("Lives: " + avatar.getStatValue("Lives")+"/"+3);
 		lives.setValue(avatar.getStatValue("Lives"));
 		
-		if(avatar.isWriting()){
-			terminal.setText(avatar.getJournal());
-			avatar.doneWriting();
+		if(GameLog.isWriting()){
+			String s = GameLog.getLog();
+			terminal.setText(GameLog.getLog());
 		}
  	}
 }

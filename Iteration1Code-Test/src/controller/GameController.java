@@ -10,6 +10,7 @@ import javax.swing.Timer;
 
 import controller.mouse.MapMouseHandler;
 import model.Game;
+import model.GameLog;
 import model.GameMap;
 import model.InfluenceSet;
 import model.Location;
@@ -166,12 +167,12 @@ public class GameController {
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
             if(this.handler.getEntity(tileLocation) != null){
-            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar))));
+            	GameLog.writeToLog((this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
             getMapView().repaint();
         }
         public void mouseEntered(MouseEvent e) {}
-        public void mouseExited(MouseEvent e) { }
+        public void mouseExited(MouseEvent e) {}
         public void mousePressed(MouseEvent e) {}
         public void mouseReleased(MouseEvent e) {}
     }
