@@ -134,7 +134,7 @@ public class GameController {
 			stats.updatetable();
 			combinedGameView.updateStatus();
 			Location killLocation = null;
-			for (Entry<Entity, Location> entry : map.getEntityToLocationMap().entrySet()) {
+			for (Entry<Entity, Location> entry : World.getMap(avatar.getCurrMap()).getEntityToLocationMap().entrySet()) {
 				killLocation = null;
 				Entity key = entry.getKey();
 				Location loc = entry.getValue();
