@@ -11,4 +11,10 @@ public class Stand extends IdleBehavior {
 		//do nothing
 		
 	}
+
+	@Override
+	public void getBuffs() {
+		// TODO Auto-generated method stub
+		
+	}
 }
