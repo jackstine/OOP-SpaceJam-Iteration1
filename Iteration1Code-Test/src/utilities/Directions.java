@@ -15,7 +15,7 @@ public class Directions {
 	public final static int WEST = 4;
 	public final static int DANCE = 0;
 	public final static int CENTRAL = 5;
-
+	
 	public final static int getOppositeDirection(int direction) {
 		if (direction == SOUTHWEST) return NORTHEAST;
 		if (direction == SOUTH) return NORTH;
@@ -25,6 +25,18 @@ public class Directions {
 		if (direction == NORTH) return SOUTH;
 		if (direction == NORTHWEST) return SOUTHEAST;
 		if (direction == WEST) return EAST;
+		return -1;
+	}
+	
+	public final static int getClockwiseRotation(int direction) {
+		if (direction == SOUTHWEST) return NORTHWEST;
+		if (direction == SOUTH) return WEST;
+		if (direction == SOUTHEAST) return SOUTHWEST;
+		if (direction == EAST) return SOUTH;
+		if (direction == NORTHEAST) return SOUTHEAST;
+		if (direction == NORTH) return EAST;
+		if (direction == NORTHWEST) return NORTHEAST;
+		if (direction == WEST) return NORTH;
 		return -1;
 	}
 	

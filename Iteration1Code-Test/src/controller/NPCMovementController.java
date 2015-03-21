@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import utilities.Directions;
 import view.MapView;
 import model.entity.*;
@@ -10,10 +12,11 @@ import model.QuestHandler;
 import model.Tile;
 import model.World;
 
-public class NPCMovementController extends MovementController {
+public abstract class NPCMovementController extends MovementController {
 
-	private Entity entity;
-	private Thread task;
+	protected Entity entity;
+	protected boolean stopThread = false;
+	protected Thread task;
 	
 	public NPCMovementController(Entity entity){
 		//this.mapView = mapView;
@@ -28,48 +31,26 @@ public class NPCMovementController extends MovementController {
 		return getCurrMap().getLocation(entity);
 	}
 	
-	public void doArtificialIntelligence() {
-		task = new CircleTask();
-		task.start();
-	}
+	public abstract void doArtificialIntelligence();
 	
 	public void interrupt(){
 		try{
+			System.out.println("stopped");
 			this.task.interrupt();
+			stopThread = true;
 		}catch(Exception e){}
 	}
-	
-	private class CircleTask extends Thread {
-		//Entity entity = getNPC();
-		GameMap map = getCurrMap();
-		
-		@Override
-		public void run() {
-			try {
-				int i = 0;
-				while (i < 5 && (! interrupted())) {
-					//System.out.println(map+"aye");
-					//tile = map.getEntityTile(entity);
-					//if (tile != null) {
-						move(MovementController.WEST, Directions.WEST);
-	
-					try{
-						sleep(5000);
-					}catch(Exception e){}
-	
-				}
-			} catch (Exception e) {
-			}
-			
-			
-		}
-	}
 
-	public void move(Point step, int direction) {		
+	public void move(Point step, int direction) {	
+		System.out.println("a");
 		Location pointToMove = new Location(this.getEntityLocation());
+		System.out.println("b");
 		pointToMove.addLocation(step);
+		System.out.println("c");
 		entity.setDirection(direction);
+		System.out.println("d");
 		getCurrMap().updateEntityLocation(entity, pointToMove);
+		System.out.println("e");
 	}
 
 	

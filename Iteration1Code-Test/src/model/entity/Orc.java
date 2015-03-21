@@ -14,7 +14,7 @@ public class Orc extends NPC {
 	public Orc(){
 		super(new OrcTerminator());
 		this.engagedState.setState(new Attack(this));
-		this.preferredState.setState(new Patrol(this));
+		this.preferredState.setState(new Patrol(this,2));
 	}
 	
 	public String toString() {

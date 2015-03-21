@@ -86,6 +86,7 @@ public abstract class Entity implements Dieable{
 
 	public void engage(Avatar avatar){
 		this.engagedState.perform(this, avatar);
+		this.preferredState.kill();
 	}
 
 	public void setDirection(int direction) {
