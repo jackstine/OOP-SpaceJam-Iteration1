@@ -44,6 +44,7 @@ public abstract class Entity implements Dieable{
 	private BufferedImage[] spriteSheet;
 	private BufferedImage image;
 	private WeaponVisitor weaponVisitor= new WeaponVisitor(this);
+	private boolean buyingMode = false;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells;
@@ -95,11 +96,11 @@ public abstract class Entity implements Dieable{
 	
 	public void idle(){
 		//WE FUCKED
-		this.preferredState.perform(this, this);
+		this.preferredState.perform(this);
 	}
 
 	public void engage(Avatar avatar){
-		this.engagedState.perform(this, avatar);
+		this.engagedState.perform(avatar);
 		this.preferredState.kill();
 	}
 
@@ -309,32 +310,18 @@ public abstract class Entity implements Dieable{
 		}
 
 	}
+	
+	public void setBuyingMode(){
+		this.buyingMode = true;
+	}
+	
+	public void resetBuyingMode(){
+		this.buyingMode = false;
+	}
+	
+	public boolean getBuyingMode(){
+		return this.buyingMode;
+	}
+	
 }
-
-
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((name == null) ? 0 : name.hashCode());
-//		return result;
-//	}
-
-//	@Override
-//	public boolean equals(Object obj) {
-//		Entity other = (Entity) obj;
-//		if (name == null) {
-//			if (other.name != null)
-//				return false;
-//		} else if (!name.equals(other.name))
-//			return false;
-//		return true;
-//	}
-//	
-//	@Override
-//	public void makeDeathSoundEffect(){
-//		soundEffect = new DeathSoundEffect();
-//	}
-
-
 

@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public final class GameLog {
-	private static ArrayList<String> log = new ArrayList<String>();
+	private static String log = "hi";
 	private static boolean writing = false;
 	
 	
@@ -20,10 +20,7 @@ public final class GameLog {
 		String reportDate = df.format(today);
 		s = reportDate + ": \n--------------------------------------------\n" + s;
 		s += "\n--------------------------------------------\n";
-		if(log.size() > 20){
-			log.remove(0);
-		}
-		log.add(s);
+		log+=s;
 		writing = true;
 	} 
 	public static void doneWriting(){
@@ -33,11 +30,9 @@ public final class GameLog {
 		return writing;
 	}
 	public static String getLog(){
-		String j = "";
-		for(int i = 0; i < log.size(); ++i){
-			j += log.get(i);
-		}
-		return j;
+		System.out.println(log);
+		writing = false;
+		return log;
 	}
 
 }

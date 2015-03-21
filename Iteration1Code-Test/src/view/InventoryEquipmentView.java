@@ -98,7 +98,10 @@ public class InventoryEquipmentView extends JPanel {
 		// all these classes need to be defined in the MapView
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton() == RIGHT_CLICK){
-				handler.unequipItem(e);
+				if (avatar.getBuyingMode())
+					handler.sellItem(e);
+				else
+					handler.unequipItem(e);
 			}
 			if (e.getButton()== LEFT_CLICK){
 				handler.useItem(e);

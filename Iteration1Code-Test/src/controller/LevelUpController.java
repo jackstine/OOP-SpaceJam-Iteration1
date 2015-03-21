@@ -10,6 +10,8 @@ import java.util.Map.Entry;
 
 
 
+
+import model.GameLog;
 import model.Skill;
 import model.entity.Avatar;
 import model.occupation.Occupation;
@@ -68,8 +70,7 @@ public class LevelUpController {
         	i = rn.nextInt(5);
         	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
         	text += stats[i]+ "\n";
-        	//GameLog.writeToLog(text);
-        	avatar.writeJournal(text);
+        	GameLog.writeToLog(text);
         	
         	avatar.incSkillValue(skill);
         	avatar.setLevels(avatar.getLevels()-1);

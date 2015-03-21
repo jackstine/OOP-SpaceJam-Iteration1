@@ -26,7 +26,7 @@ public class Patrol extends IdleBehavior{
 	}
 	
 	//TODO I think that Idle Behaviors will not take in a Entity
-	public void perform(Entity initiate, Entity receiver) {
+	public void perform(Entity receiver) {
 		this.movementController = new NPCMovementLoopController(entity);
 		movementController.setMovementLoop(patrolLoop());
 		this.movementController.doArtificialIntelligence();
