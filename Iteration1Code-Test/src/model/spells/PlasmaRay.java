@@ -1,5 +1,7 @@
 package model.spells;
 
+import utilities.PlasmaRaySoundEffect;
+import utilities.SoundEffect;
 import model.entity.Entity;
 
 public class PlasmaRay extends BaneSpellSingle{
@@ -19,4 +21,8 @@ public class PlasmaRay extends BaneSpellSingle{
 	}
 	
 
+	@Override
+	public void makeSoundEffect() {
+		SoundEffect e = new PlasmaRaySoundEffect();
+	}
 }

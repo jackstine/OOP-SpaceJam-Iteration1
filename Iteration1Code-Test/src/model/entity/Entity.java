@@ -267,6 +267,7 @@ public abstract class Entity implements Dieable{
 	}
 }
 
+
 //	@Override
 //	public int hashCode() {
 //		final int prime = 31;
