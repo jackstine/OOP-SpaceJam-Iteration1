@@ -92,6 +92,11 @@ public class Tile {
 			this.decal=decal;
 	}
 	
+	public boolean hasEntity(){
+		if (this.entity != null) return true;
+		else return false;
+	}
+	
 	public Trap getTrap(){
 		return trap;
 	}
@@ -100,8 +105,10 @@ public class Tile {
 		this.trap=trap;
 	}
 	
-	public void dropEntity(){
+	public Entity dropEntity(){
+		Entity temp = this.entity;
 		this.entity = null;
+		return temp;
 	}	
 	
 	public String toString() {

@@ -1,13 +1,13 @@
 package model.entity;
 
+import model.occupation.Occupation;
 import utilities.SpriteSheetUtility;
 
 public class Coward extends NPC{
 
-	@Override
-	public SpriteSheetUtility getSpriteSheet() {
-		// TODO Auto-generated method stub
-		return null;
+
+	public Coward(Occupation oc) {
+		super(oc);
 	}
 
 	@Override

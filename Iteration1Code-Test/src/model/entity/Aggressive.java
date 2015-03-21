@@ -1,13 +1,11 @@
 package model.entity;
 
-import utilities.SpriteSheetUtility;
+import model.occupation.Occupation;
 
 public class Aggressive extends NPC{
 
-	@Override
-	public SpriteSheetUtility getSpriteSheet() {
-		// TODO Auto-generated method stub
-		return null;
+	public Aggressive(Occupation oc) {
+		super(oc);
 	}
 
 	@Override

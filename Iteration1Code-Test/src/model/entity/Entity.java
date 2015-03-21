@@ -3,6 +3,9 @@ package model.entity;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 
+import utilities.ImageProcessing;
+import utilities.Scaling;
+import utilities.SpriteSheetUtility;
 import model.Point;
 import model.Skill;
 import model.behavior.Behavior;
@@ -27,11 +30,11 @@ public abstract class Entity {
 	protected InventoryEquipment inventoryEquipment;
 	protected State preferredState = new State();
 	protected State engagedState = new State();
+	private BufferedImage[] spriteSheet;
+	private BufferedImage image;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells = new Spells(this);
-	
-	public Entity() {}
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
@@ -39,9 +42,17 @@ public abstract class Entity {
 		this.stats = new EntityStats(occupation.getStats());
 		this.skills = occupation.getSkills();
 		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
+		SpriteSheetUtility util = occupation.getSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
 	}
 	
-	/**************O BEHAVE ****************************************/
+	public BufferedImage getImage(){
+			BufferedImage imageToDisplay = spriteSheet[direction];
+			image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
+			return image;
+	}
+	
+	/********************** O BEHAVE ****************************************/
 	public void setPrefferedBehavior(Behavior behavior){
 		this.preferredState.setState(behavior);
 	}
@@ -126,6 +137,7 @@ public abstract class Entity {
 	}
 	
 	public int getMP(){return this.stats.getMP();}
+	public int getHP(){return this.stats.getHP();}
 	
 	public void subHP(int change){this.stats.subHP(change);}
 	public void subMP(int change){this.stats.subMP(change);}
@@ -162,7 +174,7 @@ public abstract class Entity {
 		String s = "Observation: \n";
 		String[] info = {"Level","Life","HP", "Agility", "Strength",
 				 "Intellect", "MP", "Hardiness"};
-		for(int i = 0; i < x; ++i){
+		for(int i = 0; i < x && i < 7; ++i){
 			s += (info[i] + ":" + stats.getStatValue(info[i]) + "\n");
 		}
 		return s;
@@ -171,8 +183,6 @@ public abstract class Entity {
 	public Occupation getOccupation() {
 		return occupation;
 	}
-	
-	public abstract BufferedImage getImage();
 	
 	// -------------------------------------------
 	// not 1st iteration stuff

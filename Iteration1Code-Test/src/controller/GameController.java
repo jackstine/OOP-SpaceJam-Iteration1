@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Map.Entry;
 
 import javax.swing.Timer;
 
@@ -14,7 +15,9 @@ import model.InfluenceSet;
 import model.Location;
 import model.World;
 import model.entity.Avatar;
+import model.entity.Entity;
 import view.CombinedGameView;
+import view.ControlField;
 import view.MapView;
 import view.View;
  
@@ -48,8 +51,7 @@ public class GameController {
         	systems = new SystemsController(combinedGameView, avatar, world);
         	stats = new StatsController(combinedGameView, avatar); 
         	levelUp = new LevelUpController(combinedGameView, avatar);
-
-     		
+        	     		
      		Timer statUpdater = new Timer(100, new StatCheck());
      		statUpdater.start();
         }  
@@ -71,9 +73,9 @@ public class GameController {
         
         public void stopReset(){
             reset  = false;
-        }    
+        }
                    
-        /********************Action Listeners**********************/    
+        /********************Action Listeners**********************/ 
       
         public class SystemsMenuButton implements ActionListener { //Systems
             public void actionPerformed(ActionEvent e) {
@@ -94,7 +96,6 @@ public class GameController {
     			//applyEffect(new RadialInfluenceSet(map, map.getEntityTile(avatar),0,0));
             }
         }
-        
     
     public class StatCheck implements ActionListener {
     	private int yourLvl;
@@ -124,6 +125,14 @@ public class GameController {
 			}
 			stats.updatetable();
 			combinedGameView.updateStatus();
+			for (Entry<Entity, Location> entry : map.getEntityToLocationMap().entrySet()) {
+				Entity key = entry.getKey();
+				Location loc = entry.getValue();
+				System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
+				if(key.getStats().getStatValue("HP") <= 0){
+					map.kill(loc);
+				}
+			}
 		}
 	}
     
@@ -146,6 +155,9 @@ public class GameController {
             this.handler.useSpell(tileLocation);
             if(this.handler.getEntity(tileLocation) != null){
             	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation")));
+            	if(this.handler.getEntity(tileLocation).getStats().getStatValue("HP") <= 0){
+					map.kill(tileLocation);
+				}
             }
             getMapView().repaint();
         }

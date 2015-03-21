@@ -2,14 +2,14 @@ package model.occupation;
 
 import java.util.Map;
 
-import model.EquipmentBuilder;
 import model.Skill;
 import model.SkillFactory;
-import model.StatFactory;
 import model.entity.Entity;
+import model.items.equipment.EquipmentBuilder;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
 import model.stats.Stat;
+import model.stats.factory.StatFactory;
 import utilities.SpriteSheetUtility;
 
 public abstract class Occupation{

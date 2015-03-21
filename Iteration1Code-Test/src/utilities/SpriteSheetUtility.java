@@ -40,33 +40,33 @@ public class SpriteSheetUtility {
 		initializeSpriteArray();
 	}
 	
-	public SpriteSheetUtility(Alchemist a) {
+	public SpriteSheetUtility(AvatarAlchemist a) {
 		imagePath = "src/res/img/alchemist_spritesheet.png";
 		initialize();
 	}
 	
-	public SpriteSheetUtility(Hunter h) {
+	public SpriteSheetUtility(AvatarHunter h) {
 		imagePath = "src/res/img/hunter_spritesheet.png";
 		initialize();
 	}
 	
-	public SpriteSheetUtility(Merchant m) {
+	public SpriteSheetUtility(AvatarTerminator t) {
+		imagePath = "src/res/img/terminator_spritesheet.png";
+		initialize();
+	}
+	
+	public SpriteSheetUtility(MerchantHunter m) {
 		imagePath = "src/res/img/merchant_spritesheet.png";
 		initialize();
 	}
 	
-	public SpriteSheetUtility(Orc o) {
+	public SpriteSheetUtility(OrcTerminator o) {
 		imagePath = "src/res/img/orc_spritesheet.png";
 		initialize();
 	}
 	
-	public SpriteSheetUtility(Skeleton s) {
+	public SpriteSheetUtility(SkeletonAlchemist s) {
 		imagePath = "src/res/img/skeleton_spritesheet.png";	
-		initialize();
-	}
-	
-	public SpriteSheetUtility(Terminator t) {
-		imagePath = "src/res/img/terminator_spritesheet.png";
 		initialize();
 	}
 	

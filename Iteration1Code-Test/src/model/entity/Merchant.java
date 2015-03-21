@@ -5,16 +5,13 @@ import utilities.SpriteSheetUtility;
 import view.MerchantView;
 import model.NpcEffectHandler;
 import model.behavior.Barter;
+import model.occupation.MerchantHunter;
 
 public class Merchant extends NPC implements Conversable {
 	
 	public Merchant() {
-		super();
+		super(new MerchantHunter());
 		this.engagedState.setState(new Barter());
-	}
-	
-	public SpriteSheetUtility getSpriteSheet() {
-		return new SpriteSheetUtility(this);
 	}
 
 	public String getDialogue() {

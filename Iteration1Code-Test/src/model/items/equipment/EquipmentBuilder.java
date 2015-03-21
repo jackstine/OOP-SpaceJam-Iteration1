@@ -1,4 +1,4 @@
-package model;
+package model.items.equipment;
 
 import model.items.Armor;
 import model.items.Boots;
@@ -16,7 +16,13 @@ import model.slots.TerminatorWeaponSlot;
 
 public class EquipmentBuilder {
 	private int beginValue = 1;
+	/*
+	 * The idea is to build sets that NPCs will use and have a method that is specific to the 
+	 * Occupation of the NPC and request that build
+	 * 
+	 */
 	
+	/*******************BEGINER EQUIPMENT******************************/
 	public Equipment buildBeginerEquipment(Terminator occupation){
 		Equipment equipment = new Equipment(new TerminatorWeaponSlot());
 		return setBeginEquipment(equipment);
@@ -50,6 +56,7 @@ public class EquipmentBuilder {
 		equipment.equip(Weapons.PHILOSOPHERS_STONE.weapon);
 	}
 
+	/*******************EMPTY*********************************/
 	public Equipment emptyEquipment(Terminator terminator) {
 		return new Equipment(new TerminatorWeaponSlot());
 	}
@@ -60,6 +67,17 @@ public class EquipmentBuilder {
 	
 	public Equipment emptyEquipment(Hunter hunter) {
 		return new Equipment(new HunterWeaponSlot());
+	}
+	
+	/***********************NPC TERMINATOR ***************************/
+	public Equipment buildEquipmentTerminatorNPC(Terminator npc){
+		return emptyEquipment(npc);
+	}
+	public Equipment buildEquipmentAlchemistNPC(Alchemist npc){
+		return emptyEquipment(npc);
+	}
+	public Equipment buildEquipmentHunterNPC(Hunter npc){
+		return emptyEquipment(npc);
 	}
 	
 }

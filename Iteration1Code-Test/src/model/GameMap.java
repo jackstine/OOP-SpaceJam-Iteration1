@@ -4,7 +4,9 @@ import java.util.*;
 
 import model.entity.Avatar;
 import model.entity.Entity;
+import utilities.DeathSoundEffect;
 import utilities.Scaling;
+import utilities.SoundEffect;
 import view.MapView;
 
 public class GameMap extends Observable{
@@ -12,7 +14,8 @@ public class GameMap extends Observable{
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
 	private MapSet map;
 	private HashMap<Entity,Location> entityToLocationMap;
-//	private HashMap<Tile, Item> tileToItemMap;
+
+	//	private HashMap<Tile, Item> tileToItemMap;
 	private int width;
 	private int height;
 	private Avatar avatar;
@@ -24,6 +27,22 @@ public class GameMap extends Observable{
 		entityToLocationMap = map.grabEntityLocations();
 		System.out.println(entityToLocationMap);
 		this.setWidthHeight();
+		entityToLocationMap=new HashMap<Entity,Location>();
+//		tileToItemMap = new HashMap<Tile,Item>();
+	}
+	
+	public void kill(Location loc){
+		Entity entity = this.getTile(loc).dropEntity();
+		System.out.println(entity);
+		this.entityToLocationMap.remove(entity);
+		SoundEffect effect = new DeathSoundEffect();
+	}
+	
+	public HashMap<Entity, Location> getEntityToLocationMap() {
+		return entityToLocationMap;
+	}
+	
+	public GameMap(int state){
 //		tileToItemMap = new HashMap<Tile,Item>();
 	}
 	

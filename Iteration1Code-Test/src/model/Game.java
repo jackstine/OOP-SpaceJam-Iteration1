@@ -8,6 +8,7 @@ import java.util.Set;
 import model.entity.Avatar;
 import model.entity.Entity;
 import model.occupation.Alchemist;
+import model.occupation.AvatarTerminator;
 import model.occupation.Occupation;
 import model.occupation.Terminator;
 import model.slots.Equipment;
@@ -20,8 +21,7 @@ public class Game {
 	
 	public Game() {
 		world = new World();
-		avatar = new Avatar(new Terminator());
-		
+		avatar = new Avatar(new AvatarTerminator());
 		Map<String, GameMap> maps = world.getMaps();
 		Set<String> mapNames = maps.keySet();
 		for(String s : mapNames) {
@@ -36,6 +36,8 @@ public class Game {
 				}
 			}
 		}
+
+		
 	}
 	
 	public Game(World world, Avatar avatar) {
