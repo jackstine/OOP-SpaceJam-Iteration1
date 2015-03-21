@@ -8,7 +8,7 @@ public class Stand extends IdleBehavior {
 	public Stand(Entity entity){
 		this.entity = entity;
 	}
-	public void perform(Entity user, Entity receiver) {
+	public void perform(Entity receiver) {
 		//do nothing
 		
 	}

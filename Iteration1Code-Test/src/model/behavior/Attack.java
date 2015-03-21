@@ -7,13 +7,13 @@ import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
 public class Attack implements Behavior{
-	private Entity entity;
+	private Entity attacker;
 	
-	public Attack(Entity entity){
-		this.entity = entity;
+	public Attack(Entity attacker){
+		this.attacker = attacker;
 	}
 	
-	public void perform(Entity attacker,Entity theAttacked) {
+	public void perform(Entity theAttacked) {
 		
 		//in a typical engagement scenario, 
 		int oppositeDirection = Directions.getOppositeDirection(theAttacked.getDirection());

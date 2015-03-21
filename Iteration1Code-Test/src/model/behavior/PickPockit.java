@@ -9,20 +9,20 @@ import model.items.Weapon;
 import model.items.Weapons;
 
 public class PickPockit extends EngagedBehavior{
-	private Entity entity;
+	private Entity pickPockiter;
 
-	public PickPockit(Entity entity){
-		this.entity = entity;
+	public PickPockit(Entity pickPockiter){
+		this.pickPockiter = pickPockiter;
 	}
 	
-	public void perform(Entity initiate, Entity receiver) {
-		initiate.writeJournal(receiver.getDialogue());
+	public void perform(Entity receiver) {
+		pickPockiter.writeJournal(receiver.getDialogue());
 		int oppositeDirection = Directions.getOppositeDirection(receiver.getDirection());
-		initiate.setDirection(oppositeDirection);
+		pickPockiter.setDirection(oppositeDirection);
 		
 		int randomness = RNG.next(10);
 		if (randomness < 5) {
-			if (initiate.getOccupation().getName().equals("Hunter")) {
+			if (pickPockiter.getOccupation().getName().equals("Hunter")) {
 				
 				Weapon weapon;
 				if (randomness <= 2) weapon = Weapons.LONGBOW.weapon;
@@ -30,11 +30,10 @@ public class PickPockit extends EngagedBehavior{
 				else weapon = Weapons.PRESTINEBOW.weapon;
 				
 				TakeableItem droppedItem = weapon;
-				initiate.getInventory().findAndEquip(droppedItem);
+				pickPockiter.getInventory().findAndEquip(droppedItem);
 			}			
 		} else {	// on unsuccessful pickpockit the avatar takes damage
-			int damage = 5;
-			EntityEffectHandler.applyDamage(initiate, receiver.attack());
+			EntityEffectHandler.applyDamage(pickPockiter, receiver.attack());
 		}
 	}
 

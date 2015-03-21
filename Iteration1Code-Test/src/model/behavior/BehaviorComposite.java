@@ -26,7 +26,7 @@ public class BehaviorComposite implements Behavior{
 		return new BehaviorIterator(behaviors);
 	}
 
-	public void perform(Entity initiate, Entity receiver) {
+	public void perform(Entity receiver) {
 	}
 
 	public void getBuffs() {
