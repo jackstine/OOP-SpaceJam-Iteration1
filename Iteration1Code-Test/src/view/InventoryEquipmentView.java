@@ -43,14 +43,14 @@ public class InventoryEquipmentView extends JPanel {
 		inventory.addMouseMotionListener(new InventoryMouseMotionListener());
 		this.equipment = new EquipmentView(avatar.getEquipment());
 		equipment.addMouseListener(new EquipmentMouseListener());
-		this.spell = new SpellView(this.avatar);
+		//this.spell = new SpellView(this.avatar);
 		labelFont = fh.AfterDisasterFont();
 		this.title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
 		this.title.setFont(labelFont.deriveFont(25f));
 	
 		this.setLayout(new BorderLayout());
 		add(this.title,BorderLayout.NORTH);
-		add(this.spell,BorderLayout.WEST);
+		//add(this.spell,BorderLayout.WEST);
 		add(this.inventory,BorderLayout.CENTER);
 		add(this.equipment,BorderLayout.EAST);
 		

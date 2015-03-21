@@ -13,8 +13,11 @@ public class World {
 	private Map<String, Integer> keySet = new HashMap<String, Integer>();
 	
 	public World(){//MapView mv){
+		MapBuilder m = new MapBuilder();
+		m.generateStructuredMapv3();
+		
 		maps.put("Main",new GameMap());
-		maps.put("Cave", new GameMap());
+		maps.put("Cave", new GameMap(m));
 		genDefaultKeys();
 	}
 	
