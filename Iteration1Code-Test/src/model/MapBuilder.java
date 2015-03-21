@@ -1,5 +1,6 @@
 package model;
 
+import controller.NPCMovementController;
 import model.entity.Merchant;
 import model.entity.Orc;
 import model.entity.Skeleton;
@@ -17,6 +18,7 @@ public class MapBuilder{
 	protected int width;
 	protected int height;
 	protected Item[][] items;
+	protected MapSet mapSet;
 
 	public MapBuilder(int width, int height){
 		this.width = width;
@@ -28,7 +30,7 @@ public class MapBuilder{
 		this.height = 18;
 	}
 	
-	public Tile[][] generateMap(){
+	public MapSet generateMap(){
 		this.map= new Tile[this.height][this.width]; //just a test of the map
 		for(int i=0;i<this.height;i++){
 			for(int j=0;j<this.width;j++){
@@ -51,10 +53,10 @@ public class MapBuilder{
 				}
 			}
 		}
-		return this.map;
+		return new MapSet(this.map);
 	}
 	
-	public Tile[][] generateMapWithItems(){
+	public MapSet generateMapWithItems(){
 		this.map= new Tile[this.height][this.width]; //just a test of the map
 		this.items = new Item[this.height][this.width];
 		for(int i=0;i<this.width;i++){
@@ -72,10 +74,10 @@ public class MapBuilder{
 				}
 			}
 		}
-		return this.map;
+		return new MapSet(this.map);
 	}
 	//NEW MAP
-	public Tile[][] generateStructuredMap(){
+	public MapSet generateStructuredMap(){
 		this.map = new Tile[this.height][this.width]; // Sets the map size
 		this.items = new Item[this.height][this.width];
 		for(int i = 0; i < this.width; i++){
@@ -111,14 +113,17 @@ public class MapBuilder{
 		this.map[3][12].setTrap(new SpikeTrap()); //this
 		
 		//NPC TEST
+		Skeleton phil = new Skeleton();
 		this.map[4][12].setEntity(new Merchant());
-		this.map[9][12].setEntity(new Skeleton());
+		this.map[9][12].setEntity(phil);
 		this.map[14][12].setEntity(new Orc());
-		return this.map;
+		//NPCMovementController movePhil = new NPCMovementController(phil);
+		//movePhil.doArtificialIntelligence();
+		return new MapSet(this.map);
 		
 	}
 	
-	public Tile[][] generateStructuredMapv3(){
+	public MapSet generateStructuredMapv3(){
 		this.map = new Tile[this.height][this.width]; // Sets the map size
 		this.items = new Item[this.height][this.width];
 		for(int i = 0; i < this.width; i++){
@@ -154,10 +159,10 @@ public class MapBuilder{
 		this.map[6][12].setEntity(new Skeleton());
 		this.map[12][12].setEntity(new Orc());
 		
-		return this.map;
+		return new MapSet(this.map);
 	}
 	//renamed OLD map(this one) to V2
-	public Tile[][] generateStructuredMapV2(){
+	public MapSet generateStructuredMapV2(){
 		this.map = new Tile[this.height][this.width]; // Sets the map size
 		this.items = new Item[this.height][this.width];
 		for(int i = 0; i < this.width; i++){
@@ -188,7 +193,7 @@ public class MapBuilder{
 		this.items[3][20] = gr;
 		
 		
-		return this.map;
+		return new MapSet(this.map);
 	}
 
 	public Item[][] getItems(){

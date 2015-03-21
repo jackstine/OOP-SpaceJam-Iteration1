@@ -32,6 +32,7 @@ public class GameView extends JPanel {
 		setView();
 		this.map.updateEntityLocation(avatar, new Location(STARTING_X, STARTING_Y)); //NOT NEEDED ANYMORE
 		image=avatar.getImage();
+		this.map.setMapView(mapView);
 	}
 	
 	public MapView getMapView(){

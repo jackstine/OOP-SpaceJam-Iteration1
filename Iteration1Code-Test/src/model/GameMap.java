@@ -5,42 +5,49 @@ import java.util.*;
 import model.entity.Avatar;
 import model.entity.Entity;
 import utilities.Scaling;
+import view.MapView;
 
-public class GameMap {
+public class GameMap extends Observable{
 	//TODO create a Generate Map function that the constructor calls
 	private final int TILE_SCALE = Scaling.TILE_HEIGHT;
-	private Tile[][] map;
+	private MapSet map;
 	private HashMap<Entity,Location> entityToLocationMap;
 //	private HashMap<Tile, Item> tileToItemMap;
 	private int width;
 	private int height;
 	private Avatar avatar;
 
-	public GameMap(){
+	public GameMap () {
 		MapBuilder m= new MapBuilder();
 		map = m.generateStructuredMap();
+		entityToLocationMap = map.grabEntityLocations();
 		this.setWidthHeight();
-		entityToLocationMap=new HashMap<Entity,Location>();
 //		tileToItemMap = new HashMap<Tile,Item>();
 	}
 	
-	public GameMap(int state){
+	public GameMap(MapView mv){
 		MapBuilder m= new MapBuilder();
-		map = m.generateStructuredMapv3();
+		map = m.generateStructuredMap();
 		this.setWidthHeight();
+		addObserver(mv);
 		entityToLocationMap=new HashMap<Entity,Location>();
-	}	
+//		tileToItemMap = new HashMap<Tile,Item>();
+	}
 
 	//MUST BE ACTIVATED AFTER THE MAP IS GENERATED
 	private void setWidthHeight(){
-		this.height = map.length * TILE_SCALE;
-		this.width = map[0].length * TILE_SCALE;
+		this.height = map.getHeight() * TILE_SCALE;
+		this.width = map.getWidth() * TILE_SCALE;
+	}
+	
+	public void setMapView(MapView mv) {
+		addObserver(mv);
 	}
 	
 	public Tile getTile(Point location){
 		int x=location.getX();
 		int y=location.getY();
-		return map[x][y];
+		return map.getTile(x,y);
 	}
 	
 	public Entity getTileEntity(Point point){
@@ -48,10 +55,11 @@ public class GameMap {
 	}
 
 	public Tile getEntityTile(Entity entity){
+		System.out.println(this.entityToLocationMap.get(entity));
 		Location location= this.entityToLocationMap.get(entity);
 		int x=(int)location.getX();
 		int y=(int)location.getY();
-		return map[x][y];
+		return map.getTile(x,y);
 	}
 	
 	public Location getEntityLocation(Entity entity){
@@ -59,7 +67,7 @@ public class GameMap {
 	}
 	
 	public Point getMapLength(){
-		return new Point(map.length,map[0].length);
+		return new Point(map.getHeight(), map.getWidth());
 	}
 /*	public Tile getItemTile(Item item){
 		//returns a tile;
@@ -78,7 +86,7 @@ public class GameMap {
 	}
 
 	public Tile[][] tileSet(){    //returns two d array of the map tileset
-		return map;
+		return map.getMap();
 	}
 	
 	public boolean isPassable(Point pointOfTile){
@@ -104,6 +112,7 @@ public class GameMap {
 //	}
 	
 	public Location getLocation(Entity e){
+		System.out.println("found me at "+entityToLocationMap.get(e));
 		return entityToLocationMap.get(e);
 	}
 	
@@ -114,15 +123,15 @@ public class GameMap {
 	public void setTile(Tile tile) {
 		int x = tile.getLocation().getX();
 		int y = tile.getLocation().getY();
-		this.map[x][y] = tile;
+		this.map.setTile(x,y,tile);
 	}
 	
 	public String toString() {
 		String result = "";
-		result += "Map:" + this.map.length + "," + this.map[0].length;
-		for (int i = 0; i < this.map.length; i++) {
-			for (int j = 0; j < this.map[0].length; j++) {
-				result += "\n" + this.map[i][j];
+		result += "Map:" + this.map.getHeight() + "," + this.map.getWidth();
+		for (int i = 0; i < this.map.getHeight(); i++) {
+			for (int j = 0; j < this.map.getWidth(); j++) {
+				result += "\n" + this.map.getTile(i,j);
 			}
 		}
 		result += "\n" + this.entityToLocationMap.keySet().size();

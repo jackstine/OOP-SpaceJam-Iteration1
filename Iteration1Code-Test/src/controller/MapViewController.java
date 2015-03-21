@@ -61,7 +61,7 @@ public class MapViewController{
 		private MovementController movement;
 		
 		public CharacterKeyboardController(Avatar avatar, World world, MapView mapView){
-			this.movement = new MovementController(avatar, world, mapView);
+			this.movement = new AvatarMovementController(avatar, world, mapView);
 			
 			if(avatar != null){
 				// TODO change the timer to baseDelay when issuing product

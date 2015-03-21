@@ -6,21 +6,21 @@ import java.util.Map.Entry;
 
 import model.entity.Avatar;
 import view.ControlField;
+import view.MapView;
 
 public class World {
-	private Map<String, GameMap> maps = new HashMap<String, GameMap>();
+	private static Map<String, GameMap> maps = new HashMap<String, GameMap>();
 	private Map<String, Integer> keySet = new HashMap<String, Integer>();
 	
-	
-	public World(){
+	public World(){//MapView mv){
 		maps.put("Main",new GameMap());
-		maps.put("Cave", new GameMap(1));
+		maps.put("Cave", new GameMap());
 		genDefaultKeys();
 	}
 	
-	public World(GameMap Main){
+	public World(GameMap Main){//, MapView mv){
 		maps.put("Main",Main);
-		maps.put("Cave", new GameMap(1));
+		maps.put("Cave", new GameMap());
 		genDefaultKeys();
 	}
 	
@@ -29,7 +29,12 @@ public class World {
 		this.keySet = keySet;
 	}
 	
-	public GameMap getMap(String s){
+	public void setMapView(MapView mv) {
+		maps.get("Main").setMapView(mv);
+		maps.get("Cave").setMapView(mv);
+	}
+	
+	public static GameMap getMap(String s){
 		return maps.get(s);
 	}
 	

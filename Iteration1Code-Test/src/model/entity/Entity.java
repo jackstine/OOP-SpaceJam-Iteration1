@@ -187,6 +187,7 @@ public abstract class Entity {
 	// -------------------------------------------
 
 	public String getCurrMap() {
+		System.out.println("1returning "+currMap);
 		return currMap;
 	}
 

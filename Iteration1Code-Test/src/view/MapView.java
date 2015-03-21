@@ -7,8 +7,13 @@ import java.awt.Graphics;
 
 
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JComponent;
  
+
+
 
 
 
@@ -19,7 +24,7 @@ import model.Location;
 import model.entity.Avatar;
  
 @SuppressWarnings("serial")
-public class MapView extends JComponent{
+public class MapView extends JComponent implements Observer{
         private GameMap map;
         private Avatar avatar;
         private EntityView entityView;
@@ -69,4 +74,9 @@ public class MapView extends JComponent{
         public Dimension getPreferredSize(){
                 return new Dimension( Scaling.GAME_VIEW_WIDTH , Scaling.GAME_VIEW_HEIGHT);
         }
+
+		@Override
+		public void update(Observable o, Object arg) {
+			repaint();			
+		}
 }
