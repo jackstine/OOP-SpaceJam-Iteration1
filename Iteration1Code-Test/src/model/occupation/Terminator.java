@@ -3,9 +3,12 @@ package model.occupation;
 import utilities.SpriteSheetUtility;
 import model.*;
 import model.entity.Entity;
+import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
+import model.stats.factory.StatFactory;
+import model.stats.factory.TerminatorStatFactory;
 
-public class Terminator extends Occupation{
+public abstract class Terminator extends Occupation{
 
 	public Terminator() {
 		this.portraitLocation = "src/res/img/terminator_portrait.jpg";
@@ -31,10 +34,6 @@ public class Terminator extends Occupation{
 	public void attack(Entity entity) {
 		// create "CombatSimulator" class that will carry
 		// out the fighting between Avatar and Entity		
-	}
-	
-	public SpriteSheetUtility getSpriteSheet() {
-		return new SpriteSheetUtility(this);
 	}
 
 	@Override

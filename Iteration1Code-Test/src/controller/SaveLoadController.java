@@ -42,9 +42,9 @@ public class SaveLoadController {
 		String occupation = avatarOccupation[1];
 		
 		// fix this later
-		if (occupation.equals("Terminator")) avatar = new Avatar(new Terminator());
-		if (occupation.equals("Alchemist")) avatar = new Avatar(new Alchemist());
-		if (occupation.equals("Hunter")) avatar = new Avatar(new Hunter());
+		if (occupation.equals("Terminator")) avatar = new Avatar(new AvatarTerminator());
+		if (occupation.equals("Alchemist")) avatar = new Avatar(new AvatarAlchemist());
+		if (occupation.equals("Hunter")) avatar = new Avatar(new AvatarHunter());
 		
 		for (int i = 0; i < 9; i++) {
 			String[] primaryStat = in.next().split(":");

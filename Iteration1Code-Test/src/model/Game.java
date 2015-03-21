@@ -5,6 +5,7 @@ import java.util.Map;
 
 import model.entity.Avatar;
 import model.occupation.Alchemist;
+import model.occupation.AvatarTerminator;
 import model.occupation.Occupation;
 import model.occupation.Terminator;
 import model.slots.Equipment;
@@ -16,7 +17,7 @@ public class Game {
 	
 	public Game() {
 		world = new World();
-		avatar = new Avatar(new Terminator());
+		avatar = new Avatar(new AvatarTerminator());
 	}
 	
 	public Game(World world, Avatar avatar) {

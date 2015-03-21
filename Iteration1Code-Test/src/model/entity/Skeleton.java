@@ -1,17 +1,13 @@
 package model.entity;
 
-import utilities.SpriteSheetUtility;
 import model.behavior.PickPockit;
+import model.occupation.SkeletonAlchemist;
 
 public class Skeleton extends NPC implements Conversable {
 	
 	public Skeleton() {
-		super();
+		super(new SkeletonAlchemist());
 		this.engagedState.setState(new PickPockit());
-	}
-	
-	public SpriteSheetUtility getSpriteSheet() {
-		return new SpriteSheetUtility(this);
 	}
 
 	@Override

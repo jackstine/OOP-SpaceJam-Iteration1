@@ -1,13 +1,12 @@
 package model.entity;
 
+import model.occupation.Occupation;
 import utilities.SpriteSheetUtility;
 
 public class Neutral extends NPC{
 
-	@Override
-	public SpriteSheetUtility getSpriteSheet() {
-		// TODO Auto-generated method stub
-		return null;
+	public Neutral(Occupation oc) {
+		super(oc);
 	}
 
 	@Override

@@ -3,9 +3,12 @@ package model.occupation;
 import utilities.SpriteSheetUtility;
 import model.*;
 import model.entity.Entity;
+import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
+import model.stats.factory.AlchemistStatFactory;
+import model.stats.factory.StatFactory;
 
-public class Alchemist extends Occupation{
+public abstract class Alchemist extends Occupation{
 	
 	public Alchemist() {
 		this.portraitLocation = "src/res/img/alchemist_portrait.jpg";
@@ -31,10 +34,6 @@ public class Alchemist extends Occupation{
 	public void attack(Entity entity) {
 		// create "CombatSimulator" class that will carry
 		// out the fighting between Avatar and Entity
-	}
-	
-	public SpriteSheetUtility getSpriteSheet() {
-		return new SpriteSheetUtility(this);
 	}
 
 	@Override

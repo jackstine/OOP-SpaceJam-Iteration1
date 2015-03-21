@@ -14,8 +14,6 @@ public class Avatar extends Entity {
 	private int levels = 0;
 	private ArrayList<String> journal = new ArrayList<String>();
 	private boolean writing = false;
-	private BufferedImage image;
-	private BufferedImage[] spriteSheet;
 	private String currMap = "Main";
 	//deprecated all entities need a equipment now
 //	private Equipment equipment = new Equipment();
@@ -26,8 +24,6 @@ public class Avatar extends Entity {
 	
 	public Avatar(Occupation occupation) {
 		super(occupation);
-		SpriteSheetUtility util = occupation.getSpriteSheet();
-		this.spriteSheet = (util.getSpriteArray());
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
@@ -45,12 +41,6 @@ public class Avatar extends Entity {
 		g.drawImage(image,Scaling.AVATAR_WIDTH*x,Scaling.AVATAR_HEIGHT*y,null);
 	}
 	*/
-	
-	public BufferedImage getImage(){
-		BufferedImage imageToDisplay = spriteSheet[direction];
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
-		return image;
-	}
 	
 	// used for writing to the save file
 	// name, occupation, stats, direction, inventory, equipment
