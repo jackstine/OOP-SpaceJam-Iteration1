@@ -16,4 +16,7 @@ public class Coward extends NPC{
 		
 	}
 
+	public void makeDeathSoundEffect() {
+	}
+
 }

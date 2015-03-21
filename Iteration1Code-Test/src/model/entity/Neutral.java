@@ -7,12 +7,16 @@ public class Neutral extends NPC{
 
 	public Neutral(Occupation oc) {
 		super(oc);
+		
 	}
 
 	@Override
 	public void engage(Avatar avatar) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void makeDeathSoundEffect() {
 	}
 
 }

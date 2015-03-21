@@ -1,14 +1,15 @@
 package model.entity;
 
+import model.behavior.Attack;
 import model.behavior.Patrol;
-import model.behavior.PickPockit;
 import model.occupation.SkeletonAlchemist;
 
 public class Skeleton extends NPC implements Conversable {
 	
 	public Skeleton() {
 		super(new SkeletonAlchemist());
-		this.engagedState.setState(new Patrol(this));
+		this.engagedState.setState(new Attack(this));
+		this.preferredState.setState(new Patrol(this));
 	}
 
 	@Override

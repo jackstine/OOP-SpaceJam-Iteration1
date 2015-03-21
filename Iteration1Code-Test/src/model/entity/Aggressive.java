@@ -14,4 +14,7 @@ public class Aggressive extends NPC{
 		
 	}
 
+	public void makeDeathSoundEffect() {
+	}
+
 }
