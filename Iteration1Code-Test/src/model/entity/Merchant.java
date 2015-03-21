@@ -1,6 +1,8 @@
 package model.entity;
 
+import utilities.FriendlyDeathSoundEffect;
 import utilities.Scaling;
+import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
 import view.MerchantView;
 import model.NpcEffectHandler;
@@ -12,6 +14,7 @@ public class Merchant extends NPC implements Conversable {
 	public Merchant() {
 		super(new MerchantHunter());
 		this.engagedState.setState(new Barter());
+		SoundEffect effect = new FriendlyDeathSoundEffect();
 	}
 
 	public String getDialogue() {
@@ -21,6 +24,11 @@ public class Merchant extends NPC implements Conversable {
 	
 	public String toString() {
 		return "NPC:Merchant";
+	}
+	
+	@Override
+	public void makeDeathSoundEffect(){
+		soundEffect = new FriendlyDeathSoundEffect();
 	}
 
 }

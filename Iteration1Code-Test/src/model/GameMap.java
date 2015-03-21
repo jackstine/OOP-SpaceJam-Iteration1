@@ -34,7 +34,7 @@ public class GameMap extends Observable{
 		Entity entity = this.getTile(loc).dropEntity();
 		System.out.println(entity);
 		this.entityToLocationMap.remove(entity);
-		SoundEffect effect = new DeathSoundEffect();
+		entity.makeDeathSoundEffect();
 	}
 	
 	public GameMap(int state){
