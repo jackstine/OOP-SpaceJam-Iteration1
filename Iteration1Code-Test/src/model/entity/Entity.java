@@ -222,8 +222,7 @@ public abstract class Entity implements Dieable{
 				 "Intellect", "MP", "Hardiness"};
 		int n = 0;
 		for(int i = 0; i < x && i < 7; ++i){
-			int offset = 1;
-			if(RNG.genRandDouble() > 1/(d + offset)){
+			if(d!=0 && RNG.genRandDouble() > 1/d){
 				n = RNG.generateRand(0,30);
 			}
 			else{

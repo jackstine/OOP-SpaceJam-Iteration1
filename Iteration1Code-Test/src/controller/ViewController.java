@@ -102,10 +102,10 @@ public class ViewController {
                     frame.repaint();
                 }
                 if(current == views.get("Game")){
-                        mv.setActive(true);
+                    mv.setActive(true);
                 }
                 else{
-                        mv.setActive(false);
+                    mv.setActive(false);
                 }
         }
         /**
