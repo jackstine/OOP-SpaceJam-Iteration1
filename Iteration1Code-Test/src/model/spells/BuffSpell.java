@@ -24,7 +24,7 @@ public class BuffSpell extends BoonSpellSingle {
 
 	@Override
 	public void applyBoon(Entity entityToAffect) {
-		EntityEffectHandler.applyBuff(entityToAffect,stat,mag);	
+		EntityEffectHandler.applyBuff(entityToAffect,stat,mag*this.getEntity().getStatValue("Boon"));	
 	}
 
 	@Override
