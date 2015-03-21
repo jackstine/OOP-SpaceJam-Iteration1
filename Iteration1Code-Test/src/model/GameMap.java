@@ -27,7 +27,6 @@ public class GameMap extends Observable{
 		entityToLocationMap = map.grabEntityLocations();
 		System.out.println(entityToLocationMap);
 		this.setWidthHeight();
-		entityToLocationMap=new HashMap<Entity,Location>();
 //		tileToItemMap = new HashMap<Tile,Item>();
 	}
 	
@@ -36,10 +35,6 @@ public class GameMap extends Observable{
 		System.out.println(entity);
 		this.entityToLocationMap.remove(entity);
 		SoundEffect effect = new DeathSoundEffect();
-	}
-	
-	public HashMap<Entity, Location> getEntityToLocationMap() {
-		return entityToLocationMap;
 	}
 	
 	public GameMap(int state){
@@ -148,13 +143,6 @@ public class GameMap extends Observable{
 	}
 	
 	public Location getLocation(Entity e){
-		System.out.println(e+"in getLocation");
-		System.out.println("HEYOOOO "+entityToLocationMap);
-		Collection<Location> locations = entityToLocationMap.values();
-		for(Location l : locations) {
-			System.out.println(l);
-		}
-		System.out.println("found me at "+entityToLocationMap.get(e));
 		return entityToLocationMap.get(e);
 	}
 	

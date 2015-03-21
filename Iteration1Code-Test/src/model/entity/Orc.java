@@ -10,6 +10,11 @@ public class Orc extends NPC {
 
 	public Orc(){
 		super(new OrcTerminator());
+		this.engagedState.setState(new Attack());
+	}
+	
+	public Orc(String name){
+		super(new OrcTerminator());
 		this.name = name;
 		this.engagedState.setState(new Attack());
 	}

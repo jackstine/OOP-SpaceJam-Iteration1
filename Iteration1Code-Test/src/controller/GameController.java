@@ -128,7 +128,7 @@ public class GameController {
 			for (Entry<Entity, Location> entry : map.getEntityToLocationMap().entrySet()) {
 				Entity key = entry.getKey();
 				Location loc = entry.getValue();
-				System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
+				//System.out.println(key + " " + key.getHP() + "   HP: " + key.getStats().getStatValue("HP"));
 				if(key.getStats().getStatValue("HP") <= 0){
 					map.kill(loc);
 				}

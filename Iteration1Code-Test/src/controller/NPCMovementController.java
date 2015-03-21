@@ -49,7 +49,7 @@ public class NPCMovementController extends MovementController {
 				//
 				
 				try {
-					Thread.sleep(10000);
+					Thread.sleep(5000);
 
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -61,11 +61,7 @@ public class NPCMovementController extends MovementController {
 	}
 
 	@Override
-	public void move(Point step, int direction) {
-		//Location entityLocation = this.getEntityLocation();
-		System.out.println("I AM LOOKING AT A "+entity);
-		System.out.println(this.getEntityLocation()+"WHERE IS THIS ENTITY");
-		
+	public void move(Point step, int direction) {		
 		Location pointToMove = new Location(this.getEntityLocation());
 		pointToMove.addLocation(step);
 		entity.setDirection(direction);

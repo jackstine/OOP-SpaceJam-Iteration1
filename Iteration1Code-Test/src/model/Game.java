@@ -19,8 +19,11 @@ public class Game {
 	World world;
 	Avatar avatar;
 	
+
+	
+	
 	public Game() {
-		world = new World();
+		world = new World();		
 		avatar = new Avatar(new AvatarTerminator());
 		Map<String, GameMap> maps = world.getMaps();
 		Set<String> mapNames = maps.keySet();
