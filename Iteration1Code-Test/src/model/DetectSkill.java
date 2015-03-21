@@ -12,7 +12,8 @@ public class DetectSkill extends Skill {
 		return "Detect:" + this.getSkillLevel();
 	}
 	
-	public void displayTrap(){  //influence radius stuff in here perhaps
+	public void displayTrap(){
+		System.out.println("THIS RUNS");//influence radius stuff in here perhaps
 		if(this.getSkillLevel()>5/*placeholder 5*/){ //scan through current tile radius and check for traps.
 			// make traps visible.  //check each tile for trap. If trap then display if detect level
 									//high enough.

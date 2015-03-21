@@ -7,10 +7,14 @@ import model.visitor.ItemQuestVisitor;
 public class QuestHandler {
 	private Avatar avatar;
 	private ItemQuestVisitor visitor = new ItemQuestVisitor();
+	GameMap map;
+	TrapDetectionHandler handler;
 	
-	public QuestHandler(Avatar avatar){
+	public QuestHandler(Avatar avatar, GameMap map){
 		this.avatar=avatar;
+		this.map=map;
 		visitor.setAvatar(this.avatar);
+		handler= new TrapDetectionHandler(map,avatar);
 	}
 	
 	public void apply(Tile tile){
@@ -25,14 +29,12 @@ public class QuestHandler {
 			//violation of LoD
 			decal.getAreaEffect().apply(avatar); 
 		}
-
-		// Let us now begin the Satan Ceremony
 		boolean itemExist = it != null;
 		if (itemExist){
 			it.accept(this.visitor);
 		}
 		
-		if(tile.getTrap()!=null) trap.apply(avatar);
+		handler.detectTrap();
 		
 	}
 	

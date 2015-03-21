@@ -5,10 +5,13 @@ import java.awt.image.BufferedImage;
 import model.entity.Entity;
 
 public class SpikeTrap extends Trap {
-	private int damage=10;
-	private int detectionLevelRequired=5;
-	private boolean visible = false; //need to implement level stuff.
+		//need to implement level stuff.
 	
+	public SpikeTrap(){
+		damage=10;
+		visible=false;
+		detectionLevelRequired=3;
+	}
 	
 	public int getDamage(){
 		return damage;
@@ -17,14 +20,12 @@ public class SpikeTrap extends Trap {
 		TrapDamageApplication.apply(e, this);
 		this.visible = true;
 	}
-	
-	public int detectionRequired(){
-		return detectionLevelRequired;
-	}
+
 	
 	public BufferedImage getImage(){
 		return TrapImageProxy.getTrapImage(this);
 	}
+
 	
 	public boolean isVisible(){return visible;}
 	
