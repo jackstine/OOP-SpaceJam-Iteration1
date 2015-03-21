@@ -24,6 +24,8 @@ public class Attack implements Behavior{
 		if(theAttacked.attack() > attacker.defense()) {
 			EntityEffectHandler.applyDamage(attacker, (theAttacked.attack()-attacker.defense()));
 		}
+		System.out.println(theAttacked.attack());
+		System.out.println(attacker.attack());
 		SoundEffect effect = new HurtSoundEffect();
 	}
 

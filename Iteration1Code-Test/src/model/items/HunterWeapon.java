@@ -3,6 +3,7 @@ package model.items;
 import model.slots.HunterWeaponSlot;
 import model.visitor.EquipableVisitor;
 import model.visitor.ItemVisitor;
+import model.visitor.WeaponVisitor;
 
 public class HunterWeapon extends Weapon{
 
@@ -25,5 +26,9 @@ public class HunterWeapon extends Weapon{
 	
 	public String toString() {
 		return "Weapon:HunterWeapon:" + this.getBonus();
+	}
+
+	public void accept(WeaponVisitor visitor) {
+		visitor.accept(this);
 	}
 }

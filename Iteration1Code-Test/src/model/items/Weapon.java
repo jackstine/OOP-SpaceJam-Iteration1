@@ -5,6 +5,7 @@ import model.slots.HunterWeaponSlot;
 import model.slots.TerminatorWeaponSlot;
 import model.visitor.EquipableVisitor;
 import model.visitor.ItemVisitor;
+import model.visitor.WeaponVisitor;
 
 public abstract class Weapon extends Equipable {
 	private int attack;
@@ -37,4 +38,5 @@ public abstract class Weapon extends Equipable {
 	}
 	
 	public abstract void accept(EquipableVisitor visitor);
+	public abstract void accept(WeaponVisitor visitor);
 }

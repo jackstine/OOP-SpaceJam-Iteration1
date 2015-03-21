@@ -2,6 +2,7 @@ package model.items;
 
 import model.visitor.EquipableVisitor;
 import model.visitor.ItemVisitor;
+import model.visitor.WeaponVisitor;
 
 public class TerminatorBrawling extends TerminatorWeapon{
 
@@ -19,5 +20,9 @@ public class TerminatorBrawling extends TerminatorWeapon{
 	
 	public String toString() {
 		return "Weapon:TerminatorBrawling:" + this.getBonus();
+	}
+
+	public void accept(WeaponVisitor visitor) {
+		visitor.accept(this);
 	}
 }

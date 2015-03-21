@@ -3,6 +3,7 @@ package model.items;
 import java.awt.image.BufferedImage;
 
 import model.entity.Avatar;
+import model.visitor.WeaponVisitor;
 import utilities.ImageProcessing;
 
 public abstract class TakeableItem implements Item {
@@ -21,4 +22,6 @@ public abstract class TakeableItem implements Item {
 	public String getImagePath(){
 		return ITEM_IMAGE;
 	}
+	
+	public void accept(WeaponVisitor visitor){};
 }

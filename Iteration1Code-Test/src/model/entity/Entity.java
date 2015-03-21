@@ -19,6 +19,7 @@ import model.behavior.Behavior;
 import model.behavior.State;
 import model.items.Equipable;
 import model.items.TakeableItem;
+import model.items.Weapon;
 import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
@@ -26,6 +27,7 @@ import model.slots.InventoryEquipment;
 import model.spells.Spellable;
 import model.spells.Spells;
 import model.stats.EntityStats;
+import model.visitor.WeaponVisitor;
 
 public abstract class Entity implements Dieable{
 	protected EntityStats stats; 
@@ -41,6 +43,7 @@ public abstract class Entity implements Dieable{
 	protected SoundEffect soundEffect;
 	private BufferedImage[] spriteSheet;
 	private BufferedImage image;
+	private WeaponVisitor weaponVisitor= new WeaponVisitor(this);
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells;
@@ -239,11 +242,18 @@ public abstract class Entity implements Dieable{
 		return occupation;
 	}
 	
-	// -------------------------------------------
-	// not 1st iteration stuff
-	//TODO  fix this code  it is bad really bad, cause now your attack is fixed to 5
 	public int attack(){
-		return stats.getStatValue("OffensiveRating");
+		int stat = stats.getOffensiveRating();
+		System.out.println(stat);
+		TakeableItem weapon = this.inventoryEquipment.getEquipment().getWeapon();
+		if(weapon != null){
+			weapon.accept(weaponVisitor);
+			int skill = weaponVisitor.getSkill();
+			return stat + ( (int) ( (stat * 0.2) * (2 * skill) ) );
+		}
+		else{
+			return stat;
+		}
 	}
 	
 	public int defense() {

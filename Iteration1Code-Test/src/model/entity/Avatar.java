@@ -112,22 +112,7 @@ public class Avatar extends Entity {
 	public void makeDeathSoundEffect(){
 		soundEffect = new FriendlyDeathSoundEffect();
 	}
-	
-	
-//	public boolean equipSlot(Equipable equipItem){
-//		TakeableItem item = equipItem.equipSlot(equipment);
-//		boolean notEmpty = (item != null);
-//		if (notEmpty){
-//			inventory.findAndEquip(item);
-//			return true;
-//		}
-//		return false;
-//	}
-	
 	/*
-	//private void attack() {
-	//	
-	//}
 	//may not need to override
 	 */
 	

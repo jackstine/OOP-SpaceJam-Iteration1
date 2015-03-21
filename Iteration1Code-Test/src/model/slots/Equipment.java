@@ -108,6 +108,9 @@ public class Equipment implements Observer{
 		return slots;
 	}
 	
+	public TakeableItem getWeapon(){return this.weaponSlot.get();}
+
+	
 	//**************   EQUIPPING ITEMS ************************
 	public boolean equip(TerminatorTwoHandedWeapon thw){
 		if (this.THWSlot != null)
