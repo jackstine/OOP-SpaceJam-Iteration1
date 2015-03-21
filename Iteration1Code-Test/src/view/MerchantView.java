@@ -20,7 +20,7 @@ public class MerchantView extends JFrame{
 //public class MerchantView extends JComponent{	
 private Inventory inventory;
 private InventoryView inventoryView;
-private Avatar entity;
+private Entity entity;
 
 public MerchantView()
 {	
@@ -41,7 +41,7 @@ public void showMerchantView()
 	//this.moveToFront(inventoryView);
 }
 
-public void setEntity(Avatar entity)
+public void setEntity(Entity entity)
 {
 	this.entity=entity;
 	

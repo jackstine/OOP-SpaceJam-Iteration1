@@ -45,6 +45,10 @@ public class Point{
     	return new Point(this.x - other.x,this.y - other.y);
     }
     
+    public double distance(Point other){
+    	return Math.sqrt((this.x-other.x)*(this.x-other.x) + (this.y-other.y)*(this.y-other.y));
+    }
+    
     public String toString(){
     	return "X:"+this.x+" Y:"+this.y;
     }

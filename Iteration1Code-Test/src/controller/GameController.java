@@ -167,7 +167,7 @@ public class GameController {
 //            	System.out.println();
 //            	System.out.println();
 //            	System.out.println("MOUSE CLICKING MOUSE CLICKING MOUSE CLICKING MOUSE CLICKING");
-            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation")));
+            	avatar.writeJournal(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar))));
 //            	System.out.println(this.handler.getEntity(tileLocation).getClass().getName() + "@" + Integer.toHexString(this.handler.getEntity(tileLocation).hashCode()));
 //            	if(this.handler.getEntity(tileLocation).getStats().getStatValue("HP") <= 0){
 //					map.kill(tileLocation);
