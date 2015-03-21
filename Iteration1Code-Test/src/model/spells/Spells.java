@@ -21,11 +21,13 @@ public class Spells {
 	
 	private void setSpells(){
 		//TODO get rid of these magic numbers once we get this class on the go
-		spells[0][0] = new FireSpell(this.entity);
+		//spells[0][0] = new FireSpell(this.entity);
+		spells[0][0] =new BuffSpell(this.entity,100,"Movement");
 		spells[0][1] = new EarthSpell(this.entity);
 		spells[0][2] = new PlasmaRay(this.entity);
 		spells[2][0] = new GloryHeal(this.entity);
-		spells[2][1] = new ManaBuff(this.entity);
+		//spells[2][1] = new ManaBuff(this.entity);
+		spells[2][1] = new BuffSpell(this.entity,-50,"Strength");
 	}
 	
 	public void setSelectedSpell(Point spell){
