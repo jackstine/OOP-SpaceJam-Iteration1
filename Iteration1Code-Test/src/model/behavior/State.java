@@ -17,8 +17,8 @@ public class State {
 		this.setState(behavior);
 	}
 	
-	public void perform(Entity initiate,Entity receiver){
-		this.states.peek().perform(initiate,receiver);
+	public void perform(Entity receiver){
+		this.states.peek().perform(receiver);
 	}
 	
 	public void setState(Behavior behavior){

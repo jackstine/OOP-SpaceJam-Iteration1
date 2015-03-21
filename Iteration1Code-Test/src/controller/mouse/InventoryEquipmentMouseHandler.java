@@ -30,6 +30,11 @@ public class InventoryEquipmentMouseHandler {
 		avatar.unequipInventorySlot(slotPoint);
 	}
 	
+	public void sellItem(MouseEvent e){
+		Point slotPoint = getInventorySlot(e);
+		avatar.unequipEquipment(slotPoint);
+	}
+	
 	public void useItem(MouseEvent e){
 		Point pointOfSlot = this.getInventorySlot(e);
 		//TODO CHANGE TO unequipSLOT()
