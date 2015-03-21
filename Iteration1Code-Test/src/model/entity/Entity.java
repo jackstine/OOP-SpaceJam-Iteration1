@@ -192,7 +192,11 @@ public abstract class Entity implements Dieable{
 	// not 1st iteration stuff
 	//TODO  fix this code  it is bad really bad, cause now your attack is fixed to 5
 	public int attack(){
-		return 5;
+		return stats.getStatValue("OffensiveRating");
+	}
+	
+	public int defense() {
+		return stats.getStatValue("DefensiveRating");
 	}
 	
 	private void useAbility() {

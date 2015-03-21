@@ -53,7 +53,7 @@ public class EntityStats {
 	public int getStrength(){return this.getSV("Strength");}
 	public int getLife(){return this.getSV("Life");}
 	public int getMana(){return this.getSV("Mana");}
-	public int getOffensiveRating(){return this.getSV("DefensiveRating");}
+	public int getOffensiveRating(){return this.getSV("OffensiveRating");}
 	public int getDefensiveRating(){return this.getSV("DefensiveRating");}
 	public int getArmorRating(){return this.getSV("ArmorRating");}
 	
