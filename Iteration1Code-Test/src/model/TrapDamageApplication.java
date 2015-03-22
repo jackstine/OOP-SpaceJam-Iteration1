@@ -3,6 +3,7 @@ package model;
 import utilities.HitTrapSoundEffect;
 import utilities.SoundEffect;
 import model.entity.Entity;
+import model.GameLog;
 
 public class TrapDamageApplication {
 	

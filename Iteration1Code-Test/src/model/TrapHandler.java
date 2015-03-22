@@ -30,8 +30,9 @@ public class TrapHandler {
 	public void detectTrap(){
 		
 		avatar.getOccupation().accept(visitor);
-		
+		map=World.getMap(avatar.getCurrMap());
 		if(map.getEntityTile(avatar).getTrap()!=null){
+			System.out.println("THIS RUNS");
 			map.getEntityTile(avatar).getTrap().apply(avatar);
 		}
 		
@@ -72,6 +73,7 @@ public class TrapHandler {
 			if(it.getTrap()!=null){
 				Trap tr=it.getTrap();
 				tr.destroy();
+				tr=null;
 			}
 		}
 	}

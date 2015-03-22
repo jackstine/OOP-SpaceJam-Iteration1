@@ -360,5 +360,7 @@ public abstract class Entity implements Dieable{
 		this.engagedState.revert();
 	}
 	
+	public abstract void makeDeathSoundEffect();
+	
 }
 
