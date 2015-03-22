@@ -5,7 +5,7 @@ public class PlasmaRaySoundEffect extends SoundEffect {
 	@Override
 	protected String getFilePath() {
 
-		return "src/res/audio/PlasmaRay.wav";
+		return "src/res/audio/PlasmaRay2.wav";
 	}
 
 
