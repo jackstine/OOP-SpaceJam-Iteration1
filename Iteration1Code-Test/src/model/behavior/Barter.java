@@ -42,7 +42,7 @@ public class Barter implements Behavior{
 	public void getBuffs() {}
 
 	public void kill() {
-		receiver.revertEngageBehavior();
+		barter.revertEngageBehavior();
 	}
 
 }
