@@ -43,6 +43,14 @@ public class SpriteSheetUtility {
 	public SpriteSheetUtility(AvatarAlchemist a) {
 		imagePath = "src/res/img/alchemist_spritesheet.png";
 		initialize();
+		
+		try {
+			spriteArray[5] =ImageIO.read(new File("src/res/img/goat.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public SpriteSheetUtility(AvatarHunter h) {
