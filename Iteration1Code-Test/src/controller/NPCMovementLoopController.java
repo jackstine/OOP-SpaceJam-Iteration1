@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import model.GameMap;
 import model.Location;
 import model.Point;
+import model.RadialInfluenceSet;
 import model.World;
+import model.behavior.RadialEntitySight;
 import model.entity.Entity;
 import utilities.Directions;
 
@@ -19,7 +21,6 @@ public class NPCMovementLoopController extends NPCMovementController{
 	
 	public void doArtificialIntelligence() {
 		task = new CircleTask();
-		System.out.println("STARTING");
 		stopThread = false;
 		task.start();
 	}
@@ -37,6 +38,7 @@ public class NPCMovementLoopController extends NPCMovementController{
 			try {
 				int instructionTrack = 0;
 				while ((! interrupted()) && !stopThread) {
+					
 						if(movementLoop.get(instructionTrack%movementLoop.size()).equals("forward")) {
 							move(Directions.getPoint(entity.getDirection()),entity.getDirection());
 						}

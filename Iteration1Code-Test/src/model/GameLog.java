@@ -7,20 +7,22 @@ import java.util.Calendar;
 import java.util.Date;
 
 public final class GameLog {
-	private static String log = "hi";
+	private static String log = "<html><html>";
 	private static boolean writing = false;
 	
 	
 	public static void write(String s){
 		GameLog.writeToLog(s);
 	}
-	public static void writeToLog(String s){
+	public static void writeToLog(String object){
+		if (object == "")
+			return;
 		DateFormat df = new SimpleDateFormat("HH:mm:ss");
 		Date today = Calendar.getInstance().getTime(); 
 		String reportDate = df.format(today);
-		s = reportDate + ": \n--------------------------------------------\n" + s;
-		s += "\n--------------------------------------------\n";
-		log+=s;
+		object = reportDate + ": \n--------------------------------------------\n" + object;
+		object += "\n--------------------------------------------\n";
+		log+=object;
 		writing = true;
 	} 
 	public static void doneWriting(){

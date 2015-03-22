@@ -44,8 +44,10 @@ public class AvatarMovementController extends MovementController {
 		}
 		else{
 			// FIX THIS LoD
-			if (pointToMove != null)
+			if (pointToMove != null){
+				System.out.println(this.getCurrMap().getTileEntity(pointToMove));
 				this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
+			}
 		}
 		this.mapView.repaint();
 	}

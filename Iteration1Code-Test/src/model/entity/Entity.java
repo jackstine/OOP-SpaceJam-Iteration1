@@ -16,6 +16,7 @@ import utilities.SpriteSheetUtility;
 import model.Point;
 import model.Skill;
 import model.behavior.Behavior;
+import model.behavior.RadialEntitySight;
 import model.behavior.State;
 import model.items.Equipable;
 import model.items.TakeableItem;
@@ -45,6 +46,7 @@ public abstract class Entity implements Dieable{
 	private BufferedImage image;
 	private WeaponVisitor weaponVisitor= new WeaponVisitor(this);
 	private boolean buyingMode = false;
+	private RadialEntitySight sight;
 	private Entity sellingPartner;
 	
 	//TODO change the spells so that they are only associated with Alchemists
@@ -86,6 +88,15 @@ public abstract class Entity implements Dieable{
 		this.engagedState.kill();
 	}
 	
+
+	public void grantSight(Avatar avatar) {
+		sight = new RadialEntitySight(avatar);
+	}
+	
+	public RadialEntitySight getSight() {
+		return sight;
+	}
+
 	public void buy(TakeableItem item){
 		this.inventoryEquipment.equipInventory(item);
 	}
@@ -94,6 +105,7 @@ public abstract class Entity implements Dieable{
 		int basePrice = 100;
 		this.makeGoldTransaction(100+(this.getSkillValue("Bargain")*10));
 		this.sellingPartner.buy(itemToSell);
+
 	}
 	
 	/********************** O BEHAVE ****************************************/
@@ -106,7 +118,6 @@ public abstract class Entity implements Dieable{
 	}
 	
 	public void idle(){
-		//WE FUCKED
 		this.preferredState.perform(this);
 	}
 
@@ -207,6 +218,8 @@ public abstract class Entity implements Dieable{
 	public void addHP(int change){this.stats.addHP(change);}
 	public void addMP(int change){this.stats.addMP(change);}
 	
+	public void addEXP(int change){this.stats.addEXP(change);}
+	
 	
 	/******************** SPELLS ******************************/
 	public Spells getSpells(){
@@ -287,9 +300,9 @@ public abstract class Entity implements Dieable{
 
 	
 	/*************   FIX THIS STUFF ***********************/
-	public Object getDialogue() {
+	public String getDialogue() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	public void writeJournal(Object dialogue) {
