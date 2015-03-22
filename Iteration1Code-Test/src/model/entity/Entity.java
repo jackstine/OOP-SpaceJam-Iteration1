@@ -276,9 +276,9 @@ public abstract class Entity implements Dieable{
 
 	
 	/*************   FIX THIS STUFF ***********************/
-	public Object getDialogue() {
+	public String getDialogue() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	public void writeJournal(Object dialogue) {

@@ -6,13 +6,13 @@ import java.awt.Color;
 public class DealDamageMapFlash extends MapFlash {
 
 	public DealDamageMapFlash() {
-		paint();
+		setView();
 	}
 	
 	@Override
 	public Color getFlashColor() {
 		// TODO Auto-generated method stub
-		return Color.WHITE;
+		return new Color(255,255,255,120);
 	}
 
 }

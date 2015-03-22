@@ -3,6 +3,7 @@ package model.behavior;
 import utilities.Directions;
 import utilities.Scaling;
 import view.MerchantView;
+import model.GameLog;
 import model.entity.Entity;
 
 public class Barter implements Behavior{
@@ -17,7 +18,8 @@ public class Barter implements Behavior{
 	}
 
 	public void perform(Entity receiver) {
-		barter.writeJournal(receiver.getDialogue());
+		//barter.writeJournal(receiver.getDialogue());
+		GameLog.writeToLog(barter.getDialogue());
 		int oppositeDirection = Directions.getOppositeDirection(receiver.getDirection());
 		barter.setDirection(oppositeDirection);
 		this.setMVC(receiver);
