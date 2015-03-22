@@ -145,6 +145,8 @@ public class StatusView extends JPanel {
 		if (avatar.hasSpells()){
 			vitalsPanel.add(new SpellView(avatar));
 		}
+		else if (avatar.getOccupation().getName().equals("Hunter"))	//HAIL SATAN
+			vitalsPanel.add(new HunterAbilityView(avatar));
 		else
 			vitalsPanel.add(new AbilityView(avatar));
 		

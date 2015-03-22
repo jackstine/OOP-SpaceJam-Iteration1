@@ -70,7 +70,7 @@ public class SpriteSheetUtility {
 		initialize();
 	}
 	
-	private void initialize() {
+	protected void initialize() {
 		try {
 			image = ImageIO.read(new File(imagePath));
 		} 
@@ -89,7 +89,7 @@ public class SpriteSheetUtility {
 		return imagePath;
 	}
 	
-	private void initializeSpriteArray() {
+	protected void initializeSpriteArray() {
 		for (int i=0; i<10; i++) {
 			spriteArray[i] = getSpriteByDirection(i);
 		}
