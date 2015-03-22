@@ -102,8 +102,8 @@ public abstract class Entity implements Dieable{
 	}
 	
 	public void sellToPartner(TakeableItem itemToSell) {
-		int basePrice = 100;
-		this.makeGoldTransaction(100+(this.getSkillValue("Bargain")*10));
+		int basePrice = itemToSell.getBonus();
+		this.makeGoldTransaction(basePrice+(this.getSkillValue("Bargain")*2));
 		this.sellingPartner.buy(itemToSell);
 
 	}
@@ -166,6 +166,10 @@ public abstract class Entity implements Dieable{
 	
 	public boolean equipInventory(TakeableItem item, Point point){
 		return this.inventoryEquipment.equipInventory(item,point);
+	}
+	
+	public TakeableItem getInventorySlot(Point point){
+		return this.inventoryEquipment.getInventorySlot(point);
 	}
 	
 	/*************  EQUIPMENT *************************/
@@ -252,7 +256,7 @@ public abstract class Entity implements Dieable{
 		int n = 0;
 		for(int i = 0; i < x && i < 7; ++i){
 			if(d!=0 && RNG.genRandDouble() > 1/d){
-				n = RNG.generateRand(0,30);
+				n = RNG.generateRand(0,stats.getStatValue(info[i])+5);
 			}
 			else{
 				n = stats.getStatValue(info[i]);

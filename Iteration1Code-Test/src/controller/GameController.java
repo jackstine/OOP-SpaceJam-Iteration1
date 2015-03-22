@@ -148,11 +148,11 @@ public class GameController {
 			}
 			if (killLocation != null){
 				int gold = 50*slain.getStatValue("Level");
-				int exp = 1000*slain.getStatValue("Level");
+				int exp = 200*slain.getStatValue("Level");
 				avatar.makeGoldTransaction(gold);
 				avatar.addEXP(exp);
 				map.kill(killLocation);
-				GameLog.writeToLog("You have slain " + slain.toString() + "\nGained " + exp + "EXP and " + gold + " gold.");
+				GameLog.writeToLog("Victory","You have slain " + slain.toString() + "\nGained " + exp + " EXP and " + gold + " gold.");
 			}
 		}
 	}
@@ -173,7 +173,7 @@ public class GameController {
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
             if(this.handler.getEntity(tileLocation) != null){
-            	GameLog.writeToLog((this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
+            	GameLog.writeToLog("Observation",(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
             getMapView().repaint();
         }

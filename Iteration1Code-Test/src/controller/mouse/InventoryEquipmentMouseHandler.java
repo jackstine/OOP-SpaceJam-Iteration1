@@ -36,6 +36,18 @@ public class InventoryEquipmentMouseHandler {
 		avatar.sellToPartner(itemToSell);
 	}
 	
+	public String getItemInfo(MouseEvent e){
+		Point slotPoint = getInventorySlot(e);
+		TakeableItem item = avatar.getInventorySlot(slotPoint);
+		return item.toString();
+	}
+	
+	public int getItemValue(MouseEvent e){
+		Point slotPoint = getInventorySlot(e);
+		TakeableItem item = avatar.getInventorySlot(slotPoint);
+		return item.getBonus();
+	}
+	
 	public void useItem(MouseEvent e){
 		Point pointOfSlot = this.getInventorySlot(e);
 		//TODO CHANGE TO unequipSLOT()

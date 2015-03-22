@@ -69,8 +69,8 @@ public class LevelUpController {
         	text += stats[i]+ "\n";
         	i = rn.nextInt(5);
         	avatar.setStatValue(stats[i], avatar.getStatValue(stats[i])+1);
-        	text += stats[i]+ "\n";
-        	GameLog.writeToLog(text);
+        	text += stats[i];
+        	GameLog.writeToLog("Level Up",text);
         	
         	avatar.incSkillValue(skill);
         	avatar.setLevels(avatar.getLevels()-1);
