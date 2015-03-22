@@ -65,8 +65,8 @@ public class SaveLoadController {
 		// query through all items in the inventory
 		for (int j = 0; j < inventorySize; j++) {
 			String[] inventoryItem = in.next().split(":");
-			String itemType = inventoryItem[1];
-			String weaponType = (itemType.equals("Armor") ? "" : inventoryItem[2]);
+			String itemType = inventoryItem[0];
+			String weaponType = (itemType.equals("Armor") ? "" : inventoryItem[1]);
 			String stringValue = inventoryItem[inventoryItem.length - 1];
 			
 			int itemValue = Integer.parseInt(stringValue);
@@ -149,14 +149,13 @@ public class SaveLoadController {
 			// load the GameMap information
 			String gameName = in.next();
 			
-			//this needs an instance of the mapview to pass into the gamemap constructor
-			GameMap map = new GameMap();
-			
-			map.setAvatar(avatar);
 			String[] mapSize = in.next().split(":");
 			String[] size = mapSize[1].split(",");
 			int height = Integer.parseInt(size[0]);
 			int width = Integer.parseInt(size[1]);
+			
+			GameMap map = new GameMap(height, width);
+			map.setAvatar(avatar);
 			
 			for (int row = 0; row < height; row++) {
 				for (int col = 0; col < width; col++) {
@@ -229,7 +228,6 @@ public class SaveLoadController {
 							if (typeNPC.equals("Skeleton")) npc = new Skeleton();
 							if (typeNPC.equals("Merchant")) npc = new Merchant();
 						}
-						if (tileEntity[0].equals("Avatar")) npc = null;
 						tile.setEntity(npc);
 					}
 					
@@ -239,15 +237,15 @@ public class SaveLoadController {
 			}
 			
 			int entities = Integer.parseInt(in.next());
+			
 			for (int k = 0; k < entities; k++) {
-				String[] entityLocation = in.next().split(":");
+				String[] entityLocation = in.next().split(":");		
 				String entityName = entityLocation[0];
 				String[] location = entityLocation[1].split(",");
 				int x = Integer.parseInt(location[0]);
 				int y = Integer.parseInt(location[1]);
-				// will fix this later to include all entities
-				map.updateEntityLocation(avatar, new Location(x, y));
-				//System.out.println(k + ":" + new Location(x,y));
+				if (map.getTileEntity(new Point(x, y)) == null) map.updateEntityLocation(avatar, new Location(x, y));
+				else map.updateEntityLocation(map.getTileEntity(new Point(x, y)), new Location(x, y));
 			}
 			
 			games.put(gameName, map);
@@ -263,8 +261,6 @@ public class SaveLoadController {
 		}
 		
 		World finalWorld = new World(games, keySet, avatar);
-		
-		System.out.println(avatar.getInventory());
 		
 		System.out.println("GAME LOADED\n---------------");
 		return new Game(finalWorld, avatar);

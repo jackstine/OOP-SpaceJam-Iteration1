@@ -16,9 +16,6 @@ public class Avatar extends Entity {
 	private ArrayList<String> journal = new ArrayList<String>();
 	private boolean writing = false;
 	private String currMap = "Main";
-	//deprecated all entities need a equipment now
-//	private Equipment equipment = new Equipment();
-	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private final static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",
 											"Movement", "Strength"};
@@ -26,23 +23,7 @@ public class Avatar extends Entity {
 	public Avatar(Occupation occupation) {
 		super(occupation);
 		gold = 200;
-		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
-	
-	/*
-	public void move(int x,int y){ //this is not needed either -Juan
-		location.add(x,y);
-		//System.out.println(location);
-	}
-	
-	public void loadImage(Graphics g)
-	{	
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
-		int x= location.getX();
-		int y= location.getY();
-		g.drawImage(image,Scaling.AVATAR_WIDTH*x,Scaling.AVATAR_HEIGHT*y,null);
-	}
-	*/
 	
 	// used for writing to the save file
 	// name, occupation, stats, direction, inventory, equipment
@@ -104,17 +85,5 @@ public class Avatar extends Entity {
 	
 	public void makeDeathSoundEffect(){
 		soundEffect = new FriendlyDeathSoundEffect();
-	}
-	/*
-	//may not need to override
-	 */
-	
-	/*
-	//private void useAbility() {
-	//	
-	//}
-	//may not need to override
-	 */
-	
-	
+	}	
 }

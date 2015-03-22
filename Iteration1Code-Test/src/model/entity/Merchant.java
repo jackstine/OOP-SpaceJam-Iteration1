@@ -11,6 +11,7 @@ public class Merchant extends NPC {
 	
 	public Merchant() {
 		super(new MerchantHunter());
+		this.name = "Merchant";
 		this.engagedState.setState(new Barter(this));
 		this.preferredState.setState(new Stand(this));
 		//SoundEffect effect = new FriendlyDeathSoundEffect();

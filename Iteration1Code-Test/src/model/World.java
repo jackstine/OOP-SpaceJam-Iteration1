@@ -99,10 +99,18 @@ public class World {
 	public void runEntities(){
 		Set<Entity> entities = this.getEntities();
 		for (Entity ent : entities){
+			if (isAvatar(ent)) continue;
 			ent.grantSight(avatar);
 			ent.idle();
 			
 		}
+	}
+	
+	// sorry Dave
+	private boolean isAvatar(Entity e) {
+		String en = e.toString();
+		String entityName = en.substring(0, en.indexOf(":"));
+		return entityName.equals("Avatar");
 	}
 	
 	public String toString(){

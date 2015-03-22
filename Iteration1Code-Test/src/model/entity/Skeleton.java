@@ -12,6 +12,7 @@ public class Skeleton extends NPC {
 	
 	public Skeleton() {
 		super(new SkeletonAlchemist());
+		this.name = "Skeleton";
 		this.engagedState.setState(new Attack(this));
 		this.preferredState.setState(new Stand(this));
 	}

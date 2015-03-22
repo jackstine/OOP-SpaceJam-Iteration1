@@ -14,12 +14,17 @@ public class Orc extends NPC {
 	
 	public Orc(){
 		super(new OrcTerminator());
+		this.name = "Orc";
 		this.engagedState.setState(new Pursue(this));
 		this.preferredState.setState(new Patrol(this,2));
 	}
 	
 	public String toString() {
 		return "NPC:Orc";
+	}
+	
+	public String getDialogue() {
+		return "Orc: Stop clicking me!";
 	}
 
 	public void makeDeathSoundEffect() {

@@ -30,7 +30,16 @@ public class EquipVisitor implements EquipableVisitor{
 		this.ie = ie;
 	}
 	
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	
+	public void setEquipment(Equipment equipment) {
+		this.equipment = equipment;
+	}
+	
 	private void equipBack(Equipable temp, TakeableItem item){
+		// called for items you cant equip
 		boolean itemExist = temp != null;
 		if (itemExist) this.ie.equipEquipment(temp);
 		this.inventory.findAndEquip(item);

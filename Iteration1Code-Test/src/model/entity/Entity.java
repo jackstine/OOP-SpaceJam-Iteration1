@@ -257,7 +257,6 @@ public abstract class Entity implements Dieable{
 			}
 			s += (info[i] + ":" + n + "\n");
 		}
-		s += (getClass().getName().toString() + "@" + Integer.toHexString(hashCode()).toString());
 		return s;
 	}
 	
@@ -299,12 +298,10 @@ public abstract class Entity implements Dieable{
 	
 	/*************   FIX THIS STUFF ***********************/
 	public String getDialogue() {
-		// TODO Auto-generated method stub
 		return "";
 	}
 
 	public void writeJournal(Object dialogue) {
-		// TODO Auto-generated method stub
 		
 	}
 	

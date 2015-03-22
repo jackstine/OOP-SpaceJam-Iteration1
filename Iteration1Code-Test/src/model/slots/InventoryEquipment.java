@@ -23,6 +23,7 @@ public class InventoryEquipment {
 	
 	public void setEquipment(Equipment equipment){
 		this.equipment = equipment;
+		this.visitor.setEquipment(equipment);
 	}
 	
 	public void equipEquipment(Equipable item){
@@ -36,6 +37,7 @@ public class InventoryEquipment {
 	//****************** INVENTORY ************************
 	public void setInventory(Inventory inventory){
 		this.inventory = inventory;
+		this.visitor.setInventory(inventory);
 	}
 	
 	public boolean equipInventory(TakeableItem item){
