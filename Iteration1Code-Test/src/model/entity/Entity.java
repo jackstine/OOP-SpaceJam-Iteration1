@@ -15,6 +15,8 @@ import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
 import model.Point;
 import model.Skill;
+import model.abilities.Spellable;
+import model.abilities.Spells;
 import model.behavior.Behavior;
 import model.behavior.RadialEntitySight;
 import model.behavior.State;
@@ -25,8 +27,6 @@ import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
 import model.slots.InventoryEquipment;
-import model.spells.Spellable;
-import model.spells.Spells;
 import model.stats.EntityStats;
 import model.visitor.WeaponVisitor;
 
