@@ -145,6 +145,8 @@ public class StatusView extends JPanel {
 		if (avatar.hasSpells()){
 			vitalsPanel.add(new SpellView(avatar));
 		}
+		else
+			vitalsPanel.add(new AbilityView(avatar));
 		
 		portraitView = new PortraitView(avatarPortrait);
 		portraitView.setPreferredSize(new Dimension(210, 168));

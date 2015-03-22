@@ -16,7 +16,7 @@ import model.Point;
 import model.entity.Avatar;
 
 @SuppressWarnings("serial")
-public class SpellView extends JComponent{
+public class SpellView extends AbilityView{
 	//**********************  POINTS **************************************
 	private static final Point FIRE_SPELL_POINT = new Point(Scaling.FIRE_SPELL_X,Scaling.FIRE_SPELL_Y);
 	private static final Point EARTH_SPELL_POINT = new Point(Scaling.EARTH_SPELL_X,Scaling.EARTH_SPELL_Y);
@@ -57,25 +57,12 @@ public class SpellView extends JComponent{
 	private SpellMouseHandler handler;
 
 	public SpellView(Avatar avatar){
-		this.avatar = avatar;
-		this.setFocusable(true);
-		this.setBackground(Color.BLACK);
-		this.setVisible(true);
-		this.addMouseListener(new SpellListener());
-		this.handler = new SpellMouseHandler(this,this.avatar);
+		super(avatar);
 	}
 	
-	private void paintSelectedSpell(Graphics g){
-		if (handler.getSelected() != null){
-			g.setColor(Color.YELLOW);
-			int pointX = (handler.getSelected().getX() * Scaling.SPELL_SPACE_X) + SELECTED_SPELL_X_OFFSET;
-			int pointY = (handler.getSelected().getY() * Scaling.SPELL_SPACE_Y);
-			g.fillRect(pointX, pointY, SELECTED_SPELL_SCALE.getX(), SELECTED_SPELL_SCALE.getY());
-		}
-	}
 	
 	public void paint(Graphics g){
-		this.paintSelectedSpell(g);
+		super.paint(g);
 		g.drawImage(FIRE_SPELL_IMAGE, FIRE_SPELL_POINT.getX(), FIRE_SPELL_POINT.getY(), null);
 		g.drawImage(EARTH_SPELL_IMAGE, EARTH_SPELL_POINT.getX(), EARTH_SPELL_POINT.getY(), null);
 		g.drawImage(PLASMA_RAY_IMAGE, PLASMA_RAY_POINT.getX(), PLASMA_RAY_POINT.getY(), null);
@@ -91,20 +78,7 @@ public class SpellView extends JComponent{
 		return new Dimension(150,300);
 	}
 	
-	public class SpellListener implements MouseListener{
-		
-		public void mouseClicked(MouseEvent e){
-			handler.selectSpell(e);
-		}
-
-		public void mouseEntered(MouseEvent e) {
-		}
-		public void mouseExited(MouseEvent e) {
-		}
-		public void mousePressed(MouseEvent e) {
-		}
-		public void mouseReleased(MouseEvent e) {
-		}
+	public int getYRange(){
+		return super.getYRange() + Scaling.SPELLS_HEIGHT_NUM;
 	}
-	
 }
