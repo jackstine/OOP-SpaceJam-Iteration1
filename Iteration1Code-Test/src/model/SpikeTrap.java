@@ -25,7 +25,7 @@ public class SpikeTrap extends Trap {
 	public BufferedImage getImage(){
 		return TrapImageProxy.getTrapImage(this);
 	}
-
+	
 	
 	public boolean isVisible(){return visible;}
 	

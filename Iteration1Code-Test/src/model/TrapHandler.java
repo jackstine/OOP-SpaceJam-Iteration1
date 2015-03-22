@@ -36,32 +36,47 @@ public class TrapHandler {
 		}
 		
 		if(visitor.getBoolean()){
-			for( InfluenceTile it : list){
-				if(it.getTrap()!=null){
-					if(it.getTrap().detectionRequired()<=avatar.getSkillValue("Trap")){
-						it.getTrap().makeVisible();
+			Collection<Tile> t= getTrap();
+			for(Tile it : t){
+					if(avatar.getSkillValue("Trap") >= it.getTrap().detectionRequired()){
+						makeVisible(it);
+						removeTrap();
 					}
 				}
 			}
 		
 		}
-	}
-	public Collection<InfluenceTile> getSet(){
+	public Collection<InfluenceTile> getSet(int r){
 		direction=avatar.getDirection();
 		this.source=map.getEntityTile(avatar);
 		map=World.getMap(avatar.getCurrMap());
-		set= new RadialInfluenceSet(map,source,radius,direction);
+		set= new RadialInfluenceSet(map,source,r,direction);
 		Collection<InfluenceTile> list= set.getInfluenceSet();
 		return list;
 	}
 	
-	public Collection<Location> getTrap(){
-		Collection<InfluenceTile> list= getSet();
-		Collection<Location> locations= new ArrayList<Location>();
+	public Collection<Tile> getTrap(){
+		Collection<InfluenceTile> list= getSet(DEFAULT_RADIUS);
+		Collection<Tile> locations= new ArrayList<Tile>();
 		for( InfluenceTile it : list){
 			if(it.getTrap()!=null){
-				locations.add()
+				locations.add(it);
 			}
 		}
+		return locations;
+	}
+	
+	public void removeTrap(){
+		Collection<InfluenceTile> list= getSet(1);
+		for(InfluenceTile it : list){
+			if(it.getTrap()!=null){
+				Trap tr=it.getTrap();
+				tr.destroy();
+			}
+		}
+	}
+	
+	public void makeVisible(Tile tile){
+		tile.getTrap().makeVisible();
 	}
 }

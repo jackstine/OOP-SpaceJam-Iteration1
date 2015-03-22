@@ -40,7 +40,7 @@ public class AvatarMovementController extends MovementController {
 		if(this.getCurrMap().isPassable(pointToMove)){
 			getCurrMap().updateEntityLocation(avatar, pointToMove);
 			questHandler.apply(this.getCurrMap().getTile(pointToMove));
-			//trapHandler.detectTrap();
+			trapHandler.detectTrap();
 		}
 		else{
 			// FIX THIS LoD
