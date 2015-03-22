@@ -23,7 +23,7 @@ public class Merchant extends NPC {
 	}
 	
 	public String toString() {
-		return "a Merchant";
+		return "NPC:Merchant";
 	}
 	
 	@Override
