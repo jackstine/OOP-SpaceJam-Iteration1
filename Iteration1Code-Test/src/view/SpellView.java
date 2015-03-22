@@ -23,7 +23,7 @@ public class SpellView extends AbilityView{
 	private static final Point PLASMA_RAY_POINT = new Point(Scaling.PLASMA_RAY_X,Scaling.PLASMA_RAY_Y);
 	private static final Point PACIFISM_POINT = new Point(Scaling.PACIFISM_X,Scaling.PACIFISM_Y);
 	private static final Point CONFUSE_POINT = new Point(Scaling.CONFUSE_X,Scaling.CONFUSE_Y);
-	private static final Point ANGRY_POINT = new Point(Scaling.ANGRY_X,Scaling.AMGRY_Y);
+	private static final Point ANGRY_POINT = new Point(Scaling.ANGRY_X,Scaling.ANGRY_Y);
 	private static final Point GLORY_HEAL_POINT = new Point(Scaling.GLORY_HEAL_X,Scaling.GLORY_HEAL_Y);
 	private static final Point MANA_BUFF_POINT = new Point(Scaling.MANA_BUFF_X,Scaling.MANA_BUFF_Y);
 	private static final Point MAGIC_CIRCLE_POINT = new Point(Scaling.MAGIC_CIRCLE_X,Scaling.MAGIC_CIRCLE_Y);

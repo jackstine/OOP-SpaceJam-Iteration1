@@ -19,8 +19,8 @@ import model.entity.Avatar;
 @SuppressWarnings("serial")
 public class AbilityView extends JComponent{
 	//**********************  POINTS **************************************
-	private static final Point OBSERVATION_POINT = new Point(Scaling.FIRE_SPELL_X,Scaling.FIRE_SPELL_Y);
-	private static final Point BIND_WOUNDS_POINT = new Point(Scaling.EARTH_SPELL_X,Scaling.EARTH_SPELL_Y);
+	private static final Point OBSERVATION_POINT = new Point(Scaling.OBSERVATION_X,Scaling.OBSERVATION_Y);
+	private static final Point BIND_WOUNDS_POINT = new Point(Scaling.BIND_WOUNDS_X,Scaling.BIND_WOUNDS_Y);
 
 	//**********************  IMAGE PATHS *******************************
 	private static final String OBSERVATION_PATH = "src/res/img/Observation.png";
@@ -69,7 +69,7 @@ public class AbilityView extends JComponent{
 	}
 	
 	public int getYRange(){
-		return Scaling.SPELLS_HEIGHT_NUM;
+		return Scaling.ABILITIES_HEIGHT_NUM;
 	}
 	
 	public class SpellListener implements MouseListener{
