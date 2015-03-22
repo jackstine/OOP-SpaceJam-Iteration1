@@ -21,7 +21,7 @@ public class Barter implements Behavior{
 	public void perform(Entity receiver) {
 
 		//barter.writeJournal(receiver.getDialogue());
-		GameLog.writeToLog(barter.getDialogue());
+		GameLog.writeToLog("Dialogue", barter.getDialogue());
 
 		this.receiver = receiver;
 

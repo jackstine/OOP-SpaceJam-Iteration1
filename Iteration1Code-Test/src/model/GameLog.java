@@ -7,21 +7,17 @@ import java.util.Calendar;
 import java.util.Date;
 
 public final class GameLog {
-	private static String log = "<html><html>";
+	private static String log = "-----------------------Welcome Traveler----------------------- \n\n";
 	private static boolean writing = false;
 	
-	
-	public static void write(String s){
-		GameLog.writeToLog(s);
-	}
-	public static void writeToLog(String object){
+	public static void writeToLog(String subject, String object){
 		if (object == "")
 			return;
 		DateFormat df = new SimpleDateFormat("HH:mm:ss");
 		Date today = Calendar.getInstance().getTime(); 
 		String reportDate = df.format(today);
-		object = reportDate + ": \n--------------------------------------------\n" + object;
-		object += "\n--------------------------------------------\n";
+		object = reportDate + ": " + subject + ":\n----------------------------------\n" + object;
+		object += "\n-----------------------------------------------------------------------\n";
 		log+=object;
 		writing = true;
 	} 
@@ -32,7 +28,6 @@ public final class GameLog {
 		return writing;
 	}
 	public static String getLog(){
-		System.out.println(log);
 		writing = false;
 		return log;
 	}

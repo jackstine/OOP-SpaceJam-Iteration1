@@ -52,4 +52,9 @@ public class InventoryEquipment {
 	public Inventory getInventory(){
 		return this.inventory;
 	}
+	
+	
+	public TakeableItem getInventorySlot(Point point){
+		return this.inventory.get(point);
+	}
 }
