@@ -30,6 +30,13 @@ public class State {
 		this.states.pop();
 	}
 	
+	public void revert(){
+		if (! this.states.empty()){
+			states.peek().kill();
+			states.pop();
+		}
+	}
+	
 	public void kill(){
 		while( ! this.states.empty()){
 			states.peek().kill();

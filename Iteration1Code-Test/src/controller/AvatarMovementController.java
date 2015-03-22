@@ -30,22 +30,20 @@ public class AvatarMovementController extends MovementController {
 
 	@Override
 	public void move(Point step, int direction) {
-		{
-			Location avatarLocation = this.getAvatarLocation();
-			Location pointToMove = new Location(this.getAvatarLocation());
-			pointToMove.addLocation(step);
-			avatar.setDirection(direction);
-			if(this.getCurrMap().isPassable(pointToMove)){
-				getCurrMap().updateEntityLocation(avatar, pointToMove);
-				questHandler.apply(this.getCurrMap().getTile(pointToMove));
-			}
-			else{
-				// FIX THIS LoD
-				if (pointToMove != null)
-					this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
-			}
-			this.mapView.repaint();
+		Location avatarLocation = this.getAvatarLocation();
+		Location pointToMove = new Location(this.getAvatarLocation());
+		pointToMove.addLocation(step);
+		avatar.setDirection(direction);
+		if(this.getCurrMap().isPassable(pointToMove)){
+			getCurrMap().updateEntityLocation(avatar, pointToMove);
+			questHandler.apply(this.getCurrMap().getTile(pointToMove));
 		}
+		else{
+			// FIX THIS LoD
+			if (pointToMove != null)
+				this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
+		}
+		this.mapView.repaint();
 	}
 	
 }

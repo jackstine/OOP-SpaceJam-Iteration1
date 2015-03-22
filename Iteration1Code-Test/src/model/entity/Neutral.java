@@ -11,7 +11,7 @@ public class Neutral extends NPC{
 	}
 
 	@Override
-	public void engage(Avatar avatar) {
+	public void engage(Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}

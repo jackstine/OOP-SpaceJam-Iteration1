@@ -42,15 +42,15 @@ public abstract class NPCMovementController extends MovementController {
 	}
 
 	public void move(Point step, int direction) {	
-		System.out.println("a");
+//		System.out.println("a");
 		Location pointToMove = new Location(this.getEntityLocation());
-		System.out.println("b");
+//		System.out.println("b");
 		pointToMove.addLocation(step);
-		System.out.println("c");
+//		System.out.println("c");
 		entity.setDirection(direction);
-		System.out.println("d");
+//		System.out.println("d");
 		getCurrMap().updateEntityLocation(entity, pointToMove);
-		System.out.println("e");
+//		System.out.println("e");
 	}
 
 	
