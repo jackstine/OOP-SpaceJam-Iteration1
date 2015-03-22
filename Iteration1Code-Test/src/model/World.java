@@ -99,7 +99,9 @@ public class World {
 	public void runEntities(){
 		Set<Entity> entities = this.getEntities();
 		for (Entity ent : entities){
+			ent.grantSight(avatar);
 			ent.idle();
+			
 		}
 	}
 	

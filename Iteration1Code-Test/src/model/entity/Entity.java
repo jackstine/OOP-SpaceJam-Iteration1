@@ -16,6 +16,7 @@ import utilities.SpriteSheetUtility;
 import model.Point;
 import model.Skill;
 import model.behavior.Behavior;
+import model.behavior.RadialEntitySight;
 import model.behavior.State;
 import model.items.Equipable;
 import model.items.TakeableItem;
@@ -45,6 +46,7 @@ public abstract class Entity implements Dieable{
 	private BufferedImage image;
 	private WeaponVisitor weaponVisitor= new WeaponVisitor(this);
 	private boolean buyingMode = false;
+	private RadialEntitySight sight;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells;
@@ -85,6 +87,14 @@ public abstract class Entity implements Dieable{
 		this.engagedState.kill();
 	}
 	
+	public void grantSight(Avatar avatar) {
+		sight = new RadialEntitySight(avatar);
+	}
+	
+	public RadialEntitySight getSight() {
+		return sight;
+	}
+	
 	/********************** O BEHAVE ****************************************/
 	public void setPrefferedBehavior(Behavior behavior){
 		this.preferredState.setState(behavior);
@@ -95,7 +105,6 @@ public abstract class Entity implements Dieable{
 	}
 	
 	public void idle(){
-		//WE FUCKED
 		this.preferredState.perform(this);
 	}
 
