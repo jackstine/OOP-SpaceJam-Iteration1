@@ -30,6 +30,7 @@ public MerchantView(Entity barter)
 {	
 	super("Merchant");
 	this.entity = barter;
+	inventory = barter.getInventory();
 	inventoryView=new InventoryView(barter.getInventory());
 	inventoryView.addMouseListener(new MerchantMouseListener());
 	add(inventoryView,BorderLayout.CENTER);

@@ -18,6 +18,8 @@ public class State {
 	}
 	
 	public void perform(Entity receiver){
+		System.out.println(states.peek());
+		System.out.println(receiver);
 		this.states.peek().perform(receiver);
 	}
 	
@@ -31,7 +33,9 @@ public class State {
 	}
 	
 	public void revert(){
-		if (! this.states.empty()){
+		// since you cannot get rid of the entities original behavior/function
+		// it will always keep the original behavior
+		if ( states.size() > 1 ){
 			states.peek().kill();
 			states.pop();
 		}
