@@ -218,6 +218,18 @@ public class SaveLoadController {
 						}
 					}
 					
+					Trap trap = null;
+					String[] tileTrap = in.next().split(":");
+					if (tileTrap[0].equals("Trap")) {
+						if (tileTrap[1].equals("SpikeTrap")) {
+							trap = new SpikeTrap();
+							boolean visible = Boolean.parseBoolean(tileTrap[2]);
+							boolean destroyed = Boolean.parseBoolean(tileTrap[3]);
+							if (visible) trap.makeVisible();
+							if (destroyed) trap.destroy();
+						}
+					}
+					
 					Entity npc = null;
 					String[] tileEntity = in.next().split(":");
 					
@@ -232,6 +244,7 @@ public class SaveLoadController {
 					}
 					
 					tile.setItem(item);	
+					tile.setTrap(trap);
 					map.setTile(tile);
 				}
 			}

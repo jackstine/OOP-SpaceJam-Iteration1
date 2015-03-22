@@ -28,10 +28,6 @@ public abstract class Trap {
 	
 	public void makeVisible(){
 		if(destroyed==false)
-		visible=true;
-		
+		visible=true;		
 	}
-	
-	
-	
 }
