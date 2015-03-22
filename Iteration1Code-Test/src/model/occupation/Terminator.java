@@ -1,8 +1,8 @@
 package model.occupation;
 
-import utilities.SpriteSheetUtility;
+import view.AbilityView;
 import model.*;
-import model.abilities.Spells;
+import model.abilities.Abilities;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
@@ -38,8 +38,12 @@ public abstract class Terminator extends Occupation{
 		// out the fighting between Avatar and Entity		
 	}
 	
-	public Spells createSpells(){
-		return null;
+	public Abilities createAbilities(){
+		return new Abilities();
+	}
+	
+	public AbilityView createAbilityView(){
+		return new AbilityView();
 	}
 
 	@Override

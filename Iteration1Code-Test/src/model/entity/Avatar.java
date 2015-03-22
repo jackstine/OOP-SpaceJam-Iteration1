@@ -1,5 +1,6 @@
 package model.entity;
 
+import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,6 +11,7 @@ import java.util.Date;
 import model.items.TakeableItem;
 import model.occupation.Occupation;
 import utilities.*;
+import view.AbilityView;
 
 public class Avatar extends Entity {
 	private int levels = 0;

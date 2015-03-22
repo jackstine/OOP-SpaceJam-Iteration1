@@ -51,6 +51,8 @@ public class SpellView extends AbilityView{
 	private Avatar avatar;
 	private SpellMouseHandler handler;
 
+	public SpellView(){}
+	
 	public SpellView(Avatar avatar){
 		super(avatar);
 	}

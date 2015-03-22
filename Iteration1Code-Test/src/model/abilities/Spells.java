@@ -16,21 +16,17 @@ public class Spells extends Abilities{
 	public static final Point MAGIC_CIRCLE_POINT = Scaling.MAGIC_CIRCLE_POINT;
 	public static final Point CONFUSE_POINT = Scaling.CONFUSE_POINT;
 	
-	private Entity entity;
-	private Point selectedSpell;
-	
 	private final Spellable[][] spells= new Spellable[Scaling.SPELLS_WIDTH_NUM][Scaling.SPELLS_HEIGHT_NUM];
 	
+	public Spells(){}
+	
 	public Spells(Entity entity){
-		this.entity = entity;
+		super(entity);
 	}
 	
-	public Spells(){
-	}
-	
-	private void setSpells(){
+	protected void setSpells(){
 		//TODO get rid of these magic numbers once we get this class on the go
-		spells[this.FIRE_SPELL_POINT.getX()][this.FIRE_SPELL_POINT.getY()] = new FireSpell(this.entity);
+		spells[this.FIRE_SPELL_POINT.getX()][this.FIRE_SPELL_POINT.getY()] = new FireSpell(entity);
 //		spells[0][0] =new BuffSpell(this.entity,100,"Movement");
 		spells[this.EARTH_SPELL_POINT.getX()][this.EARTH_SPELL_POINT.getY()] = new EarthSpell(this.entity);
 		spells[this.PLASMA_RAY_POINT.getX()][this.PLASMA_RAY_POINT.getY()] = new PlasmaRay(this.entity);
@@ -41,20 +37,6 @@ public class Spells extends Abilities{
 		spells[this.ANGRY_POINT.getX()][this.ANGRY_POINT.getY()] = null;
 		spells[this.CONFUSE_POINT.getX()][this.CONFUSE_POINT.getY()] = null;
 //		spells[2][1] = new BuffSpell(this.entity,-50,"Strength");
-	}
-	
-	public void setSelectedSpell(Point spell){
-		this.selectedSpell = spell;
-	}
-	public Spellable getSelectedSpell(){
-		if (this.selectedSpell != null)
-			return this.spells[this.selectedSpell.getY()][this.selectedSpell.getX()];
-		else return null;
-	}
-
-	public void setEntity(Entity entity) {
-		this.entity = entity;
-		this.setSpells();
 	}
 
 }

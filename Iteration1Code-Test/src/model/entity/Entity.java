@@ -13,8 +13,11 @@ import utilities.RNG;
 import utilities.Scaling;
 import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
+import view.AbilityView;
 import model.Point;
 import model.Skill;
+import model.abilities.Abilities;
+import model.abilities.Spell;
 import model.abilities.Spellable;
 import model.abilities.Spells;
 import model.behavior.Behavior;
@@ -48,9 +51,10 @@ public abstract class Entity implements Dieable{
 	private boolean buyingMode = false;
 	private RadialEntitySight sight;
 	private Entity sellingPartner;
+	private AbilityView abilityView;
 	
 	//TODO change the spells so that they are only associated with Alchemists
-	protected Spells spells;
+	protected Abilities abilities;
 	
 	private Timer buffTime;
 	private boolean buffed = false;
@@ -64,17 +68,24 @@ public abstract class Entity implements Dieable{
 		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
 		SpriteSheetUtility util = occupation.getSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
-		this.setSpells();
+		this.abilityView = occupation.getAbilityView();
+		this.abilityView.setEntity(this);
+		this.setabilities();
 	}
 	
-	public void setSpells(){
-		this.spells = occupation.getSpells();
-		if (this.spells != null)
-			this.spells.setEntity(this);
+	public void setabilities(){
+		this.abilities = occupation.getAbilities();
+		if (this.abilities != null)
+			this.abilities.setEntity(this);
 	}
-	public boolean hasSpells() {
-		if (this.spells != null) return true;
+	public boolean hasabilities() {
+		if (this.abilities != null) return true;
 		else return false;
+	}
+	
+
+	public AbilityView getAbilitiesView() {
+		return this.abilityView;
 	}
 	
 	public BufferedImage getImage(){
@@ -225,15 +236,15 @@ public abstract class Entity implements Dieable{
 	public void addEXP(int change){this.stats.addEXP(change);}
 	
 	
-	/******************** SPELLS ******************************/
-	public Spells getSpells(){
-		return this.spells;
+	/******************** abilities ******************************/
+	public Abilities getabilities(){
+		return this.abilities;
 	}
 	public void setSelectedSpell(Point spell){
-		this.spells.setSelectedSpell(spell);
+		this.abilities.setSelectedSpell(spell);
 	}
 	public Spellable getSelectedSpell(){
-		return this.spells.getSelectedSpell();
+		return this.abilities.getSelectedSpell();
 	}
 	
 	

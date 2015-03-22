@@ -1,9 +1,11 @@
 package model.occupation;
 
 
-import utilities.SpriteSheetUtility;
+import view.AbilityView;
+import view.SneekyView;
 import model.*;
-import model.abilities.Spells;
+import model.abilities.Abilities;
+import model.abilities.Sneeky;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
@@ -43,8 +45,12 @@ public abstract class Hunter extends Occupation{
 		
 	}
 	
-	public Spells createSpells(){
-		return null;
+	public Abilities createAbilities(){
+		return new Sneeky();
+	}
+	
+	public AbilityView createAbilityView(){
+		return new SneekyView();
 	}
 	
 	@Override
