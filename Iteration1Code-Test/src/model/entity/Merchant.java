@@ -7,7 +7,7 @@ import model.behavior.Patrol;
 import model.behavior.Stand;
 import model.occupation.MerchantHunter;
 
-public class Merchant extends NPC implements Conversable {
+public class Merchant extends NPC {
 	
 	public Merchant() {
 		super(new MerchantHunter());
@@ -16,6 +16,7 @@ public class Merchant extends NPC implements Conversable {
 		//SoundEffect effect = new FriendlyDeathSoundEffect();
 	}
 
+	@Override
 	public String getDialogue() {
 		// TODO Auto-generated method stub
 		return "Merchant: Hey there! Have a look at my wares.";

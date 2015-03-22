@@ -47,6 +47,7 @@ public abstract class Entity implements Dieable{
 	private WeaponVisitor weaponVisitor= new WeaponVisitor(this);
 	private boolean buyingMode = false;
 	private RadialEntitySight sight;
+	private Entity sellingPartner;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Spells spells;
@@ -87,12 +88,23 @@ public abstract class Entity implements Dieable{
 		this.engagedState.kill();
 	}
 	
+<<<<<<< HEAD
 	public void grantSight(Avatar avatar) {
 		sight = new RadialEntitySight(avatar);
 	}
 	
 	public RadialEntitySight getSight() {
 		return sight;
+=======
+	public void buy(TakeableItem item){
+		this.inventoryEquipment.equipInventory(item);
+	}
+	
+	public void sellToPartner(TakeableItem itemToSell) {
+		int basePrice = 100;
+		this.makeGoldTransaction(100+(this.getSkillValue("Bargain")*10));
+		this.sellingPartner.buy(itemToSell);
+>>>>>>> 3ad0595e5d9eda8644add8815a6de9ec36c944a7
 	}
 	
 	/********************** O BEHAVE ****************************************/
@@ -108,8 +120,8 @@ public abstract class Entity implements Dieable{
 		this.preferredState.perform(this);
 	}
 
-	public void engage(Avatar avatar){
-		this.engagedState.perform(avatar);
+	public void engage(Entity entity){
+		this.engagedState.perform(entity);
 		this.preferredState.kill();
 	}
 
@@ -285,9 +297,9 @@ public abstract class Entity implements Dieable{
 
 	
 	/*************   FIX THIS STUFF ***********************/
-	public Object getDialogue() {
+	public String getDialogue() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	public void writeJournal(Object dialogue) {
@@ -330,6 +342,18 @@ public abstract class Entity implements Dieable{
 	
 	public boolean getBuyingMode(){
 		return this.buyingMode;
+	}
+
+	public void setSellingPartner(Entity receiver) {
+		this.sellingPartner = receiver;
+	}
+	
+	public void resetSellingPartner(){
+		this.sellingPartner = null;
+	}
+
+	public void revertEngageBehavior() {
+		this.engagedState.revert();
 	}
 	
 }

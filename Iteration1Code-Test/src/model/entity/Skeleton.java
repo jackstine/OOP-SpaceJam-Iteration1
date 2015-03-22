@@ -8,7 +8,7 @@ import model.behavior.Patrol;
 import model.behavior.Stand;
 import model.occupation.SkeletonAlchemist;
 
-public class Skeleton extends NPC implements Conversable {
+public class Skeleton extends NPC {
 	
 	public Skeleton() {
 		super(new SkeletonAlchemist());

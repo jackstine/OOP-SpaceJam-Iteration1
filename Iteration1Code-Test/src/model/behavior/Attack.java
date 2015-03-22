@@ -3,6 +3,8 @@ package model.behavior;
 import utilities.Directions;
 import utilities.HurtSoundEffect;
 import utilities.SoundEffect;
+import model.GameLog;
+import model.entity.Conversable;
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
@@ -27,8 +29,9 @@ public class Attack implements Behavior{
 		System.out.println(theAttacked.attack());
 		System.out.println(attacker.attack());
 		SoundEffect effect = new HurtSoundEffect();
+		GameLog.writeToLog(attacker.getDialogue());
 	}
-
+	
 	public void getBuffs() {}
 
 	public void kill() {
