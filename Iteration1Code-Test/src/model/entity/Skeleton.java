@@ -23,7 +23,7 @@ public class Skeleton extends NPC {
 	}
 	
 	public String toString() {
-		return "a Skeleton";
+		return "NPC:Skeleton";
 	}
 
 	public void makeDeathSoundEffect() {

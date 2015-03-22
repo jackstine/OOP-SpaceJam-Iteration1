@@ -41,7 +41,6 @@ public class SaveLoadController {
 		String[] avatarOccupation = in.next().split(":");
 		String occupation = avatarOccupation[1];
 		
-		// fix this later
 		if (occupation.equals("Terminator")) avatar = new Avatar(new AvatarTerminator());
 		if (occupation.equals("Alchemist")) avatar = new Avatar(new AvatarAlchemist());
 		if (occupation.equals("Hunter")) avatar = new Avatar(new AvatarHunter());
@@ -226,7 +225,7 @@ public class SaveLoadController {
 					if (!tileEntity[0].equals("null")) {
 						if (tileEntity[0].equals("NPC")) {
 							String typeNPC = tileEntity[1];
-							if (typeNPC.equals("Orc")) npc = new Orc("daniel");
+							if (typeNPC.equals("Orc")) npc = new Orc();
 							if (typeNPC.equals("Skeleton")) npc = new Skeleton();
 							if (typeNPC.equals("Merchant")) npc = new Merchant();
 						}
@@ -239,8 +238,6 @@ public class SaveLoadController {
 				}
 			}
 			
-			
-			// error here
 			int entities = Integer.parseInt(in.next());
 			for (int k = 0; k < entities; k++) {
 				String[] entityLocation = in.next().split(":");
@@ -250,7 +247,7 @@ public class SaveLoadController {
 				int y = Integer.parseInt(location[1]);
 				// will fix this later to include all entities
 				map.updateEntityLocation(avatar, new Location(x, y));
-				System.out.println(new Location(x,y));
+				//System.out.println(k + ":" + new Location(x,y));
 			}
 			
 			games.put(gameName, map);
@@ -265,10 +262,10 @@ public class SaveLoadController {
 			keySet.put(dir, key);
 		}
 		
-		World finalWorld = new World(games, keySet);
-		//game.setWorld(finalWorld);
+		World finalWorld = new World(games, keySet, avatar);
 		
-		//game.setMap(map);
+		System.out.println(avatar.getInventory());
+		
 		System.out.println("GAME LOADED\n---------------");
 		return new Game(finalWorld, avatar);
 	}

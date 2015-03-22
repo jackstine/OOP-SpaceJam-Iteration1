@@ -19,7 +19,7 @@ public class Orc extends NPC {
 	}
 	
 	public String toString() {
-		return "an Orc";
+		return "NPC:Orc";
 	}
 
 	public void makeDeathSoundEffect() {
