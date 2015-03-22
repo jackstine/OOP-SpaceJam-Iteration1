@@ -1,4 +1,4 @@
-package model.spells;
+package model.abilities;
 
 public interface EnchantmentSpell{
 	//these spells are used to change the behavior or state of the NPC

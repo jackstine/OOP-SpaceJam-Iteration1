@@ -26,10 +26,13 @@ public class Attack implements Behavior{
 		if(theAttacked.attack() > attacker.defense()) {
 			EntityEffectHandler.applyDamage(attacker, (theAttacked.attack()-attacker.defense()));
 		}
-		System.out.println(theAttacked.attack());
-		System.out.println(attacker.attack());
+		String log = "You have dealt " + theAttacked.attack() + " damage";
+		log += "\nYou have received " + attacker.attack() + " damage";
+		GameLog.writeToLog("Melee Damage", log);
+//		System.out.println(theAttacked.attack());
+//		System.out.println(attacker.attack());
 		SoundEffect effect = new HurtSoundEffect();
-		GameLog.writeToLog(attacker.getDialogue());
+		GameLog.writeToLog("Dialogue", attacker.getDialogue());
 	}
 	
 	public void getBuffs() {}

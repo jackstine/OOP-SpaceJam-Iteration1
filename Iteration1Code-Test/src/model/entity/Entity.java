@@ -15,6 +15,8 @@ import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
 import model.Point;
 import model.Skill;
+import model.abilities.Spellable;
+import model.abilities.Spells;
 import model.behavior.Behavior;
 import model.behavior.RadialEntitySight;
 import model.behavior.State;
@@ -25,8 +27,6 @@ import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
 import model.slots.InventoryEquipment;
-import model.spells.Spellable;
-import model.spells.Spells;
 import model.stats.EntityStats;
 import model.visitor.WeaponVisitor;
 
@@ -102,8 +102,8 @@ public abstract class Entity implements Dieable{
 	}
 	
 	public void sellToPartner(TakeableItem itemToSell) {
-		int basePrice = 100;
-		this.makeGoldTransaction(100+(this.getSkillValue("Bargain")*10));
+		int basePrice = itemToSell.getBonus();
+		this.makeGoldTransaction(basePrice+(this.getSkillValue("Bargain")*2));
 		this.sellingPartner.buy(itemToSell);
 
 	}
@@ -168,6 +168,10 @@ public abstract class Entity implements Dieable{
 		return this.inventoryEquipment.equipInventory(item,point);
 	}
 	
+	public TakeableItem getInventorySlot(Point point){
+		return this.inventoryEquipment.getInventorySlot(point);
+	}
+	
 	/*************  EQUIPMENT *************************/
 	public void setEquipment(Equipment equipment){
 		this.inventoryEquipment.setEquipment(equipment);
@@ -218,6 +222,8 @@ public abstract class Entity implements Dieable{
 	public void addHP(int change){this.stats.addHP(change);}
 	public void addMP(int change){this.stats.addMP(change);}
 	
+	public void addEXP(int change){this.stats.addEXP(change);}
+	
 	
 	/******************** SPELLS ******************************/
 	public Spells getSpells(){
@@ -250,7 +256,7 @@ public abstract class Entity implements Dieable{
 		int n = 0;
 		for(int i = 0; i < x && i < 7; ++i){
 			if(d!=0 && RNG.genRandDouble() > 1/d){
-				n = RNG.generateRand(0,30);
+				n = RNG.generateRand(0,stats.getStatValue(info[i])+5);
 			}
 			else{
 				n = stats.getStatValue(info[i]);

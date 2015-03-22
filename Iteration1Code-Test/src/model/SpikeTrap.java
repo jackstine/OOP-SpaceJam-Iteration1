@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import model.entity.Entity;
 
 public class SpikeTrap extends Trap {
-		//need to implement level stuff.
+		
 	
 	public SpikeTrap(){
 		damage=10;
@@ -25,7 +25,7 @@ public class SpikeTrap extends Trap {
 	public BufferedImage getImage(){
 		return TrapImageProxy.getTrapImage(this);
 	}
-
+	
 	
 	public boolean isVisible(){return visible;}
 	

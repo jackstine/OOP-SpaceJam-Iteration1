@@ -2,12 +2,13 @@ package model.occupation;
 
 import utilities.SpriteSheetUtility;
 import model.*;
+import model.abilities.Spells;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
-import model.spells.Spells;
 import model.stats.factory.StatFactory;
 import model.stats.factory.TerminatorStatFactory;
+import model.visitor.OccupationVisitor;
 
 public abstract class Terminator extends Occupation{
 
@@ -44,5 +45,9 @@ public abstract class Terminator extends Occupation{
 	@Override
 	protected SkillFactory getSkillFactory() {
 		return new TerminatorSkillFactory();
+	}
+	
+	public void accept(OccupationVisitor visitor){
+		visitor.accept(this);
 	}
 }

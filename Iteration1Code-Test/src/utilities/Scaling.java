@@ -123,7 +123,6 @@ public final class Scaling {
 	public static final int EQUIPMENT_VIEW_WIDTH = Scaling.EQUIPMENT_SLOT_WIDTH * EQUIPMENT_SLOTS_WIDTH_NUM;
 	public static final int EQUIPMENT_VIEW_HEIGHT = Scaling.EQUIPMENT_SLOT_HEIGHT * EQUIPMENT_SLOTS_HEIGHT_NUM;
 	
-	
 	/**********************SPELLS***************************/
 	public static final int SPELLS_WIDTH_NUM = 3;
 	public static final int SPELLS_HEIGHT_NUM = 3;
@@ -133,7 +132,7 @@ public final class Scaling {
 	public static final int SPELL_SPACE_Y = 10 + Scaling.SPELL_HEIGHT;
 	//bane spells on the top
 	public static final int FIRE_SPELL_X = SPELL_OFFSET_X;
-	public static final int FIRE_SPELL_Y = SPELL_OFFSET_Y;
+	public static final int FIRE_SPELL_Y = SPELL_OFFSET_Y + SPELL_SPACE_Y;
 	public static final int EARTH_SPELL_X = FIRE_SPELL_X + SPELL_SPACE_X;
 	public static final int EARTH_SPELL_Y = FIRE_SPELL_Y;
 	public static final int PLASMA_RAY_X = EARTH_SPELL_X + SPELL_SPACE_X;
@@ -145,18 +144,53 @@ public final class Scaling {
 	public static final int CONFUSE_X = PACIFISM_X + SPELL_SPACE_X;
 	public static final int CONFUSE_Y = FIRE_SPELL_Y + SPELL_SPACE_Y;
 	public static final int ANGRY_X = CONFUSE_X + SPELL_SPACE_X;
-	public static final int AMGRY_Y =FIRE_SPELL_Y + SPELL_SPACE_Y;
+	public static final int ANGRY_Y =FIRE_SPELL_Y + SPELL_SPACE_Y;
 	//boon spells in the below
-	public static final int GLORY_HEAL_X = PACIFISM_X;
-	public static final int GLORY_HEAL_Y = PACIFISM_Y + SPELL_SPACE_Y;
-	public static final int MANA_BUFF_X = GLORY_HEAL_X + SPELL_SPACE_X;
-	public static final int MANA_BUFF_Y = PACIFISM_Y + SPELL_SPACE_Y;
-	public static final int MAGIC_CIRCLE_X = MANA_BUFF_X + SPELL_SPACE_X;
-	public static final int MAGIC_CIRCLE_Y = PACIFISM_Y + SPELL_SPACE_Y;
+	public static final int GLORY_HEAL_X = PLASMA_RAY_X + SPELL_SPACE_X;
+	public static final int GLORY_HEAL_Y = PLASMA_RAY_Y;
+	public static final int MANA_BUFF_X = ANGRY_X + SPELL_SPACE_X;
+	public static final int MANA_BUFF_Y = ANGRY_Y;
+	public static final int MAGIC_CIRCLE_X = Scaling.BIND_WOUNDS_X + SPELL_SPACE_X;
+	public static final int MAGIC_CIRCLE_Y = Scaling.BIND_WOUNDS_Y;
+	
+	public static final Point FIRE_SPELL_POINT = getAbilityPoint(FIRE_SPELL_Y,FIRE_SPELL_Y);
+	public static final Point EARTH_SPELL_POINT = getAbilityPoint(EARTH_SPELL_Y,EARTH_SPELL_Y);
+	public static final Point PLASMA_RAY_POINT = getAbilityPoint(PLASMA_RAY_Y,PLASMA_RAY_Y);
+	public static final Point PACIFISM_POINT = getAbilityPoint(PACIFISM_Y,PACIFISM_Y);
+	public static final Point ANGRY_POINT = getAbilityPoint(ANGRY_Y,ANGRY_Y);
+	public static final Point GLORY_HEAL_POINT = getAbilityPoint(GLORY_HEAL_Y,GLORY_HEAL_Y);
+	public static final Point MANA_BUFF_POINT = getAbilityPoint(MANA_BUFF_Y,MANA_BUFF_Y);
+	public static final Point MAGIC_CIRCLE_POINT = getAbilityPoint(MAGIC_CIRCLE_Y,MAGIC_CIRCLE_Y);
+	public static final Point CONFUSE_POINT = getAbilityPoint(CONFUSE_Y,CONFUSE_Y);
+	
 	
 	public static final int SPELL_WIDTH = 30;
 	public static final int SPELL_HEIGHT = 30;
 	
+	
+	/**********************ABILITIES***************************/
+	public static final int OBSERVATION_X = SPELL_OFFSET_X;
+	public static final int OBSERVATION_Y = SPELL_OFFSET_Y;
+	public static final int BIND_WOUNDS_X = OBSERVATION_X + SPELL_SPACE_X;
+	public static final int BIND_WOUNDS_Y = OBSERVATION_Y;
+	public static final int SNEAK_X = BIND_WOUNDS_X + SPELL_SPACE_X;
+	public static final int SNEAK_Y = BIND_WOUNDS_Y;
+	public static final int ABILITIES_WIDTH_NUM = 2;
+	public static final int ABILITIES_HEIGHT_NUM = 1;
+	
+	public static final Point OBSERVATION_POINT = getAbilityPoint(OBSERVATION_X, OBSERVATION_Y);
+	public static final Point BIND_WOUNDS_POINT = getAbilityPoint(BIND_WOUNDS_X, BIND_WOUNDS_Y);
+	
+	private static Point getAbilityPoint(int spellX, int spellY){
+		return new Point( getSpellX(spellX), getSpellY(spellY) );
+	}
+	
+	private static int getSpellX(int spell){
+		return spell/SPELL_SPACE_X;
+	}
+	private static int getSpellY(int spell){
+		return (spell - SPELL_OFFSET_Y) / SPELL_SPACE_Y;
+	}
 	
 	
 	/*****************GAMEVIEW*********************/

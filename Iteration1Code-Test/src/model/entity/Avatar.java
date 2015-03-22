@@ -83,7 +83,22 @@ public class Avatar extends Entity {
 		this.currMap = currMap;
 	}
 	
+	@Override
 	public void makeDeathSoundEffect(){
-		soundEffect = new FriendlyDeathSoundEffect();
-	}	
+		if(this.stats.getStatValue("Lives") >= 1){
+				soundEffect = new FriendlyDeathSoundEffect();
+		}
+		else
+			soundEffect = new LastDeathSoundEffect();
+	}
+	/*
+	//may not need to override
+	 */
+	
+	/*
+	//private void useAbility() {
+	//	
+	//}
+	//may not need to override
+	 */
 }

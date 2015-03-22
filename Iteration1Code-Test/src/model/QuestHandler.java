@@ -3,18 +3,17 @@ package model;
 import model.entity.Avatar;
 import model.items.Item;
 import model.visitor.ItemQuestVisitor;
+import model.visitor.OccupationVisitor;
 
 public class QuestHandler {
 	private Avatar avatar;
 	private ItemQuestVisitor visitor = new ItemQuestVisitor();
 	GameMap map;
-	TrapDetectionHandler handler;
 	
 	public QuestHandler(Avatar avatar, GameMap map){
 		this.avatar=avatar;
 		this.map=map;
 		visitor.setAvatar(this.avatar);
-		handler= new TrapDetectionHandler(map,avatar);
 	}
 	
 	public void apply(Tile tile){
@@ -33,8 +32,6 @@ public class QuestHandler {
 		if (itemExist){
 			it.accept(this.visitor);
 		}
-		
-		handler.detectTrap();
 		
 	}
 	

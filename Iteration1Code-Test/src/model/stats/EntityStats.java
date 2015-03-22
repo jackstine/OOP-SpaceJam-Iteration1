@@ -62,4 +62,6 @@ public class EntityStats {
 	
 	public void addHP(int change){this.addSV("HP", change);}
 	public void addMP(int change){this.addSV("MP", change);}
+	
+	public void addEXP(int change){this.addSV("Experience", change);}
 }

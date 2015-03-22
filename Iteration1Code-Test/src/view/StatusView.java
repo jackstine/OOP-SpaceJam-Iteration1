@@ -66,7 +66,8 @@ public class StatusView extends JPanel {
 	private FontHandler fh = new FontHandler();
 	private Font labelFont;
 	
-	private static JTextArea terminal = new JTextArea();
+	private JTextArea terminal = new JTextArea();
+	
 	
 	JProgressBar health;
 	JProgressBar mana;
@@ -145,10 +146,18 @@ public class StatusView extends JPanel {
 		if (avatar.hasSpells()){
 			vitalsPanel.add(new SpellView(avatar));
 		}
+		else if (avatar.getOccupation().getName().equals("Hunter"))	//HAIL SATAN
+			vitalsPanel.add(new HunterAbilityView(avatar));
+		else
+			vitalsPanel.add(new AbilityView(avatar));
 		
 		portraitView = new PortraitView(avatarPortrait);
 		portraitView.setPreferredSize(new Dimension(210, 168));
 		portraitView.repaint();
+		
+		JPanel p = new JPanel();
+		p.add(portraitView);
+		p.add(new JLabel("GOLD GOLD"));
 		
 		portraitStatsPanel = new JPanel();
 		portraitStatsPanel.setLayout(new GridLayout(1,2));
@@ -179,8 +188,11 @@ public class StatusView extends JPanel {
 //		}
 		
 		statusInfo.setLayout(new GridLayout(1,2));
-		terminal.setText(avatar.getJournal());
+		terminal.setText(GameLog.getLog());
+		terminal.setBackground(Color.BLACK);
+		terminal.setForeground(Color.WHITE);
 		terminal.setEditable(false);
+		terminal.setFocusable(false);
 		JScrollPane scroll = new JScrollPane ( terminal );
 	    scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
 		statusInfo.add(portraitStatsPanel);
@@ -219,7 +231,6 @@ public class StatusView extends JPanel {
 		lives.setValue(avatar.getStatValue("Lives"));
 		
 		if(GameLog.isWriting()){
-			String s = GameLog.getLog();
 			terminal.setText(GameLog.getLog());
 		}
  	}

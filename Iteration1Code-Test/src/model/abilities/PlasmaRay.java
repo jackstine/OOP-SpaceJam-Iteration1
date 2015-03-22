@@ -1,4 +1,4 @@
-package model.spells;
+package model.abilities;
 
 import utilities.PlasmaRaySoundEffect;
 import utilities.SoundEffect;

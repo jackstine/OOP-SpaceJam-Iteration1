@@ -1,4 +1,4 @@
-package model.spells;
+package model.abilities;
 
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;

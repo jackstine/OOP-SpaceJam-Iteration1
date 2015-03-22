@@ -4,14 +4,16 @@ import java.util.Map;
 
 import model.Skill;
 import model.SkillFactory;
+import model.abilities.Spells;
 import model.entity.Dieable;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
-import model.spells.Spells;
 import model.stats.Stat;
 import model.stats.factory.StatFactory;
+import model.visitor.OccupationVisitor;
+import model.visitor.WeaponVisitor;
 import utilities.DeathSoundEffect;
 import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
@@ -81,4 +83,6 @@ public abstract class Occupation{
 	public String toString() {
 		return "Occupation:" + this.name;
 	}
+	
+	public abstract void accept(OccupationVisitor visitor);
 }
