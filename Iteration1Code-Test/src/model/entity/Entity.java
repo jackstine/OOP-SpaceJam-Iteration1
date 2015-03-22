@@ -88,14 +88,15 @@ public abstract class Entity implements Dieable{
 		this.engagedState.kill();
 	}
 	
-<<<<<<< HEAD
+
 	public void grantSight(Avatar avatar) {
 		sight = new RadialEntitySight(avatar);
 	}
 	
 	public RadialEntitySight getSight() {
 		return sight;
-=======
+	}
+
 	public void buy(TakeableItem item){
 		this.inventoryEquipment.equipInventory(item);
 	}
@@ -104,7 +105,7 @@ public abstract class Entity implements Dieable{
 		int basePrice = 100;
 		this.makeGoldTransaction(100+(this.getSkillValue("Bargain")*10));
 		this.sellingPartner.buy(itemToSell);
->>>>>>> 3ad0595e5d9eda8644add8815a6de9ec36c944a7
+
 	}
 	
 	/********************** O BEHAVE ****************************************/
