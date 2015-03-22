@@ -207,6 +207,8 @@ public abstract class Entity implements Dieable{
 	public void addHP(int change){this.stats.addHP(change);}
 	public void addMP(int change){this.stats.addMP(change);}
 	
+	public void addEXP(int change){this.stats.addEXP(change);}
+	
 	
 	/******************** SPELLS ******************************/
 	public Spells getSpells(){

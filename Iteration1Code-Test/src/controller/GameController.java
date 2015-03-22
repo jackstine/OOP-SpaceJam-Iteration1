@@ -135,18 +135,24 @@ public class GameController {
 			stats.updatetable();
 			combinedGameView.updateStatus();
 			Location killLocation = null;
+			Entity slain = null;
 			for (Entry<Entity, Location> entry : World.getMap(avatar.getCurrMap()).getEntityToLocationMap().entrySet()) {
 				killLocation = null;
 				Entity key = entry.getKey();
 				Location loc = entry.getValue();
 				if(key.getStats().getStatValue("HP") <= 0){
 					killLocation = loc;
+					slain = key;
 					break;
 				}
 			}
 			if (killLocation != null){
+				int gold = 50*slain.getStatValue("Level");
+				int exp = 1000*slain.getStatValue("Level");
+				avatar.makeGoldTransaction(gold);
+				avatar.addEXP(exp);
 				map.kill(killLocation);
-				avatar.makeGoldTransaction(50);
+				GameLog.writeToLog("You have slain " + slain.toString() + "\nGained " + exp + "EXP and " + gold + " gold.");
 			}
 		}
 	}

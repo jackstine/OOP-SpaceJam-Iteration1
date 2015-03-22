@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public final class GameLog {
-	private static String log = "hi";
+	private static String log = "<html><html>";
 	private static boolean writing = false;
 	
 	
