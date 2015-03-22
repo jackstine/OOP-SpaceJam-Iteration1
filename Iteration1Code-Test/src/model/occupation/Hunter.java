@@ -9,6 +9,7 @@ import model.slots.*;
 import model.spells.Spells;
 import model.stats.factory.HunterStatFactory;
 import model.stats.factory.StatFactory;
+import model.visitor.OccupationVisitor;
 
 public abstract class Hunter extends Occupation{
 
@@ -38,6 +39,10 @@ public abstract class Hunter extends Occupation{
 		// out the fighting between Avatar and Entity		
 	}
 	
+	public void detect(){
+		
+	}
+	
 	public Spells createSpells(){
 		return null;
 	}
@@ -45,5 +50,9 @@ public abstract class Hunter extends Occupation{
 	@Override
 	protected SkillFactory getSkillFactory() {
 		return new HunterSkillFactory();
+	}
+	
+	public void accept(OccupationVisitor visitor){
+		visitor.accept(this);
 	}
 }

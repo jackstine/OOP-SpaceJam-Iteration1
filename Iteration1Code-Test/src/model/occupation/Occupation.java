@@ -12,6 +12,8 @@ import model.slots.WeaponSlot;
 import model.spells.Spells;
 import model.stats.Stat;
 import model.stats.factory.StatFactory;
+import model.visitor.OccupationVisitor;
+import model.visitor.WeaponVisitor;
 import utilities.DeathSoundEffect;
 import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
@@ -81,4 +83,6 @@ public abstract class Occupation{
 	public String toString() {
 		return "Occupation:" + this.name;
 	}
+	
+	public abstract void accept(OccupationVisitor visitor);
 }
