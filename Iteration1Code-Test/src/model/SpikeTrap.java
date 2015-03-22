@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import model.entity.Entity;
 
 public class SpikeTrap extends Trap {
-		//need to implement level stuff.
+		
 	
 	public SpikeTrap(){
 		damage=10;

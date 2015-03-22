@@ -8,6 +8,7 @@ import model.slots.*;
 import model.spells.Spells;
 import model.stats.factory.AlchemistStatFactory;
 import model.stats.factory.StatFactory;
+import model.visitor.OccupationVisitor;
 
 public abstract class Alchemist extends Occupation{
 	
@@ -44,5 +45,9 @@ public abstract class Alchemist extends Occupation{
 	@Override
 	protected SkillFactory getSkillFactory() {
 		return new AlchemistSkillFactory();
+	}
+	
+	public void accept(OccupationVisitor visitor){
+		visitor.accept(this);
 	}
 }

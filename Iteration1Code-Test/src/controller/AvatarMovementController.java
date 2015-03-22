@@ -4,6 +4,7 @@ import model.GameMap;
 import model.Location;
 import model.Point;
 import model.QuestHandler;
+import model.TrapHandler;
 import model.World;
 import model.entity.Avatar;
 import view.MapView;
@@ -12,12 +13,14 @@ public class AvatarMovementController extends MovementController {
 
 	private Avatar avatar;
 	private QuestHandler questHandler;
+	private TrapHandler trapHandler;
 	
 	public AvatarMovementController(Avatar avatar,World world, MapView mapView){
 		this.mapView = mapView;
 		this.avatar = avatar;
 		this.world = world;
 		this.questHandler = new QuestHandler(avatar,World.getMap(avatar.getCurrMap()));
+		this.trapHandler= new TrapHandler(World.getMap(avatar.getCurrMap()),avatar);
 	}
 
 	public GameMap getCurrMap(){
@@ -37,6 +40,7 @@ public class AvatarMovementController extends MovementController {
 		if(this.getCurrMap().isPassable(pointToMove)){
 			getCurrMap().updateEntityLocation(avatar, pointToMove);
 			questHandler.apply(this.getCurrMap().getTile(pointToMove));
+			//trapHandler.detectTrap();
 		}
 		else{
 			// FIX THIS LoD
