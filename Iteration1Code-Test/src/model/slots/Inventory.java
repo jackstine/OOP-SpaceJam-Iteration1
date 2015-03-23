@@ -27,7 +27,6 @@ public class Inventory extends SlotContainer{
                 this.items[i][j] = new InventorySlot();
             }
         }
-        this.items[0][0].equip(Weapons.DAVESWORD.weapon);
         this.items[0][1].equip(Weapons.LONGSWORD.weapon);
         this.items[0][2].equip(Weapons.SWORD.weapon);
        

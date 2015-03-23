@@ -17,7 +17,10 @@ import model.InfluenceSet;
 import model.Location;
 import model.World;
 import model.entity.Avatar;
+import model.entity.BossDavid;
 import model.entity.Entity;
+import model.items.Weapons;
+import model.occupation.Boss;
 import utilities.DeathSoundEffect;
 import utilities.FriendlyDeathSoundEffect;
 import utilities.SoundEffect;
@@ -160,6 +163,10 @@ public class GameController {
 				int exp = 200*slain.getStatValue("Level");
 				avatar.makeGoldTransaction(gold);
 				avatar.addEXP(exp);
+				Entity entity = map.getTileEntity(killLocation);
+				if ( entity instanceof BossDavid ){
+					map.getTile(killLocation).setItem(Weapons.DAVESWORD.weapon);
+				}
 				map.kill(killLocation);
 				GameLog.writeToLog("Victory","You have slain " + slain.toString() + "\nGained " + exp + " EXP and " + gold + " gold.");
 			}

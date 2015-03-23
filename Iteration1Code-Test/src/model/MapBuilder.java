@@ -103,7 +103,7 @@ public class MapBuilder{
 		this.map[3][10].setItem(armor);
 		this.items[3][10] = armor;
 		
-		Weapon weapon = Weapons.DAVESWORD.weapon;
+		Weapon weapon = Weapons.LONGSWORD.weapon;
 		this.map[8][8].setItem(weapon);
 		this.items[8][8] = weapon;
 		
