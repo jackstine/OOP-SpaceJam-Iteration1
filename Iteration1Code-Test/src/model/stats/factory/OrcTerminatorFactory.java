@@ -37,6 +37,6 @@ public class OrcTerminatorFactory extends StatFactory{
 	}
 
 	protected int getSight() {
-		return 3;
+		return 2;
 	}
 }
