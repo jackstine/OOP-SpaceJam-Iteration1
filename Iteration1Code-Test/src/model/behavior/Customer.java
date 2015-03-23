@@ -11,7 +11,7 @@ public class Customer implements Behavior{
 
 	//the receiver is usually a barter, but does not have to be
 	public void perform(Entity receiver) {
-		System.out.println("CUSTOMER  IS BYING CALLED");
+		System.out.println("CUSTOMER IS BYING CALLED");
 		customer.setBuyingMode();
 		customer.setSellingPartner(receiver);
 	}

@@ -7,6 +7,7 @@ import model.QuestHandler;
 import model.TrapHandler;
 import model.World;
 import model.entity.Avatar;
+import model.entity.NPC;
 import view.MapView;
 
 public class AvatarMovementController extends MovementController {
@@ -43,12 +44,9 @@ public class AvatarMovementController extends MovementController {
 			trapHandler.detectTrap();
 		}
 		else{
-			// FIX THIS LoD
-			if (pointToMove != null){
-				System.out.println(this.getCurrMap().getTileEntity(pointToMove));
+			if (pointToMove != null && this.getCurrMap().getTileEntity(pointToMove) != null)
 				this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
 			}
-		}
 		this.mapView.repaint();
 	}
 	

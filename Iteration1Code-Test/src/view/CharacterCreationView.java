@@ -81,6 +81,7 @@ public class CharacterCreationView extends View {
 		enterNameField = new JTextField("Arnold");
 		enterNameField.setHorizontalAlignment(JTextField.CENTER);
 		enterNameField.setFont(labelFontRedux);
+		enterNameField.setBackground(new Color(255,255,255,130));
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;

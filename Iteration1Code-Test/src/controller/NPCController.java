@@ -3,7 +3,7 @@ package controller;
 import model.GameMap;
 import model.Location;
 import model.World;
-import model.entity.Entity;
+import model.entity.*;
 
 public abstract class NPCController {
 
@@ -27,8 +27,6 @@ public abstract class NPCController {
 	
 	public void interrupt(){
 		try{
-			System.out.println("stopped");
-			this.task.interrupt();
 			stopThread = true;
 		}catch(Exception e){}
 	}

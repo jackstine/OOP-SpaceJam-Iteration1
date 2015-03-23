@@ -90,7 +90,6 @@ public class StatusView extends JPanel {
         
 		setLayout(new BorderLayout());
 		statusInfo = new JPanel();
-		
 		/*buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridLayout(2,1));
 		systemMenu = new JButton("System");
@@ -98,6 +97,7 @@ public class StatusView extends JPanel {
 		avatarInfo = new JLabel("<html>" + avatar.getOccupation().getName() + " " + avatar.getName() + "<br>Lv." + avatar.getStatValue("Level") +" Level Ups: " + avatar.getLevels() + "</html>");
 		avatarInfo.setFont(labelFont.deriveFont(20f));
 		vitalsPanel = new JPanel();
+		vitalsPanel.setBackground(new Color(169, 221, 221));
 		avatarName = new JLabel(avatar.getName());
 		avatarName.setFont(labelFont.deriveFont(20f));
 		
