@@ -37,7 +37,7 @@ public class SpriteSheetUtility {
 	public SpriteSheetUtility() {
 		//DEFAULT WILL JUST BE A TERMINATOR FOR SAFETY REASONS
 		imagePath = "src/res/img/terminator_spritesheet.png";
-		initializeSpriteArray();
+		initialize();
 	}
 	
 	public SpriteSheetUtility(AvatarAlchemist a) {
