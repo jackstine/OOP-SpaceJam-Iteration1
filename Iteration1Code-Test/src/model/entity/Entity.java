@@ -364,7 +364,6 @@ public abstract class Entity implements Dieable{
 	}
 	
 	public void polymorph(){
-		System.out.println("THIS RUNS");
 		int oldMovement= this.getStatValue("Movement");
 		int changedMovement=2;
 		this.setStatValue("Movement",changedMovement);
@@ -406,7 +405,6 @@ public abstract class Entity implements Dieable{
 				stats.setStatValue(stat, value);
 				buffed = false;
 				buffTime.stop();
-				restoreSpriteArray();
 			}
 			
 		}
@@ -429,6 +427,7 @@ public abstract class Entity implements Dieable{
 				stats.setStatValue(stat, value);
 				buffed = false;
 				buffTime.stop();
+				restoreSpriteArray();
 			}
 			
 		}
