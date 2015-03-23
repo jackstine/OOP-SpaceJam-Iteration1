@@ -364,20 +364,28 @@ public abstract class Entity implements Dieable{
 	}
 	
 	public void polymorph(){
+		System.out.println("THIS RUNS");
 		int oldMovement= this.getStatValue("Movement");
 		int changedMovement=2;
 		this.setStatValue("Movement",changedMovement);
-		buffTime = new Timer(500,new PolymorphTimer("Movement",this.getStatValue("Movement")));
+		buffTime = new Timer(500,new PolymorphTimer("Movement",oldMovement));
+		makeAlternateSpriteArray();
 		buffTime.start();
+		
 		
 		
 	}
 	
 	public abstract void makeDeathSoundEffect();
+	
+	
+	
 	public void makeAlternateSpriteArray() {
 		SpriteSheetUtility util = occupation.getAlternateSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
 	}
+	
+	
 	public void restoreSpriteArray() {
 		SpriteSheetUtility util = occupation.getSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
@@ -398,6 +406,7 @@ public abstract class Entity implements Dieable{
 				stats.setStatValue(stat, value);
 				buffed = false;
 				buffTime.stop();
+				restoreSpriteArray();
 			}
 			
 		}

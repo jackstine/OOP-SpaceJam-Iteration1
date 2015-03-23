@@ -36,7 +36,7 @@ public class NPCSightController extends NPCController{
 						}
 						sight.setSight(new RadialInfluenceSet(map, map.getEntityTile(entity), 3, 0));
 						if(sight.contains(sight.getTarget())) {
-							System.out.println("found you bb");
+							//System.out.println("found you bb");
 						}
 					try{
 						sleep(1000/entity.getStats().getStatValue("Movement"));
