@@ -18,12 +18,12 @@ public class AvatarAttack implements Behavior{
 	public void perform(Entity theAttacked) {
 		
 		//in a typical engagement scenario, 
-		System.out.println("Attacker: "+attacker+"\nDefender: "+theAttacked);
 		int oppositeDirection = Directions.getOppositeDirection(attacker.getDirection());
 		theAttacked.setDirection(oppositeDirection);
 			EntityEffectHandler.applyDamage(theAttacked, Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0));
 		SoundEffect effect = new HurtSoundEffect();
-		GameLog.writeToLog(attacker.getDialogue());
+		String log = "You have dealt " + Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0) + " damage";
+		GameLog.writeToLog("Melee Damage", log);
 	}
 	
 	public void getBuffs() {}

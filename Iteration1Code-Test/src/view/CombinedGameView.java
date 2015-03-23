@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -12,6 +13,7 @@ import javax.swing.border.LineBorder;
 import controller.GameController.BoardMouseListener;
 import model.GameMap;
 import model.entity.Avatar;
+import model.entity.Entity;
 import utilities.FontHandler;
 import utilities.Scaling;
 
@@ -117,6 +119,12 @@ public class CombinedGameView extends View {
     }
     
     public void changeMap(GameMap map){
+    	Set<Entity> entities = map.getEntities();
+    	for(Entity e : entities) {
+    		e.grantSight(avatar);
+    		e.setCurrMap(avatar.getCurrMap());
+    		e.idle();
+    	}
     	board.changeMap(map);
     }
     

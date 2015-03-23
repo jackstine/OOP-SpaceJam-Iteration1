@@ -105,8 +105,6 @@ public class World {
 			if (isAvatar(ent)) continue;
 			ent.grantSight(avatar);
 			ent.idle();
-			if(ent instanceof Orc)
-				ent.trackWorld();
 		}
 	}
 	

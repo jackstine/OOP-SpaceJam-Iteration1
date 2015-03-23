@@ -23,7 +23,6 @@ import model.abilities.Spells;
 import model.behavior.Behavior;
 import model.behavior.BehaviorComposite;
 import model.behavior.RadialEntitySight;
-import model.behavior.RangeTrack;
 import model.behavior.SightTrack;
 import model.behavior.State;
 import model.items.Equipable;
@@ -56,7 +55,6 @@ public abstract class Entity implements Dieable{
 	protected RadialEntitySight sight;
 	
 	protected SightTrack sightBehavior = new SightTrack();
-	protected RangeTrack rangeBehavior = new RangeTrack();
 
 	private AbilityView abilityView;
 	private boolean observationOn;
@@ -144,18 +142,6 @@ public abstract class Entity implements Dieable{
 		this.engagedState.setState(behavior);
 	}
 	
-	public void triggerPreferredState () {
-		killPreferred();
-		preferredState.getState().trigger();
-		idle();
-	}
-	
-	public void resetPreferredState () {
-		killPreferred();
-		preferredState.getState().reset();
-		idle();
-	}
-	
 	public State getPreferredState () {
 		return preferredState;
 	}
@@ -183,21 +169,6 @@ public abstract class Entity implements Dieable{
 	public void engage(Entity entity){
 		this.engagedState.perform(entity);
 	}	
-	
-	//public void switchEngagedMode() {
-	//	this.engagedState.advanceState();
-	//}
-	
-	//public void switchPreferredMode() {
-	//	this.preferredState.advanceState();
-	//}
-	
-	public void trackWorld() {
-		rangeBehavior.track(this);
-		sightBehavior.track(this);
-		rangeBehavior.perform(this);
-		sightBehavior.perform(this);
-	}
 	
 	public void kill(){
 		this.preferredState.kill();

@@ -6,13 +6,13 @@ import model.behavior.Behavior;
 import model.entity.Entity;
 
 public class State {
-	private Stack<BehaviorComposite> states;
+	private Stack<Behavior> states;
 	
 	public State(){
-		this.states = new Stack<BehaviorComposite>();
+		this.states = new Stack<Behavior>();
 	}
 	
-	public State(BehaviorComposite behavior){
+	public State(Behavior behavior){
 		this.setState(behavior);
 	}
 	
@@ -20,15 +20,11 @@ public class State {
 		this.states.peek().perform(receiver);
 	}
 	
-	public boolean isTriggered () {
-		return this.states.peek().isTriggered();
-	}
-	
-	public void setState(BehaviorComposite behavior){
+	public void setState(Behavior behavior){
 		this.states.push(behavior);
 	}
 	
-	public BehaviorComposite getState () {
+	public Behavior getState () {
 		return this.states.peek();
 	}
 	
@@ -47,11 +43,10 @@ public class State {
 	}
 	
 	public void kill(){
-		//while( ! this.states.empty()){
-			if(!this.states.empty())
+		while( ! this.states.empty()){
 				states.peek().kill();
-			//states.pop();
-		//}
+				states.pop();
+		}
 	}
 }	
 	

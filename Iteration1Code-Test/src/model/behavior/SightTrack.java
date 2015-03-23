@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import controller.NPCMovementController;
 import controller.NPCMovementLoopController;
-import controller.NPCRangeController;
 import controller.NPCSightController;
 import model.entity.Entity;
 import model.entity.NPC;
@@ -22,6 +21,10 @@ public class SightTrack extends ConstantBehavior{
 		
 	}
 	
+	public boolean hasFoundTarget() {
+		return sightController.hasFoundTarget();
+	}
+	
 	public void track(Entity entity) {
 		this.entity = entity;
 		if(sightController != null) kill();
@@ -33,7 +36,7 @@ public class SightTrack extends ConstantBehavior{
 	
 	//TODO I think that Idle Behaviors will not take in a Entity
 	public void perform(Entity receiver) {
-		this.sightController = new NPCSightController(entity,3);
+		this.sightController = new NPCSightController(entity,entity.getStatValue("Sight"));
 		this.sightController.setSight(entity.getSight());
 		this.sightController.doArtificialIntelligence();
 	}

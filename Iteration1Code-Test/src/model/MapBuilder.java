@@ -1,6 +1,7 @@
 package model;
 
 import controller.NPCMovementController;
+import model.entity.BossDavid;
 import model.entity.Merchant;
 import model.entity.Orc;
 import model.entity.Skeleton;
@@ -115,6 +116,7 @@ public class MapBuilder{
 		this.map[4][12].setEntity(new Merchant());
 		this.map[9][12].setEntity(new Skeleton());
 		this.map[14][12].setEntity(new Orc());
+		//this.map[14][11].setEntity(new BossDavid());
 		//NPCMovementController movePhil = new NPCMovementController(phil);
 		//movePhil.doArtificialIntelligence();
 		return new MapSet(this.map);
@@ -175,10 +177,10 @@ public class MapBuilder{
 		Orc dan = new Orc();
 		Merchant ryan = new Merchant();
 		
-		this.map[3][13].setEntity(ryan);
-		this.map[6][12].setEntity(jacob);
-		this.map[12][12].setEntity(steve);
-		this.map[13][4].setEntity(dan);
+		//this.map[3][13].setEntity(ryan);
+		//this.map[6][12].setEntity(jacob);
+		this.map[12][12].setEntity(new BossDavid());
+		//this.map[13][4].setEntity(dan);
 		
 		return new MapSet(this.map);
 	}
