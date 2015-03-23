@@ -21,15 +21,18 @@ import model.entity.Avatar;
 public class HunterAbilityView extends AbilityView{
 	//**********************  POINTS **************************************
 	private static final Point SNEAK_POINT = new Point(Scaling.SNEAK_X,Scaling.SNEAK_Y);
+	private static final Point PICKPOCKET_POINT = new Point(Scaling.PICKPOCKET_X,Scaling.PICKPOCKET_Y);
 	
 	//**********************  IMAGE PATHS *******************************
 	private static final String SNEAK_PATH = "src/res/img/Sneak.png";
+	private static final String PICKPOCKET_PATH = "src/res/img/pickpocket.png";
 
 
 	private static final Point SPELL_SLOT = new Point(Scaling.SPELL_WIDTH,Scaling.SPELL_HEIGHT);
 	
 	//********************** IMAGES *************************************************
 	private static final BufferedImage SNEAK_IMAGE = ImageProcessing.scaleImage(SPELL_SLOT,SNEAK_PATH);
+	private static final BufferedImage PICKPOCKET_IMAGE = ImageProcessing.scaleImage(SPELL_SLOT,PICKPOCKET_PATH);
 
 	 
 	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
@@ -44,6 +47,7 @@ public class HunterAbilityView extends AbilityView{
 	public void paint(Graphics g){
 		super.paint(g);
 		g.drawImage(SNEAK_IMAGE, SNEAK_POINT.getX(), SNEAK_POINT.getY(), null);
+		g.drawImage(PICKPOCKET_IMAGE, PICKPOCKET_POINT.getX(), PICKPOCKET_POINT.getY(), null);
 	}
 
 	public Dimension getPreferredSize(){

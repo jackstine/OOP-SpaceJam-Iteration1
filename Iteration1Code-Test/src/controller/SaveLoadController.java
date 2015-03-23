@@ -261,6 +261,8 @@ public class SaveLoadController {
 				else map.updateEntityLocation(map.getTileEntity(new Point(x, y)), new Location(x, y));
 			}
 			
+			map.setEntitiesLocations();
+			
 			games.put(gameName, map);
 		}
 		

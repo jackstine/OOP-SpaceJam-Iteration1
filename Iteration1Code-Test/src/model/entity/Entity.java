@@ -52,6 +52,7 @@ public abstract class Entity implements Dieable{
 	private RadialEntitySight sight;
 	private Entity sellingPartner;
 	private AbilityView abilityView;
+	private boolean observationOn;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Abilities abilities;
@@ -247,6 +248,18 @@ public abstract class Entity implements Dieable{
 		return this.abilities.getSelectedSpell();
 	}
 	
+	public void setObservation(){
+		this.observationOn = true;
+	}
+	
+	public void clearObservation(){
+		this.observationOn = false;
+	}
+	
+	public boolean getObservation(){
+		return this.observationOn;
+	}
+	
 	
 	public void incSkillValue(String key) {
 		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
@@ -326,27 +339,6 @@ public abstract class Entity implements Dieable{
 		return "This looks like "+toString()+"\nProbably has "+stats.getStatValue("HP")+"HP left\n";
 	}
 	
-	public class BuffTimer implements ActionListener {
-		long start = System.currentTimeMillis();
-		int value = 0;
-		String stat = "";
-		public BuffTimer(int value, String stat){
-			this.value = value;
-			this.stat = stat;
-		}
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			long timePassed = System.currentTimeMillis() - start;
-			if(timePassed > 5000){
-				stats.setStatValue(stat, value);
-				buffed = false;
-				buffTime.stop();
-			}
-			
-		}
-
-	}
-	
 	public void setBuyingMode(){
 		this.buyingMode = true;
 	}
@@ -371,19 +363,83 @@ public abstract class Entity implements Dieable{
 		this.engagedState.revert();
 	}
 	
+	public void polymorph(){
+		System.out.println("THIS RUNS");
+		int oldMovement= this.getStatValue("Movement");
+		int changedMovement=2;
+		this.setStatValue("Movement",changedMovement);
+		buffTime = new Timer(500,new PolymorphTimer("Movement",oldMovement));
+		makeAlternateSpriteArray();
+		buffTime.start();
+		
+		
+		
+	}
 	
 	public abstract void makeDeathSoundEffect();
+	
+	
+	
 	public void makeAlternateSpriteArray() {
 		SpriteSheetUtility util = occupation.getAlternateSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
 	}
+	
+	
 	public void restoreSpriteArray() {
 		SpriteSheetUtility util = occupation.getSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
 	}
+
 	public void makeTransformedSpriteArray() {
 		SpriteSheetUtility util = occupation.getTransformedSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
 	}
+
+	
+	public class BuffTimer implements ActionListener {
+		long start = System.currentTimeMillis();
+		int value = 0;
+		String stat = "";
+		public BuffTimer(int value, String stat){
+			this.value = value;
+			this.stat = stat;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			long timePassed = System.currentTimeMillis() - start;
+			if(timePassed > 5000){
+				stats.setStatValue(stat, value);
+				buffed = false;
+				buffTime.stop();
+				restoreSpriteArray();
+			}
+			
+		}
+
+	}
+	
+	public class PolymorphTimer implements ActionListener {
+		long start = System.currentTimeMillis();
+		int value = 0;
+		String stat = "";
+		
+		public PolymorphTimer(String stat, int value ){ //add third parameter
+			this.value = value;
+			this.stat=stat;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			long timePassed = System.currentTimeMillis() - start;
+			if(timePassed > 5000){
+				stats.setStatValue(stat, value);
+				buffed = false;
+				buffTime.stop();
+			}
+			
+		}
+
+	}
+	
 }
 
