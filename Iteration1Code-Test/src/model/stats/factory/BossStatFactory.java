@@ -2,9 +2,9 @@ package model.stats.factory;
 
 import model.slots.Equipment;
 
-public class OrcTerminatorFactory extends StatFactory{
+public class BossStatFactory extends StatFactory{
 
-	public OrcTerminatorFactory(Equipment equipment) {
+	public BossStatFactory(Equipment equipment) {
 		super(equipment);
 	}
 	
@@ -13,19 +13,19 @@ public class OrcTerminatorFactory extends StatFactory{
 	}
 	
 	protected int getStrength() {
-		return 20;
+		return 50;
 	}
 	
 	protected int getAgility() {
-		return 4;
+		return 7;
 	}
 	
 	protected int getIntellect() {
-		return 10;
+		return 30;
 	}
 	
 	protected int getHardiness() {
-		return 50;
+		return 100;
 	}
 	
 	protected int getExperience() {
@@ -33,10 +33,11 @@ public class OrcTerminatorFactory extends StatFactory{
 	}
 	
 	protected int getMovement() {
-		return 10;
+		return 50;
+	}
+	
+	protected int getSight() {
+		return 6;
 	}
 
-	protected int getSight() {
-		return 3;
-	}
 }

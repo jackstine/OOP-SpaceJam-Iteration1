@@ -96,4 +96,5 @@ public abstract class Occupation{
 	public SpriteSheetUtility getAlternateSpriteSheet() {
 		return new GoatSpriteSheetUtility();
 	}
+
 }

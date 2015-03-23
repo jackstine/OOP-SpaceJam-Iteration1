@@ -1,6 +1,7 @@
 package model;
 
 import controller.NPCMovementController;
+import model.entity.BossDavid;
 import model.entity.Merchant;
 import model.entity.Orc;
 import model.entity.Skeleton;
@@ -179,12 +180,18 @@ public class MapBuilder{
 		Orc steve = new Orc();
 		Orc dan = new Orc();
 		Merchant ryan = new Merchant();
-		
+
 		this.map[3][13].setEntity(ryan);
 		this.map[6][12].setEntity(jacob);
 		this.map[12][12].setEntity(steve);
 		this.map[13][4].setEntity(dan);
 		this.map[13][6].setDecal(new SkullAndCrossbonesDecal(new BossAlertAreaEffect()));
+
+		//this.map[3][13].setEntity(ryan);
+		//this.map[6][12].setEntity(jacob);
+		this.map[12][12].setEntity(new BossDavid());
+		//this.map[13][4].setEntity(dan);
+
 		
 		return new MapSet(this.map);
 	}

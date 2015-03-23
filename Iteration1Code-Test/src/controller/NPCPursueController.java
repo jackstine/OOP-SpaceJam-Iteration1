@@ -14,11 +14,9 @@ import model.entity.*;
 
 public class NPCPursueController extends NPCMovementDirectiveController{
 	private Entity target;
-	NPCPingController pinger;
 	
 	public NPCPursueController(Entity entity){
 		super(entity);
-		pinger = new NPCPingController(entity);
 		target = entity.getSight().getTarget();
 	}
 	
