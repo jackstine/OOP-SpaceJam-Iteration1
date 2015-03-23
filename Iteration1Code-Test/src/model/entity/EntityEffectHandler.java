@@ -1,5 +1,6 @@
 package model.entity;
 
+import model.GameLog;
 import utilities.HurtSoundEffect;
 import utilities.SoundEffect;
 
@@ -21,6 +22,7 @@ public class EntityEffectHandler {
 	public static void applyPolymorph(Entity entity){
 		entity.polymorph();
 	}
+
 	
 	public static void subMP(Entity entity, int mana){entity.subMP(mana);}
 	public static void addMP(Entity entity,int mana){entity.addMP(mana);}

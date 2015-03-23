@@ -152,7 +152,7 @@ public class MapBuilder{
 		this.map[10][5].setDecal(new GoldStarDecal());
 		this.map[8][8].setDecal(new RedCrossDecal());
 		this.map[8][5].setDecal(new SkullAndCrossbonesDecal(new DamageAreaEffect(.50)));
-		this.map[14][8].setDecal(new SkullAndCrossbonesDecal(new DeathAreaEffect()));
+		//this.map[14][8].setDecal(new SkullAndCrossbonesDecal(new DeathAreaEffect()));
 		this.map[14][7].setItem(new HealingOneShotItem(.50)); 
 		this.map[8][10].setItem(new TreasureChest());
 		Armor armor = new Armor(3+10);
@@ -184,6 +184,7 @@ public class MapBuilder{
 		this.map[6][12].setEntity(jacob);
 		this.map[12][12].setEntity(steve);
 		this.map[13][4].setEntity(dan);
+		this.map[13][6].setDecal(new SkullAndCrossbonesDecal(new BossAlertAreaEffect()));
 		
 		return new MapSet(this.map);
 	}

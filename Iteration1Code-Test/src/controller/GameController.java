@@ -176,16 +176,13 @@ public class GameController {
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
             System.out.println("OBSERVATION IS BEFORE THE IF    " + avatar.getObservation());
+            System.out.println("PICKPOCKT IS BEFORE THE IF      " + avatar.getPickpocket());
             if(this.handler.getEntity(tileLocation) != null && avatar.getObservation()){
             	GameLog.writeToLog("Observation",(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
-            if(this.handler.getEntity(tileLocation) != null && avatar.getPickpocket()){
-            	avatar.makeGoldTransaction(100);
-            	GameLog.writeToLog("Stealing", "You stole 100 gold");
-            	
-            	}
             getMapView().repaint();
             avatar.clearObservation();
+            avatar.clearPickpocket();
             System.out.println("OBSERVATION IS " + avatar.getObservation());
         }
         public void mouseEntered(MouseEvent e) {}

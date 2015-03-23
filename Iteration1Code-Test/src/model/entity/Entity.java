@@ -72,7 +72,7 @@ public abstract class Entity implements Dieable{
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
-		gold = 0;
+		gold = 100;
 		occupation.createNecessities();
 		this.stats = new EntityStats(occupation.getStats());
 		this.skills = occupation.getSkills();
