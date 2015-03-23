@@ -172,11 +172,13 @@ public class GameController {
         	Location tileLocation = this.handler.getTileLocation(e);
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
+            System.out.println("OBSERVATION IS BEFORE THE IF    " + avatar.getObservation());
             if(this.handler.getEntity(tileLocation) != null && avatar.getObservation()){
             	GameLog.writeToLog("Observation",(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
             getMapView().repaint();
             avatar.clearObservation();
+            System.out.println("OBSERVATION IS " + avatar.getObservation());
         }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) {}

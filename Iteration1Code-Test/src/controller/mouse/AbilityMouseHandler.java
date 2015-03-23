@@ -34,6 +34,7 @@ public class AbilityMouseHandler {
 			boolean abilitySelectedIsEqualTo = abilitySelected.equals(abilityToBeSelected);
 			if (abilitySelectedIsEqualTo){
 				abilitySelected = null;
+				avatar.setSelectedSpell(null);
 			} else{
 				abilitySelected = abilityToBeSelected;
 				avatar.setSelectedSpell(abilitySelected);
