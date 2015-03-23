@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.swing.Timer;
 
+import utilities.DanceSoundEffect;
 import utilities.DeathSoundEffect;
 import utilities.GoatSoundEffect;
 import utilities.ImageProcessing;
@@ -424,13 +425,18 @@ public abstract class Entity implements Dieable{
 				int danceSpeed=1000;
 				e.setStatValue("Movement",changedMovement);
 				setDirection(0);
+				SoundEffect eff = new DanceSoundEffect();
 				try {
-					for(int i=0;i<5;i++){
 					setDirection(0);
 					Thread.sleep(danceSpeed);
 					setDirection(5);
 					Thread.sleep(danceSpeed);
-					}
+					setDirection(0);
+					Thread.sleep(danceSpeed);
+					setDirection(5);
+					Thread.sleep(danceSpeed);
+					setDirection(0);
+					Thread.sleep(danceSpeed);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
