@@ -1,6 +1,16 @@
 package model.entity;
 
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import model.GameMap;
+import model.World;
+import model.behavior.IdleBehavior;
+
 import model.GameLog;
+
 import utilities.HurtSoundEffect;
 import utilities.SoundEffect;
 
@@ -32,11 +42,21 @@ public class EntityEffectHandler {
 			@Override
 			public void run() {
 				entity.makeTransformedSpriteArray();
+				GameMap currMap = World.getMap(entity.getCurrMap());
+				Set<Entity> entities = currMap.getEntities();
+				HashMap<Entity,Integer> oldEntities = new HashMap<Entity,Integer>();
+				for(Entity e : entities) {
+					oldEntities.put(e,e.getStatValue("Sight"));
+					e.setStatValue("Sight", 0);
+				}
 				try {
 					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}
+				for(Entity e : oldEntities.keySet()) {
+					e.setStatValue("Sight", oldEntities.get(e));
 				}
 				entity.restoreSpriteArray();
 			}
@@ -47,5 +67,20 @@ public class EntityEffectHandler {
 	public static void applyDance(Entity entity){
 		entity.danceSpell();
 	}
-	
+	public static void pacify(final Entity e) {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+		}).start();
+			
+	}
 }

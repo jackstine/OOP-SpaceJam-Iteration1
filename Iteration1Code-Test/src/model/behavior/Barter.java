@@ -30,8 +30,8 @@ public class Barter implements Behavior{
 		this.setMVC(receiver);
 		this.mvc.showMerchantView();
 		Customer customerBehavior = new Customer(receiver);
-		//receiver.setEngageBehavior(customerBehavior);
-		//receiver.engage(barter);
+		receiver.setEngagedState(customerBehavior);
+		receiver.engage(barter);
 	}
 
 	

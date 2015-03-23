@@ -40,11 +40,13 @@ public class NPCSightController extends NPCController{
 						if(sight==null) {
 							sight = entity.getSight();
 						}
+						radius = entity.getStatValue("Sight");
 						sight.setSight(new RadialInfluenceSet(map, map.getEntityTile(entity), radius, 0));
-						//System.out.println("sight extending from "+entity);
+						System.out.println("sight extending from "+entity);
 						if(sight.contains(sight.getTarget())) {
-							//System.out.println("I FOUND EM");
+							System.out.println("I FOUND EM");
 							hasFoundTarget = true;
+							yield();
 						}
 					try{
 						sleep(1000/entity.getStats().getStatValue("Movement"));

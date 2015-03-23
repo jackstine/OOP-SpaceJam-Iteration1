@@ -111,10 +111,12 @@ public class InventoryEquipmentView extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton() == RIGHT_CLICK){
 				if (avatar.getBuyingMode()){
+					System.out.println("SELLING HERE");
 					handler.sellItem(e);
 					GameLog.writeToLog("Item Transaction", " Price: " + "\nTransaction successful: You have " + avatar.getGold() + " gold.");
 				}
 				else{
+					System.out.println("UNEQUIPPING HERE");
 					handler.unequipItem(e);
 				}
 			}

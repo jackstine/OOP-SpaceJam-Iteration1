@@ -141,7 +141,7 @@ public abstract class Entity implements Dieable{
 		this.preferredState.setState(behavior);
 	}
 	
-	public void setEngagedState(BehaviorComposite behavior){
+	public void setEngagedState(Behavior behavior){
 		this.engagedState.setState(behavior);
 	}
 	
