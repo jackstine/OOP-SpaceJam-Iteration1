@@ -239,6 +239,7 @@ public class SaveLoadController {
 							if (typeNPC.equals("Orc")) npc = new Orc();
 							if (typeNPC.equals("Skeleton")) npc = new Skeleton();
 							if (typeNPC.equals("Merchant")) npc = new Merchant();
+							if (typeNPC.equals("David")) npc = new BossDavid();
 						}
 						tile.setEntity(npc);
 					}
@@ -257,7 +258,9 @@ public class SaveLoadController {
 				String[] location = entityLocation[1].split(",");
 				int x = Integer.parseInt(location[0]);
 				int y = Integer.parseInt(location[1]);
-				if (map.getTileEntity(new Point(x, y)) == null) map.updateEntityLocation(avatar, new Location(x, y));
+				if (map.getTileEntity(new Point(x, y)) == null) {
+					if (avatar.getCurrMap().equals(gameName)) map.updateEntityLocation(avatar, new Location(x, y));
+				}
 				else map.updateEntityLocation(map.getTileEntity(new Point(x, y)), new Location(x, y));
 			}
 			
