@@ -31,7 +31,7 @@ public class EntityEffectHandler {
 			public void run() {
 				entity.makeTransformedSpriteArray();
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -39,6 +39,6 @@ public class EntityEffectHandler {
 				entity.restoreSpriteArray();
 			}
 			
-		});
+		}).start();
 	}
 }

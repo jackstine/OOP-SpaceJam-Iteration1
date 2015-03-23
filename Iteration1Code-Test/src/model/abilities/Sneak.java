@@ -12,8 +12,8 @@ public class Sneak implements Spellable {
 	}
 
 	public void apply(Entity entityToAffect) {
-		EntityEffectHandler.applyDamage(entityToAffect, this.getDamage());
-		GameLog.writeToLog("Spell Damage", "You have dealt " + this.getDamage() + " damage.");
+		EntityEffectHandler.stealth(entityToAffect);
+		GameLog.writeToLog("Stealth activated", "Shhhh.... Sneaking");
 
 	}
 	
