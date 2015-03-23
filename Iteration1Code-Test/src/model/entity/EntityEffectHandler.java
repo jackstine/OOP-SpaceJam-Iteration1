@@ -43,4 +43,9 @@ public class EntityEffectHandler {
 			
 		}).start();
 	}
+	
+	public static void applyDance(Entity entity){
+		entity.danceSpell();
+	}
+	
 }
