@@ -53,6 +53,7 @@ public abstract class Entity implements Dieable{
 	private Entity sellingPartner;
 	private AbilityView abilityView;
 	private boolean observationOn;
+	private boolean pickpocketOn;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Abilities abilities;
@@ -258,6 +259,18 @@ public abstract class Entity implements Dieable{
 	
 	public boolean getObservation(){
 		return this.observationOn;
+	}
+	
+	public void setPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public void clearPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public boolean getPickpocket(){
+		return this.pickpocketOn;
 	}
 	
 	

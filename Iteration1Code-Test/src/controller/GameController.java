@@ -176,7 +176,7 @@ public class GameController {
             if(this.handler.getEntity(tileLocation) != null && avatar.getObservation()){
             	GameLog.writeToLog("Observation",(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
-            if(this.handler.getEntity(tileLocation) != null && avatar.getOccupation().getName().equals("Hunter")){
+            if(this.handler.getEntity(tileLocation) != null && avatar.getPickpocket()){
             	avatar.makeGoldTransaction(100);
             	GameLog.writeToLog("Stealing", "You stole 100 gold");
             	
