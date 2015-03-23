@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.Timer;
 
 import utilities.DeathSoundEffect;
+import utilities.GoatSoundEffect;
 import utilities.ImageProcessing;
 import utilities.RNG;
 import utilities.Scaling;
@@ -422,6 +423,7 @@ public abstract class Entity implements Dieable{
 		this.setStatValue("Movement",changedMovement);
 		buffTime = new Timer(500,new PolymorphTimer("Movement",oldMovement));
 		makeAlternateSpriteArray();
+		SoundEffect e = new GoatSoundEffect();
 		buffTime.start();
 		
 		

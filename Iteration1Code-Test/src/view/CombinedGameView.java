@@ -42,7 +42,7 @@ public class CombinedGameView extends View {
    
     public CombinedGameView(GameMap map, Avatar avatar,BoardMouseListener boardListener, ActionListener lvlup, ActionListener sysbtn, ActionListener statbtn){
     		this.avatar = avatar;
-    		
+    		buttons.setBackground(new Color(169, 221, 221));
     		//Set font to buttons
     		buttonFont = fh.AfterDisasterFont();
     		systemButton.setFont(buttonFont.deriveFont(15f));

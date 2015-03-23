@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -38,6 +39,7 @@ public class InventoryEquipmentView extends JPanel {
 	public InventoryEquipmentView(Avatar avatar) {
 				
 		this.avatar = avatar;
+		this.setBackground(new Color(169, 221, 221));
 		this.inventory = new InventoryView(avatar.getInventory());
 		inventory.addMouseListener(new InventoryMouseListener());
 		inventory.addMouseMotionListener(new InventoryMouseMotionListener());
