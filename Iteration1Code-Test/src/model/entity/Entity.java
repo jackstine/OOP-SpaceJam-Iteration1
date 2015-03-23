@@ -315,27 +315,6 @@ public abstract class Entity implements Dieable{
 		return "This looks like "+toString()+"\nProbably has "+stats.getStatValue("HP")+"HP left\n";
 	}
 	
-	public class BuffTimer implements ActionListener {
-		long start = System.currentTimeMillis();
-		int value = 0;
-		String stat = "";
-		public BuffTimer(int value, String stat){
-			this.value = value;
-			this.stat = stat;
-		}
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			long timePassed = System.currentTimeMillis() - start;
-			if(timePassed > 5000){
-				stats.setStatValue(stat, value);
-				buffed = false;
-				buffTime.stop();
-			}
-			
-		}
-
-	}
-	
 	public void setBuyingMode(){
 		this.buyingMode = true;
 	}
@@ -360,7 +339,60 @@ public abstract class Entity implements Dieable{
 		this.engagedState.revert();
 	}
 	
+	public void polymorph(){
+		int oldMovement= this.getStatValue("Movement");
+		int changedMovement=2;
+		this.setStatValue("Movement",changedMovement);
+		buffTime = new Timer(500,new PolymorphTimer("Movement",this.getStatValue("Movement")));
+		buffTime.start();
+		
+		
+	}
+	
 	public abstract void makeDeathSoundEffect();
+	
+	public class BuffTimer implements ActionListener {
+		long start = System.currentTimeMillis();
+		int value = 0;
+		String stat = "";
+		public BuffTimer(int value, String stat){
+			this.value = value;
+			this.stat = stat;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			long timePassed = System.currentTimeMillis() - start;
+			if(timePassed > 5000){
+				stats.setStatValue(stat, value);
+				buffed = false;
+				buffTime.stop();
+			}
+			
+		}
+
+	}
+	
+	public class PolymorphTimer implements ActionListener {
+		long start = System.currentTimeMillis();
+		int value = 0;
+		String stat = "";
+		
+		public PolymorphTimer(String stat, int value ){ //add third parameter
+			this.value = value;
+			this.stat=stat;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			long timePassed = System.currentTimeMillis() - start;
+			if(timePassed > 5000){
+				stats.setStatValue(stat, value);
+				buffed = false;
+				buffTime.stop();
+			}
+			
+		}
+
+	}
 	
 }
 
