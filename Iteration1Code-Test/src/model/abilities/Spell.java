@@ -4,7 +4,7 @@ import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
 public abstract class Spell implements Spellable{
-	private Entity entity;
+	protected Entity entity;
 	
 	public Spell(Entity entity) {
 		this.entity = entity;

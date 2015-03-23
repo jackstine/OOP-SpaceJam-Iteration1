@@ -52,6 +52,7 @@ public abstract class Entity implements Dieable{
 	private RadialEntitySight sight;
 	private Entity sellingPartner;
 	private AbilityView abilityView;
+	private boolean observationOn;
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Abilities abilities;
@@ -245,6 +246,18 @@ public abstract class Entity implements Dieable{
 	}
 	public Spellable getSelectedSpell(){
 		return this.abilities.getSelectedSpell();
+	}
+	
+	public void setObservation(){
+		this.observationOn = true;
+	}
+	
+	public void clearObservation(){
+		this.observationOn = false;
+	}
+	
+	public boolean getObservation(){
+		return this.observationOn;
 	}
 	
 	

@@ -10,6 +10,7 @@ public class Observation extends Spell{
 
 	@Override
 	protected void doTheSpell(Entity entityToAffect) {
+		this.entity.setObservation();
 	}
 
 	@Override
