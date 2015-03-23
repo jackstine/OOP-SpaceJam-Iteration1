@@ -31,6 +31,7 @@ public class PickPockit extends EngagedBehavior{
 				
 				TakeableItem droppedItem = weapon;
 				pickPockiter.getInventory().findAndEquip(droppedItem);
+				pickPockiter.makeGoldTransaction(100);
 			}			
 		} else {	// on unsuccessful pickpockit the avatar takes damage
 			EntityEffectHandler.applyDamage(pickPockiter, receiver.attack());

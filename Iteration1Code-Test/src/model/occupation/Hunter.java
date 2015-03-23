@@ -47,6 +47,10 @@ public abstract class Hunter extends Occupation{
 		
 	}
 	
+	public void steal(Entity entity){
+		entity.makeGoldTransaction(100);
+	}
+	
 	public Abilities createAbilities(){
 		return new Sneeky();
 	}
