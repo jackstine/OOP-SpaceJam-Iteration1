@@ -21,7 +21,7 @@ public class BindWoundsSpell extends BoonSpellSingle{
 
 	@Override
 	public void applyBoon(Entity entityToAffect) {
-		SoundEffect gogo = new BindWoundsSoundEffect();
+		//SoundEffect gogo = new BindWoundsSoundEffect();
 		EntityEffectHandler.applyHeal(entityToAffect, this.heal*this.getEntity().getSkillValue("Boon"));
 	}
 
