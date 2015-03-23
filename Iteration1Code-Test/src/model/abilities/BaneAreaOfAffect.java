@@ -11,6 +11,6 @@ public abstract class BaneAreaOfAffect extends SpellAreaOfEffect implements Bane
 
 	public void happensInAreaAffect(Entity entityToAffect) {
 		int damage = this.getDamage();
-		EntityEffectHandler.applyDamage(entity, damage);
+		EntityEffectHandler.applyDamage(entityToAffect, damage);
 	}
 }
