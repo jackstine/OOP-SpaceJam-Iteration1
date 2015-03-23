@@ -12,6 +12,7 @@ import model.slots.WeaponSlot;
 import model.stats.Stat;
 import model.stats.factory.StatFactory;
 import model.visitor.OccupationVisitor;
+import utilities.GoatSpriteSheetUtility;
 import utilities.SpriteSheetUtility;
 import view.AbilityView;
 
@@ -89,4 +90,7 @@ public abstract class Occupation{
 	}
 	
 	public abstract void accept(OccupationVisitor visitor);
+	public SpriteSheetUtility getAlternateSpriteSheet() {
+		return new GoatSpriteSheetUtility();
+	}
 }

@@ -371,7 +371,16 @@ public abstract class Entity implements Dieable{
 		this.engagedState.revert();
 	}
 	
+	
 	public abstract void makeDeathSoundEffect();
+	public void makeAlternateSpriteArray() {
+		SpriteSheetUtility util = occupation.getAlternateSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
+	}
+	public void restoreSpriteArray() {
+		SpriteSheetUtility util = occupation.getSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
+	}
 	
 }
 
