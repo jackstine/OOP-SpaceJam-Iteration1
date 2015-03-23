@@ -106,10 +106,12 @@ public class GameController {
     
     public class StatCheck implements ActionListener {
     	private int yourLvl;
+    	private int gold;
     	private String currMap;
     	public StatCheck(){
     		yourLvl = avatar.getStatValue("Level"); 
     		currMap = avatar.getCurrMap();
+    		gold = avatar.getGold();
     	}
 		public void actionPerformed(ActionEvent e) {
 			if(avatar.getStatValue("Lives") <= 0){
@@ -132,6 +134,10 @@ public class GameController {
 				currMap = avatar.getCurrMap();
 				map = world.getMap(currMap);
 				combinedGameView.changeMap(map);
+			}
+			else if(gold != avatar.getGold()){
+				gold = avatar.getGold();
+				combinedGameView.updateGold();
 			}
 			stats.updatetable();
 			combinedGameView.updateStatus();

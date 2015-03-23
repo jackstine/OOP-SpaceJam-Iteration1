@@ -9,6 +9,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import utilities.FontHandler;
 import controller.mouse.InventoryEquipmentMouseHandler;
@@ -35,6 +36,7 @@ public class InventoryEquipmentView extends JPanel {
 	private InventoryEquipmentMouseHandler handler;
 	private FontHandler fh = new FontHandler();
 	private Font labelFont;
+	private JLabel gold =  new JLabel("Gold :",SwingConstants.CENTER);
 
 	public InventoryEquipmentView(Avatar avatar) {
 				
@@ -49,17 +51,25 @@ public class InventoryEquipmentView extends JPanel {
 		labelFont = fh.AfterDisasterFont();
 		this.title = new JLabel("<html><span style='font-size:30px;'><u>Inventory/Equipment</u></span><br></html>", JLabel.CENTER);
 		this.title.setFont(labelFont.deriveFont(25f));
-	
+		
+		this.gold.setFont(labelFont.deriveFont(20f));
+		updateGold();
+		
 		this.setLayout(new BorderLayout());
 		add(this.title,BorderLayout.NORTH);
 		//add(this.spell,BorderLayout.WEST);
 		add(this.inventory,BorderLayout.CENTER);
 		add(this.equipment,BorderLayout.EAST);
+		add(gold,BorderLayout.SOUTH);
 		
 		this.handler = new InventoryEquipmentMouseHandler(avatar, this);
 		
 		setFocusable(true);
 		setVisible(true);
+	}
+	
+	public void updateGold(){
+		gold.setText("Gold :" + avatar.getGold());
 	}
 	
 	public void setDraggingSlot(InventorySlot slot){

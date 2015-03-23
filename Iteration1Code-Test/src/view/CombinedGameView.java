@@ -110,6 +110,10 @@ public class CombinedGameView extends View {
     public void updateStatus(){
     	statusView.updateStatus();
     }
+    
+    public void updateGold(){
+    	character.updateGold();
+    }
  
     
     public void addExternalViews(JInternalFrame info){

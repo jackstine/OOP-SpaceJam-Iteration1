@@ -149,10 +149,6 @@ public class StatusView extends JPanel {
 		portraitView.setPreferredSize(new Dimension(210, 168));
 		portraitView.repaint();
 		
-		JPanel p = new JPanel();
-		p.add(portraitView);
-		p.add(new JLabel("GOLD GOLD"));
-		
 		portraitStatsPanel = new JPanel();
 		portraitStatsPanel.setLayout(new GridLayout(1,2));
 		portraitStatsPanel.add(portraitView);
