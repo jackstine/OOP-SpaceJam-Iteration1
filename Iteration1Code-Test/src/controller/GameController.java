@@ -184,15 +184,9 @@ public class GameController {
             System.out.println("OBSERVATION IS BEFORE THE IF    " + avatar.getObservation());
             System.out.println("PICKPOCKT IS BEFORE THE IF      " + avatar.getPickpocket());
             if(this.handler.getEntity(tileLocation) != null && avatar.getObservation()){
-            	GameLog.writeToLog("DODO",this.handler.getEntity(tileLocation).getCurrMap());
+            	//GameLog.writeToLog("DODO",this.handler.getEntity(tileLocation).getCurrMap());
             	GameLog.writeToLog("Observation",(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
-            if(this.handler.getEntity(tileLocation) != null && avatar.getOccupation().getName().equals("Hunter")){
-            	
-            	avatar.makeGoldTransaction(100);
-            	GameLog.writeToLog("Stealing", "You stole 100 gold");
-            	
-            	}
             getMapView().repaint();
             avatar.clearObservation();
             avatar.clearPickpocket();

@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import model.GameLog;
 import model.GameMap;
 import model.Location;
 import model.Point;
@@ -81,7 +82,7 @@ public class MapViewController{
 		public void SyncDelay(){
 			if(timer.getDelay() != baseDelay/avatar.getStatValue("Movement")){
             	timer.setDelay(baseDelay/avatar.getStatValue("Movement"));
-            	avatar.writeJournal("Just updated movment speed:" + timer.getDelay());
+            	GameLog.writeToLog("Speed:","Just updated movment speed:" + timer.getDelay());
             }
 		}
 		

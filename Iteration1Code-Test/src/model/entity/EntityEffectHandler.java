@@ -63,6 +63,10 @@ public class EntityEffectHandler {
 			
 		}).start();
 	}
+	
+	public static void applyDance(Entity entity){
+		entity.danceSpell();
+	}
 	public static void pacify(final Entity e) {
 		new Thread(new Runnable() {
 
@@ -79,5 +83,4 @@ public class EntityEffectHandler {
 		}).start();
 			
 	}
-
 }
