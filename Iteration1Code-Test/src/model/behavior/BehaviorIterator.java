@@ -1,29 +1,26 @@
 package model.behavior;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class BehaviorIterator {
-	private List<Behavior> behaviors;
+	private ArrayList<Behavior> behaviors;
 	private int size;
 	private int index = 0;
 	
-	public BehaviorIterator (List<Behavior> target) {
+	public BehaviorIterator (ArrayList<Behavior> target) {
 		behaviors = target;
 		size = behaviors.size();
 	}
 	
-	public Behavior next () {
-		if( hasNext() ) {
-			return behaviors.get(index++);
-		}
-		return null;
+	public void next () {
+		index = ((index+1) % size);
+	}
+	
+	public Behavior get () {
+		return behaviors.get(index);
 	}
 	
 	public void reset () {
 		index = 0;
-	}
-	
-	public boolean hasNext () {
-		return index < (size - 1);
 	}
 }

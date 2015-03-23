@@ -4,6 +4,7 @@ import java.util.*;
 
 import model.entity.Avatar;
 import model.entity.Entity;
+import model.entity.NPC;
 import utilities.Scaling;
 import view.MapView;
 
@@ -71,6 +72,7 @@ public class GameMap extends Observable{
 		Entity entity = this.getTile(loc).dropEntity();
 		this.entityToLocationMap.remove(entity);
 		entity.makeDeathSoundEffect();
+		System.out.println(entity +" was killed");
 		entity.kill();
 		this.send();
 	}

@@ -22,7 +22,6 @@ import view.MapView;
 
 //public class MapViewController extends JFrame{
 public class MapViewController{
-	private GameMap currMap ;
 	private World world;
 	private Avatar avatar;
 	private boolean active;
@@ -124,6 +123,11 @@ public class MapViewController{
 			}
 			else if(key==KeyEvent.VK_NUMPAD5 || key==keySet.get("DANCE2")){
 				this.movement.move(new Point(0,0), Directions.CENTRAL);
+			}
+			else if(key==KeyEvent.VK_SPACE) {
+				Location pointToMove = new Location(World.getMap(avatar.getCurrMap()).getEntityLocation(avatar));
+				pointToMove.addLocation(Directions.getPoint(avatar.getDirection()));
+				avatar.attemptAttack(World.getMap(avatar.getCurrMap()), pointToMove);
 			}
 		}
 

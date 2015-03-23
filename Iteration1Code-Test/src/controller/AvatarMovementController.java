@@ -6,6 +6,7 @@ import model.Point;
 import model.QuestHandler;
 import model.World;
 import model.entity.Avatar;
+import model.entity.NPC;
 import view.MapView;
 
 public class AvatarMovementController extends MovementController {
@@ -40,7 +41,7 @@ public class AvatarMovementController extends MovementController {
 		}
 		else{
 			// FIX THIS LoD
-			if (pointToMove != null)
+			if (pointToMove != null && this.getCurrMap().getTileEntity(pointToMove) != null)
 				this.getCurrMap().getTileEntity(pointToMove).engage(avatar);
 		}
 		this.mapView.repaint();

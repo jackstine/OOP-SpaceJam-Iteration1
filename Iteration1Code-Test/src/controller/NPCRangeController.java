@@ -6,19 +6,19 @@ import model.RadialInfluenceSet;
 import model.behavior.RadialEntitySight;
 import model.entity.*;
 
-public class NPCSightController extends NPCController{
+public class NPCRangeController extends NPCSightController{
 	private RadialEntitySight sight;
 	private int radius;
 	private NPCPingController pinger;
 	
-	public NPCSightController(Entity entity, int radius) {
-		super(entity);
+	public NPCRangeController(Entity entity, int radius) {
+		super(entity, radius);
 		this.radius = radius;
 		pinger = new NPCPingController(entity);
 	}
 	
 	public void doArtificialIntelligence() {
-		task = new SightTask();
+		task = new RangeTask();
 		stopThread = false;
 		task.start();
 	}
@@ -27,27 +27,30 @@ public class NPCSightController extends NPCController{
 		this.sight = sight;
 	}
 	
-	private class SightTask extends Thread {
+	private class RangeTask extends Thread {
 		GameMap map = getCurrMap();
 		
 		@Override
 		public void run() {
 			try {
 				while (!stopThread) {
+						System.out.println("range extending from "+entity);
+						pinger.pingRangeEstablished();
 						if(sight==null) {
 							sight = entity.getSight();
 						}
 						sight.setSight(new RadialInfluenceSet(map, map.getEntityTile(entity), radius, 0));
-						System.out.println("sight extending from "+entity);
 						if(sight.contains(sight.getTarget())) {
-							pinger.pingFoundAvatar();
+							pinger.pingInRangeOfTarget();
 						}
+						else pinger.pingOutOfRangeOfTarget();
 					try{
 						sleep(1000/entity.getStats().getStatValue("Movement"));
 					}catch(Exception e){}
 				}
 			} 
 			catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 	}

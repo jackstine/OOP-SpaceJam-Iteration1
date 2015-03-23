@@ -7,6 +7,8 @@ import java.util.Set;
 
 import model.entity.Avatar;
 import model.entity.Entity;
+import model.entity.NPC;
+import model.entity.Orc;
 import view.MapView;
 
 public class World {
@@ -98,10 +100,12 @@ public class World {
 	// this method is called to run all Entities in idle states, whatever they may be
 	public void runEntities(){
 		Set<Entity> entities = this.getEntities();
+
 		for (Entity ent : entities){
 			ent.grantSight(avatar);
 			ent.idle();
-			
+			if(ent instanceof Orc)
+				ent.trackWorld();
 		}
 	}
 	

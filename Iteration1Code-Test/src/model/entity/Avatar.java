@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import model.GameMap;
+import model.Point;
+import model.behavior.AvatarAttack;
+import model.behavior.BehaviorComposite;
+import model.behavior.State;
 import model.items.TakeableItem;
 import model.occupation.Occupation;
 import utilities.*;
@@ -14,6 +19,7 @@ import utilities.*;
 public class Avatar extends Entity {
 	private int levels = 0;
 	private ArrayList<String> journal = new ArrayList<String>();
+	private State engagedState;
 	private boolean writing = false;
 	private String currMap = "Main";
 	//deprecated all entities need a equipment now
@@ -26,6 +32,8 @@ public class Avatar extends Entity {
 	public Avatar(Occupation occupation) {
 		super(occupation);
 		gold = 200;
+		engagedState = new State();
+		engagedState.setState(new BehaviorComposite(new AvatarAttack(this)));
 		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
 	
@@ -58,13 +66,22 @@ public class Avatar extends Entity {
 		result += "\nCurrentMap:" + this.currMap;
 		return result;
 	}
-
+	
 	public int getLevels() {
 		return levels;
 	}
 
 	public void setLevels(int levels) {
 		this.levels = levels;
+	}
+	
+	public void attemptAttack(GameMap currMap, Point point) {
+		if(currMap.getTileEntity(point) != null) {
+			engagedState.perform(currMap.getTileEntity(point));
+		}
+		else {
+			SwooshSoundEffect swoosh = new SwooshSoundEffect();
+		}
 	}
 	
 	public void writeJournal(String s){

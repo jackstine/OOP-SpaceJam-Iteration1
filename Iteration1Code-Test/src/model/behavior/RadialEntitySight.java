@@ -10,7 +10,7 @@ import model.Tile;
 import model.entity.Avatar;
 import model.entity.Entity;
 
-public class RadialEntitySight extends IdleBehavior {
+public class RadialEntitySight {
 
 	private Avatar avatar;
 	private RadialInfluenceSet sight;
@@ -24,17 +24,11 @@ public class RadialEntitySight extends IdleBehavior {
 		this.sight = sight;
 	}
 	
-	@Override
-	public void perform(Entity receiver) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	public Avatar getTarget() {
 		return avatar;
 	}
 
-	public boolean contains(Entity entity) {
+	public synchronized boolean contains(Entity entity) {
 		Collection<InfluenceTile> list = sight.getInfluenceSet();
 		for(InfluenceTile it : list) {
 			if(it.hasEntity() && it.getEntity() == entity) {
@@ -42,17 +36,5 @@ public class RadialEntitySight extends IdleBehavior {
 			}
 		}
 		return false;
-	}
-	
-	@Override
-	public void getBuffs() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void kill() {
-		// TODO Auto-generated method stub
-		
 	}
 }
