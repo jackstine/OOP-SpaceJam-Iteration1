@@ -21,8 +21,8 @@ public class Attack implements Behavior{
 		int oppositeDirection = Directions.getOppositeDirection(theAttacked.getDirection());
 		attacker.setDirection(oppositeDirection);
 		EntityEffectHandler.applyDamage(theAttacked, Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0));
-		String log = "\nYou have received " + Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0) + " damage";
-		GameLog.writeToLog("Melee Damage", log);
+		String log = Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0) + " damage";
+		GameLog.writeToLog("Melee Damage Received", log);
 		SoundEffect effect = new HurtSoundEffect();
 	}
 	

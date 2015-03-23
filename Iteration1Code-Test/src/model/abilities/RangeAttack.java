@@ -21,7 +21,7 @@ public class RangeAttack extends SpellSingleAffect{
 	@Override
 	protected void doTheSpell(Entity entityToAffect) {
 		EntityEffectHandler.applyDamage(entityToAffect, this.getDamage());
-		GameLog.writeToLog("Spell Damage", "You have dealt " + this.getDamage() + " damage.");
+		GameLog.writeToLog("Ranged Damage", "You have dealt " + this.getDamage() + " damage.");
 	}
 
 	@Override

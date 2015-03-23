@@ -16,7 +16,7 @@ public final class GameLog {
 		DateFormat df = new SimpleDateFormat("HH:mm:ss");
 		Date today = Calendar.getInstance().getTime(); 
 		String reportDate = df.format(today);
-		object = reportDate + ": " + subject + ":\n----------------------------------\n" + object;
+		object = reportDate + ": " + subject + ":\n--------------------------------------------\n" + object;
 		object += "\n-----------------------------------------------------------------------\n";
 		log+=object;
 		writing = true;

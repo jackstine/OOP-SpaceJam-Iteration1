@@ -21,9 +21,9 @@ public class AvatarAttack implements Behavior{
 		System.out.println("Attacker: "+attacker+"\nDefender: "+theAttacked);
 		int oppositeDirection = Directions.getOppositeDirection(attacker.getDirection());
 		theAttacked.setDirection(oppositeDirection);
-			EntityEffectHandler.applyDamage(theAttacked, Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0));
+		EntityEffectHandler.applyDamage(theAttacked, Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0));
+		GameLog.writeToLog("Melee Damage Dealt", Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0) + " damage.");
 		SoundEffect effect = new HurtSoundEffect();
-		GameLog.writeToLog("Attacking", attacker.getDialogue());
 	}
 	
 	public void getBuffs() {}
