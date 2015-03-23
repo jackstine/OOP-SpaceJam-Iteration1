@@ -2,6 +2,7 @@ package model.occupation;
 
 
 import utilities.SpriteSheetUtility;
+import utilities.StealthSpriteSheetUtility;
 import view.AbilityView;
 import view.SneekyView;
 import model.*;
@@ -61,6 +62,15 @@ public abstract class Hunter extends Occupation{
 	
 	public void accept(OccupationVisitor visitor){
 		visitor.accept(this);
+	}
+	
+	
+	public void engageStealth() {
+		
+	}
+	
+	public void disengageStealth() {
+		
 	}
 	
 }

@@ -10,7 +10,7 @@ public class AvatarHunter extends Hunter{
 		return new SpriteSheetUtility(this);
 	}
 	
-	public SpriteSheetUtility engageStealth() {
+	public SpriteSheetUtility getTransformedSpriteSheet() {
 		return new StealthSpriteSheetUtility(this);
 	}
 
