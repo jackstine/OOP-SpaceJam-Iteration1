@@ -32,7 +32,7 @@ public class Spells extends Abilities{
 		abilities[this.PLASMA_RAY_POINT.getY()][this.PLASMA_RAY_POINT.getX()] = new PlasmaRay(this.entity);
 		abilities[this.GLORY_HEAL_POINT.getY()][this.GLORY_HEAL_POINT.getX()] = new GloryHeal(this.entity);
 		abilities[this.MANA_BUFF_POINT.getY()][this.MANA_BUFF_POINT.getX()] = new ManaBuff(this.entity);
-		abilities[this.PACIFISM_POINT.getY()][this.PACIFISM_POINT.getX()] = null;
+		abilities[this.PACIFISM_POINT.getY()][this.PACIFISM_POINT.getX()] = new PacifyAbility(this.entity);
 		abilities[this.MAGIC_CIRCLE_POINT.getY()][this.MAGIC_CIRCLE_POINT.getX()] = null;
 		abilities[this.ANGRY_POINT.getY()][this.ANGRY_POINT.getX()] = null;
 		abilities[this.CONFUSE_POINT.getY()][this.CONFUSE_POINT.getX()] = null;

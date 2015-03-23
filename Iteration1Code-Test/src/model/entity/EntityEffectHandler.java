@@ -1,5 +1,6 @@
 package model.entity;
 
+import model.behavior.IdleBehavior;
 import utilities.HurtSoundEffect;
 import utilities.SoundEffect;
 
@@ -31,7 +32,7 @@ public class EntityEffectHandler {
 			public void run() {
 				entity.makeTransformedSpriteArray();
 				try {
-					Thread.sleep(10000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -40,5 +41,24 @@ public class EntityEffectHandler {
 			}
 			
 		}).start();
+	}
+	public static void pacify(final Entity e) {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				e.resetPreferredState();
+				e.setStatValue("OffensiveRating", 0);
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				e.triggerPreferredState();
+			}
+			
+		}).start();
+			
 	}
 }

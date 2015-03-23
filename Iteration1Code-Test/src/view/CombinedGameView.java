@@ -47,9 +47,15 @@ public class CombinedGameView extends View {
     		buttons.setBackground(new Color(169, 221, 221));
     		//Set font to buttons
     		buttonFont = fh.AfterDisasterFont();
-    		systemButton.setFont(buttonFont.deriveFont(15f));
-    		statButton.setFont(buttonFont.deriveFont(15f));
-    		levelUp.setFont(buttonFont.deriveFont(15f));    		
+    		systemButton.setFont(buttonFont.deriveFont(25f));
+    		systemButton.setContentAreaFilled(false);
+    		systemButton.setBorderPainted(false);
+    		statButton.setFont(buttonFont.deriveFont(25f));
+    		statButton.setContentAreaFilled(false);
+    		statButton.setBorderPainted(false);
+    		levelUp.setFont(buttonFont.deriveFont(25f));
+    		levelUp.setContentAreaFilled(false);
+    		levelUp.setBorderPainted(false);		
     		
             board = new GameView(map,avatar, map.getLocation(avatar));
             character = new InventoryEquipmentView(avatar);
