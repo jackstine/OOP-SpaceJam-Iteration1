@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -10,6 +12,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import utilities.FontHandler;
 import utilities.Scaling;
 
 @SuppressWarnings("serial")
@@ -23,14 +26,20 @@ public class LevelUpView extends JInternalFrame {
 		String key;
 		ActionListener a;
 		JButton button = new JButton();
+		Font font = new FontHandler().AfterDisasterFont();
     	for(Entry<String, ActionListener> entry: m.entrySet()){
    			key = entry.getKey();
    			a = entry.getValue();
    			button = new JButton(key);
    			button.addActionListener(a);
    			button.setFocusable(false);
+   			button.setFont(font.deriveFont(20f));
+   			button.setForeground(Color.WHITE);
+   			button.setContentAreaFilled(false);
+   			button.setBorderPainted(false);
    			levelUpMenu.add(button);
    		 }
+    	levelUpMenu.setBackground(Color.BLACK);
 		add(levelUpMenu);
 		setVisible(true);
 	}

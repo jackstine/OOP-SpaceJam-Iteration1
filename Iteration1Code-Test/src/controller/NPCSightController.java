@@ -9,18 +9,21 @@ import model.entity.*;
 public class NPCSightController extends NPCController{
 	private RadialEntitySight sight;
 	private int radius;
-	private NPCPingController pinger;
+	private boolean hasFoundTarget = false;
 	
 	public NPCSightController(Entity entity, int radius) {
 		super(entity);
 		this.radius = radius;
-		pinger = new NPCPingController(entity);
 	}
 	
 	public void doArtificialIntelligence() {
 		task = new SightTask();
 		stopThread = false;
 		task.start();
+	}
+	
+	public boolean hasFoundTarget() {
+		return hasFoundTarget;
 	}
 	
 	public void setSight(RadialEntitySight sight) {
@@ -38,9 +41,10 @@ public class NPCSightController extends NPCController{
 							sight = entity.getSight();
 						}
 						sight.setSight(new RadialInfluenceSet(map, map.getEntityTile(entity), radius, 0));
-						System.out.println("sight extending from "+entity);
+						//System.out.println("sight extending from "+entity);
 						if(sight.contains(sight.getTarget())) {
-							pinger.pingFoundAvatar();
+							//System.out.println("I FOUND EM");
+							hasFoundTarget = true;
 						}
 					try{
 						sleep(1000/entity.getStats().getStatValue("Movement"));

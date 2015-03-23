@@ -23,7 +23,7 @@ public class AvatarAttack implements Behavior{
 		theAttacked.setDirection(oppositeDirection);
 			EntityEffectHandler.applyDamage(theAttacked, Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0));
 		SoundEffect effect = new HurtSoundEffect();
-		GameLog.writeToLog(attacker.getDialogue());
+		GameLog.writeToLog("Attacking", attacker.getDialogue());
 	}
 	
 	public void getBuffs() {}

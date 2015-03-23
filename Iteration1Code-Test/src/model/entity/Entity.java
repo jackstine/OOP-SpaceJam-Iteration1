@@ -24,7 +24,6 @@ import model.abilities.Spells;
 import model.behavior.Behavior;
 import model.behavior.BehaviorComposite;
 import model.behavior.RadialEntitySight;
-import model.behavior.RangeTrack;
 import model.behavior.SightTrack;
 import model.behavior.State;
 import model.items.Equipable;
@@ -56,11 +55,12 @@ public abstract class Entity implements Dieable{
 	protected RadialEntitySight sight;
 	
 	protected SightTrack sightBehavior = new SightTrack();
-	protected RangeTrack rangeBehavior = new RangeTrack();
 
 	private AbilityView abilityView;
 	private boolean observationOn;
+	private boolean pickpocketOn;
 	private String currMap = "Main";
+
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Abilities abilities;
@@ -70,7 +70,7 @@ public abstract class Entity implements Dieable{
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
-		gold = 0;
+		gold = 100;
 		occupation.createNecessities();
 		this.stats = new EntityStats(occupation.getStats());
 		this.skills = occupation.getSkills();
@@ -145,18 +145,6 @@ public abstract class Entity implements Dieable{
 		this.engagedState.setState(behavior);
 	}
 	
-	public void triggerPreferredState () {
-		killPreferred();
-		preferredState.getState().trigger();
-		idle();
-	}
-	
-	public void resetPreferredState () {
-		killPreferred();
-		preferredState.getState().reset();
-		idle();
-	}
-	
 	public State getPreferredState () {
 		return preferredState;
 	}
@@ -184,21 +172,6 @@ public abstract class Entity implements Dieable{
 	public void engage(Entity entity){
 		this.engagedState.perform(entity);
 	}	
-	
-	//public void switchEngagedMode() {
-	//	this.engagedState.advanceState();
-	//}
-	
-	//public void switchPreferredMode() {
-	//	this.preferredState.advanceState();
-	//}
-	
-	public void trackWorld() {
-		rangeBehavior.track(this);
-		sightBehavior.track(this);
-		rangeBehavior.perform(this);
-		sightBehavior.perform(this);
-	}
 	
 	public void kill(){
 		this.preferredState.kill();
@@ -318,6 +291,18 @@ public abstract class Entity implements Dieable{
 		return this.observationOn;
 	}
 	
+	public void setPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public void clearPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public boolean getPickpocket(){
+		return this.pickpocketOn;
+	}
+	
 	
 	public void incSkillValue(String key) {
 		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
@@ -421,12 +406,40 @@ public abstract class Entity implements Dieable{
 		int oldMovement= this.getStatValue("Movement");
 		int changedMovement=2;
 		this.setStatValue("Movement",changedMovement);
-		buffTime = new Timer(500,new PolymorphTimer("Movement",oldMovement));
+		buffTime = new Timer(5000,new PolymorphTimer("Movement",oldMovement));
 		makeAlternateSpriteArray();
 		SoundEffect e = new GoatSoundEffect();
 		buffTime.start();
-		
-		
+	}
+	
+	public void danceSpell(){
+		final Entity e = this;
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				int oldMovement=e.getStatValue("Movement");
+				int changedMovement=0;
+				int oldDirection= e.getDirection();
+				int danceSpeed=1000;
+				e.setStatValue("Movement",changedMovement);
+				setDirection(0);
+				try {
+					for(int i=0;i<5;i++){
+					setDirection(0);
+					Thread.sleep(danceSpeed);
+					setDirection(5);
+					Thread.sleep(danceSpeed);
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				e.setStatValue("Movement", oldMovement);
+				e.setDirection(oldDirection);
+			}
+			
+		}).start();
 		
 	}
 	
@@ -434,10 +447,11 @@ public abstract class Entity implements Dieable{
 	
 	
 	
-	public void makeAlternateSpriteArray() {
+	private void makeAlternateSpriteArray() {
 		SpriteSheetUtility util = occupation.getAlternateSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
 	}
+	
 	
 	
 	public void restoreSpriteArray() {

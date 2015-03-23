@@ -1,6 +1,7 @@
 package view;
 
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.Map;
@@ -29,15 +30,23 @@ public class StatisticsView extends JInternalFrame {
 	private int dimensions[] = {Scaling.INTERNAL_X,Scaling.INTERNAL_Y,Scaling.INTERNAL_WIDTH,700};
 	
 	public StatisticsView(Avatar avatar, ActionListener retAction) {
+		primaryStats.setForeground(Color.WHITE);
+		derivedStats.setForeground(Color.WHITE);
+		skills.setForeground(Color.WHITE);
+		avatarGold.setForeground(Color.WHITE);
+		ret.setForeground(Color.WHITE);
+		ret.setBackground(Color.BLACK);
 		ret.setFocusable(false);
 		updatetable(avatar);
 		statsFont = fh.AfterDisasterFont();
+		ret.setFont( statsFont.deriveFont(20f));
 //		ret.setFont(statsFont.deriveFont(20f));
 //		primaryStats.setFont(statsFont.deriveFont(20f));
 //		derivedStats.setFont(statsFont.deriveFont(20f));
 		
 		
 		JPanel tables = new JPanel();
+		tables.setBackground(Color.BLACK);
 		tables.add(primaryStats);
 		tables.add(derivedStats);
 		tables.add(skills);

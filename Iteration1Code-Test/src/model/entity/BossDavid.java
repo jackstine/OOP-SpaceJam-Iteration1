@@ -12,27 +12,28 @@ import model.behavior.Pursue;
 import model.behavior.SightTrack;
 import model.behavior.Stand;
 import model.behavior.State;
+import model.occupation.Boss;
 import model.occupation.OrcTerminator;
 
-public class Orc extends NPC {
+public class BossDavid extends NPC {
 	
-	public Orc(){
-		super(new OrcTerminator());
+	public BossDavid(){
+		super(new Boss());
 		//this.sightBehavior = new SightTrack(this);
 		//sightBehavior.perform(this);
-		GuardBehavior preferred = new GuardBehavior(this, 2);
+		GuardBehavior preferred = new GuardBehavior(this,5);
 		BehaviorComposite engaged = new BehaviorComposite(new Attack(this));
 		this.engagedState.setState(engaged);
 		this.preferredState.setState(preferred);
-		this.name = "Orc";
+		this.name = "David";
 	}
 	
 	public String toString() {
-		return "NPC:Orc";
+		return "NPC:David";
 	}
 	
 	public String getDialogue() {
-		return "Orc: Stop clicking me!";
+		return "David: Plebeian! I will destroy you!";
 	}
 	
 	public void makeDeathSoundEffect() {

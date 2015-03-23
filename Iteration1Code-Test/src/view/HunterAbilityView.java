@@ -11,7 +11,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
-import controller.mouse.SpellMouseHandler;
+import controller.mouse.AbilityMouseHandler;
+//import controller.mouse.SpellMouseHandler;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
@@ -38,7 +39,7 @@ public class HunterAbilityView extends AbilityView{
 	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
 	private final int SELECTED_SPELL_X_OFFSET = 5;
 	private Avatar avatar;
-	private SpellMouseHandler handler;
+	private AbilityMouseHandler handler;
 
 	public HunterAbilityView(Avatar avatar){
 		super(avatar);
