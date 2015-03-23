@@ -44,7 +44,6 @@ public abstract class Entity implements Dieable{
 	protected String name;
 	protected int direction;
 	protected int gold;
-	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
 	protected SoundEffect soundEffect;
 	private BufferedImage[] spriteSheet;
@@ -61,6 +60,7 @@ public abstract class Entity implements Dieable{
 
 	private AbilityView abilityView;
 	private boolean observationOn;
+	private String currMap = "Main";
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Abilities abilities;

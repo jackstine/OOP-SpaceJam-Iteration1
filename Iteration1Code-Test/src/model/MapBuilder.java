@@ -115,6 +115,11 @@ public class MapBuilder{
 		this.map[4][12].setEntity(new Merchant());
 		this.map[9][12].setEntity(new Skeleton());
 		this.map[14][12].setEntity(new Orc());
+		this.map[11][6].setEntity(new Skeleton());
+		this.map[10][6].setEntity(new Skeleton());
+		this.map[10][5].setEntity(new Skeleton());
+		this.map[10][7].setEntity(new Skeleton());
+		this.map[9][6].setEntity(new Skeleton());
 		//NPCMovementController movePhil = new NPCMovementController(phil);
 		//movePhil.doArtificialIntelligence();
 		return new MapSet(this.map);
