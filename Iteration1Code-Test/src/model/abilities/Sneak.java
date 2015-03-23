@@ -1,5 +1,8 @@
 package model.abilities;
 
+import utilities.EarthSpellSoundEffect;
+import utilities.SoundEffect;
+import utilities.StealthSoundEffect;
 import model.GameLog;
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;
@@ -12,6 +15,7 @@ public class Sneak implements Spellable {
 	}
 
 	public void apply(Entity entityToAffect) {
+		SoundEffect gogo = new StealthSoundEffect();
 		EntityEffectHandler.stealth(entityToAffect);
 		GameLog.writeToLog("Stealth activated", "Shhhh.... Sneaking");
 

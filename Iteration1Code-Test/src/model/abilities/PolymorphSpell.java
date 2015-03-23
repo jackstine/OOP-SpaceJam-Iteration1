@@ -1,5 +1,8 @@
 package model.abilities;
 
+import utilities.EarthSpellSoundEffect;
+import utilities.PolymorphSoundEffect;
+import utilities.SoundEffect;
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
@@ -13,6 +16,7 @@ public class PolymorphSpell extends EnchantmentSpellSingle {
 
 	@Override
 	public void applyEnchantment(Entity entityToAffect) {
+		SoundEffect gogo = new PolymorphSoundEffect();
 		EntityEffectHandler.applyPolymorph(entityToAffect);	
 	}
 

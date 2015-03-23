@@ -1,5 +1,8 @@
 package model.abilities;
 
+import utilities.EarthSpellSoundEffect;
+import utilities.GloryHealSoundEffect;
+import utilities.SoundEffect;
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
@@ -12,6 +15,7 @@ public class ManaBuff extends BoonSpellSingle{
 	}
 
 	public void applyBoon(Entity entityToAffect) {
+		SoundEffect gogo = new GloryHealSoundEffect();
 		EntityEffectHandler.addMP(entityToAffect,this.manaRestored);
 	}
 

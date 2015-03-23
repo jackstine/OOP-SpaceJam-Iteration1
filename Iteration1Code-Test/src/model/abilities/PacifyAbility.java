@@ -13,7 +13,7 @@ public class PacifyAbility extends EnchantmentSpellSingle{
 
 	@Override
 	public void applyEnchantment(Entity entityToAffect) {
-		GameLog.writeToLog("Pacify", "SLEEP NOW BITCH");
+		GameLog.writeToLog("Pacify", "Go to sleep...");
 		EntityEffectHandler.pacify(entityToAffect);	
 		
 	}

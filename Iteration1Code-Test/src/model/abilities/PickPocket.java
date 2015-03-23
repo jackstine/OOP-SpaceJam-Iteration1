@@ -2,6 +2,9 @@ package model.abilities;
 
 import java.util.Collection;
 
+import utilities.EarthSpellSoundEffect;
+import utilities.PickpocketSoundEffect;
+import utilities.SoundEffect;
 import model.GameLog;
 import model.InfluenceTile;
 import model.RadialInfluenceSet;
@@ -19,6 +22,7 @@ public class PickPocket extends Spell{
 	
 	@Override
 	protected void doTheSpell(Entity entityToAffect) {
+		SoundEffect gogo = new PickpocketSoundEffect();
 			pickPocketCheck = new RadialInfluenceSet(World.getMap(this.entity.getCurrMap()),World.getMap(this.entity.getCurrMap()).getEntityTile(this.entity),1,0);
 			Collection<InfluenceTile> possibleEntityLocations = pickPocketCheck.getInfluenceSet();
 			

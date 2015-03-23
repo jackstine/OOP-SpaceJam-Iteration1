@@ -1,5 +1,7 @@
 package model;
 
+import utilities.CaveOfDaveSoundEffect;
+import utilities.SoundEffect;
 import model.entity.Entity;
 
 public class TeleportationAreaEffect implements AreaEffect {
@@ -9,6 +11,9 @@ public class TeleportationAreaEffect implements AreaEffect {
 	}
 	@Override
 	public void apply(Entity entity) {
+		if(nextMap.equals("Cave")) {
+			SoundEffect cod = new CaveOfDaveSoundEffect();
+		}
 		entity.setCurrMap(nextMap);
 	}
 

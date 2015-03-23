@@ -1,5 +1,7 @@
 package model.abilities;
 
+import utilities.EarthSpellSoundEffect;
+import utilities.SoundEffect;
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
@@ -19,6 +21,7 @@ public class BindWoundsSpell extends BoonSpellSingle{
 
 	@Override
 	public void applyBoon(Entity entityToAffect) {
+		SoundEffect gogo = new BindWoundsSoundEffect();
 		EntityEffectHandler.applyHeal(entityToAffect, this.heal*this.getEntity().getSkillValue("Boon"));
 	}
 

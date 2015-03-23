@@ -67,7 +67,7 @@ public class StatisticsView extends JInternalFrame {
 			 Skill skill = entry.getValue();
 			 skillList += "<tr>    <td class='tg-031e'>" + key+  "</td>    <td class='tg-031e'>" + skill.getSkillLevel() + "</td>  </tr>";
 		 }
-		 skillList += "<tr>    <td class='tg-031e'>" + "Gold " +  "</td>    <td class='tg-031e'>" + avatar.getGold() + "</td>  </tr>";
+		 //skillList += "<tr>    <td class='tg-031e'>" + "Gold " +  "</td>    <td class='tg-031e'>" + avatar.getGold() + "</td>  </tr>";
 		 skillList += "</table></html>";
 		
 		String livesLeft = Integer.toString(avatar.getStatValue("Lives"));

@@ -36,7 +36,7 @@ public class Orc extends NPC {
 	}
 	
 	public void makeDeathSoundEffect() {
-		SoundEffect effect = new DarthVaderNoooooSoundEffect();
+		SoundEffect effect = new DeathSoundEffect();
 	}
 	
 }

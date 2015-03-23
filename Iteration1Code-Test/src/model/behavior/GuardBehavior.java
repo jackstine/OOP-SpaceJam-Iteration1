@@ -40,6 +40,7 @@ public class GuardBehavior extends BehaviorComposite {
 					sight.perform(entity);
 					patrol.perform(entity);
 					while(true) {
+						System.out.print(".");
 						if(sight.hasFoundTarget()) {
 							trigger();
 							break;

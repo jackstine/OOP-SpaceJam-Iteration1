@@ -1,5 +1,8 @@
 package model.abilities;
 
+import utilities.DanceSpellSoundEffect;
+import utilities.EarthSpellSoundEffect;
+import utilities.SoundEffect;
 import model.entity.Entity;
 import model.entity.EntityEffectHandler;
 
@@ -12,6 +15,7 @@ private int manaRequired = 2;
 
 	@Override
 	public void applyEnchantment(Entity entityToAffect) {
+		SoundEffect gogo = new DanceSpellSoundEffect();
 		EntityEffectHandler.applyDance(entityToAffect);	
 	}
 

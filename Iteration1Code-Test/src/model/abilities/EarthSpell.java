@@ -1,5 +1,7 @@
 package model.abilities;
 
+import utilities.EarthSpellSoundEffect;
+import utilities.SoundEffect;
 import model.entity.Entity;
 
 public class EarthSpell extends BaneAreaOfAffect{
@@ -11,6 +13,7 @@ public class EarthSpell extends BaneAreaOfAffect{
 		super(entity);
 	}
 	public int getDamage() {
+		SoundEffect gogo = new EarthSpellSoundEffect();
 		return  this.entity.getSkillValue("Bane") * damage;
 	}
 
