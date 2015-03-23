@@ -175,6 +175,8 @@ public final class Scaling {
 	public static final int BIND_WOUNDS_Y = OBSERVATION_Y;
 	public static final int SNEAK_X = BIND_WOUNDS_X + SPELL_SPACE_X;
 	public static final int SNEAK_Y = BIND_WOUNDS_Y;
+	public static final int PICKPOCKET_X = OBSERVATION_X;
+	public static final int PICKPOCKET_Y = SPELL_OFFSET_Y + SPELL_SPACE_Y;
 	public static final int ABILITIES_WIDTH_NUM = 2;
 	public static final int ABILITIES_HEIGHT_NUM = 1;
 	
