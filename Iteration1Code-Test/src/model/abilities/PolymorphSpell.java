@@ -5,7 +5,7 @@ import model.entity.EntityEffectHandler;
 
 public class PolymorphSpell extends EnchantmentSpellSingle {
 
-	private int manaRequired = 5;
+	private int manaRequired = 2;
 	
 	public PolymorphSpell(Entity entity) {
 		super(entity);
