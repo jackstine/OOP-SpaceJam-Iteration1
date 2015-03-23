@@ -18,7 +18,7 @@ public class Sneeky extends Abilities{
 	protected void setSpells(){
 		//TODO get rid of these magic numbers once we get this class on the go
 		abilities[this.RANGE_ATTACK_POINT.getY()][this.RANGE_ATTACK_POINT.getX()] = new RangeAttack(entity);
-		abilities[this.SNEAK_POINT.getY()][this.SNEAK_POINT.getX()] = new PickPocket(this.entity);
+		abilities[this.SNEAK_POINT.getY()][this.SNEAK_POINT.getX()] = new Sneak(this.entity);
 		abilities[this.PICKPOCKET_POINT.getY()][this.PICKPOCKET_POINT.getX()] = new PickPocket(this.entity);
 	}
 
