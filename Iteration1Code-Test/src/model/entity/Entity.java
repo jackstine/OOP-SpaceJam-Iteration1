@@ -367,11 +367,39 @@ public abstract class Entity implements Dieable{
 		int oldMovement= this.getStatValue("Movement");
 		int changedMovement=2;
 		this.setStatValue("Movement",changedMovement);
-		buffTime = new Timer(500,new PolymorphTimer("Movement",oldMovement));
+		buffTime = new Timer(5000,new PolymorphTimer("Movement",oldMovement));
 		makeAlternateSpriteArray();
 		buffTime.start();
-		
-		
+	}
+	
+	public void danceSpell(){
+		final Entity e = this;
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				int oldMovement=e.getStatValue("Movement");
+				int changedMovement=0;
+				int oldDirection= e.getDirection();
+				int danceSpeed=1000;
+				e.setStatValue("Movement",changedMovement);
+				setDirection(0);
+				try {
+					for(int i=0;i<5;i++){
+					setDirection(0);
+					Thread.sleep(danceSpeed);
+					setDirection(5);
+					Thread.sleep(danceSpeed);
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				e.setStatValue("Movement", oldMovement);
+				e.setDirection(oldDirection);
+			}
+			
+		}).start();
 		
 	}
 	
@@ -379,10 +407,11 @@ public abstract class Entity implements Dieable{
 	
 	
 	
-	public void makeAlternateSpriteArray() {
+	private void makeAlternateSpriteArray() {
 		SpriteSheetUtility util = occupation.getAlternateSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
 	}
+	
 	
 	
 	public void restoreSpriteArray() {
@@ -439,6 +468,5 @@ public abstract class Entity implements Dieable{
 		}
 
 	}
-	
 }
 

@@ -22,6 +22,10 @@ public class EntityEffectHandler {
 		entity.polymorph();
 	}
 	
+	public static void applyDance(Entity entity){
+		entity.danceSpell();
+	}
+	
 	public static void subMP(Entity entity, int mana){entity.subMP(mana);}
 	public static void addMP(Entity entity,int mana){entity.addMP(mana);}
 	public static void stealth(final Entity entity) {
