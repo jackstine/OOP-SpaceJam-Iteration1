@@ -110,6 +110,10 @@ public class CombinedGameView extends View {
     public void updateStatus(){
     	statusView.updateStatus();
     }
+    
+    public void updateGold(){
+    	character.updateGold();
+    }
  
     
     public void addExternalViews(JInternalFrame info){
@@ -127,12 +131,20 @@ public class CombinedGameView extends View {
     public void changeMap(GameMap map){
     	Set<Entity> entities = map.getEntities();
     	for(Entity e : entities) {
+    		if (isAvatar(e)) continue;
     		e.grantSight(avatar);
     		e.setCurrMap(avatar.getCurrMap());
     		e.idle();
     	}
     	board.changeMap(map);
     }
+    
+    // sorry Dave
+ 	private boolean isAvatar(Entity e) {
+ 		String en = e.toString();
+ 		String entityName = en.substring(0, en.indexOf(":"));
+ 		return entityName.equals("Avatar");
+ 	}
     
     public void flash(MapFlash flash) {
     	

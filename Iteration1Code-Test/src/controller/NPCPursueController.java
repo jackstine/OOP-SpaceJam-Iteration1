@@ -49,6 +49,7 @@ public class NPCPursueController extends NPCMovementDirectiveController{
 					int currentY = currentLoc.getY();
 					//System.out.println("for da hundreth time");
 					//System.out.println(target + "FDJSKL" + entity);
+					System.out.println(entity.getCurrMap()  +  " THIS IS MY MAP    MMA{PAPOA");
 					if(currentX > targetX) {
 						//moveleft
 						entity.setDirection(Directions.WEST);

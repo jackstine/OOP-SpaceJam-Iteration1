@@ -114,7 +114,6 @@ public class GameMap extends Observable{
 		return this.entityToLocationMap.get(entity);
 	}
 	
-	
 	public Point getMapLength(){
 		return new Point(map.getHeight(), map.getWidth());
 	}
