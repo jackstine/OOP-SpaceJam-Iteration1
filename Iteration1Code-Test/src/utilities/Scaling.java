@@ -173,8 +173,6 @@ public final class Scaling {
 	public static final int OBSERVATION_Y = SPELL_OFFSET_Y;
 	public static final int BIND_WOUNDS_X = OBSERVATION_X + SPELL_SPACE_X;
 	public static final int BIND_WOUNDS_Y = OBSERVATION_Y;
-	public static final int SNEAK_X = BIND_WOUNDS_X + SPELL_SPACE_X;
-	public static final int SNEAK_Y = BIND_WOUNDS_Y;
 	public static final int ABILITIES_WIDTH_NUM = 2;
 	public static final int ABILITIES_HEIGHT_NUM = 1;
 	
@@ -185,12 +183,23 @@ public final class Scaling {
 		return new Point( getSpellX(spellX), getSpellY(spellY) );
 	}
 	
+	/*************************SNEEKY VIEW ABILITIES****************************/
+	public static final int SNEAK_X = BIND_WOUNDS_X + SPELL_SPACE_X;
+	public static final int SNEAK_Y = BIND_WOUNDS_Y;
+	public static final int RANGE_ATTACK_X = SNEAK_X + SPELL_SPACE_X;
+	public static final int RANGE_ATTACK_Y = SNEAK_Y;
+	
+	public static final Point SNEAK_POINT = getAbilityPoint(SNEAK_X, SNEAK_Y);
+	public static final Point RANGE_ATTACK_POINT = getAbilityPoint(RANGE_ATTACK_X, RANGE_ATTACK_Y);
+	
+	
 	private static int getSpellX(int spell){
 		return spell/SPELL_SPACE_X;
 	}
 	private static int getSpellY(int spell){
 		return (spell - SPELL_OFFSET_Y) / SPELL_SPACE_Y;
 	}
+	
 	
 	
 	/*****************GAMEVIEW*********************/
