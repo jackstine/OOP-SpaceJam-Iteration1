@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -20,6 +21,7 @@ public class PortraitView extends JPanel{
 	
 	public PortraitView(BufferedImage image) {
 		this.image = image;
+		setBackground(new Color(169, 221, 221));
 		repaint();
 	}
 	

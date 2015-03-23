@@ -93,14 +93,6 @@ public class Avatar extends Entity {
 		writing = false;
 		return j;
 	}
-
-	public String getCurrMap() {
-		return currMap;
-	}
-
-	public void setCurrMap(String currMap) {
-		this.currMap = currMap;
-	}
 	
 	@Override
 	public void makeDeathSoundEffect(){

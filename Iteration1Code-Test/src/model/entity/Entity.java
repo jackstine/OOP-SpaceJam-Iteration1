@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.Timer;
 
 import utilities.DeathSoundEffect;
+import utilities.GoatSoundEffect;
 import utilities.ImageProcessing;
 import utilities.RNG;
 import utilities.Scaling;
@@ -42,7 +43,6 @@ public abstract class Entity implements Dieable{
 	protected String name;
 	protected int direction;
 	protected int gold;
-	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
 	protected SoundEffect soundEffect;
 	private BufferedImage[] spriteSheet;
@@ -58,6 +58,9 @@ public abstract class Entity implements Dieable{
 
 	private AbilityView abilityView;
 	private boolean observationOn;
+	private boolean pickpocketOn;
+	private String currMap = "Main";
+
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Abilities abilities;
@@ -288,6 +291,18 @@ public abstract class Entity implements Dieable{
 		return this.observationOn;
 	}
 	
+	public void setPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public void clearPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public boolean getPickpocket(){
+		return this.pickpocketOn;
+	}
+	
 	
 	public void incSkillValue(String key) {
 		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
@@ -393,6 +408,7 @@ public abstract class Entity implements Dieable{
 		this.setStatValue("Movement",changedMovement);
 		buffTime = new Timer(500,new PolymorphTimer("Movement",oldMovement));
 		makeAlternateSpriteArray();
+		SoundEffect e = new GoatSoundEffect();
 		buffTime.start();
 		
 		
