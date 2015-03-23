@@ -1,6 +1,7 @@
 package model.occupation;
 
 
+import utilities.SpriteSheetUtility;
 import view.AbilityView;
 import view.SneekyView;
 import model.*;
@@ -27,7 +28,7 @@ public abstract class Hunter extends Occupation{
 	public WeaponSlot makeWeaponSlot(){
 		return new HunterWeaponSlot();
 	}
-
+	
 	public Equipment createEquipment(EquipmentBuilder eb) {
 		return eb.buildBeginerEquipment(this);
 	}
@@ -61,4 +62,5 @@ public abstract class Hunter extends Occupation{
 	public void accept(OccupationVisitor visitor){
 		visitor.accept(this);
 	}
+	
 }

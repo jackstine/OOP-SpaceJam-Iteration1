@@ -9,4 +9,5 @@ public class AvatarAlchemist extends Alchemist{
 		return new SpriteSheetUtility(this);
 	}
 
+
 }

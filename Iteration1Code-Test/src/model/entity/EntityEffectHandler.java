@@ -18,6 +18,10 @@ public class EntityEffectHandler {
 		entity.tempIncStat(stat,mag);
 	}
 	
+	public static void applyPolymorph(Entity entity){
+		entity.polymorph();
+	}
+	
 	public static void subMP(Entity entity, int mana){entity.subMP(mana);}
 	public static void addMP(Entity entity,int mana){entity.addMP(mana);}
 
