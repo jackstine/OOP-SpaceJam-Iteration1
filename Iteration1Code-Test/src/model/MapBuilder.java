@@ -176,14 +176,14 @@ public class MapBuilder{
 		
 		//NPC TEST
 		
-		Skeleton jacob = new Skeleton();
-		Orc steve = new Orc();
+		//Skeleton jacob = new Skeleton();
+		//Orc steve = new Orc();
 		Orc dan = new Orc();
-		Merchant ryan = new Merchant();
+		//Merchant ryan = new Merchant();
 
-		this.map[3][13].setEntity(ryan);
-		this.map[6][12].setEntity(jacob);
-		this.map[12][12].setEntity(steve);
+		//this.map[3][13].setEntity(ryan);
+		//this.map[6][12].setEntity(jacob);
+		//this.map[12][12].setEntity(steve);
 		this.map[13][4].setEntity(dan);
 		this.map[13][6].setDecal(new SkullAndCrossbonesDecal(new BossAlertAreaEffect()));
 

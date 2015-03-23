@@ -25,7 +25,7 @@ public class BossStatFactory extends StatFactory{
 	}
 	
 	protected int getHardiness() {
-		return 100;
+		return 1000;
 	}
 	
 	protected int getExperience() {

@@ -1,8 +1,10 @@
 package model.entity;
 
+import utilities.BackgroundMusicPlayer;
 import utilities.DarthVaderNoooooSoundEffect;
 import utilities.DeathSoundEffect;
 import utilities.SoundEffect;
+import utilities.SpaceJamBackgroundMusicPlayer;
 import model.behavior.Attack;
 import model.behavior.BehaviorComposite;
 import model.behavior.GuardBehavior;
@@ -38,6 +40,21 @@ public class BossDavid extends NPC {
 	
 	public void makeDeathSoundEffect() {
 		SoundEffect effect = new DarthVaderNoooooSoundEffect();
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				BackgroundMusicPlayer d = new SpaceJamBackgroundMusicPlayer();
+				
+			}
+			
+		}).start();
 	}
 	
 }
