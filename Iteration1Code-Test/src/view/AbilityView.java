@@ -10,11 +10,11 @@ import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 
 import controller.mouse.AbilityMouseHandler;
-import controller.mouse.SpellMouseHandler;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
 import model.entity.Avatar;
+import model.entity.Entity;
 
 @SuppressWarnings("serial")
 public class AbilityView extends JComponent{
@@ -36,15 +36,24 @@ public class AbilityView extends JComponent{
 	 
 	private final Point SELECTED_ABILITY_SCALE = new Point(40,40);
 	private final int SELECTED_ABILITY_X_OFFSET = 5;
-	private Avatar avatar;
-	private AbilityMouseHandler handler;
+	protected Entity avatar;
+	protected AbilityMouseHandler handler;
 
-	public AbilityView(Avatar avatar){
+	public AbilityView(){
 		this.avatar = avatar;
 		this.setFocusable(true);
 		this.setBackground(Color.BLACK);
 		this.setVisible(true);
 		this.addMouseListener(new SpellListener());
+	}
+	
+	public AbilityView(Entity avatar){
+		this.avatar = avatar;
+		this.setFocusable(true);
+		this.setBackground(Color.BLACK);
+		this.setVisible(true);
+		this.addMouseListener(new SpellListener());
+		this.avatar = avatar;
 		this.handler = new AbilityMouseHandler(this,this.avatar);
 	}
 	
@@ -70,6 +79,11 @@ public class AbilityView extends JComponent{
 	
 	public int getYRange(){
 		return Scaling.ABILITIES_HEIGHT_NUM;
+	}
+	
+	public void setEntity(Entity entity){
+		this.avatar = entity;
+		this.handler = new AbilityMouseHandler(this,this.avatar);
 	}
 	
 	public class SpellListener implements MouseListener{

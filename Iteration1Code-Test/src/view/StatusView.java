@@ -143,13 +143,7 @@ public class StatusView extends JPanel {
 		vitalsPanel.add(lives);
 		vitalsPanel.add(health);
 		vitalsPanel.add(mana);
-		if (avatar.hasSpells()){
-			vitalsPanel.add(new SpellView(avatar));
-		}
-		else if (avatar.getOccupation().getName().equals("Hunter"))	//HAIL SATAN
-			vitalsPanel.add(new HunterAbilityView(avatar));
-		else
-			vitalsPanel.add(new AbilityView(avatar));
+		vitalsPanel.add(avatar.getAbilitiesView());
 		
 		portraitView = new PortraitView(avatarPortrait);
 		portraitView.setPreferredSize(new Dimension(210, 168));

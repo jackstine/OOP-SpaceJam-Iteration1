@@ -16,45 +16,27 @@ public class Spells extends Abilities{
 	public static final Point MAGIC_CIRCLE_POINT = Scaling.MAGIC_CIRCLE_POINT;
 	public static final Point CONFUSE_POINT = Scaling.CONFUSE_POINT;
 	
-	private Entity entity;
-	private Point selectedSpell;
-	
-	private final Spellable[][] spells= new Spellable[Scaling.SPELLS_WIDTH_NUM][Scaling.SPELLS_HEIGHT_NUM];
+	public Spells(){}
 	
 	public Spells(Entity entity){
-		this.entity = entity;
+		super(entity);
 	}
 	
-	public Spells(){
-	}
-	
-	private void setSpells(){
+	protected void setSpells(){
+		System.out.println("SETTING THE SPASJFKLFJKLDSFJLKSDJFKDFJ");
 		//TODO get rid of these magic numbers once we get this class on the go
-		spells[this.FIRE_SPELL_POINT.getX()][this.FIRE_SPELL_POINT.getY()] = new FireSpell(this.entity);
-//		spells[0][0] =new BuffSpell(this.entity,100,"Movement");
-		spells[this.EARTH_SPELL_POINT.getX()][this.EARTH_SPELL_POINT.getY()] = new EarthSpell(this.entity);
-		spells[this.PLASMA_RAY_POINT.getX()][this.PLASMA_RAY_POINT.getY()] = new PlasmaRay(this.entity);
-		spells[this.GLORY_HEAL_POINT.getX()][this.GLORY_HEAL_POINT.getY()] = new GloryHeal(this.entity);
-		spells[this.MANA_BUFF_POINT.getX()][this.MANA_BUFF_POINT.getY()] = new ManaBuff(this.entity);
-		spells[this.PACIFISM_POINT.getX()][this.PACIFISM_POINT.getY()] = null;
-		spells[this.MAGIC_CIRCLE_POINT.getX()][this.MAGIC_CIRCLE_POINT.getY()] = null;
-		spells[this.ANGRY_POINT.getX()][this.ANGRY_POINT.getY()] = null;
-		spells[this.CONFUSE_POINT.getX()][this.CONFUSE_POINT.getY()] = null;
+		abilities[this.FIRE_SPELL_POINT.getY()][this.FIRE_SPELL_POINT.getX()] = new FireSpell(entity);
+		System.out.println(FIRE_SPELL_POINT  + "   FIRE SPELLLLL");
+//		abilities[0][0] =new BuffSpell(this.entity,100,"Movement");
+		abilities[this.EARTH_SPELL_POINT.getY()][this.EARTH_SPELL_POINT.getX()] = new EarthSpell(this.entity);
+		abilities[this.PLASMA_RAY_POINT.getY()][this.PLASMA_RAY_POINT.getX()] = new PlasmaRay(this.entity);
+		abilities[this.GLORY_HEAL_POINT.getY()][this.GLORY_HEAL_POINT.getX()] = new GloryHeal(this.entity);
+		abilities[this.MANA_BUFF_POINT.getY()][this.MANA_BUFF_POINT.getX()] = new ManaBuff(this.entity);
+		abilities[this.PACIFISM_POINT.getY()][this.PACIFISM_POINT.getX()] = null;
+		abilities[this.MAGIC_CIRCLE_POINT.getY()][this.MAGIC_CIRCLE_POINT.getX()] = null;
+		abilities[this.ANGRY_POINT.getY()][this.ANGRY_POINT.getX()] = null;
+		abilities[this.CONFUSE_POINT.getY()][this.CONFUSE_POINT.getX()] = null;
 //		spells[2][1] = new BuffSpell(this.entity,-50,"Strength");
-	}
-	
-	public void setSelectedSpell(Point spell){
-		this.selectedSpell = spell;
-	}
-	public Spellable getSelectedSpell(){
-		if (this.selectedSpell != null)
-			return this.spells[this.selectedSpell.getY()][this.selectedSpell.getX()];
-		else return null;
-	}
-
-	public void setEntity(Entity entity) {
-		this.entity = entity;
-		this.setSpells();
 	}
 
 }

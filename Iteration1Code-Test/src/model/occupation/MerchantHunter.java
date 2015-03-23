@@ -5,8 +5,6 @@ import model.slots.Equipment;
 import model.stats.factory.MerchantHunterStatFactory;
 import model.stats.factory.StatFactory;
 import model.visitor.OccupationVisitor;
-import utilities.FriendlyDeathSoundEffect;
-import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
 
 public class MerchantHunter extends Hunter{

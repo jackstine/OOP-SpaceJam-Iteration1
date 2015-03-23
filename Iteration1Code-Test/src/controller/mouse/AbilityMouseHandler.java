@@ -4,16 +4,17 @@ import java.awt.event.MouseEvent;
 
 import model.Point;
 import model.entity.Avatar;
+import model.entity.Entity;
 import utilities.Scaling;
 import view.SpellView;
 import view.AbilityView;
 
 public class AbilityMouseHandler {
 	private AbilityView abilityView;
-	private Avatar avatar;
+	private Entity avatar;
 	private Point abilitySelected;
 	
-	public AbilityMouseHandler(AbilityView abilityView,Avatar avatar){
+	public AbilityMouseHandler(AbilityView abilityView,Entity avatar){
 		this.abilityView = abilityView;
 		this.avatar = avatar;
 	}

@@ -1,7 +1,9 @@
 package model.occupation;
 
-import utilities.SpriteSheetUtility;
+import view.AbilityView;
+import view.SpellView;
 import model.*;
+import model.abilities.Abilities;
 import model.abilities.Spells;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
@@ -38,8 +40,12 @@ public abstract class Alchemist extends Occupation{
 		// out the fighting between Avatar and Entity
 	}
 	
-	public Spells createSpells(){
+	public Abilities createAbilities(){
 		return new Spells();
+	}
+	
+	public AbilityView createAbilityView(){
+		return new SpellView();
 	}
 
 	@Override
