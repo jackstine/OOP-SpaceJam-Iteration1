@@ -381,6 +381,9 @@ public abstract class Entity implements Dieable{
 		SpriteSheetUtility util = occupation.getSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
 	}
-	
+	public void makeTransformedSpriteArray() {
+		SpriteSheetUtility util = occupation.getTransformedSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
+	}
 }
 

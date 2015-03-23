@@ -90,6 +90,9 @@ public abstract class Occupation{
 	}
 	
 	public abstract void accept(OccupationVisitor visitor);
+	public SpriteSheetUtility getTransformedSpriteSheet() {
+		return null;
+	}
 	public SpriteSheetUtility getAlternateSpriteSheet() {
 		return new GoatSpriteSheetUtility();
 	}
