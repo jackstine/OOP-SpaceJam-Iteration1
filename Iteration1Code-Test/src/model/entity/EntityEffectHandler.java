@@ -18,7 +18,27 @@ public class EntityEffectHandler {
 		entity.tempIncStat(stat,mag);
 	}
 	
+	public static void applyPolymorph(Entity entity){
+		entity.polymorph();
+	}
+	
 	public static void subMP(Entity entity, int mana){entity.subMP(mana);}
 	public static void addMP(Entity entity,int mana){entity.addMP(mana);}
+	public static void stealth(final Entity entity) {
+		new Thread(new Runnable() {
 
+			@Override
+			public void run() {
+				entity.makeTransformedSpriteArray();
+				try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				entity.restoreSpriteArray();
+			}
+			
+		}).start();
+	}
 }

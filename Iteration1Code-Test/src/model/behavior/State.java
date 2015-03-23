@@ -17,7 +17,6 @@ public class State {
 	}
 	
 	public void perform(Entity receiver){
-		System.out.println("PERFORMING "+states.peek().getBehavior());
 		this.states.peek().perform(receiver);
 	}
 	
@@ -110,6 +109,8 @@ public class State {
 	
 	public void revert(){
 		if (! this.states.empty()){
+=======
+>>>>>>> 03363acf2b4f8778bc0e99b7e3fa5ca9044c9346
 			states.peek().kill();
 			states.pop();
 		}

@@ -15,6 +15,7 @@ public class Skeleton extends NPC {
 		super(new SkeletonAlchemist());
 		this.engagedState.setState(new BehaviorComposite(new Attack(this)));
 		this.preferredState.setState(new BehaviorComposite(new Stand(this)));
+		this.name = "Skeleton";
 	}
 
 	@Override
@@ -24,7 +25,7 @@ public class Skeleton extends NPC {
 	}
 	
 	public String toString() {
-		return "a Skeleton";
+		return "NPC:Skeleton";
 	}
 
 	public void makeDeathSoundEffect() {

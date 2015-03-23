@@ -4,17 +4,17 @@ import java.util.Map;
 
 import model.Skill;
 import model.SkillFactory;
-import model.entity.Dieable;
+import model.abilities.Abilities;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.Equipment;
 import model.slots.WeaponSlot;
-import model.spells.Spells;
 import model.stats.Stat;
 import model.stats.factory.StatFactory;
-import utilities.DeathSoundEffect;
-import utilities.SoundEffect;
+import model.visitor.OccupationVisitor;
+import utilities.GoatSpriteSheetUtility;
 import utilities.SpriteSheetUtility;
+import view.AbilityView;
 
 public abstract class Occupation{
 	
@@ -23,7 +23,8 @@ public abstract class Occupation{
 	protected Equipment equipment;
 	protected Map<String, Stat> stats;
 	protected Map<String, Skill> skills;
-	protected Spells spells;
+	protected Abilities abilities;
+	protected AbilityView abilityView;
 	
 	
 	public abstract Equipment createEquipment(EquipmentBuilder eb);
@@ -31,13 +32,14 @@ public abstract class Occupation{
 	public abstract WeaponSlot makeWeaponSlot();
 	public abstract SpriteSheetUtility getSpriteSheet();
 	public abstract void attack(Entity entity);
-	public abstract Spells createSpells();
+	public abstract Abilities createAbilities();
+	public abstract AbilityView createAbilityView();
 	
 	protected abstract StatFactory getStatFactory(Equipment equipment);
 	protected abstract SkillFactory getSkillFactory();
 	
-	public Spells getSpells(){
-		return this.spells;
+	public Abilities getAbilities(){
+		return this.abilities;
 	}
 	
 	public Map<String, Stat> getStats() {
@@ -52,6 +54,10 @@ public abstract class Occupation{
 		return this.equipment;
 	}
 	
+	public AbilityView getAbilityView(){
+		return this.abilityView;
+	}
+	
 	public void createNecessities(){
 		EquipmentBuilder eb = new EquipmentBuilder();
 		this.equipment = createEquipment(eb);
@@ -62,7 +68,8 @@ public abstract class Occupation{
 		SkillFactory skillFactory = this.getSkillFactory();
 		this.skills = skillFactory.initializeSkills();
 		
-		this.spells = this.createSpells();
+		this.abilities = this.createAbilities();
+		this.abilityView = this.createAbilityView();
 	}
 	
 	public void createEmptyNecessities() {
@@ -71,7 +78,7 @@ public abstract class Occupation{
 	}
 	
 	public String getPortraitLocation() {
-			return portraitLocation;
+		return portraitLocation;
 	}
 	
 	public String getName() {
@@ -80,5 +87,13 @@ public abstract class Occupation{
 	
 	public String toString() {
 		return "Occupation:" + this.name;
+	}
+	
+	public abstract void accept(OccupationVisitor visitor);
+	public SpriteSheetUtility getTransformedSpriteSheet() {
+		return null;
+	}
+	public SpriteSheetUtility getAlternateSpriteSheet() {
+		return new GoatSpriteSheetUtility();
 	}
 }

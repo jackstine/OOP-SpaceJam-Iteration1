@@ -1,5 +1,6 @@
 package model.entity;
 
+import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ import model.behavior.State;
 import model.items.TakeableItem;
 import model.occupation.Occupation;
 import utilities.*;
+import view.AbilityView;
 
 public class Avatar extends Entity {
 	private int levels = 0;
@@ -22,9 +24,6 @@ public class Avatar extends Entity {
 	private State engagedState;
 	private boolean writing = false;
 	private String currMap = "Main";
-	//deprecated all entities need a equipment now
-//	private Equipment equipment = new Equipment();
-	//private final String AVATAR_IMAGE = "src/res/img/sprite.jpg";
 	private final static String[] primaryStats = {"Agility", "Experience", "Hardiness",
 											"HP", "Intellect", "Lives", "MP",
 											"Movement", "Strength"};
@@ -34,23 +33,7 @@ public class Avatar extends Entity {
 		gold = 200;
 		engagedState = new State();
 		engagedState.setState(new BehaviorComposite(new AvatarAttack(this)));
-		//this.location = new Location(INITIAL_X_LIE, INITIAL_Y_LIE);
 	}
-	
-	/*
-	public void move(int x,int y){ //this is not needed either -Juan
-		location.add(x,y);
-		//System.out.println(location);
-	}
-	
-	public void loadImage(Graphics g)
-	{	
-		image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT,AVATAR_IMAGE);
-		int x= location.getX();
-		int y= location.getY();
-		g.drawImage(image,Scaling.AVATAR_WIDTH*x,Scaling.AVATAR_HEIGHT*y,null);
-	}
-	*/
 	
 	// used for writing to the save file
 	// name, occupation, stats, direction, inventory, equipment
@@ -119,8 +102,13 @@ public class Avatar extends Entity {
 		this.currMap = currMap;
 	}
 	
+	@Override
 	public void makeDeathSoundEffect(){
-		soundEffect = new FriendlyDeathSoundEffect();
+		if(this.stats.getStatValue("Lives") >= 1){
+				soundEffect = new FriendlyDeathSoundEffect();
+		}
+		else
+			soundEffect = new LastDeathSoundEffect();
 	}
 	/*
 	//may not need to override
@@ -132,6 +120,4 @@ public class Avatar extends Entity {
 	//}
 	//may not need to override
 	 */
-	
-	
 }

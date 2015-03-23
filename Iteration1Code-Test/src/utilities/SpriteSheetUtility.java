@@ -37,12 +37,20 @@ public class SpriteSheetUtility {
 	public SpriteSheetUtility() {
 		//DEFAULT WILL JUST BE A TERMINATOR FOR SAFETY REASONS
 		imagePath = "src/res/img/terminator_spritesheet.png";
-		initializeSpriteArray();
+		initialize();
 	}
 	
 	public SpriteSheetUtility(AvatarAlchemist a) {
 		imagePath = "src/res/img/alchemist_spritesheet.png";
 		initialize();
+		
+		try {
+			spriteArray[5] =ImageIO.read(new File("src/res/img/goat.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public SpriteSheetUtility(AvatarHunter h) {
@@ -70,7 +78,7 @@ public class SpriteSheetUtility {
 		initialize();
 	}
 	
-	private void initialize() {
+	protected void initialize() {
 		try {
 			image = ImageIO.read(new File(imagePath));
 		} 
@@ -89,7 +97,7 @@ public class SpriteSheetUtility {
 		return imagePath;
 	}
 	
-	private void initializeSpriteArray() {
+	protected void initializeSpriteArray() {
 		for (int i=0; i<10; i++) {
 			spriteArray[i] = getSpriteByDirection(i);
 		}

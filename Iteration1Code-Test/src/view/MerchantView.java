@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 import utilities.Scaling;
 import view.InventoryView;
+import model.GameLog;
 import model.Point;
 import model.entity.Avatar;
 import model.entity.Entity;
@@ -30,6 +31,7 @@ public MerchantView(Entity barter)
 {	
 	super("Merchant");
 	this.entity = barter;
+	inventory = barter.getInventory();
 	inventoryView=new InventoryView(barter.getInventory());
 	inventoryView.addMouseListener(new MerchantMouseListener());
 	add(inventoryView,BorderLayout.CENTER);
@@ -74,15 +76,25 @@ public void setEntity(Entity entity)
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("price of item: " + (basePrice-(reciever.getSkillValue("Bargain")*10)));
-			if (e.getButton() == RIGHT_CLICK && reciever.getGold() >= basePrice-(reciever.getSkillValue("Bargain")*10)){
-				System.out.println("Gold amount before: "+ reciever.getGold());
-				reciever.makeGoldTransaction(-basePrice+(reciever.getSkillValue("Bargain")*10));
-				System.out.println("Gold amount after: "+ reciever.getGold());
+			Point slotPoint = getInventorySlot(e);
+			TakeableItem item=inventory.get(slotPoint);
+			basePrice = item.getBonus();
+			String transaction = "Price: " + (basePrice-(reciever.getSkillValue("Bargain")*2));
+			//System.out.println("price of item: " + (basePrice-(reciever.getSkillValue("Bargain")*10)));
+			if (e.getButton() == RIGHT_CLICK && reciever.getGold() >= basePrice-(reciever.getSkillValue("Bargain")*2)){
+				reciever.makeGoldTransaction(-basePrice+(reciever.getSkillValue("Bargain")*2));
+				transaction += "\nTransaction successful: You have " + reciever.getGold() + " gold left.";
+				//System.out.println("Gold amount after: "+ reciever.getGold());
 				this.unequipItem(e);
-			} else{
-				System.out.println("Not enough gold");
+			} 
+			else if(e.getButton() == RIGHT_CLICK){
+				transaction += "\nTransaction failed: Not enough gold. You only have " + reciever.getGold() + " gold.";
+				//transaction += "\nTransaction failed: Not enough gold. You only have " + reciever.getGold() + " gold.";
 			}
+			else{
+				transaction += "\nItem Stats: " + item.toString();
+			}
+			GameLog.writeToLog("Item Transaction", transaction);
 		}
 
 		@Override

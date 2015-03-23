@@ -14,6 +14,7 @@ public class Merchant extends NPC {
 		super(new MerchantHunter());
 		this.engagedState.setState(new BehaviorComposite(new Barter(this)));
 		this.preferredState.setState(new BehaviorComposite(new Stand(this)));
+		this.name = "Merchant";
 	}
 
 	@Override
@@ -23,7 +24,7 @@ public class Merchant extends NPC {
 	}
 	
 	public String toString() {
-		return "a Merchant";
+		return "NPC:Merchant";
 	}
 	
 	@Override

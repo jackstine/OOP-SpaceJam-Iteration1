@@ -18,17 +18,21 @@ public class Orc extends NPC {
 	
 	public Orc(){
 		super(new OrcTerminator());
-		
 		//this.sightBehavior = new SightTrack(this);
 		//sightBehavior.perform(this);
 		BehaviorComposite preferred = new BehaviorComposite(new Patrol(this,2), new Pursue(this));
 		BehaviorComposite engaged = new BehaviorComposite(new Attack(this));
 		this.engagedState.setState(engaged);
 		this.preferredState.setState(preferred);
+		this.name = "Orc";
 	}
 	
 	public String toString() {
-		return "an Orc";
+		return "NPC:Orc";
+	}
+	
+	public String getDialogue() {
+		return "Orc: Stop clicking me!";
 	}
 	
 	public void makeDeathSoundEffect() {

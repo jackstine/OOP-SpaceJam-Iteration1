@@ -1,13 +1,14 @@
 package model.occupation;
 
-import utilities.SpriteSheetUtility;
+import view.AbilityView;
 import model.*;
+import model.abilities.Abilities;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
-import model.spells.Spells;
 import model.stats.factory.StatFactory;
 import model.stats.factory.TerminatorStatFactory;
+import model.visitor.OccupationVisitor;
 
 public abstract class Terminator extends Occupation{
 
@@ -37,12 +38,20 @@ public abstract class Terminator extends Occupation{
 		// out the fighting between Avatar and Entity		
 	}
 	
-	public Spells createSpells(){
-		return null;
+	public Abilities createAbilities(){
+		return new Abilities();
+	}
+	
+	public AbilityView createAbilityView(){
+		return new AbilityView();
 	}
 
 	@Override
 	protected SkillFactory getSkillFactory() {
 		return new TerminatorSkillFactory();
+	}
+	
+	public void accept(OccupationVisitor visitor){
+		visitor.accept(this);
 	}
 }

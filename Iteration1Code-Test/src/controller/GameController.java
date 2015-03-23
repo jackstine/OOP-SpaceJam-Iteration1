@@ -135,18 +135,24 @@ public class GameController {
 			stats.updatetable();
 			combinedGameView.updateStatus();
 			Location killLocation = null;
+			Entity slain = null;
 			for (Entry<Entity, Location> entry : World.getMap(avatar.getCurrMap()).getEntityToLocationMap().entrySet()) {
 				killLocation = null;
 				Entity key = entry.getKey();
 				Location loc = entry.getValue();
 				if(key.getStats().getStatValue("HP") <= 0){
 					killLocation = loc;
+					slain = key;
 					break;
 				}
 			}
 			if (killLocation != null){
+				int gold = 50*slain.getStatValue("Level");
+				int exp = 200*slain.getStatValue("Level");
+				avatar.makeGoldTransaction(gold);
+				avatar.addEXP(exp);
 				map.kill(killLocation);
-				avatar.makeGoldTransaction(50);
+				GameLog.writeToLog("Victory","You have slain " + slain.toString() + "\nGained " + exp + " EXP and " + gold + " gold.");
 			}
 		}
 	}
@@ -166,10 +172,13 @@ public class GameController {
         	Location tileLocation = this.handler.getTileLocation(e);
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
-            if(this.handler.getEntity(tileLocation) != null){
-            	GameLog.writeToLog((this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
+            System.out.println("OBSERVATION IS BEFORE THE IF    " + avatar.getObservation());
+            if(this.handler.getEntity(tileLocation) != null && avatar.getObservation()){
+            	GameLog.writeToLog("Observation",(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
             getMapView().repaint();
+            avatar.clearObservation();
+            System.out.println("OBSERVATION IS " + avatar.getObservation());
         }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) {}

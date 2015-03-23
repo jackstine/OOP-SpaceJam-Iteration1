@@ -21,9 +21,12 @@ public class Attack implements Behavior{
 		System.out.println("Attacker: "+attacker+"\nDefender: "+theAttacked);
 		int oppositeDirection = Directions.getOppositeDirection(theAttacked.getDirection());
 		attacker.setDirection(oppositeDirection);
-			EntityEffectHandler.applyDamage(theAttacked, Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0));
+		EntityEffectHandler.applyDamage(theAttacked, Math.max(attacker.attack()-(int)(.2*theAttacked.defense()),0));
+		String log = "You have dealt " + theAttacked.attack() + " damage";
+		log += "\nYou have received " + attacker.attack() + " damage";
+		GameLog.writeToLog("Melee Damage", log);
 		SoundEffect effect = new HurtSoundEffect();
-		GameLog.writeToLog(attacker.getDialogue());
+		GameLog.writeToLog("Dialogue", attacker.getDialogue());
 	}
 	
 	public void getBuffs() {}

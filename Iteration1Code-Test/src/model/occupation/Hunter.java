@@ -2,13 +2,18 @@ package model.occupation;
 
 
 import utilities.SpriteSheetUtility;
+import utilities.StealthSpriteSheetUtility;
+import view.AbilityView;
+import view.SneekyView;
 import model.*;
+import model.abilities.Abilities;
+import model.abilities.Sneeky;
 import model.entity.Entity;
 import model.items.equipment.EquipmentBuilder;
 import model.slots.*;
-import model.spells.Spells;
 import model.stats.factory.HunterStatFactory;
 import model.stats.factory.StatFactory;
+import model.visitor.OccupationVisitor;
 
 public abstract class Hunter extends Occupation{
 
@@ -24,7 +29,7 @@ public abstract class Hunter extends Occupation{
 	public WeaponSlot makeWeaponSlot(){
 		return new HunterWeaponSlot();
 	}
-
+	
 	public Equipment createEquipment(EquipmentBuilder eb) {
 		return eb.buildBeginerEquipment(this);
 	}
@@ -38,12 +43,34 @@ public abstract class Hunter extends Occupation{
 		// out the fighting between Avatar and Entity		
 	}
 	
-	public Spells createSpells(){
-		return null;
+	public void detect(){
+		
+	}
+	
+	public Abilities createAbilities(){
+		return new Sneeky();
+	}
+	
+	public AbilityView createAbilityView(){
+		return new SneekyView();
 	}
 	
 	@Override
 	protected SkillFactory getSkillFactory() {
 		return new HunterSkillFactory();
 	}
+	
+	public void accept(OccupationVisitor visitor){
+		visitor.accept(this);
+	}
+	
+	
+	public void engageStealth() {
+		
+	}
+	
+	public void disengageStealth() {
+		
+	}
+	
 }

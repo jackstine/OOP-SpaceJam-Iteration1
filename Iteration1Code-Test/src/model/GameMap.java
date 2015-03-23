@@ -27,6 +27,12 @@ public class GameMap extends Observable{
 		this.setEntitiesLocations();
 	}
 	
+	// used on load
+	public GameMap(int width, int height) {
+		this.map = new MapSet(new Tile[width][height]);
+		this.entityToLocationMap = new HashMap<Entity, Location>();
+	}
+	
 //	public GameMap(MapView mv){
 //		MapBuilder m= new MapBuilder();
 //		map = m.generateStructuredMap();
@@ -54,7 +60,7 @@ public class GameMap extends Observable{
 		this.setEntitiesLocations();
 	}
 	
-	private void setEntitiesLocations(){
+	public void setEntitiesLocations(){
 		for (int i = 0; i < this.map.getMap().length; i++)
 			for (int j = 0; j < this.map.getMap()[i].length; j++)
 				if (this.map.getMap()[i][j].hasEntity()){

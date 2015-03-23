@@ -117,6 +117,7 @@ public class Tile {
 		result += "\n" + this.terrain;
 		result += "\n" + this.decal;
 		result += "\n" + this.item;	
+		result += "\n" + this.trap;
 		result += "\n" + (isAvatar(this.entity) ? "Avatar" : this.entity);
 		return result;
 	}

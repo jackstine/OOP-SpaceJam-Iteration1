@@ -102,11 +102,19 @@ public class World {
 		Set<Entity> entities = this.getEntities();
 
 		for (Entity ent : entities){
+			if (isAvatar(ent)) continue;
 			ent.grantSight(avatar);
 			ent.idle();
 			if(ent instanceof Orc)
 				ent.trackWorld();
 		}
+	}
+	
+	// sorry Dave
+	private boolean isAvatar(Entity e) {
+		String en = e.toString();
+		String entityName = en.substring(0, en.indexOf(":"));
+		return entityName.equals("Avatar");
 	}
 	
 	public String toString(){

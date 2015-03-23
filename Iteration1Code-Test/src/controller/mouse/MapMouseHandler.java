@@ -6,10 +6,10 @@ import model.GameMap;
 import model.Location;
 import model.Point;
 import model.World;
+import model.abilities.Spellable;
 import model.entity.Avatar;
 import model.entity.Entity;
 import model.items.TakeableItem;
-import model.spells.Spellable;
 import model.stats.EntityStats;
 import utilities.Scaling;
 import view.MapView;
@@ -59,6 +59,7 @@ public class MapMouseHandler {
     	GameMap map = World.getMap(avatar.getCurrMap());
     	Spellable spellChosenToAttack = this.avatar.getSelectedSpell();
     	boolean NPCExistAndSpellChosen = (map.getTile(tileLocation).getEntity() != null) && (spellChosenToAttack != null);
+    	System.out.println(spellChosenToAttack);
     	if (NPCExistAndSpellChosen){
     		Entity entity = map.getTile(tileLocation).getEntity();
     		if (spellChosenToAttack.able()){

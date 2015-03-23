@@ -10,8 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import utilities.FontHandler;
-
 import controller.mouse.InventoryEquipmentMouseHandler;
+import model.GameLog;
 import model.Point;
 import model.entity.Avatar;
 import model.slots.InventorySlot;
@@ -99,15 +99,21 @@ public class InventoryEquipmentView extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton() == RIGHT_CLICK){
 				if (avatar.getBuyingMode()){
-					System.out.println("SELLING TO MERCH");
 					handler.sellItem(e);
+					GameLog.writeToLog("Item Transaction", " Price: " + "\nTransaction successful: You have " + avatar.getGold() + " gold.");
 				}
 				else{
 					handler.unequipItem(e);
 				}
 			}
 			if (e.getButton()== LEFT_CLICK){
-				handler.useItem(e);
+				if(avatar.getBuyingMode()){
+					GameLog.writeToLog("Item Stats", handler.getItemInfo(e));
+				}
+				else{
+					GameLog.writeToLog("Item Stats", handler.getItemInfo(e));
+					handler.useItem(e);
+				}
 			}
 		}
 		

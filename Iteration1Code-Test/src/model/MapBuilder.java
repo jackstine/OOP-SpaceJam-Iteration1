@@ -112,10 +112,6 @@ public class MapBuilder{
 		
 		this.map[3][12].setTrap(new SpikeTrap()); //this
 		
-		//NPC TEST
-		Skeleton phil = new Skeleton();
-		Orc bob = new Orc();
-		Merchant fred = new Merchant();
 		this.map[4][12].setEntity(new Merchant());
 		this.map[9][12].setEntity(new Skeleton());
 		this.map[14][12].setEntity(new Orc());

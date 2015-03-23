@@ -43,7 +43,6 @@ public class InventoryView extends JComponent{
 				this.slots[i][j] = new SlotView( this.inventory.getSlot(pointOfSlot) , pointOfSlot, this);
 				this.slots[i][j].resetImage();
 				this.inventory.getSlot(pointOfSlot).addObserver(this.slots[i][j]);
-				//Delete for Testing Only
 			}
 		}
 	}

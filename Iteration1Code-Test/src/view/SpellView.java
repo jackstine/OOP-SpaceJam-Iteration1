@@ -1,29 +1,25 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JComponent;
-
-import controller.mouse.SpellMouseHandler;
+import controller.mouse.AbilityMouseHandler;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
 import model.entity.Avatar;
+import model.entity.Entity;
 
 @SuppressWarnings("serial")
-public class SpellView extends JComponent{
+public class SpellView extends AbilityView{
 	//**********************  POINTS **************************************
 	private static final Point FIRE_SPELL_POINT = new Point(Scaling.FIRE_SPELL_X,Scaling.FIRE_SPELL_Y);
 	private static final Point EARTH_SPELL_POINT = new Point(Scaling.EARTH_SPELL_X,Scaling.EARTH_SPELL_Y);
 	private static final Point PLASMA_RAY_POINT = new Point(Scaling.PLASMA_RAY_X,Scaling.PLASMA_RAY_Y);
 	private static final Point PACIFISM_POINT = new Point(Scaling.PACIFISM_X,Scaling.PACIFISM_Y);
 	private static final Point CONFUSE_POINT = new Point(Scaling.CONFUSE_X,Scaling.CONFUSE_Y);
-	private static final Point ANGRY_POINT = new Point(Scaling.ANGRY_X,Scaling.AMGRY_Y);
+	private static final Point ANGRY_POINT = new Point(Scaling.ANGRY_X,Scaling.ANGRY_Y);
 	private static final Point GLORY_HEAL_POINT = new Point(Scaling.GLORY_HEAL_X,Scaling.GLORY_HEAL_Y);
 	private static final Point MANA_BUFF_POINT = new Point(Scaling.MANA_BUFF_X,Scaling.MANA_BUFF_Y);
 	private static final Point MAGIC_CIRCLE_POINT = new Point(Scaling.MAGIC_CIRCLE_X,Scaling.MAGIC_CIRCLE_Y);
@@ -53,29 +49,15 @@ public class SpellView extends JComponent{
 	 
 	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
 	private final int SELECTED_SPELL_X_OFFSET = 5;
-	private Avatar avatar;
-	private SpellMouseHandler handler;
 
-	public SpellView(Avatar avatar){
-		this.avatar = avatar;
-		this.setFocusable(true);
-		this.setBackground(Color.BLACK);
-		this.setVisible(true);
-		this.addMouseListener(new SpellListener());
-		this.handler = new SpellMouseHandler(this,this.avatar);
-	}
+	public SpellView(){}
 	
-	private void paintSelectedSpell(Graphics g){
-		if (handler.getSelected() != null){
-			g.setColor(Color.YELLOW);
-			int pointX = (handler.getSelected().getX() * Scaling.SPELL_SPACE_X) + SELECTED_SPELL_X_OFFSET;
-			int pointY = (handler.getSelected().getY() * Scaling.SPELL_SPACE_Y);
-			g.fillRect(pointX, pointY, SELECTED_SPELL_SCALE.getX(), SELECTED_SPELL_SCALE.getY());
-		}
+	public SpellView(Entity avatar){
+		super(avatar);
 	}
 	
 	public void paint(Graphics g){
-		this.paintSelectedSpell(g);
+		super.paint(g);
 		g.drawImage(FIRE_SPELL_IMAGE, FIRE_SPELL_POINT.getX(), FIRE_SPELL_POINT.getY(), null);
 		g.drawImage(EARTH_SPELL_IMAGE, EARTH_SPELL_POINT.getX(), EARTH_SPELL_POINT.getY(), null);
 		g.drawImage(PLASMA_RAY_IMAGE, PLASMA_RAY_POINT.getX(), PLASMA_RAY_POINT.getY(), null);
@@ -91,20 +73,7 @@ public class SpellView extends JComponent{
 		return new Dimension(150,300);
 	}
 	
-	public class SpellListener implements MouseListener{
-		
-		public void mouseClicked(MouseEvent e){
-			handler.selectSpell(e);
-		}
-
-		public void mouseEntered(MouseEvent e) {
-		}
-		public void mouseExited(MouseEvent e) {
-		}
-		public void mousePressed(MouseEvent e) {
-		}
-		public void mouseReleased(MouseEvent e) {
-		}
+	public int getYRange(){
+		return super.getYRange() + Scaling.SPELLS_HEIGHT_NUM;
 	}
-	
 }

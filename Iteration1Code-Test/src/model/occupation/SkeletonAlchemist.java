@@ -4,6 +4,7 @@ import model.items.equipment.EquipmentBuilder;
 import model.slots.Equipment;
 import model.stats.factory.OrcTerminatorFactory;
 import model.stats.factory.StatFactory;
+import model.visitor.OccupationVisitor;
 import utilities.SpriteSheetUtility;
 
 public class SkeletonAlchemist extends Alchemist{
@@ -16,6 +17,11 @@ public class SkeletonAlchemist extends Alchemist{
 	}
 	public SpriteSheetUtility getSpriteSheet(){
 		return new SpriteSheetUtility(this);
+	}
+	@Override
+	public void accept(OccupationVisitor visitor) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

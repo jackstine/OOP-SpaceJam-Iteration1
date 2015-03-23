@@ -13,8 +13,13 @@ import utilities.RNG;
 import utilities.Scaling;
 import utilities.SoundEffect;
 import utilities.SpriteSheetUtility;
+import view.AbilityView;
 import model.Point;
 import model.Skill;
+import model.abilities.Abilities;
+import model.abilities.Spell;
+import model.abilities.Spellable;
+import model.abilities.Spells;
 import model.behavior.Behavior;
 import model.behavior.BehaviorComposite;
 import model.behavior.RadialEntitySight;
@@ -28,8 +33,6 @@ import model.occupation.Occupation;
 import model.slots.Equipment;
 import model.slots.Inventory;
 import model.slots.InventoryEquipment;
-import model.spells.Spellable;
-import model.spells.Spells;
 import model.stats.EntityStats;
 import model.visitor.WeaponVisitor;
 
@@ -54,9 +57,12 @@ public abstract class Entity implements Dieable{
 	
 	protected SightTrack sightBehavior = new SightTrack();
 	protected RangeTrack rangeBehavior = new RangeTrack();
+
+	private AbilityView abilityView;
+	private boolean observationOn;
 	
 	//TODO change the spells so that they are only associated with Alchemists
-	protected Spells spells;
+	protected Abilities abilities;
 	
 	private Timer buffTime;
 	private boolean buffed = false;
@@ -70,17 +76,24 @@ public abstract class Entity implements Dieable{
 		this.inventoryEquipment = new InventoryEquipment(new Inventory(),occupation.getEquipment());
 		SpriteSheetUtility util = occupation.getSpriteSheet();
 		this.spriteSheet = (util.getSpriteArray());
-		this.setSpells();
+		this.abilityView = occupation.getAbilityView();
+		this.abilityView.setEntity(this);
+		this.setabilities();
 	}
 	
-	public void setSpells(){
-		this.spells = occupation.getSpells();
-		if (this.spells != null)
-			this.spells.setEntity(this);
+	public void setabilities(){
+		this.abilities = occupation.getAbilities();
+		if (this.abilities != null)
+			this.abilities.setEntity(this);
 	}
-	public boolean hasSpells() {
-		if (this.spells != null) return true;
+	public boolean hasabilities() {
+		if (this.abilities != null) return true;
 		else return false;
+	}
+	
+
+	public AbilityView getAbilitiesView() {
+		return this.abilityView;
 	}
 	
 	public BufferedImage getImage(){
@@ -88,15 +101,16 @@ public abstract class Entity implements Dieable{
 			image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
 			return image;
 	}
-		
+
 	public void buy(TakeableItem item){
 		this.inventoryEquipment.equipInventory(item);
 	}
 	
 	public void sellToPartner(TakeableItem itemToSell) {
-		int basePrice = 100;
-		this.makeGoldTransaction(100+(this.getSkillValue("Bargain")*10));
+		int basePrice = itemToSell.getBonus();
+		this.makeGoldTransaction(basePrice+(this.getSkillValue("Bargain")*2));
 		this.sellingPartner.buy(itemToSell);
+
 	}
 
 	public int getGold(){
@@ -223,6 +237,10 @@ public abstract class Entity implements Dieable{
 		return this.inventoryEquipment.equipInventory(item,point);
 	}
 	
+	public TakeableItem getInventorySlot(Point point){
+		return this.inventoryEquipment.getInventorySlot(point);
+	}
+	
 	/*************  EQUIPMENT *************************/
 	public void setEquipment(Equipment equipment){
 		this.inventoryEquipment.setEquipment(equipment);
@@ -273,16 +291,30 @@ public abstract class Entity implements Dieable{
 	public void addHP(int change){this.stats.addHP(change);}
 	public void addMP(int change){this.stats.addMP(change);}
 	
+	public void addEXP(int change){this.stats.addEXP(change);}
 	
-	/******************** SPELLS ******************************/
-	public Spells getSpells(){
-		return this.spells;
+	
+	/******************** abilities ******************************/
+	public Abilities getabilities(){
+		return this.abilities;
 	}
 	public void setSelectedSpell(Point spell){
-		this.spells.setSelectedSpell(spell);
+		this.abilities.setSelectedSpell(spell);
 	}
 	public Spellable getSelectedSpell(){
-		return this.spells.getSelectedSpell();
+		return this.abilities.getSelectedSpell();
+	}
+	
+	public void setObservation(){
+		this.observationOn = true;
+	}
+	
+	public void clearObservation(){
+		this.observationOn = false;
+	}
+	
+	public boolean getObservation(){
+		return this.observationOn;
 	}
 	
 	
@@ -305,14 +337,13 @@ public abstract class Entity implements Dieable{
 		int n = 0;
 		for(int i = 0; i < x && i < 7; ++i){
 			if(d!=0 && RNG.genRandDouble() > 1/d){
-				n = RNG.generateRand(0,30);
+				n = RNG.generateRand(0,stats.getStatValue(info[i])+5);
 			}
 			else{
 				n = stats.getStatValue(info[i]);
 			}
 			s += (info[i] + ":" + n + "\n");
 		}
-		s += (getClass().getName().toString() + "@" + Integer.toHexString(hashCode()).toString());
 		return s;
 	}
 	
@@ -354,18 +385,69 @@ public abstract class Entity implements Dieable{
 	
 	/*************   FIX THIS STUFF ***********************/
 	public String getDialogue() {
-		// TODO Auto-generated method stub
 		return "";
 	}
 
 	public void writeJournal(Object dialogue) {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	public String diaryEntry() {
 		return "This looks like "+toString()+"\nProbably has "+stats.getStatValue("HP")+"HP left\n";
 	}
+	
+	public void setBuyingMode(){
+		this.buyingMode = true;
+	}
+	
+	public void resetBuyingMode(){
+		this.buyingMode = false;
+	}
+	
+	public boolean getBuyingMode(){
+		return this.buyingMode;
+	}
+
+	public void setSellingPartner(Entity receiver) {
+		this.sellingPartner = receiver;
+	}
+	
+	public void resetSellingPartner(){
+		this.sellingPartner = null;
+	}
+	
+	public void polymorph(){
+		int oldMovement= this.getStatValue("Movement");
+		int changedMovement=2;
+		this.setStatValue("Movement",changedMovement);
+		buffTime = new Timer(500,new PolymorphTimer("Movement",oldMovement));
+		makeAlternateSpriteArray();
+		buffTime.start();
+		
+		
+		
+	}
+	
+	public abstract void makeDeathSoundEffect();
+	
+	
+	
+	public void makeAlternateSpriteArray() {
+		SpriteSheetUtility util = occupation.getAlternateSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
+	}
+	
+	
+	public void restoreSpriteArray() {
+		SpriteSheetUtility util = occupation.getSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
+	}
+
+	public void makeTransformedSpriteArray() {
+		SpriteSheetUtility util = occupation.getTransformedSpriteSheet();
+		this.spriteSheet = (util.getSpriteArray());
+	}
+
 	
 	public class BuffTimer implements ActionListener {
 		long start = System.currentTimeMillis();
@@ -388,24 +470,27 @@ public abstract class Entity implements Dieable{
 
 	}
 	
-	public void setBuyingMode(){
-		this.buyingMode = true;
-	}
-	
-	public void resetBuyingMode(){
-		this.buyingMode = false;
-	}
-	
-	public boolean getBuyingMode(){
-		return this.buyingMode;
-	}
+	public class PolymorphTimer implements ActionListener {
+		long start = System.currentTimeMillis();
+		int value = 0;
+		String stat = "";
+		
+		public PolymorphTimer(String stat, int value ){ //add third parameter
+			this.value = value;
+			this.stat=stat;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			long timePassed = System.currentTimeMillis() - start;
+			if(timePassed > 5000){
+				stats.setStatValue(stat, value);
+				buffed = false;
+				buffTime.stop();
+				restoreSpriteArray();
+			}
+			
+		}
 
-	public void setSellingPartner(Entity receiver) {
-		this.sellingPartner = receiver;
 	}
-	
-	public void resetSellingPartner(){
-		this.sellingPartner = null;
-	}	
 }
 
