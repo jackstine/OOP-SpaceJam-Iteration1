@@ -4,11 +4,12 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import controller.mouse.SpellMouseHandler;
+import controller.mouse.AbilityMouseHandler;
 import utilities.ImageProcessing;
 import utilities.Scaling;
 import model.Point;
 import model.entity.Avatar;
+import model.entity.Entity;
 
 @SuppressWarnings("serial")
 public class SpellView extends AbilityView{
@@ -48,15 +49,12 @@ public class SpellView extends AbilityView{
 	 
 	private final Point SELECTED_SPELL_SCALE = new Point(40,40);
 	private final int SELECTED_SPELL_X_OFFSET = 5;
-	private Avatar avatar;
-	private SpellMouseHandler handler;
 
 	public SpellView(){}
 	
-	public SpellView(Avatar avatar){
+	public SpellView(Entity avatar){
 		super(avatar);
 	}
-	
 	
 	public void paint(Graphics g){
 		super.paint(g);

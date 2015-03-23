@@ -10,7 +10,7 @@ public class Abilities {
 	
 	protected Entity entity;
 	private Point selectedAbility;
-	private Spellable[][] abilities= new Spellable[Scaling.SPELLS_WIDTH_NUM][Scaling.SPELLS_HEIGHT_NUM];
+	protected Spellable[][] abilities= new Spellable[Scaling.SPELLS_WIDTH_NUM][Scaling.SPELLS_HEIGHT_NUM];
 
 	public Abilities(){}
 	
@@ -19,19 +19,22 @@ public class Abilities {
 	}
 	
 	private void setAbilities(){
-		abilities[this.OBSERVATION_POINT.getX()][this.OBSERVATION_POINT.getY()] = new Observation(this.entity);
-		abilities[this.BIND_WOUNDS_POINT.getX()][this.BIND_WOUNDS_POINT.getY()] = new BindWound(this.entity);
+		abilities[this.OBSERVATION_POINT.getY()][this.OBSERVATION_POINT.getX()] = new Observation(this.entity);
+		abilities[this.BIND_WOUNDS_POINT.getY()][this.BIND_WOUNDS_POINT.getX()] = new BindWound(this.entity);
 		this.setSpells();
 	}
 	
 	protected void setSpells(){}
 	
 	public void setSelectedSpell(Point spell){
+		System.out.println(spell);
 		this.selectedAbility = spell;
 	}
 	public Spellable getSelectedSpell(){
-		if (this.selectedAbility != null)
+		if (this.selectedAbility != null){
+			System.out.println(this.abilities[this.selectedAbility.getY()][this.selectedAbility.getX()]);
 			return this.abilities[this.selectedAbility.getY()][this.selectedAbility.getX()];
+		}
 		else return null;
 	}
 
