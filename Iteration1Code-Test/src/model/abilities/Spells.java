@@ -26,13 +26,12 @@ public class Spells extends Abilities{
 		//TODO get rid of these magic numbers once we get this class on the go
 		//abilities[this.FIRE_SPELL_POINT.getY()][this.FIRE_SPELL_POINT.getX()] = new FireSpell(entity);
 		abilities[this.FIRE_SPELL_POINT.getY()][this.FIRE_SPELL_POINT.getX()] = new PolymorphSpell(entity);
-		System.out.println(FIRE_SPELL_POINT  + "   FIRE SPELLLLL");
 		abilities[0][0] =new DanceSpell(this.entity);
 		abilities[this.EARTH_SPELL_POINT.getY()][this.EARTH_SPELL_POINT.getX()] = new EarthSpell(this.entity);
 		abilities[this.PLASMA_RAY_POINT.getY()][this.PLASMA_RAY_POINT.getX()] = new PlasmaRay(this.entity);
 		abilities[this.GLORY_HEAL_POINT.getY()][this.GLORY_HEAL_POINT.getX()] = new GloryHeal(this.entity);
 		abilities[this.MANA_BUFF_POINT.getY()][this.MANA_BUFF_POINT.getX()] = new ManaBuff(this.entity);
-		abilities[this.PACIFISM_POINT.getY()][this.PACIFISM_POINT.getX()] = null;
+		abilities[this.PACIFISM_POINT.getY()][this.PACIFISM_POINT.getX()] = new PacifyAbility(this.entity);
 		abilities[this.MAGIC_CIRCLE_POINT.getY()][this.MAGIC_CIRCLE_POINT.getX()] = null;
 		abilities[this.ANGRY_POINT.getY()][this.ANGRY_POINT.getX()] = null;
 		abilities[this.CONFUSE_POINT.getY()][this.CONFUSE_POINT.getX()] = null;

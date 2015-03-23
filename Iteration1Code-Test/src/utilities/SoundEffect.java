@@ -36,7 +36,7 @@ public abstract class SoundEffect {
 		
 		try {
 			mp3URL = new File(getFilePath()).toURI().toURL();
-			System.out.println("Sound effect successfully initialized.");
+			//System.out.println("Sound effect successfully initialized.");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error finding sound file.");

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.JLayeredPane;
@@ -13,6 +14,7 @@ public abstract class View extends JLayeredPane {
 	public View(){
 		setRedraw(false);
 		next = "";
+		setBackground(Color.BLACK);
 		setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		setFocusable(true);
 		setVisible(true);

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Map.Entry;
+import java.util.Stack;
 
 import javax.swing.Timer;
 
@@ -136,6 +137,7 @@ public class GameController {
 			combinedGameView.updateStatus();
 			Location killLocation = null;
 			Entity slain = null;
+			Stack<Location> killStack = new Stack<Location>();
 			for (Entry<Entity, Location> entry : World.getMap(avatar.getCurrMap()).getEntityToLocationMap().entrySet()) {
 				killLocation = null;
 				Entity key = entry.getKey();
@@ -143,10 +145,11 @@ public class GameController {
 				if(key.getStats().getStatValue("HP") <= 0){
 					killLocation = loc;
 					slain = key;
-					break;
+					killStack.push(loc);
 				}
-			}
-			if (killLocation != null){
+			}	
+			while(!killStack.isEmpty()){
+				killLocation = killStack.pop();
 				int gold = 50*slain.getStatValue("Level");
 				int exp = 200*slain.getStatValue("Level");
 				avatar.makeGoldTransaction(gold);
@@ -172,11 +175,18 @@ public class GameController {
         	Location tileLocation = this.handler.getTileLocation(e);
             this.handler.pickupItem(tileLocation);
             this.handler.useSpell(tileLocation);
+            System.out.println("OBSERVATION IS BEFORE THE IF    " + avatar.getObservation());
             if(this.handler.getEntity(tileLocation) != null && avatar.getObservation()){
             	GameLog.writeToLog("Observation",(this.handler.getEntity(tileLocation).toString() + "\n" + this.handler.getEntity(tileLocation).observation(avatar.getSkillValue("Observation"),(int)tileLocation.distance(map.getEntityLocation(avatar)))));
             }
+            if(this.handler.getEntity(tileLocation) != null && avatar.getPickpocket()){
+            	avatar.makeGoldTransaction(100);
+            	GameLog.writeToLog("Stealing", "You stole 100 gold");
+            	
+            	}
             getMapView().repaint();
             avatar.clearObservation();
+            System.out.println("OBSERVATION IS " + avatar.getObservation());
         }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) {}

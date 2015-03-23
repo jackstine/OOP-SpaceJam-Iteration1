@@ -22,6 +22,7 @@ import model.stats.Mana;
 import model.stats.Movement;
 import model.stats.OffensiveRating;
 import model.stats.PrimaryStat;
+import model.stats.Sight;
 import model.stats.Stat;
 import model.stats.Strength;
 
@@ -46,6 +47,7 @@ public class StatFactory {
 		PrimaryStat agility = new Agility(getAgility());
 		PrimaryStat experience = new Experience(getExperience());
 		PrimaryStat hardiness = new Hardiness(getHardiness());
+		PrimaryStat sight = new Sight(getSight());
 		PrimaryStat hp = new HP(0);
 		PrimaryStat intellect = new Intellect(getIntellect());
 		PrimaryStat lives = new Lives(getLivesLeft());
@@ -90,6 +92,7 @@ public class StatFactory {
 		map.put("Lives", lives);
 		map.put("Movement", movement);
 		map.put("MP", mp);
+		map.put("Sight", sight);
 		map.put("Strength", strength);
 
 		//INSERT DERIVED STATS INTO MAP
@@ -128,6 +131,10 @@ public class StatFactory {
 	
 	protected int getMovement() {
 		return 10;
+	}
+	
+	protected int getSight() {
+		return 2;
 	}
 	
 }

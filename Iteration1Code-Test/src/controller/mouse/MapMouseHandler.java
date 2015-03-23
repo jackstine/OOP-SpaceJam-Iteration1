@@ -59,6 +59,7 @@ public class MapMouseHandler {
     	GameMap map = World.getMap(avatar.getCurrMap());
     	Spellable spellChosenToAttack = this.avatar.getSelectedSpell();
     	boolean NPCExistAndSpellChosen = (map.getTile(tileLocation).getEntity() != null) && (spellChosenToAttack != null);
+    	System.out.println(spellChosenToAttack);
     	if (NPCExistAndSpellChosen){
     		Entity entity = map.getTile(tileLocation).getEntity();
     		if (spellChosenToAttack.able()){

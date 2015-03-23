@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.Timer;
 
 import utilities.DeathSoundEffect;
+import utilities.GoatSoundEffect;
 import utilities.ImageProcessing;
 import utilities.RNG;
 import utilities.Scaling;
@@ -21,7 +22,9 @@ import model.abilities.Spell;
 import model.abilities.Spellable;
 import model.abilities.Spells;
 import model.behavior.Behavior;
+import model.behavior.BehaviorComposite;
 import model.behavior.RadialEntitySight;
+import model.behavior.SightTrack;
 import model.behavior.State;
 import model.items.Equipable;
 import model.items.TakeableItem;
@@ -33,26 +36,31 @@ import model.slots.InventoryEquipment;
 import model.stats.EntityStats;
 import model.visitor.WeaponVisitor;
 
-public abstract class Entity implements Dieable{
+public abstract class Entity implements Dieable{	
 	protected EntityStats stats; 
 	protected Map<String,Skill> skills;
 	protected Occupation occupation;
 	protected String name;
 	protected int direction;
 	protected int gold;
-	private String currMap="Main";
 	protected InventoryEquipment inventoryEquipment;
-	protected State preferredState = new State();
-	protected State engagedState = new State();
 	protected SoundEffect soundEffect;
 	private BufferedImage[] spriteSheet;
 	private BufferedImage image;
 	private WeaponVisitor weaponVisitor= new WeaponVisitor(this);
 	private boolean buyingMode = false;
-	private RadialEntitySight sight;
 	private Entity sellingPartner;
+	protected State preferredState = new State();
+	protected State engagedState = new State();
+	protected RadialEntitySight sight;
+	
+	protected SightTrack sightBehavior = new SightTrack();
+
 	private AbilityView abilityView;
 	private boolean observationOn;
+	private boolean pickpocketOn;
+	private String currMap = "Main";
+
 	
 	//TODO change the spells so that they are only associated with Alchemists
 	protected Abilities abilities;
@@ -94,20 +102,6 @@ public abstract class Entity implements Dieable{
 			image= ImageProcessing.scaleImage(Scaling.AVATAR_WIDTH, Scaling.AVATAR_HEIGHT, imageToDisplay);
 			return image;
 	}
-	
-	public void kill(){
-		this.preferredState.kill();
-		this.engagedState.kill();
-	}
-	
-
-	public void grantSight(Avatar avatar) {
-		sight = new RadialEntitySight(avatar);
-	}
-	
-	public RadialEntitySight getSight() {
-		return sight;
-	}
 
 	public void buy(TakeableItem item){
 		this.inventoryEquipment.equipInventory(item);
@@ -119,25 +113,11 @@ public abstract class Entity implements Dieable{
 		this.sellingPartner.buy(itemToSell);
 
 	}
-	
-	/********************** O BEHAVE ****************************************/
-	public void setPrefferedBehavior(Behavior behavior){
-		this.preferredState.setState(behavior);
-	}
-	
-	public void setEngageBehavior(Behavior behavior){
-		this.engagedState.setState(behavior);
-	}
-	
-	public void idle(){
-		this.preferredState.perform(this);
-	}
 
-	public void engage(Entity entity){
-		this.engagedState.perform(entity);
-		this.preferredState.kill();
+	public int getGold(){
+		return gold;
 	}
-
+	
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
@@ -145,19 +125,70 @@ public abstract class Entity implements Dieable{
 	public int getDirection() {
 		return direction;
 	}
+	
 	public int getSkillValue(String key) {
 		if (this.skills.containsKey(key)) return this.skills.get(key).getSkillLevel();
 		return -1;
-	}
-	
-	public int getGold(){
-		return gold;
 	}
 	
 	public void makeGoldTransaction(int amount){
 		gold += amount;
 	}
 	
+	/******************* O BEHAVE **********************************/
+	
+	public void setPreferredState(BehaviorComposite behavior){
+		this.preferredState.setState(behavior);
+	}
+	
+	public void setEngagedState(BehaviorComposite behavior){
+		this.engagedState.setState(behavior);
+	}
+	
+	public State getPreferredState () {
+		return preferredState;
+	}
+	
+	public State getEngagedState () {
+		return engagedState;
+	}
+	
+	public void idle(){
+		this.preferredState.perform(this);
+	}
+	
+	public void idleEngage() {
+		this.engagedState.perform(this.sight.getTarget());
+	}
+	
+	public void killEngaged() {
+		this.engagedState.kill();
+	}
+	
+	public void killPreferred() {
+		this.preferredState.kill();
+	}
+	
+	public void engage(Entity entity){
+		this.engagedState.perform(entity);
+	}	
+	
+	public void kill(){
+		this.preferredState.kill();
+		this.engagedState.kill();
+	}
+	
+	public void grantSight(Avatar avatar) {
+		sight = new RadialEntitySight(avatar);
+	}
+	
+	public RadialEntitySight getSight() {
+		return sight;
+	}
+	
+	public void revertEngageBehavior() {
+		this.engagedState.revert();
+	}
 	
 	/******************* INVENTORY  ********************************/
 	public Inventory getInventory(){
@@ -260,6 +291,18 @@ public abstract class Entity implements Dieable{
 		return this.observationOn;
 	}
 	
+	public void setPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public void clearPickpocket(){
+		this.pickpocketOn = true;
+	}
+	
+	public boolean getPickpocket(){
+		return this.pickpocketOn;
+	}
+	
 	
 	public void incSkillValue(String key) {
 		if (this.skills.containsKey(key)) this.skills.get(key).upgradeSkillLevel();
@@ -358,10 +401,6 @@ public abstract class Entity implements Dieable{
 	public void resetSellingPartner(){
 		this.sellingPartner = null;
 	}
-
-	public void revertEngageBehavior() {
-		this.engagedState.revert();
-	}
 	
 	public void polymorph(){
 		int oldMovement= this.getStatValue("Movement");
@@ -369,6 +408,7 @@ public abstract class Entity implements Dieable{
 		this.setStatValue("Movement",changedMovement);
 		buffTime = new Timer(5000,new PolymorphTimer("Movement",oldMovement));
 		makeAlternateSpriteArray();
+		SoundEffect e = new GoatSoundEffect();
 		buffTime.start();
 	}
 	

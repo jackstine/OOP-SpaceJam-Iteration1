@@ -9,13 +9,13 @@ import model.RadialInfluenceSet;
 import model.World;
 import model.behavior.RadialEntitySight;
 import model.entity.Entity;
+import model.entity.NPC;
 import utilities.Directions;
 
 public class NPCMovementLoopController extends NPCMovementController{
 	private ArrayList<String> movementLoop;
 	
 	public NPCMovementLoopController(Entity entity){
-		//this.mapView = mapView;
 		super(entity);
 	}
 	
@@ -30,15 +30,13 @@ public class NPCMovementLoopController extends NPCMovementController{
 	}
 	
 	private class CircleTask extends Thread {
-		//Entity entity = getNPC();
 		GameMap map = getCurrMap();
 		
 		@Override
 		public void run() {
 			try {
 				int instructionTrack = 0;
-				while ((! interrupted()) && !stopThread) {
-					
+				while (!stopThread) {
 						if(movementLoop.get(instructionTrack%movementLoop.size()).equals("forward")) {
 							move(Directions.getPoint(entity.getDirection()),entity.getDirection());
 						}
@@ -51,10 +49,9 @@ public class NPCMovementLoopController extends NPCMovementController{
 						sleep(10000/entity.getStats().getStatValue("Movement"));
 					}catch(Exception e){}
 				}
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 			}
-			
-			
 		}
 	}
 }

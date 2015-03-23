@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -12,6 +13,7 @@ import javax.swing.border.LineBorder;
 import controller.GameController.BoardMouseListener;
 import model.GameMap;
 import model.entity.Avatar;
+import model.entity.Entity;
 import utilities.FontHandler;
 import utilities.Scaling;
 
@@ -42,12 +44,18 @@ public class CombinedGameView extends View {
    
     public CombinedGameView(GameMap map, Avatar avatar,BoardMouseListener boardListener, ActionListener lvlup, ActionListener sysbtn, ActionListener statbtn){
     		this.avatar = avatar;
-    		
+    		buttons.setBackground(new Color(169, 221, 221));
     		//Set font to buttons
     		buttonFont = fh.AfterDisasterFont();
-    		systemButton.setFont(buttonFont.deriveFont(15f));
-    		statButton.setFont(buttonFont.deriveFont(15f));
-    		levelUp.setFont(buttonFont.deriveFont(15f));    		
+    		systemButton.setFont(buttonFont.deriveFont(25f));
+    		systemButton.setContentAreaFilled(false);
+    		systemButton.setBorderPainted(false);
+    		statButton.setFont(buttonFont.deriveFont(25f));
+    		statButton.setContentAreaFilled(false);
+    		statButton.setBorderPainted(false);
+    		levelUp.setFont(buttonFont.deriveFont(25f));
+    		levelUp.setContentAreaFilled(false);
+    		levelUp.setBorderPainted(false);		
     		
             board = new GameView(map,avatar, map.getLocation(avatar));
             character = new InventoryEquipmentView(avatar);
@@ -117,6 +125,12 @@ public class CombinedGameView extends View {
     }
     
     public void changeMap(GameMap map){
+    	Set<Entity> entities = map.getEntities();
+    	for(Entity e : entities) {
+    		e.grantSight(avatar);
+    		e.setCurrMap(avatar.getCurrMap());
+    		e.idle();
+    	}
     	board.changeMap(map);
     }
     

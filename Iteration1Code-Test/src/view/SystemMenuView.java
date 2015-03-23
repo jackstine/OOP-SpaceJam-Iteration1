@@ -35,9 +35,21 @@ public class SystemMenuView extends JInternalFrame {
 		//set Fonts of stuff
 		buttonFont = fh.AfterDisasterFont();
 		save.setFont(buttonFont.deriveFont(20f));
+		save.setForeground(Color.WHITE);
+		save.setContentAreaFilled(false);
+		save.setBorderPainted(false);
 		back.setFont(buttonFont.deriveFont(20f));
+		back.setForeground(Color.WHITE);
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
 		ret.setFont(buttonFont.deriveFont(20f));
+		ret.setForeground(Color.WHITE);
+		ret.setContentAreaFilled(false);
+		ret.setBorderPainted(false);
 		config.setFont(buttonFont.deriveFont(20f));
+		config.setForeground(Color.WHITE);
+		config.setContentAreaFilled(false);
+		config.setBorderPainted(false);
 		
 		getContentPane().add(new JLabel("System Menu"), BorderLayout.CENTER);
 		setBounds(dimensions[0], dimensions[1], dimensions[2], dimensions[3]);
@@ -46,6 +58,7 @@ public class SystemMenuView extends JInternalFrame {
 		systemsMenu.add(back);
 		systemsMenu.add(config);
 		systemsMenu.add(ret);
+		systemsMenu.setBackground(Color.BLACK);
 		add(systemsMenu);
 		setVisible(true);
 		

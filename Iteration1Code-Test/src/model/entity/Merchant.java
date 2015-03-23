@@ -3,6 +3,7 @@ package model.entity;
 import utilities.FriendlyDeathSoundEffect;
 import utilities.SoundEffect;
 import model.behavior.Barter;
+import model.behavior.BehaviorComposite;
 import model.behavior.Patrol;
 import model.behavior.Stand;
 import model.occupation.MerchantHunter;
@@ -11,10 +12,9 @@ public class Merchant extends NPC {
 	
 	public Merchant() {
 		super(new MerchantHunter());
+		this.engagedState.setState(new BehaviorComposite(new Barter(this)));
+		this.preferredState.setState(new BehaviorComposite(new Stand(this)));
 		this.name = "Merchant";
-		this.engagedState.setState(new Barter(this));
-		this.preferredState.setState(new Stand(this));
-		//SoundEffect effect = new FriendlyDeathSoundEffect();
 	}
 
 	@Override

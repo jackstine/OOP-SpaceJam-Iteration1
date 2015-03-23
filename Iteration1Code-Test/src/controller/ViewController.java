@@ -1,5 +1,6 @@
 package controller;
  
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
  
+
 
 
 import javax.swing.JFrame;
@@ -42,7 +44,6 @@ public class ViewController {
         public ViewController(){
             //instantiate the main frame
             frame = new JFrame();
-           
             //instantiate the main menu controller + view
             mainMenu = new MainMenuController();
             views.put("Main", mainMenu.getView());

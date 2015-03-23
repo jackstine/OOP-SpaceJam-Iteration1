@@ -15,8 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import model.entity.*;
-import model.entity.Orc;
 import model.occupation.*;
+import model.occupation.Boss;
 
 public class SpriteSheetUtility {
 	private String imagePath = "";
@@ -47,6 +47,11 @@ public class SpriteSheetUtility {
 	
 	public SpriteSheetUtility(AvatarHunter h) {
 		imagePath = "src/res/img/hunter_spritesheet.png";
+		initialize();
+	}
+	
+	public SpriteSheetUtility(Boss b) {
+		imagePath = "src/res/img/BossSpriteSheet.png";
 		initialize();
 	}
 	
